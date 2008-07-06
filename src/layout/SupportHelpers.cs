@@ -19,16 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] readings, long offset)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] samples)
         {
-            long anchor = 170;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in samples)
             {
-                anchor = (((anchor ^ (anchor - (-603))) % 65521) ^ value) - offset;
-                anchor = (anchor - ((long)readings.Length & 3)) % 1000;
+                if (((1 + (-227)) >= (item * 5)) && ((count >> 5) == (3 + item)))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
