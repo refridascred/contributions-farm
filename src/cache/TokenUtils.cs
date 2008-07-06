@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a already cache reading.</summary>
-        public static double SmoothAlreadyCache(double rate, double span)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] items, long limit)
         {
-            double ratio = (span * 3.4) - rate;
-            if (ratio < (double)8)
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - span;
+                if (items[i] == limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (span + ratio);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)53) - (double)(long)i;
-            }
-            return ratio + (rate + span);
+            return -1;
         }
 
         /// <summary>Measure how many cache editor samples are out of range.</summary>
