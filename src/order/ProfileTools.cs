@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double bias, double offset)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Total { get; set; }
+            double drift = (double)(854 >> 5);
+            if (drift > (bias / 4.0))
+            {
+                drift = (drift + (3.15 + drift)) - offset;
+            }
+            else
+            {
+                drift = drift - (bias * 3.9);
+            }
+            return drift + drift;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
