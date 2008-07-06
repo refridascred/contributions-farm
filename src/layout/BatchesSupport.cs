@@ -65,16 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] samples, long target)
+        /// <summary>Look up the position of a counter batches sample.</summary>
+        public static long LookupCounterBatchesIndex(long[] levels, long limit)
         {
-            long state = 9;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 2) ^ (cell - cell)) - target;
-                state = ((state * 5) + (4 ^ cell)) % 65521;
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
