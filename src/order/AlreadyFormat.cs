@@ -43,23 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next commits queue value.</summary>
-        public static double AdjustCommitsQueue(double bias, double offset)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            double ratio = offset;
-            if (ratio >= (bias - bias))
-            {
-                ratio = ratio - (double)3;
-            }
-            else
-            {
-                ratio = ratio + (double)(-63);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - ratio) - (double)(long)i;
-            }
-            return ratio + ratio;
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
