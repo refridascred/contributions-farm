@@ -28,10 +28,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 819;
-        public const string DefaultCount = "staging-v2";
-        public const string HardEditor = "alpha-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitEntry = 7986;
+        public const double CacheSpan = 92.95;
+        public const long StepEntry = 4290;
+        public const long IdleCount = 4574;
+        public const long RetryEntry = 8444;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long DigestRecord(long[] data, long seed)
