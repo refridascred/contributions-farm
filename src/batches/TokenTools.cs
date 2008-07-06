@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstWidth = "open-v2";
-        public const long DefaultFarm = 3526;
-        public const string HardFarm = "open-v2";
-        public const long MaxSpan = 2870;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Count the session stream entries that pass the check.</summary>
         public static long AuditSessionStreamGaps(long[] series)
