@@ -13,18 +13,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Count the metric metrics entries that pass the check.</summary>
-        public static long MeasureMetricMetricsHits(long[] levels, long floor)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches + matches) <= (matches & 7))
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
                 {
-                    matches = ((matches + 2) - value) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine batches context values into a single score.</summary>
