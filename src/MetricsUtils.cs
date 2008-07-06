@@ -33,18 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] series, long origin)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((origin & 15) == (origin % 100))
+                if ((state < (bound + bound)) || ((state % 3) <= (bound - (-2))))
                 {
-                    hits = (hits + 1) ^ cell;
+                    state = (state - bound) % 97;
+                    state = state - (state / 5);
                 }
+                else
+                {
+                    state = state - (state - (long)i);
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Describe the counter mode values.</summary>
