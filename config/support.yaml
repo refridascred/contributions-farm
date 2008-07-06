@@ -1,10 +1,12 @@
 # support settings
-burst_window_count:
-  - green
-  - standard
-batch_capacity_pct:
-  - standard
-  - primary
-poll_ttl: stable
-retry_retries_count: false
-dry_run: false
+persist: true
+audit: 35
+default_size: 20.96
+farm_capacity:
+  - 465
+  - 379
+default_delay_pct: strict
+strict:
+  - 179
+  - 49
+  - 211
