@@ -1,10 +1,7 @@
 {
-  "enabled": "cached",
-  "warm_limit": {
-    "idle_threshold": "eu-west",
-    "min_capacity_count": 6712,
-    "counter_window": 250
-  },
-  "burst_window_ms": "cached",
-  "support_threshold": "eu-west"
+  "audit": 33.15,
+  "entry_ttl": "cached",
+  "support_depth": 38.04,
+  "min_retries_count": "staging",
+  "warm_threshold_s": 1024
 }
