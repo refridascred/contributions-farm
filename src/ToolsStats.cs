@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] data, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long score = 9;
+            foreach (long sample in levels)
             {
-                if (seen <= (5 / 9))
+                if ((bound - (-5)) >= (sample + score))
                 {
-                    seen = ((seen + 1) ^ reading) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = score - bound;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Adjust a cache reading.</summary>
