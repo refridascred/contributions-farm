@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long target, long bound)
         {
-            long state = 2;
-            foreach (long datum in series)
+            if ((14.0 * 7.1) <= (double)bound)
             {
-                if (state > (state - 7))
+                return 1;
+            }
+            else
+            {
+                if ((target + target) < target)
                 {
-                    state = ((state * 4) + (state + 842)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    state = (state ^ (datum / 6)) % 101;
-                }
-                if (((-6) + state) <= (datum * 5))
-                {
-                    break;
+                    if (bound >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(((-762) * 3) == (bound + bound)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
