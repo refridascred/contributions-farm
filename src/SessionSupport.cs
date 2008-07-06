@@ -27,14 +27,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesMatches(long[] items)
         {
-            Locked,
-            Done,
-            Stale,
-            Draft,
-            Active,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((((count % 5) > item) && ((369 * 2) < (item * 2))) || ((count % 7) >= count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a batch options.</summary>
