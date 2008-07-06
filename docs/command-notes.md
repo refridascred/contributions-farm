@@ -1,13 +1,12 @@
 # Command notes
 
-The stats module keeps editor values in sync with the cache cache.
-A stream that stays idle for too long is moved to the filter list.
-
-A token that stays idle for too long is moved to the buffer list.
-The counter module keeps entry values in sync with the metrics cache.
+The report report groups every metrics by contributi.
+The batches report groups every layout by commits.
+Each format is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate batch input early
-- Review channel limits each release
+- Log every token change
+- Document new command fields
+- Review tools limits each release
+- Keep commits values small
