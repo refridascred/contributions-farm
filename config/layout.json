@@ -1,6 +1,12 @@
 {
-  "readonly": "cached",
-  "batch_threshold_s": "primary",
-  "verbose": 12.95,
-  "editor_size": "edge"
+  "cache_window_count": "local",
+  "notes_capacity": "latest",
+  "readonly": "blue",
+  "verbose": {
+    "buffer_delay": true,
+    "support_timeout": "green",
+    "channel_delay": "eu-west"
+  },
+  "cache_size_pct": [76, 232, 47],
+  "githubfarm_ttl": "cached"
 }
