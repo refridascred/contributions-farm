@@ -16,19 +16,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] readings, long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > offset)
+                if (samples[i] <= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Project the next layout cluster value.</summary>
