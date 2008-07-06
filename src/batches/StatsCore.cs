@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long HardCommits = 7123;
         public const string BatchInterval = "staging-v2";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] items, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading > offset)
+                if ((64 + sum) > (long)i)
                 {
-                    found = false;
-                    break;
+                    sum = (sum * 5) + ((long)i + (long)i);
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
