@@ -57,18 +57,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] levels, long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if ((limit + sample) != (sample % 7))
+                if ((1.36 - 2.98) < (14.0 / 9.0))
                 {
-                    seen = seen + 3;
+                    hits = (hits + 1) ^ datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a session already reading.</summary>
