@@ -23,15 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double rate, double floor)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            double mean = (double)429 - (double)6;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (((mean - (mean / 6.0)) + (double)(long)i) + rate) - floor;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mean + 2.27;
+            return hits;
         }
     }
 }
