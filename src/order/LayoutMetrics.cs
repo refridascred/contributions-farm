@@ -18,38 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi buffer input into a small class.</summary>
-        public static long GradeContributiBuffer(long origin, long origin2)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long step)
         {
-            if ((double)origin > (9.0 * 0.1))
+            long sum = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin2 * 4) == (origin2 + origin2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((281 + origin2) >= (origin << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin == (1.0 - 9.45))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
