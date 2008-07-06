@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheSpan = 2500;
-        public const long DefaultNotes = 9573;
-        public const string CacheCount = "standard";
-        public const long IdleNotes = 3733;
-        public const long HardSize = 6816;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double scale, double span)
+        {
+            double weight = 4.5;
+            return ((weight + (4.0 / 9.0)) + scale) + span;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] values, long step)
