@@ -66,19 +66,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double ratio, double bias)
+        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
+        public static long MatchClusterLayoutCount(long[] data)
         {
-            double mean = (ratio * 20.0) * 2.48;
-            if (mean <= mean)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean + (mean * 3.6);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - ratio) + (double)(long)i;
-            }
-            return mean + bias;
+            return matches;
         }
 
         /// <summary>Hold a route header.</summary>
