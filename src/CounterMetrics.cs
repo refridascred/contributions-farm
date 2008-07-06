@@ -48,13 +48,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public bool Rank { get; set; }
+            long sum = 9;
+            foreach (long entry in levels)
+            {
+                sum = ((sum ^ (sum + (long)levels.Length)) % 101) ^ entry;
+            }
+            return sum;
         }
     }
 }
