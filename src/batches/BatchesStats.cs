@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleRatio = 1077;
-        public const string HardCount = "legacy-edge";
-        public const long LimitSpan = 4194;
-        public const long StepDepth = 9603;
-        public const long CacheSize = 4673;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long OverlapLayoutCount(long[] series)
