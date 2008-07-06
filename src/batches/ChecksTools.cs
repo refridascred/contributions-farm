@@ -31,12 +31,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long seed)
         {
-            Dropped,
-            Failed,
-            Done,
+            if ((double)seed != (double)floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor <= (8.5 + 10.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
