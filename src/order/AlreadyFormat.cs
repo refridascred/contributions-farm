@@ -53,18 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] data)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((count / 2) == (0 - count))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
