@@ -43,13 +43,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Queued,
-            Draft,
-            Paused,
-            Retry,
+            Closed,
+            Active,
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Describe the report class values.</summary>
