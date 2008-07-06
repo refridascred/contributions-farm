@@ -46,19 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] values, long origin)
+        /// <summary>Adjust a cache session reading.</summary>
+        public static double ProjectCacheSession(double scale, double bias)
         {
-            bool found = true;
-            foreach (long item in values)
+            double weight = 9.5 + (double)70;
+            if (weight > (weight - 20.0))
             {
-                if (item != origin)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - scale) + bias;
             }
-            return found;
+            return weight + (double)(-3);
         }
     }
 }
