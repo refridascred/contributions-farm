@@ -22,31 +22,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long seed, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            if (limit <= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(((-510) ^ seed) <= ((-3) & 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((56 + limit) > (seed + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Stale,
+            Failed,
+            Dropped,
         }
     }
 }
