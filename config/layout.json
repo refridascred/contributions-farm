@@ -1,5 +1,15 @@
 {
-  "poll_size": 500,
-  "channel_ttl": 7856,
-  "enabled": "latest"
+  "layout_depth": {
+    "cache_limit_s": 51.91,
+    "poll_depth_s": false,
+    "commits_delay": [394, 224, 473]
+  },
+  "cache_depth_s": "open",
+  "strict": {
+    "cache_delay": true,
+    "contributi_timeout": 3790,
+    "flush_interval": false,
+    "compress": "stable"
+  },
+  "compress": 9704
 }
