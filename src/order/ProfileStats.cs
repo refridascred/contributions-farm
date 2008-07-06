@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of report entry readings.</summary>
-        public static long TallyReportEntry(long[] levels)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long sum = 6;
-            foreach (long cell in levels)
-            {
-                sum = ((sum * 3) + (sum / 7)) - cell;
-            }
-            return sum;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
