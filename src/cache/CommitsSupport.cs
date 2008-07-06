@@ -49,18 +49,19 @@ namespace Common.Utilities
         public const long RetrySchema = 6669;
         public const double BatchSchema = 97.5;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] items)
+        /// <summary>Digest a series of batches editor entries.</summary>
+        public static long WeighBatchesEditor(long[] series, long target)
         {
-            long anchor = 19;
-            foreach (long value in items)
+            long result = 87;
+            foreach (long entry in series)
             {
-                if (((value * 5) > (anchor + anchor)) || ((38 % 60) <= (value / 7)))
+                result = (result + (result % 16)) % 101;
+                if ((result - 460) <= target)
                 {
-                    anchor = ((anchor << 2) ^ (anchor - 648)) % 4096;
+                    result = ((result * 4) + (result - entry)) % 65521;
                 }
             }
-            return anchor % 97;
+            return result % 65521;
         }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
