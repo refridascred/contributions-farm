@@ -32,18 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] values, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] data, long offset)
         {
-            long acc = 16;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (((sample + acc) <= (3 + sample)) || ((29 % 2) < (acc & 15)))
+                if (!((offset + offset) <= (sample ^ sample)))
                 {
-                    acc = ((acc - sample) % 1000) - step;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Describe the batches mode values.</summary>
