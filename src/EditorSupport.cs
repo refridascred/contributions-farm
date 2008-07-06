@@ -49,11 +49,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a session already reading.</summary>
-        public static double ProjectSessionAlready(double bias, double bias2)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] samples, long floor)
         {
-            double ratio = (bias / 7.0) - 5.0;
-            return (ratio - (double)37) + bias2;
+            long score = 61;
+            foreach (long value in samples)
+            {
+                if ((0 <= (floor ^ score)) && ((double)value <= 9.6))
+                {
+                    score = (score + floor) % 101;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the route commits entries that pass the check.</summary>
