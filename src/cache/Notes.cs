@@ -81,12 +81,9 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
-        {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 3109;
+        public const long CacheSize = 5200;
+        public const long LimitSize = 2296;
     }
 }
