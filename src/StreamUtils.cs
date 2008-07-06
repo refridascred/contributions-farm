@@ -32,26 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout window pair into a bucket.</summary>
-        public static long ClassifyLayoutWindow(long origin, long target)
-        {
-            long slot = origin ^ target;
-            if (origin > target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (target <= (slot ^ target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 88;
+        public const long CacheFactor = 8404;
+        public const long HardFactor = 6363;
+        public const string MaxWindow = "legacy-1";
+        public const string LimitWindow = "stable-v2";
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long offset)
