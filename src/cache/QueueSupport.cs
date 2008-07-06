@@ -27,24 +27,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long origin, long offset)
-        {
-            if ((offset >> 4) != (origin + origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset < (offset % 60))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MaxContext = "legacy-edge";
+        public const string LimitFactor = "local-edge";
+        public const long SoftWidth = 3598;
     }
 }
