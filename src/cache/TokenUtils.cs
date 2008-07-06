@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const double MinSpan = 33.67;
         public const string BatchSpan = "fallback-1";
 
-        /// <summary>Count graph counter pairs that satisfy a relation.</summary>
-        public static long CompareGraphCounterCount(long[] readings)
+        /// <summary>Look up the position of a record batch sample.</summary>
+        public static long LookupRecordBatchIndex(long[] levels, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (levels[i] == step)
                 {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
