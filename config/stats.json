@@ -1,11 +1,7 @@
 {
-  "cache_ratio_ms": 3782,
-  "verbose": false,
-  "warm_timeout_pct": {
-    "verbose": "local",
-    "cache_delay_s": 5314,
-    "filter_size": [287, 19, 399, 86],
-    "batch_delay": "eu-west"
-  },
-  "dry_run": [350, 278, 287, 422]
+  "max_size_count": ["primary", "eu-west"],
+  "verbose": ["open", "standard"],
+  "metrics_delay": false,
+  "max_window_pct": "cached",
+  "idle_window": [141, 483, 362]
 }
