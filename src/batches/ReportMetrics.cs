@@ -23,17 +23,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] == offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a channel options.</summary>
