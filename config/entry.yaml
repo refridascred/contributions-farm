@@ -1,40 +1,21 @@
 # entry settings
-base_ratio_count: stable
-sync_window_s:
-  record_ratio: true
-  idle_depth: latest
-  dry_run: 82.85
-  idle_retries_s:
-    notes_window: legacy
-    sync_retries: latest
-    verbose: local
-    warm_ttl_ms: false
-commits_retries: 3777
-batches_depth:
-  - primary
-  - primary
-poll_delay_s:
-  max_timeout:
-    dry_run: 4898
-    idle_interval: blue
-    flush_retries_count: 70.43
-    cluster_ttl: 9452
-  default_retries_s:
-    graph_retries: 78
-    poll_window:
-      - edge
-      - latest
-      - green
-      - staging
-    readonly: primary
-    min_limit_ms: 250
-    strict: 60.5
-    burst_interval: staging
-  entry_ttl: eu-west
-  readonly: 6959
-  soft_delay_ms:
-    - 230
-    - 307
-    - 351
-    - 418
-profile_delay: 9399
+audit:
+  readonly: true
+  buffer_threshold: 6358
+  idle_ratio_pct: 48.7
+strict:
+  - edge
+  - open
+  - open
+record_timeout:
+  tools_window:
+    - local
+    - green
+    - green
+  compress: 14
+  min_threshold_s:
+    - eu-west
+    - local
+  buffer_ttl: legacy
+  batches_window: 3835
+dry_run: 756
