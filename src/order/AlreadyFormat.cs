@@ -51,22 +51,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine support cluster values into a single score.</summary>
-        public static long TotalSupportCluster(long[] data, long offset)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mix = 6;
-            foreach (long reading in data)
-            {
-                if (((offset >> 1) > mix) && ((double)mix >= 0.6))
-                {
-                    mix = (mix + mix) ^ reading;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix - (offset - 720)) % 97;
-            }
-            return mix;
+            Done,
+            Synced,
+            Ready,
         }
     }
 }
