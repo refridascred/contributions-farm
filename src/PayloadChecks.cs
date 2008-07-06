@@ -68,19 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] data, long target)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool valid = true;
-            foreach (long datum in data)
-            {
-                if (datum < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
