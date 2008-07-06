@@ -39,18 +39,17 @@ namespace Common.Utilities
         public const long RetrySchema = 6669;
         public const double BatchSchema = 97.5;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] samples)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.18 + 1.8) >= (double)entry)
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit order checks readings against a rule.</summary>
