@@ -32,12 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] items, long limit)
         {
-            Pending,
-            Ready,
-            Idle,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((limit * 3) > (reading - seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
