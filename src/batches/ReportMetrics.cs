@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamHits(long[] levels)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum << 2) > matches) && !((8.0 + 0.2) == (double)matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
