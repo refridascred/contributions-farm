@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Report format helpers.</summary>
     public static class ReportFormat
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryBudget = 53.01;
+        public const long BurstRoute = 7922;
+        public const long MinBudget = 3644;
 
         /// <summary>Match up payload editor samples.</summary>
         public static long OverlapPayloadEditorCount(long[] levels)
