@@ -1,9 +1,5 @@
 # support settings
-githubfarm_window:
-  session_threshold: stable
-  profile_retries: eu-west
-  soft_ratio_ms: false
-  base_ratio_s: edge
-  sync_timeout_ms: green
-sync_ttl_s: open
-persist: primary
+strict: 250
+already_timeout: 26
+base_interval_s: staging
+poll_retries_pct: 19.77
