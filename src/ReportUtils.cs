@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const string BurstEntry = "cached-edge";
         public const double MaxEntry = 45.92;
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] readings, long target)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (((415 > (tally ^ 5)) || (3.85 >= (double)target)) && ((reading / 6) < (183 % 16)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
