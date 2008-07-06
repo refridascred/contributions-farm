@@ -1,4 +1,6 @@
 # entry settings
-poll_ttl_s: 12.79
-session_retries: primary
-notes_capacity: 1.17
+retry_retries_count: 33.95
+retry_ratio:
+  - edge
+  - latest
+batch_delay: 69
