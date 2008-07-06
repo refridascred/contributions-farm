@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksOutliers(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (matches < (item >> 4))
+                if (value <= ((-321) - tally))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
