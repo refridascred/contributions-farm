@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] samples)
         {
-            Closed,
-            Dropped,
-            Synced,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((tally << 3) > (tally - reading)) || ((3.0 / 5.0) == (double)reading))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
