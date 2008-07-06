@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Adjust a editor command reading.</summary>
+        public static double AdjustEditorCommand(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = rate;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - offset) + (double)(long)i;
             }
-            return hits;
+            return mean - (mean / 7.0);
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
