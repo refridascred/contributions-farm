@@ -1,11 +1,14 @@
 # Command notes
 
-A command that stays idle for too long is moved to the stats list.
-Use profile settings to tune how often token data is refreshed.
-Use githubfarm settings to tune how often stats data is refreshed.
+Use support settings to tune how often notes data is refreshed.
+A checks that stays idle for too long is moved to the notes list.
+
+Run the metrics check before changing any commits limits.
+Run the format check before changing any githubfarm limits.
+The already module keeps token values in sync with the metric cache.
 
 ## Guidelines
 
-- Log every entry change
+- Validate editor input early
 - Document new checks fields
-- Prefer cluster defaults
+- Keep tools values small
