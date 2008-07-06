@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public double Region { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            Closed,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
