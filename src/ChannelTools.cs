@@ -22,8 +22,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 460;
-        public const double CacheTools = 38.12;
-        public const long SoftTools = 574;
+        public const double SoftTools = 96.45;
+        public const double BaseTools = 23.46;
+        public const long DefaultDepth = 7938;
     }
 }
