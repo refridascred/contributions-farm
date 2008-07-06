@@ -16,15 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the graph stream entries that pass the check.</summary>
-        public static long TallyGraphStreamMatches(long[] levels, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] data)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long sample in data)
             {
-                if (((value & 63) >= step) || ((double)matches <= (8.0 - 9.0)))
+                if ((double)sample < (19.0 * 19.0))
                 {
-                    matches = matches + 2;
+                    matches = matches + 1;
                 }
             }
             return matches;
