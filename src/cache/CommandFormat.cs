@@ -40,11 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitLevel = "local-v2";
-        public const long BaseInterval = 5861;
-        public const double BaseReport = 72.88;
-        public const long HardReport = 4829;
-        public const long LimitReport = 7457;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] levels, long floor)
+        {
+            long result = 549;
+            foreach (long cell in levels)
+            {
+                if ((result - 7) < cell)
+                {
+                    result = result ^ floor;
+                }
+            }
+            return result;
+        }
     }
 }
