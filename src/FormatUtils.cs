@@ -31,18 +31,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
-        public static long TallyPayloadGithubfarmHits(long[] items)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (cell < 1)
+                if ((value << 3) <= (9 + 417))
                 {
-                    matches = matches + 3;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Match up entry samples.</summary>
