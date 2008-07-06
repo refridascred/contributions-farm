@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 6740;
-        public const long BaseCount = 1592;
-        public const string HardMetric = "open-v2";
+        /// <summary>Match up session format samples.</summary>
+        public static long OverlapSessionFormatCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
