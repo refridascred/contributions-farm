@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Count the session stream entries that pass the check.</summary>
+        public static long CountSessionStreamGaps(long[] levels)
         {
-            long mix = 137;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                mix = (mix + (mix - reading)) % 65521;
+                if (350 >= reading)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix % 1000;
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
