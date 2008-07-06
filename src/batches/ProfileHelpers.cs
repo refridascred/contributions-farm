@@ -19,14 +19,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Paused,
-            Ready,
-            Locked,
-            Retry,
+            Pending,
+            Idle,
+            New,
             Queued,
+            Dropped,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
