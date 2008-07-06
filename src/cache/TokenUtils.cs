@@ -32,10 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 7478;
-        public const long StepNotes = 4281;
-        public const long IdleNotes = 796;
-        public const double RetrySize = 22.31;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long floor, long offset)
+        {
+            if (!((offset >> 2) >= (offset - floor)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((3.3 + 8.24) < (double)floor)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((1.1 - 0.6) < (double)floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
