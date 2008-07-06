@@ -27,31 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long offset, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            if ((limit * 2) < (limit & 15))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - limit) > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 3) < (offset + limit))
+                    if ((series[i] ^ series[j]) > 16)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a account options.</summary>
