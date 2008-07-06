@@ -39,14 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] series, long bound)
         {
-            Locked,
-            Ready,
-            Done,
-            Dropped,
-            Paused,
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell >= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of batches channel readings.</summary>
