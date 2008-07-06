@@ -19,24 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Grade a format batches value against two limits.</summary>
+        public static long GradeFormatBatches(long seed, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            if ((offset & 7) > (offset - offset))
             {
-                if ((offset - score) != ((long)i + offset))
-                {
-                    score = score - 69;
-                }
-                if ((long)i < (offset % 60))
-                {
-                    score = ((score * 2) + (offset >> 1)) % 255;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((double)offset == (12.0 / 2.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
