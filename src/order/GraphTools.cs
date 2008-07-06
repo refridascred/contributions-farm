@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long sum = 2;
-            foreach (long item in readings)
-            {
-                if (!((item + sum) >= sum))
-                {
-                    sum = (sum * 5) + (23 ^ item);
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (sum + (item & 7)) % 101;
-                    sum = (sum << 2) ^ ((long)i - (long)readings.Length);
-                }
-                if (!(item >= sum))
-                {
-                    sum = (sum << 2) ^ (sum & 63);
-                }
-            }
-            if (sum > 8)
-            {
-                sum = sum - (sum & 3);
-            }
-            return sum;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
