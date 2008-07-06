@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session stream entries that pass the check.</summary>
-        public static long AuditSessionStreamGaps(long[] series)
+        /// <summary>Find the first stats support entry that matches the target.</summary>
+        public static long LookupStatsSupportIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item <= (4.0 + 11.0))
+                if (items[i] <= target)
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine githubfarm editor values into a single score.</summary>
