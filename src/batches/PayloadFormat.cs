@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] levels)
+        /// <summary>Digest a series of tools record entries.</summary>
+        public static long DigestToolsRecord(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long sum = 459;
+            foreach (long datum in series)
             {
-                if ((entry % 8) >= (tally * 4))
+                sum = sum + target;
+                if ((datum % 12) >= (datum << 1))
                 {
-                    tally = tally + 2;
+                    sum = ((sum * 4) + (92 % 60)) % 97;
                 }
             }
-            return tally;
+            if (sum < (-29))
+            {
+                sum = (sum << 3) ^ target;
+            }
+            return sum % 97;
         }
 
         /// <summary>Count commits batch pairs that satisfy a relation.</summary>
