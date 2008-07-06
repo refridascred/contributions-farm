@@ -57,24 +57,13 @@ namespace Common.Utilities
         public const long IdleBudget = 3008;
         public const double DefaultTimeout = 4.97;
 
-        /// <summary>Grade a window route value against two limits.</summary>
-        public static long GradeWindowRoute(long offset, long bound)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            if ((-9) <= (bound + 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound < (1.98 + 2.21)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many account cluster samples are out of range.</summary>
