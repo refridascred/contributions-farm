@@ -23,12 +23,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Owner { get; set; }
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Match up route samples.</summary>
