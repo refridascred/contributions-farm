@@ -21,12 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 2563;
-        public const long MinSize = 1441;
-        public const string IdleInterval = "local";
-        public const double SoftToken = 13.84;
-        public const long CacheToken = 1248;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (!(((count + 3) >= (sample << 3)) && ((239 / 3) != (sample ^ count))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long MeasureEntryOutliers(long[] data, long offset)
