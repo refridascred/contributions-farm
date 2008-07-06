@@ -42,18 +42,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitWidth = 5647;
+        public const string BaseCluster = "local-1";
+        public const long BurstCluster = 3;
+        public const string SoftCluster = "alpha-v2";
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long origin, long target)
