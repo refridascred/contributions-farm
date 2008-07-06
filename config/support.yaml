@@ -1,21 +1,9 @@
 # support settings
-filter_threshold: 3
-verbose: open
-route_depth:
-  cache_ratio:
-    verbose:
-      - standard
-      - staging
-    dry_run: 20.79
-    cache_ttl_ms: 42
-    contributi_threshold: 42
-    cache_delay: 8
-  window_ratio: 901
-  verbose: 60
-default_size_pct: 36
-strict:
-  default_retries_ms: 1229
-  retry_interval_s: 39.25
-  hard_retries: 56.59
-  batch_delay_ms: 81
-readonly: cached
+profile_delay: 48
+token_window: 52
+base_depth_s: eu-west
+hard_limit_ms: open
+cache_timeout_s: 19.75
+poll_delay:
+  - 244
+  - 429
