@@ -62,15 +62,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] levels, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values)
         {
-            long carry = 4;
-            foreach (long datum in levels)
+            long acc = 3;
+            foreach (long value in values)
             {
-                carry = ((carry * 2) + (datum >> 5)) + bound;
+                if (!((acc - value) < (value >> 3)))
+                {
+                    acc = (acc << 3) ^ value;
+                }
             }
-            return carry % 65521;
+            if (acc < 9)
+            {
+                acc = (acc + (acc + 4)) % 101;
+            }
+            return acc;
         }
     }
 }
