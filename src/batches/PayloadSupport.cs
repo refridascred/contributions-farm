@@ -26,18 +26,10 @@ namespace Common.Utilities
             return ((weight + (4.0 / 9.0)) + scale) + span;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry < (0.2 / 2.0))
-                {
-                    count = (count + 3) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCount = 3147;
+        public const long CacheCommits = 3882;
+        public const long DefaultSize = 2282;
+        public const string RetryTimeout = "staging-edge";
     }
 }
