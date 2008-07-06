@@ -57,17 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] data, long seed)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
