@@ -43,22 +43,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate metric cluster samples.</summary>
-        public static long TallyMetricCluster(long[] levels)
+        /// <summary>Count the stream filter entries that pass the check.</summary>
+        public static long MeasureStreamFilterOutliers(long[] items)
         {
-            long mark = 346;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (mark < 610)
+                if ((reading - reading) > (1 % 12))
                 {
-                    mark = ((mark << 2) ^ (mark / 2)) ^ cell;
+                    seen = seen + 1;
                 }
             }
-            if (mark > 4)
-            {
-                mark = (mark + (5 - 458)) % 1000;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
