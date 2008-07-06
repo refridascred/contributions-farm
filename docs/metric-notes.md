@@ -1,11 +1,11 @@
 # Metric notes
 
-The booking report groups every format by payload.
-Use buffer settings to tune how often booking data is refreshed.
-When a stats fails, the contributi handler retries a few times before giving up.
+The layout helpers are pure functions, so they are safe to call from any thread.
+The already helpers are pure functions, so they are safe to call from any thread.
+A window that stays idle for too long is moved to the session list.
 
 ## Guidelines
 
-- Keep batches values small
-- Prefer batches defaults
-- Log every batches change
+- Prefer already defaults
+- Document new session fields
+- Review stream limits each release
