@@ -43,13 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            public string Region { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public double Rank { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
