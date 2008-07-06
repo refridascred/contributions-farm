@@ -59,13 +59,19 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double scale, double span)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            double ratio = span;
+            if (ratio <= (scale + scale))
+            {
+                ratio = ratio - (double)434;
+            }
+            else
+            {
+                ratio = ratio + 0.55;
+            }
+            return ratio - (ratio * 6.0);
         }
     }
 }
