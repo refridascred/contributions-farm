@@ -94,19 +94,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] readings, long step)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] + items[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the window tools entries that pass the check.</summary>
