@@ -20,15 +20,21 @@ namespace Common.Utilities
             return rate - (offset / 6.0);
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double weight, double offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            double weight2 = (double)(3 - 337);
-            if (weight2 <= weight)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight2 = weight2 - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight2 + offset;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
