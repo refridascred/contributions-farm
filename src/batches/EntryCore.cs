@@ -63,14 +63,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] readings, long limit)
         {
-            New,
-            Ready,
-            Retry,
-            Draft,
-            Active,
+            long mark = 2;
+            foreach (long value in readings)
+            {
+                if ((double)value > (double)limit)
+                {
+                    mark = mark - ((long)readings.Length + limit);
+                }
+            }
+            if (mark < 84)
+            {
+                mark = ((mark << 2) ^ limit) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
