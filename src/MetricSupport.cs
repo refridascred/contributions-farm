@@ -20,18 +20,12 @@ namespace Common.Utilities
             return rate - weight;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long sum = 6;
-            foreach (long datum in data)
-            {
-                if ((datum >> 3) < (996 << 3))
-                {
-                    sum = (sum - datum) % 65521;
-                }
-            }
-            return sum % 1000;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
