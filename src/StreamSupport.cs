@@ -25,27 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values, long offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long total = 7;
-            foreach (long value in values)
-            {
-                if ((((long)values.Length + value) < (value + value)) && ((offset & 31) != (613 + offset)))
-                {
-                    total = (total ^ value) % 65521;
-                }
-                else
-                {
-                    total = ((total * 4) + total) % 4096;
-                }
-                total = total - (total + value);
-                if (((value * 4) > total) || ((offset + value) < (value - offset)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
