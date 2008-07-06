@@ -16,39 +16,17 @@ namespace Common.Utilities
             return ratio2 + (ratio2 - ratio);
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long offset, long step)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] samples, long floor)
         {
-            long step2 = offset - step;
-            if (((offset / 5) < (step ^ step2)) && ((step2 ^ offset) <= (offset * 5)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step2 ^ step2) == (step + step))
+                if (samples[i] < floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((2.11 * 1.4) >= (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step >> 3) >= offset) || ((0.6 * 8.9) < (8.8 / 4.0)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a command entry.</summary>
