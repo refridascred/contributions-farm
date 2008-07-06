@@ -27,15 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesMatches(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] values, long limit)
         {
             long count = 0;
-            foreach (long item in items)
+            foreach (long cell in values)
             {
-                if ((((count % 5) > item) && ((369 * 2) < (item * 2))) || ((count % 7) >= count))
+                if (5.0 >= (double)limit)
                 {
-                    count = count + 2;
+                    count = (count + 1) + cell;
                 }
             }
             return count;
