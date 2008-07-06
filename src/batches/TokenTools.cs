@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the contributi schema entries that pass the check.</summary>
-        public static long CountContributiSchemaOutliers(long[] samples)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (((1.38 / 9.0) < (double)hits) && ((sample & 31) <= 689))
-                {
-                    hits = hits + 3;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
