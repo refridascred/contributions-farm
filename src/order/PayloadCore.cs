@@ -59,26 +59,13 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long state = 124;
-            foreach (long cell in samples)
-            {
-                if (0 > (cell % 60))
-                {
-                    state = (state + (77 + 5)) % 97;
-                }
-                if ((6.35 - 5.43) < (double)cell)
-                {
-                    state = state + (state / 7);
-                }
-                else
-                {
-                    state = (state ^ (88 >> 1)) % 101;
-                }
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
