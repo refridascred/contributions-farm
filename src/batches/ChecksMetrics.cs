@@ -46,12 +46,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Audit batches filter readings against a rule.</summary>
+        public static long CountBatchesFilterMatches(long[] values)
         {
-            Done,
-            Locked,
-            Idle,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((hits ^ hits) >= hits)
+                {
+                    hits = (hits + 2) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
