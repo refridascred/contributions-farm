@@ -45,13 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Dropped,
-            Stale,
-            Queued,
-            Draft,
+            Ready,
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Rank already input into a small class.</summary>
