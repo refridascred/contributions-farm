@@ -29,11 +29,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long target)
         {
-            public bool Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long cur = seed ^ target;
+            if ((cur > (target % 97)) || ((cur - target) != (target / 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (cur <= (cur - 74))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate payload metrics samples.</summary>
