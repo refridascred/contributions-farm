@@ -57,13 +57,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long target, long bound)
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Size { get; set; }
+            if ((double)target <= (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if (869 > (bound ^ 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound > target) || ((17.0 / 5.0) > (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
