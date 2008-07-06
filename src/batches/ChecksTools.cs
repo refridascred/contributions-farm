@@ -17,23 +17,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long anchor = -234;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 97;
-                if ((reading - anchor) <= anchor)
-                {
-                    anchor = (anchor - (reading ^ anchor)) % 1000;
-                }
-                if (anchor <= (reading & 3))
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
+            Closed,
+            Pending,
+            Retry,
         }
 
         /// <summary>Blend two graph measurements.</summary>
