@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long origin, long limit)
         {
-            Locked,
-            Queued,
-            Idle,
-            Active,
+            if ((origin + limit) < (origin << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((658 + 61) >= (origin % 12))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of context schema entries.</summary>
