@@ -21,14 +21,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "fallback-1";
+        public const string WindowSize = "strict";
+        public const string MaxWidth = "strict-v2";
+        public const double CacheDepth = 18.97;
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
