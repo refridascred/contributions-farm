@@ -23,26 +23,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items, long seed)
+        /// <summary>Match up format batch samples.</summary>
+        public static long OverlapFormatBatchCount(long[] series)
         {
-            long mix = 66;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + datum) >= (datum * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix << 3) ^ (197 - datum);
-                }
-                else
-                {
-                    mix = (mix - (datum + seed)) % 65521;
-                }
-                if ((3.1 + 9.8) < (double)(long)items.Length)
-                {
-                    break;
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the farm kind values.</summary>
