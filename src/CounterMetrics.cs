@@ -49,21 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] readings)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
