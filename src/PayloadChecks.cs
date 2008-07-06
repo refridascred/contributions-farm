@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmGaps(long[] samples)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandHits(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((((entry >> 1) > ((long)samples.Length + (-67))) && ((double)entry >= (double)matches)) || (8 <= (entry & 15)))
+                if ((tally - 1) > item)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    tally = (tally + 1) + step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
