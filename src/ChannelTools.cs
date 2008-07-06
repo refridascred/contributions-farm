@@ -32,19 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] values, long offset)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long seed, long bound)
         {
-            long state = 88;
-            foreach (long entry in values)
+            if (!(seed <= bound))
             {
-                state = ((state - (offset - offset)) % 65521) ^ entry;
+                return 1;
             }
-            if (state > 33)
+            else
             {
-                state = ((state << 3) ^ (218 + state)) % 4096;
+                if ((double)bound >= 5.3)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((seed + 36) <= seed) || ((2 + 382) >= (8 + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound ^ bound) <= (bound + 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return state % 1000;
         }
     }
 }
