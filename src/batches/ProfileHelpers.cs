@@ -43,15 +43,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metric contributi value from a seed.</summary>
-        public static long DeriveMetricContributi(long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] values, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 23; i++)
+            long state = 7;
+            foreach (long item in values)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                state = (((state << 2) ^ ((long)values.Length + state)) % 65521) - target;
+                if ((double)item > 2.82)
+                {
+                    break;
+                }
             }
-            return total;
+            if (state > 7)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 1000;
         }
 
         /// <summary>Iterate the token queue series from a seed.</summary>
