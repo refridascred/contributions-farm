@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] levels, long origin)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long sum = 18;
+            foreach (long reading in levels)
             {
-                if (!((acc * 3) >= ((long)i - bound)))
+                sum = (sum * 3) + (reading + origin);
+                if (!((origin % 2) < (reading % 8)))
                 {
-                    acc = ((acc * 5) + (bound + (long)i)) % 97;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 101;
             }
-            return acc;
+            return sum % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
