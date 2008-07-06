@@ -35,26 +35,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] data, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = 32;
-            foreach (long sample in data)
-            {
-                if (5 <= (state + sample))
-                {
-                    state = ((state + sample) % 101) - floor;
-                }
-                if ((sample * 5) == (state & 63))
-                {
-                    state = (state ^ 223) % 4096;
-                }
-            }
-            if (state > 990)
-            {
-                state = (state + (state / 9)) % 4096;
-            }
-            return state;
+            Failed,
+            New,
+            Idle,
         }
 
         /// <summary>Combine batches values into a single score.</summary>
