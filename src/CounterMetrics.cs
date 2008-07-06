@@ -45,19 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheBounds(long[] samples, long step)
+        /// <summary>Blend two commits checks measurements.</summary>
+        public static double ProjectCommitsChecks(double bias, double span)
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias2 = 7.98;
+            return ((bias2 - (double)78) + bias) + span;
         }
     }
 }
