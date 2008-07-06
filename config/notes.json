@@ -1,7 +1,10 @@
 {
-  "graph_capacity": 30,
-  "compress": "stable",
-  "record_interval": 1024,
-  "burst_size": "legacy",
-  "max_size_ms": "open"
+  "dry_run": {
+    "audit": "cached",
+    "persist": [2, 303, 307],
+    "max_capacity_ms": true,
+    "commits_delay": "edge"
+  },
+  "batch_threshold": 534,
+  "poll_window": [358, 86, 495, 293]
 }
