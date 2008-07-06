@@ -1,6 +1,13 @@
 {
-  "command_threshold": 5.12,
-  "order_ratio": "eu-west",
-  "sync_ratio_count": 63.09,
-  "window_ttl": 17.62
+  "cache_timeout": 85,
+  "warm_threshold_s": 53.16,
+  "already_capacity": {
+    "sync_retries_count": [257, 52, 481],
+    "max_depth_pct": 1024,
+    "verbose": 12.89,
+    "retry_size_s": 30,
+    "base_interval_ms": ["green", "legacy"],
+    "burst_delay_s": "standard"
+  },
+  "session_window": 60
 }
