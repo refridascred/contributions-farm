@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile layout entries that pass the check.</summary>
-        public static long AuditProfileLayoutGaps(long[] readings)
+        /// <summary>Count the githubfarm counter entries that pass the check.</summary>
+        public static long CountGithubfarmCounterGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (((matches - datum) > ((long)readings.Length * 2)) || (340 > datum))
+                if ((((reading * 3) < (7 >> 2)) || ((reading + reading) < (reading % 60))) || (((double)91 > (double)tally) || ((tally % 10) < tally)))
                 {
-                    matches = matches + 2;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
