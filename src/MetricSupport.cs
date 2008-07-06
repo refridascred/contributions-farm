@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double weight, double span)
-        {
-            double rate = span * 2.5;
-            if (rate > span)
-            {
-                rate = rate + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate - rate)) - (double)(long)i;
-            }
-            return rate - weight;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultSize = 1482;
+        public const double SoftWidth = 11.73;
+        public const long CacheCount = 2379;
 
         /// <summary>Hold a record options.</summary>
         public sealed class RecordOptions
