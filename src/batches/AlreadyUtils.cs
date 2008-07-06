@@ -39,17 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a schema record reading by value.</summary>
-        public static long LocateSchemaRecordIndex(long[] values, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                if ((double)matches >= (6.63 - 7.23))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + cell;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate cluster payload samples.</summary>
