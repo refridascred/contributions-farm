@@ -76,15 +76,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next stats account value from a seed.</summary>
-        public static long RollStatsAccount(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchInterval = 8166;
+        public const long DefaultBudget = 3089;
+        public const long BatchMetrics = 1278;
     }
 }
