@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
