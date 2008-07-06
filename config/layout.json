@@ -1,5 +1,6 @@
 {
-  "hard_timeout_ms": 34,
-  "min_interval_count": "cached",
-  "enabled": "legacy"
+  "readonly": "cached",
+  "batch_threshold_s": "primary",
+  "verbose": 12.95,
+  "editor_size": "edge"
 }
