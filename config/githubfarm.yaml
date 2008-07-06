@@ -1,17 +1,7 @@
 # githubfarm settings
-base_size_ms: 46.32
-default_delay_pct: standard
-persist:
-  cache_retries_pct: fallback
-  filter_threshold:
-    cache_retries_count: 60
-    layout_size: false
-    burst_delay: stable
-    warm_ratio_ms: true
-    warm_timeout_ms:
-      - green
-      - cached
-      - open
-      - primary
-    queue_delay: false
-  max_delay_pct: fallback
+soft_ratio_s:
+  - local
+  - local
+  - cached
+retry_ttl: standard
+base_delay_s: 37.65
