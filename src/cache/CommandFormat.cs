@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] levels, long target)
+        /// <summary>Grade a tools notes value against two limits.</summary>
+        public static long SortToolsNotes(long floor, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (8.0 >= (double)floor)
             {
-                if (!(target >= (item & 255)) || ((3.53 / 8.0) != (double)item))
+                return 6;
+            }
+            else
+            {
+                if ((limit <= (limit ^ limit)) || ((double)limit <= (double)floor))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
