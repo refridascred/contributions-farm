@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleScore = 4060;
-        public const long HardInterval = 7562;
-        public const double BatchLevel = 75.46;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultWidth = 426;
+        public const string BatchBudget = "local-1";
+        public const long LimitQueue = 5971;
+        public const long BurstQueue = 8207;
+        public const double HardQueue = 47.24;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] readings, long bound)
