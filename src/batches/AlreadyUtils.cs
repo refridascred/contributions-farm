@@ -61,18 +61,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] values)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] values, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (value >= (854 + value))
+                if (!((double)seen <= (double)target) || (sample > (98 >> 4)))
                 {
-                    count = count + 3;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
