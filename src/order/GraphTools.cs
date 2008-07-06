@@ -38,38 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long offset, long bound)
+        /// <summary>Iterate the support editor series from a seed.</summary>
+        public static long SeriesSupportEditor(long bound)
         {
-            if ((bound - bound) <= (bound >> 5))
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (7.2 > (double)offset)
+                double ratio = (1.69 + 5.21) + (2.99 + 7.0);
+                if ((ratio < (double)score) && (ratio >= (ratio * 1.4)))
                 {
-                    return 8;
+                    score = score - 449;
                 }
-                else
-                {
-                    if (!((bound + offset) >= (offset / 9)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset - 9) < bound)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                score = ((score << 3) ^ ((long)i + bound)) % 255;
+                score = ((score * 4) + (long)i) % 101;
             }
+            return score;
         }
 
         /// <summary>Describe the context class values.</summary>
