@@ -33,21 +33,31 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long seed, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (limit <= seed)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!(((-510) ^ seed) <= ((-3) & 3)))
                 {
-                    if ((data[i] + data[j]) < 18)
+                    return 1;
+                }
+                else
+                {
+                    if ((56 + limit) > (seed + seed))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
     }
 }
