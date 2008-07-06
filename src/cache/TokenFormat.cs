@@ -23,18 +23,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmMatches(long[] readings)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((double)seen <= (double)5) && ((item - item) <= seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Fold a list of notes payload readings.</summary>
