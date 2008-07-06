@@ -1,6 +1,9 @@
 # entry settings
-default_window_ms: latest
-base_retries_pct:
-  - 283
-  - 43
-cluster_interval: latest
+flush_capacity_pct: false
+cluster_size: legacy
+compress:
+  persist: false
+  sync_window_ms: true
+  audit: cached
+  hard_limit_s: 90
+warm_size: 81.79
