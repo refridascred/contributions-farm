@@ -1,6 +1,8 @@
-id,ratio,weight,rank,token
-1,standard,450,43,fallback
-2,884,eu-west,863,340
-3,50.32,80.94,fallback,local
-4,597,standard,785,22.47
-5,85.03,edge,33.64,49.17
+id,label,owner
+1,46.16,343
+2,standard,729
+3,local,9.55
+4,107,758
+5,eu-west,54.2
+6,98.66,29.96
+7,214,9.29
