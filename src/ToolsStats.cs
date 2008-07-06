@@ -76,21 +76,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Combine stream graph values into a single score.</summary>
+        public static long FoldStreamGraph(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 7;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = ((state + (state - state)) % 97) + offset;
+                state = state ^ (value << 3);
+                if ((6.4 - 1.96) == (double)value)
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
