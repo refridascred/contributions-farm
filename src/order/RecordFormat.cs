@@ -59,17 +59,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LocateRouteIndex(long[] readings, long seed)
+        /// <summary>Blend two report measurements.</summary>
+        public static double AdjustReport(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = bias + (10.0 / 8.0);
+            if (rate >= (bias * 5.58))
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - (double)(-81);
             }
-            return -1;
+            else
+            {
+                rate = rate - (0.37 * 2.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - 2.0;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
