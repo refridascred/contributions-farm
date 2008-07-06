@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LookupContextIndex(long[] series, long floor)
+        /// <summary>Project the next order session value.</summary>
+        public static double ProjectOrderSession(double rate, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(253 & 3);
+            return ((mean - (double)8) + rate) + bias;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
