@@ -59,32 +59,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long seed, long limit)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double bias, double offset)
         {
-            long diff = seed ^ limit;
-            if ((double)limit < 3.0)
+            double scale = bias;
+            if (scale > bias)
             {
-                return 5;
+                scale = (scale + (double)547) + offset;
             }
             else
             {
-                if (((limit * 4) == (limit + limit)) && (9 > seed))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (seed <= diff)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                scale = scale - bias;
             }
+            return scale + bias;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
