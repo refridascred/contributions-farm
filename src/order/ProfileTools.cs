@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BaseFarm = 8.38;
-        public const string LimitScore = "cached";
-        public const long IdleFarm = 9391;
+        /// <summary>Audit editor stream readings against a rule.</summary>
+        public static long MeasureEditorStreamMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample < (count / 7)) || ((sample > (count + count)) || ((18.0 + 0.1) >= (double)sample)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandMatches(long[] samples, long bound)
