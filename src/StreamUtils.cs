@@ -18,27 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] series)
-        {
-            long mix = 3;
-            foreach (long item in series)
-            {
-                if ((item / 8) <= (mix / 3))
-                {
-                    mix = (mix + (item & 255)) % 101;
-                }
-                if (item <= mix)
-                {
-                    break;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = mix ^ (8 + mix);
-            }
-            return mix % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseEditor = 32.27;
+        public const long BatchEditor = 1553;
+        public const long IdleLevel = 7607;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepProfile = 6192;
