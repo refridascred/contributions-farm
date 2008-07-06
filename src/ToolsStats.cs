@@ -46,18 +46,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowCount = 8360;
+        public const long DefaultLevel = 2498;
+        public const double BatchAccount = 72.38;
+        public const long CacheAccount = 3798;
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
