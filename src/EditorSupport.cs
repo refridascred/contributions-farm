@@ -33,22 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many profile farm samples are out of range.</summary>
-        public static long AuditProfileFarmOutliers(long[] values)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)item <= (9.0 + 1.0))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Ready,
+            Failed,
+            New,
+            Paused,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
