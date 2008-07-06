@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=67
-log "limit is ${COMMAND_LIMIT}"
-
-for item in eu-west local green legacy; do
+for item in strict open latest standard; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=146
+log "limit is ${COMMAND_LIMIT}"
