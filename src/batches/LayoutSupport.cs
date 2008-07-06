@@ -55,13 +55,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] readings)
         {
-            Stale,
-            New,
-            Pending,
-            Paused,
+            long acc = 8;
+            foreach (long entry in readings)
+            {
+                acc = (acc ^ (acc / 2)) % 255;
+                if (!((4.0 / 3.0) <= (double)acc))
+                {
+                    acc = ((acc << 3) ^ ((-2) + 37)) % 1000;
+                }
+                acc = (acc * 2) + (2 + entry);
+                if ((37 + acc) == (11 << 1))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit channel stream readings against a rule.</summary>
