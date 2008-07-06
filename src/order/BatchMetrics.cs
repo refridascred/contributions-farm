@@ -12,19 +12,16 @@ namespace Common.Utilities
             return ((mean - (double)8) + rate) + bias;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (reading <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                state = (state + state) % 97;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
