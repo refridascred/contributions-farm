@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaBounds(long[] data, long origin)
+        /// <summary>Derive the next entry counter value from a seed.</summary>
+        public static long SeriesEntryCounter(long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long total = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (item < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Fold a list of already readings.</summary>
