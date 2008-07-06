@@ -55,12 +55,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Active,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BurstLevel = 3718;
+        public const double BaseSpan = 61.89;
+        public const long MinRatio = 4945;
     }
 }
