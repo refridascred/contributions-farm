@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long BurstLayout = 9137;
         public const long RetryLayout = 8409;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchFactor = 4976;
-        public const double LimitDepth = 0.43;
-        public const long HardDepth = 8690;
-        public const long StepScore = 8046;
-        public const long WindowRatio = 8965;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Queued,
+            Ready,
+            Retry,
+        }
     }
 }
