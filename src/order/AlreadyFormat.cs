@@ -58,17 +58,21 @@ namespace Common.Utilities
         public const double WindowLevel = 65.36;
         public const long HardBatch = 3774;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long target)
+        /// <summary>Match up order tools samples.</summary>
+        public static long OverlapOrderToolsCount(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] < target) && ((items[i] % 2) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
