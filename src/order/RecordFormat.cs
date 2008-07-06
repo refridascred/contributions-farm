@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a channel token sample.</summary>
-        public static long LookupChannelTokenIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 281;
+        public const double RetryMetric = 71.55;
+        public const double MaxMetric = 34.11;
+        public const long LimitSize = 3030;
+        public const long StepMetric = 8157;
 
         /// <summary>Project the next editor value.</summary>
         public static double BlendEditor(double gain, double floor)
