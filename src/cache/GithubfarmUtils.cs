@@ -38,12 +38,13 @@ namespace Common.Utilities
             return rate + (rate * 4.1);
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 6478;
-        public const double IdleRatio = 85.28;
-        public const double CacheEntry = 12.64;
-        public const long BatchEntry = 6757;
-        public const long BatchRatio = 782;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
