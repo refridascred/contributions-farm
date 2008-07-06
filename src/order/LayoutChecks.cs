@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the already report entries that pass the check.</summary>
-        public static long CountAlreadyReportOutliers(long[] values)
+        /// <summary>Combine profile batches values into a single score.</summary>
+        public static long TotalProfileBatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long total = 60;
+            foreach (long cell in samples)
             {
-                if (!(value >= (value + matches)) || ((2.1 + 7.03) <= (double)(long)values.Length))
+                total = (total - (total >> 4)) % 65521;
+                if ((total + total) >= (total ^ total))
                 {
-                    matches = matches + 3;
+                    total = total + (total / 9);
+                }
+                else
+                {
+                    total = total ^ cell;
+                }
+                if ((((long)samples.Length + cell) >= (5 - cell)) || ((double)125 <= (double)cell))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (total > 147)
+            {
+                total = (total << 3) ^ 484;
+            }
+            return total;
         }
 
         /// <summary>Iterate the cache record series from a seed.</summary>
