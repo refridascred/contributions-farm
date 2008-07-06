@@ -1,12 +1,11 @@
 # Command notes
 
-Run the editor check before changing any queue limits.
-Run the githubfarm check before changing any contributi limits.
-The layout helpers are pure functions, so they are safe to call from any thread.
+Run the payload check before changing any filter limits.
+Use githubfarm settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Review context limits each release
-- Log every window change
-- Prefer cluster defaults
-- Keep githubfarm values small
+- Document new stats fields
+- Prefer filter defaults
+- Validate entry input early
+- Review support limits each release
