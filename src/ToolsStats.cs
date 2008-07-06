@@ -53,19 +53,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] levels)
+        /// <summary>Audit commits window readings against a rule.</summary>
+        public static long TallyCommitsWindowHits(long[] readings)
         {
-            long total = 607;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = (total - (total / 5)) - sample;
+                if (tally >= (tally - reading))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (total < 966)
-            {
-                total = total ^ (82 & 15);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
