@@ -40,20 +40,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheMatches(long[] data)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                mark = mark ^ (mark << 1);
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((tally / 3) == (entry >> 3))
                 {
-                    mark = ((mark ^ (seed >> 1)) % 101) - (long)i2;
+                    tally = tally + 1;
                 }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
