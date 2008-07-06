@@ -85,18 +85,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] levels)
+        /// <summary>Find the first batches stats entry that matches the target.</summary>
+        public static long LookupBatchesStatsIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen <= (cell + seen))
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
