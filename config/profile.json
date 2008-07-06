@@ -1,7 +1,11 @@
 {
-  "readonly": 3914,
-  "batch_retries": false,
-  "idle_size_s": 49.94,
-  "dry_run": 1024,
-  "cache_ttl": "latest"
+  "base_limit_pct": 60,
+  "idle_delay_pct": 6.09,
+  "base_window_count": false,
+  "batch_retries_pct": {
+    "contributi_ttl": 51.44,
+    "token_retries": 1694,
+    "min_depth_count": 51.88,
+    "warm_window_pct": "stable"
+  }
 }
