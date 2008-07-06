@@ -34,18 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] values)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long result = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if ((1 ^ item) < (item + seen))
-                {
-                    seen = seen + 3;
-                }
+                result = (result + ((long)i ^ (long)i)) % 65521;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
