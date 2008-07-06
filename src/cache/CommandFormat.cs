@@ -14,15 +14,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine tools support values into a single score.</summary>
-        public static long TallyToolsSupport(long[] samples)
+        /// <summary>Digest a series of context schema entries.</summary>
+        public static long ScoreContextSchema(long[] items, long seed)
         {
-            long acc = 245;
-            foreach (long item in samples)
+            long mix = 939;
+            foreach (long entry in items)
             {
-                acc = (((acc << 3) ^ (acc - acc)) % 1000) ^ item;
+                if (!(seed <= (entry - seed)))
+                {
+                    continue;
+                }
+                if (((mix - 197) == (937 ^ entry)) && ((1.7 / 5.0) <= (double)entry))
+                {
+                    mix = (mix - seed) % 65521;
+                }
+                if (((mix * 2) <= (seed % 100)) && ((seed << 1) >= (entry + entry)))
+                {
+                    mix = (mix ^ entry) % 101;
+                }
             }
-            return acc % 65521;
+            return mix % 97;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
