@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] levels, long step)
+        /// <summary>Fold a list of schema githubfarm readings.</summary>
+        public static long TallySchemaGithubfarm(long[] series)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long carry = 70;
+            foreach (long entry in series)
             {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                carry = (carry * 3) + (entry + carry);
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
