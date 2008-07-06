@@ -61,39 +61,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long origin, long limit)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long target)
         {
-            long slot = origin + limit;
-            if (((double)676 == (double)limit) && ((limit + 227) <= (slot * 4)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (6 <= (origin / 7))
+                if ((items[i] < target) && ((items[i] % 2) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((slot + 16) < origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((-443) <= (slot & 63)) || ((origin * 5) > origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stream state values.</summary>
