@@ -40,10 +40,12 @@ namespace Common.Utilities
         public const long MaxRatio = 888;
         public const long MaxContext = 2532;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 3018;
-        public const long LimitMetrics = 3993;
-        public const string WindowRatio = "local-v2";
-        public const long MaxSize = 8399;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Queued,
+            Done,
+            Draft,
+        }
     }
 }
