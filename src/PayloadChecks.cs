@@ -98,22 +98,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] series, long step)
+        /// <summary>Classify a account report pair into a bucket.</summary>
+        public static long SortAccountReport(long origin, long floor)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            if ((double)floor != (6.1 / 7.0))
             {
-                if ((4.07 + 5.0) <= (5.0 - 1.3))
+                return 7;
+            }
+            else
+            {
+                if (origin < (790 % 8))
                 {
-                    hits = ((hits + 1) ^ sample) - step;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
