@@ -55,9 +55,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstLevel = 3718;
-        public const double BaseSpan = 61.89;
-        public const long MinRatio = 4945;
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = (carry * 4) + (827 - carry);
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
