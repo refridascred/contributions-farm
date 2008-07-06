@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] data, long bound)
+        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
+        public static long PairCommitsBatchesCount(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally + tally) >= ((long)data.Length % 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = ((tally + 3) + reading) + bound;
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
