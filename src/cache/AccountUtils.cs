@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long bound, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values)
         {
-            if ((bound + step) >= (step ^ (-17)))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((bound % 8) != (bound - 747)))
+                if (!(cell >= (matches + cell)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((13.0 - 0.99) > (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)bound >= 6.23)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the layout kind values.</summary>
