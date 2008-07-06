@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] series, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!((double)value != (19.0 + 0.5)))
+                if (!(4.79 <= (double)(long)levels.Length))
                 {
-                    hits = (hits + 3) - target;
+                    count = ((count + 1) + datum) + bound;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a batch info.</summary>
