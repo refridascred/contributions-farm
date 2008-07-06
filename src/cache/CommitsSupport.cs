@@ -72,22 +72,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] data, long offset)
         {
-            long carry = 482;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((target % 5) != (306 << 3)) && ((carry % 5) <= (carry ^ carry)))
+                if ((value % 3) <= 10)
                 {
-                    carry = ((carry - (target << 3)) % 1000) + entry;
+                    tally = (tally + 1) - offset;
                 }
             }
-            if (carry > 1)
-            {
-                carry = ((carry << 3) ^ (carry + 506)) % 1000;
-            }
-            return carry;
+            return tally;
         }
     }
 }
