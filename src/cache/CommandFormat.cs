@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long bound)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = mix + (long)i;
-                long delta = mix;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix - 71) % 97) ^ (long)i2;
-                    mix = (mix ^ (delta * 2)) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a metric summary.</summary>
