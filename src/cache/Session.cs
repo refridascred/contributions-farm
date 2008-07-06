@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] data, long origin)
-        {
-            long mix = 22;
-            foreach (long sample in data)
-            {
-                mix = (((mix + (-4)) % 4096) - sample) - origin;
-            }
-            if (mix > 91)
-            {
-                mix = (mix << 2) ^ (mix / 8);
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 4469;
+        public const long BaseSchema = 5288;
+        public const long MinCount = 4294;
+        public const long SoftCount = 5118;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool ValidateSessionLimits(long[] readings, long floor)
