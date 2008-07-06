@@ -1,8 +1,7 @@
-id,owner,score,level,token
-1,19.72,strict,83.34,348
-2,19.73,15.64,768,998
-3,274,659,797,open
-4,staging,579,eu-west,467
-5,74.18,129,925,375
-6,staging,29,32.99,491
-7,77.03,legacy,21.9,64.48
+id,level,ratio,token
+1,988,537,latest
+2,572,482,213
+3,stable,eu-west,open
+4,19.03,5.61,464
+5,28.69,737,strict
+6,310,133,922
