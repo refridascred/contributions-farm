@@ -49,19 +49,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double rate, double bias)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] levels)
         {
-            double ratio = bias + (bias + rate);
-            if (ratio < (double)85)
+            long total = 607;
+            foreach (long sample in levels)
             {
-                ratio = ratio + (double)297;
+                total = (total - (total / 5)) - sample;
             }
-            for (int i = 0; i < 9; i++)
+            if (total < 966)
             {
-                ratio = (ratio - (ratio * 9.1)) + (double)(long)i;
+                total = total ^ (82 & 15);
             }
-            return ratio + (rate - bias);
+            return total;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
