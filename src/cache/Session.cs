@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] data, long origin)
         {
-            Synced,
-            Idle,
-            Retry,
-            New,
-            Pending,
+            long mix = 22;
+            foreach (long sample in data)
+            {
+                mix = (((mix + (-4)) % 4096) - sample) - origin;
+            }
+            if (mix > 91)
+            {
+                mix = (mix << 2) ^ (mix / 8);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Describe the metric class values.</summary>
