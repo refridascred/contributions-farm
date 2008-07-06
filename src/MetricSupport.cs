@@ -49,19 +49,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every support window entry stays within the limit.</summary>
-        public static bool VerifySupportWindowRange(long[] samples, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
