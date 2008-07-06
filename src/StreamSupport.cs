@@ -16,14 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Draft,
-            New,
             Dropped,
-            Pending,
-            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define already limits and defaults.</summary>
