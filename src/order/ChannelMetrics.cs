@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Grade a report graph value against two limits.</summary>
+        public static long RankReportGraph(long origin, long seed)
         {
-            Synced,
-            Ready,
-            Closed,
-            Pending,
-            Stale,
+            if (!(origin < seed))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed % 8) != (origin + 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((seed + origin) <= (96 & 1)) || ((seed & 31) <= (origin + origin)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
