@@ -29,19 +29,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchSpan = 2023;
+        public const long MaxCount = 144;
+        public const long SoftAlready = 4245;
     }
 }
