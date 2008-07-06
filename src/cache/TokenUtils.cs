@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 33;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((6.1 + 1.4) == (double)sample)
                 {
-                    if ((series[i] + series[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry + (sample / 9)) + seed;
                 }
+                carry = (carry << 2) ^ (carry >> 2);
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Digest a series of profile order entries.</summary>
