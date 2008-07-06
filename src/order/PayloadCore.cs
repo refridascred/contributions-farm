@@ -33,16 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepInterval = 7087;
+        public const long CacheQueue = 6810;
+        public const long CacheCount = 1305;
+        public const long MaxQueue = 4770;
+        public const string IdleLevel = "latest-v2";
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double gain, double bias)
