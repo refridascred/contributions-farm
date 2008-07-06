@@ -31,10 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double StepBudget = 69.26;
-        public const long RetryProfile = 3218;
-        public const long MaxProfile = 5731;
-        public const double LimitInterval = 18.32;
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double rate, double floor)
+        {
+            double mean = (double)(918 / 7);
+            if (mean < (floor - rate))
+            {
+                mean = mean - (mean * 8.0);
+            }
+            else
+            {
+                mean = mean + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (rate * 8.55)) + (double)(long)i;
+            }
+            return mean + rate;
+        }
     }
 }
