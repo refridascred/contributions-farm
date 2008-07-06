@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long bound)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public string Limit { get; set; } = "";
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix ^ ((long)i * 3)) % 1000;
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Blend two cache githubfarm measurements.</summary>
