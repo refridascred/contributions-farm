@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long floor)
         {
-            public double Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long offset = seed - floor;
+            if (((floor & 127) > (floor * 4)) || ((floor + floor) <= ((-632) >> 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)floor < (6.0 / 3.0)) || ((seed - seed) <= (floor / 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (offset <= (floor - seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
