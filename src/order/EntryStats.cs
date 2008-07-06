@@ -59,14 +59,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Match up format entry samples.</summary>
+        public static long OverlapFormatEntryCount(long[] samples)
         {
-            Retry,
-            Dropped,
-            Locked,
-            Stale,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
