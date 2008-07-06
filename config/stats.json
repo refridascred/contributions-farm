@@ -1,22 +1,7 @@
 {
-  "metrics_retries": true,
-  "max_size_pct": 250,
-  "editor_limit": 100,
-  "min_delay_s": {
-    "flush_limit_ms": "blue",
-    "batch_interval_count": true,
-    "cache_ttl_ms": {
-      "verbose": 250,
-      "record_capacity": "eu-west",
-      "retry_timeout_ms": 86.12,
-      "audit": "green",
-      "already_interval": 4670,
-      "report_ratio": [4, 388, 283, 196]
-    },
-    "burst_depth_pct": 6375,
-    "base_retries_count": "green",
-    "audit": 41.38
-  },
-  "githubfarm_ttl": 50.34,
-  "burst_capacity": 1024
+  "commits_depth": "green",
+  "githubfarm_ratio": [78, 59, 146],
+  "verbose": 1024,
+  "order_capacity": "local",
+  "persist": "local"
 }
