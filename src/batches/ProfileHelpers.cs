@@ -54,26 +54,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate payload metrics samples.</summary>
-        public static long TallyPayloadMetrics(long[] samples)
+        /// <summary>Derive the next metric contributi value from a seed.</summary>
+        public static long DeriveMetricContributi(long bound)
         {
-            long sum = 56;
-            foreach (long item in samples)
+            long total = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((item + sum) < (sum - sum))
-                {
-                    sum = (sum + (sum - sum)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (82 - sum);
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            if (sum > 87)
-            {
-                sum = (sum * 4) + (sum + sum);
-            }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
