@@ -13,17 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] levels, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Closed,
+            Failed,
+            Pending,
+            Idle,
         }
 
         /// <summary>Roll a notes counter forward.</summary>
