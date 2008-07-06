@@ -26,18 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadOutliers(long[] levels)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double span)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            double gain = span;
+            if (gain > (scale * 6.44))
             {
-                if ((entry & 31) < hits)
-                {
-                    hits = hits + 2;
-                }
+                gain = gain - (7.0 + gain);
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (span / 7.0)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Accumulate payload samples.</summary>
