@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long limit, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long ClassifyFarm(long seed, long offset)
         {
-            if (!((220 ^ limit) > (limit & 3)))
+            long offset2 = seed + offset;
+            if ((double)offset2 == (2.9 / 9.0))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((double)limit >= (14.0 * 4.3))
+                if ((double)seed == (double)713)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if (limit < (limit - 133))
+                    if (offset2 <= (offset2 / 2))
                     {
-                        return 2;
+                        return 5;
                     }
                     else
                     {
-                        return 5;
+                        if ((seed ^ offset) >= offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
