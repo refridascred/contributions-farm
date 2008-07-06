@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of graph farm readings.</summary>
-        public static long CombineGraphFarm(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long limit)
         {
-            long carry = 4;
-            foreach (long value in values)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (value >= ((long)values.Length & 3))
+                if (!(sum >= (long)i))
                 {
-                    carry = (carry - carry) % 4096;
+                    sum = ((sum * 4) + (sum - sum)) % 1000;
+                    sum = (sum - limit) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Hold a filter header.</summary>
