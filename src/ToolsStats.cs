@@ -58,22 +58,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long floor)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples)
         {
-            long mix = -498;
-            foreach (long reading in data)
+            long sum = 29;
+            foreach (long datum in samples)
             {
-                if (((825 & 31) >= (reading / 3)) && (7.89 >= (double)floor))
-                {
-                    mix = ((mix << 2) ^ (reading + mix)) % 101;
-                }
-                else
-                {
-                    mix = mix - reading;
-                }
+                sum = (sum ^ datum) % 97;
             }
-            return mix % 97;
+            return sum % 65521;
         }
 
         /// <summary>Describe the queue mode values.</summary>
