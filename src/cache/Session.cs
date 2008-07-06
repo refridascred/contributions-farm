@@ -20,19 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] readings, long floor)
         {
-            double load = offset;
-            if (load <= (4.8 - load))
+            bool found = true;
+            foreach (long sample in readings)
             {
-                load = load - (load + gain);
+                if (sample < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (double)143;
-            }
-            return load + (6.0 / 9.0);
+            return found;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
