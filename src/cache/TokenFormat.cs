@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up tools buffer samples.</summary>
-        public static long MatchToolsBufferCount(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
