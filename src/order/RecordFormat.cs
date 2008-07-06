@@ -70,13 +70,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Token { get; set; }
-            public bool Score { get; set; }
-            public double Stamp { get; set; }
-            public bool Region { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
