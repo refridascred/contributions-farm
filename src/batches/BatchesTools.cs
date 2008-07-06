@@ -10,18 +10,31 @@ namespace Common.Utilities
         public const string CacheBudget = "staging-v2";
         public const long BaseLayout = 959;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesGaps(long[] levels)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((0.41 / 9.0) >= (double)bound)
             {
-                if (!((1 * 4) <= (item + (long)levels.Length)) || (((-3) * 5) >= (item / 6)))
+                return 3;
+            }
+            else
+            {
+                if (((bound + 904) <= limit) || ((bound ^ bound) <= (limit + 0)))
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (limit >= 64)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
