@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 517;
+            foreach (long datum in items)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                if (state < (datum + datum))
                 {
-                    return (long)i;
+                    state = state + ((long)items.Length >> 5);
                 }
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
