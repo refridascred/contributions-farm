@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double gain, double offset)
-        {
-            double drift = (double)(541 - 55);
-            if (drift < (offset / 5.0))
-            {
-                drift = (drift + (double)66) + gain;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BatchLayout = 39.01;
+        public const string CacheBudget = "staging-v2";
+        public const long BaseLayout = 959;
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long StepAccount(long seed)
