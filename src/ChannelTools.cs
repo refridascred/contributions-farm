@@ -29,14 +29,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Done,
             Failed,
-            Stale,
-            Draft,
-            Active,
+            Pending,
+            Done,
+            Retry,
         }
     }
 }
