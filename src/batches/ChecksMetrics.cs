@@ -71,31 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank profile counter input into a small class.</summary>
-        public static long BucketProfileCounter(long seed, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] levels)
         {
-            if ((558 ^ seed) < (seed * 3))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)target >= 9.0))
+                if ((matches + matches) > entry)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= (9.05 - 5.87))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
