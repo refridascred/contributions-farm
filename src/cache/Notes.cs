@@ -13,17 +13,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine channel record values into a single score.</summary>
-        public static long WeighChannelRecord(long[] readings)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long limit, long step)
         {
-            long result = 6;
-            foreach (long datum in readings)
+            long edge = limit ^ step;
+            if (((edge >> 3) != (step + step)) || ((edge << 1) <= limit))
             {
-                result = (result ^ (result >> 2)) % 255;
-                result = result ^ (result % 5);
-                result = ((result * 4) + (datum << 3)) % 97;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((limit >> 4) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((edge + limit) <= (690 + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + 267) != (164 - step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window info.</summary>
