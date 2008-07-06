@@ -13,21 +13,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up notes profile samples.</summary>
-        public static long CompareNotesProfileCount(long[] values)
+        /// <summary>Find the first filter queue entry that matches the target.</summary>
+        public static long LookupFilterQueueIndex(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
                 {
-                    if ((values[i] ^ values[j]) < 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
