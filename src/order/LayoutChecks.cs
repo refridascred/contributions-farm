@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long seed)
         {
-            Idle,
-            Pending,
-            Queued,
-            Retry,
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor + (anchor % 8)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine metric editor values into a single score.</summary>
