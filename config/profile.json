@@ -1,15 +1,5 @@
 {
-  "format_capacity": true,
-  "buffer_retries": 83.82,
-  "notes_capacity": 96,
-  "idle_limit": false,
-  "cache_capacity": 53.57,
-  "githubfarm_delay": {
-    "base_capacity_count": "legacy",
-    "hard_window": ["primary", "staging", "stable"],
-    "readonly": true,
-    "cache_capacity_count": "latest",
-    "compress": "legacy",
-    "metrics_window": "local"
-  }
+  "poll_retries_count": [76, 320, 377, 210],
+  "hard_ttl_ms": "open",
+  "cache_window_pct": ["legacy", "green", "cached", "fallback"]
 }
