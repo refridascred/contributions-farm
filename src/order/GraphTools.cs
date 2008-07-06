@@ -16,13 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Find the first window schema entry that matches the target.</summary>
+        public static long SeekWindowSchemaIndex(long[] readings, long target)
         {
-            public double Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a editor profile sample.</summary>
