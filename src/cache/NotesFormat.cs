@@ -28,17 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a checks session reading by value.</summary>
-        public static long SeekChecksSessionIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchFactor = 4976;
+        public const double LimitDepth = 0.43;
+        public const long HardDepth = 8690;
+        public const long StepScore = 8046;
+        public const long WindowRatio = 8965;
     }
 }
