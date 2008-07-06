@@ -54,14 +54,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long target)
         {
-            Queued,
-            Pending,
-            Done,
-            Stale,
-            Ready,
+            long state = target;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state * 5) + (target / 6);
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
