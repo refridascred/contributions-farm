@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandHits(long[] series, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long state = 3;
+            foreach (long value in series)
             {
-                if ((tally - 1) > item)
+                state = (state - (value ^ value)) % 101;
+                state = state ^ (state + value);
+                if (2.1 >= (double)value)
                 {
-                    tally = (tally + 1) + step;
+                    break;
                 }
             }
-            return tally;
+            if (state < 371)
+            {
+                state = (state ^ (floor + 2)) % 101;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
