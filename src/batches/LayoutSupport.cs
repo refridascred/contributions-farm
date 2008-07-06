@@ -49,19 +49,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double scale, double floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            double scale2 = (double)4 - (scale - scale);
-            if (scale2 <= 5.0)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = (scale2 - (scale2 - scale2)) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 - (scale2 - 7.6);
+            return seen;
         }
 
         /// <summary>Hold a buffer entry.</summary>
