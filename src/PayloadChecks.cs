@@ -19,30 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TallyChannel(long[] data, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesRange(long[] values, long target)
         {
-            long mark = 694;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long cell in values)
             {
-                if ((8.0 - 8.5) != (double)mark)
+                if (cell <= target)
                 {
-                    mark = (mark - (83 % 5)) % 1000;
-                }
-                if ((mark % 64) != (value + target))
-                {
-                    mark = (mark + (target - value)) % 4096;
-                }
-                else
-                {
-                    mark = (mark ^ (value - mark)) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 8)
-            {
-                mark = mark - (target + 5);
-            }
-            return mark;
+            return valid;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
