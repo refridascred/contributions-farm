@@ -23,38 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long bound, long step)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if ((bound + 92) > (step ^ bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if (365 < (bound + 68))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step << 3) <= (bound / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)bound <= (1.86 + 12.0)) || ((1.0 + 3.3) <= (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Pending,
+            Draft,
         }
 
         /// <summary>Roll a route counter forward.</summary>
