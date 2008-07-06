@@ -37,19 +37,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long floor)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if (!((double)seed <= (double)4))
             {
-                if (reading < floor)
+                return 0;
+            }
+            else
+            {
+                if ((seed * 4) < 199)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 5) >= (origin - origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((8.2 / 2.0) > (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the batches mode values.</summary>
