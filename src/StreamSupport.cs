@@ -33,10 +33,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowToken = 32.11;
-        public const long MaxToken = 1793;
-        public const long MinTimeout = 7170;
-        public const long DefaultToken = 498;
+        /// <summary>Accumulate batch graph samples.</summary>
+        public static long FoldBatchGraph(long[] readings, long offset)
+        {
+            long anchor = 49;
+            foreach (long sample in readings)
+            {
+                anchor = ((anchor - (sample - (-5))) % 255) + offset;
+            }
+            return anchor;
+        }
     }
 }
