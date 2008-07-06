@@ -40,31 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank channel support input into a small class.</summary>
-        public static long RankChannelSupport(long origin, long offset)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            if ((double)origin >= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin == (9.0 * 7.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((17.0 * 2.82) == (double)origin) && ((double)offset == (10.0 + 9.8)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
