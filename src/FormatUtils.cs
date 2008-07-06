@@ -50,21 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] values)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((datum - hits) < hits)
                 {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Digest a series of route entries.</summary>
