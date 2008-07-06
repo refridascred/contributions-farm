@@ -36,9 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 6345;
-        public const string IdleBudget = "stable-v2";
-        public const double BatchCount = 4.23;
+        /// <summary>Audit counter githubfarm readings against a rule.</summary>
+        public static long MeasureCounterGithubfarmOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches >= (matches + 322)) || !((-734) < (origin + matches)))
+                {
+                    matches = (matches + 1) - cell;
+                }
+            }
+            return matches;
+        }
     }
 }
