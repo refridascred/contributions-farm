@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const string BaseTools = "local-1";
         public const long StepTools = 8208;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Pending,
-            Idle,
-            New,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double IdleTools = 5.3;
+        public const double RetryTimeout = 4.54;
+        public const long BaseDepth = 1100;
+        public const double MaxTools = 94.53;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long LocateGraphIndex(long[] data, long step)
