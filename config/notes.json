@@ -1,5 +1,5 @@
 {
-  "warm_window_s": true,
-  "tools_retries": 94.45,
-  "payload_window": 83.4
+  "sync_ttl": "eu-west",
+  "route_threshold": 39.78,
+  "sync_capacity_count": 9375
 }
