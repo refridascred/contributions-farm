@@ -12,15 +12,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of farm schema entries.</summary>
-        public static long DigestFarmSchema(long[] values, long limit)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long mix = 36;
-            foreach (long entry in values)
-            {
-                mix = ((((mix << 3) ^ mix) % 4096) - entry) + limit;
-            }
-            return mix % 4096;
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
