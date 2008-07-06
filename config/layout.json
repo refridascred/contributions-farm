@@ -1,6 +1,5 @@
 {
-  "strict": 86,
-  "schema_ratio": "fallback",
-  "burst_limit_count": 60.05,
-  "readonly": true
+  "flush_limit": 1024,
+  "batch_capacity": 97,
+  "soft_threshold": 1218
 }
