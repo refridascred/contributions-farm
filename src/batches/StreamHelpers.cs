@@ -16,13 +16,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long target, long seed)
         {
-            Draft,
-            Closed,
-            Ready,
-            Paused,
+            if ((target % 3) >= (seed - target))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((4.1 < (double)seed) || ((double)target < (20.0 / 3.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (97 <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target + target) < (5 << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of account readings.</summary>
