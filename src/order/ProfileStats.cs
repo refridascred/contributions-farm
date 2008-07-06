@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
-        public static long AuditProfileGithubfarmOutliers(long[] levels, long limit)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long offset)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            if ((8.0 + 6.0) != (double)origin)
             {
-                if (limit < (entry * 2))
+                return 1;
+            }
+            else
+            {
+                if ((origin + 9) != (origin << 2))
                 {
-                    count = count + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((origin - origin) >= (offset & 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
