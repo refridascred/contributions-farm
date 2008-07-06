@@ -40,21 +40,11 @@ namespace Common.Utilities
         public const long MinCount = 9512;
         public const long MaxSize = 2138;
 
-        /// <summary>Match up format entry samples.</summary>
-        public static long OverlapFormatEntryCount(long[] samples)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
