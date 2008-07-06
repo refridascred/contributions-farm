@@ -1,5 +1,14 @@
 {
-  "audit": ["fallback", "strict", "legacy", "legacy"],
-  "batch_limit_s": 48.75,
-  "editor_ratio": ["legacy", "blue", "stable"]
+  "readonly": {
+    "hard_ratio_count": 32.38,
+    "channel_delay": ["staging", "latest", "legacy"],
+    "githubfarm_ttl": 7566,
+    "readonly": "local",
+    "cache_window": 100
+  },
+  "dry_run": 37,
+  "default_limit_pct": ["standard", "latest", "latest", "stable"],
+  "flush_window_s": 60,
+  "profile_capacity": 3021,
+  "warm_depth": false
 }
