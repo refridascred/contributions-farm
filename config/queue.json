@@ -1,17 +1,6 @@
 {
-  "context_depth": 10.05,
-  "warm_ttl": {
-    "readonly": 59,
-    "graph_interval": 15,
-    "max_delay": [104, 16, 473, 451]
-  },
-  "max_depth_pct": 44.76,
-  "cache_delay_s": {
-    "warm_size": ["blue", "eu-west", "edge", "stable"],
-    "batch_depth_count": 1024,
-    "record_timeout": "cached",
-    "soft_capacity_s": 4.97,
-    "schema_depth": 57,
-    "hard_window_count": false
-  }
+  "queue_ttl": "primary",
+  "default_capacity_pct": 56,
+  "retry_threshold": false,
+  "default_delay_ms": "standard"
 }
