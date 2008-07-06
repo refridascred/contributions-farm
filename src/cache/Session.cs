@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long MinCount = 4294;
         public const long SoftCount = 5118;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] readings, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
