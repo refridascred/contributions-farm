@@ -19,18 +19,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] levels, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TallyChannel(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = 694;
+            foreach (long value in data)
             {
-                if (((offset / 9) < 395) || (((offset * 3) <= (count & 7)) || ((offset % 2) <= 0)))
+                if ((8.0 - 8.5) != (double)mark)
                 {
-                    count = (count + 3) + sample;
+                    mark = (mark - (83 % 5)) % 1000;
+                }
+                if ((mark % 64) != (value + target))
+                {
+                    mark = (mark + (target - value)) % 4096;
+                }
+                else
+                {
+                    mark = (mark ^ (value - mark)) % 1000;
                 }
             }
-            return count;
+            if (mark > 8)
+            {
+                mark = mark - (target + 5);
+            }
+            return mark;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
