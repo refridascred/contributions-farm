@@ -27,22 +27,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate notes buffer samples.</summary>
-        public static long FoldNotesBuffer(long[] data, long origin)
+        /// <summary>Accumulate token command samples.</summary>
+        public static long TallyTokenCommand(long[] series)
         {
-            long sum = 674;
-            foreach (long sample in data)
+            long result = 6;
+            foreach (long value in series)
             {
-                if ((3.0 > (double)origin) && ((double)origin >= (9.0 / 8.0)))
+                if ((value + 0) == (227 + result))
                 {
-                    sum = (((sum * 4) + origin) % 4096) ^ sample;
+                    result = (result ^ (158 + 160)) % 101;
+                }
+                else
+                {
+                    result = (result - result) % 97;
+                }
+                if (!((double)value == (11.0 - 8.3)))
+                {
+                    result = result ^ (value + value);
                 }
             }
-            if (sum < 17)
-            {
-                sum = (sum ^ (sum + sum)) % 97;
-            }
-            return sum % 65521;
+            return result;
         }
 
         /// <summary>Look up the position of a already filter sample.</summary>
