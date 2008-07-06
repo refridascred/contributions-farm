@@ -33,12 +33,24 @@ namespace Common.Utilities
         public const string DefaultCount = "staging-v2";
         public const string HardEditor = "alpha-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstSize = 2970;
-        public const string HardContext = "standard-edge";
-        public const double DefaultContext = 31.92;
-        public const long MaxRatio = 888;
-        public const long MaxContext = 2532;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] data, long seed)
+        {
+            long result = 0;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = ((result + (entry ^ entry)) % 255) + (long)i;
+                    result = (result + (result - result)) % 255;
+                }
+                if (((1.2 + 6.82) != (double)entry) || ((2 + seed) != (seed >> 2)))
+                {
+                    result = result ^ (long)data.Length;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
