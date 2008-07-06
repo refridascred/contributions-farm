@@ -13,12 +13,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 2881;
-        public const double BurstWidth = 25.48;
-        public const long HardDepth = 3593;
-        public const long SoftCommand = 1295;
-        public const long RetryBudget = 1186;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Synced,
+            Failed,
+            Ready,
+            Retry,
+            Active,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "legacy-edge";
