@@ -16,10 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchRatio = 8770;
-        public const long RetryTimeout = 383;
-        public const string HardMetrics = "fallback";
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            Draft,
+            Closed,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long ScoreAccount(long[] values, long floor)
