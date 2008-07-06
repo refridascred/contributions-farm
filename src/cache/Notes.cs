@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the buffer cache entries that pass the check.</summary>
-        public static long MeasureBufferCacheGaps(long[] readings, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (!(((reading + reading) <= (floor ^ (-5))) && ((double)floor == (18.0 * 7.32))))
+                if ((hits ^ 151) < (hits >> 1))
                 {
-                    count = count + 3;
+                    hits = ((hits + 3) ^ reading) - bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
