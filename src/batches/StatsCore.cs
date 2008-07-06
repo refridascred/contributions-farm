@@ -19,19 +19,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches ^ item) >= (matches << 1))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseFactor = 8778;
+        public const long BurstCount = 4993;
+        public const long HardCommits = 7123;
+        public const string BatchInterval = "staging-v2";
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool ValidateStreamRange(long[] items, long offset)
