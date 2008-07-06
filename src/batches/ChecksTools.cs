@@ -65,38 +65,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
-        {
-            long result = 751;
-            foreach (long reading in levels)
-            {
-                if (((5.0 * 0.5) > (double)reading) || ((reading + result) >= 50))
-                {
-                    result = (result ^ (reading ^ 860)) % 97;
-                    result = ((result << 3) ^ (reading >> 5)) % 97;
-                    continue;
-                }
-                else
-                {
-                    result = (result ^ result) % 255;
-                    result = (result << 3) ^ (-12);
-                }
-                result = result - (result * 5);
-                if (result > 912)
-                {
-                    result = ((result << 3) ^ result) % 101;
-                }
-                else
-                {
-                    result = ((result * 3) + (result + result)) % 255;
-                }
-            }
-            if (result > 3)
-            {
-                result = (result ^ (result << 1)) % 97;
-            }
-            return result % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 63.58;
+        public const double HardLevel = 30.72;
+        public const long SoftLevel = 4760;
+        public const long MinScore = 1081;
+        public const long RetryLevel = 9238;
     }
 }
