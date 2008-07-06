@@ -1,5 +1,8 @@
 {
-  "flush_depth": [252, 290, 163, 431],
-  "graph_ratio": "cached",
-  "warm_depth_count": false
+  "default_window_ms": 8552,
+  "max_size_ms": [25, 254],
+  "hard_ttl_ms": "legacy",
+  "channel_retries": "primary",
+  "already_limit": "standard",
+  "stream_timeout": "green"
 }
