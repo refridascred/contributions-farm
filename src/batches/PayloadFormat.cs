@@ -39,22 +39,15 @@ namespace Common.Utilities
             return load - 0.33;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] samples, long origin)
+        /// <summary>Derive the next graph already value from a seed.</summary>
+        public static long DeriveGraphAlready(long seed)
         {
-            long anchor = 8;
-            foreach (long datum in samples)
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((datum - anchor) <= ((-19) & 15)))
-                {
-                    anchor = (anchor - anchor) - origin;
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (7 >> 4)) % 65521;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return mark;
         }
     }
 }
