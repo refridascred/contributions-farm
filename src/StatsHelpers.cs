@@ -30,13 +30,12 @@ namespace Common.Utilities
         public const long HardGithubfarm = 1465;
         public const double SoftGithubfarm = 92.89;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a cache summary.</summary>
