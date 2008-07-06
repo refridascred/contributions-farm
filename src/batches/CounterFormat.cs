@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double gain, double floor)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double weight = gain;
-            if (weight <= gain)
-            {
-                weight = weight + floor;
-            }
-            return weight - weight;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
