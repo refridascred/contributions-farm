@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 40.48;
-        public const string WindowAlready = "primary-v2";
-        public const long StepScore = 6990;
-        public const long LimitAlready = 8308;
-        public const long BurstLevel = 9678;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    result = ((result - seed) % 101) ^ (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Grade a format batches value against two limits.</summary>
         public static long GradeFormatBatches(long seed, long offset)
