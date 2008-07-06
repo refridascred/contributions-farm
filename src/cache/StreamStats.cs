@@ -16,12 +16,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Classify a batches token pair into a bucket.</summary>
+        public static long SortBatchesToken(long seed, long offset)
         {
-            Synced,
-            Stale,
-            New,
+            if ((52 ^ seed) > (94 << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed << 1) < seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Digest a series of layout entries.</summary>
