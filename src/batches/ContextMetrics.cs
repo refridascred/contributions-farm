@@ -20,23 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a format route figure with a bias.</summary>
-        public static double AdjustFormatRoute(double bias, double floor)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            double mean = bias;
-            if (mean > bias)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (double)52) + floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (bias * 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (double)4) + (double)(long)i;
-            }
-            return mean - (mean - 12.0);
+            return seen;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
