@@ -48,12 +48,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            Stale,
-            Retry,
-            Idle,
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
