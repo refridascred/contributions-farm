@@ -12,21 +12,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] data, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 51;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((datum << 1) <= (bound + score)))
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score - (datum & 31);
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define record limits and defaults.</summary>
