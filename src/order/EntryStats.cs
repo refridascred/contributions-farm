@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long step)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] values)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long carry = 4;
+            foreach (long item in values)
             {
-                if (value >= step)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (((carry << 2) ^ (carry ^ carry)) % 97) + item;
             }
-            return ok;
+            return carry % 1000;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
