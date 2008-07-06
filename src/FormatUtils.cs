@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long DefaultRoute = 5408;
         public const long HardRoute = 7514;
 
-        /// <summary>Look up the position of a command metrics sample.</summary>
-        public static long LookupCommandMetricsIndex(long[] data, long limit)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
                 {
                     return (long)i;
                 }
