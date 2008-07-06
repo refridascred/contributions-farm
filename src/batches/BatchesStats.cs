@@ -43,11 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
     }
 }
