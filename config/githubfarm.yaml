@@ -1,4 +1,8 @@
 # githubfarm settings
-warm_interval_s: 1024
-default_timeout_ms: true
-burst_timeout_pct: false
+soft_ratio_s: false
+default_delay_pct: legacy
+default_timeout_pct:
+  compress: 1.67
+  idle_size: 250
+  retry_capacity: edge
+  idle_delay_pct: true
