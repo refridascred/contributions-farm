@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a channel session pair into a bucket.</summary>
-        public static long RankChannelSession(long limit, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] series, long origin)
         {
-            if (((double)limit <= 9.92) && ((double)limit <= 9.86))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit * 5) < (391 + limit))
+                if (series[i] <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((((-1) - limit) <= (origin / 6)) && ((double)origin != (3.9 / 7.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
