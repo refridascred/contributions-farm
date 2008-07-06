@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] items, long target)
+        /// <summary>Find the first route metric entry that matches the target.</summary>
+        public static long FindRouteMetricIndex(long[] readings, long bound)
         {
-            bool valid = true;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= target)
+                if (readings[i] >= bound)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the session state values.</summary>
