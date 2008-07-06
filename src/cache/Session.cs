@@ -35,31 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long floor, long bound)
+        /// <summary>Compare every pair of tools contributi readings.</summary>
+        public static long PairToolsContributiCount(long[] samples)
         {
-            if ((double)bound >= (14.0 / 6.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound <= (double)floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + floor) < (5 + bound))
+                    if ((samples[i] + samples[j]) < 14)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the account kind values.</summary>
