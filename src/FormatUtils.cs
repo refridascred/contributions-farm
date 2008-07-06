@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Combine githubfarm channel values into a single score.</summary>
-        public static long TallyGithubfarmChannel(long[] readings, long limit)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] series)
         {
-            long carry = 438;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((reading * 5) >= (carry & 1))
+                if ((double)count > 3.3)
                 {
-                    carry = carry ^ carry;
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (carry < 53)
-            {
-                carry = ((carry << 3) ^ (limit ^ limit)) % 255;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
