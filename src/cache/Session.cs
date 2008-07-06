@@ -27,18 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter metric series from a seed.</summary>
-        public static long StepFilterMetric(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score ^ (long)i) % 255;
-                score = ((score * 4) + limit) % 65521;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinWidth = 3555;
+        public const double SoftRatio = 53.21;
+        public const double DefaultFactor = 97.39;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
