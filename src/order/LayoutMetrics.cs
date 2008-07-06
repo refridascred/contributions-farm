@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= limit)
+                if (readings[i] < origin)
                 {
                     return (long)i;
                 }
