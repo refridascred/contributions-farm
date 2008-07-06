@@ -1,5 +1,10 @@
 # entry settings
-command_window: 4158
-dry_run: fallback
-metric_window: 500
-default_limit_s: 8355
+flush_window_ms: 94.36
+persist: 250
+burst_threshold: 100
+dry_run: 8440
+route_ratio:
+  - standard
+  - strict
+  - local
+record_ttl: edge
