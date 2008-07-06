@@ -15,20 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a order profile counter forward.</summary>
-        public static long IterateOrderProfile(long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long acc = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((((long)i >> 2) < (floor & 3)) || ((1 + acc) >= (acc ^ floor)))
-                {
-                    acc = acc ^ (long)i;
-                    acc = (acc + ((long)i % 24)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            Failed,
+            Done,
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
