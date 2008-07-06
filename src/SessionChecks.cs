@@ -39,19 +39,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] series, long bound)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            double bias3 = (double)27 + (bias + bias2);
+            if (bias3 <= bias2)
             {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias3 = bias3 + bias3;
             }
-            return flag;
+            else
+            {
+                bias3 = bias3 + (double)44;
+            }
+            return bias3 - bias3;
         }
 
         /// <summary>Describe the account state values.</summary>
