@@ -32,22 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] readings, long limit)
-        {
-            long anchor = 1;
-            foreach (long cell in readings)
-            {
-                if ((cell << 1) >= cell)
-                {
-                    anchor = anchor ^ (cell + anchor);
-                }
-            }
-            if (anchor > 4)
-            {
-                anchor = (anchor + (limit << 2)) % 4096;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 1.52;
+        public const long LimitGithubfarm = 4912;
+        public const string HardBudget = "staging";
+        public const long MinGithubfarm = 2815;
+        public const long HardGithubfarm = 5499;
     }
 }
