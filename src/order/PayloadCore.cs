@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] data, long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) + step;
+                    if ((items[i] + items[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
