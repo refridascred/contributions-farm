@@ -31,34 +31,12 @@ namespace Common.Utilities
             return rate + (double)60;
         }
 
-        /// <summary>Accumulate layout context samples.</summary>
-        public static long TallyLayoutContext(long[] samples)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long carry = -9;
-            foreach (long item in samples)
-            {
-                if (((3.3 - 9.0) > (double)item) || (6.0 > (double)item))
-                {
-                    continue;
-                }
-                if ((double)item >= (2.4 / 3.0))
-                {
-                    continue;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
-                if ((item + item) >= ((long)samples.Length >> 4))
-                {
-                    carry = (carry - (carry << 1)) % 65521;
-                }
-            }
-            if (carry < (-25))
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry;
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
