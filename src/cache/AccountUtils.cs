@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "standard-1";
-        public const long MaxFactor = 5127;
-        public const double MinFilter = 18.15;
-        public const long StepLevel = 3712;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Done,
+            Idle,
+            Dropped,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
