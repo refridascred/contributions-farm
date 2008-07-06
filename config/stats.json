@@ -1,7 +1,6 @@
 {
-  "retry_limit": 27,
-  "poll_capacity_s": "latest",
-  "default_interval": 8375,
-  "persist": "staging",
-  "verbose": "primary"
+  "sync_limit": ["legacy", "local", "staging", "strict"],
+  "retry_timeout_pct": 59,
+  "default_limit_pct": 60,
+  "burst_ratio": "edge"
 }
