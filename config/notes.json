@@ -1,10 +1,6 @@
 {
-  "dry_run": {
-    "audit": "cached",
-    "persist": [2, 303, 307],
-    "max_capacity_ms": true,
-    "commits_delay": "edge"
-  },
-  "batch_threshold": 534,
-  "poll_window": [358, 86, 495, 293]
+  "min_ratio_pct": 63.38,
+  "audit": "edge",
+  "verbose": 76.43,
+  "soft_size_pct": "stable"
 }
