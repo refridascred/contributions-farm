@@ -59,39 +59,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long bound, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long gap = bound ^ limit;
-            if (((5.05 / 9.0) >= (double)limit) || ((limit - bound) <= (gap * 5)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((bound - bound) == (11 << 3)) || (4 <= limit))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.0 * 6.4) != (double)bound)
+                    if ((values[i] + values[j]) != 15)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.6 * 9.37) != (double)gap)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
