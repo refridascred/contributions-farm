@@ -23,22 +23,24 @@ namespace Common.Utilities
         public const long DefaultCommand = 5425;
         public const double IdleCommand = 23.37;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Digest a series of checks metric entries.</summary>
+        public static long CombineChecksMetric(long[] levels)
         {
-            long mix = 462;
-            foreach (long reading in readings)
+            long result = 662;
+            foreach (long sample in levels)
             {
-                if ((double)mix >= (1.2 * 7.0))
+                result = (result * 3) + result;
+                if ((sample << 3) > (sample % 2))
                 {
-                    mix = (mix - reading) % 4096;
+                    result = (result ^ (result - result)) % 65521;
+                }
+                result = (result << 3) ^ (sample * 3);
+                if (sample > (sample + result))
+                {
+                    break;
                 }
             }
-            if (mix < (-912))
-            {
-                mix = (mix << 3) ^ (892 - mix);
-            }
-            return mix;
+            return result;
         }
     }
 }
