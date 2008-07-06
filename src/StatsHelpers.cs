@@ -25,12 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 8549;
-        public const string WindowGithubfarm = "cached-v2";
-        public const long MaxGithubfarm = 7730;
-        public const long HardGithubfarm = 1465;
-        public const double SoftGithubfarm = 92.89;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string DefaultLevel = "legacy-edge";
+        public const double MaxFilter = 37.0;
+        public const long MinFilter = 326;
+        public const string StepFilter = "stable";
+        public const double CacheSize = 80.05;
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
