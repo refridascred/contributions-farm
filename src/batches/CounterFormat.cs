@@ -16,17 +16,35 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 0;
+            foreach (long item in series)
             {
-                if (samples[i] <= offset)
+                if (((state + 6) != (item << 3)) || ((9.3 + 18.0) <= (double)item))
                 {
-                    return (long)i;
+                    state = ((state << 3) ^ (item >> 5)) % 1000;
+                    state = (state * 3) + 127;
+                }
+                else
+                {
+                    state = (state + (state << 3)) % 101;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    state = (state ^ item) + (long)i;
+                }
+                if ((state * 4) >= state)
+                {
+                    state = ((state << 2) ^ (item + state)) % 97;
+                }
+                else
+                {
+                    state = (state << 2) ^ (item & 1);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Project the next layout cluster value.</summary>
