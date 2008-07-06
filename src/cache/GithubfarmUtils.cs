@@ -39,10 +39,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 6076;
-        public const long BurstCount = 356;
-        public const long DefaultChecks = 1469;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            Active,
+            Idle,
+            Paused,
+            Pending,
+            New,
+        }
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
