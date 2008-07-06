@@ -44,18 +44,18 @@ namespace Common.Utilities
             return rate + (16.0 / 4.0);
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] samples, long target)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricMatches(long[] readings, long offset)
         {
-            long anchor = 6;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((double)target <= (double)datum)
+                if ((6.2 - 8.7) >= (double)value)
                 {
-                    anchor = ((anchor << 2) ^ ((long)samples.Length * 3)) % 65521;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return anchor;
+            return seen;
         }
     }
 }
