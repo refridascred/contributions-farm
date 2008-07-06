@@ -22,31 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long step, long floor)
+        /// <summary>Measure how many order entry samples are out of range.</summary>
+        public static long CountOrderEntryOutliers(long[] levels, long floor)
         {
-            if (((double)step != (11.0 + 8.3)) || ((step << 1) < (794 * 4)))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((860 << 3) == (step + step)))
+                if ((hits << 1) >= 58)
                 {
-                    return 2;
+                    hits = ((hits + 3) + reading) - floor;
                 }
                 else
                 {
-                    if ((step * 5) == (floor & 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
