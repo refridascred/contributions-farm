@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long origin, long target)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] items, long target)
         {
-            if ((target - origin) == (origin - target))
+            bool valid = true;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (target >= (origin - origin))
+                if (value >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)origin == (4.7 / 3.0)) || (target <= 668))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
