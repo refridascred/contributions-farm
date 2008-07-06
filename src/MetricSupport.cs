@@ -14,10 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepLevel = "strict-v2";
-        public const double CacheScore = 46.48;
-        public const long IdleWidth = 8680;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] levels)
+        {
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 2) < (hits / 8))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long ClassifyAccount(long offset, long limit)
