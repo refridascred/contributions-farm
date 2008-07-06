@@ -36,19 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] series, long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Dropped,
+            Failed,
+            Done,
         }
     }
 }
