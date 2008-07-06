@@ -34,15 +34,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] samples, long seed)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long total = 89;
-            foreach (long sample in samples)
-            {
-                total = (total + (total - sample)) - seed;
-            }
-            return total;
+            Pending,
+            Active,
+            Closed,
         }
 
         /// <summary>Match up route samples.</summary>
