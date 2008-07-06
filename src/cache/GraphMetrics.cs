@@ -62,9 +62,16 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstScore = 5656;
-        public const long CacheRatio = 2864;
-        public const double BurstRecord = 92.05;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor - (anchor ^ anchor)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
