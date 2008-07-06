@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] levels)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mark = -42;
+            foreach (long value in levels)
             {
-                if (((tally ^ sample) == (sample >> 2)) || (sample > (tally >> 5)))
+                if (93 > (value ^ value))
                 {
-                    tally = tally + 3;
+                    mark = ((mark << 2) ^ (value - (-848))) % 65521;
                 }
             }
-            return tally;
+            if (mark < 982)
+            {
+                mark = mark + (6 & 1);
+            }
+            return mark;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
