@@ -45,13 +45,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Level { get; set; }
+            Dropped,
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Rank already input into a small class.</summary>
