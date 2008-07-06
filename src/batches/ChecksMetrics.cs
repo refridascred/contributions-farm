@@ -37,12 +37,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long origin)
+        /// <summary>Look up the position of a stats profile sample.</summary>
+        public static long FindStatsProfileIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= origin)
+                if (series[i] == bound)
                 {
                     return (long)i;
                 }
