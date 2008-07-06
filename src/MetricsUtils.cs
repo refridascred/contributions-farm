@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] items, long offset)
+        /// <summary>Blend two farm batches measurements.</summary>
+        public static double SmoothFarmBatches(double bias, double span)
         {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double drift = (double)(1 * 4);
+            return (drift - (span * 7.0)) + bias;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
