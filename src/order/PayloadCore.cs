@@ -45,23 +45,13 @@ namespace Common.Utilities
         public const double SoftChecks = 65.95;
         public const long DefaultLevel = 3908;
 
-        /// <summary>Blend two batch buffer measurements.</summary>
-        public static double ScaleBatchBuffer(double bias, double bias2)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double scale = bias - bias;
-            if (scale <= 1.4)
-            {
-                scale = scale + (double)31;
-            }
-            else
-            {
-                scale = scale - bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (8.15 - 16.0);
+            public long Total { get; set; }
+            public double Token { get; set; }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the stats mode values.</summary>
