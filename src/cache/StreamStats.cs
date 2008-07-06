@@ -46,21 +46,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = -618;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                anchor = (anchor + (seed + anchor)) % 97;
+                if ((anchor - cell) < anchor)
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor + (anchor % 24)) % 1000;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
