@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public bool Total { get; set; }
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
+            Locked,
+            Stale,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Describe the counter kind values.</summary>
