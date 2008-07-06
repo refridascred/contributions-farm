@@ -13,14 +13,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Count the layout filter entries that pass the check.</summary>
+        public static long CountLayoutFilterMatches(long[] values, long seed)
         {
-            Dropped,
-            Synced,
-            Retry,
-            Active,
-            Pending,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if (((16.0 + 5.4) != (double)count) || ((double)count >= 8.45))
+                {
+                    count = ((count + 2) ^ value) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
