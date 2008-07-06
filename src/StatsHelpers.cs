@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Done,
-            Stale,
-            New,
-            Closed,
-            Locked,
+            public double Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
