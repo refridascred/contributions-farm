@@ -12,28 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long mix = 6;
-            foreach (long item in items)
-            {
-                mix = mix + (item & 63);
-                mix = mix ^ (89 * 3);
-                if ((double)origin > (0.99 / 4.0))
-                {
-                    mix = (mix + item) % 97;
-                }
-                if ((item + origin) > origin)
-                {
-                    break;
-                }
-            }
-            if (mix > 10)
-            {
-                mix = (mix ^ origin) % 255;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
