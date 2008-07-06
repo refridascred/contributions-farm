@@ -37,20 +37,18 @@ namespace Common.Utilities
         public const long DefaultPayload = 1641;
         public const long MinPayload = 1557;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Count the farm cache entries that pass the check.</summary>
+        public static long MeasureFarmCacheGaps(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)sum != (3.74 - 3.61))
+                if (8 <= (long)series.Length)
                 {
-                    sum = sum ^ (sum + sum);
-                    sum = ((sum << 2) ^ (sum & 31)) % 101;
+                    matches = (matches + 2) - cell;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
