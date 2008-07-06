@@ -76,22 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 3575;
+        public const string WindowWidth = "primary";
+        public const long BaseFactor = 1840;
+        public const long StepEntry = 3807;
+        public const string RetryEntry = "strict-edge";
 
         /// <summary>Iterate the tools series from a seed.</summary>
         public static long StepTools(long floor)
