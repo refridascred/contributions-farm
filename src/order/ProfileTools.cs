@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of window already entries.</summary>
-        public static long FoldWindowAlready(long[] samples, long limit)
+        /// <summary>Grade a commits support value against two limits.</summary>
+        public static long ClassifyCommitsSupport(long origin, long target)
         {
-            long carry = 1;
-            foreach (long datum in samples)
+            long prev = origin - target;
+            if (((target / 5) != (prev + origin)) || (origin >= (prev - prev)))
             {
-                if (carry <= (carry >> 4))
+                return 3;
+            }
+            else
+            {
+                if (!((double)target == (double)prev))
                 {
-                    carry = carry + datum;
+                    return 4;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (limit & 127)) % 101;
+                    if ((target - 33) >= (origin + 907))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Hold a contributi options.</summary>
