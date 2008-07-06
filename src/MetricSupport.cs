@@ -14,22 +14,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many batches token samples are out of range.</summary>
-        public static long CountBatchesTokenMatches(long[] data)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long FindFilterIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((hits - value) > (value << 1)) || ((double)hits > (14.0 * 0.7)))
+                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank account input into a small class.</summary>
