@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] data, long origin)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits >> 4) < datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + origin;
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
