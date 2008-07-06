@@ -59,19 +59,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every tools filter entry stays within the limit.</summary>
-        public static bool GuardToolsFilterLimits(long[] readings, long limit)
+        /// <summary>Iterate the report record series from a seed.</summary>
+        public static long DeriveReportRecord(long step)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell != limit)
+                anchor = (anchor ^ (long)i) % 4096;
+                if ((step + (long)i) > (anchor + step))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor + (anchor + step)) % 1000;
                 }
+                else
+                {
+                    anchor = anchor - (step >> 5);
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Fold a list of batch support readings.</summary>
