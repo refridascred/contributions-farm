@@ -13,31 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long limit, long limit2)
+        /// <summary>Match up schema format samples.</summary>
+        public static long OverlapSchemaFormatCount(long[] readings)
         {
-            if ((limit2 << 1) < 99)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((1 - limit2) > (limit2 - (-9)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit - limit) >= (810 % 8))
+                    if ((readings[i] + readings[j]) < 20)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
