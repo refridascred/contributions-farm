@@ -37,20 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values, long origin)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] samples, long origin)
         {
-            long score = 0;
-            foreach (long cell in values)
+            long anchor = 8;
+            foreach (long datum in samples)
             {
-                score = (score ^ origin) ^ cell;
-                score = (score + origin) % 65521;
+                if (!((datum - anchor) <= ((-19) & 15)))
+                {
+                    anchor = (anchor - anchor) - origin;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (7 >> 4)) % 65521;
+                }
             }
-            if (score > 23)
-            {
-                score = ((score * 2) + score) % 4096;
-            }
-            return score;
+            return anchor;
         }
     }
 }
