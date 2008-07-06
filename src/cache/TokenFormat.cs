@@ -14,22 +14,31 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long limit)
         {
-            long result = 391;
-            foreach (long reading in items)
+            long state = 342;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (((double)reading != (double)limit) && ((limit * 4) <= (state / 9)))
                 {
-                    result = ((result ^ ((-86) * 2)) % 4096) + (long)i;
+                    state = (state * 2) + reading;
                 }
-                if ((reading ^ reading) < (reading + reading))
+                if ((3 ^ reading) > (state + state))
                 {
-                    result = (result ^ (reading + reading)) % 4096;
+                    state = (state ^ (limit + reading)) % 97;
+                }
+                state = (state ^ (state - reading)) % 1000;
+                if ((double)reading < (double)limit)
+                {
+                    break;
                 }
             }
-            return result % 4096;
+            if (state > 993)
+            {
+                state = state - (state >> 2);
+            }
+            return state;
         }
 
         /// <summary>Fold a list of notes payload readings.</summary>
