@@ -1,16 +1,7 @@
 # githubfarm settings
-default_threshold_pct:
-  - 317
-  - 255
-  - 157
-batch_delay:
-  sync_delay_s: 1596
-  soft_timeout_s: strict
-  persist:
-    - 110
-    - 474
-    - 203
-    - 23
-  soft_limit_ms: staging
-soft_ratio_s: stable
-record_threshold: 50
+base_delay_count: 4.93
+warm_interval_ms: 43.8
+compress: true
+schema_threshold:
+  - 359
+  - 391
