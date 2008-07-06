@@ -13,39 +13,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long limit, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] values)
         {
-            long edge = limit ^ step;
-            if (((edge >> 3) != (step + step)) || ((edge << 1) <= limit))
+            long sum = -852;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit >> 4) > limit)
+                if ((value >> 3) < sum)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((edge + limit) <= (690 + step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + 267) != (164 - step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    sum = sum ^ (value >> 2);
                 }
             }
+            return sum;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
