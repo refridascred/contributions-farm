@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] data)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum > (double)matches)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
