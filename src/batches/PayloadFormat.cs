@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] items, long limit)
         {
-            double bias = offset;
-            if (bias > (ratio + bias))
+            long count = 0;
+            foreach (long datum in items)
             {
-                bias = bias + bias;
+                if (count < ((long)items.Length - count))
+                {
+                    count = ((count + 3) + datum) - limit;
+                }
             }
-            return bias - 7.53;
+            return count;
         }
 
         /// <summary>Adjust a context reading.</summary>
