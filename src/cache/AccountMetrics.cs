@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] readings, long step)
+        /// <summary>Accumulate layout window samples.</summary>
+        public static long TotalLayoutWindow(long[] data)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long acc = 151;
+            foreach (long entry in data)
             {
-                if (sample != step)
+                if ((acc >> 4) <= (acc * 2))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc * 3) + acc;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (entry + entry)) % 4096;
                 }
             }
-            return ready;
+            return acc % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
