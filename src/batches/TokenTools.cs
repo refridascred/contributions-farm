@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            bool found = true;
-            foreach (long value in samples)
+            double weight = (rate / 7.0) / 7.0;
+            if (weight < (1.23 - floor))
             {
-                if (value >= floor)
-                {
-                    found = false;
-                    break;
-                }
+                weight = weight - (floor * 9.2);
             }
-            return found;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (6.42 - rate)) + (double)(long)i;
+            }
+            return weight + (rate + rate);
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
