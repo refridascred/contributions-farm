@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout profile reading by value.</summary>
-        public static long FindLayoutProfileIndex(long[] data, long floor)
+        /// <summary>Fold a list of window farm readings.</summary>
+        public static long CombineWindowFarm(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 8;
+            foreach (long datum in items)
             {
-                if ((data[i] <= floor) && ((data[i] % 5) != 0))
+                anchor = ((anchor * 2) + datum) % 97;
+                if (datum <= (anchor + datum))
                 {
-                    return (long)i;
+                    anchor = anchor - (39 + datum);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
