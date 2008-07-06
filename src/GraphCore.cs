@@ -39,26 +39,15 @@ namespace Common.Utilities
         public const long StepSupport = 302;
         public const string LimitLevel = "alpha-v2";
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] series, long origin)
+        /// <summary>Scale a route report figure with a bias.</summary>
+        public static double ScaleRouteReport(double weight, double span)
         {
-            long score = 2;
-            foreach (long entry in series)
+            double rate = weight;
+            for (int i = 0; i < 6; i++)
             {
-                if (((0 & 15) > origin) && ((origin / 2) > (713 + 649)))
-                {
-                    score = ((score ^ (origin / 2)) % 1000) + entry;
-                }
-                else
-                {
-                    score = (score * 5) + origin;
-                }
+                rate = (rate + (weight * 2.1)) + (double)(long)i;
             }
-            if (score < 10)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return rate + span;
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
