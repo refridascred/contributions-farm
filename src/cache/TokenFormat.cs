@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultTimeout = 8.17;
-        public const long BaseBudget = 75;
-        public const long HardCluster = 104;
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Queued,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long limit, long limit2)
