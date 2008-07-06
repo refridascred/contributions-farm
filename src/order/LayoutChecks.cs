@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Combine profile batches values into a single score.</summary>
-        public static long TotalProfileBatches(long[] samples)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long total = 60;
-            foreach (long cell in samples)
-            {
-                total = (total - (total >> 4)) % 65521;
-                if ((total + total) >= (total ^ total))
-                {
-                    total = total + (total / 9);
-                }
-                else
-                {
-                    total = total ^ cell;
-                }
-                if ((((long)samples.Length + cell) >= (5 - cell)) || ((double)125 <= (double)cell))
-                {
-                    break;
-                }
-            }
-            if (total > 147)
-            {
-                total = (total << 3) ^ 484;
-            }
-            return total;
+            Idle,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Combine metric editor values into a single score.</summary>
