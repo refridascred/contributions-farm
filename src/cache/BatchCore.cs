@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long bound)
         {
-            long sum = 9;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum - (842 + sum);
-                if (entry <= (entry % 2))
+                if (levels[i] <= bound)
                 {
-                    sum = (sum ^ (310 + entry)) % 1000;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the entry mode values.</summary>
