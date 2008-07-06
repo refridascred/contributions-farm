@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutGaps(long[] samples, long step)
+        /// <summary>Count stream commits pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCommitsCount(long[] series)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.29 - 8.0) <= (double)count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 3) ^ cell) - step;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
