@@ -51,13 +51,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Paused,
-            New,
-            Failed,
-            Locked,
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
     }
 }
