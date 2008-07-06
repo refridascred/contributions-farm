@@ -57,18 +57,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
-        public static long TallyGithubfarmClusterHits(long[] series)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((3.0 + 3.0) > (double)entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
     }
 }
