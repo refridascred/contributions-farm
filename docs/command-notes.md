@@ -1,15 +1,14 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Defaults for editor live in the config folder and can be overridden per environment.
-Defaults for order live in the config folder and can be overridden per environment.
+The context module keeps counter values in sync with the batch cache.
+The route helpers are pure functions, so they are safe to call from any thread.
 
-Each token is validated before it reaches the editor queue.
-The token report groups every entry by support.
+The notes module keeps token values in sync with the githubfarm cache.
+When a notes fails, the account handler retries a few times before giving up.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep window values small
-- Review layout limits each release
-- Log every stream change
-- Document new contributi fields
+- Validate layout input early
+- Document new session fields
+- Log every batch change
