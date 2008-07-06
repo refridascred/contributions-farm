@@ -40,24 +40,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long seed)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] samples, long target)
         {
-            if ((double)seed != (double)floor)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor <= (8.5 + 10.0))
+                if (samples[i] == target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
