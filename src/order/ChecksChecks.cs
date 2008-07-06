@@ -24,23 +24,17 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double rate, double offset)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] items, long bound)
         {
-            double scale = (offset + rate) + 4.0;
-            if (scale <= scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale + scale;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)644;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - 8.79) + (double)(long)i;
-            }
-            return scale + scale;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
