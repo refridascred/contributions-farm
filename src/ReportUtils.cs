@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] series, long origin)
+        /// <summary>Derive the next record already value from a seed.</summary>
+        public static long IterateRecordAlready(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
+                score = (score - (seed + 874)) % 97;
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
