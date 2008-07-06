@@ -1,9 +1,19 @@
 # support settings
-stats_size: 3
-dry_run: 100
-retry_ttl_pct: 90.26
-persist:
-  - 296
-  - 193
-stream_limit: 48
-max_limit_s: true
+verbose:
+  persist: true
+  cache_depth: stable
+  verbose: false
+  audit:
+    - strict
+    - stable
+    - open
+    - open
+  payload_ttl:
+    - green
+    - cached
+  idle_depth:
+    - 383
+    - 368
+retry_window: fallback
+format_ttl: true
+flush_ratio: false
