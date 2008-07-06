@@ -1,11 +1,11 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-A token that stays idle for too long is moved to the account list.
+Keep filter and support names short and lowercase.
+Use contributi settings to tune how often order data is refreshed.
+Keep editor and notes names short and lowercase.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Keep buffer values small
-- Document new profile fields
-- Log every record change
+- Prefer commits defaults
+- Log every payload change
+- Validate commits input early
