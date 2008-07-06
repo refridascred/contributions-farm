@@ -57,14 +57,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] levels, long origin)
         {
-            Paused,
-            Queued,
-            Closed,
-            Idle,
-            Dropped,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
