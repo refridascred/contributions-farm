@@ -44,11 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepWidth = 6658;
-        public const long MinChannel = 4850;
-        public const string StepSize = "standard-v2";
-        public const double CacheCount = 36.68;
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
+        {
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Combine command githubfarm values into a single score.</summary>
         public static long WeighCommandGithubfarm(long[] series, long bound)
