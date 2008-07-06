@@ -1,13 +1,17 @@
 {
-  "persist": 30,
-  "commits_timeout": 6412,
-  "burst_depth": {
-    "record_window": "legacy",
-    "base_delay_ms": 7938,
-    "poll_window_pct": 96,
-    "persist": "legacy",
-    "enabled": true,
-    "sync_ttl_count": 57
+  "retry_timeout_s": {
+    "schema_window": 1333,
+    "support_ratio": "cached",
+    "burst_size": 84,
+    "sync_timeout": "open"
   },
-  "min_size_count": "open"
+  "cache_capacity_count": {
+    "sync_size_count": 58.99,
+    "warm_ratio_count": false,
+    "min_limit_pct": "edge"
+  },
+  "entry_retries": 751,
+  "flush_window_ms": "staging",
+  "sync_retries_s": true,
+  "soft_capacity_ms": "standard"
 }
