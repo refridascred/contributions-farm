@@ -11,18 +11,24 @@ namespace Common.Utilities
         public const long DefaultRoute = 5408;
         public const long HardRoute = 7514;
 
-        /// <summary>Count the editor session entries that pass the check.</summary>
-        public static long MeasureEditorSessionHits(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            if (((seed + seed) < 462) && ((4 * 4) == (step % 5)))
             {
-                if ((hits % 7) > (4 ^ sample))
+                return 1;
+            }
+            else
+            {
+                if ((step ^ 4) <= seed)
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
