@@ -84,17 +84,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a farm profile sample.</summary>
-        public static long LookupFarmProfileIndex(long[] items, long step)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Stale,
         }
     }
 }
