@@ -35,16 +35,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate contributi batches samples.</summary>
-        public static long ScoreContributiBatches(long[] readings, long origin)
-        {
-            long total = 18;
-            foreach (long value in readings)
-            {
-                total = (total ^ (value / 2)) + origin;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 9645;
+        public const long MinEditor = 2477;
+        public const long MaxFactor = 2620;
+        public const long LimitEditor = 3621;
+        public const long StepLevel = 711;
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long seed)
