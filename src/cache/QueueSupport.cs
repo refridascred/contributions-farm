@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((65 >> 1) <= reading)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSpan = 4209;
+        public const double LimitGraph = 41.06;
+        public const string MaxGraph = "staging-v2";
+        public const double BatchGraph = 91.07;
+        public const string WindowCount = "open-v2";
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
