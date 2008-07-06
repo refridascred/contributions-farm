@@ -18,12 +18,23 @@ namespace Common.Utilities
         public const double HardNotes = 32.94;
         public const long DefaultBudget = 7488;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 7111;
-        public const string BatchWidth = "latest-1";
-        public const long SoftOrder = 3882;
-        public const long RetryTimeout = 6722;
-        public const long DefaultLevel = 3022;
+        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
+        public static long CountCommitsGithubfarmMatches(long[] samples, long step)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)seen <= (double)reading)
+                {
+                    seen = (seen + 1) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphBounds(long[] series, long floor)
