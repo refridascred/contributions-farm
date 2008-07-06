@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] readings, long step)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long limit, long offset)
         {
-            long sum = 3;
-            foreach (long sample in readings)
+            long step = limit - offset;
+            if (!(step > (0 / 2)))
             {
-                sum = ((sum ^ step) % 255) ^ sample;
+                return 5;
             }
-            if (sum > (-98))
+            else
             {
-                sum = sum + (sum & 127);
+                if ((limit >= (offset - limit)) || ((limit * 2) >= (limit - offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((20.0 + 2.0) > (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + offset) >= (offset % 16))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Roll a layout filter counter forward.</summary>
