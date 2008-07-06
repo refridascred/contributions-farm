@@ -1,4 +1,11 @@
 # githubfarm settings
-metric_interval: latest
-editor_retries: 71.14
-cache_size_s: 100
+githubfarm_timeout: 19.13
+base_size_s: blue
+notes_limit: strict
+compress:
+  payload_depth: 91.19
+  base_capacity_s: 67.61
+  sync_delay_count: 1024
+  default_ttl: 61.95
+  base_threshold_pct: 93.11
+  readonly: 250
