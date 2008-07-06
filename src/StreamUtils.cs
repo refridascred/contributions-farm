@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseEditor = 32.27;
-        public const long BatchEditor = 1553;
-        public const long IdleLevel = 7607;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 60.67;
+        public const long BatchFactor = 9481;
+        public const double SoftSize = 12.88;
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
