@@ -19,10 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string IdleWidth = "open-edge";
-        public const long StepBuffer = 8018;
-        public const double DefaultBuffer = 28.88;
+        /// <summary>Match up counter stats samples.</summary>
+        public static long PairCounterStatsCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a metrics contributi reading by value.</summary>
         public static long SeekMetricsContributiIndex(long[] levels, long seed)
