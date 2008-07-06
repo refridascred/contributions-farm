@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches tools samples.</summary>
-        public static long DigestBatchesTools(long[] samples, long target)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long mix = 70;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix - sample;
-                mix = (mix ^ sample) % 1000;
-                mix = mix - sample;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mix > 9)
-            {
-                mix = mix - (target - target);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
