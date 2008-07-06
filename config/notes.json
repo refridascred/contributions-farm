@@ -1,5 +1,7 @@
 {
-  "sync_ttl": "eu-west",
-  "route_threshold": 39.78,
-  "sync_capacity_count": 9375
+  "sync_threshold_count": 2,
+  "dry_run": 3835,
+  "cache_window_count": 92,
+  "poll_limit": "blue",
+  "cache_retries": false
 }
