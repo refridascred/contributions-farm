@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a channel cluster pair into a bucket.</summary>
-        public static long GradeChannelCluster(long origin, long origin2)
-        {
-            if ((230 / 7) == (origin2 + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if (0 <= origin2)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin2 + origin2) < (origin - origin2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin2 + origin) >= (origin + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 5325;
+        public const long IdleEntry = 5687;
+        public const string CacheTimeout = "primary-edge";
+        public const long WindowRatio = 4277;
 
         /// <summary>Describe the counter state values.</summary>
         public enum CounterState
