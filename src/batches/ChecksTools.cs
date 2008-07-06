@@ -13,23 +13,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many session batch samples are out of range.</summary>
-        public static long CountSessionBatchGaps(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((limit + datum) != (572 + tally))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSpan = 4031;
+        public const long DefaultSchema = 8715;
+        public const long StepSchema = 6758;
+        public const long HardFactor = 4819;
+        public const long HardBudget = 2094;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
