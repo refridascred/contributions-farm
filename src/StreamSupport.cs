@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Check that every layout graph entry stays within the limit.</summary>
+        public static bool GuardLayoutGraphBounds(long[] data, long offset)
         {
-            long state = 38;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if (!((state << 1) < state))
+                if (sample >= offset)
                 {
-                    state = ((state + 3) % 1000) ^ entry;
+                    valid = false;
+                    break;
                 }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
