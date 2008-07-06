@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long limit, long seed)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] readings)
         {
-            if (6.6 > (double)limit)
+            long mark = 4;
+            foreach (long item in readings)
             {
-                return 4;
+                mark = ((mark << 3) ^ (mark % 12)) ^ item;
             }
-            else
+            if (mark > (-1))
             {
-                if (!((seed - limit) == (seed + (-56))))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
+                mark = mark + ((long)readings.Length / 8);
             }
+            return mark;
         }
 
         /// <summary>Adjust a context reading.</summary>
