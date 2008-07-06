@@ -31,12 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitSize = 89.16;
-        public const long DefaultQueue = 770;
-        public const long StepCount = 6316;
-        public const long IdleFactor = 3244;
-        public const long CacheInterval = 3106;
+        /// <summary>Count the profile already entries that pass the check.</summary>
+        public static long AuditProfileAlreadyHits(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((-5) > (matches >> 1))
+                {
+                    matches = ((matches + 2) + sample) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long bound, long limit)
