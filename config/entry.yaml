@@ -1,14 +1,9 @@
 # entry settings
-strict: 250
-persist: 22
-hard_limit_count:
-  - blue
-  - blue
-  - standard
-  - local
-warm_delay_pct: 5574
-enabled:
-  - primary
-  - edge
-  - open
-  - green
+session_ratio: primary
+format_size:
+  retry_size_pct: 45.92
+  farm_delay: open
+  idle_capacity_pct: false
+  metric_interval: local
+  cache_threshold_pct: green
+editor_retries: eu-west
