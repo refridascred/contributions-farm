@@ -58,13 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            Ready,
-            Active,
-            Failed,
-            Retry,
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
