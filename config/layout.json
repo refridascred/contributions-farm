@@ -1,5 +1,5 @@
 {
-  "cache_limit": 3979,
-  "readonly": "open",
-  "retry_interval": "stable"
+  "flush_depth_ms": "green",
+  "retry_ratio_pct": 5642,
+  "commits_threshold": false
 }
