@@ -86,20 +86,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine stream graph values into a single score.</summary>
-        public static long FoldStreamGraph(long[] items, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long floor, long target)
         {
-            long state = 7;
-            foreach (long value in items)
+            long gap = floor ^ target;
+            if ((target - target) > (floor & 3))
             {
-                state = ((state + (state - state)) % 97) + offset;
-                state = state ^ (value << 3);
-                if ((6.4 - 1.96) == (double)value)
+                return 2;
+            }
+            else
+            {
+                if ((floor - target) < target)
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor - floor) < (floor % 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((2.9 * 1.7) < (double)gap))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return state;
         }
     }
 }
