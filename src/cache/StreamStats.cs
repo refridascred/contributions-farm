@@ -28,22 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] values)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long total = 6;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) < (-375))
-                {
-                    total = (total << 3) ^ total;
-                }
-                else
-                {
-                    total = (total - (total >> 3)) % 101;
-                }
-            }
-            return total;
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the batches level values.</summary>
