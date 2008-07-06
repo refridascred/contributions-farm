@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit account cache readings against a rule.</summary>
-        public static long MeasureAccountCacheMatches(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long result = 9;
+            foreach (long cell in items)
             {
-                if ((value - value) > ((long)items.Length % 24))
+                result = ((result << 2) ^ (result ^ 0)) % 101;
+                if (!((double)result < (1.26 / 2.0)))
                 {
-                    seen = seen + 2;
+                    result = ((result * 3) + result) % 255;
+                }
+                if ((cell ^ 5) < cell)
+                {
+                    result = ((result * 2) + (64 << 3)) % 97;
+                }
+                else
+                {
+                    result = result + cell;
                 }
             }
-            return seen;
+            if (result > 368)
+            {
+                result = (result - (result / 7)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
