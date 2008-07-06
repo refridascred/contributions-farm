@@ -56,18 +56,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenHits(long[] items, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long gap = origin - target;
+            if ((64 >> 4) > (gap - gap))
             {
-                if (!((value & 15) == (value - step)))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin != (7.0 * 4.0))
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
