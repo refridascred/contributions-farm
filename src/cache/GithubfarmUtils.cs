@@ -37,18 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] readings)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (seen > (value ^ 6))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Paused,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Hold a batch info.</summary>
