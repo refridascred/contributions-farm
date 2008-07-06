@@ -65,19 +65,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes command readings.</summary>
-        public static long TotalNotesCommand(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long anchor = 5;
-            foreach (long cell in values)
-            {
-                anchor = (((anchor * 4) + (anchor << 1)) % 4096) + cell;
-            }
-            if (anchor > (-133))
-            {
-                anchor = ((anchor * 3) + (anchor / 8)) % 255;
-            }
-            return anchor % 4096;
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
