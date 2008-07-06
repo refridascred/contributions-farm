@@ -25,17 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] levels, long bound)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (span * 0.6) - (double)0;
+            for (int i = 0; i < 2; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (rate - rate)) - (double)(long)i;
             }
-            return -1;
+            return weight - rate;
         }
 
         /// <summary>Roll a account counter forward.</summary>
