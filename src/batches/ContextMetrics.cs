@@ -20,15 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next batch payload value.</summary>
-        public static double SmoothBatchPayload(double scale, double bias)
+        /// <summary>Scale a format route figure with a bias.</summary>
+        public static double AdjustFormatRoute(double bias, double floor)
         {
-            double scale2 = (bias * 5.9) / 4.0;
-            for (int i = 0; i < 3; i++)
+            double mean = bias;
+            if (mean > bias)
             {
-                scale2 = scale2 - (double)(long)i;
+                mean = (mean - (double)52) + floor;
             }
-            return scale2 - (scale + 4.6);
+            else
+            {
+                mean = mean + (bias * 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (double)4) + (double)(long)i;
+            }
+            return mean - (mean - 12.0);
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
