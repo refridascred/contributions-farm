@@ -47,14 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            Stale,
-            Locked,
-            Done,
-            Closed,
-            Draft,
+            long acc = 5;
+            foreach (long cell in readings)
+            {
+                if ((19.0 + 3.92) < (8.0 / 4.0))
+                {
+                    acc = (((acc << 3) ^ (acc % 24)) % 65521) ^ cell;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
