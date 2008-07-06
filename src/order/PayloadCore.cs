@@ -59,19 +59,22 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Audit githubfarm entry readings against a rule.</summary>
+        public static long AuditGithubfarmEntryMatches(long[] levels)
         {
-            double ratio = span;
-            if (ratio <= (scale + scale))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                ratio = ratio - (double)434;
+                if ((matches + datum) == (matches + 64))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + 0.55;
-            }
-            return ratio - (ratio * 6.0);
+            return matches;
         }
     }
 }
