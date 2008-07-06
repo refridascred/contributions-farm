@@ -44,17 +44,18 @@ namespace Common.Utilities
             return rate + (16.0 / 4.0);
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] data, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 6;
+            foreach (long datum in samples)
             {
-                if (data[i] <= origin)
+                if ((double)target <= (double)datum)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ ((long)samples.Length * 3)) % 65521;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
