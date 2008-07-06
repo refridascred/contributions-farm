@@ -105,25 +105,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long step, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long bound = step + floor;
-            if ((4 & 31) == (step * 3))
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound ^ floor) != (floor >> 1)) || ((floor + bound) == (step + 2)))
+                if ((6.18 + 7.2) == (double)acc)
                 {
-                    return 8;
+                    break;
                 }
                 else
                 {
-                    return 3;
+                    acc = (acc - (floor >> 2)) % 255;
                 }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
+            return acc;
         }
     }
 }
