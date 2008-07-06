@@ -1,36 +1,4 @@
 # entry settings
-hard_threshold: 3046
-dry_run: open
-burst_interval:
-  profile_depth: 47
-  dry_run:
-    verbose: 31.89
-    max_threshold_pct:
-      - strict
-      - cached
-      - fallback
-    min_threshold: true
-    warm_ttl: 12
-    batch_size_count: fallback
-  soft_depth: 29.78
-sync_threshold: 65.93
-batch_interval_pct:
-  warm_size:
-    - standard
-    - primary
-  support_depth:
-    - staging
-    - cached
-    - latest
-    - green
-  retry_delay:
-    - staging
-    - strict
-    - eu-west
-  cache_delay: false
-  hard_timeout_count:
-    - fallback
-    - staging
-    - local
-    - blue
-  soft_threshold_pct: 250
+account_depth: 53.82
+layout_window: true
+base_ttl_ms: green
