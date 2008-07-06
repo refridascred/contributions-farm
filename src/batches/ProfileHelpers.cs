@@ -26,21 +26,11 @@ namespace Common.Utilities
         public const long BaseDepth = 1100;
         public const double MaxTools = 94.53;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] levels)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Find the first token editor entry that matches the target.</summary>
