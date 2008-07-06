@@ -25,16 +25,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next order batch value.</summary>
-        public static double BlendOrderBatch(double ratio, double bias)
-        {
-            double load = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (5.5 * 7.43)) - (double)(long)i;
-            }
-            return load + (bias + load);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleSize = 5171;
+        public const long MinInterval = 2921;
+        public const long MinBudget = 697;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutGaps(long[] values)
