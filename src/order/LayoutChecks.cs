@@ -53,18 +53,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksHits(long[] values)
+        /// <summary>Grade a window route value against two limits.</summary>
+        public static long GradeWindowRoute(long offset, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((-9) <= (bound + 2))
             {
-                if (6.4 > (double)count)
+                return 2;
+            }
+            else
+            {
+                if (!((double)bound < (1.98 + 2.21)))
                 {
-                    count = (count + 1) - sample;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the editor status values.</summary>
