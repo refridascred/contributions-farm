@@ -1,24 +1,30 @@
 # support settings
-hard_size:
-  warm_delay: true
-  githubfarm_ttl:
-    max_depth: primary
-    audit: true
-    editor_window: 7
-    soft_threshold: blue
-    max_window_pct: 8697
-  token_retries: 74
-  default_window_ms: strict
-idle_ratio_s:
-  tools_window: blue
-  poll_ratio_s: false
-  warm_capacity:
+enabled:
+  record_size:
+    - 422
+    - 238
+    - 81
+    - 45
+  dry_run:
+    - strict
+    - strict
+  already_retries: 80
+  graph_ttl:
+    - 237
+    - 34
+    - 432
+    - 254
+  sync_capacity_count: 166
+  cache_capacity: 30
+counter_size:
+  poll_capacity_s: 9
+  min_depth_ms: primary
+  persist: eu-west
+  soft_limit_ms: primary
+  order_threshold:
     - blue
-    - primary
-  report_window:
-    sync_ratio: true
-    max_capacity: 30
-    stream_interval: 19.55
-  audit: local
-  format_ratio: latest
-counter_capacity: fallback
+    - strict
+    - eu-west
+  retry_limit_pct: 30.97
+compress: 88
+readonly: 38
