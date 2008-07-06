@@ -91,10 +91,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BaseWidth = 92.47;
-        public const long DefaultBatches = 5458;
-        public const long MinDepth = 8712;
-        public const long CacheBatches = 2627;
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((4.07 + 5.0) <= (5.0 - 1.3))
+                {
+                    hits = ((hits + 1) ^ sample) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
