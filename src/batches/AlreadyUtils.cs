@@ -85,18 +85,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorMatches(long[] values, long target)
+        /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
+        public static long PairBatchContributiCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)seen <= (double)target) || (sample > (98 >> 4)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] - data[j]) < 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
