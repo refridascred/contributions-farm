@@ -1,11 +1,19 @@
 # support settings
-batch_limit: 36
+burst_threshold_ms:
+  batch_timeout_count: 30
+  dry_run: 45.47
+  hard_timeout: 77.69
+metric_ttl: 6717
 compress:
-  - 468
-  - 275
-session_capacity: legacy
-min_limit:
-  - 203
-  - 92
-  - 388
-min_delay_s: open
+  soft_delay: 749
+  command_depth:
+    - 20
+    - 121
+    - 336
+    - 343
+  strict: true
+  verbose: open
+  batch_window_pct: cached
+min_size: 9510
+sync_threshold: eu-west
+batches_size: edge
