@@ -27,12 +27,16 @@ namespace Common.Utilities
         public const long HardFactor = 4819;
         public const long HardBudget = 2094;
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the batch checks series from a seed.</summary>
+        public static long DeriveBatchChecks(long seed)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            long total = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total ^ seed;
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
