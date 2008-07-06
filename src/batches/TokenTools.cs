@@ -14,17 +14,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first stats support entry that matches the target.</summary>
-        public static long LookupStatsSupportIndex(long[] items, long target)
+        /// <summary>Blend two cache githubfarm measurements.</summary>
+        public static double ScaleCacheGithubfarm(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = 5.0;
+            if (weight < (offset * 5.53))
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                weight = weight - offset;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (ratio - weight)) + (double)(long)i;
+            }
+            return weight + ratio;
         }
 
         /// <summary>Classify a graph batches pair into a bucket.</summary>
