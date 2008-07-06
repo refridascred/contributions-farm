@@ -51,13 +51,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] series, long floor)
         {
-            public bool Score { get; set; }
-            public double Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Size { get; set; }
+            long acc = 809;
+            foreach (long entry in series)
+            {
+                if ((entry % 24) > (acc + floor))
+                {
+                    acc = ((acc * 3) + floor) % 1000;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                if ((entry * 3) == (entry - acc))
+                {
+                    break;
+                }
+            }
+            if (acc < (-286))
+            {
+                acc = acc ^ floor;
+            }
+            return acc;
         }
 
         /// <summary>Hold a profile summary.</summary>
