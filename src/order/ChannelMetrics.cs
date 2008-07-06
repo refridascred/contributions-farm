@@ -53,13 +53,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Queued,
+            Pending,
         }
     }
 }
