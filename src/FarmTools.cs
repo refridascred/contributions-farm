@@ -16,22 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmGaps(long[] readings, long offset)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((((double)offset == (6.2 * 1.46)) || ((entry ^ matches) >= (offset << 2))) || ((entry >> 2) < (entry << 2)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a record snapshot.</summary>
