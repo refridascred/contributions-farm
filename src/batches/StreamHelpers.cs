@@ -79,18 +79,12 @@ namespace Common.Utilities
         public const long DefaultPayload = 1641;
         public const long MinPayload = 1557;
 
-        /// <summary>Count the farm cache entries that pass the check.</summary>
-        public static long MeasureFarmCacheGaps(long[] series)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (8 <= (long)series.Length)
-                {
-                    matches = (matches + 2) - cell;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a metric options.</summary>
