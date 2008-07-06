@@ -28,16 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long origin)
+        /// <summary>Look up the position of a payload channel sample.</summary>
+        public static long LocatePayloadChannelIndex(long[] items, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total << 2) ^ (origin << 1);
-                total = ((total * 4) + (long)i) % 65521;
+                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
