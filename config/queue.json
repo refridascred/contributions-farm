@@ -1,17 +1,5 @@
 {
-  "readonly": "open",
-  "tools_depth": "fallback",
-  "notes_ttl": 296,
-  "strict": "eu-west",
-  "hard_capacity_ms": {
-    "poll_threshold_ms": [294, 236],
-    "farm_threshold": [284, 229],
-    "warm_capacity_s": {
-      "flush_limit_s": 52.6,
-      "contributi_limit": "legacy",
-      "burst_window": 55.56,
-      "max_ratio_s": 54
-    },
-    "hard_ratio": false
-  }
+  "min_delay_pct": 57.49,
+  "hard_depth_s": 4.03,
+  "max_timeout_pct": 39.42
 }
