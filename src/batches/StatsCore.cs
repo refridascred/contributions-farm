@@ -75,19 +75,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long state = -11;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = (state ^ (state ^ datum)) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (state < 18)
-            {
-                state = ((state * 3) + (state * 4)) % 101;
-            }
-            return state % 1000;
+            return seen;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
