@@ -63,21 +63,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 66;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score ^ (target & 127)) % 101;
+                score = ((score * 5) + (item & 127)) % 101;
             }
-            return seen;
+            return score % 4096;
         }
     }
 }
