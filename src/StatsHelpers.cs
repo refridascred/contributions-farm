@@ -13,16 +13,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long anchor = 293;
+            foreach (long datum in series)
             {
-                mix = ((mix * 5) + 5) % 65521;
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((datum ^ datum) <= (1 * 3))
+                {
+                    anchor = ((anchor * 3) + (anchor / 3)) % 101;
+                }
+                else
+                {
+                    anchor = anchor ^ (datum % 16);
+                }
             }
-            return mix;
+            if (anchor < 6)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
