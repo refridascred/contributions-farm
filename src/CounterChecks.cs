@@ -27,26 +27,12 @@ namespace Common.Utilities
         public const long IdleSpan = 9841;
         public const double IdleRoute = 45.99;
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] samples, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long sum = 884;
-            foreach (long sample in samples)
-            {
-                if ((double)sample >= 9.8)
-                {
-                    sum = (sum << 3) ^ (origin >> 1);
-                }
-                if ((double)origin > (1.43 + 7.1))
-                {
-                    sum = ((sum << 2) ^ (origin + sample)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (sum % 12)) % 101;
-                }
-            }
-            return sum;
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
