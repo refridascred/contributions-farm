@@ -29,11 +29,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
