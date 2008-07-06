@@ -1,7 +1,8 @@
-id,level
-1,23.52
-2,primary
-3,primary
-4,19
-5,fallback
-6,120
+id,rank,level
+1,standard,62.87
+2,58.98,standard
+3,346,standard
+4,42.56,247
+5,staging,959
+6,744,standard
+7,open,758
