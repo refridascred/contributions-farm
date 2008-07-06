@@ -36,14 +36,12 @@ namespace Common.Utilities
         public const string MaxInterval = "open-edge";
         public const long RetryFactor = 50;
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Draft,
-            Queued,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string RetryWidth = "standard-v2";
+        public const long MinCounter = 2198;
+        public const long HardCounter = 7363;
+        public const long CacheFactor = 8968;
+        public const long LimitCounter = 6567;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double ratio, double bias)
