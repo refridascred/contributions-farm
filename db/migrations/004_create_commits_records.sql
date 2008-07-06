@@ -1,14 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    count INTEGER NOT NULL DEFAULT 0,
-    rank INTEGER,
-    weight REAL,
-    label TEXT,
-    created_at TIMESTAMP
+    state TEXT NOT NULL DEFAULT 'new',
+    score REAL NOT NULL DEFAULT 0,
+    region TEXT,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_score ON commits_records (score);
 
-INSERT INTO commits_records (count, rank, weight, label) VALUES (92, 56, 13.97, 'open');
-INSERT INTO commits_records (count, rank, weight, label) VALUES (0, 71, 40.99, 'green');
+INSERT INTO commits_records (state, score, region, level) VALUES ('strict', 85.33, 'legacy', 2);
+INSERT INTO commits_records (state, score, region, level) VALUES ('local', 29.55, 'standard', 13);
