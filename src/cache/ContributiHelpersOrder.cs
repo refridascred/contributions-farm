@@ -39,23 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorHits(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (bound <= (7 - bound))
-                {
-                    hits = (hits + 1) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowSpan = 8989;
+        public const long LimitWidth = 2153;
+        public const long WindowLevel = 3206;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
