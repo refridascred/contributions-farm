@@ -1,4 +1,14 @@
 # entry settings
-burst_retries_count: local
-soft_size: 96.33
-layout_delay: 30
+strict: 250
+persist: 22
+hard_limit_count:
+  - blue
+  - blue
+  - standard
+  - local
+warm_delay_pct: 5574
+enabled:
+  - primary
+  - edge
+  - open
+  - green
