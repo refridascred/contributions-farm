@@ -52,19 +52,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Match up tools batches samples.</summary>
+        public static long PairToolsBatchesCount(long[] readings)
         {
-            long score = 753;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 4) + (datum - datum)) % 101;
-                if (datum <= (score << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = ((score * 2) + datum) % 1000;
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
