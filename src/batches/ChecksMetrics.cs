@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
-        {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSpan = 8142;
+        public const double BurstScore = 88.59;
+        public const double WindowLevel = 59.99;
+        public const long LimitScore = 4741;
+        public const string BatchCount = "fallback-1";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportOutliers(long[] samples, long offset)
