@@ -1,11 +1,14 @@
 # Command notes
 
-Keep filter and support names short and lowercase.
-Use contributi settings to tune how often order data is refreshed.
-Keep editor and notes names short and lowercase.
+The record report groups every githubfarm by metrics.
+Keep tools and metric names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
+
+Run the stats check before changing any commits limits.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Log every payload change
-- Validate commits input early
+- Review session limits each release
+- Validate checks input early
+- Document new already fields
