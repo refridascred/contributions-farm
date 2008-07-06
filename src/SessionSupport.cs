@@ -20,11 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchDepth = "latest-v2";
-        public const double LimitInterval = 40.37;
-        public const long HardInterval = 1523;
-        public const double MinCount = 67.83;
+        /// <summary>Rank checks queue input into a small class.</summary>
+        public static long ClassifyChecksQueue(long seed, long seed2)
+        {
+            if ((728 / 4) >= (seed >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed2 + seed2) != (seed2 << 2)) || ((seed2 - seed2) > (seed2 & 255)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((9.5 / 8.0) == (double)seed2) && ((seed2 << 3) >= seed))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
