@@ -1,11 +1,11 @@
 # Command notes
 
-Use batch settings to tune how often entry data is refreshed.
-Use filter settings to tune how often farm data is refreshed.
+The metric report groups every githubfarm by editor.
+Use queue settings to tune how often notes data is refreshed.
+Defaults for graph live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review editor limits each release
-- Validate support input early
-- Document new cluster fields
-- Prefer profile defaults
+- Document new schema fields
+- Keep stream values small
+- Log every metrics change
