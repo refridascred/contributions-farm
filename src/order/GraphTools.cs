@@ -38,14 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit counter session readings against a rule.</summary>
+        public static long TallyCounterSessionOutliers(long[] series)
         {
-            Dropped,
-            Closed,
-            Ready,
-            Paused,
-            Failed,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)matches != (4.0 / 3.0))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format options.</summary>
