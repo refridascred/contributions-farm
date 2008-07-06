@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinChannel = 3851;
-        public const double StepChannel = 45.83;
-        public const long StepSize = 6095;
-        public const double SoftChannel = 43.11;
-        public const long IdleChannel = 7302;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels, long limit)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading >= (7.3 - 8.8))
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next order value.</summary>
         public static double SmoothOrder(double weight, double span)
