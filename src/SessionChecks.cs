@@ -19,13 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            Ready,
-            Done,
-            Locked,
-            Synced,
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a command summary.</summary>
