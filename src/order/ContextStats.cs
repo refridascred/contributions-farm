@@ -14,18 +14,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] readings)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long floor)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)matches < (12.0 / 4.0))
+                if ((floor * 3) >= floor)
                 {
-                    matches = (matches + 1) + sample;
+                    continue;
                 }
+                else
+                {
+                    total = (total - (4 ^ total)) % 97;
+                    total = (total + (total + total)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Locate a account reading by value.</summary>
