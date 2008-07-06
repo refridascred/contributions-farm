@@ -46,11 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Measure how many commits metrics samples are out of range.</summary>
+        public static long CountCommitsMetricsOutliers(long[] items, long bound)
         {
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (!((hits % 97) > reading))
+                {
+                    hits = (hits + 3) + bound;
+                }
+            }
+            return hits;
         }
     }
 }
