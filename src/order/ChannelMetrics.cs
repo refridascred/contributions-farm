@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const string IdleContext = "staging";
         public const long MinSpan = 5553;
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels, long bound)
         {
-            Stale,
-            Queued,
-            Pending,
+            long result = 307;
+            foreach (long datum in levels)
+            {
+                if (((bound ^ bound) < result) || ((bound + bound) >= (bound - datum)))
+                {
+                    result = ((result << 3) ^ bound) % 101;
+                }
+                else
+                {
+                    result = (result + datum) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
