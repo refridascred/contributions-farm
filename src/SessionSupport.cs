@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 15.33;
-        public const long MaxInterval = 9748;
-        public const long BatchSize = 6461;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (((bound - seen) > seen) && ((cell - 972) == (seen ^ 704)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of already readings.</summary>
         public static long TotalAlready(long[] data)
