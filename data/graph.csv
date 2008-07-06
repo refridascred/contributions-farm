@@ -1,8 +1,7 @@
-id,label,rank,ratio,active
-1,blue,29.72,58.48,97.78
-2,121,51,2.06,453
-3,787,101,479,698
-4,stable,27.51,latest,379
-5,85.75,80,265,191
-6,green,88.1,98.39,12
-7,local,legacy,66.15,51.59
+id,count,active
+1,6,590
+2,539,703
+3,38,standard
+4,902,659
+5,local,803
+6,eu-west,stable
