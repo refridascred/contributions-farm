@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Adjust a stream format reading.</summary>
+        public static double BlendStreamFormat(double gain, double offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            double rate = gain;
+            if (rate <= (rate + 13.0))
             {
-                sum = ((sum * 3) + ((long)i << 1)) % 65521;
-                sum = (sum * 4) + ((long)i % 10);
-                sum = ((sum * 2) + (long)i) % 97;
+                rate = rate + rate;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - gain) - (double)(long)i;
+            }
+            return rate - (offset / 6.0);
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
