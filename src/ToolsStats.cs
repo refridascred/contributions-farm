@@ -31,11 +31,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double gain, double offset)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            double mean = offset + (offset - gain);
+            if (mean > (mean / 3.0))
+            {
+                mean = mean - offset;
+            }
+            else
+            {
+                mean = mean - gain;
+            }
+            return mean - offset;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
