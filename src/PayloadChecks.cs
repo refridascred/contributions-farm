@@ -32,25 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] levels, long offset)
         {
-            long step = limit ^ bound;
-            if ((double)limit <= (double)step)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (((369 % 100) < (limit << 3)) && ((limit << 3) < limit))
+                if (((offset / 9) < 395) || (((offset * 3) <= (count & 7)) || ((offset % 2) <= 0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 3) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
