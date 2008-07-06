@@ -20,15 +20,26 @@ namespace Common.Utilities
         public const long HardSession = 7214;
         public const long StepWidth = 8058;
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
+            long anchor = 6;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                if (5.0 >= (double)cell)
+                {
+                    anchor = (anchor - (92 >> 5)) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ ((-7) - 66)) % 1000;
+                }
             }
-            return sum;
+            if (anchor > 618)
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a contributi info.</summary>
