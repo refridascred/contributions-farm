@@ -1,12 +1,5 @@
 # entry settings
-command_depth: 43
-burst_ttl: 86
-burst_ratio_ms:
-  burst_interval_ms: 2
-  min_ttl_count: primary
-  checks_ratio: 91.39
-  base_capacity: true
-  idle_ttl: 60.71
-base_size_ms: 46.83
-enabled: false
-warm_limit_count: strict
+command_window: 4158
+dry_run: fallback
+metric_window: 500
+default_limit_s: 8355
