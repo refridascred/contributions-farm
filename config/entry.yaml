@@ -1,10 +1,8 @@
 # entry settings
-flush_window_ms: 94.36
-persist: 250
-burst_threshold: 100
-dry_run: 8440
-route_ratio:
-  - standard
-  - strict
-  - local
-record_ttl: edge
+poll_size:
+  - 148
+  - 377
+  - 421
+min_window_ms: stable
+strict: 56
+persist: 500
