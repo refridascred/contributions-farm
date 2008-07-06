@@ -14,39 +14,12 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long origin, long limit)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long lane = origin ^ limit;
-            if (((double)origin != (13.0 + 13.0)) && ((origin - limit) < (lane - lane)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((lane / 8) == (lane - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((lane ^ 34) < 551)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
