@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=418
-log "limit is ${RECORD_LIMIT}"
+for item in staging fallback; do
+    log "checking ${item}"
+done
 
-mode="${1:-open}"
+mode="${1:-latest}"
 case "${mode}" in
-    local)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -19,8 +20,5 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+RECORD_LIMIT=425
+log "limit is ${RECORD_LIMIT}"
