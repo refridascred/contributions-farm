@@ -45,12 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "open-1";
-        public const long RetryFilter = 7785;
-        public const long WindowFilter = 4164;
-        public const long IdleFilter = 1907;
-        public const string LimitDepth = "legacy";
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesGaps(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((target % 12) < 94)
+                {
+                    tally = (tally + 3) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] data)
