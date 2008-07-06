@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a payload channel sample.</summary>
-        public static long LocatePayloadChannelIndex(long[] items, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) == 0))
+                if ((series[i] <= limit) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
