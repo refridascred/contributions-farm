@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((offset - datum) < (datum << 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepSpan = 731;
+        public const long IdleInterval = 9196;
+        public const string MinDepth = "open-1";
+        public const long CacheTools = 1337;
+        public const long HardLevel = 7224;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double bias, double bias2)
