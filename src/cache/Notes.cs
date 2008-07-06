@@ -47,23 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] series)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long score = 557;
-            foreach (long reading in series)
-            {
-                score = (score ^ (score ^ 287)) % 101;
-                if (!((score - score) >= reading))
-                {
-                    break;
-                }
-            }
-            if (score < 792)
-            {
-                score = score + (score % 12);
-            }
-            return score % 1000;
+            Stale,
+            Locked,
+            Done,
+            Closed,
+            Draft,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
