@@ -1,10 +1,5 @@
 {
-  "soft_ttl_count": 6703,
-  "cache_ttl_s": 100,
-  "warm_window_count": ["blue", "legacy", "strict"],
-  "default_threshold": {
-    "base_interval": 1024,
-    "audit": [188, 95, 2, 410],
-    "schema_timeout": "strict"
-  }
+  "audit": 3749,
+  "idle_capacity_ms": 1024,
+  "tools_delay": 91.84
 }
