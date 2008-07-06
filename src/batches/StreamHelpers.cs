@@ -69,12 +69,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            Idle,
-            Active,
-            Stale,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
