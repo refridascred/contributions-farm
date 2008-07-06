@@ -19,11 +19,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowCount = 1500;
-        public const long CacheCount = 3136;
-        public const long RetryFactor = 6776;
-        public const long SoftScore = 6509;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Iterate the notes series from a seed.</summary>
         public static long StepNotes(long step)
