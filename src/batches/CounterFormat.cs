@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of route editor entries.</summary>
-        public static long CombineRouteEditor(long[] items, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] values, long floor)
         {
-            long mix = 47;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix + mix) >= limit)
+                if (values[i] <= floor)
                 {
-                    mix = (((mix * 4) + (mix * 5)) % 101) + entry;
+                    return (long)i;
                 }
             }
-            return mix % 65521;
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
