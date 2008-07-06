@@ -55,11 +55,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Rank stream token input into a small class.</summary>
+        public static long BucketStreamToken(long step, long offset)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long step2 = step - offset;
+            if ((double)(-2) < (double)step2)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset & 3) <= (step2 - step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + offset) > (step2 ^ 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
