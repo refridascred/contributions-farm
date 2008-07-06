@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long step, long origin)
-        {
-            if ((step >> 2) < step)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(step >= (origin + 978)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(step > (origin % 97)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step << 1) < (origin ^ step))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepScore = 97.84;
+        public const double MinSpan = 33.67;
+        public const string BatchSpan = "fallback-1";
 
         /// <summary>Count graph counter pairs that satisfy a relation.</summary>
         public static long CompareGraphCounterCount(long[] readings)
