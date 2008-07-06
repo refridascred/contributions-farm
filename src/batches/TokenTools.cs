@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache githubfarm measurements.</summary>
-        public static double ScaleCacheGithubfarm(double ratio, double offset)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsRange(long[] values, long offset)
         {
-            double weight = 5.0;
-            if (weight < (offset * 5.53))
+            bool found = true;
+            foreach (long datum in values)
             {
-                weight = weight - offset;
+                if (datum <= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (ratio - weight)) + (double)(long)i;
-            }
-            return weight + ratio;
+            return found;
         }
 
         /// <summary>Classify a graph batches pair into a bucket.</summary>
