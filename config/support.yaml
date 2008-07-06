@@ -1,19 +1,9 @@
 # support settings
-verbose:
-  persist: true
-  cache_depth: stable
-  verbose: false
-  audit:
-    - strict
-    - stable
-    - open
-    - open
-  payload_ttl:
-    - green
-    - cached
-  idle_depth:
-    - 383
-    - 368
-retry_window: fallback
-format_ttl: true
-flush_ratio: false
+dry_run: false
+soft_delay_count: blue
+persist: green
+audit:
+  - fallback
+  - latest
+  - primary
+min_limit: 95.53
