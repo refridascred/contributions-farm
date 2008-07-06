@@ -51,12 +51,20 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long step)
         {
-            public bool Rank { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            long score = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if (step < (step & 1))
+                {
+                    score = score - (step + score);
+                }
+                score = score + (step ^ (long)i);
+                score = ((score * 2) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
