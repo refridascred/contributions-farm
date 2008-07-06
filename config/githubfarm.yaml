@@ -1,11 +1,35 @@
 # githubfarm settings
-githubfarm_timeout: 19.13
-base_size_s: blue
-notes_limit: strict
+verbose:
+  - open
+  - stable
+  - stable
+  - blue
 compress:
-  payload_depth: 91.19
-  base_capacity_s: 67.61
-  sync_delay_count: 1024
-  default_ttl: 61.95
-  base_threshold_pct: 93.11
-  readonly: 250
+  - 398
+  - 267
+  - 336
+burst_delay_s:
+  dry_run:
+    - 295
+    - 300
+    - 377
+  editor_retries: standard
+  batch_ttl: 1024
+  default_threshold_ms: blue
+  base_size_pct:
+    compress: 16
+    default_retries:
+      - legacy
+      - green
+      - stable
+      - local
+    hard_retries_s:
+      - 198
+      - 414
+      - 244
+      - 196
+    strict:
+      - standard
+      - local
+    schema_capacity: 9088
+hard_delay: green
