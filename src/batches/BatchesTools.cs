@@ -10,31 +10,21 @@ namespace Common.Utilities
         public const string CacheBudget = "staging-v2";
         public const long BaseLayout = 959;
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long bound, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] data)
         {
-            if ((0.41 / 9.0) >= (double)bound)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound + 904) <= limit) || ((bound ^ bound) <= (limit + 0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (limit >= 64)
+                    if ((data[i] ^ data[j]) > 17)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
