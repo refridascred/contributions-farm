@@ -67,12 +67,19 @@ namespace Common.Utilities
         public const long WindowSession = 4957;
         public const long LimitFactor = 3619;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] data, long seed)
         {
-            public bool Count { get; set; }
-            public bool Size { get; set; }
-            public double Total { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
