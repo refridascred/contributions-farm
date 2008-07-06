@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long target)
         {
-            Draft,
-            New,
-            Locked,
-            Failed,
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc << 3) ^ ((long)i2 * 3)) % 4096;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
