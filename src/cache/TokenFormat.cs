@@ -10,35 +10,28 @@ namespace Common.Utilities
         public const long BaseBudget = 75;
         public const long HardCluster = 104;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long target, long floor)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long limit, long limit2)
         {
-            if ((5.47 - 16.0) == (double)target)
+            if ((limit2 << 1) < 99)
             {
-                return 2;
+                return 0;
             }
             else
             {
-                if ((double)target <= 6.6)
+                if ((1 - limit2) > (limit2 - (-9)))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (target <= (target - 14))
+                    if ((limit - limit) >= (810 % 8))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        if (!((target - target) >= floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 4;
                     }
                 }
             }
