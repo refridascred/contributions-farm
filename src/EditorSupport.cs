@@ -63,19 +63,16 @@ namespace Common.Utilities
             return (ratio - (double)37) + bias2;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] data, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items, long floor)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long sum = 3;
+            foreach (long reading in items)
             {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
+                sum = ((sum + (reading - sum)) % 97) + floor;
+                sum = (sum + (sum << 3)) % 1000;
             }
-            return found;
+            return sum % 4096;
         }
     }
 }
