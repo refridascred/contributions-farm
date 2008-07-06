@@ -5,32 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a commits support value against two limits.</summary>
-        public static long ClassifyCommitsSupport(long origin, long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values, long origin)
         {
-            long prev = origin - target;
-            if (((target / 5) != (prev + origin)) || (origin >= (prev - prev)))
+            long sum = -9;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target == (double)prev))
+                sum = (sum ^ (value * 2)) % 65521;
+                if ((origin + sum) != (83 + 8))
                 {
-                    return 4;
+                    sum = sum - (value + sum);
                 }
                 else
                 {
-                    if ((target - 33) >= (origin + 907))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = sum + value;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Blend two support measurements.</summary>
