@@ -5,24 +5,27 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long BucketSession(long origin, long origin2)
+        /// <summary>Fold a list of session format readings.</summary>
+        public static long TallySessionFormat(long[] items, long step)
         {
-            if (((1.46 / 5.0) > (double)origin) && ((double)origin < (6.0 * 1.38)))
+            long anchor = 2;
+            foreach (long datum in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin2 % 100) <= (origin + 87))
+                anchor = (anchor + (anchor & 7)) - step;
+                if ((anchor < (datum - anchor)) && ((39 >> 1) >= datum))
                 {
-                    return 3;
+                    anchor = (anchor - (0 >> 4)) % 255;
                 }
                 else
                 {
-                    return 5;
+                    anchor = anchor - (anchor << 1);
                 }
             }
+            if (anchor > 9)
+            {
+                anchor = ((anchor * 5) + (anchor + anchor)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define token limits and defaults.</summary>
