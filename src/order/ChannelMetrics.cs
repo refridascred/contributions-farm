@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a entry counter counter forward.</summary>
-        public static long IterateEntryCounter(long step)
+        /// <summary>Match up commits queue samples.</summary>
+        public static long PairCommitsQueueCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 2) + (acc - 92)) % 101;
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
