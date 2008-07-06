@@ -1,5 +1,8 @@
 {
-  "payload_ratio": [71, 26],
-  "batch_window": ["eu-west", "cached"],
-  "default_retries": 42.27
+  "sync_interval": 57.16,
+  "readonly": 76.38,
+  "max_timeout": ["legacy", "open", "strict"],
+  "max_depth_ms": 3,
+  "retry_retries_s": true,
+  "payload_size": [468, 52, 176]
 }
