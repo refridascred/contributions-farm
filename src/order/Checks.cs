@@ -31,14 +31,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Closed,
-            Locked,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinBudget = 74.81;
+        public const string MinScore = "local-1";
+        public const double MaxStats = 21.25;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long WeighGraph(long[] series, long origin)
