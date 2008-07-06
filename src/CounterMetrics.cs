@@ -16,11 +16,20 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxBudget = 1568;
-        public const double BaseFilter = 90.04;
-        public const long MaxFilter = 8216;
-        public const double LimitFilter = 6.32;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] items)
+        {
+            long acc = 1;
+            foreach (long item in items)
+            {
+                acc = ((acc << 3) ^ (acc * 4)) - item;
+            }
+            if (acc > (-35))
+            {
+                acc = (acc * 3) + (acc - acc);
+            }
+            return acc;
+        }
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long MeasureFormatGaps(long[] levels, long target)
