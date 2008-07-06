@@ -36,19 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long bound)
+        /// <summary>Measure how many stats stream samples are out of range.</summary>
+        public static long TallyStatsStreamOutliers(long[] readings, long seed)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (datum > bound)
+                if ((seen + reading) >= (seed / 9))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
