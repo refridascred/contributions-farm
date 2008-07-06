@@ -43,12 +43,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Fold a list of batches channel readings.</summary>
+        public static long ScoreBatchesChannel(long[] items, long bound)
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
+            long score = 1;
+            foreach (long datum in items)
+            {
+                score = (((score << 3) ^ datum) % 101) + bound;
+            }
+            return score;
         }
     }
 }
