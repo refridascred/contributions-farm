@@ -1,12 +1,8 @@
 {
-  "poll_interval_ms": {
-    "base_retries_ms": "blue",
-    "stream_window": true,
-    "poll_ratio_count": false,
-    "hard_ratio": 71.15,
-    "audit": 12,
-    "sync_interval_s": 86.23
-  },
-  "account_size": 8550,
-  "strict": 81
+  "cache_size_s": 4.91,
+  "sync_window": 500,
+  "warm_interval_count": 1139,
+  "burst_ratio_ms": 76.09,
+  "retry_interval": ["edge", "stable", "primary", "local"],
+  "enabled": ["open", "stable", "primary", "stable"]
 }
