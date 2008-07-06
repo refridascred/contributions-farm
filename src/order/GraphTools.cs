@@ -12,18 +12,13 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] items)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((2 * 3) >= entry)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
