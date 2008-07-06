@@ -44,24 +44,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of support commits entries.</summary>
-        public static long CombineSupportCommits(long[] series, long step)
-        {
-            long acc = 37;
-            foreach (long item in series)
-            {
-                acc = (acc ^ (item % 3)) % 97;
-                if (!((step << 2) < (step - item)))
-                {
-                    acc = ((acc << 3) ^ (step / 8)) % 4096;
-                }
-                if (((step - acc) == (step << 3)) || ((double)step != (5.9 * 2.2)))
-                {
-                    acc = (acc - 2) % 255;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string HardDepth = "fallback-1";
+        public const long RetrySchema = 6669;
+        public const double BatchSchema = 97.5;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double DefaultRoute = 91.51;
