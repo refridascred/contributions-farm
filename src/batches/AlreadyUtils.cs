@@ -21,13 +21,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long bound)
         {
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long datum in samples)
+            {
+                if (datum > bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the support level values.</summary>
