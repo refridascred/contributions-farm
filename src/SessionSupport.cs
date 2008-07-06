@@ -24,38 +24,24 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long SortReport(long offset, long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            if ((target & 1) == (target ^ target))
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((((-7) * 5) == (target + target)) || ((double)target >= (3.2 - 6.0)))
+                if ((offset - score) != ((long)i + offset))
                 {
-                    return 3;
+                    score = score - 69;
                 }
-                else
+                if ((long)i < (offset % 60))
                 {
-                    if (!(target >= (offset / 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)offset < (7.0 + 15.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    score = ((score * 2) + (offset >> 1)) % 255;
+                    break;
                 }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
