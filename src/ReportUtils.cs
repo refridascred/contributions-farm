@@ -22,11 +22,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double scale, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] readings, long floor)
         {
-            double mean = scale;
-            return (mean + (double)5) + offset;
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((9 + floor) < (5 + 0))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
