@@ -58,9 +58,17 @@ namespace Common.Utilities
         public const long DefaultWindow = 2224;
         public const double BaseWidth = 89.49;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchInterval = 8166;
-        public const long DefaultBudget = 3089;
-        public const long BatchMetrics = 1278;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
