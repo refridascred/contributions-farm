@@ -55,20 +55,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((2 - total) <= offset)
-                {
-                    total = (total + (long)i) % 101;
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheBudget = 943;
+        public const double StepLevel = 13.72;
+        public const double RetryCount = 1.22;
+        public const string LimitQueue = "local-1";
+        public const long BurstScore = 7152;
     }
 }
