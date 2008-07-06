@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Match up command samples.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            Paused,
-            Locked,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
