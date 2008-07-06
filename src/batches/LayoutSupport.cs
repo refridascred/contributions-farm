@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values, long bound)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long target)
         {
-            long result = 399;
-            foreach (long sample in values)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (result <= (36 + sample))
-                {
-                    result = ((result - (result >> 4)) % 1000) - bound;
-                }
+                mark = (mark - (mark + 5)) % 101;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            if (result < 7)
-            {
-                result = result ^ result;
-            }
-            return result % 4096;
+            return mark;
         }
 
         /// <summary>Describe the batches state values.</summary>
