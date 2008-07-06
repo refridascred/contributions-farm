@@ -1,5 +1,19 @@
 # githubfarm settings
-base_timeout_count: 2243
-strict: 100
-buffer_timeout: true
-default_ratio_count: legacy
+hard_size: stable
+base_size: false
+hard_threshold_pct: legacy
+readonly: false
+soft_size: staging
+queue_delay:
+  base_threshold_count: primary
+  max_limit: legacy
+  buffer_size: 94
+  hard_window_s: 64
+  notes_timeout:
+    - strict
+    - strict
+    - cached
+  warm_timeout_pct:
+    poll_timeout_count: cached
+    warm_limit: true
+    strict: 5405
