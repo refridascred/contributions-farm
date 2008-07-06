@@ -59,10 +59,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 7848;
-        public const long HardCluster = 1000;
-        public const string SoftLevel = "latest-v2";
-        public const long CacheCluster = 3302;
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public double Offset { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
