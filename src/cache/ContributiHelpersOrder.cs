@@ -5,38 +5,27 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] items, long floor)
         {
-            if ((14.0 * 7.1) <= (double)bound)
+            long sum = 91;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) < target)
+                long next = item + 6;
+                if (!((double)next < (8.0 * 16.0)))
                 {
-                    return 2;
+                    next = (((next * 5) + (next + sum)) % 4096) - floor;
                 }
-                else
+                if ((double)sum <= 2.9)
                 {
-                    if (bound >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(((-762) * 3) == (bound + bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (sum - (sum + sum)) % 4096;
                 }
             }
+            if (sum > 6)
+            {
+                sum = (sum + (sum & 7)) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit graph checks readings against a rule.</summary>
