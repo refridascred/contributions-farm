@@ -44,11 +44,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseTimeout = "cached-v2";
-        public const long RetrySize = 6933;
-        public const long DefaultWindow = 2224;
-        public const double BaseWidth = 89.49;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public bool Score { get; set; }
+            public double Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BaseRatio = 6170;
