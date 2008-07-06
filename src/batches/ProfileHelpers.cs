@@ -29,29 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long seed)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenGaps(long[] samples)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                state = (state ^ (seed >> 2)) % 255;
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!!(6 < cell))
                 {
-                    state = ((state << 2) ^ (4 & 7)) ^ (long)i2;
+                    count = count + 2;
                 }
-                if ((seed % 3) != ((long)i / 6))
-                {
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ state) % 1000;
-                    state = ((state * 5) + (seed + seed)) % 4096;
-                }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Derive the next metric contributi value from a seed.</summary>
