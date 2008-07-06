@@ -57,17 +57,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LocateCommitsIndex(long[] readings, long floor)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long floor, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target + 169) < (target << 2))
             {
-                if (readings[i] < floor)
+                return 8;
+            }
+            else
+            {
+                if ((target / 5) < (floor / 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((1.1 * 2.0) < (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)target <= (double)floor) || ((double)target >= (8.0 + 1.7)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
