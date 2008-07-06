@@ -64,13 +64,9 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Pending,
-            Failed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinLevel = 3525;
+        public const double BurstNotes = 63.12;
+        public const string LimitRatio = "local-edge";
     }
 }
