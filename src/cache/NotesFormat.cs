@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window farm readings.</summary>
-        public static long CombineWindowFarm(long[] items)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] readings, long seed)
         {
-            long anchor = 8;
-            foreach (long datum in items)
+            long anchor = 51;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor * 2) + datum) % 97;
-                if (datum <= (anchor + datum))
+                if (((-4) + anchor) >= (anchor / 5))
                 {
-                    anchor = anchor - (39 + datum);
+                    anchor = (anchor - (anchor >> 4)) % 97;
+                }
+                else
+                {
+                    anchor = ((anchor * 2) + (datum - anchor)) % 4096;
                 }
             }
-            return anchor;
+            if (anchor > 458)
+            {
+                anchor = ((anchor << 2) ^ (seed << 3)) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
