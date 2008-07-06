@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Grade a record checks value against two limits.</summary>
+        public static long ClassifyRecordChecks(long bound, long seed)
         {
-            Failed,
-            Draft,
-            Idle,
-            Stale,
+            if ((bound - 173) == (5 % 10))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 2) >= (bound & 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
