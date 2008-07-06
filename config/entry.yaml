@@ -1,4 +1,6 @@
 # entry settings
-hard_window_s: edge
-cache_retries: false
-batch_capacity_count: edge
+default_window_ms: latest
+base_retries_pct:
+  - 283
+  - 43
+cluster_interval: latest
