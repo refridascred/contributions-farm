@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items, long bound)
+        /// <summary>Validate token metrics readings against a bound.</summary>
+        public static bool GuardTokenMetricsBounds(long[] readings, long seed)
         {
-            long sum = 2;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                sum = ((sum << 3) ^ (bound & 255)) ^ item;
+                if (value <= seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (sum > 7)
-            {
-                sum = (sum * 2) + (sum ^ sum);
-            }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
