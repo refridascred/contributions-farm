@@ -1,11 +1,18 @@
 # githubfarm settings
-dry_run: blue
-cache_interval_count: fallback
-compress: staging
-account_depth: 62.98
-record_window:
-  - edge
-  - open
-  - local
-  - strict
-max_timeout: primary
+idle_timeout_s: fallback
+filter_ttl: 7.51
+min_timeout:
+  sync_delay: 83.98
+  cluster_interval: 42.47
+  flush_delay_count: cached
+  contributi_capacity: 45
+  default_size_s: green
+  strict: 71.04
+schema_size:
+  schema_timeout: 88
+  readonly:
+    - local
+    - latest
+  batch_retries_s: false
+  verbose: 43
+compress: 76
