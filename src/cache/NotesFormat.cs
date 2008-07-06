@@ -40,17 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheSpan = 2306;
+        public const long IdleChecks = 3975;
+        public const string RetryTimeout = "latest-edge";
+        public const long LimitSize = 5581;
+        public const double RetryChecks = 48.89;
     }
 }
