@@ -27,19 +27,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long score = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = ((score << 3) ^ score) % 97;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return ready;
+            return score;
         }
     }
 }
