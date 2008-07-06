@@ -1,6 +1,6 @@
 {
-  "cache_size": 4292,
-  "dry_run": 60,
-  "sync_window_s": "standard",
-  "persist": 3239
+  "soft_retries_ms": "eu-west",
+  "enabled": 17.2,
+  "batch_threshold": 22,
+  "hard_ttl_ms": 79.92
 }
