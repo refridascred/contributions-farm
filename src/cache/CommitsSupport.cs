@@ -37,20 +37,11 @@ namespace Common.Utilities
         public const long RetrySchema = 6669;
         public const double BatchSchema = 97.5;
 
-        /// <summary>Digest a series of batches editor entries.</summary>
-        public static long WeighBatchesEditor(long[] series, long target)
-        {
-            long result = 87;
-            foreach (long entry in series)
-            {
-                result = (result + (result % 16)) % 101;
-                if ((result - 460) <= target)
-                {
-                    result = ((result * 4) + (result - entry)) % 65521;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double IdleSpan = 96.79;
+        public const string MinSchema = "staging-1";
+        public const double StepScore = 97.71;
+        public const long HardSchema = 109;
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
         public static long MeasureEntryFilterOutliers(long[] data, long target)
