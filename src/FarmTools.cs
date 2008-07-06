@@ -34,18 +34,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit metric checks readings against a rule.</summary>
-        public static long MeasureMetricChecksGaps(long[] readings, long floor)
+        /// <summary>Look up the position of a editor window sample.</summary>
+        public static long LocateEditorWindowIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1.1 - 5.69) > (double)floor)
+                if (data[i] > limit)
                 {
-                    tally = (tally + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
