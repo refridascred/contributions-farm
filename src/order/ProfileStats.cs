@@ -27,12 +27,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] items, long offset)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
