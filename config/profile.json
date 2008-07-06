@@ -1,10 +1,12 @@
 {
-  "checks_capacity": "fallback",
-  "compress": "open",
-  "profile_retries": {
-    "audit": "green",
-    "strict": "green",
-    "base_timeout_pct": ["local", "open", "green"]
+  "route_limit": 25.96,
+  "base_interval_pct": [185, 189],
+  "command_retries": {
+    "readonly": 58,
+    "hard_retries": false,
+    "default_capacity": 66.26
   },
-  "batch_threshold": "open"
+  "sync_limit_pct": "primary",
+  "flush_retries": "cached",
+  "base_window_pct": 838
 }
