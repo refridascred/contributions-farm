@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] items)
         {
-            Idle,
-            Pending,
-            Draft,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (tally <= (tally << 2))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a route counter forward.</summary>
