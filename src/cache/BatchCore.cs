@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] levels, long bound)
+        /// <summary>Roll a counter farm counter forward.</summary>
+        public static long RollCounterFarm(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if (levels[i] <= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a batch options.</summary>
