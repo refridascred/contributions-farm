@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] values)
+        /// <summary>Combine format cache values into a single score.</summary>
+        public static long DigestFormatCache(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 8;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)levels.Length << 2) <= (8 >> 5))
                 {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = ((sum + (83 / 2)) + reading) - offset;
                 }
             }
-            return hits;
+            if (sum > (-873))
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
