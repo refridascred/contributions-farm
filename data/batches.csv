@@ -1,6 +1,7 @@
-id,ratio,count,level
-1,staging,primary,cached
-2,19.38,879,stable
-3,415,50.66,15.21
-4,596,561,742
-5,2.27,660,edge
+id,owner,rank
+1,913,28.02
+2,stable,cached
+3,45,468
+4,primary,green
+5,231,60.53
+6,open,39.81
