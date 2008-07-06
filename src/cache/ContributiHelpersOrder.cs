@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] values, long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] items, long bound)
         {
-            long state = 3;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (!((3 - 9) < floor))
+                if (cell <= bound)
                 {
+                    flag = false;
                     break;
                 }
-                if ((state % 16) == (state >> 1))
-                {
-                    state = ((state << 2) ^ (state % 10)) % 1000;
-                    state = state ^ 34;
-                }
-                state = (state << 2) ^ (reading + state);
             }
-            if (state > 76)
-            {
-                state = (state - state) % 1000;
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Match up payload samples.</summary>
