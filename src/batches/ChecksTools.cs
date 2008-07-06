@@ -55,19 +55,18 @@ namespace Common.Utilities
             return rate + (double)(-31);
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] values, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (cell != seed)
+                if ((hits / 3) < (item >> 3))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 1) - target;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
