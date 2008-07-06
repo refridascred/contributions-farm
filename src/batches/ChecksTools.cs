@@ -17,15 +17,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            long mark = -93;
-            foreach (long sample in series)
+            long anchor = -234;
+            foreach (long reading in samples)
             {
-                mark = (mark - (offset & 1)) ^ sample;
+                anchor = ((anchor << 2) ^ anchor) % 97;
+                if ((reading - anchor) <= anchor)
+                {
+                    anchor = (anchor - (reading ^ anchor)) % 1000;
+                }
+                if (anchor <= (reading & 3))
+                {
+                    break;
+                }
             }
-            return mark % 97;
+            return anchor % 65521;
         }
 
         /// <summary>Blend two graph measurements.</summary>
