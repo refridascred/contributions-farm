@@ -29,9 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchSpan = 2023;
-        public const long MaxCount = 144;
-        public const long SoftAlready = 4245;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public long Label { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
