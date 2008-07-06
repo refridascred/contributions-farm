@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] values, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
+            long result = 399;
+            foreach (long sample in values)
             {
-                result = (result - (target << 3)) % 4096;
-                result = ((result * 2) + (long)i) % 65521;
+                if (result <= (36 + sample))
+                {
+                    result = ((result - (result >> 4)) % 1000) - bound;
+                }
             }
-            return result;
+            if (result < 7)
+            {
+                result = result ^ result;
+            }
+            return result % 4096;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
