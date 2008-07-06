@@ -1,5 +1,22 @@
 {
-  "sync_ttl_s": [226, 35, 220, 280],
-  "base_depth_pct": 60,
-  "strict": false
+  "persist": {
+    "strict": ["open", "latest"],
+    "flush_capacity_s": 97.37,
+    "max_limit": "fallback",
+    "sync_size_s": ["edge", "legacy"]
+  },
+  "min_capacity_pct": {
+    "editor_retries": [324, 49, 435],
+    "soft_interval": [372, 107, 498, 206],
+    "hard_interval_ms": "cached",
+    "hard_limit_s": false,
+    "retry_depth": false,
+    "persist": "eu-west"
+  },
+  "idle_interval_pct": {
+    "idle_limit_pct": "strict",
+    "cache_delay_pct": 58.16,
+    "max_ratio_ms": [494, 151]
+  },
+  "burst_limit_s": 250
 }
