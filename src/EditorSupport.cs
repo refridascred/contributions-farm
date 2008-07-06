@@ -45,19 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] data, long bound)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (!(bound > (count - bound)))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepCounter = "open-edge";
+        public const long IdleCounter = 49;
+        public const double MinBudget = 28.86;
+        public const double MinCounter = 55.64;
+        public const double LimitCounter = 34.31;
 
         /// <summary>Describe the command phase values.</summary>
         public enum CommandPhase
