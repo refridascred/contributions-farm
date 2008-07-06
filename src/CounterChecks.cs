@@ -29,18 +29,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] levels, long limit)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)levels.Length ^ entry) <= (count % 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 1) - limit;
+                    if ((series[i] ^ series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
