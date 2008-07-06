@@ -27,16 +27,9 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score << 3) ^ score) % 97;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseCount = 725;
+        public const string CacheSchema = "strict-edge";
+        public const long MaxSchema = 7198;
     }
 }
