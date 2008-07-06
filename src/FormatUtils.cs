@@ -59,25 +59,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long floor, long seed)
         {
-            long acc = 2;
-            foreach (long sample in levels)
+            if ((floor << 3) <= floor)
             {
-                if ((double)offset > (double)acc)
+                return 1;
+            }
+            else
+            {
+                if ((floor / 4) > (945 - seed))
                 {
-                    acc = ((acc * 3) + (offset ^ sample)) % 65521;
-                    acc = acc ^ (sample - sample);
-                    continue;
+                    return 2;
                 }
-                acc = ((acc * 2) + acc) % 65521;
+                else
+                {
+                    if ((floor * 3) <= (floor + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (acc > 40)
-            {
-                acc = ((acc << 2) ^ acc) % 97;
-            }
-            return acc;
         }
     }
 }
