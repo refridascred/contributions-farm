@@ -23,14 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Paused,
-            Active,
-            Dropped,
-            Synced,
-            Idle,
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
