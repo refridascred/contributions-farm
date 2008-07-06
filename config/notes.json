@@ -1,6 +1,7 @@
 {
-  "strict": ["green", "green", "strict"],
-  "burst_ttl_pct": 76.48,
-  "dry_run": 30,
-  "batch_delay_s": 9514
+  "soft_interval_pct": 1024,
+  "cache_interval_count": 6.63,
+  "idle_ratio_count": "blue",
+  "persist": "blue",
+  "readonly": "latest"
 }
