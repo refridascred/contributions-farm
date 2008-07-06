@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksOutliers(long[] samples)
         {
-            Done,
-            Paused,
-            Synced,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (matches < (item >> 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
