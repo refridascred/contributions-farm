@@ -85,17 +85,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first batches stats entry that matches the target.</summary>
-        public static long LookupBatchesStatsIndex(long[] levels, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenHits(long[] items, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                if (!((value & 15) == (value - step)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
