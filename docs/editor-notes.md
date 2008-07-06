@@ -1,12 +1,10 @@
 # Editor notes
 
-Keep entry and githubfarm names short and lowercase.
-The metric helpers are pure functions, so they are safe to call from any thread.
-Run the record check before changing any already limits.
+The filter helpers are pure functions, so they are safe to call from any thread.
+Defaults for stream live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate token input early
-- Keep stats values small
-- Log every editor change
-- Document new token fields
+- Validate filter input early
+- Document new commits fields
+- Log every command change
