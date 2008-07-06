@@ -91,11 +91,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (seen <= (cell + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
