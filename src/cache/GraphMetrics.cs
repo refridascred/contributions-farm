@@ -38,19 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] series, long step)
         {
-            long mix = 969;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (mix + 2)) % 97;
-                if ((reading >> 5) == (mix + reading))
+                if (series[i] == step)
                 {
-                    mix = mix ^ (319 & 1);
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Hold a batches stats.</summary>
