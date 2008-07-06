@@ -63,22 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] values, long step)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long sum = 9;
-            foreach (long cell in values)
-            {
-                if ((double)step > (3.65 - 4.91))
-                {
-                    sum = ((sum << 2) ^ (cell + cell)) % 1000;
-                }
-            }
-            if (sum > 10)
-            {
-                sum = (sum + (step % 60)) % 255;
-            }
-            return sum;
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
