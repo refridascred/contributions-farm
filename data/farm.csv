@@ -1,6 +1,7 @@
-id,rank,active
-1,403,296
-2,333,blue
-3,89,746
-4,943,53.26
-5,74,87.03
+id,level
+1,23.52
+2,primary
+3,primary
+4,19
+5,fallback
+6,120
