@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Derive the next command channel value from a seed.</summary>
+        public static long DeriveCommandChannel(long target)
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                score = (score * 4) + (27 - score);
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of tools cache entries.</summary>
