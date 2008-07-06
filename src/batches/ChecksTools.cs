@@ -17,13 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
-        {
-            Closed,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftSpan = 5201;
+        public const double CacheCount = 47.63;
+        public const double HardNotes = 32.94;
+        public const long DefaultBudget = 7488;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MinInterval = 86.04;
