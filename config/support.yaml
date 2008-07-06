@@ -1,7 +1,4 @@
 # support settings
-notes_timeout: 25.65
-persist: primary
-cache_size: local
-burst_threshold_s:
-  - 151
-  - 415
+dry_run: eu-west
+profile_timeout: 84
+cache_depth: 500
