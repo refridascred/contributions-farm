@@ -22,17 +22,22 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "latest";
         public const long MinGithubfarm = 9350;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] data, long floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 756;
+            foreach (long value in values)
             {
-                if (data[i] <= floor)
+                if ((1.67 + 7.5) > (double)mix)
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + mix) + value;
                 }
             }
-            return -1;
+            if (mix < 3)
+            {
+                mix = (mix * 5) + (mix % 5);
+            }
+            return mix;
         }
     }
 }
