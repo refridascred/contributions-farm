@@ -37,20 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 4495;
+        public const long MaxCount = 2379;
+        public const long BatchWindow = 2764;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
