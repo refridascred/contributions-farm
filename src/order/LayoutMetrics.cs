@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up layout samples.</summary>
-        public static long OverlapLayoutCount(long[] readings)
+        /// <summary>Roll a payload githubfarm counter forward.</summary>
+        public static long SeriesPayloadGithubfarm(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = (result << 2) ^ target;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
