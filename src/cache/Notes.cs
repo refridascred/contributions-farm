@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] values)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if ((double)seen > (3.4 / 6.0))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
+            Dropped,
+            Synced,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
