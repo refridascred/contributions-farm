@@ -29,24 +29,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] data, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long total = 36;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total << 3) ^ entry) % 255;
-                total = ((total * 5) + (-3)) % 4096;
-                if ((total >> 5) >= (entry + offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total * 2) + total) % 255;
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < (-8))
-            {
-                total = ((total << 3) ^ (total + 57)) % 65521;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the filter status values.</summary>
