@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const double HardChannel = 27.24;
         public const double LimitBudget = 53.03;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionGaps(long[] values)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double bias3 = (3.6 - bias2) + (bias * 13.0);
+            if (bias3 <= bias3)
             {
-                if ((1.74 / 6.0) != (double)reading)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias3 = bias3 + (double)(-32);
             }
-            return hits;
+            else
+            {
+                bias3 = bias3 + (double)378;
+            }
+            return bias3 - bias2;
         }
 
         /// <summary>Describe the counter phase values.</summary>
