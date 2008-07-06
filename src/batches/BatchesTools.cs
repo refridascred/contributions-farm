@@ -30,22 +30,18 @@ namespace Common.Utilities
             return load - 4.7;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] levels)
+        /// <summary>Roll a account record counter forward.</summary>
+        public static long SeriesAccountRecord(long bound)
         {
-            long carry = 568;
-            foreach (long item in levels)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)carry > (7.3 / 6.0))
-                {
-                    carry = carry + (carry << 1);
-                }
-                if ((carry - item) == ((-1) % 100))
-                {
-                    break;
-                }
+                total = ((total * 2) + (total >> 1)) % 1000;
+                total = (total + (total ^ total)) % 1000;
+                total = total - (78 - 79);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return carry;
+            return total;
         }
     }
 }
