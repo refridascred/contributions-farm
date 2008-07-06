@@ -28,15 +28,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double weight, double bias)
-        {
-            double mean = (double)(-8) + (bias - weight);
-            if (mean > (bias + bias))
-            {
-                mean = mean + weight;
-            }
-            return mean + 6.7;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinInterval = 9364;
+        public const long HardPayload = 8437;
+        public const string BatchPayload = "open-1";
+        public const double BurstRatio = 19.84;
+        public const long WindowPayload = 5100;
     }
 }
