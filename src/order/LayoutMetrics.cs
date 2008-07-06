@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ScaleSupport(double rate, double span)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] data)
         {
-            double weight = (double)(69 % 3);
-            if (weight >= (weight / 6.0))
+            long mix = 68;
+            foreach (long entry in data)
             {
-                weight = ((weight - (double)601) - rate) - span;
+                if (!((entry - entry) != (entry + mix)))
+                {
+                    mix = (mix << 2) ^ (entry << 1);
+                }
+                else
+                {
+                    mix = (mix - (11 + 603)) % 4096;
+                }
             }
-            else
-            {
-                weight = weight + 5.0;
-            }
-            return weight + weight;
+            return mix;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
