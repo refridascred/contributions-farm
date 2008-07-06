@@ -37,14 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Failed,
-            Paused,
-            Stale,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitSize = 89.16;
+        public const long DefaultQueue = 770;
+        public const long StepCount = 6316;
+        public const long IdleFactor = 3244;
+        public const long CacheInterval = 3106;
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
