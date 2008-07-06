@@ -61,15 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchOutliers(long[] series, long bound)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] readings, long seed)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long datum in readings)
             {
-                if ((((0 + bound) > (bound ^ (long)series.Length)) && ((sample >> 3) < (tally - 562))) || !((1 & 15) < tally))
+                if ((double)tally != (double)seed)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
