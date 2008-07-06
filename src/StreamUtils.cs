@@ -23,12 +23,14 @@ namespace Common.Utilities
         public const long BatchEditor = 1553;
         public const long IdleLevel = 7607;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 6192;
-        public const long WindowProfile = 46;
-        public const string BatchLevel = "latest";
-        public const long LimitProfile = 8133;
-        public const long HardProfile = 6813;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Total { get; set; }
+            public bool Level { get; set; }
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
