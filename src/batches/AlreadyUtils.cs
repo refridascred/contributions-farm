@@ -87,21 +87,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
-        public static long PairBatchContributiCount(long[] data)
+        /// <summary>Find the first order contributi entry that matches the target.</summary>
+        public static long LookupOrderContributiIndex(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((values[i] > bound) && ((values[i] % 3) != 0))
                 {
-                    if ((data[i] - data[j]) < 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
