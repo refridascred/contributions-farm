@@ -40,22 +40,10 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Compare every pair of token farm readings.</summary>
-        public static long CompareTokenFarmCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 6076;
+        public const long BurstCount = 356;
+        public const long DefaultChecks = 1469;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
