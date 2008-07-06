@@ -75,18 +75,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] levels, long limit)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long sum = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(seen >= (limit * 2)))
+                if ((7.9 * 1.6) >= (double)sum)
                 {
-                    seen = (seen + 3) + sample;
+                    sum = ((sum << 3) ^ (step & 1)) % 101;
+                    continue;
                 }
+                long slot = ((long)i + step) + step;
+                if (!((step % 10) >= slot))
+                {
+                    sum = (sum ^ 144) % 4096;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
