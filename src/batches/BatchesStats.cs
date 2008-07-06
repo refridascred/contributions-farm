@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the buffer stats entries that pass the check.</summary>
-        public static long MeasureBufferStatsHits(long[] items, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item / 4) > tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + floor;
+                    if ((series[i] ^ series[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a batches stats.</summary>
