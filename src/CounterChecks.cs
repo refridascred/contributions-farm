@@ -43,18 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] data, long seed)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long floor)
         {
-            long total = 43;
-            foreach (long entry in data)
+            long state = 79;
+            foreach (long sample in levels)
             {
-                if (!((seed << 3) <= (total + entry)))
+                if (((floor + floor) > (state ^ sample)) || ((state + state) > (4 + 0)))
                 {
-                    total = ((total << 3) ^ ((-20) + total)) % 65521;
+                    state = ((state << 2) ^ (sample << 3)) % 255;
+                }
+                if ((state % 8) < (floor + floor))
+                {
+                    break;
                 }
             }
-            return total;
+            return state % 65521;
         }
 
         /// <summary>Check that every record graph entry stays within the limit.</summary>
