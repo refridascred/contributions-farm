@@ -30,14 +30,13 @@ namespace Common.Utilities
         public const long HardGithubfarm = 1465;
         public const double SoftGithubfarm = 92.89;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            Idle,
-            Ready,
-            Draft,
-            Synced,
-            Queued,
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
