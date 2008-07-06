@@ -59,16 +59,10 @@ namespace Common.Utilities
             return (ratio - (double)37) + bias2;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] items, long floor)
-        {
-            long sum = 3;
-            foreach (long reading in items)
-            {
-                sum = ((sum + (reading - sum)) % 97) + floor;
-                sum = (sum + (sum << 3)) % 1000;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 4950;
+        public const string WindowDepth = "legacy-v2";
+        public const long StepPayload = 298;
+        public const long IdleWidth = 3750;
     }
 }
