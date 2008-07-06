@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first route metric entry that matches the target.</summary>
-        public static long FindRouteMetricIndex(long[] readings, long bound)
+        /// <summary>Look up the position of a batches account sample.</summary>
+        public static long FindBatchesAccountIndex(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] >= bound)
+                if (series[i] >= bound)
                 {
                     return (long)i;
                 }
