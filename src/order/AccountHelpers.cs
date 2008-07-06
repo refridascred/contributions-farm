@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] series, long offset)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetryFarm = "stable-1";
+        public const string MaxWidth = "strict-1";
+        public const long BatchSpan = 8413;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
