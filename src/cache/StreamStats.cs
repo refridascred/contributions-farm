@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultCount = "stable";
-        public const double BurstBuffer = 82.55;
-        public const long CacheBuffer = 3160;
-        public const long IdleBuffer = 6474;
-        public const double MaxScore = 1.14;
+        /// <summary>Classify a record filter pair into a bucket.</summary>
+        public static long GradeRecordFilter(long offset, long bound)
+        {
+            long prev = offset ^ bound;
+            if (!((prev / 5) != (728 % 10)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((prev & 63) >= (28 ^ bound)) || ((8.46 + 1.6) > (double)prev))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)prev <= (0.2 / 9.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long SortOrder(long origin, long target)
