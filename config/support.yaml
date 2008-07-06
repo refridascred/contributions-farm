@@ -1,7 +1,8 @@
 # support settings
-base_threshold_count: standard
-min_depth_pct: 100
-enabled: true
-batch_ttl_pct: 100
-layout_retries: staging
-max_depth: legacy
+default_limit_s: cached
+soft_timeout:
+  - green
+  - eu-west
+  - legacy
+stream_interval: open
+burst_size: 32.07
