@@ -13,21 +13,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of counter channel readings.</summary>
-        public static long CompareCounterChannelCount(long[] levels)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 5) + 5) % 65521;
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
