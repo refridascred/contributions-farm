@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = 68;
-            foreach (long datum in levels)
-            {
-                if (((total + datum) <= (3 << 2)) && ((total - total) <= datum))
-                {
-                    total = total + (total >> 5);
-                }
-            }
-            return total;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first stats support entry that matches the target.</summary>
