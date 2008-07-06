@@ -1,11 +1,15 @@
 # Command notes
 
-Run the payload check before changing any filter limits.
-Use githubfarm settings to tune how often notes data is refreshed.
+Keep report and cache names short and lowercase.
+Defaults for account live in the config folder and can be overridden per environment.
+Run the record check before changing any session limits.
+
+Use queue settings to tune how often format data is refreshed.
+The format helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new stats fields
-- Prefer filter defaults
-- Validate entry input early
-- Review support limits each release
+- Keep session values small
+- Review contributi limits each release
+- Prefer entry defaults
+- Document new filter fields
