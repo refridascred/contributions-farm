@@ -48,12 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] data)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (10 >= (item % 64))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up record samples.</summary>
