@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] levels, long bound)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (!(4.79 <= (double)(long)levels.Length))
-                {
-                    count = ((count + 1) + datum) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchSize = 89.22;
+        public const string RetryCount = "cached";
+        public const long BatchEntry = 2345;
+        public const string IdleEntry = "fallback-1";
+        public const long RetrySize = 2831;
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
