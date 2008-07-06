@@ -43,24 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a contributi batch pair into a bucket.</summary>
-        public static long SortContributiBatch(long origin, long origin2)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] values, long bound)
         {
-            if ((double)origin < (6.1 - 1.93))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin <= (18.0 / 5.0))
+                if (values[i] >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a route header.</summary>
