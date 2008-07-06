@@ -62,24 +62,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Iterate the token queue series from a seed.</summary>
-        public static long StepTokenQueue(long step)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                bool ok = ((long)i + mix) >= step;
-                if (ok)
-                {
-                    break;
-                }
-                else
-                {
-                    ok = !ok;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
