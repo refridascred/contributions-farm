@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] items, long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings, long target)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long anchor = -55;
+            foreach (long item in readings)
             {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 2) + (item + item)) + target;
             }
-            return flag;
+            return anchor % 97;
         }
 
         /// <summary>Match up payload samples.</summary>
