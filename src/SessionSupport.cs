@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] data, long floor)
         {
-            long sum = 5;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((value * 2) < sum)
+                if (!((double)cell <= (double)floor))
                 {
-                    sum = (((sum * 4) + (563 ^ sum)) % 65521) - seed;
-                }
-                sum = sum + (sum * 5);
-                if ((sum & 127) <= value)
-                {
-                    sum = ((sum << 3) ^ (value * 2)) % 101;
+                    hits = hits + 1;
                 }
             }
-            return sum % 65521;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
