@@ -2,10 +2,10 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL,
     level INTEGER,
-    weight REAL,
-    score REAL NOT NULL DEFAULT 0
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_ratio ON commits_records (ratio);
+CREATE INDEX IF NOT EXISTS idx_commits_records_created_at ON commits_records (created_at);
+
+INSERT INTO commits_records (state, level) VALUES ('eu-west', 79);
