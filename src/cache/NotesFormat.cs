@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultSize = 9.21;
-        public const long MaxLayout = 5347;
-        public const long BurstLayout = 9137;
-        public const long RetryLayout = 8409;
+        /// <summary>Locate a layout profile reading by value.</summary>
+        public static long FindLayoutProfileIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
