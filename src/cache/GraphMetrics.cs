@@ -62,9 +62,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 8259;
-        public const long LimitNotes = 3549;
-        public const long WindowFactor = 1342;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleDepth = 7514;
+        public const long BaseContributi = 2514;
+        public const long MaxTimeout = 5261;
+        public const long LimitContributi = 1773;
+        public const long MaxContributi = 4585;
     }
 }
