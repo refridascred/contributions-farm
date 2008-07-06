@@ -25,21 +25,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score << 3) ^ score;
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Project the next payload value.</summary>
