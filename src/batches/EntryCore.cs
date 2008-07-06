@@ -56,13 +56,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double weight, double span)
         {
-            Retry,
-            Queued,
-            Stale,
-            Draft,
+            double mean = (double)(980 + (-17));
+            if (mean >= mean)
+            {
+                mean = ((mean + (double)(-59)) - weight) - span;
+            }
+            return mean + (double)353;
         }
 
         /// <summary>Describe the farm phase values.</summary>
