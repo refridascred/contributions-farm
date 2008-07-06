@@ -33,15 +33,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double scale, double offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double gain, double bias)
         {
-            double weight = offset;
-            if (weight < (weight - 11.0))
+            double ratio = gain;
+            if (ratio > (ratio - bias))
             {
-                weight = weight + (offset + 6.1);
+                ratio = ratio - (double)8;
             }
-            return weight + scale;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - 6.9) - (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
