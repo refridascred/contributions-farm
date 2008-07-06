@@ -92,12 +92,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
