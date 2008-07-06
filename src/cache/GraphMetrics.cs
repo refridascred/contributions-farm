@@ -59,26 +59,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of farm graph readings.</summary>
-        public static long WeighFarmGraph(long[] values)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long score = 0;
-            foreach (long value in values)
-            {
-                if (((score / 4) <= (score / 7)) && (value > (value - value)))
-                {
-                    score = (score ^ (value ^ (long)values.Length)) % 65521;
-                }
-                else
-                {
-                    score = (score + (long)values.Length) % 65521;
-                }
-                if (((value / 3) > (score >> 2)) && ((value - value) <= score))
-                {
-                    break;
-                }
-            }
-            return score;
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define record limits and defaults.</summary>
