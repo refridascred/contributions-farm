@@ -22,14 +22,13 @@ namespace Common.Utilities
         public const string RetryToken = "stable-1";
         public const double MinFactor = 29.47;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Retry,
-            Done,
-            Draft,
-            Active,
-            Queued,
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a contributi info.</summary>
