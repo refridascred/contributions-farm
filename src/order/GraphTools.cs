@@ -81,12 +81,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long FindReportIndex(long[] series, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                if (levels[i] == seed)
                 {
                     return (long)i;
                 }
