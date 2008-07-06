@@ -41,11 +41,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BatchDepth = "standard";
+        public const string WindowReport = "open-v2";
+        public const string SoftReport = "open";
+        public const long DefaultReport = 4502;
+        public const long BurstFactor = 6883;
     }
 }
