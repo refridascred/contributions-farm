@@ -31,24 +31,13 @@ namespace Common.Utilities
             return gain + 8.24;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long limit, long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if ((limit - 320) < (floor - limit))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor ^ limit) < (floor + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Paused,
+            Done,
+            Retry,
+            Draft,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
