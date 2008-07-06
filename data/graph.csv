@@ -1,6 +1,9 @@
-id,weight,token,state
-1,stable,667,88.79
-2,321,24.62,2.21
-3,74.65,597,910
-4,staging,eu-west,80
-5,279,46.12,legacy
+id,owner,weight,label
+1,951,28.11,91.52
+2,green,staging,90.89
+3,green,85.83,25.28
+4,27.29,342,stable
+5,primary,strict,86.04
+6,956,715,46.91
+7,local,61.79,primary
+8,standard,694,latest
