@@ -56,19 +56,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double bias, double offset)
+        /// <summary>Digest a series of layout support entries.</summary>
+        public static long TotalLayoutSupport(long[] levels, long step)
         {
-            double scale = bias;
-            if (scale > bias)
+            long mix = 401;
+            foreach (long entry in levels)
             {
-                scale = (scale + (double)547) + offset;
+                if (((double)step >= (15.0 + 17.0)) || ((5.7 - 7.6) < (double)step))
+                {
+                    mix = (mix - entry) % 101;
+                }
+                else
+                {
+                    mix = (mix + (step / 8)) % 101;
+                }
             }
-            else
-            {
-                scale = scale - bias;
-            }
-            return scale + bias;
+            return mix;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
