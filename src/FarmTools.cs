@@ -39,17 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a editor format reading by value.</summary>
-        public static long SeekEditorFormatIndex(long[] series, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
