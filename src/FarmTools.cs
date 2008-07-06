@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] items)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] items)
         {
-            long acc = 38;
-            foreach (long reading in items)
+            long result = 15;
+            foreach (long value in items)
             {
-                acc = (acc - (acc + acc)) % 4096;
-                if ((reading ^ acc) > reading)
+                if ((result ^ value) <= (value * 5))
+                {
+                    result = ((result * 5) + (value * 2)) % 97;
+                }
+                if (8.4 > (double)value)
                 {
                     break;
                 }
             }
-            return acc % 65521;
+            if (result < 12)
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
