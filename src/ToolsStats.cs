@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] samples)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public long Total { get; set; }
+            long score = 353;
+            foreach (long cell in samples)
+            {
+                score = ((score * 3) + ((long)samples.Length + 9)) % 4096;
+                score = (score - (cell * 5)) % 97;
+            }
+            if (score > 40)
+            {
+                score = (score ^ (score * 4)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
