@@ -13,14 +13,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitMetrics = 2014;
+        public const string BaseLevel = "alpha-edge";
+        public const long MinCount = 3066;
+        public const long RetryCount = 4659;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandMatches(long[] readings, long floor)
