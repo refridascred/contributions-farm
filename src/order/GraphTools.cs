@@ -38,21 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support editor series from a seed.</summary>
-        public static long SeriesSupportEditor(long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                double ratio = (1.69 + 5.21) + (2.99 + 7.0);
-                if ((ratio < (double)score) && (ratio >= (ratio * 1.4)))
-                {
-                    score = score - 449;
-                }
-                score = ((score << 3) ^ ((long)i + bound)) % 255;
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            Dropped,
+            Closed,
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the context class values.</summary>
