@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public double Total { get; set; }
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxSize = "local-1";
+        public const double HardCommand = 80.58;
+        public const long BaseInterval = 4107;
+        public const long DefaultDepth = 6356;
+        public const long SoftCommand = 973;
 
         /// <summary>Look up the position of a command metrics sample.</summary>
         public static long LookupCommandMetricsIndex(long[] data, long limit)
