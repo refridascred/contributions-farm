@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double bias)
         {
-            public long Limit { get; set; }
-            public bool Score { get; set; }
+            double gain = (bias + bias) + bias;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain - (double)78) + (double)(long)i) - weight;
+            }
+            return gain + 8.24;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
