@@ -1,26 +1,15 @@
 # support settings
-dry_run: false
-cache_window: edge
-queue_interval: false
-batch_window_ms:
-  strict: edge
-  soft_delay: true
-  default_depth:
-    default_size: 4
-    min_delay: open
-    cache_capacity: staging
-    default_delay_ms: eu-west
-    min_size: strict
-    stats_depth: standard
-  tools_ratio:
-    hard_capacity_s: false
-    compress:
-      - 107
-      - 24
-      - 392
-    poll_interval_ms: 1024
-    entry_ttl:
-      - green
-      - eu-west
-  hard_window: green
-  hard_interval: 6784
+batches_timeout: 250
+default_timeout_ms: 9822
+min_interval_s: 100
+cache_size_pct: green
+readonly:
+  hard_depth_ms: 5176
+  commits_ratio: strict
+  base_retries:
+    - legacy
+    - edge
+    - edge
+    - standard
+  cache_threshold_s: 50.27
+  editor_limit: 9959
