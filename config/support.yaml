@@ -1,9 +1,24 @@
 # support settings
-dry_run: false
-soft_delay_count: blue
-persist: green
-audit:
-  - fallback
-  - latest
-  - primary
-min_limit: 95.53
+hard_size:
+  warm_delay: true
+  githubfarm_ttl:
+    max_depth: primary
+    audit: true
+    editor_window: 7
+    soft_threshold: blue
+    max_window_pct: 8697
+  token_retries: 74
+  default_window_ms: strict
+idle_ratio_s:
+  tools_window: blue
+  poll_ratio_s: false
+  warm_capacity:
+    - blue
+    - primary
+  report_window:
+    sync_ratio: true
+    max_capacity: 30
+    stream_interval: 19.55
+  audit: local
+  format_ratio: latest
+counter_capacity: fallback
