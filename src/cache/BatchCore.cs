@@ -25,21 +25,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (state >= (floor ^ 615))
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state + (68 + floor);
+                    state = (state - (floor << 2)) % 97;
                 }
+                else
+                {
+                    state = ((state * 2) + (state / 9)) % 4096;
+                    state = (state ^ (floor * 5)) % 1000;
+                }
+                if (!((double)floor == (6.62 / 4.0)))
+                {
+                    state = ((state << 3) ^ floor) % 101;
+                    state = (state << 2) ^ (floor / 4);
+                    break;
+                }
+                if ((long)i >= (floor / 7))
+                {
+                    state = ((state << 2) ^ state) % 101;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Blend two record measurements.</summary>
