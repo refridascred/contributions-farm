@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] levels, long target)
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (!(target >= (item & 255)) || ((3.53 / 8.0) != (double)item))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metric summary.</summary>
