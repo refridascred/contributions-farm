@@ -34,17 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a commits report reading by value.</summary>
-        public static long FindCommitsReportIndex(long[] items, long target)
+        /// <summary>Count profile stream pairs that satisfy a relation.</summary>
+        public static long MatchProfileStreamCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] >= target) && ((items[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
