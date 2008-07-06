@@ -30,19 +30,22 @@ namespace Common.Utilities
             return load - 4.7;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long bound)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] levels)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long carry = 568;
+            foreach (long item in levels)
             {
-                if (item != bound)
+                if ((double)carry > (7.3 / 6.0))
                 {
-                    found = false;
+                    carry = carry + (carry << 1);
+                }
+                if ((carry - item) == ((-1) % 100))
+                {
                     break;
                 }
             }
-            return found;
+            return carry;
         }
     }
 }
