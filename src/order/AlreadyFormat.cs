@@ -34,14 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Closed,
-            Active,
-            Locked,
-            Synced,
-            Ready,
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Audit farm notes readings against a rule.</summary>
