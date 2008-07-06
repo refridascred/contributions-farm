@@ -1,7 +1,7 @@
 {
-  "audit": [366, 347, 203, 11],
-  "counter_size": true,
-  "channel_interval": 30,
-  "token_threshold": 4213,
-  "enabled": ["primary", "green", "fallback"]
+  "account_ttl": "open",
+  "base_ttl": "green",
+  "default_timeout_pct": "edge",
+  "min_capacity": 31.37,
+  "record_capacity": 9855
 }
