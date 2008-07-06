@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double bias, double offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples, long offset)
         {
-            double load = bias;
-            if (load > (4.0 * 3.3))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                load = (load + (8.73 / 7.0)) + offset;
+                if ((offset - datum) < (datum << 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                load = load + 4.9;
-            }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Blend two counter measurements.</summary>
