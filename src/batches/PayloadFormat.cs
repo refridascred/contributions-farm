@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] readings)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 4;
-            foreach (long item in readings)
-            {
-                mark = ((mark << 3) ^ (mark % 12)) ^ item;
-            }
-            if (mark > (-1))
-            {
-                mark = mark + ((long)readings.Length / 8);
-            }
-            return mark;
+            Retry,
+            Failed,
+            Active,
+            New,
         }
 
         /// <summary>Adjust a context reading.</summary>
