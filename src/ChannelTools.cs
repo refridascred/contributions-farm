@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Audit record already readings against a rule.</summary>
+        public static long TallyRecordAlreadyMatches(long[] samples, long offset)
         {
-            long mark = 77;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                mark = mark - ((long)series.Length ^ cell);
-                if (!((202 - cell) >= (cell - (long)series.Length)))
+                if ((matches + 699) >= 844)
                 {
-                    mark = (mark * 3) + (long)series.Length;
+                    matches = ((matches + 3) - cell) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mark > 9)
-            {
-                mark = (mark - mark) % 101;
-            }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
