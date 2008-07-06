@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] readings)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((((hits - hits) >= (hits * 4)) || ((3.6 * 17.0) >= (double)hits)) || ((0 + hits) == (entry ^ hits)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
