@@ -40,18 +40,11 @@ namespace Common.Utilities
         public const long CacheGraph = 9258;
         public const long BurstGraph = 5975;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] data)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (!(((54 >> 5) > (cell - cell)) && ((91 % 3) < matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the tools level values.</summary>
