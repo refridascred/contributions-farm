@@ -81,21 +81,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Grade a stream cluster value against two limits.</summary>
+        public static long SortStreamCluster(long origin, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((1.12 / 9.0) < (double)(-73))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin ^ origin) != (floor ^ origin))
                 {
-                    if ((items[i] + items[j]) > 14)
+                    return 7;
+                }
+                else
+                {
+                    if (((floor / 9) >= (floor - floor)) && (origin > (floor - 282)))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the window tools entries that pass the check.</summary>
