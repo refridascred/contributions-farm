@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountMatches(long[] samples, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long anchor = 1;
+            foreach (long entry in values)
             {
-                if ((limit - count) > (limit & 63))
+                if ((entry & 127) == (entry * 2))
                 {
-                    count = (count + 2) + sample;
+                    anchor = anchor - (offset % 12);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (offset + anchor)) % 1000;
                 }
             }
-            return count;
+            if (anchor < 55)
+            {
+                anchor = anchor + (offset & 15);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
