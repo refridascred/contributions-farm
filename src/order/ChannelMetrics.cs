@@ -39,14 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double gain, double floor)
         {
-            Done,
-            Paused,
-            Closed,
-            Failed,
-            New,
+            double bias = (double)(682 / 8);
+            if (bias > (gain * 6.0))
+            {
+                bias = (bias + (double)482) - floor;
+            }
+            else
+            {
+                bias = bias + (6.4 * 18.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (gain - gain)) + (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
