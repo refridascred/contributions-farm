@@ -41,18 +41,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] items)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((((double)reading != (double)4) || (reading < (reading * 5))) || (count < (reading >> 3)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
