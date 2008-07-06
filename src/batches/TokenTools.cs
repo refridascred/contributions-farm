@@ -20,18 +20,20 @@ namespace Common.Utilities
             return weight + (rate + rate);
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] items)
+        /// <summary>Roll a contributi farm counter forward.</summary>
+        public static long SeriesContributiFarm(long seed)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading & 1) < matches)
+                state = (state ^ seed) % 255;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    matches = matches + 1;
+                    state = ((state * 2) + state) - (long)i2;
                 }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
