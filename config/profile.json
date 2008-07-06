@@ -1,5 +1,5 @@
 {
-  "default_ratio": ["strict", "open", "green", "eu-west"],
-  "idle_size_pct": 17,
-  "batch_retries_count": 6883
+  "batch_limit": "standard",
+  "poll_depth": 62.31,
+  "retry_depth_ms": ["local", "open"]
 }
