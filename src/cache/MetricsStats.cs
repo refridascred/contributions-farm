@@ -61,25 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long offset, long seed)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long prev = offset + seed;
-            if ((offset * 2) <= (6 + offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((prev + seed) == (seed + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Active,
+            Idle,
+            Pending,
         }
     }
 }
