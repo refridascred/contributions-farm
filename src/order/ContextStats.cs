@@ -49,13 +49,18 @@ namespace Common.Utilities
             return mean + (span * 2.71);
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit farm githubfarm readings against a rule.</summary>
+        public static long AuditFarmGithubfarmMatches(long[] levels, long step)
         {
-            public double Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (88 > (item % 5))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
     }
 }
