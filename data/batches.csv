@@ -1,7 +1,9 @@
-id,count,region,active
-1,primary,547,56
-2,edge,fallback,972
-3,695,cached,247
-4,local,489,31.96
-5,76.28,26.17,810
-6,149,edge,718
+id,weight,state,score
+1,267,18.16,local
+2,179,cached,staging
+3,standard,strict,latest
+4,51.26,strict,6.46
+5,28.01,local,670
+6,421,86.92,681
+7,352,17.67,latest
+8,blue,89.24,local
