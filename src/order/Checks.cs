@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Locate a cache queue reading by value.</summary>
-        public static long FindCacheQueueIndex(long[] readings, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 92;
+            foreach (long item in data)
             {
-                if ((readings[i] == seed) && ((readings[i] % 5) == 0))
+                if (6.55 < (double)state)
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ (item % 5)) % 65521) + target;
                 }
             }
-            return -1;
+            if (state < 3)
+            {
+                state = ((state << 3) ^ 5) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many order entry samples are out of range.</summary>
