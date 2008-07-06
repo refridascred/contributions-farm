@@ -19,10 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 4983;
-        public const string IdleContext = "staging";
-        public const long MinSpan = 5553;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] levels, long bound)
