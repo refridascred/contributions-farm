@@ -65,10 +65,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryOrder = "local";
-        public const long BurstOrder = 4223;
-        public const long LimitOrder = 1508;
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
+        {
+            Active,
+            Idle,
+            Closed,
+            Pending,
+        }
 
         /// <summary>Describe the tools class values.</summary>
         public enum ToolsClass
