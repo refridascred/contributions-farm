@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] series, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long floor)
         {
-            long total = 986;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                total = ((total - (total & 255)) - value) - offset;
+                if (entry < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total % 97;
+            return stale;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
