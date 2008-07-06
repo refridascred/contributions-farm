@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const long IdleSpan = 9841;
         public const double IdleRoute = 45.99;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public string Count { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Rank { get; set; }
             public long Mode { get; set; }
-            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
