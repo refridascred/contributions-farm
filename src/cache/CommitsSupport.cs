@@ -49,10 +49,19 @@ namespace Common.Utilities
         public const long RetrySchema = 6669;
         public const double BatchSchema = 97.5;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double DefaultRoute = 91.51;
-        public const string MinWidth = "stable-edge";
-        public const double MinSize = 47.79;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] items)
+        {
+            long anchor = 19;
+            foreach (long value in items)
+            {
+                if (((value * 5) > (anchor + anchor)) || ((38 % 60) <= (value / 7)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - 648)) % 4096;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
         public static long MeasureEntryFilterOutliers(long[] data, long target)
