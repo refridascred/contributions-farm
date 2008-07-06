@@ -19,18 +19,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long bound)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmOutliers(long[] series)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                result = ((result * 2) + ((long)i ^ result)) % 4096;
-                result = (result - result) % 97;
-                result = ((result << 3) ^ (long)i) % 65521;
-                result = ((result * 4) + (long)i) % 97;
+                if ((matches ^ item) >= (matches << 1))
+                {
+                    matches = matches + 3;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
