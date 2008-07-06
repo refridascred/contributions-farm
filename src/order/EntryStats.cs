@@ -19,10 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstDepth = 3479;
-        public const long MaxScore = 3796;
-        public const double MaxInterval = 50.06;
+        /// <summary>Locate a layout token reading by value.</summary>
+        public static long FindLayoutTokenIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] items)
