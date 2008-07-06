@@ -53,23 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double gain, double floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double bias = (double)(682 / 8);
-            if (bias > (gain * 6.0))
-            {
-                bias = (bias + (double)482) - floor;
-            }
-            else
-            {
-                bias = bias + (6.4 * 18.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (gain - gain)) + (double)(long)i;
-            }
-            return bias - bias;
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
