@@ -31,18 +31,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] readings, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long seed)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((16.0 * 2.13) <= (double)value)
-                {
-                    tally = (tally + 2) + limit;
-                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the schema mode values.</summary>
