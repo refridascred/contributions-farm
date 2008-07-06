@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Derive the next record already value from a seed.</summary>
-        public static long IterateRecordAlready(long seed)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long score = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score - (seed + 874)) % 97;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a editor summary.</summary>
