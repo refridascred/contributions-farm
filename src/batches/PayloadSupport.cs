@@ -21,11 +21,22 @@ namespace Common.Utilities
             return ((weight + (4.0 / 9.0)) + scale) + span;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long carry = 15;
+            foreach (long value in data)
+            {
+                if (value < (value / 6))
+                {
+                    carry = (carry + (value ^ 5)) % 4096;
+                }
+                else
+                {
+                    carry = (carry + (bound - bound)) % 1000;
+                }
+            }
+            return carry % 65521;
         }
     }
 }
