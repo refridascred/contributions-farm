@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] readings, long limit)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (!!(3 > (value + limit)))
+                if ((double)cell >= (11.0 / 2.0))
                 {
-                    matches = matches + 2;
+                    count = (count + 1) - target;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
