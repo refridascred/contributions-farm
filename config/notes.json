@@ -1,21 +1,6 @@
 {
-  "command_delay": 10,
-  "idle_timeout_s": true,
-  "strict": {
-    "warm_size": {
-      "commits_timeout": 8066,
-      "hard_interval_s": 6887,
-      "route_size": "stable"
-    },
-    "flush_retries": {
-      "record_delay": true,
-      "persist": [331, 30, 483, 473],
-      "schema_window": 26.53,
-      "schema_retries": "fallback"
-    },
-    "batch_retries_ms": [341, 405],
-    "verbose": true,
-    "metric_ratio": "fallback",
-    "warm_retries": 1024
-  }
+  "base_ratio": ["latest", "latest"],
+  "soft_capacity_ms": 12,
+  "dry_run": 57,
+  "burst_limit_s": 60
 }
