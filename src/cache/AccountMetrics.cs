@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double rate, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] items, long seed)
         {
-            double rate2 = rate;
-            if (rate2 < rate2)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = (rate2 + rate) - span;
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return rate2 - (double)60;
+            return -1;
         }
 
         /// <summary>Hold a filter options.</summary>
