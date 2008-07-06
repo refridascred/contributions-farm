@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long step, long offset)
+        /// <summary>Fold a list of report entry readings.</summary>
+        public static long TallyReportEntry(long[] levels)
         {
-            if ((3.2 / 2.0) >= (double)offset)
+            long sum = 6;
+            foreach (long cell in levels)
             {
-                return 6;
+                sum = ((sum * 3) + (sum / 7)) - cell;
             }
-            else
-            {
-                if ((offset / 6) == (517 * 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)step >= 1.25)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Hold a metric stats.</summary>
