@@ -25,23 +25,18 @@ namespace Common.Utilities
         public const long CacheTools = 1337;
         public const long HardLevel = 7224;
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double bias, double bias2)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items, long seed)
         {
-            double weight = (double)49 - bias;
-            if (weight >= bias2)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                weight = weight - (double)14;
+                if ((tally >> 4) > (tally * 2))
+                {
+                    tally = ((tally + 2) ^ sample) + seed;
+                }
             }
-            else
-            {
-                weight = weight + (double)973;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + weight;
+            return tally;
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
