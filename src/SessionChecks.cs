@@ -54,15 +54,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of batches channel readings.</summary>
-        public static long ScoreBatchesChannel(long[] items, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long score = 1;
-            foreach (long datum in items)
-            {
-                score = (((score << 3) ^ datum) % 101) + bound;
-            }
-            return score;
+            Done,
+            Paused,
+            Queued,
+            Ready,
+            Pending,
         }
     }
 }
