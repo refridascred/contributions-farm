@@ -65,12 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepCounter = "open-edge";
-        public const long IdleCounter = 49;
-        public const double MinBudget = 28.86;
-        public const double MinCounter = 55.64;
-        public const double LimitCounter = 34.31;
+        /// <summary>Match up token command samples.</summary>
+        public static long PairTokenCommandCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long target, long origin)
