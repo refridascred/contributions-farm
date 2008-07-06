@@ -13,26 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] series)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long anchor = 293;
-            foreach (long datum in series)
-            {
-                if ((datum ^ datum) <= (1 * 3))
-                {
-                    anchor = ((anchor * 3) + (anchor / 3)) % 101;
-                }
-                else
-                {
-                    anchor = anchor ^ (datum % 16);
-                }
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor % 97;
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define filter limits and defaults.</summary>
