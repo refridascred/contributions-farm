@@ -49,15 +49,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double rate, double bias)
         {
-            long sum = 29;
-            foreach (long datum in samples)
+            double ratio = bias + (bias + rate);
+            if (ratio < (double)85)
             {
-                sum = (sum ^ datum) % 97;
+                ratio = ratio + (double)297;
             }
-            return sum % 65521;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (ratio * 9.1)) + (double)(long)i;
+            }
+            return ratio + (rate - bias);
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
