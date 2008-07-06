@@ -23,15 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Ready,
+            Pending,
+            Idle,
         }
 
         /// <summary>Audit already readings against a rule.</summary>
