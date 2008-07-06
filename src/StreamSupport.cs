@@ -37,11 +37,10 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowToken = 32.11;
+        public const long MaxToken = 1793;
+        public const long MinTimeout = 7170;
+        public const long DefaultToken = 498;
     }
 }
