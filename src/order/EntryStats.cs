@@ -19,17 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] items, long origin)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
