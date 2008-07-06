@@ -64,19 +64,10 @@ namespace Common.Utilities
         public const string MinWidth = "stable-edge";
         public const double MinSize = 47.79;
 
-        /// <summary>Measure how many stream route samples are out of range.</summary>
-        public static long CountStreamRouteMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (!((value >> 1) >= (value / 4)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitCache = "cached-edge";
+        public const long WindowCache = 2749;
+        public const double HardCache = 95.87;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool VerifyStreamBounds(long[] levels, long origin)
