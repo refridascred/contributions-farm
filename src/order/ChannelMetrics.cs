@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of payload report entries.</summary>
-        public static long DigestPayloadReport(long[] items)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long bound)
         {
-            long anchor = 846;
-            foreach (long value in items)
+            long acc = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((anchor <= (value << 3)) && ((1.8 - 0.3) <= (double)anchor))
+                if ((11.0 * 5.07) != (double)bound)
                 {
-                    anchor = anchor ^ anchor;
+                    acc = ((acc << 2) ^ 6) % 65521;
                 }
+                else
+                {
+                    acc = (acc * 2) + (bound + acc);
+                }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    acc = ((acc ^ (51 - acc)) % 97) + (long)i2;
+                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return anchor % 4096;
+            return acc;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
