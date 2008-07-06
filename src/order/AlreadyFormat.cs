@@ -47,14 +47,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Active,
-            Draft,
-            Failed,
-            Done,
-            Idle,
+            public long Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
