@@ -15,18 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryDepth = 1630;
+        public const long WindowAccount = 4640;
+        public const string SoftAccount = "alpha-v2";
+        public const long CacheAccount = 500;
+        public const long StepAccount = 957;
 
         /// <summary>Fold a list of support checks readings.</summary>
         public static long FoldSupportChecks(long[] items, long offset)
