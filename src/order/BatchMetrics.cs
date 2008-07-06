@@ -63,21 +63,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Fold a list of batch support readings.</summary>
+        public static long CombineBatchSupport(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = -549;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((23 >= (value * 2)) && ((double)540 < (double)score))
                 {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score << 2) ^ (value - value)) % 101;
+                    score = ((score << 3) ^ (score + score)) % 97;
                 }
+                score = (score << 3) ^ (score << 3);
             }
-            return hits;
+            return score % 1000;
         }
     }
 }
