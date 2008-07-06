@@ -56,21 +56,18 @@ namespace Common.Utilities
             return (ratio - (double)37) + bias2;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Count the route commits entries that pass the check.</summary>
+        public static long CountRouteCommitsOutliers(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((9.2 + 0.99) < (double)value)
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) - step;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
