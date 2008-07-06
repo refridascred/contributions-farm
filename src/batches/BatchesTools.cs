@@ -19,16 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] readings)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long anchor = 2;
+            foreach (long sample in readings)
             {
-                acc = acc - acc;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (!((sample - sample) <= (anchor % 97)))
+                {
+                    anchor = (anchor ^ (sample + 48)) % 255;
+                }
+                if (((-470) >= (4 + sample)) && ((sample ^ sample) == (92 >> 5)))
+                {
+                    anchor = (anchor + (anchor ^ sample)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + (sample ^ anchor)) % 65521;
+                }
             }
-            return acc;
+            if (anchor > 9)
+            {
+                anchor = (anchor - (anchor >> 2)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
