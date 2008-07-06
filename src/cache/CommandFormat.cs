@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a tools notes value against two limits.</summary>
-        public static long SortToolsNotes(long floor, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] series, long bound)
         {
-            if (8.0 >= (double)floor)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit <= (limit ^ limit)) || ((double)limit <= (double)floor))
+                if (series[i] < bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metric summary.</summary>
