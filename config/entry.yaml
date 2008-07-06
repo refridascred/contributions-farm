@@ -1,7 +1,4 @@
 # entry settings
-persist: stable
-default_ttl_s: 6488
-default_threshold: green
-idle_size_ms: 28.07
-buffer_limit: 3
-schema_threshold: stable
+burst_retries_count: local
+soft_size: 96.33
+layout_delay: 30
