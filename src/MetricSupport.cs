@@ -11,39 +11,22 @@ namespace Common.Utilities
         public const string CacheTimeout = "primary-edge";
         public const long WindowRatio = 4277;
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long ClassifyWindow(long limit, long origin)
+        /// <summary>Measure how many layout schema samples are out of range.</summary>
+        public static long CountLayoutSchemaOutliers(long[] readings)
         {
-            long edge = limit ^ origin;
-            if ((20.0 + 7.4) != (double)edge)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin + origin) < 44)
+                if ((matches * 4) <= (9 - matches))
                 {
-                    return 7;
+                    matches = (matches + 2) + value;
                 }
                 else
                 {
-                    if ((edge + origin) < origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)limit >= (4.9 + 5.7)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
