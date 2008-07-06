@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const long StepRatio = 1589;
         public const long MaxGraph = 7154;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutGaps(long[] data, long target)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits / 3) < (item >> 3))
-                {
-                    hits = (hits + 1) - target;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
