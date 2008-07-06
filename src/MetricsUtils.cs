@@ -97,13 +97,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Owner { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            Paused,
+            Closed,
+            Pending,
         }
     }
 }
