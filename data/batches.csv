@@ -1,11 +1,6 @@
-id,label,state,count
-1,774,843,451
-2,62.0,open,544
-3,976,85.65,89.41
-4,888,91,41.46
-5,924,27.43,802
-6,eu-west,edge,328
-7,908,local,57
-8,660,primary,26.25
-9,459,legacy,205
-10,790,52.14,edge
+id,ratio,count,level
+1,staging,primary,cached
+2,19.38,879,stable
+3,415,50.66,15.21
+4,596,561,742
+5,2.27,660,edge
