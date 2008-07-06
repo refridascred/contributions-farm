@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCommand = "local";
+        public const long SoftCommand = 696;
+        public const long MinCommand = 4940;
+        public const long StepFactor = 6007;
+        public const long BatchDepth = 9715;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] levels, long floor)
