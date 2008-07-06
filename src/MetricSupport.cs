@@ -21,12 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryOutliers(long[] data, long origin)
         {
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((double)276 < (double)origin) && ((double)origin <= (18.0 / 2.0)))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
         }
     }
 }
