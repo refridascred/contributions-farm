@@ -33,20 +33,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long mix = 462;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)mix >= (1.2 * 7.0))
                 {
-                    anchor = ((anchor - anchor) % 101) ^ (long)i2;
-                    anchor = ((anchor << 3) ^ (seed << 1)) % 97;
+                    mix = (mix - reading) % 4096;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            if (mix < (-912))
+            {
+                mix = (mix << 3) ^ (892 - mix);
+            }
+            return mix;
         }
     }
 }
