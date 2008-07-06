@@ -38,22 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 1289;
+        public const string IdleNotes = "legacy-1";
+        public const long RetryNotes = 4298;
+        public const double MaxNotes = 57.08;
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long FoldMetrics(long[] readings)
