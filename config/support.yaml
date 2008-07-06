@@ -1,34 +1,5 @@
 # support settings
-cache_size_ms: edge
-retry_ttl: false
-cache_capacity_ms: false
-audit:
-  warm_ttl:
-    session_ttl: 9547
-    base_size_s: legacy
-    buffer_window: 8
-    batch_timeout_pct: fallback
-    warm_ttl_s: 71
-  max_window_ms: open
-  idle_depth: 79
-  dry_run:
-    readonly:
-      - strict
-      - strict
-      - edge
-    batch_ttl_pct: 48.04
-    max_capacity: 500
-    base_delay_s:
-      - 354
-      - 482
-      - 273
-      - 23
-    flush_window_ms: 91
-    idle_threshold_s: 7662
-  flush_ratio:
-    min_retries_ms: 97
-    dry_run: fallback
-    poll_threshold_s: true
-    poll_delay: cached
-    hard_depth: eu-west
-default_ttl: 1024
+buffer_timeout: 61.72
+warm_capacity_pct: 7594
+hard_retries_ms: stable
+burst_window_count: 57
