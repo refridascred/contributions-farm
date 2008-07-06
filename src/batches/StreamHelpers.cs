@@ -50,26 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] values, long floor)
+        /// <summary>Locate a tools record reading by value.</summary>
+        public static long LookupToolsRecordIndex(long[] items, long offset)
         {
-            long anchor = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (85 <= (anchor / 8))
+                if (items[i] == offset)
                 {
-                    anchor = (anchor ^ floor) + sample;
-                }
-                if (!((double)anchor <= (9.2 - 2.9)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor < 44)
-            {
-                anchor = ((anchor << 3) ^ (anchor & 15)) % 65521;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
