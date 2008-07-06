@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Validate route window readings against a bound.</summary>
+        public static bool ValidateRouteWindowLimits(long[] samples, long floor)
         {
-            Idle,
-            Draft,
-            Locked,
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
