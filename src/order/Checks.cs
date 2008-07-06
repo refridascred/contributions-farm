@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftBudget = "strict";
-        public const string WindowCommits = "alpha-edge";
-        public const string BaseCommits = "primary-edge";
-        public const long RetryCommits = 7219;
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many order entry samples are out of range.</summary>
         public static long CountOrderEntryOutliers(long[] levels, long floor)
