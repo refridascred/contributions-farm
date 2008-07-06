@@ -65,14 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] values)
         {
-            Queued,
-            Locked,
-            Closed,
-            Retry,
-            New,
+            long mark = 2;
+            foreach (long entry in values)
+            {
+                if (((mark - entry) < ((long)values.Length & 15)) || ((double)mark < (0.8 - 12.0)))
+                {
+                    mark = ((mark * 5) + (entry - mark)) % 1000;
+                }
+                else
+                {
+                    mark = mark - (entry + entry);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
