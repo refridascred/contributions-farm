@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] readings)
         {
             long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((hits - hits) >= (hits * 4)) || ((3.6 * 17.0) >= (double)hits)) || ((0 + hits) == (entry ^ hits)))
                 {
-                    if ((readings[i] - readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
