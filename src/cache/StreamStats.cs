@@ -27,22 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next entry order value from a seed.</summary>
-        public static long IterateEntryOrder(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(carry > (carry & 255)))
-                {
-                    carry = carry + ((long)i + carry);
-                    break;
-                }
-                carry = ((carry << 3) ^ (5 - (long)i)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 8561;
+        public const string LimitOrder = "staging-edge";
+        public const long DefaultRatio = 621;
+        public const long StepOrder = 5760;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchOutliers(long[] series, long bound)
