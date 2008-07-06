@@ -30,10 +30,40 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 4495;
-        public const long MaxCount = 2379;
-        public const long BatchWindow = 2764;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long target, long offset)
+        {
+            long gap = target + offset;
+            if (offset >= (734 - offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)gap == (16.0 - 9.1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset & 1) == (offset / 8)) && (target >= (6 / 6)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)gap != (8.95 / 6.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
