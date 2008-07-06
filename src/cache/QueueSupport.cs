@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountLimits(long[] data, long offset)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 2881;
+        public const double BurstWidth = 25.48;
+        public const long HardDepth = 3593;
+        public const long SoftCommand = 1295;
+        public const long RetryBudget = 1186;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string MaxContext = "legacy-edge";
