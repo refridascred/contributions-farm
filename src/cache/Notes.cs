@@ -62,21 +62,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 557;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                score = (score ^ (score ^ 287)) % 101;
+                if (!((score - score) >= reading))
                 {
-                    if ((readings[i] + readings[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (score < 792)
+            {
+                score = score + (score % 12);
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a farm stats.</summary>
