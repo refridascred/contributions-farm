@@ -1,7 +1,10 @@
 {
-  "report_capacity": "fallback",
-  "cache_limit_ms": "staging",
-  "stream_threshold": "eu-west",
-  "soft_depth": 100,
-  "burst_retries_ms": [123, 348, 326, 188]
+  "enabled": "cached",
+  "warm_limit": {
+    "idle_threshold": "eu-west",
+    "min_capacity_count": 6712,
+    "counter_window": 250
+  },
+  "burst_window_ms": "cached",
+  "support_threshold": "eu-west"
 }
