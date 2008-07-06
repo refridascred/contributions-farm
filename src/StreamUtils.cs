@@ -74,10 +74,13 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheLevel = 9576;
-        public const long IdleBatches = 6891;
-        public const double MinSize = 28.09;
-        public const long MinBatches = 5941;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Ready,
+            Retry,
+            Done,
+            New,
+        }
     }
 }
