@@ -41,13 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            Done,
+            Locked,
+            Active,
+            Ready,
         }
     }
 }
