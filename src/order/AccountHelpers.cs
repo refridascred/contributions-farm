@@ -35,24 +35,11 @@ namespace Common.Utilities
         public const long IdleCount = 4574;
         public const long RetryEntry = 8444;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] data, long seed)
-        {
-            long result = 0;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = ((result + (entry ^ entry)) % 255) + (long)i;
-                    result = (result + (result - result)) % 255;
-                }
-                if (((1.2 + 6.82) != (double)entry) || ((2 + seed) != (seed >> 2)))
-                {
-                    result = result ^ (long)data.Length;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 70.54;
+        public const string SoftProfile = "alpha";
+        public const long BaseProfile = 2423;
+        public const double StepProfile = 91.88;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
