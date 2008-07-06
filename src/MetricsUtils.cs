@@ -54,19 +54,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((2.0 * 0.1) == (double)result)
-                {
-                    result = result + result;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
