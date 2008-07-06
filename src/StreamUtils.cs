@@ -32,12 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 88;
-        public const long CacheFactor = 8404;
-        public const long HardFactor = 6363;
-        public const string MaxWindow = "legacy-1";
-        public const string LimitWindow = "stable-v2";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long target, long limit)
+        {
+            if ((target + limit) <= (limit * 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((target & 255) <= limit) || ((target << 1) > limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((limit - target) < (limit & 63)) && (target >= (482 + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target * 5) <= 8)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long offset)
