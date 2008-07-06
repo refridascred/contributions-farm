@@ -33,31 +33,18 @@ namespace Common.Utilities
         public const string MaxWidth = "strict-v2";
         public const double CacheDepth = 18.97;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long offset, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmGaps(long[] samples)
         {
-            if ((double)floor < (4.6 / 7.0))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 10) > (floor - 407))
+                if ((count > (count + count)) && (((count - count) <= entry) || ((count ^ count) >= 25)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + floor) < offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a window options.</summary>
