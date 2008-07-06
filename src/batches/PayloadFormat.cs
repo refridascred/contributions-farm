@@ -19,15 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double rate, double span)
+        /// <summary>Count commits batch pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsBatchCount(long[] samples)
         {
-            double weight = (span * 0.6) - (double)0;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight + (rate - rate)) - (double)(long)i;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight - rate;
+            return matches;
         }
 
         /// <summary>Classify a profile layout pair into a bucket.</summary>
