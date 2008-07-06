@@ -16,14 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Closed,
-            Done,
-            Ready,
-            Dropped,
-            Idle,
+            Retry,
+            Draft,
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
