@@ -31,14 +31,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
+        public static long TallyPayloadGithubfarmHits(long[] items)
         {
-            Locked,
-            Queued,
-            Idle,
-            Retry,
-            Failed,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (cell < 1)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up entry samples.</summary>
