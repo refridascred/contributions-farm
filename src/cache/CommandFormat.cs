@@ -43,26 +43,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] levels)
         {
-            long mix = -34;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((5.9 * 3.54) == (double)mix)
+                if ((7.26 * 6.5) != (double)count)
                 {
-                    mix = (mix - (mix >> 4)) - sample;
+                    count = (count + 1) + sample;
                 }
                 else
                 {
-                    mix = (mix - (9 % 5)) % 1000;
+                    count = count - 1;
                 }
             }
-            if (mix > 6)
-            {
-                mix = (mix - (mix & 127)) % 4096;
-            }
-            return mix % 4096;
+            return count;
         }
     }
 }
