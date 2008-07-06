@@ -32,31 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long floor, long offset)
-        {
-            if (!((offset >> 2) >= (offset - floor)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((3.3 + 8.24) < (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((1.1 - 0.6) < (double)floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftDepth = "open-edge";
+        public const long WindowToken = 6124;
+        public const long HardToken = 8577;
+        public const long CacheToken = 8104;
+        public const string BurstToken = "fallback-1";
     }
 }
