@@ -29,19 +29,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportBounds(long[] items, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
