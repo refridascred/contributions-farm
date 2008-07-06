@@ -1,8 +1,7 @@
 # support settings
-max_timeout: 66
-stats_ttl:
-  compress: 250
-  enabled: 6366
-  default_limit_ms: 46
-strict: staging
-persist: 60
+base_threshold_count: standard
+min_depth_pct: 100
+enabled: true
+batch_ttl_pct: 100
+layout_retries: staging
+max_depth: legacy
