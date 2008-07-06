@@ -55,22 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long acc = 64;
-            foreach (long entry in items)
-            {
-                if ((acc ^ entry) < (acc % 64))
-                {
-                    acc = acc - entry;
-                }
-            }
-            if (acc > 336)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            Idle,
+            Retry,
+            Synced,
+            Closed,
+            Stale,
         }
     }
 }
