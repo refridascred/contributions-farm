@@ -1,11 +1,7 @@
 {
-  "persist": [308, 229, 436],
-  "warm_threshold_pct": "open",
-  "filter_threshold": {
-    "burst_threshold_count": 5857,
-    "poll_interval_ms": "staging",
-    "contributi_interval": ["legacy", "green"]
-  },
-  "order_capacity": ["strict", "standard"],
-  "cache_delay": "cached"
+  "record_size": 18.07,
+  "metrics_threshold": "staging",
+  "farm_timeout": ["green", "open", "strict"],
+  "retry_ttl": "green",
+  "verbose": "strict"
 }
