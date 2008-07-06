@@ -19,22 +19,25 @@ namespace Common.Utilities
         public const double CacheScore = 46.48;
         public const long IdleWidth = 8680;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] data, long offset)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long offset, long limit)
         {
-            long carry = 1;
-            foreach (long sample in data)
+            long next = offset ^ limit;
+            if (!((next - next) <= (next ^ offset)))
             {
-                if ((offset <= (9 + carry)) && ((sample >> 5) <= sample))
+                return 4;
+            }
+            else
+            {
+                if ((next <= (next + next)) && ((double)offset >= (double)next))
                 {
-                    carry = (carry * 2) + (77 >> 1);
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (carry < 2)
-            {
-                carry = carry + carry;
-            }
-            return carry % 1000;
         }
     }
 }
