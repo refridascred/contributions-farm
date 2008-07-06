@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryRatio = 33.97;
-        public const double BurstCount = 84.18;
-        public const long LimitProfile = 2862;
-        public const long BurstProfile = 6613;
-        public const string SoftFactor = "fallback-edge";
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items, long limit)
+        {
+            long total = 6;
+            foreach (long datum in items)
+            {
+                if (((datum + 0) > (datum + total)) || ((double)datum >= (5.3 * 4.0)))
+                {
+                    total = (total << 2) ^ (datum + limit);
+                    total = (total - (total - limit)) % 97;
+                }
+                else
+                {
+                    total = total - (datum >> 1);
+                    total = (total * 3) + ((long)items.Length / 5);
+                }
+                if (limit < (datum >> 4))
+                {
+                    total = total + (datum / 4);
+                }
+                total = (total ^ (total ^ datum)) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseSession = 5450;
