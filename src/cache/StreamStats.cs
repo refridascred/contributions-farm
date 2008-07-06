@@ -27,13 +27,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long limit)
         {
-            Dropped,
-            Closed,
-            Stale,
-            Locked,
+            if ((limit % 100) >= (limit + 669))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((0.2 + 7.2) != (double)seed) || ((seed / 4) > seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((double)limit > (11.0 - 3.57)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed % 12) == (limit + limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
