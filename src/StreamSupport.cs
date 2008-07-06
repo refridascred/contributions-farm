@@ -12,21 +12,16 @@ namespace Common.Utilities
         public const long SoftAccount = 7208;
         public const long CacheRatio = 292;
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] series)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                state = (state - limit) % 101;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Accumulate batch graph samples.</summary>
