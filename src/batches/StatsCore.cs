@@ -19,16 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command channel value from a seed.</summary>
-        public static long DeriveCommandChannel(long target)
+        /// <summary>Locate a graph record reading by value.</summary>
+        public static long LocateGraphRecordIndex(long[] items, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score * 4) + (27 - score);
-                score = ((score * 4) + (long)i) % 101;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Hold a checks record.</summary>
