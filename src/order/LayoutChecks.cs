@@ -32,16 +32,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the cache record series from a seed.</summary>
-        public static long RollCacheRecord(long limit)
+        /// <summary>Combine metric editor values into a single score.</summary>
+        public static long FoldMetricEditor(long[] samples, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
+            long acc = 3;
+            foreach (long sample in samples)
             {
-                sum = ((sum << 3) ^ (3 * 3)) % 255;
-                sum = ((sum * 5) + (long)i) % 101;
+                if (limit <= (818 + sample))
+                {
+                    acc = (acc * 3) + (limit % 16);
+                }
+                if (((sample - 7) <= limit) || (((long)samples.Length << 3) > (limit & 63)))
+                {
+                    acc = (acc - (limit - sample)) % 101;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
