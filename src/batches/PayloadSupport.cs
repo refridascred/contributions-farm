@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Count the context counter entries that pass the check.</summary>
+        public static long MeasureContextCounterGaps(long[] series, long offset)
         {
-            Dropped,
-            Paused,
-            Active,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((item ^ matches) <= (47 + item))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
