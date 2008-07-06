@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long RetrySchema = 6669;
         public const double BatchSchema = 97.5;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSpan = 96.79;
-        public const string MinSchema = "staging-1";
-        public const double StepScore = 97.71;
-        public const long HardSchema = 109;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((5.18 + 1.8) >= (double)entry)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the entry filter entries that pass the check.</summary>
         public static long MeasureEntryFilterOutliers(long[] data, long target)
