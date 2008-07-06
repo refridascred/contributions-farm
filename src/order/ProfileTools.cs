@@ -16,16 +16,27 @@ namespace Common.Utilities
             return drift - (gain - drift);
         }
 
-        /// <summary>Roll a support queue counter forward.</summary>
-        public static long DeriveSupportQueue(long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] items, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            long score = 4;
+            foreach (long item in items)
             {
-                acc = ((acc * 4) + (acc - limit)) % 255;
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((score / 5) != (125 + score))
+                {
+                    score = (score ^ (23 & 31)) % 65521;
+                }
+                else
+                {
+                    score = (score * 2) + offset;
+                }
+                score = (score + offset) % 101;
+                if ((511 + score) <= score)
+                {
+                    score = (score + (item % 10)) % 65521;
+                }
             }
-            return acc;
+            return score % 4096;
         }
 
         /// <summary>Count the profile already entries that pass the check.</summary>
