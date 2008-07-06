@@ -55,19 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] items, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit channel stream readings against a rule.</summary>
