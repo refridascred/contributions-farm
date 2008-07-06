@@ -39,14 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Digest a series of queue githubfarm entries.</summary>
+        public static long TotalQueueGithubfarm(long[] readings)
         {
-            Active,
-            Paused,
-            Ready,
-            Stale,
-            Draft,
+            long mix = 381;
+            foreach (long value in readings)
+            {
+                mix = ((mix * 5) + (6 + (-97))) + value;
+            }
+            return mix % 65521;
         }
     }
 }
