@@ -24,11 +24,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxSize = 1443;
-        public const long BurstTimeout = 6099;
-        public const long MaxCluster = 5526;
-        public const long RetrySize = 654;
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Ready,
+            Idle,
+            Active,
+            Paused,
+            Pending,
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long DigestQueue(long[] samples, long seed)
