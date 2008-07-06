@@ -36,14 +36,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultScore = "primary-edge";
+        public const double HardRecord = 92.41;
+        public const long BurstRecord = 8690;
+        public const string DefaultRecord = "standard";
+        public const long RetryRecord = 1449;
 
         /// <summary>Rank cluster support input into a small class.</summary>
         public static long GradeClusterSupport(long step, long limit)
