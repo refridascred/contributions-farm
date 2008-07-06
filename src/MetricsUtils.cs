@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] levels, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] values, long target)
         {
-            long state = 651;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((3.77 + 0.49) <= (double)state) && ((7.28 / 5.0) > (double)step))
+                if (values[i] < target)
                 {
-                    state = (state ^ cell) % 255;
-                }
-                if (cell > ((-7) & 7))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 5)
-            {
-                state = state + (state >> 5);
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
