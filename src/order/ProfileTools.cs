@@ -43,11 +43,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 9859;
-        public const double LimitBatch = 49.15;
-        public const long BaseBatch = 5296;
-        public const long HardDepth = 6761;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
