@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public bool Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double SoftBudget = 90.15;
+        public const long BurstRatio = 6844;
+        public const double SoftContributi = 47.49;
+        public const double HardContributi = 4.03;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
