@@ -59,21 +59,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 77;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total + (total >> 3)) ^ datum) + limit;
             }
-            return hits;
+            return total % 97;
         }
     }
 }
