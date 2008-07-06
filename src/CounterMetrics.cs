@@ -49,17 +49,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry account sample.</summary>
-        public static long LookupEntryAccountIndex(long[] samples, long seed)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
