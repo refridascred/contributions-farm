@@ -1,6 +1,5 @@
 {
-  "compress": [232, 96],
-  "default_timeout": [473, 325, 368, 303],
-  "min_window_s": ["local", "standard", "blue"],
-  "commits_ratio": "legacy"
+  "hard_timeout_ms": 34,
+  "min_interval_count": "cached",
+  "enabled": "legacy"
 }
