@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TotalCounter(long[] levels, long target)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mark = 658;
-            foreach (long datum in levels)
-            {
-                if ((datum + target) == (target - target))
-                {
-                    mark = (mark - (datum + mark)) % 4096;
-                }
-            }
-            return mark;
+            Done,
+            Stale,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
