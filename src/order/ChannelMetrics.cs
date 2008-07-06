@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Grade a stream stats value against two limits.</summary>
+        public static long GradeStreamStats(long origin, long step)
         {
-            public bool Token { get; set; }
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            long span = origin + step;
+            if (((span & 255) <= (9 * 4)) && ((8.81 - 8.2) <= (double)origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + 8) < (18 + span))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((9.0 / 5.0) >= (double)span)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
