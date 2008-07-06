@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long origin, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] samples, long origin)
         {
-            if (((-16) + origin) == (978 - bound))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((6.7 + 6.8) > (double)origin)
+                if (!(hits <= (234 / 8)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    hits = ((hits + 1) ^ sample) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two queue measurements.</summary>
