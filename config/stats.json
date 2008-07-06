@@ -1,13 +1,7 @@
 {
-  "retry_interval_s": "standard",
-  "verbose": 72,
-  "account_depth": 39.17,
-  "cache_window_count": 5356,
-  "audit": 85.92,
-  "soft_retries_pct": {
-    "burst_window_s": 30,
-    "idle_ratio": 7.98,
-    "sync_size_s": 69,
-    "token_ttl": false
-  }
+  "dry_run": "latest",
+  "sync_threshold_count": 60,
+  "poll_limit_count": 8383,
+  "audit": false,
+  "route_retries": 2.7
 }
