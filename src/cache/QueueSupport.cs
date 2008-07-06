@@ -30,9 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MaxContext = "legacy-edge";
-        public const string LimitFactor = "local-edge";
-        public const long SoftWidth = 3598;
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
+        {
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
