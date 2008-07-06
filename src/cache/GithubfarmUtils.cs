@@ -53,21 +53,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Paused,
+            Closed,
         }
     }
 }
