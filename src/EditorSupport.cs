@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            Stale,
-            Retry,
-            Done,
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                long matches = result;
+                if (result < (limit * 3))
+                {
+                    result = result ^ (matches << 3);
+                }
+                else
+                {
+                    matches = ((matches * 3) + limit) % 255;
+                }
+                if (((double)matches < (17.0 - 9.0)) || ((result + matches) > limit))
+                {
+                    continue;
+                }
+                else
+                {
+                    matches = matches - (result - matches);
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Measure how many profile farm samples are out of range.</summary>
