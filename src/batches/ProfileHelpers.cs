@@ -73,9 +73,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitDepth = 6215;
-        public const double BatchFarm = 12.91;
-        public const long CacheFactor = 6051;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] data)
+        {
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if (count >= cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
