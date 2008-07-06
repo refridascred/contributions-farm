@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch cache readings against a rule.</summary>
-        public static long CountBatchCacheOutliers(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((tally & 1) <= (162 ^ value)) || ((value + value) > (tally - value)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Project the next record channel value.</summary>
