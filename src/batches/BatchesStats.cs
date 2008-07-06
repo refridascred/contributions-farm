@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Count the buffer stats entries that pass the check.</summary>
+        public static long MeasureBufferStatsHits(long[] items, long floor)
         {
-            Queued,
-            Paused,
-            Closed,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((item / 4) > tally)
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a batches stats.</summary>
