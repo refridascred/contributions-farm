@@ -21,13 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Find the first commits profile entry that matches the target.</summary>
+        public static long SeekCommitsProfileIndex(long[] series, long bound)
         {
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == bound) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
