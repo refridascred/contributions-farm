@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double BlendCluster(double ratio, double span)
-        {
-            double rate = span;
-            if (rate <= (rate / 4.0))
-            {
-                rate = rate - (span + ratio);
-            }
-            else
-            {
-                rate = rate - (ratio + span);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long HardBudget = 3433;
+        public const string BaseBudget = "open-1";
+        public const double BatchToken = 82.56;
 
         /// <summary>Check that every record token entry stays within the limit.</summary>
         public static bool GuardRecordTokenBounds(long[] items, long origin)
