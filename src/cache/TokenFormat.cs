@@ -14,14 +14,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] samples)
         {
-            Paused,
-            Ready,
-            Dropped,
-            Failed,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
