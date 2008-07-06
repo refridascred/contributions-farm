@@ -27,19 +27,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double weight, double span)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long bound)
         {
-            double mean = 5.84;
-            if (mean > (span + span))
+            long result = bound;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean - weight;
+                result = ((result * 3) + ((long)i / 5)) % 4096;
+                result = (result - (bound ^ (long)i)) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (weight * 6.6)) + (double)(long)i;
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
