@@ -1,31 +1,7 @@
 # githubfarm settings
-cache_retries_pct:
-  cache_threshold: cached
-  burst_retries_ms: legacy
-  warm_delay_count: eu-west
-warm_retries:
-  notes_timeout:
-    commits_size: 30
-    route_limit:
-      - local
-      - blue
-      - stable
-      - staging
-    tools_size:
-      - strict
-      - latest
-      - eu-west
-      - eu-west
-    farm_ttl: false
-    batch_window: staging
-  queue_window:
-    poll_ratio: strict
-    sync_size: edge
-    strict: 4766
-    stats_capacity: blue
-    batch_depth: 61.22
-  max_capacity_s: 98.02
-burst_ratio_count: edge
-flush_ratio_ms: open
-cache_window_ms: cached
-audit: 100
+stats_ttl: standard
+hard_window: 63
+retry_depth: false
+counter_threshold:
+  - blue
+  - primary
