@@ -1,23 +1,11 @@
 {
-  "cache_limit": 77.51,
-  "cache_depth_count": {
-    "layout_interval": {
-      "persist": 7,
-      "min_capacity_ms": "blue",
-      "max_limit_pct": false
-    },
-    "filter_interval": 29.33,
-    "min_window_ms": {
-      "retry_threshold_s": ["staging", "primary", "latest", "fallback"],
-      "cache_limit_count": 8055,
-      "burst_timeout_ms": false
-    },
-    "cluster_delay": 52.25,
-    "tools_ttl": 250,
-    "retry_size_ms": 4982
+  "warm_ratio": {
+    "flush_window": "local",
+    "command_size": "open",
+    "soft_threshold": 4140,
+    "entry_limit": 76
   },
-  "poll_ttl": 100,
-  "soft_size_count": false,
-  "commits_size": "local",
-  "notes_delay": 6015
+  "retry_retries_s": "legacy",
+  "strict": 5,
+  "burst_size_ms": "legacy"
 }
