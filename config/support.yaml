@@ -1,9 +1,10 @@
 # support settings
-readonly:
-  - 124
-  - 37
-  - 417
-account_retries: 83.81
-burst_size_pct: cached
-default_size: false
-enabled: 11.89
+burst_window_count:
+  - green
+  - standard
+batch_capacity_pct:
+  - standard
+  - primary
+poll_ttl: stable
+retry_retries_count: false
+dry_run: false
