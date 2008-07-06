@@ -26,13 +26,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
-        {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double StepBudget = 69.26;
+        public const long RetryProfile = 3218;
+        public const long MaxProfile = 5731;
+        public const double LimitInterval = 18.32;
     }
 }
