@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitBudget = 5624;
-        public const long MaxScore = 6176;
-        public const double MaxTimeout = 87.99;
-        public const long SoftCount = 9788;
-        public const long WindowPayload = 8566;
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long OverlapStreamCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next githubfarm contributi value.</summary>
         public static double SmoothGithubfarmContributi(double scale, double span)
