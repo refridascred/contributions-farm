@@ -1,5 +1,11 @@
 {
-  "flush_limit": 1024,
-  "batch_capacity": 97,
-  "soft_threshold": 1218
+  "flush_interval": true,
+  "poll_depth_ms": {
+    "stats_delay": [246, 103, 147, 460],
+    "support_limit": 86.87,
+    "poll_retries_pct": 8312,
+    "record_ttl": [44, 106, 300, 197],
+    "compress": [55, 407]
+  },
+  "soft_interval_count": "standard"
 }
