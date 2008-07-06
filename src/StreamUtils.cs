@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Stale,
-            Done,
-            Paused,
+            Failed,
+            Queued,
+            Active,
         }
 
         /// <summary>Locate a route order reading by value.</summary>
