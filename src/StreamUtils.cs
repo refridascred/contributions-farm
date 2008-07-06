@@ -20,38 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long target, long limit)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((target + limit) <= (limit * 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target & 255) <= limit) || ((target << 1) > limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit - target) < (limit & 63)) && (target >= (482 + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target * 5) <= 8)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
