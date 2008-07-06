@@ -47,19 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] samples)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum > 0.59)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryBudget = 2888;
+        public const long BatchLevel = 8440;
+        public const long BurstRatio = 3597;
+        public const double BaseTimeout = 61.71;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
