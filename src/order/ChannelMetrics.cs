@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleScore = 4060;
+        public const long HardInterval = 7562;
+        public const double BatchLevel = 75.46;
 
         /// <summary>Look up the position of a already sample.</summary>
         public static long LocateAlreadyIndex(long[] readings, long bound)
