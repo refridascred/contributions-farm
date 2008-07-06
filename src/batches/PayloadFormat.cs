@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Look up the position of a layout session sample.</summary>
+        public static long LookupLayoutSessionIndex(long[] data, long origin)
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a context reading.</summary>
