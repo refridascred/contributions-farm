@@ -30,17 +30,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mix = (mix - ((long)i ^ mix)) % 1000;
-                mix = (mix - (430 - (long)i)) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (!(6.08 > (double)matches) || ((-71) < (288 - matches)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
