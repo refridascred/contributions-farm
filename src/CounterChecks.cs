@@ -50,17 +50,10 @@ namespace Common.Utilities
         public const long DefaultWindow = 2224;
         public const double BaseWidth = 89.49;
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BaseRatio = 6170;
+        public const long MinPayload = 811;
+        public const double SoftPayload = 89.94;
+        public const double HardDepth = 57.66;
     }
 }
