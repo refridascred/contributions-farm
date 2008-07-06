@@ -38,18 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of notes payload readings.</summary>
-        public static long DigestNotesPayload(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double ratio, double span)
         {
-            long acc = 874;
-            foreach (long reading in data)
+            double weight = ratio * 3.64;
+            if (weight <= (ratio - span))
             {
-                if (((double)reading < 4.0) || ((820 - reading) >= acc))
-                {
-                    acc = (acc * 3) + (acc & 31);
-                }
+                weight = weight - (3.6 - span);
             }
-            return acc;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight + ratio) + (double)(long)i;
+            }
+            return weight + (ratio / 3.0);
         }
     }
 }
