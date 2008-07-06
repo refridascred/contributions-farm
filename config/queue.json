@@ -1,6 +1,5 @@
 {
-  "queue_ttl": "primary",
-  "default_capacity_pct": 56,
-  "retry_threshold": false,
-  "default_delay_ms": "standard"
+  "idle_ratio_count": 38,
+  "idle_window_ms": 60,
+  "persist": 30
 }
