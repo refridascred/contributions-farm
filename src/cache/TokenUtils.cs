@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a tools farm reading.</summary>
-        public static double SmoothToolsFarm(double gain, double floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] samples, long step)
         {
-            double load = (double)(68 + 72);
-            if (load > floor)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                load = (load + floor) - gain;
+                if ((4.29 - 8.0) <= (double)count)
+                {
+                    count = ((count + 3) ^ cell) - step;
+                }
             }
-            return load - (double)6;
+            return count;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
