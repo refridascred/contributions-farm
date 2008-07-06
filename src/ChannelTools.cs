@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] items, long offset)
         {
-            long result = 542;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result - result) - entry;
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
