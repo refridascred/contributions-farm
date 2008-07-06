@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a session metric sample.</summary>
-        public static long FindSessionMetricIndex(long[] values, long step)
+        /// <summary>Check that every support counter entry stays within the limit.</summary>
+        public static bool CheckSupportCounterBounds(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if ((values[i] == step) && ((values[i] % 3) == 0))
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Hold a window info.</summary>
