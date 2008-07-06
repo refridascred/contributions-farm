@@ -67,12 +67,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            Stale,
-            Done,
-            Paused,
+            long result = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((2.0 * 0.1) == (double)result)
+                {
+                    result = result + result;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many support metric samples are out of range.</summary>
