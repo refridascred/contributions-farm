@@ -54,13 +54,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            Ready,
+            Queued,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Accumulate window samples.</summary>
