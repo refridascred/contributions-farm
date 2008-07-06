@@ -50,22 +50,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long result = 60;
-            foreach (long cell in values)
-            {
-                if ((double)result != (8.4 + 8.8))
-                {
-                    result = (result - (cell - cell)) % 97;
-                }
-            }
-            if (result < 4)
-            {
-                result = (result ^ (result & 3)) % 255;
-            }
-            return result;
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a token summary.</summary>
