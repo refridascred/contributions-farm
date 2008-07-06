@@ -16,13 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long total = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total - (total << 2)) % 255;
+                total = ((total << 3) ^ total) % 1000;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a channel header.</summary>
