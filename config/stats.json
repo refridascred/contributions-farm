@@ -1,6 +1,11 @@
 {
-  "sync_limit": ["legacy", "local", "staging", "strict"],
-  "retry_timeout_pct": 59,
-  "default_limit_pct": 60,
-  "burst_ratio": "edge"
+  "cache_ratio_ms": 3782,
+  "verbose": false,
+  "warm_timeout_pct": {
+    "verbose": "local",
+    "cache_delay_s": 5314,
+    "filter_size": [287, 19, 399, 86],
+    "batch_delay": "eu-west"
+  },
+  "dry_run": [350, 278, 287, 422]
 }
