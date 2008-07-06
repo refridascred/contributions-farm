@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TotalCounter(long[] levels, long target)
         {
-            long mix = 389;
-            foreach (long cell in items)
+            long mark = 658;
+            foreach (long datum in levels)
             {
-                mix = mix + (cell << 1);
-                if (((cell - mix) >= mix) || ((double)mix == (6.04 - 5.0)))
+                if ((datum + target) == (target - target))
                 {
-                    mix = (mix ^ (mix % 3)) % 255;
+                    mark = (mark - (datum + mark)) % 4096;
                 }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
