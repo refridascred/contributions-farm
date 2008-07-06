@@ -1,5 +1,10 @@
 {
-  "warm_ttl": 4549,
-  "hard_ttl_s": false,
-  "payload_ratio": [379, 466]
+  "window_window": ["latest", "primary"],
+  "base_ttl": true,
+  "hard_window_ms": {
+    "commits_capacity": 1024,
+    "support_threshold": false,
+    "compress": "strict"
+  },
+  "context_capacity": "stable"
 }
