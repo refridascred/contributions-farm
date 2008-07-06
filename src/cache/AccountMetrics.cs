@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (items[i] <= seed)
+                if (item < (item & 1))
                 {
-                    return (long)i;
+                    count = (count + 2) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Accumulate queue samples.</summary>
