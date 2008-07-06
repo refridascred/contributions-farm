@@ -1,7 +1,5 @@
 {
-  "burst_size_pct": false,
-  "min_threshold_count": 2015,
-  "editor_size": [434, 475, 22, 89],
-  "idle_timeout_pct": "latest",
-  "format_delay": 250
+  "order_depth": 7706,
+  "idle_threshold_ms": 7956,
+  "route_interval": 95
 }
