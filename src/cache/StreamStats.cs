@@ -12,25 +12,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long origin, long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long floor)
         {
-            long prev = origin - target;
-            if ((double)prev <= 6.0)
+            long anchor = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + origin) <= (origin / 3))
+                anchor = (anchor * 2) + floor;
+                if (((double)anchor >= (double)floor) && ((1.09 - 5.0) == (double)anchor))
                 {
-                    return 8;
+                    break;
                 }
-                else
-                {
-                    return 2;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Audit farm githubfarm readings against a rule.</summary>
