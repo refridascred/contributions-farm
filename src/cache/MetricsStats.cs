@@ -52,12 +52,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            Active,
-            Idle,
-            Pending,
+            Dropped,
+            New,
+            Synced,
         }
     }
 }
