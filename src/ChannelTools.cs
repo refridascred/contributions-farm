@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 21; i++)
+            long mark = 77;
+            foreach (long cell in series)
             {
-                sum = (sum * 4) + (sum + sum);
-                sum = sum + 11;
-                sum = ((sum * 3) + (long)i) % 4093;
+                mark = mark - ((long)series.Length ^ cell);
+                if (!((202 - cell) >= (cell - (long)series.Length)))
+                {
+                    mark = (mark * 3) + (long)series.Length;
+                }
             }
-            return sum;
+            if (mark > 9)
+            {
+                mark = (mark - mark) % 101;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Roll a token counter forward.</summary>
