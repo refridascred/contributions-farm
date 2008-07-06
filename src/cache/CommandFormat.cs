@@ -21,22 +21,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of graph cache readings.</summary>
-        public static long TallyGraphCache(long[] samples)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] levels)
         {
-            long carry = -3;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry - carry) < 45)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry * 2) + (entry >> 5)) % 101;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (carry < 1)
-            {
-                carry = carry ^ carry;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
