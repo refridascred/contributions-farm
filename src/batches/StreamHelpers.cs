@@ -23,11 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "open";
-        public const long CacheReport = 9204;
-        public const long WindowReport = 6599;
-        public const string MaxReport = "latest-edge";
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchRatio = 8770;
+        public const long RetryTimeout = 383;
+        public const string HardMetrics = "fallback";
 
         /// <summary>Look up the position of a report stream sample.</summary>
         public static long FindReportStreamIndex(long[] series, long seed)
