@@ -70,21 +70,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
-        public static long PairToolsBatchCount(long[] items)
+        /// <summary>Measure how many support metric samples are out of range.</summary>
+        public static long AuditSupportMetricGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (entry <= (hits / 6))
                 {
-                    if ((items[i] + items[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
