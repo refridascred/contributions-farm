@@ -45,22 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] items)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mark = 666;
-            foreach (long value in items)
-            {
-                if ((value ^ value) < (value % 5))
-                {
-                    mark = (mark + (mark % 100)) % 4096;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = mark ^ (985 + mark);
-            }
-            return mark;
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
