@@ -23,12 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double floor)
         {
-            public bool Count { get; set; }
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
+            double ratio = (double)(57 % 16);
+            if (ratio < floor)
+            {
+                ratio = ratio + (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (13.0 / 3.0)) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
