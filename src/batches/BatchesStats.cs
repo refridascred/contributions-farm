@@ -43,23 +43,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of token graph readings.</summary>
-        public static long TotalTokenGraph(long[] data, long seed)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long carry = 5;
-            foreach (long item in data)
-            {
-                carry = ((carry << 2) ^ (seed / 4)) % 4096;
-                if ((seed + item) != (seed & 255))
-                {
-                    carry = ((carry << 2) ^ (item * 5)) % 255;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (item * 2)) % 255;
-                }
-            }
-            return carry;
+            Active,
+            Dropped,
+            Draft,
+            Pending,
         }
     }
 }
