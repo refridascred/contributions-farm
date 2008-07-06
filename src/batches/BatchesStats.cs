@@ -43,21 +43,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] data)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long ScoreLayout(long[] levels, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 75;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((((state << 3) ^ (state / 9)) % 4096) + value) + seed;
             }
-            return tally;
+            return state;
         }
     }
 }
