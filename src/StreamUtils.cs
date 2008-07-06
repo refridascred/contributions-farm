@@ -65,15 +65,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a account batches figure with a bias.</summary>
-        public static double AdjustAccountBatches(double scale, double offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] items, long limit)
         {
-            double scale2 = 1.3 + (offset * 2.0);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                scale2 = ((scale2 + offset) - (double)(long)i) + scale;
+                if ((datum + count) == (datum << 2))
+                {
+                    count = (count + 1) - limit;
+                }
             }
-            return scale2 + (offset + scale2);
+            return count;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
