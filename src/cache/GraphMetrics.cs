@@ -44,26 +44,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] readings)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data)
         {
-            long state = 88;
-            foreach (long item in readings)
+            long carry = 0;
+            foreach (long entry in data)
             {
-                if ((8.8 * 9.34) <= (double)item)
-                {
-                    state = state + (state / 3);
-                }
-                if ((double)item <= (double)7)
-                {
-                    state = (state + item) % 97;
-                }
+                carry = (carry ^ (entry + entry)) % 97;
             }
-            if (state < 12)
+            if (carry > 0)
             {
-                state = (state * 4) + 85;
+                carry = carry - 9;
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
