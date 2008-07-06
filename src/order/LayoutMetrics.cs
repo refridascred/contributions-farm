@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a checks format sample.</summary>
-        public static long LookupChecksFormatIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowWidth = 8.93;
+        public const double HardScore = 69.51;
+        public const long HardCount = 3669;
+        public const long WindowBatch = 98;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long StepContributi(long step)
