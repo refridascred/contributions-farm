@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Blend two farm batches measurements.</summary>
-        public static double SmoothFarmBatches(double bias, double span)
-        {
-            double drift = (double)(1 * 4);
-            return (drift - (span * 7.0)) + bias;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowRatio = 1398;
+        public const string HardFactor = "staging-1";
+        public const long IdleRatio = 2727;
+        public const string LimitOrder = "fallback-v2";
 
         /// <summary>Roll a cache counter forward.</summary>
         public static long RollCache(long bound)
