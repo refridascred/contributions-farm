@@ -1,17 +1,9 @@
 # support settings
-dry_run: 84.49
-session_depth: strict
-hard_delay_pct: cached
-retry_timeout_s:
-  - 398
-  - 323
-  - 110
-warm_ratio_s:
-  stats_depth: 55.39
-  route_threshold: legacy
-  enabled:
-    dry_run: open
-    warm_threshold_ms: strict
-    hard_ttl_s: true
-    editor_threshold: latest
-batch_interval_count: green
+stats_size: 3
+dry_run: 100
+retry_ttl_pct: 90.26
+persist:
+  - 296
+  - 193
+stream_limit: 48
+max_limit_s: true
