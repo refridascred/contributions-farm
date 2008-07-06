@@ -57,22 +57,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] items, long target)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long prev = offset + seed;
+            if ((offset * 2) <= (6 + offset))
             {
-                if ((6.2 - 19.0) < (double)tally)
+                return 3;
+            }
+            else
+            {
+                if ((prev + seed) == (seed + offset))
                 {
-                    tally = ((tally + 3) + reading) + target;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
