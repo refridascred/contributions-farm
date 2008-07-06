@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MaxCommits = 429;
-        public const long BurstCommits = 6033;
-        public const long StepTimeout = 1083;
+        /// <summary>Classify a record stream pair into a bucket.</summary>
+        public static long ClassifyRecordStream(long floor, long step)
+        {
+            long delta = floor + step;
+            if ((13.0 * 14.0) == (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((42 + floor) >= delta) && ((step >> 4) <= (delta % 24)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Validate route window readings against a bound.</summary>
         public static bool ValidateRouteWindowLimits(long[] samples, long floor)
