@@ -45,22 +45,17 @@ namespace Common.Utilities
         public const long MinBudget = 7704;
         public const long IdleInterval = 4386;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches / 2) >= matches)
+                if ((items[i] == bound) && ((items[i] % 5) == 0))
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Match up cluster buffer samples.</summary>
