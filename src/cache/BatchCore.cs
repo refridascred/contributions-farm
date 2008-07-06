@@ -39,14 +39,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteGaps(long[] series, long floor)
         {
-            Retry,
-            Idle,
-            Active,
-            Locked,
-            Done,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((floor + sample) != (sample + 67))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream info.</summary>
