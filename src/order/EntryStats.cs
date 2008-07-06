@@ -41,15 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            long carry = 615;
-            foreach (long item in readings)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry - (carry + item)) % 1000;
+                if (target <= (sum / 6))
+                {
+                    sum = (sum + (target - target)) % 1000;
+                    sum = ((sum * 4) + (sum >> 2)) % 1000;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Describe the schema level values.</summary>
