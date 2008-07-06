@@ -1,7 +1,7 @@
 {
-  "audit": ["stable", "stable"],
-  "batches_interval": 8516,
-  "strict": "primary",
-  "buffer_threshold": 250,
-  "max_threshold": 89.5
+  "enabled": "strict",
+  "sync_ttl": "fallback",
+  "payload_threshold": 54.19,
+  "sync_capacity_s": "open",
+  "tools_ratio": 500
 }
