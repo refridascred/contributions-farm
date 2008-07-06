@@ -24,21 +24,38 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long MatchWindowCount(long[] values)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long offset, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target & 1) == (target ^ target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((((-7) * 5) == (target + target)) || ((double)target >= (3.2 - 6.0)))
                 {
-                    if ((values[i] + values[j]) > 12)
+                    return 3;
+                }
+                else
+                {
+                    if (!(target >= (offset / 2)))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)offset < (7.0 + 15.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the order class values.</summary>
