@@ -80,18 +80,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long FoldCommand(long[] readings, long origin)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] readings, long step)
         {
-            long anchor = 697;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((-98) > (value & 15))
+                if (readings[i] >= step)
                 {
-                    anchor = ((anchor * 4) + (origin >> 3)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor % 97;
+            return -1;
         }
     }
 }
