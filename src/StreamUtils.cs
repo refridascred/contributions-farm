@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Compare every pair of window format readings.</summary>
-        public static long MatchWindowFormatCount(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long origin, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target - origin) == (origin - target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (target >= (origin - origin))
                 {
-                    if ((data[i] ^ data[j]) != 4)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)origin == (4.7 / 3.0)) || (target <= 668))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Classify a layout window pair into a bucket.</summary>
