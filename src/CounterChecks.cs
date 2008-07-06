@@ -22,23 +22,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] data)
-        {
-            long score = 3;
-            foreach (long item in data)
-            {
-                if ((295 - score) <= item)
-                {
-                    score = (score + score) % 101;
-                }
-                if ((score * 4) <= (score >> 5))
-                {
-                    score = (score << 2) ^ (score + score);
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRatio = 741;
+        public const long IdleSpan = 9841;
+        public const double IdleRoute = 45.99;
 
         /// <summary>Accumulate githubfarm samples.</summary>
         public static long TotalGithubfarm(long[] samples, long origin)
