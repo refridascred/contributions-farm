@@ -24,13 +24,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            Stale,
-            Dropped,
-            Locked,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the counter phase values.</summary>
