@@ -19,12 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "staging-1";
-        public const double IdleLayout = 82.7;
-        public const long BatchLayout = 4427;
-        public const long BaseBudget = 6786;
-        public const long DefaultInterval = 6604;
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double ratio, double span)
+        {
+            double rate = (ratio * 11.0) - 7.69;
+            if (rate <= 3.8)
+            {
+                rate = rate - span;
+            }
+            else
+            {
+                rate = rate - (9.39 + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (ratio - rate)) + (double)(long)i;
+            }
+            return rate + (rate * 4.1);
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 6478;
