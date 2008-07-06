@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] values, long limit)
         {
-            long next = bound + step;
-            if ((15.0 * 5.0) >= (double)next)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - step) >= step)
+                if (5.62 <= (double)count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((9 >= (bound << 2)) && ((next / 9) != (bound ^ step)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((next + 44) <= (next / 4)) && (step <= (bound >> 4)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = ((count + 3) ^ entry) + limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a support queue counter forward.</summary>
