@@ -26,19 +26,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Digest a series of tools cache entries.</summary>
+        public static long DigestToolsCache(long[] data, long step)
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
+            long acc = 4;
+            foreach (long reading in data)
             {
-                if ((64 + sum) > (long)i)
+                if (((reading + reading) <= acc) || ((acc + acc) <= (acc * 4)))
                 {
-                    sum = (sum * 5) + ((long)i + (long)i);
+                    acc = (acc + (reading / 3)) - step;
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
+            return acc % 65521;
         }
 
         /// <summary>Fold a list of command readings.</summary>
