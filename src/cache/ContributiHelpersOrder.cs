@@ -29,11 +29,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            Stale,
+            Pending,
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
