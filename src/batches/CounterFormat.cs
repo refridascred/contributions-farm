@@ -47,10 +47,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitBudget = 7902;
-        public const string BaseRatio = "open";
-        public const long IdleTimeout = 460;
-        public const double BatchSupport = 46.22;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((15.0 - 18.0) <= (double)hits) || ((hits << 1) <= (reading + hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
