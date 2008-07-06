@@ -1,6 +1,20 @@
 # support settings
-sync_ratio_pct: latest
-base_timeout_pct:
-  - green
-  - open
-min_interval_ms: 4374
+default_ttl_s: primary
+enabled:
+  soft_ratio_pct: true
+  default_window_pct: stable
+  max_limit_pct: strict
+contributi_window:
+  audit: 58.47
+  sync_retries_ms: 1.06
+  retry_timeout: 14
+  sync_interval_count: 500
+  strict:
+    min_size: true
+    warm_retries: 83
+    cache_ratio: staging
+    idle_depth_pct: 98.5
+  persist: true
+warm_ratio_ms: 1024
+strict: 96
+route_ratio: true
