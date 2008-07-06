@@ -27,18 +27,19 @@ namespace Common.Utilities
             return scale2 - (scale + 4.6);
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] series, long origin)
         {
-            long tally = 0;
+            bool valid = true;
             foreach (long item in series)
             {
-                if (!(tally > (item - item)))
+                if (item != origin)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Hold a notes record.</summary>
