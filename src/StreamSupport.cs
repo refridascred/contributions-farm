@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] series, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long score = 911;
+            foreach (long datum in values)
             {
-                if (((bound / 2) == (bound + reading)) || ((matches & 31) > (reading / 5)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = (score << 3) ^ (score ^ datum);
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
