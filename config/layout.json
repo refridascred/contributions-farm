@@ -1,21 +1,10 @@
 {
-  "counter_interval": "staging",
-  "warm_limit_pct": false,
-  "order_ratio": {
-    "verbose": 9298,
-    "persist": "eu-west",
-    "route_timeout": "open",
-    "support_timeout": ["strict", "open", "legacy", "primary"],
-    "default_retries": {
-      "token_interval": 51,
-      "counter_ttl": 93.48,
-      "readonly": true,
-      "graph_retries": false,
-      "queue_delay": 1082,
-      "default_interval_pct": true
-    },
-    "channel_delay": "cached"
+  "dry_run": {
+    "cache_limit_ms": 9283,
+    "layout_retries": 500,
+    "idle_limit_count": "green",
+    "dry_run": 7751
   },
-  "cache_retries": true,
-  "graph_ttl": 4543
+  "compress": ["cached", "primary"],
+  "soft_interval_s": ["fallback", "primary", "eu-west", "primary"]
 }
