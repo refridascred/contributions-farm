@@ -16,13 +16,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] items)
         {
             long matches = 0;
-            foreach (long sample in data)
+            foreach (long reading in items)
             {
-                if ((double)sample < (19.0 * 19.0))
+                if ((reading & 1) < matches)
                 {
                     matches = matches + 1;
                 }
