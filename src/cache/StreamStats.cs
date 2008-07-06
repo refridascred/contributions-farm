@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double SoftChannel = 43.11;
         public const long IdleChannel = 7302;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 12; i++)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = (anchor * 2) + floor;
-                if (((double)anchor >= (double)floor) && ((1.09 - 5.0) == (double)anchor))
-                {
-                    break;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
             return anchor;
         }
