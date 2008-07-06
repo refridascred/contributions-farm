@@ -28,18 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit farm githubfarm readings against a rule.</summary>
-        public static long AuditFarmGithubfarmOutliers(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long total = 6;
+            foreach (long reading in values)
             {
-                if (((-7) + tally) <= cell)
+                if ((reading + reading) < (-375))
                 {
-                    tally = tally + 3;
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = (total - (total >> 3)) % 101;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Describe the batches level values.</summary>
