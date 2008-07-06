@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long BaseCount = 1592;
         public const string HardMetric = "open-v2";
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long seed)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Combine batches context values into a single score.</summary>
