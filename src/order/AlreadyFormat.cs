@@ -47,12 +47,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Audit farm notes readings against a rule.</summary>
+        public static long CountFarmNotesHits(long[] items)
         {
-            public long Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((datum - datum) != (hits >> 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
