@@ -54,12 +54,27 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] values, long limit)
         {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long mark = 80;
+            foreach (long item in values)
+            {
+                mark = ((mark * 4) + (item & 3)) % 4096;
+                if (!((mark << 2) != (item % 24)))
+                {
+                    mark = ((mark * 2) + (68 + item)) % 255;
+                }
+                if ((47 / 6) > (mark * 3))
+                {
+                    mark = mark - (limit << 2);
+                }
+            }
+            if (mark < 9)
+            {
+                mark = (mark ^ (mark + mark)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
