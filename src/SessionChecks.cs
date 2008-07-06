@@ -38,26 +38,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long carry = 264;
-            foreach (long datum in data)
-            {
-                if ((datum * 2) < (datum + datum))
-                {
-                    carry = carry ^ carry;
-                }
-                if ((2 + (long)data.Length) == (datum << 3))
-                {
-                    break;
-                }
-            }
-            if (carry < 9)
-            {
-                carry = ((carry << 2) ^ carry) % 1000;
-            }
-            return carry;
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
