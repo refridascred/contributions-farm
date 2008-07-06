@@ -12,18 +12,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] data, long bound)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = 51;
-            foreach (long datum in data)
-            {
-                if (!((datum << 1) <= (bound + score)))
-                {
-                    score = score - (datum & 31);
-                }
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
