@@ -48,14 +48,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
             Done,
-            Pending,
-            Synced,
-            Active,
-            Stale,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
