@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxSize = "local-1";
-        public const double HardCommand = 80.58;
-        public const long BaseInterval = 4107;
-        public const long DefaultDepth = 6356;
-        public const long SoftCommand = 973;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchLevel = "staging-1";
+        public const long RetryScore = 6289;
+        public const long DefaultRoute = 5408;
+        public const long HardRoute = 7514;
 
         /// <summary>Look up the position of a command metrics sample.</summary>
         public static long LookupCommandMetricsIndex(long[] data, long limit)
