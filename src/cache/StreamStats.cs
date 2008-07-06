@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 3851;
+        public const double StepChannel = 45.83;
+        public const long StepSize = 6095;
+        public const double SoftChannel = 43.11;
+        public const long IdleChannel = 7302;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long floor)
