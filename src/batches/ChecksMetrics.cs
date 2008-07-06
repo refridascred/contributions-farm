@@ -57,12 +57,18 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BatchCommand = "alpha-1";
-        public const double StepInterval = 90.29;
-        public const long BurstDepth = 5791;
-        public const string HardSize = "legacy";
-        public const string LimitCommand = "strict-edge";
+        /// <summary>Look up the position of a stats entry sample.</summary>
+        public static long LookupStatsEntryIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long offset, long step)
