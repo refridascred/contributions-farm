@@ -1,5 +1,11 @@
 {
-  "default_ttl": "cached",
-  "warm_capacity": 38.31,
-  "batches_size": 11
+  "window_timeout": "cached",
+  "compress": {
+    "hard_limit_count": ["primary", "eu-west"],
+    "githubfarm_ttl": [187, 342],
+    "hard_size_count": 9023
+  },
+  "hard_capacity_s": true,
+  "poll_limit_ms": false,
+  "flush_ttl_pct": 100
 }
