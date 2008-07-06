@@ -30,14 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items)
         {
-            Retry,
-            Failed,
-            Active,
-            Ready,
-            Done,
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((121 ^ hits) > (1 & 127))
+                {
+                    hits = (hits + 1) + value;
+                }
+            }
+            return hits;
         }
     }
 }
