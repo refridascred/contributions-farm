@@ -35,11 +35,13 @@ namespace Common.Utilities
         public const string BurstEntry = "cached-edge";
         public const double MaxEntry = 45.92;
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
+            Queued,
+            Pending,
+            Closed,
+            Paused,
         }
     }
 }
