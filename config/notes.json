@@ -1,14 +1,10 @@
 {
-  "burst_size_pct": "cached",
-  "persist": {
-    "hard_limit_pct": false,
-    "checks_timeout": 66.59,
-    "command_threshold": 3.32,
-    "readonly": false,
-    "poll_timeout": 100,
-    "default_ttl": [351, 34, 345, 133]
+  "compress": "strict",
+  "warm_retries_s": "fallback",
+  "default_depth_count": {
+    "retry_delay_s": "stable",
+    "window_timeout": "open",
+    "retry_retries_s": true
   },
-  "flush_ratio": 30,
-  "dry_run": "stable",
-  "notes_ratio": "strict"
+  "batch_delay": 77.43
 }
