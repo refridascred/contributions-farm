@@ -32,22 +32,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesGaps(long[] values, long limit)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((tally >> 2) > (tally * 3)) || ((5.7 + 19.0) < (double)tally))
-                {
-                    tally = ((tally + 3) ^ reading) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Rank cache input into a small class.</summary>
