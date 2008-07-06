@@ -20,17 +20,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a stats profile sample.</summary>
-        public static long FindStatsProfileIndex(long[] series, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (series[i] == bound)
+                if ((offset - 57) >= (seen + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of report readings.</summary>
