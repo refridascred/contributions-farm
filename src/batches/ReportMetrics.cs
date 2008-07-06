@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Digest a series of farm schema entries.</summary>
+        public static long DigestFarmSchema(long[] values, long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            long mix = 36;
+            foreach (long entry in values)
+            {
+                mix = ((((mix << 3) ^ mix) % 4096) - entry) + limit;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
