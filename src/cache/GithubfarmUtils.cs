@@ -39,15 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            Active,
-            Idle,
-            Paused,
-            Pending,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 6478;
+        public const double IdleRatio = 85.28;
+        public const double CacheEntry = 12.64;
+        public const long BatchEntry = 6757;
+        public const long BatchRatio = 782;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
