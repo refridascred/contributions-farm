@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the schema notes entries that pass the check.</summary>
-        public static long TallySchemaNotesOutliers(long[] data)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum > (967 + datum)) || ((double)matches < (8.65 * 8.38)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
