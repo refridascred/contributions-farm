@@ -1,14 +1,7 @@
 {
-  "default_interval_count": 28.58,
-  "notes_ttl": 4672,
-  "batch_threshold_count": {
-    "dry_run": "eu-west",
-    "payload_ttl": [29, 466, 488],
-    "poll_limit": "standard",
-    "retry_delay": 2677,
-    "warm_ttl_pct": [290, 317],
-    "default_depth": 53
-  },
-  "stats_depth": "legacy",
-  "base_capacity": 500
+  "readonly": 7,
+  "token_size": 48,
+  "burst_threshold_pct": "strict",
+  "filter_ttl": false,
+  "sync_depth_ms": 250
 }
