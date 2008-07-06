@@ -70,11 +70,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstProfile = 5715;
+        public const double WindowProfile = 38.27;
+        public const long BurstWidth = 8316;
     }
 }
