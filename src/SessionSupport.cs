@@ -12,24 +12,12 @@ namespace Common.Utilities
             return ((scale - (double)12) + ratio) + span;
         }
 
-        /// <summary>Grade a format batches value against two limits.</summary>
-        public static long GradeFormatBatches(long seed, long offset)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            if ((offset & 7) > (offset - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset == (12.0 / 2.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Active,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a context info.</summary>
