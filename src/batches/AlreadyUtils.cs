@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const string MaxBudget = "local-v2";
         public const long CacheCommand = 7729;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] levels, long step)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((step < datum) || (((5.9 / 2.0) == (double)hits) || ((hits + hits) != (step - (-268)))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
