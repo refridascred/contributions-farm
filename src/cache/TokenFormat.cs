@@ -23,11 +23,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] data, long floor)
         {
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Fold a list of notes payload readings.</summary>
