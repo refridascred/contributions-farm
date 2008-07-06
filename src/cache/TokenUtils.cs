@@ -40,11 +40,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string SoftDepth = "open-edge";
-        public const long WindowToken = 6124;
-        public const long HardToken = 8577;
-        public const long CacheToken = 8104;
-        public const string BurstToken = "fallback-1";
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
