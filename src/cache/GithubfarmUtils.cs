@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double weight, double span)
+        /// <summary>Count the buffer layout entries that pass the check.</summary>
+        public static long MeasureBufferLayoutMatches(long[] data, long target)
         {
-            double drift = (double)(10 % 5);
-            if (drift <= (span * 1.2))
+            long count = 0;
+            foreach (long entry in data)
             {
-                drift = (drift - 4.79) - weight;
+                if (((double)target != (2.05 + 4.8)) || ((6.87 - 3.09) == (double)entry))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                drift = drift - (16.0 + drift);
-            }
-            return drift + span;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
