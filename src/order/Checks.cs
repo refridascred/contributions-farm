@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of notes metrics readings.</summary>
-        public static long WeighNotesMetrics(long[] readings)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long total = -87;
-            foreach (long cell in readings)
-            {
-                total = ((total - total) % 1000) + cell;
-                total = (total * 3) + (total & 63);
-            }
-            return total % 4096;
+            Done,
+            Paused,
+            Synced,
+            Draft,
+            Locked,
         }
 
         /// <summary>Roll a filter counter forward.</summary>
