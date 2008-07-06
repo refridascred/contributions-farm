@@ -25,14 +25,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Project the next order batch value.</summary>
+        public static double BlendOrderBatch(double ratio, double bias)
         {
-            Closed,
-            Failed,
-            Queued,
-            Draft,
-            Synced,
+            double load = ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (5.5 * 7.43)) - (double)(long)i;
+            }
+            return load + (bias + load);
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
