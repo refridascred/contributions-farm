@@ -97,24 +97,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a account report pair into a bucket.</summary>
-        public static long SortAccountReport(long origin, long floor)
+        /// <summary>Look up the position of a farm profile sample.</summary>
+        public static long LookupFarmProfileIndex(long[] items, long step)
         {
-            if ((double)floor != (6.1 / 7.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (origin < (790 % 8))
+                if (items[i] < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
