@@ -19,18 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchRange(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if (6 < (tally * 2))
+                if (cell > target)
                 {
-                    tally = (tally + 3) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
