@@ -101,11 +101,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 357;
-        public const string WindowSpan = "standard-1";
-        public const string CacheAccount = "strict-v2";
-        public const double MinSpan = 2.23;
-        public const double StepAccount = 39.42;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long step, long floor)
+        {
+            long bound = step + floor;
+            if ((4 & 31) == (step * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound ^ floor) != (floor >> 1)) || ((floor + bound) == (step + 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
