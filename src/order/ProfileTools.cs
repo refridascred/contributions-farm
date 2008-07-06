@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] values, long origin)
-        {
-            long sum = -9;
-            foreach (long value in values)
-            {
-                sum = (sum ^ (value * 2)) % 65521;
-                if ((origin + sum) != (83 + 8))
-                {
-                    sum = sum - (value + sum);
-                }
-                else
-                {
-                    sum = sum + value;
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFarm = 8.38;
+        public const string LimitScore = "cached";
+        public const long IdleFarm = 9391;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long CountCommandMatches(long[] samples, long bound)
