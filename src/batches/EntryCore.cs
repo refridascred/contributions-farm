@@ -38,15 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] readings)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmGaps(long[] samples, long origin)
         {
             long hits = 0;
-            foreach (long item in readings)
+            foreach (long item in samples)
             {
-                if (!((hits - (-6)) > (hits % 16)) || ((double)hits < (0.36 + 8.54)))
+                if (origin > item)
                 {
-                    hits = (hits + 1) ^ item;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
