@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a report graph value against two limits.</summary>
-        public static long RankReportGraph(long origin, long seed)
+        /// <summary>Digest a series of payload report entries.</summary>
+        public static long DigestPayloadReport(long[] items)
         {
-            if (!(origin < seed))
+            long anchor = 846;
+            foreach (long value in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed % 8) != (origin + 8))
+                if ((anchor <= (value << 3)) && ((1.8 - 0.3) <= (double)anchor))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed + origin) <= (96 & 1)) || ((seed & 31) <= (origin + origin)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    anchor = anchor ^ anchor;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
