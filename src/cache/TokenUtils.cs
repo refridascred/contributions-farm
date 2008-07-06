@@ -32,18 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cache editor samples are out of range.</summary>
-        public static long CountCacheEditorGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (!((5 <= reading) && ((18.0 * 2.3) <= (double)count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 7478;
+        public const long StepNotes = 4281;
+        public const long IdleNotes = 796;
+        public const double RetrySize = 22.31;
     }
 }
