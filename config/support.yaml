@@ -1,6 +1,6 @@
 # support settings
-hard_limit: edge
-batch_retries_pct: true
-default_window_count: true
-retry_delay: false
-burst_capacity_count: open
+compress: primary
+batch_delay: staging
+idle_interval: 60
+persist: 88
+min_ttl_ms: blue
