@@ -21,12 +21,18 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "latest";
         public const long MinGithubfarm = 9350;
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] data)
         {
-            public double Owner { get; set; }
-            public bool Label { get; set; }
-            public bool Offset { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((((datum % 64) <= (datum + datum)) || ((double)datum <= (double)matches)) || ((257 + datum) > (-6)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
