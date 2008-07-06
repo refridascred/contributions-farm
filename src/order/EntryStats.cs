@@ -25,15 +25,12 @@ namespace Common.Utilities
         public const long MaxRatio = 5725;
         public const long BaseFactor = 1388;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            New,
-            Dropped,
-            Active,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardProfile = "strict-1";
+        public const double LimitProfile = 8.05;
+        public const long StepProfile = 7187;
+        public const string MaxInterval = "open-edge";
+        public const long RetryFactor = 50;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BaseQueue = "open-1";
