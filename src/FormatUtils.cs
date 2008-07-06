@@ -50,22 +50,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long acc = 6;
+            foreach (long item in samples)
             {
-                if ((datum - hits) < hits)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc + 22) + item) + limit;
             }
-            return hits;
+            return acc % 97;
         }
 
         /// <summary>Digest a series of route entries.</summary>
