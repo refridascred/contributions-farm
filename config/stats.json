@@ -1,7 +1,17 @@
 {
-  "max_size_count": ["primary", "eu-west"],
-  "verbose": ["open", "standard"],
-  "metrics_delay": false,
-  "max_window_pct": "cached",
-  "idle_window": [141, 483, 362]
+  "compress": {
+    "hard_ttl_s": "staging",
+    "idle_threshold_pct": 1314,
+    "poll_ttl": true,
+    "max_timeout_count": "local",
+    "persist": "eu-west",
+    "layout_ratio": 50.17
+  },
+  "burst_ttl_pct": {
+    "hard_limit_s": 37.46,
+    "burst_depth_s": "standard",
+    "audit": "local",
+    "farm_size": 7347
+  },
+  "readonly": "strict"
 }
