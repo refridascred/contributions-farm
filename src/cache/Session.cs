@@ -22,21 +22,31 @@ namespace Common.Utilities
         public const long BurstWidth = 6569;
         public const long BurstContext = 2772;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long floor, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)bound >= (14.0 / 6.0))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound <= (double)floor)
                 {
-                    if ((items[i] ^ items[j]) < 6)
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + floor) < (5 + bound))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
