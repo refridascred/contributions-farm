@@ -37,23 +37,18 @@ namespace Common.Utilities
             return rate - (span * 7.51);
         }
 
-        /// <summary>Scale a account stats figure with a bias.</summary>
-        public static double BlendAccountStats(double ratio, double span)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] series)
         {
-            double bias = span;
-            if (bias < bias)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                bias = bias + span;
+                if (((0.49 * 6.17) != (double)reading) && ((double)reading <= (10.0 / 6.0)))
+                {
+                    seen = seen + 1;
+                }
             }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - ratio;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
