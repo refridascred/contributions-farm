@@ -40,14 +40,21 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Compare every pair of token farm readings.</summary>
+        public static long CompareTokenFarmCount(long[] series)
         {
-            Done,
-            Paused,
-            Ready,
-            Dropped,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
