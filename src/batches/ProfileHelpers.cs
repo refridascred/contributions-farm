@@ -43,19 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] items, long bound)
+        /// <summary>Find the first token editor entry that matches the target.</summary>
+        public static long LookupTokenEditorIndex(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry >= bound)
+                if (levels[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
