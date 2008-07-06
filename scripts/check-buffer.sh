@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 9 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
 
-for item in stable cached; do
+for item in blue legacy strict; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=440
+BUFFER_LIMIT=489
 log "limit is ${BUFFER_LIMIT}"
