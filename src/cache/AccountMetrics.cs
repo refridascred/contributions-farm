@@ -70,22 +70,12 @@ namespace Common.Utilities
         public const long BurstOrder = 4223;
         public const long LimitOrder = 1508;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] values, long step)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (4.1 < (double)hits)
-                {
-                    hits = ((hits + 3) ^ item) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
