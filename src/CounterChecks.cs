@@ -40,13 +40,26 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TotalGithubfarm(long[] samples, long origin)
         {
-            Closed,
-            Locked,
-            Pending,
-            Done,
+            long sum = 884;
+            foreach (long sample in samples)
+            {
+                if ((double)sample >= 9.8)
+                {
+                    sum = (sum << 3) ^ (origin >> 1);
+                }
+                if ((double)origin > (1.43 + 7.1))
+                {
+                    sum = ((sum << 2) ^ (origin + sample)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (sum % 12)) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
