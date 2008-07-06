@@ -54,18 +54,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] samples, long seed)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seed > (1.51 - 6.2))
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
                 {
-                    hits = (hits + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
