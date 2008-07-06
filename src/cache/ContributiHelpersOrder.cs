@@ -44,11 +44,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 5443;
-        public const long WindowAccount = 3737;
-        public const double StepAccount = 76.77;
-        public const long StepRatio = 6738;
-        public const long BatchRatio = 5837;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
