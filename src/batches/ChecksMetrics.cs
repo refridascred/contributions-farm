@@ -57,19 +57,18 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] series, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (datum != floor)
+                if ((tally / 6) < (value % 3))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Rank profile counter input into a small class.</summary>
