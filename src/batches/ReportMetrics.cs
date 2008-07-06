@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamHits(long[] levels)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((datum << 2) > matches) && !((8.0 + 0.2) == (double)matches))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
