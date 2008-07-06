@@ -45,30 +45,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TotalGithubfarm(long[] series, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] samples, long offset)
         {
-            long acc = 809;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry % 24) > (acc + floor))
+                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
                 {
-                    acc = ((acc * 3) + floor) % 1000;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                if ((entry * 3) == (entry - acc))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < (-286))
-            {
-                acc = acc ^ floor;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a profile summary.</summary>
