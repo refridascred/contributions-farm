@@ -50,12 +50,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == offset)
+                if (data[i] > limit)
                 {
                     return (long)i;
                 }
