@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long SoftCount = 9788;
         public const long WindowPayload = 8566;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Project the next githubfarm contributi value.</summary>
+        public static double SmoothGithubfarmContributi(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(4 / 5);
+            if (rate <= (double)203)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate = (rate + (span - span)) - scale;
             }
-            return hits;
+            else
+            {
+                rate = rate + span;
+            }
+            return rate - (span * 7.51);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
