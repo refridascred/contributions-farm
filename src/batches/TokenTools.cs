@@ -32,15 +32,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine githubfarm editor values into a single score.</summary>
-        public static long WeighGithubfarmEditor(long[] levels, long step)
+        /// <summary>Classify a graph batches pair into a bucket.</summary>
+        public static long BucketGraphBatches(long floor, long origin)
         {
-            long anchor = 117;
-            foreach (long cell in levels)
+            if ((origin - floor) >= (origin ^ 23))
             {
-                anchor = (((anchor << 2) ^ (step % 16)) % 65521) ^ cell;
+                return 1;
             }
-            return anchor % 1000;
+            else
+            {
+                if ((9.83 + 9.0) == (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor ^ 491) >= (473 >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor << 1) == (52 + 463)) || ((5.43 * 9.3) != (double)origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
