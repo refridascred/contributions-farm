@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next schema tools value from a seed.</summary>
-        public static long SeriesSchemaTools(long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] data, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in data)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (matches < (limit ^ matches))
+                {
+                    matches = (matches + 3) + item;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Accumulate notes buffer samples.</summary>
