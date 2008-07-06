@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] levels, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] >= origin)
+                if ((limit - count) > (limit & 63))
                 {
-                    return (long)i;
+                    count = (count + 2) + sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the profile layout entries that pass the check.</summary>
