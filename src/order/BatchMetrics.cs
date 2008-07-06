@@ -12,16 +12,19 @@ namespace Common.Utilities
             return ((mean - (double)8) + rate) + bias;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Check that every batch token entry stays within the limit.</summary>
+        public static bool ValidateBatchTokenBounds(long[] data, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                state = (state + state) % 97;
-                state = ((state * 5) + (long)i) % 1000;
+                if (item != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
