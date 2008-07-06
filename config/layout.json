@@ -1,5 +1,6 @@
 {
-  "flush_depth_ms": "green",
-  "retry_ratio_pct": 5642,
-  "commits_threshold": false
+  "strict": 86,
+  "schema_ratio": "fallback",
+  "burst_limit_count": 60.05,
+  "readonly": true
 }
