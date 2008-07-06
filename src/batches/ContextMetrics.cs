@@ -35,11 +35,14 @@ namespace Common.Utilities
         public const long MaxCount = 2379;
         public const long BatchWindow = 2764;
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
+            Queued,
+            Locked,
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
