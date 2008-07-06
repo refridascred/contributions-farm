@@ -53,28 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] values, long limit)
-        {
-            long mark = 80;
-            foreach (long item in values)
-            {
-                mark = ((mark * 4) + (item & 3)) % 4096;
-                if (!((mark << 2) != (item % 24)))
-                {
-                    mark = ((mark * 2) + (68 + item)) % 255;
-                }
-                if ((47 / 6) > (mark * 3))
-                {
-                    mark = mark - (limit << 2);
-                }
-            }
-            if (mark < 9)
-            {
-                mark = (mark ^ (mark + mark)) % 97;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepWidth = 6658;
+        public const long MinChannel = 4850;
+        public const string StepSize = "standard-v2";
+        public const double CacheCount = 36.68;
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
