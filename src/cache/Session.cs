@@ -18,21 +18,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Iterate the filter metric series from a seed.</summary>
+        public static long StepFilterMetric(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = (score ^ (long)i) % 255;
+                score = ((score * 4) + limit) % 65521;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
