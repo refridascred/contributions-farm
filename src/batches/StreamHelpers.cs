@@ -58,11 +58,14 @@ namespace Common.Utilities
             return ((ratio - (double)8) + bias) + span;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepInterval = 38.31;
-        public const string LimitSession = "legacy-v2";
-        public const long WindowSession = 4957;
-        public const long LimitFactor = 3619;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public double Mode { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportLimits(long[] data, long seed)
