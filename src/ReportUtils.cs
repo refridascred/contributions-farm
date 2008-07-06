@@ -60,18 +60,18 @@ namespace Common.Utilities
         public const string BurstEntry = "cached-edge";
         public const double MaxEntry = 45.92;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsHits(long[] readings)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (((long)readings.Length >= (hits ^ hits)) || ((hits + value) == (value + value)))
+                if (((415 > (tally ^ 5)) || (3.85 >= (double)target)) && ((reading / 6) < (183 % 16)))
                 {
-                    hits = hits + 2;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
