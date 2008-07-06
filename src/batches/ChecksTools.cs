@@ -22,39 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            long delta = floor - step;
-            if ((step * 2) < (delta % 24))
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                result = result ^ result;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((step << 3) >= ((-93) - floor))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step <= 2.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step % 2) > step) && ((floor >> 5) < delta))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Hold a record record.</summary>
