@@ -1,6 +1,6 @@
 {
-  "compress": 500,
-  "default_threshold_count": 30,
-  "verbose": true,
-  "sync_interval": true
+  "command_threshold": 5.12,
+  "order_ratio": "eu-west",
+  "sync_ratio_count": 63.09,
+  "window_ttl": 17.62
 }
