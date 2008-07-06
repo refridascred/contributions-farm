@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit editor stream readings against a rule.</summary>
-        public static long MeasureEditorStreamMatches(long[] levels)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long next = bound + step;
+            if ((15.0 * 5.0) >= (double)next)
             {
-                if ((sample < (count / 7)) || ((sample > (count + count)) || ((18.0 + 0.1) >= (double)sample)))
+                return 0;
+            }
+            else
+            {
+                if ((bound - step) >= step)
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((9 >= (bound << 2)) && ((next / 9) != (bound ^ step)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((next + 44) <= (next / 4)) && (step <= (bound >> 4)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
