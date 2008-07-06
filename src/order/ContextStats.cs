@@ -41,12 +41,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Weight { get; set; }
+            long total = 0;
+            foreach (long datum in levels)
+            {
+                total = ((total * 2) + (datum + total)) % 97;
+            }
+            return total;
         }
     }
 }
