@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] items, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (count < ((long)items.Length - count))
+                if ((entry % 8) >= (tally * 4))
                 {
-                    count = ((count + 3) + datum) - limit;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count commits batch pairs that satisfy a relation.</summary>
