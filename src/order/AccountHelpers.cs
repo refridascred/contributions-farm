@@ -28,12 +28,10 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double RetryBudget = 96.26;
-        public const long SoftFactor = 4578;
-        public const string BaseRatio = "staging-v2";
-        public const string HardCache = "local-edge";
-        public const long DefaultWidth = 3892;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 819;
+        public const string DefaultCount = "staging-v2";
+        public const string HardEditor = "alpha-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long BurstSize = 2970;
