@@ -34,19 +34,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token buffer reading.</summary>
-        public static double AdjustTokenBuffer(double rate, double bias)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long target)
         {
-            double weight = 8.4 - rate;
-            if (weight > weight)
+            long lane = limit - target;
+            if (0.52 > (double)limit)
             {
-                weight = weight - bias;
+                return 5;
             }
             else
             {
-                weight = weight + 6.0;
+                if ((double)lane == (7.0 * 0.37))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((5.2 - 1.0) >= (double)lane)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return weight - (weight + rate);
         }
     }
 }
