@@ -52,22 +52,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many metric format samples are out of range.</summary>
-        public static long CountMetricFormatGaps(long[] series, long bound)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((bound / 5) >= (bound + bound))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Active,
+            Draft,
+            Failed,
+            Done,
+            Idle,
         }
     }
 }
