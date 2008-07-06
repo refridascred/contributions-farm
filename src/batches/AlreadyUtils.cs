@@ -48,15 +48,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate cluster payload samples.</summary>
-        public static long CombineClusterPayload(long[] items, long bound)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long mix = 26;
-            foreach (long sample in items)
-            {
-                mix = ((mix << 3) ^ (72 ^ sample)) + bound;
-            }
-            return mix % 4096;
+            Retry,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
