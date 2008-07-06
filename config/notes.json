@@ -1,7 +1,7 @@
 {
-  "readonly": 7,
-  "token_size": 48,
-  "burst_threshold_pct": "strict",
-  "filter_ttl": false,
-  "sync_depth_ms": 250
+  "min_delay_count": 250,
+  "profile_timeout": 1024,
+  "persist": 4382,
+  "metrics_capacity": true,
+  "cache_size_ms": ["cached", "standard"]
 }
