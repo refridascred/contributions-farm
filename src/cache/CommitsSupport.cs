@@ -18,30 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TallyEditor(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] series)
         {
-            long sum = 85;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((sum / 2) <= (datum / 4))
+                if (reading >= (tally ^ tally))
                 {
-                    continue;
-                }
-                if ((sum + sum) < (sum ^ sum))
-                {
-                    sum = (sum + (sum ^ datum)) % 65521;
-                }
-                else
-                {
-                    sum = (sum - (8 << 3)) % 97;
+                    tally = tally + 1;
                 }
             }
-            if (sum < 202)
-            {
-                sum = ((sum << 2) ^ (sum * 2)) % 4096;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
