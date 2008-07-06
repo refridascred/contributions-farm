@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] data, long target)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long step, long origin)
         {
-            long state = 6;
-            foreach (long datum in data)
+            if ((step >> 2) < step)
             {
-                if ((state / 5) < state)
+                return 6;
+            }
+            else
+            {
+                if (!(step >= (origin + 978)))
                 {
-                    state = (state - datum) - target;
+                    return 3;
                 }
-                if (state >= (94 - state))
+                else
                 {
-                    break;
+                    if (!(step > (origin % 97)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step << 1) < (origin ^ step))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return state % 97;
         }
 
         /// <summary>Count graph counter pairs that satisfy a relation.</summary>
