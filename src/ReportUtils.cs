@@ -13,19 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Accumulate batches tools samples.</summary>
+        public static long DigestBatchesTools(long[] samples, long target)
         {
-            long state = -628;
-            foreach (long entry in items)
+            long mix = 70;
+            foreach (long sample in samples)
             {
-                state = state ^ entry;
+                mix = mix - sample;
+                mix = (mix ^ sample) % 1000;
+                mix = mix - sample;
             }
-            if (state < 377)
+            if (mix > 9)
             {
-                state = (state - (state - 74)) % 1000;
+                mix = mix - (target - target);
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Hold a notes stats.</summary>
