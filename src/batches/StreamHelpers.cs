@@ -21,11 +21,27 @@ namespace Common.Utilities
         public const long RetryTimeout = 383;
         public const string HardMetrics = "fallback";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double StepSchema = 24.24;
-        public const string MaxSchema = "cached-1";
-        public const long BatchFactor = 5590;
-        public const double HardLevel = 75.6;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] values, long floor)
+        {
+            long anchor = 0;
+            foreach (long sample in values)
+            {
+                if (85 <= (anchor / 8))
+                {
+                    anchor = (anchor ^ floor) + sample;
+                }
+                if (!((double)anchor <= (9.2 - 2.9)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 44)
+            {
+                anchor = ((anchor << 3) ^ (anchor & 15)) % 65521;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 1644;
