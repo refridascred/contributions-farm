@@ -1,17 +1,7 @@
 # support settings
-poll_retries_pct:
-  - 404
-  - 432
-base_retries_ms: green
-retry_size:
-  - legacy
-  - latest
-  - staging
-  - standard
-retry_delay: 5.03
-retry_limit: 30
-dry_run:
-  - 152
-  - 65
-  - 354
-  - 244
+compress: blue
+metrics_timeout: 69.4
+sync_size_ms: 500
+queue_size: false
+channel_timeout: 4
+warm_threshold: false
