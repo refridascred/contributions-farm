@@ -1,5 +1,8 @@
 {
-  "account_depth": 54.93,
-  "sync_interval": "strict",
-  "base_ratio_ms": "strict"
+  "cache_delay": false,
+  "farm_retries": 2769,
+  "editor_depth": 500,
+  "soft_ratio_pct": [274, 19, 450, 173],
+  "verbose": [329, 344],
+  "context_retries": 6511
 }
