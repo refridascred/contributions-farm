@@ -14,12 +14,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Size { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheDepth = "staging-edge";
+        public const long StepSession = 5362;
+        public const long HardSession = 7214;
+        public const long StepWidth = 8058;
 
         /// <summary>Iterate the cache series from a seed.</summary>
         public static long StepCache(long bound)
