@@ -17,19 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsLimits(long[] values, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Blend two stats measurements.</summary>
