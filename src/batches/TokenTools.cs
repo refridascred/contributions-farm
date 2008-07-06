@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] levels)
+        /// <summary>Count the graph stream entries that pass the check.</summary>
+        public static long TallyGraphStreamMatches(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (19.0 <= (double)seen)
+                if (((value & 63) >= step) || ((double)matches <= (8.0 - 9.0)))
                 {
-                    seen = (seen + 3) - datum;
+                    matches = matches + 2;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a graph batches pair into a bucket.</summary>
