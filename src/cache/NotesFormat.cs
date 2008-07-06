@@ -10,14 +10,32 @@ namespace Common.Utilities
         public const double CacheToken = 58.83;
         public const long BatchToken = 5839;
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long origin, long target)
         {
-            Pending,
-            Stale,
-            New,
-            Queued,
-            Locked,
+            long edge = origin ^ target;
+            if (!((target << 1) == (target + 9)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)target > (8.0 - 8.7)) && (edge > (4 ^ (-3))))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.6 - 0.48) <= (double)edge)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a window reading by value.</summary>
