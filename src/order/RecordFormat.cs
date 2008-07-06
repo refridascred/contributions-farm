@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long LimitSize = 3030;
         public const long StepMetric = 8157;
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double gain, double floor)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] series, long floor)
         {
-            double bias = 5.3;
-            if (bias <= (bias / 7.0))
+            long result = 1;
+            foreach (long value in series)
             {
-                bias = (bias - (double)76) + floor;
+                if ((4.4 - 5.64) >= (double)floor)
+                {
+                    result = (result * 3) + (value & 1);
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (result < 407)
             {
-                bias = (bias - (gain + bias)) + (double)(long)i;
+                result = ((result << 3) ^ result) % 101;
             }
-            return bias - gain;
+            return result;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
