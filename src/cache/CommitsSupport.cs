@@ -78,19 +78,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long carry = 482;
+            foreach (long entry in items)
             {
-                if (cell != origin)
+                if (((target % 5) != (306 << 3)) && ((carry % 5) <= (carry ^ carry)))
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry - (target << 3)) % 1000) + entry;
                 }
             }
-            return ok;
+            if (carry > 1)
+            {
+                carry = ((carry << 3) ^ (carry + 506)) % 1000;
+            }
+            return carry;
         }
     }
 }
