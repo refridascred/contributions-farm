@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            Dropped,
-            Done,
-            Draft,
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the commits status values.</summary>
