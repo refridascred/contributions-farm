@@ -22,19 +22,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next githubfarm contributi value.</summary>
-        public static double SmoothGithubfarmContributi(double scale, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long step, long floor)
         {
-            double rate = (double)(4 / 5);
-            if (rate <= (double)203)
+            if (((double)step != (11.0 + 8.3)) || ((step << 1) < (794 * 4)))
             {
-                rate = (rate + (span - span)) - scale;
+                return 8;
             }
             else
             {
-                rate = rate + span;
+                if (!((860 << 3) == (step + step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step * 5) == (floor & 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return rate - (span * 7.51);
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
