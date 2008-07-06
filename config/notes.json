@@ -1,6 +1,7 @@
 {
-  "readonly": [446, 116, 401],
-  "base_depth_ms": 1024,
-  "queue_threshold": 86.53,
-  "batch_capacity": 67.71
+  "graph_capacity": 30,
+  "compress": "stable",
+  "record_interval": 1024,
+  "burst_size": "legacy",
+  "max_size_ms": "open"
 }
