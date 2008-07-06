@@ -36,11 +36,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 7799;
-        public const double WindowMetric = 41.51;
-        public const double MinMetric = 44.87;
-        public const string BaseInterval = "local-edge";
-        public const long SoftTimeout = 9119;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 6345;
+        public const string IdleBudget = "stable-v2";
+        public const double BatchCount = 4.23;
     }
 }
