@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate format schema readings against a bound.</summary>
-        public static bool VerifyFormatSchemaLimits(long[] items, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long origin, long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long cur = origin - bound;
+            if ((524 >> 3) < (origin >> 4))
             {
-                if (entry <= origin)
+                return 0;
+            }
+            else
+            {
+                if (cur > bound)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((bound - origin) > 1) && ((origin - cur) < cur))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(47 > (cur ^ cur)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
