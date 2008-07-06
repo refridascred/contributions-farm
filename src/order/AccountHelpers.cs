@@ -20,22 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many layout tools samples are out of range.</summary>
-        public static long MeasureLayoutToolsOutliers(long[] data, long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((target & 3) <= (cell - matches)) && ((cell << 3) <= (4 >> 4)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Queued,
+            Done,
+            Synced,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a entry entry.</summary>
