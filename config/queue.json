@@ -1,5 +1,5 @@
 {
-  "idle_ratio_count": 38,
-  "idle_window_ms": 60,
-  "persist": 30
+  "default_ttl": "cached",
+  "warm_capacity": 38.31,
+  "batches_size": 11
 }
