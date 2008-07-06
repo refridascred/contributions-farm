@@ -32,14 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] values, long step)
         {
-            Closed,
-            Done,
-            Locked,
-            Stale,
-            Draft,
+            long acc = 16;
+            foreach (long sample in values)
+            {
+                if (((sample + acc) <= (3 + sample)) || ((29 % 2) < (acc & 15)))
+                {
+                    acc = ((acc - sample) % 1000) - step;
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the batches mode values.</summary>
