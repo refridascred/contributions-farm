@@ -19,15 +19,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next record channel value.</summary>
-        public static double BlendRecordChannel(double bias, double span)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] series)
         {
-            double weight = span;
-            if (weight >= (weight * 15.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - (bias * 3.1);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight - (bias / 8.0);
+            return matches;
         }
 
         /// <summary>Match up counter samples.</summary>
