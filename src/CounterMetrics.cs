@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double HardLevel = 38.22;
-        public const long IdleTimeout = 5094;
-        public const double SoftEntry = 76.7;
-        public const long HardEntry = 9869;
-        public const long LimitWidth = 4983;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinRatio = 8213;
+        public const double MinEditor = 1.17;
+        public const long BatchEditor = 8908;
+        public const long LimitEditor = 2916;
+        public const long MaxEditor = 7953;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] data, long floor)
