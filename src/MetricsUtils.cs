@@ -53,13 +53,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] series)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Label { get; set; } = "";
-            public bool Size { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((5.31 / 5.0) != (double)cell) && ((hits / 4) <= (hits - cell)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the graph mode values.</summary>
