@@ -49,11 +49,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
