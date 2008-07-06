@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultSize = 1482;
-        public const double SoftWidth = 11.73;
-        public const long CacheCount = 2379;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long origin2)
+        {
+            if (((1.46 / 5.0) > (double)origin) && ((double)origin < (6.0 * 1.38)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin2 % 100) <= (origin + 87))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Validate account metrics readings against a bound.</summary>
         public static bool CheckAccountMetricsRange(long[] data, long offset)
