@@ -1,16 +1,7 @@
 {
-  "poll_depth_pct": {
-    "record_depth": 47.61,
-    "cache_threshold": "staging",
-    "counter_depth": {
-      "batches_delay": true,
-      "stats_window": [53, 208, 405],
-      "farm_depth": "strict",
-      "strict": true
-    },
-    "warm_retries_pct": "fallback"
-  },
-  "cache_delay": 97.04,
-  "sync_ttl": 6633,
-  "burst_timeout_pct": [378, 153, 221, 88]
+  "retry_limit": 27,
+  "poll_capacity_s": "latest",
+  "default_interval": 8375,
+  "persist": "staging",
+  "verbose": "primary"
 }
