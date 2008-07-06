@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long origin, long target)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            if ((origin + 7) == (origin / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin + target) > (814 << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the context counter entries that pass the check.</summary>
