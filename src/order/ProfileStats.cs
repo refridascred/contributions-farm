@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionMatches(long[] values)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (2.92 / 8.0))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
