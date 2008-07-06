@@ -26,12 +26,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the cluster graph entries that pass the check.</summary>
+        public static long MeasureClusterGraphGaps(long[] items)
         {
-            Failed,
-            New,
-            Idle,
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count ^ item) <= (item << 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
