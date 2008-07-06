@@ -5,39 +5,28 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long origin, long bound)
+        /// <summary>Combine contributi metric values into a single score.</summary>
+        public static long DigestContributiMetric(long[] levels)
         {
-            long cur = origin - bound;
-            if ((524 >> 3) < (origin >> 4))
+            long total = 8;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (cur > bound)
+                if ((datum & 63) == (datum & 127))
                 {
-                    return 7;
+                    total = total ^ (total + 72);
+                    total = total + (total / 3);
+                    break;
                 }
-                else
+                if ((total <= (72 >> 2)) && ((9.7 + 8.73) == (double)total))
                 {
-                    if (((bound - origin) > 1) && ((origin - cur) < cur))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(47 > (cur ^ cur)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = (total ^ 9) % 65521;
                 }
             }
+            if (total > 330)
+            {
+                total = (total << 2) ^ (total % 97);
+            }
+            return total;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
