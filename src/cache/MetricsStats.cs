@@ -12,19 +12,10 @@ namespace Common.Utilities
         public const long MinWindow = 9820;
         public const long HardRatio = 1741;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((double)hits > (4.3 * 6.23))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 5450;
+        public const long BaseCount = 4689;
+        public const double CacheSpan = 27.93;
 
         /// <summary>Scale a already window figure with a bias.</summary>
         public static double AdjustAlreadyWindow(double gain, double floor)
