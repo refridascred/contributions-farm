@@ -61,17 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] levels, long offset)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] values, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 620;
+            foreach (long entry in values)
             {
-                if (levels[i] < offset)
+                if ((((long)values.Length & 1) <= (699 - mark)) && ((bound + bound) > (-100)))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (bound + mark)) ^ entry;
                 }
             }
-            return -1;
+            return mark % 97;
         }
     }
 }
