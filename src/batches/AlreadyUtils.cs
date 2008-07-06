@@ -63,22 +63,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] data, long origin)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((sample << 3) == (sample + sample))
+                if (value >= (854 + value))
                 {
-                    seen = (seen + 2) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
