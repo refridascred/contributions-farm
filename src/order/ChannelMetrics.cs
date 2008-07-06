@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] levels, long bound)
+        /// <summary>Count the session metrics entries that pass the check.</summary>
+        public static long MeasureSessionMetricsGaps(long[] values)
         {
             long hits = 0;
-            foreach (long item in levels)
+            foreach (long value in values)
             {
-                if ((double)item == (double)bound)
+                if (((hits ^ (-798)) == (hits >> 1)) && ((hits >> 4) <= hits))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
