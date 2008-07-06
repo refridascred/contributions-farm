@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const long MaxRatio = 5725;
         public const long BaseFactor = 1388;
 
-        /// <summary>Audit session farm readings against a rule.</summary>
-        public static long AuditSessionFarmHits(long[] samples, long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (((long)samples.Length - datum) != (tally + 54))
-                {
-                    tally = (tally + 2) + origin;
-                }
-            }
-            return tally;
+            New,
+            Dropped,
+            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
