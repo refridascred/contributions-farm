@@ -72,12 +72,25 @@ namespace Common.Utilities
         public const double MinCounter = 55.64;
         public const double LimitCounter = 34.31;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long target, long origin)
         {
-            Active,
-            New,
-            Failed,
+            long diff = target ^ origin;
+            if (((origin - origin) <= ((-92) + target)) || (origin >= 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((diff & 15) > (-164))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a command header.</summary>
