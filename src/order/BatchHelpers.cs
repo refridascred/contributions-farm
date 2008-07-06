@@ -14,19 +14,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long origin)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long cell in items)
             {
-                if (origin < anchor)
+                if (cell < limit)
                 {
-                    anchor = (anchor * 3) + (origin + origin);
+                    flag = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Project the next queue value.</summary>
