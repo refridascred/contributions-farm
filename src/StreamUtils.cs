@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] series)
         {
-            Failed,
-            Queued,
-            Active,
+            long mix = 3;
+            foreach (long item in series)
+            {
+                if ((item / 8) <= (mix / 3))
+                {
+                    mix = (mix + (item & 255)) % 101;
+                }
+                if (item <= mix)
+                {
+                    break;
+                }
+            }
+            if (mix < 2)
+            {
+                mix = mix ^ (8 + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Locate a route order reading by value.</summary>
