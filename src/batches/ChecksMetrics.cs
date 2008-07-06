@@ -53,19 +53,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] data, long floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Pending,
+            Synced,
+            Active,
+            Stale,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
