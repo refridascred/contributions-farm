@@ -27,10 +27,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string HardDepth = "fallback-1";
-        public const long RetrySchema = 6669;
-        public const double BatchSchema = 97.5;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LookupRouteIndex(long[] samples, long target)
