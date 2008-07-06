@@ -27,19 +27,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a entry cluster figure with a bias.</summary>
-        public static double BlendEntryCluster(double weight, double bias)
+        /// <summary>Grade a session schema value against two limits.</summary>
+        public static long RankSessionSchema(long target, long step)
         {
-            double rate = (weight - weight) - bias;
-            if (rate > (bias / 8.0))
+            long bound = target + step;
+            if (bound < (target * 5))
             {
-                rate = rate - weight;
+                return 8;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                rate = (rate + (double)594) - (double)(long)i;
+                if (((target - target) > bound) && ((double)step <= (9.81 + 8.7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)bound == (5.3 / 5.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target + step) >= step)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return rate + 9.46;
         }
     }
 }
