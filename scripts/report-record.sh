@@ -6,21 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=408
-log "limit is ${RECORD_LIMIT}"
+for item in staging eu-west stable; do
+    log "checking ${item}"
+done
 
-mode="${1:-open}"
+mode="${1:-staging}"
 case "${mode}" in
-    legacy)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
