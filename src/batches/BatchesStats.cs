@@ -30,15 +30,21 @@ namespace Common.Utilities
             return weight - (bias / 8.0);
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long origin)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
