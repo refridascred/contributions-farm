@@ -1,21 +1,10 @@
 # entry settings
-audit:
-  readonly: true
-  buffer_threshold: 6358
-  idle_ratio_pct: 48.7
-strict:
-  - edge
-  - open
-  - open
-record_timeout:
-  tools_window:
-    - local
-    - green
-    - green
-  compress: 14
-  min_threshold_s:
-    - eu-west
-    - local
-  buffer_ttl: legacy
-  batches_window: 3835
-dry_run: 756
+burst_window: 130
+graph_depth: 5395
+poll_interval_s:
+  farm_depth: 46.01
+  warm_ttl: local
+  batch_depth_pct: false
+base_window_ms: 38.2
+flush_delay_s: 37.93
+schema_size: green
