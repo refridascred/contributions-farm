@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a graph format reading.</summary>
-        public static double AdjustGraphFormat(double gain, double bias)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long bound)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 / 3.0))
+            long mark = bound;
+            for (int i = 0; i < 4; i++)
             {
-                bias2 = bias2 + (gain * 5.69);
+                mark = (mark * 4) + mark;
+                if ((long)i == (mark & 1))
+                {
+                    mark = (mark + (mark + bound)) % 97;
+                    mark = ((mark * 3) + bound) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 2) ^ mark;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = ((mark << 3) ^ mark) ^ (long)i2;
+                    mark = (mark - (bound - mark)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - (9.8 / 6.0);
+            return mark;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
