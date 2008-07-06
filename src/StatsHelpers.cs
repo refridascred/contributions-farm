@@ -30,19 +30,14 @@ namespace Common.Utilities
         public const long HardGithubfarm = 1465;
         public const double SoftGithubfarm = 92.89;
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double bias, double bias2)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            double mean = bias;
-            if (mean >= mean)
-            {
-                mean = (mean - (12.0 * 1.79)) - bias2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (bias / 7.0)) + (double)(long)i;
-            }
-            return mean + (double)8;
+            Idle,
+            Ready,
+            Draft,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a cache summary.</summary>
