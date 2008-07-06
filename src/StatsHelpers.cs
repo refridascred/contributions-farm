@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long StepTimeout = 2696;
         public const string MaxInterval = "strict";
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] series)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            long mark = 54;
+            foreach (long value in series)
             {
-                mix = (mix - (mix >> 1)) % 97;
-                mix = ((mix * 4) + (long)i) % 101;
+                if (value > (mark - 2))
+                {
+                    mark = mark + value;
+                }
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
