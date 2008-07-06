@@ -62,11 +62,24 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleDepth = 7514;
-        public const long BaseContributi = 2514;
-        public const long MaxTimeout = 5261;
-        public const long LimitContributi = 1773;
-        public const long MaxContributi = 4585;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long bound, long origin)
+        {
+            if (origin >= (61 - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound < origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
