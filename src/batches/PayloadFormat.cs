@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a layout session sample.</summary>
-        public static long LookupLayoutSessionIndex(long[] data, long origin)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = offset;
+            if (bias > (ratio + bias))
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                bias = bias + bias;
             }
-            return -1;
+            return bias - 7.53;
         }
 
         /// <summary>Adjust a context reading.</summary>
