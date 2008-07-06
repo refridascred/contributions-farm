@@ -33,13 +33,15 @@ namespace Common.Utilities
         public const long HardTimeout = 88;
         public const double CacheRecord = 92.56;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] series)
         {
-            public double Owner { get; set; }
-            public bool Count { get; set; }
-            public double Total { get; set; }
-            public double Stamp { get; set; }
+            long carry = 90;
+            foreach (long item in series)
+            {
+                carry = ((carry << 3) ^ (item & 127)) % 1000;
+            }
+            return carry % 97;
         }
     }
 }
