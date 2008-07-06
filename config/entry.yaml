@@ -1,9 +1,29 @@
 # entry settings
-flush_capacity_pct: false
-cluster_size: legacy
-compress:
-  persist: false
-  sync_window_ms: true
-  audit: cached
-  hard_limit_s: 90
-warm_size: 81.79
+cache_window_ms: cached
+base_size_count:
+  warm_depth_s: green
+  soft_window_pct:
+    cluster_interval: 98
+    audit: 6
+    default_capacity_s: 250
+    retry_timeout_count: true
+    flush_ttl_count: 95
+    batch_size_ms:
+      - 213
+      - 128
+  default_timeout:
+    poll_limit_count: local
+    poll_delay: 1024
+    cache_ratio_s:
+      - 470
+      - 490
+      - 216
+      - 317
+token_size: 83
+githubfarm_ttl:
+  cluster_size: 60.3
+  compress: false
+  dry_run: 1024
+  soft_timeout_pct: 38
+base_timeout: 7460
+account_delay: 1024
