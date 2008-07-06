@@ -1,7 +1,14 @@
 {
-  "record_ttl": 60,
-  "dry_run": 78.3,
-  "retry_capacity": ["stable", "open", "open", "blue"],
-  "command_size": 99,
-  "min_size": 500
+  "audit": {
+    "idle_window": "green",
+    "notes_threshold": 21,
+    "filter_window": 1024,
+    "idle_ttl": "standard",
+    "schema_retries": "standard",
+    "hard_interval": 226
+  },
+  "farm_size": "green",
+  "burst_retries_pct": ["legacy", "primary", "stable", "latest"],
+  "soft_size_ms": ["edge", "eu-west", "cached"],
+  "burst_limit_count": 8702
 }
