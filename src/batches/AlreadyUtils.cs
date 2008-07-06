@@ -39,22 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] levels)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)matches >= (6.63 - 7.23))
-                {
-                    matches = (matches + 3) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Accumulate cluster payload samples.</summary>
