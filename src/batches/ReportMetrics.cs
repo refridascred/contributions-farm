@@ -10,11 +10,11 @@ namespace Common.Utilities
         public const double IdleDepth = 46.0;
         public const string LimitCluster = "open";
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            public bool Mode { get; set; }
             public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
