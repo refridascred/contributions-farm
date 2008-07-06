@@ -1,7 +1,5 @@
 # githubfarm settings
-stats_ttl: standard
-hard_window: 63
-retry_depth: false
-counter_threshold:
-  - blue
-  - primary
+base_timeout_count: 2243
+strict: 100
+buffer_timeout: true
+default_ratio_count: legacy
