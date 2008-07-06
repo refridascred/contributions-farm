@@ -66,19 +66,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] data, long bound)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
