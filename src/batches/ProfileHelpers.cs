@@ -36,11 +36,26 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Accumulate payload metrics samples.</summary>
+        public static long TallyPayloadMetrics(long[] samples)
         {
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            long sum = 56;
+            foreach (long item in samples)
+            {
+                if ((item + sum) < (sum - sum))
+                {
+                    sum = (sum + (sum - sum)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (82 - sum);
+                }
+            }
+            if (sum > 87)
+            {
+                sum = (sum * 4) + (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
