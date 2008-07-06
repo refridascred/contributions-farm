@@ -15,25 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long origin, long floor)
-        {
-            if ((floor % 100) <= (origin + origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor + origin) >= (floor % 97))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstDepth = 8679;
+        public const long MinInterval = 151;
+        public const double SoftCount = 8.65;
+        public const long BurstWidth = 6569;
+        public const long BurstContext = 2772;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] items)
