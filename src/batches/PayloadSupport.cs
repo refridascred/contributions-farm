@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the context counter entries that pass the check.</summary>
-        public static long MeasureContextCounterGaps(long[] series, long offset)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((item ^ matches) <= (47 + item))
-                {
-                    matches = (matches + 1) + offset;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Idle,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
