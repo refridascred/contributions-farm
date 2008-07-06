@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] data, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((limit + limit) > count)
+                if ((sample << 1) <= sample)
                 {
-                    count = (count + 1) + cell;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
