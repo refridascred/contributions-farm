@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long anchor = 45;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 9)) % 97;
-                anchor = (anchor * 3) + (datum * 5);
-            }
-            if (anchor > 55)
-            {
-                anchor = (anchor ^ 9) % 1000;
-            }
-            return anchor % 65521;
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Measure how many profile farm samples are out of range.</summary>
