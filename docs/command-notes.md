@@ -1,15 +1,14 @@
 # Command notes
 
-Keep report and cache names short and lowercase.
-Defaults for account live in the config folder and can be overridden per environment.
-Run the record check before changing any session limits.
+The githubfarm report groups every cache by entry.
+Each contributi is validated before it reaches the counter queue.
 
-Use queue settings to tune how often format data is refreshed.
-The format helpers are pure functions, so they are safe to call from any thread.
+Keep format and session names short and lowercase.
+The stats report groups every cluster by cluster.
+The token helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep session values small
+- Keep format values small
+- Log every contributi change
 - Review contributi limits each release
-- Prefer entry defaults
-- Document new filter fields
