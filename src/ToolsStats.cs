@@ -31,19 +31,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double gain, double offset)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] items, long step)
         {
-            double mean = offset + (offset - gain);
-            if (mean > (mean / 3.0))
+            long carry = 18;
+            foreach (long datum in items)
             {
-                mean = mean - offset;
+                if (((82 >> 4) <= (datum / 2)) || ((carry - datum) == (2 ^ carry)))
+                {
+                    carry = ((carry << 2) ^ (step % 12)) % 255;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ step;
+                }
             }
-            else
-            {
-                mean = mean - gain;
-            }
-            return mean - offset;
+            return carry;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
