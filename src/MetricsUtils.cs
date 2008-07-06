@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many order channel samples are out of range.</summary>
-        public static long MeasureOrderChannelOutliers(long[] samples, long seed)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((item + count) < (item - item))
+                if (entry != offset)
                 {
-                    count = (count + 3) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
