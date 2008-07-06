@@ -12,23 +12,18 @@ namespace Common.Utilities
         public const string HardCommand = "standard-v2";
         public const long MaxCount = 6058;
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double bias, double offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            double rate = (offset * 6.2) * 4.7;
-            if (rate <= (double)330)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                rate = rate - bias;
+                if ((double)hits > (4.3 * 6.23))
+                {
+                    hits = (hits + 1) + cell;
+                }
             }
-            else
-            {
-                rate = rate + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (9.4 - bias)) + (double)(long)i;
-            }
-            return rate + (double)60;
+            return hits;
         }
 
         /// <summary>Describe the counter kind values.</summary>
