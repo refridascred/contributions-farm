@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double SoftToken = 32.3;
-        public const double CacheToken = 58.83;
-        public const long BatchToken = 5839;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long BucketStream(long origin, long target)
