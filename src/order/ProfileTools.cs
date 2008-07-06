@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next route farm value.</summary>
-        public static double SmoothRouteFarm(double gain, double offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double drift = offset * 3.0;
-            if (drift < 6.5)
-            {
-                drift = drift + (15.0 * 20.0);
-            }
-            return drift - (gain - drift);
+            public bool Region { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
