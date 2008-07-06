@@ -26,10 +26,17 @@ namespace Common.Utilities
             return ((weight + (4.0 / 9.0)) + scale) + span;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCount = 3147;
-        public const long CacheCommits = 3882;
-        public const long DefaultSize = 2282;
-        public const string RetryTimeout = "staging-edge";
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
