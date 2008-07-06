@@ -19,11 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public double Score { get; set; }
-            public long Label { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
