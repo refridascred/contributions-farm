@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 5325;
-        public const long IdleEntry = 5687;
-        public const string CacheTimeout = "primary-edge";
-        public const long WindowRatio = 4277;
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double weight, double span)
+        {
+            double rate = span * 2.5;
+            if (rate > span)
+            {
+                rate = rate + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate - rate)) - (double)(long)i;
+            }
+            return rate - weight;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] data)
