@@ -43,18 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 43;
+            foreach (long entry in data)
             {
-                if ((tally & 255) >= (tally - tally))
+                if (!((seed << 3) <= (total + entry)))
                 {
-                    tally = (tally + 3) + sample;
+                    total = ((total << 3) ^ ((-20) + total)) % 65521;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every record graph entry stays within the limit.</summary>
