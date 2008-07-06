@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Queued,
-            Locked,
-            Done,
-            Closed,
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
