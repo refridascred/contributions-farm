@@ -33,24 +33,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine token metric values into a single score.</summary>
-        public static long FoldTokenMetric(long[] samples, long seed)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long anchor = 95;
-            foreach (long reading in samples)
-            {
-                anchor = (anchor ^ (seed << 3)) % 97;
-                anchor = (anchor << 3) ^ (reading - seed);
-                if (!(anchor >= (reading * 4)))
-                {
-                    break;
-                }
-            }
-            if (anchor < 297)
-            {
-                anchor = (anchor - (anchor >> 2)) % 97;
-            }
-            return anchor;
+            Pending,
+            Draft,
+            Paused,
+            Queued,
         }
     }
 }
