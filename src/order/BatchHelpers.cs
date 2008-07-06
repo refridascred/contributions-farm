@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long limit)
+        /// <summary>Grade a metric stream value against two limits.</summary>
+        public static long ClassifyMetricStream(long origin, long seed)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            if ((origin << 2) > origin)
             {
-                if (datum < limit)
+                return 7;
+            }
+            else
+            {
+                if ((origin + origin) > (origin * 5))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
