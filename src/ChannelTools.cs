@@ -36,31 +36,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long floor)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesOutliers(long[] samples, long step)
         {
-            if (floor < (target & 31))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target % 3) >= (target + target))
+                if ((double)count <= (7.49 - 2.22))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + 3) == (floor - floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = ((count + 1) + sample) + step;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batch summary.</summary>
