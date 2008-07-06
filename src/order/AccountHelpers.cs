@@ -28,12 +28,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 7986;
-        public const double CacheSpan = 92.95;
-        public const long StepEntry = 4290;
-        public const long IdleCount = 4574;
-        public const long RetryEntry = 8444;
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultProfile = 70.54;
