@@ -36,19 +36,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank cluster support input into a small class.</summary>
