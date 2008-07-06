@@ -14,21 +14,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 391;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result ^ ((-86) * 2)) % 4096) + (long)i;
+                }
+                if ((reading ^ reading) < (reading + reading))
+                {
+                    result = (result ^ (reading + reading)) % 4096;
                 }
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
