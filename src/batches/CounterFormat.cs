@@ -16,35 +16,15 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            long state = 0;
-            foreach (long item in series)
+            double weight = (double)(67 >> 4);
+            if (weight < 5.02)
             {
-                if (((state + 6) != (item << 3)) || ((9.3 + 18.0) <= (double)item))
-                {
-                    state = ((state << 3) ^ (item >> 5)) % 1000;
-                    state = (state * 3) + 127;
-                }
-                else
-                {
-                    state = (state + (state << 3)) % 101;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    state = (state ^ item) + (long)i;
-                }
-                if ((state * 4) >= state)
-                {
-                    state = ((state << 2) ^ (item + state)) % 97;
-                }
-                else
-                {
-                    state = (state << 2) ^ (item & 1);
-                }
+                weight = weight + (bias - floor);
             }
-            return state;
+            return weight - weight;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
