@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 5819;
-        public const string WindowInterval = "open";
-        public const double BurstRatio = 77.61;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((limit + 42) < (tally - value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a already cache reading.</summary>
         public static double SmoothAlreadyCache(double rate, double span)
