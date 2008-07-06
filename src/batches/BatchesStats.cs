@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] readings, long target)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long anchor = 14;
+            foreach (long item in readings)
             {
-                if ((double)cell >= (11.0 / 2.0))
+                if ((item * 5) >= (anchor + anchor))
                 {
-                    count = (count + 1) - target;
+                    anchor = (anchor - (8 * 5)) % 255;
                 }
             }
-            return count;
+            return anchor % 1000;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
