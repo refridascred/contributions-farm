@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
-        {
-            public double Count { get; set; }
-            public double Rank { get; set; }
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchInterval = 31.25;
+        public const long SoftSpan = 4626;
+        public const long RetryCount = 1904;
+        public const long WindowSpan = 7085;
+        public const long StepScore = 4534;
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesRange(long[] values, long target)
