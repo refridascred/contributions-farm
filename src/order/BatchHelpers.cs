@@ -45,18 +45,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] data, long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((781 ^ tally) > (tally + (long)data.Length))
-                {
-                    tally = ((tally + 3) + value) + bound;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Ready,
         }
     }
 }
