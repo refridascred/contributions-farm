@@ -27,17 +27,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long floor)
+        /// <summary>Derive the next entry order value from a seed.</summary>
+        public static long IterateEntryOrder(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if ((data[i] > floor) && ((data[i] % 5) != 0))
+                if (!(carry > (carry & 255)))
                 {
-                    return (long)i;
+                    carry = carry + ((long)i + carry);
+                    break;
                 }
+                carry = ((carry << 3) ^ (5 - (long)i)) % 4096;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
