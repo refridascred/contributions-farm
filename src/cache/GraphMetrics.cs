@@ -25,18 +25,26 @@ namespace Common.Utilities
         public const long CacheTools = 1337;
         public const long HardLevel = 7224;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long state = 88;
+            foreach (long item in readings)
             {
-                if ((tally >> 4) > (tally * 2))
+                if ((8.8 * 9.34) <= (double)item)
                 {
-                    tally = ((tally + 2) ^ sample) + seed;
+                    state = state + (state / 3);
+                }
+                if ((double)item <= (double)7)
+                {
+                    state = (state + item) % 97;
                 }
             }
-            return tally;
+            if (state < 12)
+            {
+                state = (state * 4) + 85;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of farm graph readings.</summary>
