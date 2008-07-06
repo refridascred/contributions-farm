@@ -49,19 +49,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit batches filter readings against a rule.</summary>
-        public static long CountBatchesFilterMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits ^ hits) >= hits)
-                {
-                    hits = (hits + 2) - value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheFactor = 88.54;
+        public const string HardEntry = "local-1";
+        public const string DefaultEntry = "fallback-1";
+        public const long MaxEntry = 4307;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long origin, long target)
