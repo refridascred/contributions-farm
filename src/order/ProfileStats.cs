@@ -27,17 +27,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] items, long offset)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
