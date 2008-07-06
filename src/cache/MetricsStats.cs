@@ -26,19 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every report githubfarm entry stays within the limit.</summary>
-        public static bool GuardReportGithubfarmBounds(long[] data, long seed)
+        /// <summary>Scale a already window figure with a bias.</summary>
+        public static double AdjustAlreadyWindow(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double drift = (double)(809 + 64);
+            if (drift < drift)
             {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift - gain;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (gain - floor);
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
