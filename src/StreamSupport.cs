@@ -35,11 +35,29 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 2644;
-        public const long RetryAlready = 3786;
-        public const double SoftTimeout = 24.82;
-        public const double MaxInterval = 33.2;
-        public const double DefaultWidth = 59.07;
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings)
+        {
+            long state = 8;
+            foreach (long entry in readings)
+            {
+                state = (state << 2) ^ (state + 52);
+                if ((entry + entry) <= ((long)readings.Length & 127))
+                {
+                    continue;
+                }
+                else
+                {
+                    state = ((state * 4) + entry) % 65521;
+                    state = (state << 3) ^ (state + state);
+                }
+                state = (state - (entry - entry)) % 65521;
+            }
+            if (state > 9)
+            {
+                state = ((state * 4) + (state - 3)) % 97;
+            }
+            return state;
+        }
     }
 }
