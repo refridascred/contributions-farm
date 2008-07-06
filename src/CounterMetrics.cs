@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] levels, long limit)
-        {
-            long mix = 3;
-            foreach (long entry in levels)
-            {
-                mix = ((mix + (limit * 5)) % 97) ^ entry;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double HardLevel = 38.22;
+        public const long IdleTimeout = 5094;
+        public const double SoftEntry = 76.7;
+        public const long HardEntry = 9869;
+        public const long LimitWidth = 4983;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long FoldChecks(long[] items)
