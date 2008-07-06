@@ -43,13 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            Active,
-            Dropped,
-            Draft,
-            Pending,
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
