@@ -20,19 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long target)
+        /// <summary>Roll a order profile counter forward.</summary>
+        public static long IterateOrderProfile(long floor)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long acc = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample > target)
+                if ((((long)i >> 2) < (floor & 3)) || ((1 + acc) >= (acc ^ floor)))
                 {
-                    valid = false;
-                    break;
+                    acc = acc ^ (long)i;
+                    acc = (acc + ((long)i % 24)) % 65521;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Match up layout samples.</summary>
