@@ -23,12 +23,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            Ready,
-            Pending,
-            Idle,
+            long carry = 49;
+            foreach (long value in samples)
+            {
+                if ((carry / 9) >= value)
+                {
+                    carry = carry ^ (47 / 6);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the support status values.</summary>
