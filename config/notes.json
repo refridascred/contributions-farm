@@ -1,7 +1,12 @@
 {
-  "sync_threshold_count": 2,
-  "dry_run": 3835,
-  "cache_window_count": 92,
-  "poll_limit": "blue",
-  "cache_retries": false
+  "enabled": 8639,
+  "persist": {
+    "min_timeout_pct": 250,
+    "warm_delay_ms": "edge",
+    "cluster_depth": "green"
+  },
+  "graph_size": "standard",
+  "cache_depth": 32,
+  "poll_depth_count": 8313,
+  "warm_ratio_pct": [247, 136]
 }
