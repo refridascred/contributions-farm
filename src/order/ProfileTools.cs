@@ -24,18 +24,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the profile already entries that pass the check.</summary>
-        public static long AuditProfileAlreadyHits(long[] series, long target)
+        /// <summary>Locate a already layout reading by value.</summary>
+        public static long SeekAlreadyLayoutIndex(long[] items, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((-5) > (matches >> 1))
+                if (items[i] <= step)
                 {
-                    matches = ((matches + 2) + sample) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
