@@ -29,38 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long origin, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double span)
         {
-            if (!((double)seed <= (double)4))
+            double rate = ratio;
+            if (rate >= span)
             {
-                return 0;
+                rate = rate + span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if ((seed * 4) < 199)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 5) >= (origin - origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8.2 / 2.0) > (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                rate = (rate - (rate / 9.0)) + (double)(long)i;
             }
+            return rate + (rate * 4.3);
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
