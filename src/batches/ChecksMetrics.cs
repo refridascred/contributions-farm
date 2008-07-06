@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine notes support values into a single score.</summary>
-        public static long CombineNotesSupport(long[] readings)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long sum = 992;
-            foreach (long sample in readings)
-            {
-                sum = ((sum << 3) ^ (sample & 63)) % 65521;
-                sum = (sum * 5) + (sum & 15);
-                if (sample <= 3)
-                {
-                    sum = sum + (sum << 1);
-                }
-                if ((6 + sample) == ((long)readings.Length + sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
