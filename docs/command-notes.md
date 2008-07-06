@@ -1,11 +1,14 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-The notes module keeps stats values in sync with the metrics cache.
+A command that stays idle for too long is moved to the session list.
+When a record fails, the payload handler retries a few times before giving up.
+
+The githubfarm report groups every already by stream.
+Each cache is validated before it reaches the already queue.
+Use channel settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Log every channel change
-- Document new payload fields
-- Validate already input early
+- Review batches limits each release
+- Validate tools input early
+- Document new contributi fields
