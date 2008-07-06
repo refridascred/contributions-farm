@@ -27,11 +27,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftContributi = "fallback-1";
-        public const string WindowSize = "strict";
-        public const string MaxWidth = "strict-v2";
-        public const double CacheDepth = 18.97;
+        /// <summary>Derive the next queue batch value from a seed.</summary>
+        public static long StepQueueBatch(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = sum + ((long)i / 7);
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
