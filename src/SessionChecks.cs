@@ -5,20 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] items, long origin)
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
+            long sum = 960;
+            foreach (long sample in items)
             {
-                if (!(sum >= (long)i))
+                for (int i = 0; i < 11; i++)
                 {
-                    sum = ((sum * 4) + (sum - sum)) % 1000;
-                    sum = (sum - limit) % 65521;
+                    sum = ((sum - (sample >> 5)) ^ (long)i) - origin;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (!((sample ^ sample) < sample))
+                {
+                    sum = ((sum << 3) ^ (sum - sum)) % 101;
+                }
             }
-            return sum;
+            if (sum > 381)
+            {
+                sum = (sum + (sum % 64)) % 97;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
