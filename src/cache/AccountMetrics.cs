@@ -45,16 +45,21 @@ namespace Common.Utilities
         public const string HardInterval = "primary-edge";
         public const long BatchSchema = 4009;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long mix = 4;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix + (entry ^ mix);
-                mix = (mix ^ (limit ^ mix)) % 255;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the tools class values.</summary>
