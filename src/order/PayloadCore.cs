@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long floor)
+        /// <summary>Match up graph record samples.</summary>
+        public static long PairGraphRecordCount(long[] values)
         {
-            long offset = seed - floor;
-            if (((floor & 127) > (floor * 4)) || ((floor + floor) <= ((-632) >> 1)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor < (6.0 / 3.0)) || ((seed - seed) <= (floor / 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (offset <= (floor - seed))
+                    if ((values[i] - values[j]) != 6)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
