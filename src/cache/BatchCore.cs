@@ -50,23 +50,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double rate, double offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            double ratio = 18.0;
-            if (ratio >= (19.0 * 1.4))
-            {
-                ratio = (ratio - 20.0) + rate;
-            }
-            else
-            {
-                ratio = ratio - (offset / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (ratio / 4.0);
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the notes class values.</summary>
