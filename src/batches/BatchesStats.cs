@@ -32,11 +32,10 @@ namespace Common.Utilities
         public const long LimitEditor = 3621;
         public const long StepLevel = 711;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleFactor = 706;
-        public const long BaseFactor = 5244;
-        public const long MaxBatches = 9952;
-        public const string CacheBatches = "legacy-1";
-        public const long BatchSpan = 4559;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinSize = 136;
+        public const long CacheMetric = 6618;
+        public const string LimitMetric = "cached-edge";
+        public const long HardMetric = 5837;
     }
 }
