@@ -1,4 +1,17 @@
 # entry settings
-poll_timeout_s: 4658
-batch_ratio_pct: 28
-compress: true
+batch_ttl_count: stable
+compress:
+  - staging
+  - latest
+  - standard
+  - strict
+warm_retries_count:
+  - strict
+  - local
+  - standard
+  - open
+report_ttl: open
+sync_interval: false
+warm_timeout_ms:
+  - legacy
+  - fallback
