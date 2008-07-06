@@ -88,18 +88,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema support samples are out of range.</summary>
-        public static long CountSchemaSupportOutliers(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value % 10) < (tally + tally))
+                if (items[i] == floor)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
