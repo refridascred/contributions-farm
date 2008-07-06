@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const double SoftWidth = 11.73;
         public const long CacheCount = 2379;
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Validate account metrics readings against a bound.</summary>
+        public static bool CheckAccountMetricsRange(long[] data, long offset)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of window entries.</summary>
