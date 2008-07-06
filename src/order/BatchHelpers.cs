@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
