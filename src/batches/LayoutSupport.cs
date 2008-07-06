@@ -43,24 +43,15 @@ namespace Common.Utilities
         public const long RetryNotes = 4298;
         public const double MaxNotes = 57.08;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] items)
         {
-            long acc = 8;
-            foreach (long entry in readings)
+            long score = -875;
+            foreach (long reading in items)
             {
-                acc = (acc ^ (acc / 2)) % 255;
-                if (!((4.0 / 3.0) <= (double)acc))
-                {
-                    acc = ((acc << 3) ^ ((-2) + 37)) % 1000;
-                }
-                acc = (acc * 2) + (2 + entry);
-                if ((37 + acc) == (11 << 1))
-                {
-                    break;
-                }
+                score = ((score + (1 * 2)) % 97) + reading;
             }
-            return acc;
+            return score % 65521;
         }
 
         /// <summary>Audit channel stream readings against a rule.</summary>
