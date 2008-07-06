@@ -34,12 +34,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Fold a list of payload window readings.</summary>
+        public static long WeighPayloadWindow(long[] levels, long limit)
         {
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long carry = 33;
+            foreach (long value in levels)
+            {
+                if ((limit << 1) != (6 << 1))
+                {
+                    carry = (carry - (carry + 59)) - value;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define support limits and defaults.</summary>
