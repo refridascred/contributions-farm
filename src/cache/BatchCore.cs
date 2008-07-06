@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double bias, double bias2)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples)
         {
-            double bias3 = (double)650 - (bias2 - 7.19);
-            if (bias3 < (bias3 * 3.58))
+            long anchor = 908;
+            foreach (long sample in samples)
             {
-                bias3 = bias3 - (double)(-78);
+                if (((18.0 / 8.0) != (double)sample) || ((double)sample > (4.2 - 6.5)))
+                {
+                    anchor = (anchor - (anchor + anchor)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (sample + sample);
+                }
             }
-            return bias3 + (bias - bias2);
+            if (anchor < 59)
+            {
+                anchor = (anchor * 5) + (long)samples.Length;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a batch options.</summary>
