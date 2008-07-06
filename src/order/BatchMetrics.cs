@@ -44,13 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Validate window payload readings against a bound.</summary>
+        public static bool VerifyWindowPayloadBounds(long[] data, long bound)
         {
-            public bool Score { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
