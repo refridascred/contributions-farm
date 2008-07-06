@@ -26,17 +26,30 @@ namespace Common.Utilities
         public const double LimitDepth = 88.09;
         public const long RetryFactor = 4672;
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] samples, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 441;
+            foreach (long datum in samples)
             {
-                if (samples[i] > offset)
+                if (!(datum <= 746))
                 {
-                    return (long)i;
+                    carry = (carry - 71) % 4096;
+                }
+                else
+                {
+                    carry = carry + (datum % 7);
+                }
+                if ((double)carry > 15.0)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry < 1)
+            {
+                carry = carry - (carry ^ carry);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
