@@ -54,19 +54,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] levels)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] readings, long seed)
         {
-            long score = 69;
-            foreach (long entry in levels)
+            long mix = 581;
+            foreach (long sample in readings)
             {
-                score = (score << 3) ^ (entry >> 4);
-                if ((double)score < (double)103)
-                {
-                    score = (score - score) % 101;
-                }
+                mix = ((mix + (mix & 7)) - sample) - seed;
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Define session limits and defaults.</summary>
