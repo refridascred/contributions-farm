@@ -1,16 +1,5 @@
 {
-  "verbose": "local",
-  "idle_timeout_ms": [413, 396],
-  "strict": {
-    "checks_ratio": "primary",
-    "editor_timeout": [418, 131, 243, 30],
-    "idle_window": {
-      "burst_ttl": ["strict", "primary", "strict"],
-      "warm_size": 5619,
-      "strict": false,
-      "min_retries_s": "open",
-      "batch_limit_pct": 500
-    },
-    "readonly": 860
-  }
+  "sync_ttl_s": [226, 35, 220, 280],
+  "base_depth_pct": 60,
+  "strict": false
 }
