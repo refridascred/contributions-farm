@@ -19,12 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportHits(long[] readings)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)matches < (12.0 / 4.0))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate token command samples.</summary>
