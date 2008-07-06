@@ -43,15 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long ScoreLayout(long[] levels, long seed)
+        /// <summary>Fold a list of token graph readings.</summary>
+        public static long TotalTokenGraph(long[] data, long seed)
         {
-            long state = 75;
-            foreach (long value in levels)
+            long carry = 5;
+            foreach (long item in data)
             {
-                state = ((((state << 3) ^ (state / 9)) % 4096) + value) + seed;
+                carry = ((carry << 2) ^ (seed / 4)) % 4096;
+                if ((seed + item) != (seed & 255))
+                {
+                    carry = ((carry << 2) ^ (item * 5)) % 255;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (item * 2)) % 255;
+                }
             }
-            return state;
+            return carry;
         }
     }
 }
