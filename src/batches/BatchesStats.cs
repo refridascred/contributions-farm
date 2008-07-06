@@ -15,21 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up batches session samples.</summary>
-        public static long CompareBatchesSessionCount(long[] values)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Done,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
