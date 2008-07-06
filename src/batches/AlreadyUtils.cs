@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 49.5;
+        public const long SoftRatio = 3827;
+        public const double BatchCommand = 17.8;
+        public const string MaxBudget = "local-v2";
+        public const long CacheCommand = 7729;
 
         /// <summary>Hold a counter options.</summary>
         public sealed class CounterOptions
