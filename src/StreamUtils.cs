@@ -54,13 +54,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long limit)
         {
-            public long Ratio { get; set; }
-            public bool Label { get; set; }
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long diff = seed ^ limit;
+            if ((double)limit < 3.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit * 4) == (limit + limit)) && (9 > seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (seed <= diff)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up queue editor samples.</summary>
