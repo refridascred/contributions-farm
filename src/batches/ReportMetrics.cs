@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi layout samples are out of range.</summary>
-        public static long CountContributiLayoutOutliers(long[] values)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count + reading) > reading)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            Active,
+            Draft,
+            Ready,
         }
 
         /// <summary>Accumulate contributi samples.</summary>
