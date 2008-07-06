@@ -48,18 +48,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit farm githubfarm readings against a rule.</summary>
-        public static long AuditFarmGithubfarmMatches(long[] levels, long step)
+        /// <summary>Look up the position of a already filter sample.</summary>
+        public static long LookupAlreadyFilterIndex(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (88 > (item % 5))
+                if (items[i] > bound)
                 {
-                    matches = (matches + 2) - step;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
