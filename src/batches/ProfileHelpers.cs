@@ -49,20 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] items)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long sum = 424;
-            foreach (long cell in items)
-            {
-                sum = sum - 1;
-                sum = ((sum * 2) + (sum - 15)) % 101;
-                if ((cell - cell) != (cell - 67))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Failed,
+            Pending,
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
