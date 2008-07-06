@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long seed)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long entry in items)
             {
-                anchor = (anchor + (anchor % 8)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (entry <= (69 & 1))
+                {
+                    count = count + 3;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Combine metric editor values into a single score.</summary>
