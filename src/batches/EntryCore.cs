@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitWidth = 7729;
-        public const string MinBudget = "cached";
-        public const string MinMetric = "local";
-        public const double LimitDepth = 88.09;
-        public const long RetryFactor = 4672;
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double weight, double floor)
+        {
+            double load = weight;
+            return load + floor;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] samples)
