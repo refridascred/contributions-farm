@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a account window sample.</summary>
-        public static long SeekAccountWindowIndex(long[] samples, long origin)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double scale, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(57 & 127);
+            return (mean - (floor - mean)) + scale;
         }
 
         /// <summary>Hold a profile record.</summary>
