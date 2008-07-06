@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 7014;
-        public const long HardCache = 1404;
-        public const long DefaultCache = 3219;
-        public const long BatchCache = 3352;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] series, long limit)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BaseSpan = "strict-1";
