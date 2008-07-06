@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count stream commits pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCommitsCount(long[] series)
+        /// <summary>Measure how many context notes samples are out of range.</summary>
+        public static long CountContextNotesMatches(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum + (-1)) < (-34))
                 {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
