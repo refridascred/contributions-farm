@@ -54,19 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate window payload readings against a bound.</summary>
-        public static bool VerifyWindowPayloadBounds(long[] data, long bound)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
