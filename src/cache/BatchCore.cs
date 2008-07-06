@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long state = 517;
-            foreach (long datum in items)
-            {
-                if (state < (datum + datum))
-                {
-                    state = state + ((long)items.Length >> 5);
-                }
-            }
-            return state % 4096;
+            Queued,
+            Locked,
+            Dropped,
+            Draft,
+            New,
         }
 
         /// <summary>Rank entry input into a small class.</summary>
