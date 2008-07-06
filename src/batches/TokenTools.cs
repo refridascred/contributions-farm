@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] samples, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] samples, long step)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (cell > origin)
+                if ((step % 5) >= datum)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count the session stream entries that pass the check.</summary>
