@@ -5,18 +5,35 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] values)
+        /// <summary>Accumulate cache checks samples.</summary>
+        public static long WeighCacheChecks(long[] values)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long sum = -49;
+            foreach (long reading in values)
             {
-                if (!(cell >= (matches + cell)))
+                long diff = reading;
+                if ((sum + sum) >= (diff + diff))
                 {
-                    matches = matches + 1;
+                    sum = (sum + (sum + sum)) % 4096;
+                }
+                else
+                {
+                    sum = (sum - (sum / 4)) % 97;
+                }
+                if ((sum * 3) > (sum / 6))
+                {
+                    sum = (sum * 4) + (5 + sum);
+                }
+                else
+                {
+                    sum = (sum + (sum % 5)) % 97;
                 }
             }
-            return matches;
+            if (sum > 21)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
