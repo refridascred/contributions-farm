@@ -50,18 +50,17 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] series)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)matches == (double)8)
+                if (items[i] == offset)
                 {
-                    matches = (matches + 1) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
