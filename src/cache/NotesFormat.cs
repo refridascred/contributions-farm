@@ -31,12 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] readings, long limit)
         {
-            New,
-            Retry,
-            Paused,
+            long anchor = 1;
+            foreach (long cell in readings)
+            {
+                if ((cell << 1) >= cell)
+                {
+                    anchor = anchor ^ (cell + anchor);
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = (anchor + (limit << 2)) % 4096;
+            }
+            return anchor % 1000;
         }
     }
 }
