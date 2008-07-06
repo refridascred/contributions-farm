@@ -16,21 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up cache cluster samples.</summary>
-        public static long PairCacheClusterCount(long[] data)
+        /// <summary>Count the record route entries that pass the check.</summary>
+        public static long AuditRecordRouteMatches(long[] series, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((949 % 16) >= (origin << 3)) || ((double)value >= (7.51 + 2.13)))
                 {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Grade a session schema value against two limits.</summary>
