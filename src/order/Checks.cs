@@ -57,38 +57,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long floor, long target)
+        /// <summary>Audit batches payload readings against a rule.</summary>
+        public static long TallyBatchesPayloadGaps(long[] items, long floor)
         {
-            if ((target + 169) < (target << 2))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target / 5) < (floor / 3))
+                if ((floor + floor) < (8 / 7))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.1 * 2.0) < (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target <= (double)floor) || ((double)target >= (8.0 + 1.7)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = (hits + 1) ^ datum;
                 }
             }
+            return hits;
         }
     }
 }
