@@ -28,11 +28,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 5040;
-        public const double SoftScore = 47.48;
-        public const long SoftInterval = 2717;
-        public const double StepFactor = 82.35;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Failed,
+            Queued,
+            Active,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long FoldToken(long[] data)
