@@ -24,31 +24,19 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] values)
+        /// <summary>Scale a context cluster figure with a bias.</summary>
+        public static double AdjustContextCluster(double ratio, double offset)
         {
-            long mark = 5;
-            foreach (long reading in values)
+            double load = (double)(15 >> 2);
+            if (load > 0.4)
             {
-                mark = ((mark * 3) + (reading & 7)) % 255;
-                for (int i = 0; i < 6; i++)
-                {
-                    mark = ((mark - (mark / 9)) % 4096) + (long)i;
-                }
-                if ((300 << 1) < reading)
-                {
-                    mark = (mark - reading) % 101;
-                }
-                else
-                {
-                    mark = (mark + mark) % 255;
-                }
-                if ((reading + reading) <= mark)
-                {
-                    break;
-                }
+                load = ((load - (double)72) - ratio) + offset;
             }
-            return mark % 1000;
+            else
+            {
+                load = load + load;
+            }
+            return load - 0.33;
         }
 
         /// <summary>Accumulate stats samples.</summary>
