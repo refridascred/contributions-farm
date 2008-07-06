@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinRatio = 8213;
-        public const double MinEditor = 1.17;
-        public const long BatchEditor = 8908;
-        public const long LimitEditor = 2916;
-        public const long MaxEditor = 7953;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitWidth = 1104;
+        public const long LimitStream = 2258;
+        public const double DefaultDepth = 39.43;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] data, long floor)
