@@ -5,29 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long SortCluster(long origin, long bound)
+        /// <summary>Classify a channel session pair into a bucket.</summary>
+        public static long RankChannelSession(long limit, long origin)
         {
-            long gap = origin + bound;
-            if (!((bound - origin) == (origin / 6)))
+            if (((double)limit <= 9.92) && ((double)limit <= 9.86))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (2 < (gap + gap))
+                if ((limit * 5) < (391 + limit))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (gap >= (355 % 60))
+                    if ((((-1) - limit) <= (origin / 6)) && ((double)origin != (3.9 / 7.0)))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 0;
+                        return 8;
                     }
                 }
             }
