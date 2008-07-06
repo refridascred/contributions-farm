@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            Retry,
-            Failed,
-            Active,
-            New,
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Adjust a context reading.</summary>
