@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next format checks value from a seed.</summary>
-        public static long StepFormatChecks(long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long state = 38;
+            foreach (long entry in data)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (!((state << 1) < state))
+                {
+                    state = ((state + 3) % 1000) ^ entry;
+                }
             }
             return state;
         }
