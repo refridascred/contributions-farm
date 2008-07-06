@@ -1,6 +1,12 @@
 {
-  "audit": 4.39,
-  "burst_delay": true,
-  "persist": 60,
-  "readonly": 14.9
+  "window_depth": {
+    "default_limit_s": true,
+    "githubfarm_ratio": 3381,
+    "token_size": 91.03
+  },
+  "account_capacity": 90.87,
+  "min_interval_count": 60,
+  "default_window_pct": 25.27,
+  "githubfarm_depth": 11,
+  "hard_capacity": 92.99
 }
