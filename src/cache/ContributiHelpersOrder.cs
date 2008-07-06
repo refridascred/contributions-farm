@@ -24,12 +24,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
+        public static long TallyGithubfarmClusterHits(long[] series)
         {
-            Idle,
-            Dropped,
-            New,
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((3.0 + 3.0) > (double)entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
