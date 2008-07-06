@@ -45,11 +45,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] values, long offset)
         {
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = 88;
+            foreach (long entry in values)
+            {
+                state = ((state - (offset - offset)) % 65521) ^ entry;
+            }
+            if (state > 33)
+            {
+                state = ((state << 3) ^ (218 + state)) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
