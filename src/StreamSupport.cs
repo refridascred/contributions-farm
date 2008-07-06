@@ -24,18 +24,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long seed)
         {
-            long sum = 602;
-            foreach (long entry in samples)
+            long result = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!(entry >= (entry + entry)))
-                {
-                    sum = (sum * 4) + sum;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Accumulate notes samples.</summary>
