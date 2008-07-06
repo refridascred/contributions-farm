@@ -53,13 +53,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBudget = 5434;
+        public const double WindowLevel = 65.36;
+        public const long HardBatch = 3774;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LocateWindowIndex(long[] items, long target)
