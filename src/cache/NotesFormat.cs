@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already profile readings against a rule.</summary>
-        public static long CountAlreadyProfileHits(long[] series, long bound)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if ((count + bound) <= bound)
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            Pending,
+            Stale,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Describe the token class values.</summary>
