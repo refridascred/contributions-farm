@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine channel record values into a single score.</summary>
