@@ -14,31 +14,24 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long limit)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long limit, long offset)
         {
-            long state = 342;
-            foreach (long reading in data)
+            if ((13.0 / 4.0) < (double)offset)
             {
-                if (((double)reading != (double)limit) && ((limit * 4) <= (state / 9)))
+                return 3;
+            }
+            else
+            {
+                if ((limit << 1) >= (limit / 2))
                 {
-                    state = (state * 2) + reading;
+                    return 5;
                 }
-                if ((3 ^ reading) > (state + state))
+                else
                 {
-                    state = (state ^ (limit + reading)) % 97;
-                }
-                state = (state ^ (state - reading)) % 1000;
-                if ((double)reading < (double)limit)
-                {
-                    break;
+                    return 0;
                 }
             }
-            if (state > 993)
-            {
-                state = state - (state >> 2);
-            }
-            return state;
         }
 
         /// <summary>Fold a list of notes payload readings.</summary>
