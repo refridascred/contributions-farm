@@ -45,10 +45,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 2211;
-        public const long LimitAlready = 2185;
-        public const double HardDepth = 33.56;
-        public const long BurstAlready = 5340;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
