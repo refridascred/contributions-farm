@@ -10,16 +10,18 @@ namespace Common.Utilities
         public const string CacheBudget = "staging-v2";
         public const long BaseLayout = 959;
 
-        /// <summary>Combine entry counter values into a single score.</summary>
-        public static long FoldEntryCounter(long[] values, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] levels)
         {
-            long acc = 8;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                acc = (acc ^ cell) % 4096;
-                acc = acc ^ (floor - cell);
+                if (!((1 * 4) <= (item + (long)levels.Length)) || (((-3) * 5) >= (item / 6)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
