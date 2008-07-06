@@ -1,7 +1,21 @@
 {
-  "metrics_retries": [363, 418],
-  "default_delay": ["open", "eu-west"],
-  "flush_ttl_pct": "cached",
-  "strict": 4395,
-  "verbose": 3322
+  "hard_size_count": 5173,
+  "counter_limit": [85, 330, 490],
+  "order_interval": {
+    "cluster_window": "latest",
+    "burst_capacity_count": false,
+    "persist": 96,
+    "cache_timeout_count": "open",
+    "batch_size": 59.87,
+    "warm_limit_pct": 100
+  },
+  "retry_limit_ms": {
+    "max_capacity_pct": "stable",
+    "order_timeout": 14.31,
+    "max_interval": 59.0,
+    "idle_size_count": true,
+    "cache_limit": [19, 446, 57, 449],
+    "soft_depth_s": true
+  },
+  "default_limit_s": 2204
 }
