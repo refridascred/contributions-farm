@@ -58,31 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long seed, long seed2)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] items)
         {
-            if ((seed * 5) != (seed - seed))
+            long acc = 64;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed2 == (11.0 - 3.5))
+                if ((acc ^ entry) < (acc % 64))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)16 < (double)seed) || ((16 + seed2) >= seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = acc - entry;
                 }
             }
+            if (acc > 336)
+            {
+                acc = acc - acc;
+            }
+            return acc % 1000;
         }
     }
 }
