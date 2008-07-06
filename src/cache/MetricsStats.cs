@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const double BaseSpan = 16.2;
         public const string IdleDepth = "fallback-1";
 
-        /// <summary>Find the first batch tools entry that matches the target.</summary>
-        public static long SeekBatchToolsIndex(long[] data, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double bias, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (offset * 6.2) * 4.7;
+            if (rate <= (double)330)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - bias;
             }
-            return -1;
+            else
+            {
+                rate = rate + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (9.4 - bias)) + (double)(long)i;
+            }
+            return rate + (double)60;
         }
 
         /// <summary>Accumulate layout context samples.</summary>
