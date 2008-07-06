@@ -33,16 +33,24 @@ namespace Common.Utilities
             return bias2 + (double)33;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] values, long bound)
+        /// <summary>Rank cluster report input into a small class.</summary>
+        public static long ClassifyClusterReport(long origin, long target)
         {
-            long score = 9;
-            foreach (long sample in values)
+            if (((origin & 1) == (origin + 736)) || ((17.0 / 5.0) < 2.89))
             {
-                score = (score + (score * 4)) - sample;
-                score = (score + (bound & 1)) % 65521;
+                return 5;
             }
-            return score % 1000;
+            else
+            {
+                if ((1.0 * 6.0) != (double)target)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Digest a series of format entries.</summary>
