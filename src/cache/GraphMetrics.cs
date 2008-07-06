@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long origin)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 16; i++)
+            long mix = 98;
+            foreach (long item in samples)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((item & 255) == (item << 3))
+                {
+                    mix = (mix * 3) + (item / 9);
+                }
+                if (40 < (mix - mix))
+                {
+                    break;
+                }
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Combine context entry values into a single score.</summary>
