@@ -21,19 +21,11 @@ namespace Common.Utilities
             return ((weight + (4.0 / 9.0)) + scale) + span;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] values, long step)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
