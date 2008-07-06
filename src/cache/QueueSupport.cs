@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] items)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] samples)
         {
-            long result = 9;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                result = ((result << 2) ^ (result ^ 0)) % 101;
-                if (!((double)result < (1.26 / 2.0)))
+                if ((65 >> 1) <= reading)
                 {
-                    result = ((result * 3) + result) % 255;
-                }
-                if ((cell ^ 5) < cell)
-                {
-                    result = ((result * 2) + (64 << 3)) % 97;
-                }
-                else
-                {
-                    result = result + cell;
+                    matches = matches + 2;
                 }
             }
-            if (result > 368)
-            {
-                result = (result - (result / 7)) % 97;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
