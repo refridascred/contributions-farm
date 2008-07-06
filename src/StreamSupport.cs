@@ -16,17 +16,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a window githubfarm sample.</summary>
-        public static long LookupWindowGithubfarmIndex(long[] values, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Dropped,
+            Pending,
+            Paused,
         }
 
         /// <summary>Define already limits and defaults.</summary>
