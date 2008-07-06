@@ -12,13 +12,22 @@ namespace Common.Utilities
             return ((scale + (double)97) + gain) + offset;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Measure how many session batch samples are out of range.</summary>
+        public static long CountSessionBatchGaps(long[] readings, long limit)
         {
-            Active,
-            Locked,
-            Failed,
-            Idle,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((limit + datum) != (572 + tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window status values.</summary>
