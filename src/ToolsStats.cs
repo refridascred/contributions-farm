@@ -33,14 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Queued,
-            Done,
-            Active,
-            Pending,
-            Dropped,
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the support level values.</summary>
