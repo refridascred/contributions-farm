@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 5422;
-        public const long BaseDepth = 565;
-        public const long BatchFactor = 6758;
-        public const long WindowCommand = 7385;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] readings)
+        {
+            long sum = 2;
+            foreach (long item in readings)
+            {
+                if (!((item + sum) >= sum))
+                {
+                    sum = (sum * 5) + (23 ^ item);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (sum + (item & 7)) % 101;
+                    sum = (sum << 2) ^ ((long)i - (long)readings.Length);
+                }
+                if (!(item >= sum))
+                {
+                    sum = (sum << 2) ^ (sum & 63);
+                }
+            }
+            if (sum > 8)
+            {
+                sum = sum - (sum & 3);
+            }
+            return sum;
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] items)
