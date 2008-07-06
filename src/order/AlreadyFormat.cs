@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report commits pair into a bucket.</summary>
-        public static long BucketReportCommits(long bound, long seed)
+        /// <summary>Count the metric metrics entries that pass the check.</summary>
+        public static long MeasureMetricMetricsHits(long[] levels, long floor)
         {
-            long diff = bound - seed;
-            if (((bound - diff) > (bound >> 3)) || ((double)diff == (double)seed))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (diff > (seed >> 3))
+                if ((matches + matches) <= (matches & 7))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)diff > (7.0 / 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((diff >> 3) >= (4 & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = ((matches + 2) - value) + floor;
                 }
             }
+            return matches;
         }
 
         /// <summary>Combine batches context values into a single score.</summary>
