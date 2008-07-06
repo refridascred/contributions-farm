@@ -23,15 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Locked,
-            Paused,
-            Failed,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCount = 9180;
+        public const long DefaultCommand = 5425;
+        public const double IdleCommand = 23.37;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long ScoreCounter(long[] readings)
