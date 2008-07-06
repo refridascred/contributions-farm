@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] data)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long total = 3;
+            foreach (long sample in levels)
             {
-                if (!(6.08 > (double)matches) || ((-71) < (288 - matches)))
+                if (((total + sample) == (sample + total)) && ((double)sample >= (8.9 - 1.0)))
                 {
-                    matches = (matches + 2) ^ value;
+                    total = (total ^ (sample * 3)) % 101;
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
