@@ -27,21 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long PairLayoutCount(long[] items)
+        /// <summary>Fold a list of record entry readings.</summary>
+        public static long CombineRecordEntry(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 638;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum - bound) % 101) - sample;
             }
-            return tally;
+            if (sum > 437)
+            {
+                sum = (sum << 3) ^ (bound & 15);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a payload stats.</summary>
