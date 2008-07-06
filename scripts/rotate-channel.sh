@@ -6,13 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary green; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+CHANNEL_LIMIT=125
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-stable}"
 case "${mode}" in
-    blue)
+    stable)
         log "fast path"
         ;;
     *)
