@@ -37,14 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] series, long bound)
         {
-            Paused,
-            Pending,
-            Locked,
-            Failed,
-            Done,
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((((0 + bound) > (bound ^ (long)series.Length)) && ((sample >> 3) < (tally - 562))) || !((1 & 15) < tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
