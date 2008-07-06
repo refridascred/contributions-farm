@@ -1,6 +1,7 @@
 {
-  "audit": 500,
-  "commits_ratio": 30.77,
-  "enabled": 54,
-  "route_ttl": true
+  "report_capacity": "fallback",
+  "cache_limit_ms": "staging",
+  "stream_threshold": "eu-west",
+  "soft_depth": 100,
+  "burst_retries_ms": [123, 348, 326, 188]
 }
