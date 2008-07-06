@@ -46,19 +46,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the channel notes series from a seed.</summary>
-        public static long SeriesChannelNotes(long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((result % 8) <= (offset / 7)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = result + (offset * 3);
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
     }
 }
