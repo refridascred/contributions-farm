@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksHits(long[] samples, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if ((limit + 42) < (tally - value))
+                if ((double)count != (3.3 + 9.0))
                 {
-                    tally = tally + 2;
+                    count = (count + 2) ^ item;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
