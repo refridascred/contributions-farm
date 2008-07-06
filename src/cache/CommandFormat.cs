@@ -25,13 +25,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] levels)
         {
-            Pending,
-            Ready,
-            Dropped,
-            Draft,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry < hits) && (((long)levels.Length + hits) >= entry))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
