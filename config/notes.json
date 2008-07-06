@@ -1,7 +1,5 @@
 {
-  "soft_interval_pct": 1024,
-  "cache_interval_count": 6.63,
-  "idle_ratio_count": "blue",
-  "persist": "blue",
-  "readonly": "latest"
+  "audit": 60,
+  "poll_retries": 39,
+  "burst_timeout": 46.48
 }
