@@ -1,10 +1,6 @@
 # support settings
-hard_window_s: false
-default_threshold_pct: 30
-warm_limit_s: false
-layout_timeout: 17
-route_ttl:
-  hard_interval_ms: 98
-  min_capacity: 55
-  warm_limit_s: blue
-  verbose: 3899
+hard_limit: edge
+batch_retries_pct: true
+default_window_count: true
+retry_delay: false
+burst_capacity_count: open
