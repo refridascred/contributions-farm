@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryLevel = 65.59;
-        public const double BaseSpan = 16.2;
-        public const string IdleDepth = "fallback-1";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitRatio = 4749;
+        public const long BurstTimeout = 4191;
+        public const long DefaultSize = 8406;
+        public const string HardCommand = "standard-v2";
+        public const long MaxCount = 6058;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double ScaleFilter(double bias, double offset)
