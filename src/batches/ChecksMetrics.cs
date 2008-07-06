@@ -70,21 +70,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Rank profile counter input into a small class.</summary>
+        public static long BucketProfileCounter(long seed, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((558 ^ seed) < (seed * 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((double)target >= 9.0))
                 {
-                    if ((readings[i] + readings[j]) < 12)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= (9.05 - 5.87))
                     {
-                        count = count + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
