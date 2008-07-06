@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
-        {
-            public bool Offset { get; set; }
-            public bool Token { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleFactor = 1493;
+        public const string HardWidth = "open";
+        public const long SoftAccount = 8517;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
