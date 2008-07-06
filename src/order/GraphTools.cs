@@ -36,18 +36,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] values, long step)
         {
-            long score = 12;
-            foreach (long sample in data)
+            long sum = 9;
+            foreach (long cell in values)
             {
-                if ((score + sample) <= score)
+                if ((double)step > (3.65 - 4.91))
                 {
-                    score = ((score << 2) ^ (sample >> 2)) % 1000;
+                    sum = ((sum << 2) ^ (cell + cell)) % 1000;
                 }
             }
-            return score;
+            if (sum > 10)
+            {
+                sum = (sum + (step % 60)) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
