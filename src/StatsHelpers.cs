@@ -45,18 +45,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesGaps(long[] samples, long target)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double mean = bias;
+            if (mean >= mean)
             {
-                if ((target % 12) < 94)
-                {
-                    tally = (tally + 3) + entry;
-                }
+                mean = (mean - (12.0 * 1.79)) - bias2;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (bias / 7.0)) + (double)(long)i;
+            }
+            return mean + (double)8;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
