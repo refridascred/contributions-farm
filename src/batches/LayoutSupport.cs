@@ -23,19 +23,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyBounds(long[] samples, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (item > offset)
+                if (seen < (origin + seen))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) + value;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
