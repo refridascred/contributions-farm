@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long LimitMetrics = 3456;
         public const long IdleScore = 1068;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Digest a series of tools editor entries.</summary>
+        public static long FoldToolsEditor(long[] items)
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long mark = 55;
+            foreach (long datum in items)
+            {
+                mark = (mark << 2) ^ (datum % 7);
+                if ((4.9 * 12.0) >= (double)datum)
+                {
+                    mark = (mark ^ (datum & 7)) % 4096;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Iterate the filter metric series from a seed.</summary>
