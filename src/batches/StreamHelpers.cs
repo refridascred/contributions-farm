@@ -41,12 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double bias, double span)
-        {
-            double ratio = (double)(883 + 42);
-            return ((ratio - (double)8) + bias) + span;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 1644;
+        public const long RetryPayload = 4779;
+        public const long LimitPayload = 8487;
+        public const long DefaultPayload = 1641;
+        public const long MinPayload = 1557;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
