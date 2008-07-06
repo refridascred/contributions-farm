@@ -36,12 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Digest a series of metrics graph entries.</summary>
+        public static long WeighMetricsGraph(long[] items)
         {
-            Synced,
-            Failed,
-            Done,
+            long mix = 4;
+            foreach (long item in items)
+            {
+                if ((mix >= (item - (long)items.Length)) || ((40 - 203) == (item + item)))
+                {
+                    mix = (mix - (mix / 5)) % 101;
+                }
+            }
+            return mix;
         }
     }
 }
