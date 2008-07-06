@@ -26,22 +26,14 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "latest";
         public const long MinGithubfarm = 9350;
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = 756;
-            foreach (long value in values)
-            {
-                if ((1.67 + 7.5) > (double)mix)
-                {
-                    mix = ((mix * 2) + mix) + value;
-                }
-            }
-            if (mix < 3)
-            {
-                mix = (mix * 5) + (mix % 5);
-            }
-            return mix;
+            Stale,
+            Draft,
+            Closed,
+            Retry,
+            Done,
         }
     }
 }
