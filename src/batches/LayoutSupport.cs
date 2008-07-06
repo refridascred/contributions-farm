@@ -70,10 +70,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultQueue = 28.01;
-        public const long RetryQueue = 2968;
-        public const long BatchRatio = 6967;
-        public const long BatchQueue = 8416;
+        /// <summary>Audit channel stream readings against a rule.</summary>
+        public static long AuditChannelStreamMatches(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((double)limit <= (6.3 / 3.0))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
+        }
     }
 }
