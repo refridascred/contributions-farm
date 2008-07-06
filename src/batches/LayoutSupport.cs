@@ -55,20 +55,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] items, long offset)
         {
-            long acc = 2;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                acc = ((acc ^ datum) % 65521) - floor;
-                acc = ((acc << 2) ^ (datum & 15)) % 97;
+                if (reading <= offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (acc < 9)
-            {
-                acc = (acc << 3) ^ (acc << 2);
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
