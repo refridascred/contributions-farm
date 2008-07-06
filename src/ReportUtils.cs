@@ -32,11 +32,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryInterval = "local";
-        public const long RetryBudget = 5000;
-        public const long IdleSpan = 1941;
-        public const long BatchCount = 4598;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double offset)
+        {
+            double mean = scale;
+            return (mean + (double)5) + offset;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 4789;
