@@ -30,18 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] items)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((item >= (seen + item)) || !((double)seen != (4.2 - 16.0)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Active,
+            Ready,
+            Done,
         }
     }
 }
