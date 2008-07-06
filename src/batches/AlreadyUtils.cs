@@ -87,17 +87,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first order contributi entry that matches the target.</summary>
-        public static long LookupOrderContributiIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 3541;
+        public const long BaseGithubfarm = 5125;
+        public const double BurstTimeout = 55.59;
+        public const long BurstBudget = 2046;
+        public const double WindowRatio = 63.17;
     }
 }
