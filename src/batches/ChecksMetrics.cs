@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftSpan = 8142;
-        public const double BurstScore = 88.59;
-        public const double WindowLevel = 59.99;
-        public const long LimitScore = 4741;
-        public const string BatchCount = "fallback-1";
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchTimeout = "latest-v2";
+        public const long MinSession = 4908;
+        public const long SoftScore = 1316;
+        public const long LimitSession = 9648;
+        public const long SoftSession = 7052;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long TallyReportOutliers(long[] samples, long offset)
