@@ -21,18 +21,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryOutliers(long[] data, long origin)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long ScoreGraph(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long sum = 72;
+            foreach (long sample in readings)
             {
-                if (((double)276 < (double)origin) && ((double)origin <= (18.0 / 2.0)))
+                if ((sum & 7) < (sample - sum))
                 {
-                    seen = (seen + 2) + item;
+                    sum = (((sum << 2) ^ (sample + sum)) % 97) - offset;
                 }
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
