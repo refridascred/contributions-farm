@@ -40,21 +40,30 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count account route pairs that satisfy a relation.</summary>
-        public static long MatchAccountRouteCount(long[] readings)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -4;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((7.18 / 5.0) >= (double)datum)
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor << 2) ^ (anchor * 4);
+                }
+                if ((anchor + datum) == (origin + datum))
+                {
+                    anchor = (anchor ^ (6 / 3)) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ ((-767) << 1)) % 4096;
                 }
             }
-            return tally;
+            if (anchor < 508)
+            {
+                anchor = anchor + (anchor - (-127));
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
