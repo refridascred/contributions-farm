@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels, long bound)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] items, long offset)
         {
-            long score = 9;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if ((bound - (-5)) >= (sample + score))
+                if (reading != offset)
                 {
-                    score = score - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Adjust a cache reading.</summary>
