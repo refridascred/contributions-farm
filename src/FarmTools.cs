@@ -27,11 +27,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
