@@ -59,31 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long floor, long seed)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] readings, long step)
         {
-            if ((floor << 3) <= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor / 4) > (945 - seed))
+                if (readings[i] == step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor * 3) <= (floor + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
