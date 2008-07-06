@@ -1,12 +1,6 @@
 {
-  "enabled": 8639,
-  "persist": {
-    "min_timeout_pct": 250,
-    "warm_delay_ms": "edge",
-    "cluster_depth": "green"
-  },
-  "graph_size": "standard",
-  "cache_depth": 32,
-  "poll_depth_count": 8313,
-  "warm_ratio_pct": [247, 136]
+  "strict": ["green", "green", "strict"],
+  "burst_ttl_pct": 76.48,
+  "dry_run": 30,
+  "batch_delay_s": 9514
 }
