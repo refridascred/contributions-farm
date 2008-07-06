@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            double ratio2 = 6.7;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (((ratio2 + ratio2) + (double)(long)i) - ratio) - floor;
+            }
+            return ratio2 - 6.6;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
