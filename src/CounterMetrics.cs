@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitWidth = 1104;
-        public const long LimitStream = 2258;
-        public const double DefaultDepth = 39.43;
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamOutliers(long[] data, long floor)
