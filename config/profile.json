@@ -1,12 +1,15 @@
 {
-  "route_limit": 25.96,
-  "base_interval_pct": [185, 189],
-  "command_retries": {
-    "readonly": 58,
-    "hard_retries": false,
-    "default_capacity": 66.26
-  },
-  "sync_limit_pct": "primary",
-  "flush_retries": "cached",
-  "base_window_pct": 838
+  "format_capacity": true,
+  "buffer_retries": 83.82,
+  "notes_capacity": 96,
+  "idle_limit": false,
+  "cache_capacity": 53.57,
+  "githubfarm_delay": {
+    "base_capacity_count": "legacy",
+    "hard_window": ["primary", "staging", "stable"],
+    "readonly": true,
+    "cache_capacity_count": "latest",
+    "compress": "legacy",
+    "metrics_window": "local"
+  }
 }
