@@ -1,11 +1,7 @@
 {
-  "dry_run": "fallback",
-  "report_ratio": "staging",
-  "strict": {
-    "batch_capacity_s": 3145,
-    "sync_depth_s": 1024,
-    "min_size_pct": 36.21,
-    "counter_interval": "blue"
-  },
-  "stream_retries": 41.48
+  "flush_depth": true,
+  "metric_limit": 100,
+  "audit": 13.44,
+  "stream_threshold": 60,
+  "retry_delay_count": ["strict", "blue"]
 }
