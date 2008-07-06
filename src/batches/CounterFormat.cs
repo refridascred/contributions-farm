@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] values, long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double gain, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = gain;
+            if (weight <= gain)
             {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
+                weight = weight + floor;
             }
-            return -1;
+            return weight - weight;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
