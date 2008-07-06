@@ -32,38 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long seed, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] values, long limit)
         {
-            if (!(seed <= bound))
+            long score = 89;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound >= 5.3)
+                if ((score + limit) > cell)
                 {
-                    return 8;
+                    score = ((score * 5) + (cell ^ limit)) % 4096;
                 }
                 else
                 {
-                    if (((seed + 36) <= seed) || ((2 + 382) >= (8 + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) <= (bound + 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    score = (score - (cell - limit)) % 101;
                 }
             }
+            return score;
         }
     }
 }
