@@ -65,12 +65,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Iterate the token queue series from a seed.</summary>
+        public static long StepTokenQueue(long step)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long mix = step;
+            for (int i = 0; i < 22; i++)
+            {
+                bool ok = ((long)i + mix) >= step;
+                if (ok)
+                {
+                    break;
+                }
+                else
+                {
+                    ok = !ok;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
