@@ -13,19 +13,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] data, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            bool found = true;
-            foreach (long entry in data)
+            double load = rate;
+            if (load < (rate / 6.0))
             {
-                if (entry <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                load = load + (bias / 6.0);
             }
-            return found;
+            else
+            {
+                load = load - (rate / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + 7.9;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
