@@ -26,12 +26,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long seed)
         {
-            Closed,
-            Locked,
-            New,
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark << 3) ^ (mark * 5)) % 255;
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
