@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] series, long floor)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 68;
+            foreach (long datum in levels)
             {
-                if (series[i] < floor)
+                if (((total + datum) <= (3 << 2)) && ((total - total) <= datum))
                 {
-                    return (long)i;
+                    total = total + (total >> 5);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Find the first stats support entry that matches the target.</summary>
