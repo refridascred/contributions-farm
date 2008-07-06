@@ -16,18 +16,14 @@ namespace Common.Utilities
             return drift - (gain - drift);
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] levels)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((matches / 5) >= (matches + reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the profile already entries that pass the check.</summary>
