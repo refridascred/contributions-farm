@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
+            public string Owner { get; set; } = "";
             public double Total { get; set; }
-            public long Label { get; set; }
         }
 
         /// <summary>Hold a record record.</summary>
