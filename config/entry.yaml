@@ -1,5 +1,8 @@
 # entry settings
-cluster_capacity: 1024
-hard_ttl: 85
-readonly: 100
-report_retries: latest
+poll_interval_pct: 2.35
+verbose: false
+batch_window:
+  - 120
+  - 90
+  - 355
+sync_retries_pct: latest
