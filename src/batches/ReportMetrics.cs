@@ -30,19 +30,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] values, long origin)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix - ((long)i ^ mix)) % 1000;
+                mix = (mix - (430 - (long)i)) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return valid;
+            return mix;
         }
     }
 }
