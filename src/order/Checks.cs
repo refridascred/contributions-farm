@@ -30,12 +30,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            Retry,
+            Done,
+            Idle,
+            Closed,
             Failed,
-            Synced,
+            Locked,
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
