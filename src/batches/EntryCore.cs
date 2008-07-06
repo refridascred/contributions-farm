@@ -70,21 +70,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Offset { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
