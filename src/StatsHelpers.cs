@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepCount = 14.97;
-        public const long DefaultAccount = 4264;
-        public const long StepTimeout = 2696;
-        public const string MaxInterval = "strict";
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
+        {
+            Retry,
+            Done,
+            Queued,
+        }
 
         /// <summary>Compare every pair of counter channel readings.</summary>
         public static long CompareCounterChannelCount(long[] levels)
