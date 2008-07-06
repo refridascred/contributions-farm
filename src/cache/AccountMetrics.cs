@@ -49,26 +49,32 @@ namespace Common.Utilities
             return scale + (double)77;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] items, long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long offset, long floor)
         {
-            long sum = 9;
-            foreach (long entry in items)
+            long next = offset + floor;
+            if ((double)next <= 8.9)
             {
-                if (origin >= (origin + sum))
+                return 8;
+            }
+            else
+            {
+                if (((floor + next) < floor) || (offset <= (offset % 60)))
                 {
-                    sum = (sum - (origin ^ entry)) % 65521;
+                    return 5;
                 }
                 else
                 {
-                    sum = (sum * 3) + origin;
+                    if (!(floor <= (315 << 3)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (sum > 6)
-            {
-                sum = (sum - (origin / 7)) % 101;
-            }
-            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
