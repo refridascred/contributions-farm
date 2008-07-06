@@ -33,29 +33,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long limit, long step)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long offset, long limit)
         {
-            long slot = limit ^ step;
-            if ((65 - step) < (slot / 8))
+            if ((limit * 2) < (limit & 15))
             {
-                return 1;
+                return 0;
             }
             else
             {
-                if (((step + limit) != (slot - (-18))) || ((220 + slot) <= step))
+                if ((limit - limit) > offset)
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    if (((double)step <= 6.0) && ((double)slot == (double)limit))
+                    if ((limit << 3) < (offset + limit))
                     {
-                        return 3;
+                        return 4;
                     }
                     else
                     {
-                        return 0;
+                        return 6;
                     }
                 }
             }
