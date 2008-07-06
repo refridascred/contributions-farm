@@ -33,21 +33,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count profile stream pairs that satisfy a relation.</summary>
-        public static long MatchProfileStreamCount(long[] series)
+        /// <summary>Combine token metric values into a single score.</summary>
+        public static long FoldTokenMetric(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 95;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                anchor = (anchor ^ (seed << 3)) % 97;
+                anchor = (anchor << 3) ^ (reading - seed);
+                if (!(anchor >= (reading * 4)))
                 {
-                    if ((series[i] + series[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (anchor < 297)
+            {
+                anchor = (anchor - (anchor >> 2)) % 97;
+            }
+            return anchor;
         }
     }
 }
