@@ -5,35 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate cache checks samples.</summary>
-        public static long WeighCacheChecks(long[] values)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long sum = -49;
-            foreach (long reading in values)
-            {
-                long diff = reading;
-                if ((sum + sum) >= (diff + diff))
-                {
-                    sum = (sum + (sum + sum)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (sum / 4)) % 97;
-                }
-                if ((sum * 3) > (sum / 6))
-                {
-                    sum = (sum * 4) + (5 + sum);
-                }
-                else
-                {
-                    sum = (sum + (sum % 5)) % 97;
-                }
-            }
-            if (sum > 21)
-            {
-                sum = sum + sum;
-            }
-            return sum;
+            Active,
+            Ready,
+            Draft,
         }
 
         /// <summary>Match up notes profile samples.</summary>
