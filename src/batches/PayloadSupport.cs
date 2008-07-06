@@ -31,26 +31,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] values, long floor)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long target)
         {
-            long score = 1;
-            foreach (long cell in values)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((score + 4) > (cell + floor))
+                if (!((double)(long)i >= (double)state))
                 {
-                    score = (score * 5) + (floor * 5);
+                    state = (state - (state + state)) % 101;
+                }
+                if ((7.1 * 18.0) == (double)state)
+                {
+                    break;
                 }
                 else
                 {
-                    score = score ^ (floor + floor);
+                    state = state + (target + 59);
+                    state = (state + (10 & 3)) % 255;
                 }
+                state = ((state * 5) + ((long)i >> 4)) % 255;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            if (score > 129)
-            {
-                score = (score + (floor & 63)) % 255;
-            }
-            return score % 1000;
+            return state;
         }
     }
 }
