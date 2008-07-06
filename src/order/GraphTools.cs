@@ -39,22 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream profile entries that pass the check.</summary>
-        public static long MeasureStreamProfileMatches(long[] levels, long origin)
+        /// <summary>Measure how many cache cluster samples are out of range.</summary>
+        public static long CountCacheClusterHits(long[] items)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((8 + entry) >= (long)levels.Length)
+                if (!(8.94 >= (double)entry))
                 {
-                    count = (count + 3) - origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 3;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
