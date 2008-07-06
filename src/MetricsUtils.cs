@@ -47,18 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] series)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((5.31 / 5.0) != (double)cell) && ((hits / 4) <= (hits - cell)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
