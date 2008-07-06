@@ -52,15 +52,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long target)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
