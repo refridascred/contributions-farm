@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double span)
+        /// <summary>Look up the position of a editor profile sample.</summary>
+        public static long FindEditorProfileIndex(long[] readings, long step)
         {
-            double gain = span;
-            if (gain > (scale * 6.44))
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (7.0 + gain);
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (span / 7.0)) + (double)(long)i;
-            }
-            return gain + gain;
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
