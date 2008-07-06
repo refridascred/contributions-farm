@@ -42,11 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BatchDepth = "standard";
-        public const string WindowReport = "open-v2";
-        public const string SoftReport = "open";
-        public const long DefaultReport = 4502;
-        public const long BurstFactor = 6883;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double ratio, double bias)
+        {
+            double weight = bias;
+            if (weight > (weight - 0.4))
+            {
+                weight = (weight + weight) + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - bias) + (double)(long)i;
+            }
+            return weight + bias;
+        }
     }
 }
