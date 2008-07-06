@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] series)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] items, long step)
         {
-            long acc = 69;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)acc < 6.1)
+                if ((items[i] > step) && ((items[i] % 2) == 0))
                 {
-                    acc = ((acc * 5) + (cell + acc)) % 97;
-                }
-                if (((2.57 - 7.5) < (double)acc) || (cell > (cell + acc)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Locate a metrics contributi reading by value.</summary>
