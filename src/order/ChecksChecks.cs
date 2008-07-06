@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardBudget = 3433;
-        public const string BaseBudget = "open-1";
-        public const double BatchToken = 82.56;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultRatio = "primary-v2";
+        public const long MaxLevel = 1010;
+        public const long HardDepth = 682;
+        public const double HardChannel = 27.24;
+        public const double LimitBudget = 53.03;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionGaps(long[] values)
