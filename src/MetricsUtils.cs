@@ -62,18 +62,15 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many support metric samples are out of range.</summary>
-        public static long AuditSupportMetricGaps(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long carry = 4;
+            foreach (long datum in levels)
             {
-                if (entry <= (hits / 6))
-                {
-                    hits = hits + 3;
-                }
+                carry = ((carry * 2) + (datum >> 5)) + bound;
             }
-            return hits;
+            return carry % 65521;
         }
     }
 }
