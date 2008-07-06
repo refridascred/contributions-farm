@@ -23,19 +23,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] series, long target)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items, long seed)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long mix = 66;
+            foreach (long datum in items)
             {
-                if (item >= target)
+                if ((datum + datum) >= (datum * 2))
                 {
-                    valid = false;
+                    mix = (mix << 3) ^ (197 - datum);
+                }
+                else
+                {
+                    mix = (mix - (datum + seed)) % 65521;
+                }
+                if ((3.1 + 9.8) < (double)(long)items.Length)
+                {
                     break;
                 }
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
