@@ -1,20 +1,17 @@
 # support settings
-default_ttl_s: primary
-enabled:
-  soft_ratio_pct: true
-  default_window_pct: stable
-  max_limit_pct: strict
-contributi_window:
-  audit: 58.47
-  sync_retries_ms: 1.06
-  retry_timeout: 14
-  sync_interval_count: 500
-  strict:
-    min_size: true
-    warm_retries: 83
-    cache_ratio: staging
-    idle_depth_pct: 98.5
-  persist: true
-warm_ratio_ms: 1024
-strict: 96
-route_ratio: true
+filter_limit: standard
+default_capacity_ms: 18
+retry_limit: 57.82
+metric_interval: 3153
+default_limit_count:
+  sync_delay:
+    - 278
+    - 279
+    - 168
+  min_timeout: cached
+  soft_size: 12
+  strict: green
+  cache_window: 250
+  max_limit:
+    - open
+    - stable
