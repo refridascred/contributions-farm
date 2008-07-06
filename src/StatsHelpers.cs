@@ -30,20 +30,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate token metrics readings against a bound.</summary>
-        public static bool GuardTokenMetricsBounds(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 8549;
+        public const string WindowGithubfarm = "cached-v2";
+        public const long MaxGithubfarm = 7730;
+        public const long HardGithubfarm = 1465;
+        public const double SoftGithubfarm = 92.89;
 
         /// <summary>Project the next contributi value.</summary>
         public static double ProjectContributi(double bias, double bias2)
