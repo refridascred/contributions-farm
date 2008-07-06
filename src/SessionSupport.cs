@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TallySchema(long[] data)
-        {
-            long sum = 89;
-            foreach (long cell in data)
-            {
-                sum = (sum << 3) ^ cell;
-            }
-            if (sum < (-2))
-            {
-                sum = (sum << 3) ^ (sum % 10);
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 40.48;
+        public const string WindowAlready = "primary-v2";
+        public const long StepScore = 6990;
+        public const long LimitAlready = 8308;
+        public const long BurstLevel = 9678;
 
         /// <summary>Grade a format batches value against two limits.</summary>
         public static long GradeFormatBatches(long seed, long offset)
