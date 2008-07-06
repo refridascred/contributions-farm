@@ -1,8 +1,21 @@
 {
-  "cache_delay": false,
-  "farm_retries": 2769,
-  "editor_depth": 500,
-  "soft_ratio_pct": [274, 19, 450, 173],
-  "verbose": [329, 344],
-  "context_retries": 6511
+  "command_delay": 10,
+  "idle_timeout_s": true,
+  "strict": {
+    "warm_size": {
+      "commits_timeout": 8066,
+      "hard_interval_s": 6887,
+      "route_size": "stable"
+    },
+    "flush_retries": {
+      "record_delay": true,
+      "persist": [331, 30, 483, 473],
+      "schema_window": 26.53,
+      "schema_retries": "fallback"
+    },
+    "batch_retries_ms": [341, 405],
+    "verbose": true,
+    "metric_ratio": "fallback",
+    "warm_retries": 1024
+  }
 }
