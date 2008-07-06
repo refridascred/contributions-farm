@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Queued,
-            Retry,
-            Stale,
-            Draft,
-            Synced,
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a farm stats.</summary>
