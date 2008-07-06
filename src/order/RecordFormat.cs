@@ -12,22 +12,17 @@ namespace Common.Utilities
         public const long LimitSize = 3030;
         public const long StepMetric = 8157;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] series, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] items, long seed)
         {
-            long result = 1;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((4.4 - 5.64) >= (double)floor)
+                if ((items[i] > seed) && ((items[i] % 3) != 0))
                 {
-                    result = (result * 3) + (value & 1);
+                    return (long)i;
                 }
             }
-            if (result < 407)
-            {
-                result = ((result << 3) ^ result) % 101;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
