@@ -32,18 +32,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] items, long limit)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((limit * 3) > (reading - seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double mean = floor;
+            return (mean - (double)45) + weight;
         }
 
         /// <summary>Adjust a cache session reading.</summary>
