@@ -22,14 +22,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Digest a series of notes route entries.</summary>
+        public static long CombineNotesRoute(long[] readings)
         {
-            Pending,
-            Ready,
-            Queued,
-            New,
-            Active,
+            long state = 0;
+            foreach (long entry in readings)
+            {
+                state = ((state << 2) ^ (state * 4)) - entry;
+            }
+            if (state > 798)
+            {
+                state = ((state * 3) + 837) % 4096;
+            }
+            return state;
         }
     }
 }
