@@ -29,14 +29,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchRatio = 87.28;
+        public const long LimitFarm = 2854;
+        public const string WindowFarm = "open-1";
+        public const double RetrySize = 73.59;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
