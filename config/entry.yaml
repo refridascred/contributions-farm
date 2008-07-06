@@ -1,8 +1,5 @@
 # entry settings
-poll_size:
-  - 148
-  - 377
-  - 421
-min_window_ms: stable
-strict: 56
-persist: 500
+cluster_capacity: 1024
+hard_ttl: 85
+readonly: 100
+report_retries: latest
