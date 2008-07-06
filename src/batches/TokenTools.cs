@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Count the contributi schema entries that pass the check.</summary>
+        public static long CountContributiSchemaOutliers(long[] samples)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                mix = (mix ^ ((long)i * 3)) % 1000;
-                mix = ((mix * 5) + (long)i) % 97;
+                if (((1.38 / 9.0) < (double)hits) && ((sample & 31) <= 689))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Blend two cache githubfarm measurements.</summary>
