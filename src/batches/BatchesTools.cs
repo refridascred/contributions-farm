@@ -16,17 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double scale, double bias)
         {
-            long total = limit;
-            for (int i = 0; i < 21; i++)
+            double load = bias * 4.6;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total - (total << 2)) % 255;
-                total = ((total << 3) ^ total) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                load = (load + (scale + load)) + (double)(long)i;
             }
-            return total;
+            return load - 4.7;
         }
 
         /// <summary>Hold a channel header.</summary>
