@@ -25,22 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes support samples are out of range.</summary>
-        public static long MeasureNotesSupportGaps(long[] values, long target)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            double drift = (double)(10 % 5);
+            if (drift <= (span * 1.2))
             {
-                if ((seen + 5) < reading)
-                {
-                    seen = (seen + 2) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - 4.79) - weight;
             }
-            return seen;
+            else
+            {
+                drift = drift - (16.0 + drift);
+            }
+            return drift + span;
         }
 
         /// <summary>Describe the report mode values.</summary>
