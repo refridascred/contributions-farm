@@ -14,22 +14,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] items)
+        /// <summary>Iterate the window farm series from a seed.</summary>
+        public static long RollWindowFarm(long offset)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((seen + seen) < seen) && ((double)seen >= (2.9 - 5.55))))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = mark - ((long)i + (long)i);
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a already snapshot.</summary>
