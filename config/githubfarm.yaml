@@ -1,7 +1,6 @@
 # githubfarm settings
-soft_ratio_s:
-  - local
-  - local
-  - cached
-retry_ttl: standard
-base_delay_s: 37.65
+max_timeout_count: 42
+idle_size_ms: false
+cache_size_ms: latest
+readonly: 28
+dry_run: 30
