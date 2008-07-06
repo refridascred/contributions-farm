@@ -47,18 +47,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if (((15.0 - 18.0) <= (double)hits) || ((hits << 1) <= (reading + hits)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftDepth = 9624;
+        public const long WindowCommits = 7122;
+        public const double DefaultBudget = 19.16;
+        public const long IdleSpan = 9668;
+        public const double MinWidth = 81.96;
     }
 }
