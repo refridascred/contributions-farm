@@ -59,18 +59,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordGaps(long[] samples, long floor)
+        /// <summary>Check that every tools filter entry stays within the limit.</summary>
+        public static bool GuardToolsFilterLimits(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                if ((double)datum >= (5.51 * 3.43))
+                if (cell != limit)
                 {
-                    hits = (hits + 2) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Fold a list of batch support readings.</summary>
