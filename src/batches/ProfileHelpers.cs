@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] samples, long step)
-        {
-            long result = 2;
-            foreach (long value in samples)
-            {
-                if ((5.37 - 8.7) >= (double)value)
-                {
-                    result = (result ^ (step / 4)) % 97;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 4229;
+        public const string BaseTools = "local-1";
+        public const long StepTools = 8208;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
