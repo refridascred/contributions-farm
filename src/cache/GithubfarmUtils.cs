@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double ratio, double span)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            double rate = (ratio * 11.0) - 7.69;
-            if (rate <= 3.8)
-            {
-                rate = rate - span;
-            }
-            else
-            {
-                rate = rate - (9.39 + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (ratio - rate)) + (double)(long)i;
-            }
-            return rate + (rate * 4.1);
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a commits header.</summary>
