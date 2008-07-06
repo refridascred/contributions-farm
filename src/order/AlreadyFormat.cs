@@ -30,15 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine batches context values into a single score.</summary>
-        public static long ScoreBatchesContext(long[] levels, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] data)
         {
-            long mark = 98;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                mark = (((mark << 3) ^ (bound + mark)) % 97) ^ reading;
+                if ((count / 2) == (0 - count))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a counter header.</summary>
