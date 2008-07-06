@@ -53,16 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor * 2) + ((long)i >> 3);
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Closed,
+            Done,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Adjust a account reading.</summary>
