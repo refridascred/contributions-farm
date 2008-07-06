@@ -28,12 +28,35 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            public bool Mode { get; set; }
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long mix = 238;
+            foreach (long item in readings)
+            {
+                if (68 >= (item << 3))
+                {
+                    mix = (mix - 9) % 255;
+                    mix = ((mix * 3) + mix) % 1000;
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 65521;
+                }
+                if ((double)mix != (6.4 * 5.15))
+                {
+                    mix = (mix ^ (item ^ item)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (item % 2);
+                }
+                if ((658 >> 3) >= item)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Match up entry samples.</summary>
