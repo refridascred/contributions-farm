@@ -35,12 +35,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
