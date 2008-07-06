@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch token entry stays within the limit.</summary>
-        public static bool ValidateBatchTokenBounds(long[] data, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
