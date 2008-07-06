@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 3.5;
-        public const double RetryInterval = 69.64;
-        public const double BaseEntry = 55.21;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Locked,
+            Queued,
+            Idle,
+            Active,
+        }
 
         /// <summary>Combine tools support values into a single score.</summary>
         public static long TallyToolsSupport(long[] samples)
