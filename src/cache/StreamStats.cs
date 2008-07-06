@@ -27,11 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 8561;
-        public const string LimitOrder = "staging-edge";
-        public const long DefaultRatio = 621;
-        public const long StepOrder = 5760;
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
+        {
+            Dropped,
+            Closed,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long CountBatchOutliers(long[] series, long bound)
