@@ -18,14 +18,13 @@ namespace Common.Utilities
         public const double HardNotes = 32.94;
         public const long DefaultBudget = 7488;
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Failed,
-            Queued,
-            Closed,
-            Stale,
-            Active,
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a route snapshot.</summary>
