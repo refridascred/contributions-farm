@@ -41,15 +41,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] data, long limit)
+        /// <summary>Count the stream profile entries that pass the check.</summary>
+        public static long MeasureStreamProfileMatches(long[] levels, long origin)
         {
-            long anchor = 52;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor - cell) % 65521) + limit;
+                if ((8 + entry) >= (long)levels.Length)
+                {
+                    count = (count + 3) - origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
