@@ -1,8 +1,31 @@
 # entry settings
-poll_interval_pct: 2.35
-verbose: false
-batch_window:
-  - 120
-  - 90
-  - 355
-sync_retries_pct: latest
+retry_limit:
+  already_interval:
+    poll_ttl_pct: eu-west
+    enabled:
+      - 115
+      - 14
+      - 465
+      - 489
+    idle_ttl_count: 38
+  githubfarm_interval:
+    readonly:
+      - latest
+      - green
+      - eu-west
+    idle_ttl_ms: false
+    base_ratio_pct: 2312
+    cache_threshold_count: 80.13
+  contributi_capacity: 41.95
+  filter_timeout: 250
+  soft_retries: blue
+buffer_limit:
+  - 107
+  - 300
+  - 150
+  - 295
+hard_depth_ms: primary
+support_window: legacy
+base_size_ms:
+  - cached
+  - cached
