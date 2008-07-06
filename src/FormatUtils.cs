@@ -25,11 +25,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long limit)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long result = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
