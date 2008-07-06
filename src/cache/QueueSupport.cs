@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const string HardWidth = "open";
         public const long SoftAccount = 8517;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] readings, long floor)
         {
-            Synced,
-            Failed,
-            Ready,
-            Retry,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
