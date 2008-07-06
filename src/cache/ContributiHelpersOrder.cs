@@ -44,11 +44,18 @@ namespace Common.Utilities
         public const long LimitWidth = 2153;
         public const long WindowLevel = 3206;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings, long origin)
         {
-            public bool Count { get; set; }
-            public double Weight { get; set; }
+            long score = 51;
+            foreach (long entry in readings)
+            {
+                if ((origin + score) > 440)
+                {
+                    score = (score - score) - entry;
+                }
+            }
+            return score % 4096;
         }
     }
 }
