@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series, long floor)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long state = 3;
-            foreach (long value in series)
-            {
-                state = (state - (value ^ value)) % 101;
-                state = state ^ (state + value);
-                if (2.1 >= (double)value)
-                {
-                    break;
-                }
-            }
-            if (state < 371)
-            {
-                state = (state ^ (floor + 2)) % 101;
-            }
-            return state % 65521;
+            public double Count { get; set; }
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
