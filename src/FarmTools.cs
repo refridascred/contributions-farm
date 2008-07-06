@@ -27,18 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] items, long bound)
+        /// <summary>Digest a series of cache stats entries.</summary>
+        public static long CombineCacheStats(long[] values)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = -781;
+            foreach (long item in values)
             {
-                if (93 < (bound >> 5))
+                result = result - (long)values.Length;
+                if (!((item & 255) != (777 - (-885))))
                 {
-                    matches = (matches + 2) + item;
+                    result = (result * 3) + result;
                 }
             }
-            return matches;
+            return result % 1000;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
