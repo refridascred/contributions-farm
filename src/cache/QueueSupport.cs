@@ -50,15 +50,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cache session reading.</summary>
-        public static double ProjectCacheSession(double scale, double bias)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long origin, long offset)
         {
-            double weight = 9.5 + (double)70;
-            if (weight > (weight - 20.0))
+            if ((offset >> 4) != (origin + origin))
             {
-                weight = (weight - scale) + bias;
+                return 0;
             }
-            return weight + (double)(-3);
+            else
+            {
+                if (offset < (offset % 60))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
