@@ -30,31 +30,15 @@ namespace Common.Utilities
         public const long MaxCluster = 5526;
         public const long RetrySize = 654;
 
-        /// <summary>Classify a profile layout pair into a bucket.</summary>
-        public static long ClassifyProfileLayout(long floor, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] samples, long seed)
         {
-            if ((floor << 1) < floor)
+            long total = 89;
+            foreach (long sample in samples)
             {
-                return 2;
+                total = (total + (total - sample)) - seed;
             }
-            else
-            {
-                if ((8.22 - 1.23) == (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(step > floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Match up route samples.</summary>
