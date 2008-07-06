@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 5776;
-        public const long MinStream = 4636;
-        public const long LimitInterval = 6660;
-        public const long BurstSize = 8829;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TallySchema(long[] data)
+        {
+            long sum = 89;
+            foreach (long cell in data)
+            {
+                sum = (sum << 3) ^ cell;
+            }
+            if (sum < (-2))
+            {
+                sum = (sum << 3) ^ (sum % 10);
+            }
+            return sum;
+        }
 
         /// <summary>Grade a format batches value against two limits.</summary>
         public static long GradeFormatBatches(long seed, long offset)
