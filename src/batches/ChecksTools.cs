@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double AdjustTools(double gain, double offset)
+        /// <summary>Accumulate farm support samples.</summary>
+        public static long ScoreFarmSupport(long[] samples)
         {
-            double scale = (double)(8 + 702);
-            return ((scale + (double)97) + gain) + offset;
+            long mark = 53;
+            foreach (long entry in samples)
+            {
+                mark = ((mark << 2) ^ 97) % 4096;
+                if ((1 / 8) <= (mark + entry))
+                {
+                    break;
+                }
+            }
+            if (mark > 791)
+            {
+                mark = (mark - (22 + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many session batch samples are out of range.</summary>
