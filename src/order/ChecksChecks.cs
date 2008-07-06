@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            Idle,
-            Draft,
-            Failed,
-            Paused,
-            Synced,
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
