@@ -64,24 +64,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long bound, long origin)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            if (origin >= (61 - origin))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound < origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
