@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings, long target)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long anchor = -55;
-            foreach (long item in readings)
-            {
-                anchor = ((anchor * 2) + (item + item)) + target;
-            }
-            return anchor % 97;
+            Paused,
+            Stale,
+            Synced,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
