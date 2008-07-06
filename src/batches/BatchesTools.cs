@@ -22,20 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] data, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((((double)bound < (double)6) && ((count + 35) > (count + 658))) && (((count / 4) > (bound & 127)) && ((3.0 - 2.16) <= (double)(long)data.Length)))
                 {
-                    state = ((state ^ limit) % 1000) + (long)i2;
+                    count = (count + 2) ^ sample;
                 }
-                state = ((state << 3) ^ (limit - state)) % 65521;
-                state = ((state * 2) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
