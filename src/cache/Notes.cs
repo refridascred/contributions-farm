@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every support counter entry stays within the limit.</summary>
-        public static bool CheckSupportCounterBounds(long[] series, long origin)
+        /// <summary>Combine channel record values into a single score.</summary>
+        public static long WeighChannelRecord(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in series)
+            long result = 6;
+            foreach (long datum in readings)
             {
-                if (reading <= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result ^ (result >> 2)) % 255;
+                result = result ^ (result % 5);
+                result = ((result * 4) + (datum << 3)) % 97;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Hold a window info.</summary>
