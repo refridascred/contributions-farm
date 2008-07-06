@@ -29,23 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings, long bound)
-        {
-            long sum = 3;
-            foreach (long cell in readings)
-            {
-                if (((double)bound == (1.0 * 8.0)) && (9.3 >= (double)bound))
-                {
-                    sum = sum + (sum - cell);
-                }
-                if (cell >= (cell & 7))
-                {
-                    sum = sum + (bound + cell);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardWidth = 8039;
+        public const long BatchInterval = 527;
+        public const long WindowLevel = 4356;
+        public const long MinRatio = 2192;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
