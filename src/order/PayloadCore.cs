@@ -58,22 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm entry readings against a rule.</summary>
-        public static long AuditGithubfarmEntryMatches(long[] levels)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches + datum) == (matches + 64))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Ready,
+            Active,
+            Failed,
+            Retry,
         }
     }
 }
