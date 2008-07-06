@@ -52,18 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of support checks readings.</summary>
-        public static long FoldSupportChecks(long[] items, long offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = 98;
-            foreach (long entry in items)
-            {
-                if ((anchor * 3) <= (entry + offset))
-                {
-                    anchor = anchor - (offset + 691);
-                }
-            }
-            return anchor;
+            Done,
+            Paused,
+            Closed,
+            Failed,
+            New,
         }
     }
 }
