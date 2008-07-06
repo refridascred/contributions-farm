@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] samples)
+        /// <summary>Measure how many token filter samples are out of range.</summary>
+        public static long TallyTokenFilterMatches(long[] items, long floor)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long sample in items)
             {
-                if (!((tally << 3) > (tally - reading)) || ((3.0 / 5.0) == (double)reading))
+                if (tally <= (sample * 2))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) - floor;
                 }
             }
             return tally;
