@@ -63,25 +63,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long target, long offset)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long slot = target ^ offset;
-            if ((71 >> 5) > slot)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
