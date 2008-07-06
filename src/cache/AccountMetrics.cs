@@ -32,19 +32,15 @@ namespace Common.Utilities
         public const double RetryChannel = 9.52;
         public const double MinChannel = 54.2;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] samples, long origin)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] samples, long origin)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long mark = 6;
+            foreach (long value in samples)
             {
-                if (datum < origin)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark ^ origin) - value;
             }
-            return found;
+            return mark % 65521;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
