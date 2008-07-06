@@ -1,16 +1,8 @@
 {
-  "idle_size": {
-    "batch_ttl": false,
-    "format_interval": {
-      "compress": 30,
-      "commits_window": "blue",
-      "audit": false,
-      "command_ttl": 90,
-      "enabled": 10,
-      "hard_capacity_s": 47.99
-    },
-    "verbose": [22, 372]
-  },
-  "cache_ratio": false,
-  "default_timeout": "edge"
+  "enabled": ["legacy", "primary", "stable", "staging"],
+  "default_retries": [186, 167, 278, 111],
+  "verbose": "primary",
+  "default_capacity": 69,
+  "batch_capacity": 90,
+  "already_depth": 18.04
 }
