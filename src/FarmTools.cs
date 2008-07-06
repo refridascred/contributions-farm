@@ -34,17 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a editor window sample.</summary>
-        public static long LocateEditorWindowIndex(long[] data, long limit)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
