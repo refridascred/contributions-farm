@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Locked,
-            Stale,
-            Idle,
-            Done,
-            New,
+            Synced,
+            Draft,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the route class values.</summary>
