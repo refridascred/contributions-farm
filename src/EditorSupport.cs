@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstFactor = 1.64;
-        public const double MaxDepth = 70.82;
-        public const string LimitRatio = "standard-v2";
-        public const string WindowFactor = "stable-1";
-        public const double BaseCounter = 35.17;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Stale,
+            Active,
+            Closed,
+        }
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] levels, long bound)
