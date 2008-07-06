@@ -28,20 +28,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long limit, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 21; i++)
+            if (origin >= (limit - limit))
             {
-                if (!(anchor >= (long)i))
-                {
-                    anchor = anchor ^ (offset + (long)i);
-                }
-                anchor = ((anchor << 3) ^ (offset << 2)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((7.1 + 8.0) != (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
