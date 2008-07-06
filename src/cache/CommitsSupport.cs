@@ -59,18 +59,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] data, long offset)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value % 3) <= 10)
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
-                    tally = (tally + 1) - offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
