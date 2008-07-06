@@ -36,14 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            Idle,
-            Retry,
-            Synced,
-            Closed,
-            Stale,
+            double weight = 5.8;
+            if (weight >= offset)
+            {
+                weight = weight - 1.09;
+            }
+            else
+            {
+                weight = weight - (weight * 4.6);
+            }
+            return weight - bias;
         }
     }
 }
