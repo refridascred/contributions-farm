@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string SoftCluster = "primary-edge";
         public const long LimitCluster = 4723;
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Project the next batches order value.</summary>
+        public static double ScaleBatchesOrder(double scale, double bias)
         {
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            double ratio = scale;
+            if (ratio >= (scale + ratio))
+            {
+                ratio = ratio + 19.0;
+            }
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + (double)717;
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
