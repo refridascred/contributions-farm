@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                if (!(((value + (-10)) != (matches + value)) && ((value * 5) >= value)))
+                if (sample != bound)
                 {
-                    matches = matches + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Project the next batch payload value.</summary>
