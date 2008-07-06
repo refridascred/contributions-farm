@@ -26,13 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long bound, long offset)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            if ((bound - offset) >= offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset + bound) <= offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
