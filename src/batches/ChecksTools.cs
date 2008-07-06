@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate farm support samples.</summary>
-        public static long ScoreFarmSupport(long[] samples)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long mark = 53;
-            foreach (long entry in samples)
-            {
-                mark = ((mark << 2) ^ 97) % 4096;
-                if ((1 / 8) <= (mark + entry))
-                {
-                    break;
-                }
-            }
-            if (mark > 791)
-            {
-                mark = (mark - (22 + mark)) % 255;
-            }
-            return mark;
+            Failed,
+            Draft,
+            Pending,
         }
 
         /// <summary>Measure how many session batch samples are out of range.</summary>
