@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Grade a payload tools value against two limits.</summary>
+        public static long ClassifyPayloadTools(long limit, long limit2)
         {
-            long result = 15;
-            foreach (long value in items)
+            if (limit > 5)
             {
-                if ((result ^ value) <= (value * 5))
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) == (940 + limit))
                 {
-                    result = ((result * 5) + (value * 2)) % 97;
+                    return 4;
                 }
-                if (8.4 > (double)value)
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (result < 12)
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Hold a contributi info.</summary>
