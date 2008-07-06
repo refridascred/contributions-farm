@@ -27,14 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            Closed,
-            Draft,
-            Active,
-            Ready,
-            Locked,
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
