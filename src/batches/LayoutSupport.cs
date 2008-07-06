@@ -34,10 +34,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 1289;
-        public const string IdleNotes = "legacy-1";
-        public const long RetryNotes = 4298;
-        public const double MaxNotes = 57.08;
+        public const long BatchNotes = 6016;
+        public const double SoftScore = 63.29;
+        public const long MaxNotes = 4653;
+        public const long SoftTimeout = 7823;
+        public const string CacheWidth = "strict-v2";
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] data, long limit)
