@@ -47,13 +47,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long seed)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
+            long result = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                long matches = (seed + result) ^ (result - 307);
+                if ((1 - matches) > result)
+                {
+                    result = (result << 3) ^ ((-867) - seed);
+                }
+                matches = (matches ^ (matches - result)) % 1000;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
