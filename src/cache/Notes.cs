@@ -19,18 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] samples)
         {
-            long sum = -852;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((value >> 3) < sum)
+                if (!((0.52 - 3.5) < (double)hits))
                 {
-                    sum = sum ^ (value >> 2);
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
