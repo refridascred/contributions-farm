@@ -26,13 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Audit buffer contributi readings against a rule.</summary>
+        public static long TallyBufferContributiOutliers(long[] readings, long target)
         {
-            public bool Owner { get; set; }
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)target <= (7.06 - 7.0))
+                {
+                    seen = (seen + 3) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
