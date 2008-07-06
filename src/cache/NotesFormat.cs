@@ -32,11 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 1.52;
-        public const long LimitGithubfarm = 4912;
-        public const string HardBudget = "staging";
-        public const long MinGithubfarm = 2815;
-        public const long HardGithubfarm = 5499;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Locked,
+            Idle,
+            Failed,
+            Paused,
+        }
     }
 }
