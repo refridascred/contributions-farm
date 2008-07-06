@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] samples)
         {
-            long sum = 18;
-            foreach (long reading in levels)
+            long sum = 602;
+            foreach (long entry in samples)
             {
-                sum = (sum * 3) + (reading + origin);
-                if (!((origin % 2) < (reading % 8)))
+                if (!(entry >= (entry + entry)))
                 {
-                    break;
+                    sum = (sum * 4) + sum;
                 }
             }
-            return sum % 65521;
+            return sum;
         }
 
         /// <summary>Accumulate notes samples.</summary>
