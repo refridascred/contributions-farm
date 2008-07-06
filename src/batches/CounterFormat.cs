@@ -19,13 +19,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] readings, long offset)
         {
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
