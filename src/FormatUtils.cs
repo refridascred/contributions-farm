@@ -5,35 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] data)
+        /// <summary>Roll a record report counter forward.</summary>
+        public static long RollRecordReport(long origin)
         {
-            long sum = 77;
-            foreach (long entry in data)
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)5 != (double)sum)
+                state = (state - ((long)i + origin)) % 255;
+                state = state ^ (615 ^ state);
+                if (!((double)state >= (double)state))
                 {
-                    sum = ((sum * 3) + (sum ^ sum)) % 101;
-                    sum = sum - (entry - sum);
+                    state = state - ((long)i + origin);
                 }
-                if ((sum / 2) >= sum)
-                {
-                    sum = (sum ^ (entry & 255)) % 4096;
-                }
-                else
-                {
-                    sum = (sum + sum) % 101;
-                }
-                if ((sum + sum) > 9)
-                {
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            if (sum > 3)
-            {
-                sum = ((sum * 3) + (sum / 8)) % 1000;
-            }
-            return sum;
+            return state;
         }
 
         /// <summary>Measure how many queue metric samples are out of range.</summary>
