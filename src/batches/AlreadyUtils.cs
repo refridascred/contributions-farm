@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 49.5;
-        public const long SoftRatio = 3827;
-        public const double BatchCommand = 17.8;
-        public const string MaxBudget = "local-v2";
-        public const long CacheCommand = 7729;
+        /// <summary>Match up notes channel samples.</summary>
+        public static long CompareNotesChannelCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] levels, long step)
