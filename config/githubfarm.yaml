@@ -1,8 +1,15 @@
 # githubfarm settings
-min_threshold: 7564
-max_limit_s:
-  - 240
-  - 322
-  - 87
-  - 465
-strict: 36.5
+record_threshold: 1024
+flush_timeout:
+  - local
+  - staging
+idle_capacity: 29
+burst_capacity:
+  min_window_count: false
+  idle_timeout_count:
+    commits_capacity: 21.76
+    base_interval_pct: edge
+    persist: staging
+  persist: 82
+  max_limit_count: 60
+retry_capacity: true
