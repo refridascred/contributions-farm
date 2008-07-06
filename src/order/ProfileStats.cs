@@ -13,19 +13,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Validate cluster entry readings against a bound.</summary>
-        public static bool ValidateClusterEntryLimits(long[] series, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long score = 3;
+            foreach (long reading in items)
             {
-                if (cell <= offset)
+                if ((5 << 3) >= (score + score))
                 {
-                    ok = false;
-                    break;
+                    score = ((score << 2) ^ (score % 16)) + reading;
                 }
             }
-            return ok;
+            if (score < 980)
+            {
+                score = (score ^ 376) % 101;
+            }
+            return score % 97;
         }
 
         /// <summary>Locate a context reading by value.</summary>
