@@ -70,9 +70,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinSize = 5928;
-        public const long WindowContributi = 8668;
-        public const long BatchFactor = 5967;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public bool Score { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
