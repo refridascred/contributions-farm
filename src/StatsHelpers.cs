@@ -15,19 +15,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterRange(long[] levels, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool valid = true;
-            foreach (long item in levels)
-            {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
