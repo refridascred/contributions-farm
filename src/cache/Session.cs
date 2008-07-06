@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long LimitMetrics = 3456;
         public const long IdleScore = 1068;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public double Token { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the filter metric series from a seed.</summary>
