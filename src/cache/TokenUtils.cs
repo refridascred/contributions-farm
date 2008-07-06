@@ -27,13 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
-        {
-            Pending,
-            Draft,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchSize = 4106;
+        public const string BatchDepth = "strict-1";
+        public const string BurstContext = "strict-v2";
+        public const long IdleInterval = 5679;
+        public const long WindowContext = 6189;
     }
 }
