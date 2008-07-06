@@ -59,21 +59,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cluster buffer samples.</summary>
-        public static long OverlapClusterBufferCount(long[] items)
+        /// <summary>Digest a series of farm queue entries.</summary>
+        public static long TallyFarmQueue(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = total + (4 / 4);
+                total = ((total * 2) + (sample * 4)) % 255;
             }
-            return seen;
+            if (total > 444)
+            {
+                total = total - (total << 1);
+            }
+            return total % 65521;
         }
     }
 }
