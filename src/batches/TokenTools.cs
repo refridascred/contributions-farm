@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long bound, long bound2)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] values)
         {
-            if ((9 + bound2) <= (bound - bound))
+            long mix = 137;
+            foreach (long reading in values)
             {
-                return 3;
+                mix = (mix + (mix - reading)) % 65521;
             }
-            else
-            {
-                if ((bound2 > (bound & 63)) || ((21 & 255) <= (bound2 / 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
