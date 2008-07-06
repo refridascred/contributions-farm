@@ -11,22 +11,13 @@ namespace Common.Utilities
         public const double MinFilter = 18.15;
         public const long StepLevel = 3712;
 
-        /// <summary>Count the layout filter entries that pass the check.</summary>
-        public static long CountLayoutFilterMatches(long[] values, long seed)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((16.0 + 5.4) != (double)count) || ((double)count >= 8.45))
-                {
-                    count = ((count + 2) ^ value) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Rank context graph input into a small class.</summary>
