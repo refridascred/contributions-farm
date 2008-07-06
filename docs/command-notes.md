@@ -1,14 +1,14 @@
 # Command notes
 
-The context module keeps counter values in sync with the batch cache.
-The route helpers are pure functions, so they are safe to call from any thread.
+A tools that stays idle for too long is moved to the metric list.
+Keep schema and tools names short and lowercase.
 
-The notes module keeps token values in sync with the githubfarm cache.
-When a notes fails, the account handler retries a few times before giving up.
-Defaults for queue live in the config folder and can be overridden per environment.
+Keep account and filter names short and lowercase.
+Use profile settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Validate layout input early
-- Document new session fields
-- Log every batch change
+- Prefer context defaults
+- Document new channel fields
+- Validate commits input early
+- Keep token values small
