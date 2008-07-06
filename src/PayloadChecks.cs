@@ -79,22 +79,21 @@ namespace Common.Utilities
             return load + ratio;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterGaps(long[] readings, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)tally != (2.37 + 8.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 3) + cell) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a farm profile sample.</summary>
