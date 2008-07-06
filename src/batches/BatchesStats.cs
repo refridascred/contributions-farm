@@ -43,19 +43,15 @@ namespace Common.Utilities
             return weight - (bias / 8.0);
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double ProjectSupport(double ratio, double floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long origin)
         {
-            double bias = 5.6;
-            if (bias < 18.0)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                bias = (bias + 17.0) - ratio;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias - (floor + 14.0);
-            }
-            return bias - bias;
+            return total;
         }
     }
 }
