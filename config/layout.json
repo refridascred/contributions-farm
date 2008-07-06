@@ -1,12 +1,16 @@
 {
-  "window_depth": {
-    "default_limit_s": true,
-    "githubfarm_ratio": 3381,
-    "token_size": 91.03
+  "idle_size": {
+    "batch_ttl": false,
+    "format_interval": {
+      "compress": 30,
+      "commits_window": "blue",
+      "audit": false,
+      "command_ttl": 90,
+      "enabled": 10,
+      "hard_capacity_s": 47.99
+    },
+    "verbose": [22, 372]
   },
-  "account_capacity": 90.87,
-  "min_interval_count": 60,
-  "default_window_pct": 25.27,
-  "githubfarm_depth": 11,
-  "hard_capacity": 92.99
+  "cache_ratio": false,
+  "default_timeout": "edge"
 }
