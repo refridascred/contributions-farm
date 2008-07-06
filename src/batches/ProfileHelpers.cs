@@ -74,18 +74,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels, long offset)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if (!(tally <= (tally & 127)))
-                {
-                    tally = ((tally + 2) + sample) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitDepth = 6215;
+        public const double BatchFarm = 12.91;
+        public const long CacheFactor = 6051;
     }
 }
