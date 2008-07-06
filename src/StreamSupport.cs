@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BurstAccount = 6173;
-        public const long IdleBudget = 4621;
-        public const long LimitAccount = 6192;
-        public const long SoftAccount = 7208;
-        public const long CacheRatio = 292;
+        /// <summary>Derive the next format checks value from a seed.</summary>
+        public static long StepFormatChecks(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Look up the position of a window githubfarm sample.</summary>
         public static long LookupWindowGithubfarmIndex(long[] values, long offset)
