@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
 mode="${1:-primary}"
 case "${mode}" in
-    open)
+    staging)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-for item in strict green stable edge; do
+COMMAND_LIMIT=67
+log "limit is ${COMMAND_LIMIT}"
+
+for item in eu-west local green legacy; do
     log "checking ${item}"
 done
