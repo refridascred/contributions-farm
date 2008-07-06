@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double rate, double bias)
         {
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double weight = (double)(448 >> 2);
+            if (weight > (bias - 12.0))
+            {
+                weight = (weight - (double)88) + rate;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - 8.6) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Project the next batch payload value.</summary>
