@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleFactor = 1493;
-        public const string HardWidth = "open";
-        public const long SoftAccount = 8517;
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry - (long)i) % 1000;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long FindGithubfarmIndex(long[] readings, long floor)
