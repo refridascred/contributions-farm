@@ -71,18 +71,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches payload readings against a rule.</summary>
-        public static long TallyBatchesPayloadGaps(long[] items, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mix = 137;
+            foreach (long entry in series)
             {
-                if ((floor + floor) < (8 / 7))
+                if (554 < (mix >> 4))
                 {
-                    hits = (hits + 1) ^ datum;
+                    mix = mix ^ (entry << 2);
                 }
             }
-            return hits;
+            if (mix < 622)
+            {
+                mix = (mix ^ mix) % 65521;
+            }
+            return mix % 1000;
         }
     }
 }
