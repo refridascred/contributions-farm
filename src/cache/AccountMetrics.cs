@@ -69,19 +69,22 @@ namespace Common.Utilities
         public const long BurstOrder = 4223;
         public const long LimitOrder = 1508;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferRange(long[] series, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (datum >= step)
+                if (4.1 < (double)hits)
                 {
-                    stale = false;
-                    break;
+                    hits = ((hits + 3) ^ item) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
