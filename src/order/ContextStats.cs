@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] items, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long origin, long bound)
         {
-            bool flag = true;
-            foreach (long item in items)
+            if (((-16) + origin) == (978 - bound))
             {
-                if (item >= step)
+                return 5;
+            }
+            else
+            {
+                if ((6.7 + 6.8) > (double)origin)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two queue measurements.</summary>
