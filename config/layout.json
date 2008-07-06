@@ -1,9 +1,5 @@
 {
-  "base_ratio": {
-    "sync_size_pct": "staging",
-    "verbose": "staging",
-    "burst_depth": 30
-  },
-  "retry_limit": true,
-  "tools_size": 45.44
+  "poll_size": 500,
+  "channel_ttl": 7856,
+  "enabled": "latest"
 }
