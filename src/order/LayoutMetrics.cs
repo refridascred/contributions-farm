@@ -17,19 +17,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] data, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long limit)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell < origin)
+                if (series[i] >= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the batch level values.</summary>
