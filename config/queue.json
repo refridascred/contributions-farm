@@ -1,5 +1,6 @@
 {
-  "min_delay_pct": 57.49,
-  "hard_depth_s": 4.03,
-  "max_timeout_pct": 39.42
+  "cache_size": 4292,
+  "dry_run": 60,
+  "sync_window_s": "standard",
+  "persist": 3239
 }
