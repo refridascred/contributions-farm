@@ -33,13 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Pending,
-            Ready,
-            Queued,
             Synced,
+            Failed,
+            Done,
         }
     }
 }
