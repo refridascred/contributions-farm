@@ -63,13 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] readings)
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
