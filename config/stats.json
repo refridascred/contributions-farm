@@ -1,7 +1,7 @@
 {
-  "dry_run": "latest",
-  "sync_threshold_count": 60,
-  "poll_limit_count": 8383,
-  "audit": false,
-  "route_retries": 2.7
+  "audit": ["stable", "stable"],
+  "batches_interval": 8516,
+  "strict": "primary",
+  "buffer_threshold": 250,
+  "max_threshold": 89.5
 }
