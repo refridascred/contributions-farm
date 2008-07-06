@@ -63,15 +63,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the route commits entries that pass the check.</summary>
-        public static long CountRouteCommitsOutliers(long[] series, long step)
+        /// <summary>Match up metric format samples.</summary>
+        public static long MatchMetricFormatCount(long[] items)
         {
             long matches = 0;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.2 + 0.99) < (double)value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - step;
+                    if ((items[i] ^ items[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
