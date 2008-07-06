@@ -73,10 +73,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardTimeout = "strict";
-        public const long WindowRatio = 4626;
-        public const long BurstStream = 6406;
-        public const long BatchStream = 4042;
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
+        {
+            public double Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+        }
     }
 }
