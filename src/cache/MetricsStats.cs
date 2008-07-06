@@ -26,12 +26,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Synced,
-            Active,
-            Stale,
+            public bool Owner { get; set; }
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
