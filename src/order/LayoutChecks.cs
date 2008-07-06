@@ -66,13 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Measure how many account cluster samples are out of range.</summary>
+        public static long AuditAccountClusterOutliers(long[] series)
         {
-            Stale,
-            Idle,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!((datum % 8) < (matches - 10)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
