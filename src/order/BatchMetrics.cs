@@ -33,19 +33,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of record entry readings.</summary>
-        public static long CombineRecordEntry(long[] data, long bound)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long limit, long step)
         {
-            long sum = 638;
-            foreach (long sample in data)
+            long slot = limit ^ step;
+            if ((65 - step) < (slot / 8))
             {
-                sum = ((sum - bound) % 101) - sample;
+                return 1;
             }
-            if (sum > 437)
+            else
             {
-                sum = (sum << 3) ^ (bound & 15);
+                if (((step + limit) != (slot - (-18))) || ((220 + slot) <= step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step <= 6.0) && ((double)slot == (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return sum % 4096;
         }
 
         /// <summary>Hold a payload stats.</summary>
