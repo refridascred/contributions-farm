@@ -28,19 +28,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double rate, double offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long origin)
         {
-            double weight = offset;
-            if (weight <= (rate + 5.01))
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                weight = weight + (0.1 * 18.0);
+                total = (total << 2) ^ (origin << 1);
+                total = ((total * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (offset - weight)) + (double)(long)i;
-            }
-            return weight - rate;
+            return total;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
