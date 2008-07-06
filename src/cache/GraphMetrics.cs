@@ -62,16 +62,9 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor - (anchor ^ anchor)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 8259;
+        public const long LimitNotes = 3549;
+        public const long WindowFactor = 1342;
     }
 }
