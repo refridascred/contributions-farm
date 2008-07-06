@@ -43,23 +43,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] values, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] items, long bound)
         {
-            long state = 7;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                state = (((state << 2) ^ ((long)values.Length + state)) % 65521) - target;
-                if ((double)item > 2.82)
+                if (entry >= bound)
                 {
+                    flag = false;
                     break;
                 }
             }
-            if (state > 7)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
