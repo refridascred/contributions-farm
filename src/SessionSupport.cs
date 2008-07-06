@@ -27,31 +27,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank checks queue input into a small class.</summary>
-        public static long ClassifyChecksQueue(long seed, long seed2)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            if ((728 / 4) >= (seed >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed2 + seed2) != (seed2 << 2)) || ((seed2 - seed2) > (seed2 & 255)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.5 / 8.0) == (double)seed2) && ((seed2 << 3) >= seed))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Stale,
+            Draft,
+            Active,
         }
 
         /// <summary>Hold a batch options.</summary>
