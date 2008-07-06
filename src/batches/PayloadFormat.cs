@@ -24,22 +24,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count commits batch pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsBatchCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxSize = 1443;
+        public const long BurstTimeout = 6099;
+        public const long MaxCluster = 5526;
+        public const long RetrySize = 654;
 
         /// <summary>Classify a profile layout pair into a bucket.</summary>
         public static long ClassifyProfileLayout(long floor, long step)
