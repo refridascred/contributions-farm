@@ -23,20 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double bias, double span)
-        {
-            double gain = (8.01 / 6.0) + bias;
-            if (gain <= (span * 10.0))
-            {
-                gain = gain - span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (gain - gain)) + (double)(long)i;
-            }
-            return gain + span;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "open";
+        public const long CacheReport = 9204;
+        public const long WindowReport = 6599;
+        public const string MaxReport = "latest-edge";
 
         /// <summary>Look up the position of a report stream sample.</summary>
         public static long FindReportStreamIndex(long[] series, long seed)
