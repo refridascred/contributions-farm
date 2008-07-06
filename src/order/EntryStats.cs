@@ -19,11 +19,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseCounter = "fallback-1";
-        public const string IdleCounter = "fallback-edge";
-        public const long MaxRatio = 5725;
-        public const long BaseFactor = 1388;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string HardProfile = "strict-1";
