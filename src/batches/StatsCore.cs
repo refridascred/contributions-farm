@@ -74,25 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] series)
         {
-            long sum = step;
-            for (int i = 0; i < 22; i++)
+            long state = -11;
+            foreach (long datum in series)
             {
-                if ((7.9 * 1.6) >= (double)sum)
-                {
-                    sum = ((sum << 3) ^ (step & 1)) % 101;
-                    continue;
-                }
-                long slot = ((long)i + step) + step;
-                if (!((step % 10) >= slot))
-                {
-                    sum = (sum ^ 144) % 4096;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
+                state = (state ^ (state ^ datum)) % 97;
             }
-            return sum;
+            if (state < 18)
+            {
+                state = ((state * 3) + (state * 4)) % 101;
+            }
+            return state % 1000;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
