@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] data, long target)
         {
-            long carry = 33;
-            foreach (long sample in readings)
+            long state = 6;
+            foreach (long datum in data)
             {
-                if ((6.1 + 1.4) == (double)sample)
+                if ((state / 5) < state)
                 {
-                    carry = (carry + (sample / 9)) + seed;
+                    state = (state - datum) - target;
                 }
-                carry = (carry << 2) ^ (carry >> 2);
+                if (state >= (94 - state))
+                {
+                    break;
+                }
             }
-            return carry;
+            return state % 97;
         }
 
         /// <summary>Digest a series of profile order entries.</summary>
