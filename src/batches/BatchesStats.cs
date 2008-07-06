@@ -42,21 +42,39 @@ namespace Common.Utilities
         public const long LimitEditor = 3621;
         public const long StepLevel = 711;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long seed)
+        /// <summary>Classify a metrics batches pair into a bucket.</summary>
+        public static long BucketMetricsBatches(long seed, long seed2)
         {
-            long result = seed;
-            for (int i = 0; i < 14; i++)
+            long offset = seed ^ seed2;
+            if ((seed & 1) >= (seed ^ offset))
             {
-                long matches = (seed + result) ^ (result - 307);
-                if ((1 - matches) > result)
-                {
-                    result = (result << 3) ^ ((-867) - seed);
-                }
-                matches = (matches ^ (matches - result)) % 1000;
-                result = ((result * 2) + (long)i) % 97;
+                return 4;
             }
-            return result;
+            else
+            {
+                if ((offset + offset) <= (seed2 >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)(-2) == (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed2 > offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
