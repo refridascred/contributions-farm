@@ -16,12 +16,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] readings, long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Size { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((hits / 4) >= (offset % 2))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit githubfarm cluster readings against a rule.</summary>
