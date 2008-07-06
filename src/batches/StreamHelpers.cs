@@ -54,13 +54,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] levels)
         {
-            Ready,
-            Locked,
-            Failed,
-            Pending,
+            long score = 69;
+            foreach (long entry in levels)
+            {
+                score = (score << 3) ^ (entry >> 4);
+                if ((double)score < (double)103)
+                {
+                    score = (score - score) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the farm kind values.</summary>
