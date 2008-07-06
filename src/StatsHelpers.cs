@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up token payload samples.</summary>
-        public static long PairTokenPayloadCount(long[] series)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((series[i] + series[j]) > 12)
+                    if ((samples[i] + samples[j]) == 13)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
