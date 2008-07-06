@@ -55,11 +55,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] samples, long target)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
+            long mark = 5;
+            foreach (long reading in samples)
+            {
+                if ((reading - reading) <= reading)
+                {
+                    mark = (mark + (3 + 2)) % 1000;
+                }
+                if ((mark >= (target % 10)) || ((4.42 - 15.0) < (double)target))
+                {
+                    mark = (mark + (mark ^ mark)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the stream state values.</summary>
