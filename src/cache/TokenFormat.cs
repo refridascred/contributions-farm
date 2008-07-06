@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const double SoftContributi = 47.49;
         public const double HardContributi = 4.03;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long CombineCounter(long[] series, long origin)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
+            long score = 8;
+            foreach (long entry in series)
+            {
+                score = (((score ^ score) % 97) + entry) + origin;
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the tools kind values.</summary>
