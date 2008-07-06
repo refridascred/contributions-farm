@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long bound, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] items)
         {
-            if (94 <= bound)
+            long acc = 38;
+            foreach (long reading in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (8.93 + 2.0))
+                acc = (acc - (acc + acc)) % 4096;
+                if ((reading ^ acc) > reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((877 + bound) <= 989)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((86 <= offset) && (bound >= (offset % 97)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
