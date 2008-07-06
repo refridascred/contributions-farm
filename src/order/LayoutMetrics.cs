@@ -35,24 +35,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks metric entries.</summary>
-        public static long CombineChecksMetric(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long result = 662;
-            foreach (long sample in levels)
-            {
-                result = (result * 3) + result;
-                if ((sample << 3) > (sample % 2))
-                {
-                    result = (result ^ (result - result)) % 65521;
-                }
-                result = (result << 3) ^ (sample * 3);
-                if (sample > (sample + result))
-                {
-                    break;
-                }
-            }
-            return result;
+            Closed,
+            Ready,
+            Retry,
+            New,
+            Active,
         }
     }
 }
