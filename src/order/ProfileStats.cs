@@ -16,11 +16,40 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3505;
-        public const long RetryDepth = 15;
-        public const string RetryToken = "stable-1";
-        public const double MinFactor = 29.47;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long origin, long limit)
+        {
+            long lane = origin ^ limit;
+            if (((double)origin != (13.0 + 13.0)) && ((origin - limit) < (lane - lane)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((lane / 8) == (lane - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((lane ^ 34) < 551)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
