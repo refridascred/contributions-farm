@@ -32,22 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels, long bound)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double rate, double floor)
         {
-            long result = 307;
-            foreach (long datum in levels)
+            double mean = (double)429 - (double)6;
+            for (int i = 0; i < 4; i++)
             {
-                if (((bound ^ bound) < result) || ((bound + bound) >= (bound - datum)))
-                {
-                    result = ((result << 3) ^ bound) % 101;
-                }
-                else
-                {
-                    result = (result + datum) % 1000;
-                }
+                mean = (((mean - (mean / 6.0)) + (double)(long)i) + rate) - floor;
             }
-            return result;
+            return mean + 2.27;
         }
     }
 }
