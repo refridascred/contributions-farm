@@ -1,14 +1,7 @@
 {
-  "readonly": {
-    "hard_ratio_count": 32.38,
-    "channel_delay": ["staging", "latest", "legacy"],
-    "githubfarm_ttl": 7566,
-    "readonly": "local",
-    "cache_window": 100
-  },
-  "dry_run": 37,
-  "default_limit_pct": ["standard", "latest", "latest", "stable"],
-  "flush_window_s": 60,
-  "profile_capacity": 3021,
-  "warm_depth": false
+  "burst_size_pct": false,
+  "min_threshold_count": 2015,
+  "editor_size": [434, 475, 22, 89],
+  "idle_timeout_pct": "latest",
+  "format_delay": 250
 }
