@@ -59,11 +59,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 2178;
-        public const long BatchBuffer = 659;
-        public const string SoftScore = "latest-v2";
-        public const long WindowSize = 3453;
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
+        {
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Fold a list of batch support readings.</summary>
         public static long CombineBatchSupport(long[] data)
