@@ -52,21 +52,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up tools batches samples.</summary>
-        public static long PairToolsBatchesCount(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 64;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total + (floor + total)) % 4096) ^ (long)i;
                 }
+                total = ((total << 3) ^ (floor - entry)) % 65521;
             }
-            return seen;
+            if (total < 4)
+            {
+                total = ((total << 3) ^ (36 ^ total)) % 101;
+            }
+            return total % 97;
         }
     }
 }
