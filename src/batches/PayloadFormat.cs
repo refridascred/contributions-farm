@@ -57,15 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next graph already value from a seed.</summary>
-        public static long DeriveGraphAlready(long seed)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mark = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
