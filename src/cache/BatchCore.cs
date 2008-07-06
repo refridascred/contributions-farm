@@ -48,18 +48,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry graph samples.</summary>
-        public static long WeighEntryGraph(long[] samples)
+        /// <summary>Grade a metric graph value against two limits.</summary>
+        public static long SortMetricGraph(long origin, long origin2)
         {
-            long total = 109;
-            foreach (long datum in samples)
+            if ((double)origin2 != (7.4 - 13.0))
             {
-                if ((double)total > 14.0)
+                return 0;
+            }
+            else
+            {
+                if ((origin2 + (-268)) != (origin2 + origin2))
                 {
-                    total = (total ^ (997 >> 2)) - datum;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin2 > (origin - origin)) && ((origin - origin) <= origin2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
     }
 }
