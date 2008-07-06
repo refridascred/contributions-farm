@@ -34,9 +34,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BurstAccount = "strict-edge";
-        public const long BurstSize = 2441;
-        public const long StepAccount = 279;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitLevel = "local-v2";
+        public const long BaseInterval = 5861;
+        public const double BaseReport = 72.88;
+        public const long HardReport = 4829;
+        public const long LimitReport = 7457;
     }
 }
