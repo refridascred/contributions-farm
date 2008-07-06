@@ -76,19 +76,15 @@ namespace Common.Utilities
             return scale2 + (offset + scale2);
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double gain, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            double scale = 6.0;
-            if (scale >= (scale + scale))
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                scale = scale + (floor - scale);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - floor;
+            return carry;
         }
     }
 }
