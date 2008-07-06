@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double scale, double floor)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            double mean = (double)(57 & 127);
-            return (mean - (floor - mean)) + scale;
+            Queued,
+            Paused,
+            Closed,
+            Synced,
+            Stale,
         }
 
         /// <summary>Hold a batches stats.</summary>
