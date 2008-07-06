@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] series, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long offset)
         {
-            long total = 21;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                total = (((total - total) % 4096) - sample) - offset;
-                total = (total * 5) + (8 << 1);
-                total = ((total * 5) + 686) % 65521;
+                if ((offset + datum) >= matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate commits samples.</summary>
