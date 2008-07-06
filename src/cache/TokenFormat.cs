@@ -20,11 +20,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheTimeout = 91.76;
-        public const string HardProfile = "alpha";
-        public const string LimitProfile = "cached-edge";
-        public const string IdleDepth = "cached-edge";
-        public const long WindowDepth = 3898;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Draft,
+            Done,
+            Queued,
+            Stale,
+        }
     }
 }
