@@ -34,23 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] values)
         {
-            long anchor = 70;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                anchor = ((anchor * 2) + (anchor + 83)) % 101;
-                if ((((long)data.Length >> 2) <= (anchor + 0)) && ((reading + 36) > (reading ^ anchor)))
+                if ((1 ^ item) < (item + seen))
                 {
-                    anchor = ((anchor << 2) ^ 8) % 255;
+                    seen = seen + 3;
                 }
             }
-            if (anchor < 809)
-            {
-                anchor = (anchor ^ 196) % 97;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Describe the commits kind values.</summary>
