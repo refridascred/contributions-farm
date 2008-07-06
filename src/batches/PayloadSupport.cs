@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate layout contributi readings against a bound.</summary>
-        public static bool ValidateLayoutContributiBounds(long[] values, long step)
+        /// <summary>Count the schema notes entries that pass the check.</summary>
+        public static long TallySchemaNotesOutliers(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (datum > step)
+                if ((datum > (967 + datum)) || ((double)matches < (8.65 * 8.38)))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Hold a farm stats.</summary>
