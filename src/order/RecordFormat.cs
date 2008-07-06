@@ -25,22 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] readings, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long origin)
         {
-            long state = 84;
-            foreach (long entry in readings)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(5.0 < (double)state))
+                score = (score - (983 * 2)) % 65521;
+                if ((11.0 - 9.85) <= (double)score)
                 {
-                    state = ((state ^ origin) % 101) + entry;
+                    score = score - origin;
+                    score = ((score * 2) + origin) % 4096;
                 }
-                else
-                {
-                    state = (state + (state << 1)) % 101;
-                }
+                score = score ^ (origin + origin);
+                score = ((score * 2) + (long)i) % 101;
             }
-            return state % 97;
+            return score;
         }
 
         /// <summary>Hold a session options.</summary>
