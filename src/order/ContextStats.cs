@@ -30,16 +30,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Accumulate notes buffer samples.</summary>
+        public static long FoldNotesBuffer(long[] data, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long sum = 674;
+            foreach (long sample in data)
             {
-                anchor = ((anchor * 5) + floor) % 4096;
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if ((3.0 > (double)origin) && ((double)origin >= (9.0 / 8.0)))
+                {
+                    sum = (((sum * 4) + origin) % 4096) ^ sample;
+                }
             }
-            return anchor;
+            if (sum < 17)
+            {
+                sum = (sum ^ (sum + sum)) % 97;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Audit farm githubfarm readings against a rule.</summary>
