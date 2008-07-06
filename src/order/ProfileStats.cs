@@ -31,17 +31,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] data, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                if ((limit + limit) > count)
                 {
-                    return (long)i;
+                    count = (count + 1) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Digest a series of queue githubfarm entries.</summary>
