@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] series, long limit)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (value > limit)
+                if ((-95) >= (origin >> 2))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
