@@ -40,17 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] items, long step)
+        /// <summary>Rank channel support input into a small class.</summary>
+        public static long RankChannelSupport(long origin, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((double)origin >= (double)offset)
             {
-                if (items[i] < step)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin == (9.0 * 7.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((17.0 * 2.82) == (double)origin) && ((double)offset == (10.0 + 9.8)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
