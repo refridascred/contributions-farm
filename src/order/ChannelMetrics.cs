@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] series, long limit)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((matches << 2) == (matches << 1))
-                {
-                    matches = ((matches + 2) + item) - limit;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
