@@ -49,22 +49,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine farm account values into a single score.</summary>
-        public static long CombineFarmAccount(long[] data, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long anchor = 14;
-            foreach (long reading in data)
-            {
-                if ((double)bound < (7.8 * 1.9))
-                {
-                    anchor = ((anchor + 722) % 4096) + reading;
-                }
-            }
-            if (anchor < 676)
-            {
-                anchor = ((anchor * 2) + (bound & 3)) % 1000;
-            }
-            return anchor % 4096;
+            public bool Total { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
