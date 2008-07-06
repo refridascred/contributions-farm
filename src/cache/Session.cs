@@ -41,20 +41,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] items)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor ^ (anchor << 1)) % 1000) - (long)i2;
-                    anchor = (anchor - (anchor / 6)) % 4096;
+                    if ((items[i] ^ items[j]) < 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
