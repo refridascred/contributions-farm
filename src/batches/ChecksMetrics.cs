@@ -37,19 +37,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long origin)
         {
-            double rate = (double)(3 >> 1);
-            if (rate > (double)90)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = ((rate - (7.62 * 3.12)) - weight) - offset;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - (double)471;
+            return -1;
         }
 
         /// <summary>Fold a list of report readings.</summary>
