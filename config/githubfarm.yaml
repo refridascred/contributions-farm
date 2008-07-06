@@ -1,13 +1,11 @@
 # githubfarm settings
-token_limit:
-  - 23
-  - 31
-min_depth_pct: green
-max_window_count:
-  - 101
-  - 184
-  - 223
-batch_depth:
-  tools_threshold: 5744
-  readonly: 59
-  flush_timeout_count: standard
+entry_capacity: primary
+buffer_timeout:
+  warm_ttl: blue
+  base_ratio_pct: staging
+  verbose:
+    - 233
+    - 92
+warm_ttl_ms: strict
+soft_depth: 2801
+flush_retries_s: true
