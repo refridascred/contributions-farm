@@ -1,6 +1,6 @@
 # entry settings
-retry_retries_count: 33.95
-retry_ratio:
-  - edge
-  - latest
-batch_delay: 69
+hard_delay_s: 250
+poll_ttl_ms: 1024
+base_limit:
+  - 305
+  - 42
