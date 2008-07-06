@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next tools token value from a seed.</summary>
-        public static long IterateToolsToken(long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] values, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                if (!((hits / 2) > (entry ^ hits)))
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Find the first window schema entry that matches the target.</summary>
