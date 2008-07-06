@@ -1,10 +1,14 @@
 {
-  "window_window": ["latest", "primary"],
-  "base_ttl": true,
-  "hard_window_ms": {
-    "commits_capacity": 1024,
-    "support_threshold": false,
-    "compress": "strict"
+  "cache_ttl_count": "standard",
+  "graph_ratio": [374, 398, 163],
+  "dry_run": {
+    "enabled": ["fallback", "latest", "eu-west", "stable"],
+    "max_interval_s": ["blue", "latest", "blue"],
+    "schema_size": 4767,
+    "warm_limit_pct": "legacy",
+    "hard_ttl_ms": [390, 376, 455, 160]
   },
-  "context_capacity": "stable"
+  "batch_ttl_ms": "stable",
+  "default_threshold_count": "standard",
+  "burst_window_ms": 2919
 }
