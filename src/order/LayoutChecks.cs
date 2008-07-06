@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double LimitCommits = 98.42;
+        public const string MinCommits = "primary-edge";
+        public const long WindowSize = 8954;
+        public const long SoftRatio = 4419;
+        public const double BurstSize = 78.64;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
