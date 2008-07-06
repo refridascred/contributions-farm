@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long offset, long offset2)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] items, long origin)
         {
-            if ((double)offset >= (double)offset2)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset2 + 2) < offset2))
+                if (((-26) >> 2) > tally)
                 {
-                    return 6;
+                    tally = ((tally + 3) ^ value) - origin;
                 }
                 else
                 {
-                    if ((offset2 + offset) > (5 ^ offset2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the route class values.</summary>
