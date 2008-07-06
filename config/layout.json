@@ -1,5 +1,5 @@
 {
-  "audit": "blue",
-  "readonly": "stable",
-  "batch_window_count": true
+  "max_delay_count": [106, 341],
+  "soft_limit": 4352,
+  "dry_run": [464, 123, 289, 436]
 }
