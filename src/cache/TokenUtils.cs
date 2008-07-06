@@ -23,15 +23,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Digest a series of profile order entries.</summary>
-        public static long DigestProfileOrder(long[] samples)
+        /// <summary>Count graph counter pairs that satisfy a relation.</summary>
+        public static long CompareGraphCounterCount(long[] readings)
         {
-            long carry = 466;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = (carry - (datum >> 2)) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the graph phase values.</summary>
