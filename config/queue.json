@@ -1,7 +1,8 @@
 {
-  "account_ttl": "open",
-  "base_ttl": "green",
-  "default_timeout_pct": "edge",
-  "min_capacity": 31.37,
-  "record_capacity": 9855
+  "sync_retries_pct": "stable",
+  "readonly": 61,
+  "githubfarm_interval": "open",
+  "retry_ttl_ms": 31,
+  "min_ttl_pct": 500,
+  "poll_timeout_pct": 13
 }
