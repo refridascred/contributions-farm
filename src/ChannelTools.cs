@@ -36,13 +36,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] values)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
+            long result = 542;
+            foreach (long entry in values)
+            {
+                result = (result - result) - entry;
+            }
+            return result % 1000;
         }
 
         /// <summary>Combine account values into a single score.</summary>
