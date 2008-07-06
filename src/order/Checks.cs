@@ -35,12 +35,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            New,
-            Ready,
-            Queued,
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the batch status values.</summary>
