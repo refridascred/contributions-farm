@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
+            Dropped,
+            Draft,
+            Failed,
             Active,
-            Pending,
-            Locked,
-            Done,
         }
 
         /// <summary>Look up the position of a command report sample.</summary>
