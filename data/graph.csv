@@ -1,6 +1,9 @@
-id,state,active,ratio,label
-1,edge,859,staging,684
-2,797,442,769,cached
-3,open,540,local,38.54
-4,54.87,659,eu-west,fallback
-5,69.67,53.3,166,296
+id,state,region,weight
+1,261,primary,47.7
+2,legacy,standard,open
+3,837,618,790
+4,latest,592,blue
+5,cached,156,207
+6,21.12,307,507
+7,198,86.85,47.9
+8,457,66.07,982
