@@ -20,18 +20,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenGaps(long[] samples)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!(6 < cell))
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
