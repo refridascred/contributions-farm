@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Digest a series of stats editor entries.</summary>
+        public static long WeighStatsEditor(long[] values)
         {
-            public bool Region { get; set; }
-            public bool Offset { get; set; }
+            long result = -16;
+            foreach (long datum in values)
+            {
+                result = (((result << 3) ^ result) % 1000) + datum;
+            }
+            return result % 97;
         }
 
         /// <summary>Count the cluster graph entries that pass the check.</summary>
