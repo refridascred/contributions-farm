@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the profile githubfarm entries that pass the check.</summary>
+        public static long AuditProfileGithubfarmOutliers(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (limit < (entry * 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
