@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a counter farm counter forward.</summary>
-        public static long RollCounterFarm(long seed)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] values, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 16; i++)
+            long total = -824;
+            foreach (long value in values)
             {
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if (((total + step) < (44 - value)) || (total > ((long)values.Length ^ value)))
+                {
+                    total = total - step;
+                }
+                if ((value + value) > (94 ^ 933))
+                {
+                    total = ((total << 2) ^ (value >> 2)) % 4096;
+                }
             }
-            return anchor;
+            if (total > (-177))
+            {
+                total = ((total * 2) + (step % 100)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a batch options.</summary>
