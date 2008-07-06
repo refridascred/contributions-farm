@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every stats layout entry stays within the limit.</summary>
+        public static bool VerifyStatsLayoutRange(long[] series, long offset)
         {
-            Draft,
-            Pending,
-            Active,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Adjust a account reading.</summary>
