@@ -1,20 +1,5 @@
 {
-  "max_delay": "latest",
-  "compress": "green",
-  "burst_timeout_count": {
-    "enabled": {
-      "tools_ttl": ["edge", "primary"],
-      "stats_ratio": 100,
-      "stats_ttl": false,
-      "account_interval": ["edge", "primary", "eu-west"],
-      "notes_limit": 6.66
-    },
-    "persist": 40.7,
-    "githubfarm_interval": "latest",
-    "strict": 68,
-    "sync_retries": "staging"
-  },
-  "batch_capacity": 31,
-  "route_timeout": 5699,
-  "commits_timeout": [313, 312, 190]
+  "warm_ttl": 4549,
+  "hard_ttl_s": false,
+  "payload_ratio": [379, 466]
 }
