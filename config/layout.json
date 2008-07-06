@@ -1,10 +1,9 @@
 {
-  "dry_run": {
-    "cache_limit_ms": 9283,
-    "layout_retries": 500,
-    "idle_limit_count": "green",
-    "dry_run": 7751
+  "base_ratio": {
+    "sync_size_pct": "staging",
+    "verbose": "staging",
+    "burst_depth": 30
   },
-  "compress": ["cached", "primary"],
-  "soft_interval_s": ["fallback", "primary", "eu-west", "primary"]
+  "retry_limit": true,
+  "tools_size": 45.44
 }
