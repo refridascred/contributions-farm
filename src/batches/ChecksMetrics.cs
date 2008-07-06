@@ -49,11 +49,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheFactor = 88.54;
-        public const string HardEntry = "local-1";
-        public const string DefaultEntry = "fallback-1";
-        public const long MaxEntry = 4307;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepTimeout = 321;
+        public const long MinRatio = 6210;
+        public const long BatchRatio = 4377;
+        public const string BurstChannel = "primary-v2";
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long origin, long target)
