@@ -29,14 +29,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
-        {
-            Stale,
-            Pending,
-            Ready,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 5443;
+        public const long WindowAccount = 3737;
+        public const double StepAccount = 76.77;
+        public const long StepRatio = 6738;
+        public const long BatchRatio = 5837;
     }
 }
