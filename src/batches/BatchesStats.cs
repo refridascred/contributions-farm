@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] readings)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextBounds(long[] items, long offset)
         {
-            long anchor = 14;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if ((item * 5) >= (anchor + anchor))
+                if (value > offset)
                 {
-                    anchor = (anchor - (8 * 5)) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return stale;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
