@@ -45,19 +45,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] series, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Active,
+            Locked,
+            New,
+            Draft,
         }
     }
 }
