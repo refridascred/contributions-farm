@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Rank command notes input into a small class.</summary>
+        public static long GradeCommandNotes(long limit, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            if (!(bound > (bound + 7)))
             {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-                anchor = ((anchor * 5) + (anchor + 17)) % 4096;
-                anchor = (anchor << 2) ^ (origin - 36);
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (bound <= (limit >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Measure how many notes support samples are out of range.</summary>
