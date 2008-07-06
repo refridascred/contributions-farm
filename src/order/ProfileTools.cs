@@ -44,11 +44,31 @@ namespace Common.Utilities
         public const long IdleFactor = 3244;
         public const long CacheInterval = 3106;
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long bound, long limit)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            if ((1 + bound) != (13 * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound + limit) <= (bound / 6))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit - limit) < (81 + limit)) || (bound < (limit / 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a session counter forward.</summary>
