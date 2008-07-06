@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                mix = (mix - (floor >> 2)) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
