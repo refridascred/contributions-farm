@@ -27,22 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series, long floor)
+        /// <summary>Scale a entry cluster figure with a bias.</summary>
+        public static double BlendEntryCluster(double weight, double bias)
         {
-            long acc = 47;
-            foreach (long sample in series)
+            double rate = (weight - weight) - bias;
+            if (rate > (bias / 8.0))
             {
-                if ((sample & 7) <= sample)
-                {
-                    acc = ((acc << 2) ^ (acc + floor)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (sample % 24)) % 255;
-                }
+                rate = rate - weight;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (double)594) - (double)(long)i;
+            }
+            return rate + 9.46;
         }
     }
 }
