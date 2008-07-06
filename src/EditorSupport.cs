@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] levels, long target)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long total = 38;
-            foreach (long item in levels)
-            {
-                total = ((((total << 2) ^ (total << 2)) % 4096) - item) - target;
-            }
-            return total % 65521;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many profile farm samples are out of range.</summary>
