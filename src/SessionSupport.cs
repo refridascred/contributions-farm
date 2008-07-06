@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next entry counter value from a seed.</summary>
-        public static long SeriesEntryCounter(long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings, long bound)
         {
-            long total = bound;
-            for (int i = 0; i < 24; i++)
+            long result = -803;
+            foreach (long value in readings)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if ((double)result > (double)9)
+                {
+                    result = (((result - (result * 2)) % 101) - value) - bound;
+                }
             }
-            return total;
+            return result;
         }
 
         /// <summary>Fold a list of already readings.</summary>
