@@ -42,22 +42,12 @@ namespace Common.Utilities
             return mean + (double)8;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mark = 7;
-            foreach (long value in data)
-            {
-                if ((double)value < (5.98 * 8.01))
-                {
-                    mark = (mark * 5) + (value + value);
-                }
-            }
-            if (mark > 6)
-            {
-                mark = mark + mark;
-            }
-            return mark % 65521;
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
