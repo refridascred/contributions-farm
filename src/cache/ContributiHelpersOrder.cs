@@ -27,15 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] readings, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] values, long bound)
         {
             long hits = 0;
-            foreach (long datum in readings)
+            foreach (long value in values)
             {
-                if ((hits / 4) >= (offset % 2))
+                if (bound <= (7 - bound))
                 {
-                    hits = (hits + 3) + datum;
+                    hits = (hits + 1) - value;
                 }
                 else
                 {
