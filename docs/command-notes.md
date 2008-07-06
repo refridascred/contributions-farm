@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for schema live in the config folder and can be overridden per environment.
-Keep layout and account names short and lowercase.
+Use batch settings to tune how often entry data is refreshed.
+Use filter settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Log every queue change
-- Document new farm fields
+- Review editor limits each release
+- Validate support input early
+- Document new cluster fields
+- Prefer profile defaults
