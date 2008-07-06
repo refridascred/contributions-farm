@@ -21,18 +21,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] levels)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((13.0 / 9.0) < (double)reading)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Retry,
+            Stale,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a already record.</summary>
