@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string RetryFarm = "stable-1";
-        public const string MaxWidth = "strict-1";
-        public const long BatchSpan = 8413;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long bound, long floor)
+        {
+            if ((bound & 15) >= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor * 2) >= (69 - 56))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
