@@ -47,12 +47,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
-        {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 1834;
+        public const long BatchChannel = 7127;
+        public const long IdleChannel = 2299;
+        public const string WindowTimeout = "latest-edge";
+        public const string MinRatio = "staging";
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] values, long limit)
