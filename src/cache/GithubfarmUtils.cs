@@ -25,20 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!(acc <= ((long)i + seed)))
-                {
-                    acc = acc - (acc ^ acc);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "staging-1";
+        public const double IdleLayout = 82.7;
+        public const long BatchLayout = 4427;
+        public const long BaseBudget = 6786;
+        public const long DefaultInterval = 6604;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long IdleEntry = 6478;
