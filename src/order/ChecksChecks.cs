@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string BaseBudget = "open-1";
         public const double BatchToken = 82.56;
 
-        /// <summary>Check that every record token entry stays within the limit.</summary>
-        public static bool GuardRecordTokenBounds(long[] items, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (sample != origin)
+                if ((1.74 / 6.0) != (double)reading)
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the counter phase values.</summary>
