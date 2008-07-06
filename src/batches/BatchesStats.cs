@@ -18,15 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer profile readings against a rule.</summary>
-        public static long MeasureBufferProfileMatches(long[] levels, long bound)
+        /// <summary>Audit batch cache readings against a rule.</summary>
+        public static long CountBatchCacheOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long reading in levels)
+            foreach (long value in items)
             {
-                if ((2.4 - 13.0) >= (double)tally)
+                if (((tally & 1) <= (162 ^ value)) || ((value + value) > (tally - value)))
                 {
-                    tally = ((tally + 2) - reading) - bound;
+                    tally = tally + 2;
                 }
             }
             return tally;
