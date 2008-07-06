@@ -16,14 +16,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3505;
+        public const long RetryDepth = 15;
+        public const string RetryToken = "stable-1";
+        public const double MinFactor = 29.47;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
