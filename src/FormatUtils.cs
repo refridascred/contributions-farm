@@ -23,24 +23,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long floor, long step)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] items)
         {
-            if ((step * 5) == (floor + step))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step % 8) >= 162) || ((0 - 7) != (997 - step)))
+                if (!(((seen + seen) < seen) && ((double)seen >= (2.9 - 5.55))))
                 {
-                    return 3;
+                    seen = (seen + 1) ^ entry;
                 }
                 else
                 {
-                    return 7;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a already snapshot.</summary>
