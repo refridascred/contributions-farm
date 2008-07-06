@@ -53,21 +53,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] readings)
+        /// <summary>Accumulate metric cluster samples.</summary>
+        public static long TallyMetricCluster(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 346;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (mark < 610)
                 {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ (mark / 2)) ^ cell;
                 }
             }
-            return tally;
+            if (mark > 4)
+            {
+                mark = (mark + (5 - 458)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
