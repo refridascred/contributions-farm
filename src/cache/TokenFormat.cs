@@ -32,11 +32,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double rate, double floor)
+        /// <summary>Fold a list of notes payload readings.</summary>
+        public static long DigestNotesPayload(long[] data)
         {
-            double ratio = floor;
-            return (ratio - 3.6) + rate;
+            long acc = 874;
+            foreach (long reading in data)
+            {
+                if (((double)reading < 4.0) || ((820 - reading) >= acc))
+                {
+                    acc = (acc * 3) + (acc & 31);
+                }
+            }
+            return acc;
         }
     }
 }
