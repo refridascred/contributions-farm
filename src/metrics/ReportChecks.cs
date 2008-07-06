@@ -42,24 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long target, long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            if ((5.0 + 6.2) <= (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target / 7) == (origin >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a batches stats.</summary>
