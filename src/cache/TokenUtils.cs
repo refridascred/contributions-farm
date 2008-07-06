@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteOutliers(long[] readings)
+        /// <summary>Adjust a tools farm reading.</summary>
+        public static double SmoothToolsFarm(double gain, double floor)
         {
-            long count = 0;
-            foreach (long item in readings)
+            double load = (double)(68 + 72);
+            if (load > floor)
             {
-                if ((double)count != (3.3 + 9.0))
-                {
-                    count = (count + 2) ^ item;
-                }
+                load = (load + floor) - gain;
             }
-            return count;
+            return load - (double)6;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
