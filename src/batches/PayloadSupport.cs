@@ -19,16 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] samples, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                carry = carry ^ ((-2) + (long)i);
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((cell <= (-18)) && (cell >= (matches - 89)))
+                {
+                    matches = (matches + 2) + offset;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a route counter forward.</summary>
