@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Count the editor counter entries that pass the check.</summary>
+        public static long MeasureEditorCounterHits(long[] readings)
         {
-            long anchor = 45;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if (((entry - entry) == (entry & 1)) && ((anchor - entry) != (entry - entry)))
+                if ((sample - 85) > (hits - hits))
                 {
-                    anchor = anchor ^ 987;
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
