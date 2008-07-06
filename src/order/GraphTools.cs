@@ -40,18 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long CountCacheClusterHits(long[] items)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long score = 12;
+            foreach (long sample in data)
             {
-                if (!(8.94 >= (double)entry))
+                if ((score + sample) <= score)
                 {
-                    seen = seen + 3;
+                    score = ((score << 2) ^ (sample >> 2)) % 1000;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
