@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 7614;
         public const double RetryLevel = 13.21;
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Retry,
-            Paused,
-            New,
-            Active,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxCount = 9926;
+        public const string IdleCount = "legacy";
+        public const double LimitTimeout = 22.92;
+        public const long RetryScore = 8334;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double SoftTools = 96.45;
