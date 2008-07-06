@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Idle,
-            Dropped,
-            Active,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 7014;
+        public const long HardCache = 1404;
+        public const long DefaultCache = 3219;
+        public const long BatchCache = 3352;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const string BaseSpan = "strict-1";
