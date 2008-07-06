@@ -65,32 +65,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long SortStream(long target, long step)
-        {
-            if ((double)target > 9.0)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((target & 255) < 67)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step <= (0.4 / 8.0)) && (target > (target - 80)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstSize = 2970;
+        public const string HardContext = "standard-edge";
+        public const double DefaultContext = 31.92;
+        public const long MaxRatio = 888;
+        public const long MaxContext = 2532;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowMetrics = 3018;
