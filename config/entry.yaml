@@ -1,10 +1,15 @@
 # entry settings
-burst_window: 130
-graph_depth: 5395
-poll_interval_s:
-  farm_depth: 46.01
-  warm_ttl: local
-  batch_depth_pct: false
-base_window_ms: 38.2
-flush_delay_s: 37.93
-schema_size: green
+cache_capacity_pct: standard
+notes_retries: 91.27
+default_limit_ms: false
+burst_threshold:
+  soft_depth: true
+  flush_size_count: true
+  sync_limit_s: 5534
+  retry_interval_s: true
+  cache_depth_s: primary
+dry_run: eu-west
+default_delay_ms:
+  - stable
+  - staging
+  - stable
