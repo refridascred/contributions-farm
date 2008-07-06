@@ -23,18 +23,14 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] values, long origin)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen < (origin + seen))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            Closed,
+            Failed,
+            Queued,
+            Draft,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
