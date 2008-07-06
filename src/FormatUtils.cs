@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] series)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((double)count > 3.3)
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
