@@ -28,19 +28,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Locate a checks session reading by value.</summary>
+        public static long SeekChecksSessionIndex(long[] samples, long target)
         {
-            long result = 225;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = ((result - (result << 1)) % 1000) ^ value;
+                if (samples[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            if (result > 7)
-            {
-                result = (result + (3 - result)) % 1000;
-            }
-            return result % 1000;
+            return -1;
         }
     }
 }
