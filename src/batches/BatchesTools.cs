@@ -35,19 +35,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate already farm readings against a bound.</summary>
-        public static bool VerifyAlreadyFarmRange(long[] series, long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry < target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
