@@ -27,11 +27,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] series, long floor)
         {
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
