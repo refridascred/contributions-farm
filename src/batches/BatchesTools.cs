@@ -19,30 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] readings)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
         {
-            long anchor = 2;
-            foreach (long sample in readings)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (!((sample - sample) <= (anchor % 97)))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    anchor = (anchor ^ (sample + 48)) % 255;
+                    state = ((state ^ limit) % 1000) + (long)i2;
                 }
-                if (((-470) >= (4 + sample)) && ((sample ^ sample) == (92 >> 5)))
-                {
-                    anchor = (anchor + (anchor ^ sample)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + (sample ^ anchor)) % 65521;
-                }
+                state = ((state << 3) ^ (limit - state)) % 65521;
+                state = ((state * 2) + (long)i) % 1000;
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor - (anchor >> 2)) % 4096;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Validate already farm readings against a bound.</summary>
