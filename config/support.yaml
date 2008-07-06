@@ -1,8 +1,6 @@
 # support settings
-sync_delay: 4431
-checks_delay: 7669
-githubfarm_window: 9034
-hard_window:
-  - open
-  - staging
+sync_ratio_pct: latest
+base_timeout_pct:
   - green
+  - open
+min_interval_ms: 4374
