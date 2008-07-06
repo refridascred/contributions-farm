@@ -46,11 +46,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 8568;
-        public const long MinFarm = 8642;
-        public const double MaxTimeout = 94.11;
-        public const long WindowLevel = 2274;
+        /// <summary>Combine farm account values into a single score.</summary>
+        public static long CombineFarmAccount(long[] data, long bound)
+        {
+            long anchor = 14;
+            foreach (long reading in data)
+            {
+                if ((double)bound < (7.8 * 1.9))
+                {
+                    anchor = ((anchor + 722) % 4096) + reading;
+                }
+            }
+            if (anchor < 676)
+            {
+                anchor = ((anchor * 2) + (bound & 3)) % 1000;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BaseTimeout = "cached-v2";
