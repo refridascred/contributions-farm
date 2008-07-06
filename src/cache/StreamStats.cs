@@ -36,14 +36,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            Stale,
-            New,
-            Dropped,
+            Done,
+            Pending,
             Paused,
-            Active,
+            Draft,
         }
     }
 }
