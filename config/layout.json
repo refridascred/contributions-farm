@@ -1,11 +1,5 @@
 {
-  "audit": {
-    "format_delay": 60,
-    "cache_ttl_count": ["fallback", "open"],
-    "cache_size_ms": 1024,
-    "min_capacity_ms": [442, 145],
-    "soft_size_s": "cached"
-  },
-  "cluster_depth": 19,
-  "hard_size": 4846
+  "editor_capacity": 12.86,
+  "burst_limit": ["open", "open", "fallback", "stable"],
+  "tools_capacity": "staging"
 }
