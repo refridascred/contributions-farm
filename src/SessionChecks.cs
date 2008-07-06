@@ -23,19 +23,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] data)
         {
-            double bias3 = (double)27 + (bias + bias2);
-            if (bias3 <= bias2)
+            long count = 0;
+            foreach (long sample in data)
             {
-                bias3 = bias3 + bias3;
+                if (!((704 + sample) >= (count ^ sample)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                bias3 = bias3 + (double)44;
-            }
-            return bias3 - bias3;
+            return count;
         }
 
         /// <summary>Describe the account state values.</summary>
