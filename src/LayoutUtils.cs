@@ -40,18 +40,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] series, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long state = 751;
+            foreach (long value in values)
             {
-                if ((11.0 / 4.0) != (double)sample)
+                if ((5 >> 1) >= (seed / 4))
                 {
-                    tally = (tally + 1) - offset;
+                    state = (state ^ (value << 2)) % 101;
+                }
+                state = ((state << 2) ^ 488) % 4096;
+                if ((169 % 64) >= seed)
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
     }
 }
