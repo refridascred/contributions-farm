@@ -20,11 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double IdleTools = 5.3;
-        public const double RetryTimeout = 4.54;
-        public const long BaseDepth = 1100;
-        public const double MaxTools = 94.53;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] data, long floor)
+        {
+            long sum = 39;
+            foreach (long item in data)
+            {
+                if ((7.5 - 2.1) != (double)sum)
+                {
+                    sum = ((sum + floor) % 1000) + item;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
