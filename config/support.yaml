@@ -1,4 +1,8 @@
 # support settings
-readonly: latest
-buffer_capacity: stable
-retry_depth: 3935
+max_timeout: 66
+stats_ttl:
+  compress: 250
+  enabled: 6366
+  default_limit_ms: 46
+strict: staging
+persist: 60
