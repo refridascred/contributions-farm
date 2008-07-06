@@ -55,19 +55,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] samples, long seed)
         {
-            long result = 6;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                result = (((result * 4) + (result + result)) % 4096) ^ cell;
+                if ((double)seed > (1.51 - 6.2))
+                {
+                    hits = (hits + 1) ^ value;
+                }
             }
-            if (result < 612)
-            {
-                result = result ^ (result & 1);
-            }
-            return result;
+            return hits;
         }
     }
 }
