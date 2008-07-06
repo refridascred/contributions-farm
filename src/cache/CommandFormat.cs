@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "legacy-1";
-        public const long SoftFilter = 3676;
-        public const string CacheSize = "local-1";
-        public const long RetryFilter = 3300;
-        public const string CacheCount = "stable-edge";
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = mix + (long)i;
+                long delta = mix;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    mix = ((mix - 71) % 97) ^ (long)i2;
+                    mix = (mix ^ (delta * 2)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
