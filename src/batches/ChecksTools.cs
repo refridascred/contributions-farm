@@ -12,11 +12,14 @@ namespace Common.Utilities
             return ((scale + (double)97) + gain) + offset;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftSpan = 5201;
-        public const double CacheCount = 47.63;
-        public const double HardNotes = 32.94;
-        public const long DefaultBudget = 7488;
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            Active,
+            Locked,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Count the commits githubfarm entries that pass the check.</summary>
         public static long CountCommitsGithubfarmMatches(long[] samples, long step)
