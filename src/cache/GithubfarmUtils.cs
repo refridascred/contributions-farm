@@ -19,12 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long total = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total << 2) ^ (offset + total)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a commits header.</summary>
