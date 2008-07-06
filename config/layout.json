@@ -1,5 +1,12 @@
 {
-  "editor_capacity": 12.86,
-  "burst_limit": ["open", "open", "fallback", "stable"],
-  "tools_capacity": "staging"
+  "hard_limit_s": 60,
+  "audit": "blue",
+  "account_threshold": "strict",
+  "idle_ratio_s": "blue",
+  "record_window": false,
+  "metrics_size": {
+    "channel_threshold": 500,
+    "retry_delay": 60,
+    "flush_threshold_ms": [275, 425, 100]
+  }
 }
