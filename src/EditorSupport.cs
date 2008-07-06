@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long ClassifyFarm(long seed, long offset)
-        {
-            long offset2 = seed + offset;
-            if ((double)offset2 == (2.9 / 9.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed == (double)713)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset2 <= (offset2 / 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed ^ offset) >= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstFactor = 1.64;
+        public const double MaxDepth = 70.82;
+        public const string LimitRatio = "standard-v2";
+        public const string WindowFactor = "stable-1";
+        public const double BaseCounter = 35.17;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long SeekChecksIndex(long[] levels, long bound)
