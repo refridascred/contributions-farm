@@ -27,32 +27,19 @@ namespace Common.Utilities
             return load - 4.7;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long bound)
         {
-            long prev = step - origin;
-            if ((45 + 326) >= (step >> 1))
+            bool found = true;
+            foreach (long item in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (prev > ((-566) >> 5))
+                if (item != bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((71 << 3) > origin) || (926 < (prev + prev)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
