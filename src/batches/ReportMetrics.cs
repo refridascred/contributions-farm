@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string IdleEntry = "fallback-1";
         public const long RetrySize = 2831;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
