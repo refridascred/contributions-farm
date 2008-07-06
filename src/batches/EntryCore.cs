@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long result = 8;
+            foreach (long sample in items)
             {
-                if ((8 & 63) < (matches / 2))
+                result = (result ^ (result + 24)) % 255;
+                if ((sample >> 5) > (result - sample))
                 {
-                    matches = (matches + 2) + cell;
+                    result = result + sample;
                 }
+                result = (result * 5) + (sample - sample);
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
