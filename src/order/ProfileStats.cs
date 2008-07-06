@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const double BatchPayload = 53.18;
         public const string DefaultPayload = "staging-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheDepth = "staging-edge";
-        public const long StepSession = 5362;
-        public const long HardSession = 7214;
-        public const long StepWidth = 8058;
+        /// <summary>Validate cluster entry readings against a bound.</summary>
+        public static bool ValidateClusterEntryLimits(long[] series, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] readings, long seed)
