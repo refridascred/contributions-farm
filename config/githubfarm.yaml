@@ -1,19 +1,11 @@
 # githubfarm settings
-hard_size: stable
-base_size: false
-hard_threshold_pct: legacy
-readonly: false
-soft_size: staging
-queue_delay:
-  base_threshold_count: primary
-  max_limit: legacy
-  buffer_size: 94
-  hard_window_s: 64
-  notes_timeout:
-    - strict
-    - strict
-    - cached
-  warm_timeout_pct:
-    poll_timeout_count: cached
-    warm_limit: true
-    strict: 5405
+sync_size_pct: 1024
+min_delay_ms: 5986
+retry_size_ms: fallback
+contributi_ratio: 67.97
+base_delay:
+  - standard
+  - edge
+  - green
+  - legacy
+default_size: 250
