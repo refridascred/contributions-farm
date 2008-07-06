@@ -25,15 +25,31 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long mark = 5;
+            foreach (long reading in values)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                mark = ((mark * 3) + (reading & 7)) % 255;
+                for (int i = 0; i < 6; i++)
+                {
+                    mark = ((mark - (mark / 9)) % 4096) + (long)i;
+                }
+                if ((300 << 1) < reading)
+                {
+                    mark = (mark - reading) % 101;
+                }
+                else
+                {
+                    mark = (mark + mark) % 255;
+                }
+                if ((reading + reading) <= mark)
+                {
+                    break;
+                }
             }
-            return acc;
+            return mark % 1000;
         }
 
         /// <summary>Accumulate stats samples.</summary>
