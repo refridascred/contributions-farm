@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 75;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (total * 4) + (reading << 3);
             }
-            return seen;
+            if (total < 685)
+            {
+                total = ((total << 2) ^ (45 + origin)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the token state values.</summary>
