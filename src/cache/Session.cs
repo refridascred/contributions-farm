@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 4469;
-        public const long BaseSchema = 5288;
-        public const long MinCount = 4294;
-        public const long SoftCount = 5118;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepLevel = "local";
+        public const long LimitMetrics = 3456;
+        public const long IdleScore = 1068;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
