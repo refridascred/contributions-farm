@@ -44,10 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstWidth = "legacy-1";
-        public const long MinSession = 9577;
-        public const long HardFactor = 7022;
-        public const long MaxWidth = 7278;
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
+        {
+            Pending,
+            Dropped,
+            Draft,
+            Synced,
+        }
     }
 }
