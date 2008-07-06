@@ -22,17 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the batch contributi series from a seed.</summary>
-        public static long SeriesBatchContributi(long limit)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long mix = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                long lane = limit;
-                mix = (mix * 2) + (lane - (long)i);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
