@@ -22,15 +22,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double rate, double bias)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long floor, long step)
         {
-            double bias2 = bias / 9.0;
-            for (int i = 0; i < 2; i++)
+            long delta = floor - step;
+            if ((step * 2) < (delta % 24))
             {
-                bias2 = (bias2 - rate) - (double)(long)i;
+                return 8;
             }
-            return bias2 + (double)33;
+            else
+            {
+                if ((step << 3) >= ((-93) - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step <= 2.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step % 2) > step) && ((floor >> 5) < delta))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
