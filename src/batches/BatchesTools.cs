@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a editor command reading.</summary>
-        public static double AdjustEditorCommand(double rate, double offset)
+        /// <summary>Roll a layout route counter forward.</summary>
+        public static long SeriesLayoutRoute(long offset)
         {
-            double mean = rate;
-            for (int i = 0; i < 3; i++)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                mean = (mean - offset) + (double)(long)i;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return mean - (mean / 7.0);
+            return score;
         }
 
         /// <summary>Hold a layout options.</summary>
