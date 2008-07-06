@@ -31,22 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit already notes readings against a rule.</summary>
-        public static long CountAlreadyNotesHits(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry != (1.61 - 2.71))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
