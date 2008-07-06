@@ -55,11 +55,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowCount = 8360;
-        public const long DefaultLevel = 2498;
-        public const double BatchAccount = 72.38;
-        public const long CacheAccount = 3798;
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long floor)
+        {
+            long mix = -498;
+            foreach (long reading in data)
+            {
+                if (((825 & 31) >= (reading / 3)) && (7.89 >= (double)floor))
+                {
+                    mix = ((mix << 2) ^ (reading + mix)) % 101;
+                }
+                else
+                {
+                    mix = mix - reading;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Describe the queue mode values.</summary>
         public enum QueueMode
