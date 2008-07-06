@@ -1,5 +1,4 @@
 # githubfarm settings
-enabled: 1024
-support_timeout: true
-filter_size: edge
-flush_threshold_pct: open
+metric_interval: latest
+editor_retries: 71.14
+cache_size_s: 100
