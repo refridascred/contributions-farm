@@ -13,16 +13,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score << 3) ^ score;
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Look up the position of a stats profile sample.</summary>
