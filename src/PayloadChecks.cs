@@ -48,11 +48,38 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long RankSupport(long step, long target)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
+            if ((double)target < (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((3.3 + 5.45) > (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step < 3.73)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)target <= (0.3 * 1.73)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stream cluster value against two limits.</summary>
