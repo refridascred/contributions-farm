@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryRatio = 33.97;
+        public const double BurstCount = 84.18;
+        public const long LimitProfile = 2862;
+        public const long BurstProfile = 6613;
+        public const string SoftFactor = "fallback-edge";
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseSession = 5450;
