@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long step)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long acc = 504;
+            foreach (long item in levels)
             {
-                if (((step % 2) < sum) || ((sum + sum) <= (69 & 63)))
+                if ((item ^ acc) == (item - acc))
                 {
-                    sum = (sum - (step * 5)) % 65521;
+                    acc = (acc + (acc + acc)) % 101;
                 }
-                else
+                acc = (acc + (item % 3)) % 4096;
+                if ((acc << 1) != (acc & 3))
                 {
-                    sum = ((sum * 4) + (long)i) % 65521;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
