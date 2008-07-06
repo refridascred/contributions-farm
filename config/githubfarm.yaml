@@ -1,7 +1,12 @@
 # githubfarm settings
-base_delay_count: 4.93
-warm_interval_ms: 43.8
-compress: true
-schema_threshold:
-  - 359
-  - 391
+session_ttl: staging
+githubfarm_ratio: 33.47
+flush_retries:
+  - primary
+  - eu-west
+sync_retries: cached
+flush_limit_s:
+  - cached
+  - strict
+  - edge
+min_timeout: cached
