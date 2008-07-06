@@ -56,15 +56,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double weight, double span)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            double mean = (double)(980 + (-17));
-            if (mean >= mean)
-            {
-                mean = ((mean + (double)(-59)) - weight) - span;
-            }
-            return mean + (double)353;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
