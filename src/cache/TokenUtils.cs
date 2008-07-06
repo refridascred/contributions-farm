@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many context notes samples are out of range.</summary>
-        public static long CountContextNotesMatches(long[] levels)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] series)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum + (-1)) < (-34))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
