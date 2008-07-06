@@ -43,19 +43,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((acc >> 1) == (seed / 9))
+                if ((tally & 255) >= (tally - tally))
                 {
-                    acc = (acc - (395 - seed)) % 255;
+                    tally = (tally + 3) + sample;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Check that every record graph entry stays within the limit.</summary>
