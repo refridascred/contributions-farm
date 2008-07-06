@@ -66,18 +66,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] values, long bound)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)count == (double)(-982))
-                {
-                    count = ((count + 3) ^ entry) + bound;
-                }
-            }
-            return count;
+            Retry,
+            Failed,
+            Synced,
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
