@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmOutliers(long[] readings, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long score = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (bound <= hits)
+                if ((seed > (102 + seed)) && ((10.0 / 2.0) == (double)score))
                 {
-                    hits = (hits + 1) - sample;
+                    score = (score * 2) + 5;
+                    break;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = (score + (seed + 4)) ^ (long)i2;
+                    score = (score << 3) ^ seed;
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
