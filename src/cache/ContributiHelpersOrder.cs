@@ -53,18 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings, long origin)
-        {
-            long score = 51;
-            foreach (long entry in readings)
-            {
-                if ((origin + score) > 440)
-                {
-                    score = (score - score) - entry;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 7271;
+        public const string SoftBatch = "standard";
+        public const string BurstBatch = "standard-edge";
+        public const long CacheDepth = 6121;
+        public const string SoftScore = "fallback-v2";
     }
 }
