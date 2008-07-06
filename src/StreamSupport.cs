@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] readings)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound <= (bound + step)) || ((bound ^ step) >= 8))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((double)bound == (7.3 * 3.1))
                 {
-                    if ((readings[i] - readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine route values into a single score.</summary>
