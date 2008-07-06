@@ -40,24 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a layout filter counter forward.</summary>
-        public static long StepLayoutFilter(long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            long carry = limit;
-            for (int i = 0; i < 19; i++)
+            long result = 50;
+            foreach (long cell in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((4 / 5) <= (result % 100))
                 {
-                    carry = ((carry ^ (carry >> 5)) % 255) - (long)i2;
+                    result = result - (cell + cell);
                 }
-                for (int i3 = 0; i3 < 10; i3++)
+                else
                 {
-                    carry = ((carry << 2) ^ carry) - (long)i3;
+                    result = (result * 3) + (result - result);
                 }
-                carry = carry ^ carry;
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            if (result < 8)
+            {
+                result = (result ^ (6 % 10)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
