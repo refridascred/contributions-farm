@@ -51,13 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long bound)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a contributi info.</summary>
