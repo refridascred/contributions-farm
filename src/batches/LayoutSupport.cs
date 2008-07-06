@@ -27,12 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 6016;
-        public const double SoftScore = 63.29;
-        public const long MaxNotes = 4653;
-        public const long SoftTimeout = 7823;
-        public const string CacheWidth = "strict-v2";
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading + reading) != (reading ^ hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long SeekWindowIndex(long[] data, long limit)
