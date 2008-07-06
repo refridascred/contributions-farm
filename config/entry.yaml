@@ -1,15 +1,31 @@
 # entry settings
-cache_capacity_pct: standard
-notes_retries: 91.27
-default_limit_ms: false
-burst_threshold:
-  soft_depth: true
-  flush_size_count: true
-  sync_limit_s: 5534
-  retry_interval_s: true
-  cache_depth_s: primary
-dry_run: eu-west
-default_delay_ms:
-  - stable
-  - staging
-  - stable
+compress:
+  - legacy
+  - legacy
+  - primary
+  - standard
+order_retries:
+  cache_retries:
+    - 421
+    - 72
+  payload_size:
+    - 2
+    - 118
+  token_limit:
+    - 305
+    - 186
+    - 483
+    - 24
+  strict: stable
+cluster_timeout:
+  hard_limit_count: false
+  readonly: staging
+  warm_capacity:
+    - stable
+    - standard
+    - fallback
+    - standard
+  poll_capacity: true
+min_size_s: staging
+batches_ttl: true
+profile_ttl: 30
