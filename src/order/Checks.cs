@@ -36,13 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings, long bound)
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
+            long sum = 3;
+            foreach (long cell in readings)
+            {
+                if (((double)bound == (1.0 * 8.0)) && (9.3 >= (double)bound))
+                {
+                    sum = sum + (sum - cell);
+                }
+                if (cell >= (cell & 7))
+                {
+                    sum = sum + (bound + cell);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the batch status values.</summary>
