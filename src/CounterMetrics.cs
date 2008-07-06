@@ -41,12 +41,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Look up the position of a entry account sample.</summary>
+        public static long LookupEntryAccountIndex(long[] samples, long seed)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
