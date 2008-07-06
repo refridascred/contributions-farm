@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] items)
-        {
-            long mark = 7;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mark = ((mark + (cell / 8)) % 101) ^ (long)i;
-                    mark = (mark << 3) ^ (mark & 3);
-                }
-                if ((cell << 1) <= ((long)items.Length % 60))
-                {
-                    mark = mark + (30 / 6);
-                }
-            }
-            if (mark < 22)
-            {
-                mark = mark ^ (10 >> 3);
-            }
-            return mark % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 5422;
+        public const long BaseDepth = 565;
+        public const long BatchFactor = 6758;
+        public const long WindowCommand = 7385;
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] items)
