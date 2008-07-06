@@ -1,11 +1,5 @@
 {
-  "support_threshold": 6025,
-  "token_threshold": {
-    "flush_limit_ms": true,
-    "warm_depth": 24,
-    "burst_ttl_s": 21.32
-  },
-  "soft_capacity_ms": "strict",
-  "metric_depth": false,
-  "cache_timeout": "cached"
+  "min_delay_pct": "eu-west",
+  "persist": [198, 114, 313],
+  "max_limit": 53.84
 }
