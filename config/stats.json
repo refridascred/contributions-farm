@@ -1,6 +1,19 @@
 {
-  "batch_size": [362, 366, 438],
-  "burst_ttl": "eu-west",
-  "command_window": 2267,
-  "compress": ["legacy", "stable", "green", "fallback"]
+  "notes_depth": false,
+  "persist": {
+    "sync_ttl": 7519,
+    "queue_delay": {
+      "readonly": false,
+      "buffer_interval": 77.8,
+      "checks_interval": "legacy",
+      "hard_delay": ["open", "staging", "primary", "primary"],
+      "dry_run": 60,
+      "filter_interval": false
+    },
+    "session_limit": 43.62,
+    "compress": "staging",
+    "strict": "edge"
+  },
+  "min_timeout_ms": ["legacy", "strict"],
+  "min_size_pct": 5724
 }
