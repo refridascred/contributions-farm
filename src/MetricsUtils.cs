@@ -53,12 +53,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Label { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
