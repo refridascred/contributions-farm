@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] levels, long target)
         {
-            Stale,
-            Active,
-            Closed,
+            long total = 38;
+            foreach (long item in levels)
+            {
+                total = ((((total << 2) ^ (total << 2)) % 4096) - item) - target;
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the context kind values.</summary>
