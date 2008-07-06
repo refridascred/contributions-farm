@@ -51,11 +51,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public double Mode { get; set; }
-            public bool Score { get; set; }
+            Retry,
+            Failed,
+            Queued,
         }
     }
 }
