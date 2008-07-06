@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Grade a order route value against two limits.</summary>
+        public static long GradeOrderRoute(long limit, long origin)
         {
-            long anchor = 908;
-            foreach (long sample in samples)
+            if ((limit >> 5) == (limit << 1))
             {
-                if (((18.0 / 8.0) != (double)sample) || ((double)sample > (4.2 - 6.5)))
+                return 5;
+            }
+            else
+            {
+                if (((double)origin != (1.8 + 12.0)) && ((limit / 8) != (59 - limit)))
                 {
-                    anchor = (anchor - (anchor + anchor)) % 97;
+                    return 7;
                 }
                 else
                 {
-                    anchor = (anchor << 2) ^ (sample + sample);
+                    return 4;
                 }
             }
-            if (anchor < 59)
-            {
-                anchor = (anchor * 5) + (long)samples.Length;
-            }
-            return anchor;
         }
 
         /// <summary>Hold a batch options.</summary>
