@@ -1,31 +1,4 @@
 # entry settings
-compress:
-  - legacy
-  - legacy
-  - primary
-  - standard
-order_retries:
-  cache_retries:
-    - 421
-    - 72
-  payload_size:
-    - 2
-    - 118
-  token_limit:
-    - 305
-    - 186
-    - 483
-    - 24
-  strict: stable
-cluster_timeout:
-  hard_limit_count: false
-  readonly: staging
-  warm_capacity:
-    - stable
-    - standard
-    - fallback
-    - standard
-  poll_capacity: true
-min_size_s: staging
-batches_ttl: true
-profile_ttl: 30
+hard_window_s: edge
+cache_retries: false
+batch_capacity_count: edge
