@@ -38,13 +38,14 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Done,
-            Locked,
-            Active,
-            Ready,
+            Idle,
+            Paused,
+            Dropped,
+            Synced,
+            New,
         }
     }
 }
