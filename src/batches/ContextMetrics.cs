@@ -35,12 +35,11 @@ namespace Common.Utilities
         public const long MaxCount = 2379;
         public const long BatchWindow = 2764;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
