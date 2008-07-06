@@ -72,18 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window tools entries that pass the check.</summary>
-        public static long AuditWindowToolsHits(long[] levels, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading * 5) > (reading + reading))
+                if (values[i] <= target)
                 {
-                    hits = (hits + 1) + limit;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
