@@ -25,20 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account metrics readings against a bound.</summary>
-        public static bool CheckAccountMetricsRange(long[] data, long offset)
-        {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepLevel = "strict-v2";
+        public const double CacheScore = 46.48;
+        public const long IdleWidth = 8680;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long WeighWindow(long[] data, long offset)
