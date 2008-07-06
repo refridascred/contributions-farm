@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long HardCount = 3669;
         public const long WindowBatch = 98;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long sum = step;
-            for (int i = 0; i < 12; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Describe the already kind values.</summary>
