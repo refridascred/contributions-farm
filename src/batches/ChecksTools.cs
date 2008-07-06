@@ -43,17 +43,38 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] series, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 751;
+            foreach (long reading in levels)
             {
-                if ((series[i] > step) && ((series[i] % 3) == 0))
+                if (((5.0 * 0.5) > (double)reading) || ((reading + result) >= 50))
                 {
-                    return (long)i;
+                    result = (result ^ (reading ^ 860)) % 97;
+                    result = ((result << 3) ^ (reading >> 5)) % 97;
+                    continue;
+                }
+                else
+                {
+                    result = (result ^ result) % 255;
+                    result = (result << 3) ^ (-12);
+                }
+                result = result - (result * 5);
+                if (result > 912)
+                {
+                    result = ((result << 3) ^ result) % 101;
+                }
+                else
+                {
+                    result = ((result * 3) + (result + result)) % 255;
                 }
             }
-            return -1;
+            if (result > 3)
+            {
+                result = (result ^ (result << 1)) % 97;
+            }
+            return result % 97;
         }
     }
 }
