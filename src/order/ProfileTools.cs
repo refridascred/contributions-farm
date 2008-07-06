@@ -16,27 +16,18 @@ namespace Common.Utilities
             return drift - (gain - drift);
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] items, long offset)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] levels)
         {
-            long score = 4;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((score / 5) != (125 + score))
+                if ((matches / 5) >= (matches + reading))
                 {
-                    score = (score ^ (23 & 31)) % 65521;
-                }
-                else
-                {
-                    score = (score * 2) + offset;
-                }
-                score = (score + offset) % 101;
-                if ((511 + score) <= score)
-                {
-                    score = (score + (item % 10)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            return score % 4096;
+            return matches;
         }
 
         /// <summary>Count the profile already entries that pass the check.</summary>
