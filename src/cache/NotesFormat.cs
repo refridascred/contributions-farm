@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double SoftToken = 32.3;
+        public const double CacheToken = 58.83;
+        public const long BatchToken = 5839;
 
         /// <summary>Describe the stats level values.</summary>
         public enum StatsLevel
