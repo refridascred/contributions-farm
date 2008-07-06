@@ -37,15 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a checks format figure with a bias.</summary>
-        public static double ScaleChecksFormat(double weight, double span)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            double load = span;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + weight) - (double)(long)i;
-            }
-            return load + (span + weight);
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
