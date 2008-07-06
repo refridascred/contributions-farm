@@ -42,13 +42,18 @@ namespace Common.Utilities
         public const string BurstEntry = "cached-edge";
         public const double MaxEntry = 45.92;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] levels)
         {
-            Queued,
-            Pending,
-            Closed,
-            Paused,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (reading >= count)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
