@@ -1,19 +1,8 @@
 # support settings
-batch_ratio: 4821
-min_ttl_s: 41.45
-base_interval_s: 15.91
-notes_ratio:
-  audit:
-    verbose: standard
-    burst_retries_pct: 14
-    strict: legacy
-  verbose: cached
-  profile_ratio: true
-  enabled: 6
-  soft_interval_pct:
-    - standard
-    - edge
-    - fallback
-  checks_limit: 6015
-context_size: standard
-default_limit_count: standard
+record_threshold: 8711
+compress: 7.28
+counter_size: 5236
+githubfarm_window:
+  strict: 7237
+  hard_retries_s: 86.02
+  payload_interval: 1024
