@@ -55,17 +55,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a already filter sample.</summary>
-        public static long LookupAlreadyFilterIndex(long[] items, long bound)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
