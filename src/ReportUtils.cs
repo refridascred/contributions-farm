@@ -37,19 +37,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((double)value >= (10.0 * 16.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 4789;
+        public const long LimitFactor = 2909;
+        public const string BurstEntry = "cached-edge";
+        public const double MaxEntry = 45.92;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsHits(long[] readings)
