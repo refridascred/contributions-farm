@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long DefaultRoute = 5408;
         public const long HardRoute = 7514;
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] readings, long bound)
+        /// <summary>Count the editor session entries that pass the check.</summary>
+        public static long MeasureEditorSessionHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 2) == 0))
+                if ((hits % 7) > (4 ^ sample))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a already snapshot.</summary>
