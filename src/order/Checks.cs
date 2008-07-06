@@ -70,22 +70,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long mix = 137;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (554 < (mix >> 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix ^ (entry << 2);
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 622)
-            {
-                mix = (mix ^ mix) % 65521;
-            }
-            return mix % 1000;
+            return count;
         }
     }
 }
