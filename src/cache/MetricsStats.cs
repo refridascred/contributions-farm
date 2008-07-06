@@ -41,21 +41,24 @@ namespace Common.Utilities
             return drift + (gain - floor);
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long CompareToolsCount(long[] series)
+        /// <summary>Classify a layout metric pair into a bucket.</summary>
+        public static long ClassifyLayoutMetric(long step, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (step > (step / 6))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed % 8) >= (0 << 1))
                 {
-                    if ((series[i] ^ series[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Rank context input into a small class.</summary>
