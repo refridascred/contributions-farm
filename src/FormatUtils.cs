@@ -39,15 +39,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long total = step;
-            for (int i = 0; i < 15; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Locked,
+            Queued,
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Match up entry samples.</summary>
