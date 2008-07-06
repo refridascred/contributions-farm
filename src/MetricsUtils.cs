@@ -47,12 +47,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 1834;
-        public const long BatchChannel = 7127;
-        public const long IdleChannel = 2299;
-        public const string WindowTimeout = "latest-edge";
-        public const string MinRatio = "staging";
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long offset, long seed)
+        {
+            if ((double)seed != (1.3 + 6.94))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset - 90) <= (seed + seed)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((5.1 / 2.0) > (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long FoldGraph(long[] values, long limit)
