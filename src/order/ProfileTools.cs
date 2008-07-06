@@ -40,22 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandMatches(long[] samples, long bound)
+        /// <summary>Roll a support queue counter forward.</summary>
+        public static long DeriveSupportQueue(long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)tally >= (0.4 / 4.0))
-                {
-                    tally = ((tally + 1) + sample) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                acc = ((acc * 4) + (acc - limit)) % 255;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
