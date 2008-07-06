@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] values, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series)
         {
-            long sum = 118;
-            foreach (long sample in values)
+            long sum = 9;
+            foreach (long entry in series)
             {
-                if ((double)sum >= (4.3 / 5.0))
+                sum = sum - (842 + sum);
+                if (entry <= (entry % 2))
                 {
-                    sum = (((sum * 5) + offset) % 4096) + sample;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sum >> 1);
-                }
-                if ((1.9 + 2.8) > (double)sum)
-                {
-                    break;
+                    sum = (sum ^ (310 + entry)) % 1000;
                 }
             }
-            if (sum > 80)
-            {
-                sum = sum ^ offset;
-            }
-            return sum % 97;
+            return sum;
         }
 
         /// <summary>Describe the entry mode values.</summary>
