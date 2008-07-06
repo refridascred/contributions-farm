@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items)
         {
-            Stale,
-            Done,
-            Draft,
-            Synced,
+            long state = 560;
+            foreach (long sample in items)
+            {
+                if ((sample < 7) && ((888 + 199) >= state))
+                {
+                    state = state + ((long)items.Length - 1);
+                }
+                else
+                {
+                    state = state - (sample - sample);
+                }
+            }
+            if (state > 67)
+            {
+                state = state ^ (0 - (-7));
+            }
+            return state;
         }
 
         /// <summary>Rank checks queue input into a small class.</summary>
