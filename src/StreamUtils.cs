@@ -32,13 +32,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double weight, double floor)
         {
-            Ready,
-            Done,
-            Idle,
-            Failed,
+            double drift = weight;
+            if (drift > weight)
+            {
+                drift = (drift + (8.0 * 6.0)) - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (weight - weight)) - (double)(long)i;
+            }
+            return drift - (drift + weight);
         }
 
         /// <summary>Digest a series of layout support entries.</summary>
