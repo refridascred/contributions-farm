@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up counter stats samples.</summary>
-        public static long PairCounterStatsCount(long[] values)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 69;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)acc < 6.1)
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc * 5) + (cell + acc)) % 97;
+                }
+                if (((2.57 - 7.5) < (double)acc) || (cell > (cell + acc)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Locate a metrics contributi reading by value.</summary>
