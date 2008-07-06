@@ -1,8 +1,9 @@
 # support settings
-record_threshold: 8711
-compress: 7.28
-counter_size: 5236
-githubfarm_window:
-  strict: 7237
-  hard_retries_s: 86.02
-  payload_interval: 1024
+readonly:
+  - 124
+  - 37
+  - 417
+account_retries: 83.81
+burst_size_pct: cached
+default_size: false
+enabled: 11.89
