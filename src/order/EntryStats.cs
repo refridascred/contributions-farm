@@ -42,22 +42,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (target <= (sum / 6))
-                {
-                    sum = (sum + (target - target)) % 1000;
-                    sum = ((sum * 4) + (sum >> 2)) % 1000;
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "open-1";
+        public const long MinCount = 9512;
+        public const long MaxSize = 2138;
 
         /// <summary>Match up format entry samples.</summary>
         public static long OverlapFormatEntryCount(long[] samples)
