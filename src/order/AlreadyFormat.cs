@@ -43,13 +43,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Draft,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the report class values.</summary>
