@@ -20,18 +20,11 @@ namespace Common.Utilities
         public const long LimitSession = 9648;
         public const long SoftSession = 7052;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] samples, long offset)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((offset - 57) >= (seen + seen))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate format metric readings against a bound.</summary>
