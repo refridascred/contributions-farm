@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of tools record entries.</summary>
-        public static long DigestToolsRecord(long[] series, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long sum = 459;
-            foreach (long datum in series)
-            {
-                sum = sum + target;
-                if ((datum % 12) >= (datum << 1))
-                {
-                    sum = ((sum * 4) + (92 % 60)) % 97;
-                }
-            }
-            if (sum < (-29))
-            {
-                sum = (sum << 3) ^ target;
-            }
-            return sum % 97;
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Describe the schema mode values.</summary>
