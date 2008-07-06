@@ -1,18 +1,5 @@
 {
-  "poll_threshold_count": "green",
-  "batch_interval_count": true,
-  "min_size_pct": 1024,
-  "contributi_window": 49.26,
-  "order_threshold": {
-    "checks_delay": "strict",
-    "verbose": 91,
-    "audit": {
-      "verbose": 77.35,
-      "profile_size": 70.22,
-      "default_capacity_ms": false,
-      "retry_limit_ms": 33.52,
-      "compress": 100,
-      "soft_timeout_count": 24.58
-    }
-  }
+  "flush_threshold_pct": 4.82,
+  "order_size": 9077,
+  "idle_depth": "eu-west"
 }
