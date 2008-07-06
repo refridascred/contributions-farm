@@ -49,11 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] readings)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!((hits - (-6)) > (hits % 16)) || ((double)hits < (0.36 + 8.54)))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up tools format samples.</summary>
