@@ -13,15 +13,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] items)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long MatchNotesCount(long[] values)
         {
-            long carry = 48;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry + carry) % 255) ^ value;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of route entries.</summary>
