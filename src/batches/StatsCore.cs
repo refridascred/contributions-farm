@@ -40,23 +40,39 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long origin)
         {
-            long mark = 0;
-            foreach (long cell in items)
+            long edge = step - origin;
+            if (!((edge ^ origin) > step))
             {
-                if (((mark + cell) >= cell) || ((cell / 6) > (cell + cell)))
+                return 2;
+            }
+            else
+            {
+                if ((step >= (step + step)) && ((origin - origin) >= (edge + edge)))
                 {
-                    mark = (mark ^ 791) % 255;
+                    return 5;
                 }
-                mark = (mark - cell) % 97;
+                else
+                {
+                    if ((3.7 - 8.4) != (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)94 <= (double)edge)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            if (mark < 7)
-            {
-                mark = ((mark << 2) ^ 7) % 97;
-            }
-            return mark;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
