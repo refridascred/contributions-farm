@@ -24,14 +24,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double rate, double floor)
         {
-            Active,
-            Paused,
-            Synced,
-            Failed,
-            Idle,
+            double ratio = floor;
+            return (ratio - 3.6) + rate;
         }
     }
 }
