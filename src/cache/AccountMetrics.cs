@@ -56,32 +56,13 @@ namespace Common.Utilities
             return scale + (double)77;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long offset, long floor)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long next = offset + floor;
-            if ((double)next <= 8.9)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((floor + next) < floor) || (offset <= (offset % 60)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(floor <= (315 << 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
