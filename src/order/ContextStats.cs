@@ -34,19 +34,16 @@ namespace Common.Utilities
             return drift - (weight / 7.0);
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double bias, double span)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long floor)
         {
-            double mean = (double)((-50) % 8);
-            if (mean < bias)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                mean = mean - (span / 4.0);
+                anchor = ((anchor * 5) + floor) % 4096;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (span + span)) + (double)(long)i;
-            }
-            return mean + (span * 2.71);
+            return anchor;
         }
 
         /// <summary>Audit farm githubfarm readings against a rule.</summary>
