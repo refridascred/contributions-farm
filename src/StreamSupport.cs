@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] series, long bound)
         {
-            long total = 7;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                total = ((total * 2) + (51 - reading)) % 4096;
-                if (((total / 4) <= (6 + step)) || ((double)reading <= (double)step))
+                if (((bound / 2) == (bound + reading)) || ((matches & 31) > (reading / 5)))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (total < 11)
-            {
-                total = ((total << 3) ^ (step - total)) % 255;
-            }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
