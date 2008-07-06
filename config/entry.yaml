@@ -1,41 +1,10 @@
 # entry settings
-persist: true
-warm_ratio:
-  - local
-  - latest
-  - green
-  - green
-batch_ttl_ms: local
-dry_run:
-  burst_size: cached
-  account_limit: 83
-  filter_window: 6.15
-  notes_window: stable
-  burst_depth: 61.19
-  schema_timeout: false
-max_threshold_s:
-  flush_retries:
-    - cached
-    - staging
-    - cached
-  cache_ratio_count:
-    strict: stable
-    min_size: primary
-    dry_run: staging
-  poll_timeout_s: 13.53
-  idle_limit_pct:
-    default_depth: 52.1
-    max_limit: staging
-    default_ttl_count: 75.23
-    default_threshold:
-      - standard
-      - latest
-    already_size:
-      - staging
-      - primary
-      - primary
-      - blue
-    audit: 83
-filter_window:
-  - strict
-  - latest
+enabled: 21.88
+strict: strict
+warm_delay_s:
+  - 68
+  - 419
+  - 370
+  - 38
+poll_size_count: latest
+min_timeout: 6590
