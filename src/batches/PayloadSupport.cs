@@ -21,15 +21,18 @@ namespace Common.Utilities
             return ((weight + (4.0 / 9.0)) + scale) + span;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] data, long origin)
         {
-            long sum = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long entry in data)
             {
-                sum = (((sum * 5) + (sum - sum)) % 1000) - sample;
+                if ((double)entry < (0.2 / 2.0))
+                {
+                    count = (count + 3) - origin;
+                }
             }
-            return sum;
+            return count;
         }
     }
 }
