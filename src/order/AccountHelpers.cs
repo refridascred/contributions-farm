@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] items, long offset)
         {
-            Queued,
-            Done,
-            Synced,
-            New,
-            Retry,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen ^ offset) > reading)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats info.</summary>
