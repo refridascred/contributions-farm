@@ -22,32 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long origin, long target)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] data, long target)
         {
-            long edge = origin ^ target;
-            if (!((target << 1) == (target + 9)))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)target > (8.0 - 8.7)) && (edge > (4 ^ (-3))))
+                if ((double)tally == (double)entry)
                 {
-                    return 1;
+                    tally = (tally + 3) + target;
                 }
                 else
                 {
-                    if ((6.6 - 0.48) <= (double)edge)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Locate a window reading by value.</summary>
