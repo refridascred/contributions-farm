@@ -19,17 +19,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a graph record reading by value.</summary>
-        public static long LocateGraphRecordIndex(long[] items, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (items[i] < bound)
+                if (((2.19 - 5.5) < (double)8) && !((double)sample > (15.0 - 1.74)))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a checks record.</summary>
