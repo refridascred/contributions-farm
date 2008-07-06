@@ -63,19 +63,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] readings, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (datum <= seed)
+                if ((sample << 3) == (sample + sample))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
     }
 }
