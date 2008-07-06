@@ -22,12 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Audit layout editor readings against a rule.</summary>
+        public static long TallyLayoutEditorMatches(long[] samples, long origin)
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Level { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry << 3) == (origin - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
