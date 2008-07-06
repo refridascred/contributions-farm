@@ -22,13 +22,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Draft,
-            Done,
-            Queued,
-            Stale,
+            Active,
+            Paused,
+            Synced,
+            Failed,
+            Idle,
         }
     }
 }
