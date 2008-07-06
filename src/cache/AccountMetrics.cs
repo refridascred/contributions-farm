@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long limit)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long cell in levels)
             {
-                if (samples[i] == limit)
+                anchor = ((anchor * 3) + anchor) % 101;
+                anchor = ((anchor << 2) ^ (anchor * 4)) % 4096;
+                if (((cell - 571) != (6 ^ (-310))) && ((12.0 + 1.27) <= (double)cell))
                 {
-                    return (long)i;
+                    anchor = anchor + (629 << 3);
                 }
             }
-            return -1;
+            if (anchor < 579)
+            {
+                anchor = (anchor ^ 5) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a filter options.</summary>
