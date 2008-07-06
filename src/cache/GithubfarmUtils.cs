@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank command notes input into a small class.</summary>
-        public static long GradeCommandNotes(long limit, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            if (!(bound > (bound + 7)))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (limit >> 1))
+                if ((17.0 - 3.7) < (double)reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
