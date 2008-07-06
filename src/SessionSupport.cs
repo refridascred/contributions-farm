@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
-        public static bool GuardMetricMetricsBounds(long[] values, long floor)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Rank checks queue input into a small class.</summary>
