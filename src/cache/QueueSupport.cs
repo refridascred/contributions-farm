@@ -40,23 +40,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] values, long origin)
         {
-            double gain = offset / 9.0;
-            if (gain >= weight)
+            bool found = true;
+            foreach (long item in values)
             {
-                gain = gain + offset;
+                if (item != origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + 0.4;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain + offset;
+            return found;
         }
     }
 }
