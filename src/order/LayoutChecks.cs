@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LocateMetricIndex(long[] values, long offset)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] levels, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] > offset)
+                if (levels[i] > step)
                 {
                     return (long)i;
                 }
