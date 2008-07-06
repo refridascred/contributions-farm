@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            Queued,
-            Stale,
-            Draft,
+            public bool Offset { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
