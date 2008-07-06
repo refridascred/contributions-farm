@@ -34,10 +34,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleCount = 8208;
-        public const double BatchBuffer = 26.55;
-        public const long HardBuffer = 548;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            New,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long FindReportIndex(long[] items, long limit)
