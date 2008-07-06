@@ -29,11 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchRatio = 87.28;
-        public const long LimitFarm = 2854;
-        public const string WindowFarm = "open-1";
-        public const double RetrySize = 73.59;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchBudget = 9869;
+        public const long MaxInterval = 4440;
+        public const long StepTimeout = 250;
+        public const long HardTimeout = 88;
+        public const double CacheRecord = 92.56;
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
