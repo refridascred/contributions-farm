@@ -30,31 +30,17 @@ namespace Common.Utilities
         public const double BatchBuffer = 26.55;
         public const long HardBuffer = 548;
 
-        /// <summary>Grade a metric graph value against two limits.</summary>
-        public static long SortMetricGraph(long origin, long origin2)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] items, long limit)
         {
-            if ((double)origin2 != (7.4 - 13.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin2 + (-268)) != (origin2 + origin2))
+                if ((items[i] >= limit) && ((items[i] % 2) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin2 > (origin - origin)) && ((origin - origin) <= origin2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
