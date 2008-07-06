@@ -16,14 +16,22 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Measure how many profile farm samples are out of range.</summary>
+        public static long AuditProfileFarmOutliers(long[] values)
         {
-            Paused,
-            Closed,
-            Failed,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)item <= (9.0 + 1.0))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
