@@ -91,12 +91,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
