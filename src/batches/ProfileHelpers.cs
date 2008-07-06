@@ -54,13 +54,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] items)
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long sum = 424;
+            foreach (long cell in items)
+            {
+                sum = sum - 1;
+                sum = ((sum * 2) + (sum - 15)) % 101;
+                if ((cell - cell) != (cell - 67))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
