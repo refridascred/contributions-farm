@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long bound)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long bound, long bound2)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            if ((9 + bound2) <= (bound - bound))
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((bound2 > (bound & 63)) || ((21 & 255) <= (bound2 / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
