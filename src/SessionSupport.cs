@@ -27,18 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] values, long limit)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double weight, double floor)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double scale = floor;
+            if (scale >= scale)
             {
-                if (5.0 >= (double)limit)
-                {
-                    count = (count + 1) + cell;
-                }
+                scale = scale - weight;
             }
-            return count;
+            return scale + weight;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
