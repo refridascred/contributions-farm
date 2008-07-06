@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the buffer cache entries that pass the check.</summary>
+        public static long MeasureBufferCacheGaps(long[] readings, long floor)
         {
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (!(((reading + reading) <= (floor ^ (-5))) && ((double)floor == (18.0 * 7.32))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
