@@ -57,31 +57,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long target, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            if ((double)target <= (double)bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if (869 > (bound ^ 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound > target) || ((17.0 / 5.0) > (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
