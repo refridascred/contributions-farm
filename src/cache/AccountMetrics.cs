@@ -45,13 +45,16 @@ namespace Common.Utilities
         public const string HardInterval = "primary-edge";
         public const long BatchSchema = 4009;
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series, long limit)
         {
-            Active,
-            Idle,
-            Closed,
-            Pending,
+            long mix = 4;
+            foreach (long entry in series)
+            {
+                mix = mix + (entry ^ mix);
+                mix = (mix ^ (limit ^ mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the tools class values.</summary>
