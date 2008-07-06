@@ -59,10 +59,21 @@ namespace Common.Utilities
             return (ratio - (double)37) + bias2;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 4950;
-        public const string WindowDepth = "legacy-v2";
-        public const long StepPayload = 298;
-        public const long IdleWidth = 3750;
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
