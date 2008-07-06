@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 4229;
-        public const string BaseTools = "local-1";
-        public const long StepTools = 8208;
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
+        {
+            Draft,
+            New,
+            Locked,
+            Failed,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double IdleTools = 5.3;
