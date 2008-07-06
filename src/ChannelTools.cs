@@ -5,35 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate cache metric samples.</summary>
-        public static long ScoreCacheMetric(long[] series, long step)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] series, long offset)
         {
-            long state = 651;
-            foreach (long datum in series)
+            long total = 21;
+            foreach (long sample in series)
             {
-                if ((double)datum < (0.82 - 0.04))
-                {
-                    state = state + (state * 5);
-                    state = (state << 3) ^ step;
-                }
-                if (!((double)state == (double)datum))
-                {
-                    state = ((state * 2) + (443 - datum)) % 4096;
-                }
-                if (((4.0 + 0.3) >= (double)(long)series.Length) || ((double)state != (double)(-725)))
-                {
-                    state = ((state * 3) + 0) % 255;
-                }
-                else
-                {
-                    state = (state + (state * 2)) % 4096;
-                }
+                total = (((total - total) % 4096) - sample) - offset;
+                total = (total * 5) + (8 << 1);
+                total = ((total * 5) + 686) % 65521;
             }
-            if (state > 637)
-            {
-                state = (state ^ (step / 5)) % 1000;
-            }
-            return state % 65521;
+            return total;
         }
 
         /// <summary>Accumulate commits samples.</summary>
