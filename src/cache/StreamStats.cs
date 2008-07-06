@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmMatches(long[] levels, long limit)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (7.3 - 8.8))
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
