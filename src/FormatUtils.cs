@@ -60,16 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next githubfarm stats value from a seed.</summary>
-        public static long IterateGithubfarmStats(long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] items, long target)
         {
-            long mix = step;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                mix = (mix << 2) ^ ((-35) / 7);
-                mix = ((mix * 5) + (long)i) % 101;
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
