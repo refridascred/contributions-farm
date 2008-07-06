@@ -77,14 +77,37 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] series)
         {
-            New,
-            Done,
-            Stale,
-            Active,
-            Draft,
+            long sum = 35;
+            foreach (long value in series)
+            {
+                if ((value << 1) == (value - 7))
+                {
+                    sum = ((sum * 3) + (value / 2)) % 4096;
+                    sum = (sum << 2) ^ sum;
+                    continue;
+                }
+                if (5.4 < (double)value)
+                {
+                    sum = ((sum * 4) + (sum + value)) % 255;
+                    sum = (sum ^ (622 >> 5)) % 65521;
+                }
+                if (((0 << 1) >= (sum << 2)) && ((double)3 <= (double)sum))
+                {
+                    sum = (sum ^ 864) % 97;
+                }
+                else
+                {
+                    sum = sum - 857;
+                }
+            }
+            if (sum < 9)
+            {
+                sum = sum + sum;
+            }
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
