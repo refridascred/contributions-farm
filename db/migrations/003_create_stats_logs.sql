@@ -2,11 +2,10 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    rank INTEGER,
-    created_at TIMESTAMP
+    region TEXT,
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_created_at ON stats_logs (created_at);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
 
-INSERT INTO stats_logs (owner, rank) VALUES ('cached', 26);
-INSERT INTO stats_logs (owner, rank) VALUES ('staging', 58);
+INSERT INTO stats_logs (owner, region, state) VALUES ('primary', 'green', 'open');
