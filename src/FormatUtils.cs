@@ -11,16 +11,18 @@ namespace Common.Utilities
         public const long DefaultRoute = 5408;
         public const long HardRoute = 7514;
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long limit)
+        /// <summary>Measure how many queue metric samples are out of range.</summary>
+        public static long AuditQueueMetricGaps(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                result = (result * 3) + ((long)i + result);
-                result = ((result * 5) + (long)i) % 101;
+                if ((count + count) >= count)
+                {
+                    count = (count + 2) - item;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
