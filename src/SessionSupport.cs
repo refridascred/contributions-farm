@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] items)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] readings, long floor)
         {
-            long state = 560;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                if ((sample < 7) && ((888 + 199) >= state))
+                if (cell != floor)
                 {
-                    state = state + ((long)items.Length - 1);
-                }
-                else
-                {
-                    state = state - (sample - sample);
+                    ok = false;
+                    break;
                 }
             }
-            if (state > 67)
-            {
-                state = state ^ (0 - (-7));
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
