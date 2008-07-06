@@ -22,22 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of cluster stream entries.</summary>
-        public static long CombineClusterStream(long[] samples)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long anchor = 98;
-            foreach (long datum in samples)
-            {
-                if ((1 ^ anchor) >= (datum & 15))
-                {
-                    anchor = anchor - (anchor & 255);
-                }
-            }
-            if (anchor > 679)
-            {
-                anchor = anchor + (anchor >> 5);
-            }
-            return anchor;
+            Paused,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
