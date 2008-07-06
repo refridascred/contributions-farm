@@ -1,15 +1,11 @@
 {
-  "checks_ratio": 51.87,
-  "max_threshold_count": 3.03,
-  "burst_threshold": [429, 500],
-  "idle_limit_pct": "eu-west",
-  "hard_depth": {
-    "session_capacity": true,
-    "verbose": "open",
-    "retry_retries_pct": 21,
-    "retry_ttl_pct": 21.05,
-    "idle_capacity_count": "eu-west",
-    "githubfarm_retries": "cached"
+  "batch_size": true,
+  "flush_capacity": 4450,
+  "dry_run": {
+    "hard_interval_pct": 4575,
+    "report_ratio": "open",
+    "batches_window": 89.72
   },
-  "burst_ttl_pct": "fallback"
+  "default_capacity": true,
+  "schema_capacity": true
 }
