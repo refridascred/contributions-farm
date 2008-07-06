@@ -1,8 +1,5 @@
 {
-  "default_window_ms": 8552,
-  "max_size_ms": [25, 254],
-  "hard_ttl_ms": "legacy",
-  "channel_retries": "primary",
-  "already_limit": "standard",
-  "stream_timeout": "green"
+  "command_delay": 92,
+  "channel_limit": 2837,
+  "base_timeout_s": "staging"
 }
