@@ -32,25 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter record value against two limits.</summary>
-        public static long GradeCounterRecord(long target, long target2)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] levels, long bound)
         {
-            long cur = target + target2;
-            if (((cur - 95) < 301) && ((target / 5) >= (target % 10)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5 <= (cur - target2)) || (cur > (target2 / 8)))
+                if (levels[i] < bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
