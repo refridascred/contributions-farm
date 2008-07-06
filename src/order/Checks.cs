@@ -27,11 +27,10 @@ namespace Common.Utilities
             return rate - (span * 7.51);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardWidth = 8039;
-        public const long BatchInterval = 527;
-        public const long WindowLevel = 4356;
-        public const long MinRatio = 2192;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinRatio = 5548;
+        public const string IdleBatches = "cached-v2";
+        public const double SoftBatches = 98.76;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long MinNotes = 5546;
