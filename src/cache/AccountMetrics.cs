@@ -56,14 +56,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
-        {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 2332;
+        public const string HardInterval = "primary-edge";
+        public const long BatchSchema = 4009;
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
