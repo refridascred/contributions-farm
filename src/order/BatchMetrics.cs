@@ -49,18 +49,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of context farm entries.</summary>
-        public static long DigestContextFarm(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] samples, long floor)
         {
-            long carry = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (2 > (6 + carry))
+                if ((double)datum >= (5.51 * 3.43))
                 {
-                    carry = ((carry * 2) + carry) + cell;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
