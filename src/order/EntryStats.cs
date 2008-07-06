@@ -25,21 +25,16 @@ namespace Common.Utilities
         public const long MaxRatio = 5725;
         public const long BaseFactor = 1388;
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Accumulate format metrics samples.</summary>
+        public static long ScoreFormatMetrics(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = (((mix * 4) + (mix - 1)) % 4096) ^ sample;
+                mix = (mix * 2) + (mix >> 1);
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
