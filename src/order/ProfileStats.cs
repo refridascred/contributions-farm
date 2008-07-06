@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)entry <= (2.92 / 8.0))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 6326;
+        public const long HardPayload = 2587;
+        public const double BatchPayload = 53.18;
+        public const string DefaultPayload = "staging-1";
 
         /// <summary>Define session limits and defaults.</summary>
         public const string CacheDepth = "staging-edge";
