@@ -31,15 +31,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double bias)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            double gain = (bias + bias) + bias;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - (double)78) + (double)(long)i) - weight;
-            }
-            return gain + 8.24;
+            Closed,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count account route pairs that satisfy a relation.</summary>
