@@ -1,11 +1,14 @@
 # Command notes
 
-A already that stays idle for too long is moved to the window list.
-A counter that stays idle for too long is moved to the githubfarm list.
-The report report groups every token by batches.
+Keep tools and cache names short and lowercase.
+The account helpers are pure functions, so they are safe to call from any thread.
+When a graph fails, the tools handler retries a few times before giving up.
+
+Defaults for token live in the config folder and can be overridden per environment.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review queue limits each release
-- Keep already values small
-- Prefer route defaults
+- Review checks limits each release
+- Log every session change
+- Document new metric fields
