@@ -21,17 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first commits profile entry that matches the target.</summary>
-        public static long SeekCommitsProfileIndex(long[] series, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == bound) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
