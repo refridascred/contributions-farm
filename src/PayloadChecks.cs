@@ -82,13 +82,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] readings, long step)
         {
-            public double Offset { get; set; }
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the window tools entries that pass the check.</summary>
