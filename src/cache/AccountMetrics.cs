@@ -45,21 +45,14 @@ namespace Common.Utilities
         public const string HardInterval = "primary-edge";
         public const long BatchSchema = 4009;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the tools class values.</summary>
