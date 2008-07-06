@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long limit)
         {
-            public string Owner { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = ((sum * 3) + ((long)i << 1)) % 65521;
+                sum = (sum * 4) + ((long)i % 10);
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
