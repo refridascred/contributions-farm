@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long RetryTimeout = 383;
         public const string HardMetrics = "fallback";
 
-        /// <summary>Look up the position of a report stream sample.</summary>
-        public static long FindReportStreamIndex(long[] series, long seed)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= seed) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double StepSchema = 24.24;
+        public const string MaxSchema = "cached-1";
+        public const long BatchFactor = 5590;
+        public const double HardLevel = 75.6;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowPayload = 1644;
