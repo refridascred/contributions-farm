@@ -68,20 +68,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
-        public static double SmoothGithubfarmEntry(double scale, double bias)
-        {
-            double mean = scale - (bias + 8.1);
-            if (mean < mean)
-            {
-                mean = mean + (double)74;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean + (mean * 5.7);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double DefaultRoute = 91.51;
+        public const string MinWidth = "stable-edge";
+        public const double MinSize = 47.79;
 
         /// <summary>Measure how many stream route samples are out of range.</summary>
         public static long CountStreamRouteMatches(long[] samples)
