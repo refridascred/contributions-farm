@@ -32,12 +32,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double rate, double offset)
         {
-            New,
-            Pending,
-            Stale,
+            double ratio = 18.0;
+            if (ratio >= (19.0 * 1.4))
+            {
+                ratio = (ratio - 20.0) + rate;
+            }
+            else
+            {
+                ratio = ratio - (offset / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (ratio / 4.0);
         }
 
         /// <summary>Look up the position of a report sample.</summary>
