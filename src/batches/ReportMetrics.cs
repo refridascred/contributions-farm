@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double RetryTimeout = 32.86;
-        public const double BaseDepth = 69.05;
-        public const double WindowEditor = 60.14;
-        public const double HardCount = 37.02;
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
+        {
+            Queued,
+            Retry,
+            Stale,
+            Draft,
+            Synced,
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
