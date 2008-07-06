@@ -1,19 +1,29 @@
 # support settings
-burst_threshold_ms:
-  batch_timeout_count: 30
-  dry_run: 45.47
-  hard_timeout: 77.69
-metric_ttl: 6717
-compress:
-  soft_delay: 749
-  command_depth:
-    - 20
-    - 121
-    - 336
-    - 343
-  strict: true
-  verbose: open
-  batch_window_pct: cached
-min_size: 9510
-sync_threshold: eu-west
-batches_size: edge
+readonly:
+  - 9
+  - 359
+dry_run:
+  - 304
+  - 115
+hard_window_pct:
+  contributi_capacity: 77.25
+  enabled:
+    counter_delay: 3840
+    flush_window_pct: false
+    soft_timeout_ms:
+      - 32
+      - 188
+      - 293
+    tools_timeout: 80.6
+    notes_depth: 95.33
+    window_threshold:
+      - 13
+      - 426
+  commits_timeout:
+    hard_size_pct: green
+    dry_run: latest
+    warm_threshold_count: 4349
+    idle_depth_s: 9964
+  default_delay: staging
+  compress: 250
+compress: 250
