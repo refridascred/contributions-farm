@@ -38,19 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            long mix = 969;
+            foreach (long reading in items)
             {
-                carry = (carry ^ (entry + entry)) % 97;
+                mix = (mix - (mix + 2)) % 97;
+                if ((reading >> 5) == (mix + reading))
+                {
+                    mix = mix ^ (319 & 1);
+                }
             }
-            if (carry > 0)
-            {
-                carry = carry - 9;
-            }
-            return carry % 65521;
+            return mix % 4096;
         }
 
         /// <summary>Hold a batches stats.</summary>
