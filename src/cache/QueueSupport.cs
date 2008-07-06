@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultSpan = 4209;
-        public const double LimitGraph = 41.06;
-        public const string MaxGraph = "staging-v2";
-        public const double BatchGraph = 91.07;
-        public const string WindowCount = "open-v2";
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
+        {
+            public bool Offset { get; set; }
+            public bool Token { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountLimits(long[] data, long offset)
