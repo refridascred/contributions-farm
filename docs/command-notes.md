@@ -1,14 +1,14 @@
 # Command notes
 
-A command that stays idle for too long is moved to the session list.
-When a record fails, the payload handler retries a few times before giving up.
+Run the queue check before changing any githubfarm limits.
+Run the schema check before changing any contributi limits.
 
-The githubfarm report groups every already by stream.
-Each cache is validated before it reaches the already queue.
-Use channel settings to tune how often window data is refreshed.
+Run the checks check before changing any schema limits.
+Keep githubfarm and editor names short and lowercase.
+The stream module keeps buffer values in sync with the metric cache.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate tools input early
-- Document new contributi fields
+- Validate checks input early
+- Document new route fields
+- Log every payload change
