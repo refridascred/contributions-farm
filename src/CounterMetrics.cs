@@ -45,11 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two commits checks measurements.</summary>
-        public static double ProjectCommitsChecks(double bias, double span)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] items)
         {
-            double bias2 = 7.98;
-            return ((bias2 - (double)78) + bias) + span;
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((((double)reading != (double)4) || (reading < (reading * 5))) || (count < (reading >> 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
