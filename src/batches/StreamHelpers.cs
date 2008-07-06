@@ -48,13 +48,20 @@ namespace Common.Utilities
         public const long DefaultPayload = 1641;
         public const long MinPayload = 1557;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((double)sum != (3.74 - 3.61))
+                {
+                    sum = sum ^ (sum + sum);
+                    sum = ((sum << 2) ^ (sum & 31)) % 101;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metric options.</summary>
