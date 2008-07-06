@@ -33,25 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long RankNotes(long floor, long origin)
-        {
-            if (((1.53 - 1.06) != (double)origin) && (523 <= (origin + 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((705 * 2) > (floor - origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 4983;
+        public const string IdleContext = "staging";
+        public const long MinSpan = 5553;
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
