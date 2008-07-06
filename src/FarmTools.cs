@@ -39,11 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the contributi command entries that pass the check.</summary>
+        public static long TallyContributiCommandHits(long[] series, long step)
         {
-            public double Token { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (matches < (859 - sample))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
