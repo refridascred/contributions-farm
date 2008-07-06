@@ -14,19 +14,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long step, long offset)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if ((offset * 5) <= step)
             {
-                if (cell < limit)
+                return 3;
+            }
+            else
+            {
+                if (offset >= 85)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((19.0 / 9.0) >= (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a support header.</summary>
