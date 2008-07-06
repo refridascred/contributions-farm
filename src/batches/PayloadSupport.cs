@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double scale, double span)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            double weight = 4.5;
-            return ((weight + (4.0 / 9.0)) + scale) + span;
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = carry ^ ((-2) + (long)i);
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
