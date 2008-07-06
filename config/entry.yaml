@@ -1,9 +1,21 @@
 # entry settings
-session_ratio: primary
-format_size:
-  retry_size_pct: 45.92
-  farm_delay: open
-  idle_capacity_pct: false
-  metric_interval: local
-  cache_threshold_pct: green
-editor_retries: eu-west
+strict:
+  context_ttl: green
+  record_interval:
+    dry_run: true
+    poll_timeout_pct: 250
+    cluster_ttl:
+      - primary
+      - fallback
+      - local
+    queue_threshold: 493
+    idle_limit_s: strict
+    poll_retries_s: 6336
+  format_window: 2.65
+  warm_capacity_count:
+    - 436
+    - 23
+  flush_window_count: false
+  idle_ttl_ms: fallback
+idle_capacity_ms: true
+report_limit: 36
