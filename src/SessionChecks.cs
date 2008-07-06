@@ -33,14 +33,31 @@ namespace Common.Utilities
         public const string MaxWidth = "strict-v2";
         public const double CacheDepth = 18.97;
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long offset, long floor)
         {
-            Failed,
-            Queued,
-            Active,
-            Ready,
-            Retry,
+            if ((double)floor < (4.6 / 7.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset % 10) > (floor - 407))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + floor) < offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window options.</summary>
