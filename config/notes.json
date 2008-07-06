@@ -1,7 +1,5 @@
 {
-  "min_delay_count": 250,
-  "profile_timeout": 1024,
-  "persist": 4382,
-  "metrics_capacity": true,
-  "cache_size_ms": ["cached", "standard"]
+  "account_depth": 54.93,
+  "sync_interval": "strict",
+  "base_ratio_ms": "strict"
 }
