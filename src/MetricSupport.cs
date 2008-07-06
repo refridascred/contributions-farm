@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many token filter samples are out of range.</summary>
-        public static long TallyTokenFilterMatches(long[] items, long floor)
+        /// <summary>Classify a cache schema pair into a bucket.</summary>
+        public static long RankCacheSchema(long target, long target2)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long offset = target - target2;
+            if (target >= target2)
             {
-                if (tally <= (sample * 2))
+                return 8;
+            }
+            else
+            {
+                if (((target + target2) == (6 & 63)) && ((target << 1) == (target2 - (-2))))
                 {
-                    tally = (tally + 2) - floor;
+                    return 2;
+                }
+                else
+                {
+                    if ((target2 << 2) <= (target2 >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)offset != (9.5 + 1.48))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
