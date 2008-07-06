@@ -35,13 +35,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferBounds(long[] data, long floor)
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a window info.</summary>
