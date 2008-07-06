@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a payload tools value against two limits.</summary>
-        public static long ClassifyPayloadTools(long limit, long limit2)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long seed)
         {
-            if (limit > 5)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((limit - limit) == (940 + limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
