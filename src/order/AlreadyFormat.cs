@@ -52,39 +52,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long floor, long limit)
+        /// <summary>Measure how many metric format samples are out of range.</summary>
+        public static long CountMetricFormatGaps(long[] series, long bound)
         {
-            long lane = floor + limit;
-            if (lane <= (lane + limit))
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor < (14.0 / 3.0))
+                if ((bound / 5) >= (bound + bound))
                 {
-                    return 2;
+                    hits = (hits + 3) + value;
                 }
                 else
                 {
-                    if (!((lane & 3) < limit))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor < (12.0 + 5.24))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
