@@ -55,17 +55,26 @@ namespace Common.Utilities
             return ratio + (double)0;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] samples)
         {
-            long sum = 9;
-            foreach (long reading in values)
+            long state = 124;
+            foreach (long cell in samples)
             {
-                sum = sum + (sum % 12);
-                sum = (sum * 2) + (reading - 9);
-                sum = ((sum * 5) + (sum + floor)) % 101;
+                if (0 > (cell % 60))
+                {
+                    state = (state + (77 + 5)) % 97;
+                }
+                if ((6.35 - 5.43) < (double)cell)
+                {
+                    state = state + (state / 7);
+                }
+                else
+                {
+                    state = (state ^ (88 >> 1)) % 101;
+                }
             }
-            return sum;
+            return state;
         }
     }
 }
