@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] readings, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long sum = 5;
+            foreach (long value in readings)
             {
-                if (cell != floor)
+                if ((value * 2) < sum)
                 {
-                    ok = false;
-                    break;
+                    sum = (((sum * 4) + (563 ^ sum)) % 65521) - seed;
+                }
+                sum = sum + (sum * 5);
+                if ((sum & 127) <= value)
+                {
+                    sum = ((sum << 3) ^ (value * 2)) % 101;
                 }
             }
-            return ok;
+            return sum % 65521;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
