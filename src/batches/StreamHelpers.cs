@@ -71,18 +71,12 @@ namespace Common.Utilities
         public const long WindowSession = 4957;
         public const long LimitFactor = 3619;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (matches > (datum - 883))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Count { get; set; }
+            public bool Size { get; set; }
+            public double Total { get; set; }
         }
     }
 }
