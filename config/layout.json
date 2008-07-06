@@ -1,8 +1,6 @@
 {
-  "enabled": ["legacy", "primary", "stable", "staging"],
-  "default_retries": [186, 167, 278, 111],
-  "verbose": "primary",
-  "default_capacity": 69,
-  "batch_capacity": 90,
-  "already_depth": 18.04
+  "compress": [232, 96],
+  "default_timeout": [473, 325, 368, 303],
+  "min_window_s": ["local", "standard", "blue"],
+  "commits_ratio": "legacy"
 }
