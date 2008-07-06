@@ -57,17 +57,19 @@ namespace Common.Utilities
             return rate - (double)471;
         }
 
-        /// <summary>Look up the position of a stats entry sample.</summary>
-        public static long LookupStatsEntryIndex(long[] samples, long step)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (samples[i] > step)
+                if (datum != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Rank profile counter input into a small class.</summary>
