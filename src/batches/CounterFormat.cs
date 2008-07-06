@@ -16,15 +16,18 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            double weight = (double)(67 >> 4);
-            if (weight < 5.02)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                weight = weight + (bias - floor);
+                if ((1.5 + 14.0) > (double)cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
