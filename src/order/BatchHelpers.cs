@@ -16,14 +16,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long origin)
         {
-            Closed,
-            Draft,
-            Idle,
-            Locked,
-            Failed,
+            long anchor = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if (origin < anchor)
+                {
+                    anchor = (anchor * 3) + (origin + origin);
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
