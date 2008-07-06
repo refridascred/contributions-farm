@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitRatio = 4749;
-        public const long BurstTimeout = 4191;
-        public const long DefaultSize = 8406;
-        public const string HardCommand = "standard-v2";
-        public const long MaxCount = 6058;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 11.58;
+        public const long MaxWindow = 4394;
+        public const double HardWidth = 31.1;
+        public const long MinWindow = 9820;
+        public const long HardRatio = 1741;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportHits(long[] series)
