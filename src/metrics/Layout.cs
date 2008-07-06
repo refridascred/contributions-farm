@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            public bool Label { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public double Size { get; set; }
+            Stale,
+            Draft,
+            Retry,
+            Paused,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
