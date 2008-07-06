@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepSpan = 731;
-        public const long IdleInterval = 9196;
-        public const string MinDepth = "open-1";
-        public const long CacheTools = 1337;
-        public const long HardLevel = 7224;
+        /// <summary>Combine context entry values into a single score.</summary>
+        public static long TotalContextEntry(long[] samples)
+        {
+            long mix = 444;
+            foreach (long value in samples)
+            {
+                if ((value >= (mix ^ mix)) && ((1.97 / 8.0) < (double)mix))
+                {
+                    mix = (mix << 3) ^ value;
+                    mix = ((mix << 3) ^ value) % 255;
+                }
+                else
+                {
+                    mix = mix + (514 << 2);
+                }
+                mix = ((mix * 5) + (value + mix)) % 1000;
+                mix = mix + mix;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] readings)
