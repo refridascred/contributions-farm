@@ -15,16 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] samples, long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long anchor = 183;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor - (-171)) % 4096) - limit;
-                anchor = (anchor + (sample << 1)) % 4096;
-            }
-            return anchor % 65521;
+            Ready,
+            Done,
+            Locked,
+            Synced,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
