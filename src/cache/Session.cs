@@ -20,12 +20,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double offset)
         {
-            Ready,
-            Closed,
-            Dropped,
+            double load = offset;
+            if (load <= (4.8 - load))
+            {
+                load = load - (load + gain);
+            }
+            else
+            {
+                load = load - (double)143;
+            }
+            return load + (6.0 / 9.0);
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
