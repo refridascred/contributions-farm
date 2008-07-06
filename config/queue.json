@@ -1,8 +1,12 @@
 {
-  "burst_ttl_pct": 4893,
-  "poll_window": 64.08,
-  "order_interval": ["local", "green"],
-  "compress": "green",
-  "cache_ratio_count": 36,
-  "stats_retries": 57.08
+  "poll_interval_ms": {
+    "base_retries_ms": "blue",
+    "stream_window": true,
+    "poll_ratio_count": false,
+    "hard_ratio": 71.15,
+    "audit": 12,
+    "sync_interval_s": 86.23
+  },
+  "account_size": 8550,
+  "strict": 81
 }
