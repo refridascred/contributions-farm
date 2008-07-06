@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue staging primary; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=497
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
