@@ -45,14 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Closed,
-            Synced,
-            Failed,
-            Draft,
-            Active,
+            public double Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
