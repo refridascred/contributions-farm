@@ -39,18 +39,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] series, long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long offset)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long anchor = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((floor + sample) != (sample + 67))
+                if (!(anchor >= (long)i))
                 {
-                    tally = tally + 3;
+                    anchor = anchor ^ (offset + (long)i);
                 }
+                anchor = ((anchor << 3) ^ (offset << 2)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a stream info.</summary>
