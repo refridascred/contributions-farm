@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowSpan = 8989;
-        public const long LimitWidth = 2153;
-        public const long WindowLevel = 3206;
+        /// <summary>Audit graph checks readings against a rule.</summary>
+        public static long MeasureGraphChecksOutliers(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((((reading - offset) < (offset % 97)) && (reading > (reading - reading))) && ((count <= (offset + count)) && ((8.3 / 9.0) < (double)offset)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long DigestAccount(long[] readings, long origin)
