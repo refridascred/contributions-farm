@@ -62,19 +62,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesLimits(long[] readings, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            bool valid = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
