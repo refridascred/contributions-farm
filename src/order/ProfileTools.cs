@@ -37,20 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmLimits(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 3381;
+        public const long CacheBatch = 9432;
+        public const string IdleBatch = "local";
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
