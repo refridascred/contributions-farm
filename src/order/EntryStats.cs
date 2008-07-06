@@ -29,12 +29,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardProfile = "strict-1";
-        public const double LimitProfile = 8.05;
-        public const long StepProfile = 7187;
-        public const string MaxInterval = "open-edge";
-        public const long RetryFactor = 50;
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string RetryWidth = "standard-v2";
