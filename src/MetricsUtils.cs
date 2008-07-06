@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] values, long target)
+        /// <summary>Measure how many order channel samples are out of range.</summary>
+        public static long MeasureOrderChannelOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (values[i] < target)
+                if ((item + count) < (item - item))
                 {
-                    return (long)i;
+                    count = (count + 3) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
