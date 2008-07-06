@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 2787;
-        public const long SoftAccount = 8380;
-        public const double StepAccount = 4.31;
-        public const long MinAccount = 8817;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Idle,
+            Active,
+            Stale,
+        }
 
         /// <summary>Count the editor entries that pass the check.</summary>
         public static long CountEditorHits(long[] items)
