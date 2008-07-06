@@ -31,13 +31,21 @@ namespace Common.Utilities
             return gain + 8.24;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count account route pairs that satisfy a relation.</summary>
+        public static long MatchAccountRouteCount(long[] readings)
         {
-            Paused,
-            Done,
-            Retry,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
