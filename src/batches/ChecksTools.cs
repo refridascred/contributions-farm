@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                score = score ^ (limit & 31);
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            double scale = (double)(8 + 702);
+            return ((scale + (double)97) + gain) + offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
