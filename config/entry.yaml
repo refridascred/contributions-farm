@@ -1,8 +1,4 @@
 # entry settings
-route_timeout:
-  - latest
-  - latest
-  - latest
-  - primary
-poll_threshold_pct: stable
-batch_size_s: edge
+poll_ttl_s: 12.79
+session_retries: primary
+notes_capacity: 1.17
