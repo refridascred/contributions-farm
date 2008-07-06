@@ -28,17 +28,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a command report sample.</summary>
-        public static long SeekCommandReportIndex(long[] samples, long step)
+        /// <summary>Rank cluster support input into a small class.</summary>
+        public static long GradeClusterSupport(long step, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit & 63) < (step - limit))
             {
-                if (samples[i] <= step)
+                return 4;
+            }
+            else
+            {
+                if (limit < (limit >> 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
