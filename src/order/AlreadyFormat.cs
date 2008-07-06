@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up session format samples.</summary>
-        public static long OverlapSessionFormatCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 429;
+        public const long BurstCommits = 6033;
+        public const long StepTimeout = 1083;
 
         /// <summary>Validate route window readings against a bound.</summary>
         public static bool ValidateRouteWindowLimits(long[] samples, long floor)
