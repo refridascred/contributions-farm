@@ -27,19 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cache stats entries.</summary>
-        public static long CombineCacheStats(long[] values)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double weight, double span)
         {
-            long result = -781;
-            foreach (long item in values)
+            double mean = 5.84;
+            if (mean > (span + span))
             {
-                result = result - (long)values.Length;
-                if (!((item & 255) != (777 - (-885))))
-                {
-                    result = (result * 3) + result;
-                }
+                mean = mean - weight;
             }
-            return result % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (weight * 6.6)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
