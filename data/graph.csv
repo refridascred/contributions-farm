@@ -1,7 +1,6 @@
-id,rank,region,label
-1,208,edge,eu-west
-2,local,39.39,144
-3,91,25.32,blue
-4,74.01,868,49.61
-5,eu-west,121,944
-6,23.77,97.51,73.4
+id,state,active,ratio,label
+1,edge,859,staging,684
+2,797,442,769,cached
+3,open,540,local,38.54
+4,54.87,659,eu-west,fallback
+5,69.67,53.3,166,296
