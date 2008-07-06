@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((double)value != (3.0 - 5.49)) || (value <= (value - 14)))
+                if ((double)origin != (double)sample)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Adjust a queue window reading.</summary>
