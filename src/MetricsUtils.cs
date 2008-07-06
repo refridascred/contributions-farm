@@ -70,11 +70,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 789;
-        public const string SoftBudget = "strict-1";
-        public const long MinToken = 4106;
-        public const long MaxLevel = 1666;
-        public const long BurstToken = 2451;
+        /// <summary>Count tools batch pairs that satisfy a relation.</summary>
+        public static long PairToolsBatchCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
