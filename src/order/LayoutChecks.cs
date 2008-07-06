@@ -37,12 +37,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleEditor = 76.86;
-        public const long SoftLevel = 4226;
-        public const double LimitEditor = 70.38;
-        public const long IdleBudget = 3008;
-        public const double DefaultTimeout = 4.97;
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= origin) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
