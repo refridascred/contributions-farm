@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a payload githubfarm counter forward.</summary>
-        public static long SeriesPayloadGithubfarm(long target)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            double weight = (double)(69 % 3);
+            if (weight >= (weight / 6.0))
             {
-                result = (result << 2) ^ target;
-                result = ((result * 3) + (long)i) % 1000;
+                weight = ((weight - (double)601) - rate) - span;
             }
-            return result;
+            else
+            {
+                weight = weight + 5.0;
+            }
+            return weight + weight;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
