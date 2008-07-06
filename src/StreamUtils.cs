@@ -40,17 +40,14 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Locate a route order reading by value.</summary>
-        public static long FindRouteOrderIndex(long[] data, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Dropped,
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the metrics status values.</summary>
