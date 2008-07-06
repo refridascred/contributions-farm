@@ -36,18 +36,26 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] levels)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long state = 32;
+            foreach (long sample in data)
             {
-                if ((entry < hits) && (((long)levels.Length + hits) >= entry))
+                if (5 <= (state + sample))
                 {
-                    hits = hits + 3;
+                    state = ((state + sample) % 101) - floor;
+                }
+                if ((sample * 5) == (state & 63))
+                {
+                    state = (state ^ 223) % 4096;
                 }
             }
-            return hits;
+            if (state > 990)
+            {
+                state = (state + (state / 9)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
