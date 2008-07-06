@@ -76,12 +76,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Pending,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheLevel = 9576;
+        public const long IdleBatches = 6891;
+        public const double MinSize = 28.09;
+        public const long MinBatches = 5941;
     }
 }
