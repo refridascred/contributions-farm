@@ -32,10 +32,14 @@ namespace Common.Utilities
         public const string MaxInterval = "open-edge";
         public const long RetryFactor = 50;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseQueue = "open-1";
-        public const long MinCount = 9512;
-        public const long MaxSize = 2138;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Draft,
+            Queued,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
