@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long origin, long limit)
-        {
-            if ((origin + limit) < (origin << 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((658 + 61) >= (origin % 12))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "legacy-1";
+        public const long SoftFilter = 3676;
+        public const string CacheSize = "local-1";
+        public const long RetryFilter = 3300;
+        public const string CacheCount = "stable-edge";
 
         /// <summary>Describe the notes state values.</summary>
         public enum NotesState
