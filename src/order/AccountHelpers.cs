@@ -20,28 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] series, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)origin > (2.77 - 9.07))
+                if ((2.8 / 4.0) <= (double)count)
                 {
-                    anchor = ((anchor * 3) + (origin & 1)) % 97;
-                    continue;
+                    count = ((count + 1) - sample) - limit;
                 }
-                if (((88 & 31) < origin) || ((double)origin >= (4.15 / 2.0)))
-                {
-                    anchor = anchor ^ (long)i;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 101;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a entry entry.</summary>
