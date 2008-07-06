@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TallySupport(long[] levels)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double span)
         {
-            long anchor = 1;
-            foreach (long cell in levels)
+            double rate2 = rate;
+            if (rate2 < rate2)
             {
-                anchor = ((anchor * 3) + anchor) % 101;
-                anchor = ((anchor << 2) ^ (anchor * 4)) % 4096;
-                if (((cell - 571) != (6 ^ (-310))) && ((12.0 + 1.27) <= (double)cell))
-                {
-                    anchor = anchor + (629 << 3);
-                }
+                rate2 = (rate2 + rate) - span;
             }
-            if (anchor < 579)
-            {
-                anchor = (anchor ^ 5) % 101;
-            }
-            return anchor % 1000;
+            return rate2 - (double)60;
         }
 
         /// <summary>Hold a filter options.</summary>
