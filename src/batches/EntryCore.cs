@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] data, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)origin != (double)sample)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = seen + 2;
+                    total = (total - bound) - (long)i2;
+                    total = total - (767 - total);
                 }
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Adjust a queue window reading.</summary>
