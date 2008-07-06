@@ -36,12 +36,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultScore = "primary-edge";
-        public const double HardRecord = 92.41;
-        public const long BurstRecord = 8690;
-        public const string DefaultRecord = "standard";
-        public const long RetryRecord = 1449;
+        /// <summary>Match up notes profile samples.</summary>
+        public static long CompareNotesProfileCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a session snapshot.</summary>
         public sealed class SessionSnapshot
