@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double rate, double bias)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long SeriesBatches(long origin)
         {
-            double weight = (double)(448 >> 2);
-            if (weight > (bias - 12.0))
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                weight = (weight - (double)88) + rate;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - 8.6) + (double)(long)i;
-            }
-            return weight - bias;
+            return result;
         }
 
         /// <summary>Project the next batch payload value.</summary>
