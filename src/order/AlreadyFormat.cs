@@ -67,22 +67,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] samples, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long origin, long limit)
         {
-            long mark = 5;
-            foreach (long reading in samples)
+            long slot = origin + limit;
+            if (((double)676 == (double)limit) && ((limit + 227) <= (slot * 4)))
             {
-                if ((reading - reading) <= reading)
+                return 8;
+            }
+            else
+            {
+                if (6 <= (origin / 7))
                 {
-                    mark = (mark + (3 + 2)) % 1000;
+                    return 7;
                 }
-                if ((mark >= (target % 10)) || ((4.42 - 15.0) < (double)target))
+                else
                 {
-                    mark = (mark + (mark ^ mark)) % 101;
+                    if ((slot + 16) < origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((-443) <= (slot & 63)) || ((origin * 5) > origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Describe the stream state values.</summary>
