@@ -22,18 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] levels, long step)
+        /// <summary>Roll a layout filter counter forward.</summary>
+        public static long StepLayoutFilter(long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long carry = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((step < datum) || (((5.9 / 2.0) == (double)hits) || ((hits + hits) != (step - (-268)))))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    hits = hits + 2;
+                    carry = ((carry ^ (carry >> 5)) % 255) - (long)i2;
                 }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    carry = ((carry << 2) ^ carry) - (long)i3;
+                }
+                carry = carry ^ carry;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many stats stream samples are out of range.</summary>
