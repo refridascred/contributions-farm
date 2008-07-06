@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long floor)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Active,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank cluster support input into a small class.</summary>
