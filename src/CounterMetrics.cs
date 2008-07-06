@@ -27,18 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] levels, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)levels.Length <= (17.0 / 4.0))
+                if (items[i] < limit)
                 {
-                    matches = ((matches + 3) ^ item) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry account sample.</summary>
