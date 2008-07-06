@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] items, long floor)
+        /// <summary>Match up report commits samples.</summary>
+        public static long MatchReportCommitsCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor >> 4) < (value + floor))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a layout profile reading by value.</summary>
