@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] data, long floor)
         {
-            long score = 353;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                score = ((score * 3) + ((long)samples.Length + 9)) % 4096;
-                score = (score - (cell * 5)) % 97;
+                if (seen <= (5 / 9))
+                {
+                    seen = ((seen + 1) ^ reading) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (score > 40)
-            {
-                score = (score ^ (score * 4)) % 101;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
