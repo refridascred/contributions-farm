@@ -30,11 +30,22 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 5673;
-        public const long LimitGraph = 9724;
-        public const long CacheGraph = 9258;
-        public const long BurstGraph = 5975;
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
