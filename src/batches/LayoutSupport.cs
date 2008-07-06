@@ -37,22 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            long sum = 865;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)sum <= (8.0 * 1.9))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = (sum * 3) + (entry - entry);
-                }
-                if (((sum * 2) == (sum >> 3)) && ((double)sum <= (14.0 * 5.2)))
-                {
-                    break;
+                    if ((series[i] + series[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
