@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] samples, long origin)
+        /// <summary>Rank contributi buffer input into a small class.</summary>
+        public static long GradeContributiBuffer(long origin, long origin2)
         {
-            long total = 75;
-            foreach (long reading in samples)
+            if ((double)origin > (9.0 * 0.1))
             {
-                total = (total * 4) + (reading << 3);
+                return 4;
             }
-            if (total < 685)
+            else
             {
-                total = ((total << 2) ^ (45 + origin)) % 4096;
+                if ((origin2 * 4) == (origin2 + origin2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((281 + origin2) >= (origin << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin == (1.0 - 9.45))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return total % 65521;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
