@@ -29,21 +29,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] series)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Pending,
+            Done,
         }
 
         /// <summary>Combine farm account values into a single score.</summary>
