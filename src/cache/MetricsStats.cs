@@ -41,17 +41,22 @@ namespace Common.Utilities
         public const long DefaultTimeout = 9458;
         public const long HardDepth = 949;
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] items, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (items[i] == floor)
+                if ((6.2 - 19.0) < (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) + reading) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
