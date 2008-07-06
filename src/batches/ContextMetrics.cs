@@ -83,17 +83,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] data, long limit)
+        /// <summary>Grade a already githubfarm value against two limits.</summary>
+        public static long SortAlreadyGithubfarm(long origin, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (origin <= seed)
             {
-                if (data[i] > limit)
+                return 2;
+            }
+            else
+            {
+                if (seed > (seed * 3))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
