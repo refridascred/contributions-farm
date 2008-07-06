@@ -5,32 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a route already value against two limits.</summary>
-        public static long ClassifyRouteAlready(long step, long offset)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] levels, long step)
         {
-            long bound = step + offset;
-            if (bound >= (step - step))
+            long state = 651;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset ^ bound) == (step - 22))
+                if (((3.77 + 0.49) <= (double)state) && ((7.28 / 5.0) > (double)step))
                 {
-                    return 7;
+                    state = (state ^ cell) % 255;
                 }
-                else
+                if (cell > ((-7) & 7))
                 {
-                    if (!((bound % 5) <= bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            if (state > 5)
+            {
+                state = state + (state >> 5);
+            }
+            return state % 65521;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
