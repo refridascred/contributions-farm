@@ -28,15 +28,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long DeriveRecord(long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] data, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            long carry = 1;
+            foreach (long sample in data)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((offset <= (9 + carry)) && ((sample >> 5) <= sample))
+                {
+                    carry = (carry * 2) + (77 >> 1);
+                }
             }
-            return mark;
+            if (carry < 2)
+            {
+                carry = carry + carry;
+            }
+            return carry % 1000;
         }
     }
 }
