@@ -13,13 +13,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            Dropped,
+            Synced,
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
