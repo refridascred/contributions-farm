@@ -37,10 +37,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 3381;
-        public const long CacheBatch = 9432;
-        public const string IdleBatch = "local";
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Failed,
+            Paused,
+            Stale,
+            Synced,
+        }
 
         /// <summary>Hold a order snapshot.</summary>
         public sealed class OrderSnapshot
