@@ -35,11 +35,20 @@ namespace Common.Utilities
             return drift - (weight / 7.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryBudget = 2888;
-        public const long BatchLevel = 8440;
-        public const long BurstRatio = 3597;
-        public const double BaseTimeout = 61.71;
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double bias, double span)
+        {
+            double mean = (double)((-50) % 8);
+            if (mean < bias)
+            {
+                mean = mean - (span / 4.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (span + span)) + (double)(long)i;
+            }
+            return mean + (span * 2.71);
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
