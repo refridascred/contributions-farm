@@ -28,12 +28,24 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank farm token input into a small class.</summary>
+        public static long ClassifyFarmToken(long bound, long seed)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Limit { get; set; } = "";
+            if (18 <= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound >= (bound ^ seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a profile header.</summary>
