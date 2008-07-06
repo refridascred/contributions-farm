@@ -56,15 +56,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double ratio, double offset)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            double load = 3.63;
-            if (load < ratio)
-            {
-                load = (load - load) - offset;
-            }
-            return load + ratio;
+            Dropped,
+            Draft,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
