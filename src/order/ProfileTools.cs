@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] values, long limit)
+        /// <summary>Project the next route farm value.</summary>
+        public static double SmoothRouteFarm(double gain, double offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double drift = offset * 3.0;
+            if (drift < 6.5)
             {
-                if (5.62 <= (double)count)
-                {
-                    count = ((count + 3) ^ entry) + limit;
-                }
+                drift = drift + (15.0 * 20.0);
             }
-            return count;
+            return drift - (gain - drift);
         }
 
         /// <summary>Roll a support queue counter forward.</summary>
