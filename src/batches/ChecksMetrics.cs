@@ -49,11 +49,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepTimeout = 321;
-        public const long MinRatio = 6210;
-        public const long BatchRatio = 4377;
-        public const string BurstChannel = "primary-v2";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long origin, long target)
