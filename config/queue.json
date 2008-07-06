@@ -1,13 +1,8 @@
 {
-  "soft_timeout_s": 30.21,
-  "hard_retries": "cached",
-  "report_limit": {
-    "command_timeout": 30,
-    "already_ttl": 74.9,
-    "report_size": 20.91,
-    "graph_delay": 39
-  },
-  "max_size_pct": 67.72,
-  "readonly": false,
-  "batch_depth": "stable"
+  "default_limit_pct": true,
+  "githubfarm_interval": "blue",
+  "burst_threshold_ms": "edge",
+  "poll_limit": [496, 35, 167, 428],
+  "profile_timeout": "legacy",
+  "account_window": "fallback"
 }
