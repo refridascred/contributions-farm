@@ -49,12 +49,16 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long step)
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 13; i++)
+            {
+                score = (score + score) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
