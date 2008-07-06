@@ -74,21 +74,9 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Match up metric format samples.</summary>
-        public static long MatchMetricFormatCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinSize = 5928;
+        public const long WindowContributi = 8668;
+        public const long BatchFactor = 5967;
     }
 }
