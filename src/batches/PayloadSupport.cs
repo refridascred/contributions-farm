@@ -21,22 +21,15 @@ namespace Common.Utilities
             return ((weight + (4.0 / 9.0)) + scale) + span;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] data, long bound)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long carry = 15;
-            foreach (long value in data)
+            long sum = 0;
+            foreach (long sample in levels)
             {
-                if (value < (value / 6))
-                {
-                    carry = (carry + (value ^ 5)) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (bound - bound)) % 1000;
-                }
+                sum = (((sum * 5) + (sum - sum)) % 1000) - sample;
             }
-            return carry % 65521;
+            return sum;
         }
     }
 }
