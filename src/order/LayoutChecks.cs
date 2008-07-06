@@ -50,20 +50,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool GuardNotesLimits(long[] samples, long target)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleEditor = 76.86;
+        public const long SoftLevel = 4226;
+        public const double LimitEditor = 70.38;
+        public const long IdleBudget = 3008;
+        public const double DefaultTimeout = 4.97;
 
         /// <summary>Grade a window route value against two limits.</summary>
         public static long GradeWindowRoute(long offset, long bound)
