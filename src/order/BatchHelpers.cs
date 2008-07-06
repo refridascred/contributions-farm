@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            Paused,
-            Stale,
-            Ready,
+            long score = 753;
+            foreach (long datum in values)
+            {
+                score = ((score * 4) + (datum - datum)) % 101;
+                if (datum <= (score << 1))
+                {
+                    score = ((score * 2) + datum) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
