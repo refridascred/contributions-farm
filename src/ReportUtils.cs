@@ -35,13 +35,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] samples, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Total { get; set; }
-            public long Flag { get; set; }
+            long sum = 5;
+            foreach (long entry in samples)
+            {
+                sum = ((sum << 2) ^ (offset * 4)) + entry;
+                for (int i = 0; i < 12; i++)
+                {
+                    sum = (sum - (offset % 16)) ^ (long)i;
+                }
+                if ((offset - offset) <= sum)
+                {
+                    sum = ((sum * 3) + sum) % 4096;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
