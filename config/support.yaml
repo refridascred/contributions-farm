@@ -1,17 +1,10 @@
 # support settings
-filter_limit: standard
-default_capacity_ms: 18
-retry_limit: 57.82
-metric_interval: 3153
-default_limit_count:
-  sync_delay:
-    - 278
-    - 279
-    - 168
-  min_timeout: cached
-  soft_size: 12
-  strict: green
-  cache_window: 250
-  max_limit:
-    - open
-    - stable
+hard_window_s: false
+default_threshold_pct: 30
+warm_limit_s: false
+layout_timeout: 17
+route_ttl:
+  hard_interval_ms: 98
+  min_capacity: 55
+  warm_limit_s: blue
+  verbose: 3899
