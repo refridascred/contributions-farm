@@ -40,22 +40,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score - (983 * 2)) % 65521;
-                if ((11.0 - 9.85) <= (double)score)
-                {
-                    score = score - origin;
-                    score = ((score * 2) + origin) % 4096;
-                }
-                score = score ^ (origin + origin);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Active,
+            Queued,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a session options.</summary>
