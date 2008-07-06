@@ -47,15 +47,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next layout cluster value.</summary>
-        public static double BlendLayoutCluster(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = ((bias2 + bias2) + (double)(long)i) - bias;
-            }
-            return bias2 - 1.0;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitBudget = 7902;
+        public const string BaseRatio = "open";
+        public const long IdleTimeout = 460;
+        public const double BatchSupport = 46.22;
     }
 }
