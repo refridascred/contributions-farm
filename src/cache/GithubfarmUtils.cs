@@ -33,15 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools checks reading.</summary>
-        public static double AdjustToolsChecks(double bias, double bias2)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksOutliers(long[] readings)
         {
-            double rate = (double)(355 + (-924));
-            if (rate < (1.7 / 4.0))
+            long seen = 0;
+            foreach (long value in readings)
             {
-                rate = (rate + bias2) - bias;
+                if (seen > (value ^ 6))
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate + (16.0 / 4.0);
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
