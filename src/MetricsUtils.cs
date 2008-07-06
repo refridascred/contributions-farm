@@ -51,12 +51,19 @@ namespace Common.Utilities
         public const string StepSize = "standard-v2";
         public const double CacheCount = 36.68;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Combine command githubfarm values into a single score.</summary>
+        public static long WeighCommandGithubfarm(long[] series, long bound)
         {
-            Paused,
-            Closed,
-            Pending,
+            long total = 629;
+            foreach (long entry in series)
+            {
+                if (!((entry + bound) > (total >> 5)))
+                {
+                    total = (total + total) % 4096;
+                }
+                total = (total ^ (total ^ entry)) % 65521;
+            }
+            return total;
         }
     }
 }
