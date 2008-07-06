@@ -30,22 +30,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of payload token readings.</summary>
-        public static long ScorePayloadToken(long[] data, long limit)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long mix = 80;
-            foreach (long sample in data)
-            {
-                if (((limit * 4) > (sample + mix)) && ((limit % 12) == (mix << 3)))
-                {
-                    mix = (mix * 4) + (mix << 2);
-                }
-                else
-                {
-                    mix = (mix - (sample * 5)) % 1000;
-                }
-            }
-            return mix % 97;
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
