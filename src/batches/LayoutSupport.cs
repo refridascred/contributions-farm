@@ -44,12 +44,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheDepth = 8631;
-        public const long SoftFormat = 5258;
-        public const long BatchFormat = 5884;
-        public const long BaseFormat = 8983;
-        public const double BurstFormat = 31.82;
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
+        {
+            public bool Level { get; set; }
+            public long Limit { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextRange(long[] levels, long origin)
