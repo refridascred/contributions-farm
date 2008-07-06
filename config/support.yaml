@@ -1,12 +1,5 @@
 # support settings
-persist: true
-audit: 35
-default_size: 20.96
-farm_capacity:
-  - 465
-  - 379
-default_delay_pct: strict
-strict:
-  - 179
-  - 49
-  - 211
+base_timeout: 500
+entry_limit: 66.22
+report_depth: fallback
+sync_timeout_ms: 841
