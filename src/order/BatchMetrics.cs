@@ -59,13 +59,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] data)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Level { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of batch support readings.</summary>
