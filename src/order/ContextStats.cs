@@ -20,31 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long seed, long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] series, long floor)
         {
-            if (((3.67 + 8.0) != (double)seed) && ((4.43 + 1.13) == (double)step))
+            long acc = 635;
+            foreach (long reading in series)
             {
-                return 5;
+                acc = (((acc + (82 + (long)series.Length)) % 255) - reading) + floor;
             }
-            else
-            {
-                if ((double)step < (1.54 + 7.8))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (seed >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
