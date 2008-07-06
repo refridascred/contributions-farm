@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long WeighFormat(long[] levels, long offset)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long carry = -168;
+            foreach (long reading in levels)
             {
-                if (sample > origin)
+                if (!((951 - 3) < offset))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry << 3) ^ (carry % 7);
+                    carry = ((carry << 3) ^ (reading + offset)) % 1000;
+                }
+                if ((double)carry <= 13.0)
+                {
+                    carry = carry + 40;
                 }
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Combine token values into a single score.</summary>
