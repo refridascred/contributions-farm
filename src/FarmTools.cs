@@ -53,19 +53,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] samples, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitSize = 9078;
+        public const string SoftDepth = "legacy";
+        public const long RetryBudget = 5294;
+        public const long StepScore = 8388;
     }
 }
