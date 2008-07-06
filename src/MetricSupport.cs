@@ -26,25 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long offset, long limit)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long next = offset ^ limit;
-            if (!((next - next) <= (next ^ offset)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((next <= (next + next)) && ((double)offset >= (double)next))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
