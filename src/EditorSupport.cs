@@ -45,21 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up token command samples.</summary>
-        public static long PairTokenCommandCount(long[] values)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Pending,
+            Failed,
+            New,
+            Draft,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
