@@ -34,12 +34,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            Pending,
-            Active,
-            Closed,
+            public long Owner { get; set; }
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
