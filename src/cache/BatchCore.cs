@@ -57,13 +57,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            Stale,
-            Retry,
+            Pending,
+            Failed,
+            Draft,
             Dropped,
-            New,
         }
     }
 }
