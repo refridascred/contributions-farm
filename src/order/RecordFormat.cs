@@ -56,23 +56,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double AdjustReport(double ratio, double bias)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            double rate = bias + (10.0 / 8.0);
-            if (rate >= (bias * 5.58))
+            long mark = 790;
+            foreach (long sample in readings)
             {
-                rate = rate - (double)(-81);
+                if ((double)sample > 5.9)
+                {
+                    mark = (mark ^ (mark << 2)) % 97;
+                }
+                else
+                {
+                    mark = mark + (mark + (-40));
+                }
             }
-            else
-            {
-                rate = rate - (0.37 * 2.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate - 2.0;
+            return mark % 1000;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
