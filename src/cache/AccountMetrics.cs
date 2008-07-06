@@ -41,19 +41,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double bias, double offset)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] samples, long origin)
         {
-            double scale = bias;
-            if (scale <= 8.9)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                scale = (scale - bias) - offset;
+                if (datum < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (double)437) + (double)(long)i;
-            }
-            return scale + (double)77;
+            return found;
         }
 
         /// <summary>Hold a stream info.</summary>
