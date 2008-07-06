@@ -24,9 +24,11 @@ namespace Common.Utilities
         public const double LimitTimeout = 22.92;
         public const long RetryScore = 8334;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftTools = 96.45;
-        public const double BaseTools = 23.46;
-        public const long DefaultDepth = 7938;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+        }
     }
 }
