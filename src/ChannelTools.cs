@@ -23,15 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Retry,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
