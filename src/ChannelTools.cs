@@ -36,10 +36,14 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 4631;
-        public const double SoftCommits = 63.52;
-        public const long IdleRatio = 7392;
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
+        {
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
