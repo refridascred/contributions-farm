@@ -19,26 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long seed, long target)
-        {
-            long next = seed + target;
-            if ((next + target) >= (next % 8))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed % 97) >= (seed / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 7098;
+        public const long LimitQueue = 608;
+        public const long MinQueue = 3304;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheBounds(long[] series, long bound)
