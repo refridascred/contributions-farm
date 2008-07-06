@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long StepTimeout = 2696;
         public const string MaxInterval = "strict";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] series)
+        /// <summary>Compare every pair of counter channel readings.</summary>
+        public static long CompareCounterChannelCount(long[] levels)
         {
-            long mark = 54;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > (mark - 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = mark + value;
+                    if ((levels[i] - levels[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
