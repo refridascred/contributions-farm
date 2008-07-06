@@ -70,12 +70,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] readings, long step)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] readings, long bound)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= step)
+                if (readings[i] < bound)
                 {
                     return (long)i;
                 }
