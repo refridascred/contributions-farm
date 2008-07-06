@@ -1,8 +1,7 @@
 {
-  "default_limit_pct": true,
-  "githubfarm_interval": "blue",
-  "burst_threshold_ms": "edge",
-  "poll_limit": [496, 35, 167, 428],
-  "profile_timeout": "legacy",
-  "account_window": "fallback"
+  "batch_timeout": [348, 289],
+  "max_delay": [361, 393, 61, 272],
+  "notes_ratio": "primary",
+  "batch_window_s": [200, 471, 242],
+  "idle_ratio": 7290
 }
