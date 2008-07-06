@@ -22,18 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] data, long floor)
+        /// <summary>Iterate the batch contributi series from a seed.</summary>
+        public static long SeriesBatchContributi(long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long mix = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((hits ^ floor) == (hits - floor))
-                {
-                    hits = (hits + 3) ^ datum;
-                }
+                long lane = limit;
+                mix = (mix * 2) + (lane - (long)i);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
