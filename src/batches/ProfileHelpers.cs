@@ -28,11 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] levels, long target)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
