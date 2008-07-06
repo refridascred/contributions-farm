@@ -21,18 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long ScoreGraph(long[] readings, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long DeriveRecord(long floor)
         {
-            long sum = 72;
-            foreach (long sample in readings)
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if ((sum & 7) < (sample - sum))
-                {
-                    sum = (((sum << 2) ^ (sample + sum)) % 97) - offset;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return mark;
         }
     }
 }
