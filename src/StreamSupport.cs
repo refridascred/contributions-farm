@@ -37,18 +37,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] series, long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (9.81 <= (double)hits)
-                {
-                    hits = ((hits + 2) + datum) + seed;
-                }
-            }
-            return hits;
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
