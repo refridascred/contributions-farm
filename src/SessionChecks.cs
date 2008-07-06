@@ -24,22 +24,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] values)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((long)values.Length < (seen << 2))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the stream state values.</summary>
