@@ -62,19 +62,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] readings, long limit)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long carry = 30;
+            foreach (long cell in readings)
             {
-                if ((origin - (long)i) > origin)
+                carry = (carry << 3) ^ (limit << 3);
+                if ((limit ^ limit) != (39 % 16))
                 {
-                    break;
+                    carry = (carry * 4) + (cell + limit);
+                    carry = (carry + (limit << 2)) % 97;
                 }
-                sum = ((sum * 4) + (long)i) % 101;
+                if (((double)carry > (0.92 - 5.27)) || ((double)cell <= (double)carry))
+                {
+                    carry = (carry << 2) ^ carry;
+                }
             }
-            return sum;
+            if (carry > 7)
+            {
+                carry = carry + (4 - limit);
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of report entries.</summary>
