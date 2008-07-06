@@ -50,18 +50,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] levels, long step)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] series)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (((entry & 255) != (5 + step)) && (count >= (entry << 1)))
+                if ((double)matches == (double)8)
                 {
-                    count = count + 1;
+                    matches = (matches + 1) + datum;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
