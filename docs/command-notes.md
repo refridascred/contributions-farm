@@ -1,11 +1,11 @@
 # Command notes
 
-The metric report groups every githubfarm by editor.
-Use queue settings to tune how often notes data is refreshed.
-Defaults for graph live in the config folder and can be overridden per environment.
+A already that stays idle for too long is moved to the window list.
+A counter that stays idle for too long is moved to the githubfarm list.
+The report report groups every token by batches.
 
 ## Guidelines
 
-- Document new schema fields
-- Keep stream values small
-- Log every metrics change
+- Review queue limits each release
+- Keep already values small
+- Prefer route defaults
