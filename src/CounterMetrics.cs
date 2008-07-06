@@ -22,13 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
