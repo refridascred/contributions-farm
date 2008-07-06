@@ -19,21 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = acc - acc;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
