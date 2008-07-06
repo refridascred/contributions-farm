@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long WindowSpan = 7085;
         public const long StepScore = 4534;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesRange(long[] values, long target)
+        /// <summary>Validate buffer cache readings against a bound.</summary>
+        public static bool CheckBufferCacheLimits(long[] series, long seed)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (cell <= target)
+                if (datum <= seed)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Project the next cache value.</summary>
