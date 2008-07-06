@@ -33,15 +33,11 @@ namespace Common.Utilities
         public const long WindowLevel = 4356;
         public const long MinRatio = 2192;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Done,
-            Idle,
-            Closed,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 5546;
+        public const long StepCount = 1471;
+        public const double CacheNotes = 93.03;
+        public const long BaseWidth = 1977;
 
         /// <summary>Audit batches payload readings against a rule.</summary>
         public static long TallyBatchesPayloadGaps(long[] items, long floor)
