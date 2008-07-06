@@ -45,15 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long seed)
+        /// <summary>Validate already farm readings against a bound.</summary>
+        public static bool VerifyAlreadyFarmRange(long[] series, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if (entry < target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return total;
+            return stale;
         }
     }
 }
