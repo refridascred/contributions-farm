@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Adjust a graph format reading.</summary>
+        public static double AdjustGraphFormat(double gain, double bias)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            double bias2 = bias;
+            if (bias2 <= (bias2 / 3.0))
+            {
+                bias2 = bias2 + (gain * 5.69);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - (9.8 / 6.0);
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
