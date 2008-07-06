@@ -19,15 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double weight, double span)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            double mean = (double)(3 % 16);
-            if (mean >= (double)7)
-            {
-                mean = mean + weight;
-            }
-            return mean - span;
+            double mean = ratio - offset;
+            return mean + (ratio + mean);
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
