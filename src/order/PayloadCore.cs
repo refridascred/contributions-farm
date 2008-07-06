@@ -46,13 +46,13 @@ namespace Common.Utilities
         public const long LimitRatio = 3832;
         public const long BaseLayout = 6030;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public long Total { get; set; }
-            public double Token { get; set; }
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
