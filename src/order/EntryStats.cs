@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] values)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long step)
         {
-            long anchor = 7;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if ((cell - cell) == (71 % 64))
+                if (value >= step)
                 {
-                    anchor = (anchor + (anchor + anchor)) % 65521;
+                    ok = false;
+                    break;
                 }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
