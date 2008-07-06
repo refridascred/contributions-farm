@@ -20,13 +20,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long bound)
         {
-            Locked,
-            Idle,
-            Failed,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
