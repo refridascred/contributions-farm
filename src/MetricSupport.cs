@@ -14,15 +14,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Measure how many batches token samples are out of range.</summary>
+        public static long CountBatchesTokenMatches(long[] data)
         {
             long hits = 0;
-            foreach (long entry in levels)
+            foreach (long value in data)
             {
-                if ((entry << 2) < (hits / 8))
+                if (((hits - value) > (value << 1)) || ((double)hits > (14.0 * 0.7)))
                 {
-                    hits = hits + 1;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
