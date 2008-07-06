@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long target)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc << 3) ^ ((long)i2 * 3)) % 4096;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
