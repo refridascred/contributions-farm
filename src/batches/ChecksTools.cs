@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] levels, long floor)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (cell > floor)
+                if ((tally + tally) >= ((long)data.Length % 2))
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 3) + reading) + bound;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
