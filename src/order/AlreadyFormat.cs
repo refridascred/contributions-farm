@@ -5,23 +5,29 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Classify a record stream pair into a bucket.</summary>
-        public static long ClassifyRecordStream(long floor, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long limit, long origin)
         {
-            long delta = floor + step;
-            if ((13.0 * 14.0) == (double)floor)
+            if (((origin % 2) < (limit << 3)) && (limit < (limit << 3)))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((42 + floor) >= delta) && ((step >> 4) <= (delta % 24)))
+                if (!((19.0 / 2.0) > (double)limit))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    if (origin <= (limit + origin))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
