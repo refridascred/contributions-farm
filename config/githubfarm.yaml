@@ -1,11 +1,7 @@
 # githubfarm settings
-entry_capacity: primary
-buffer_timeout:
-  warm_ttl: blue
-  base_ratio_pct: staging
-  verbose:
-    - 233
-    - 92
-warm_ttl_ms: strict
-soft_depth: 2801
-flush_retries_s: true
+enabled:
+  - 423
+  - 462
+farm_interval: 500
+poll_ttl_pct: false
+cache_interval: true
