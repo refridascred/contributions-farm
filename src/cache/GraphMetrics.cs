@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long origin)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine context entry values into a single score.</summary>
