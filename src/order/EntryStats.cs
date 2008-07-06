@@ -65,11 +65,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            Retry,
+            Dropped,
+            Locked,
+            Stale,
+            Synced,
         }
     }
 }
