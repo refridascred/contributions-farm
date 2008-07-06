@@ -28,25 +28,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long limit, long origin)
-        {
-            if (origin >= (limit - limit))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((7.1 + 8.0) != (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleCount = 8208;
+        public const double BatchBuffer = 26.55;
+        public const long HardBuffer = 548;
 
         /// <summary>Grade a metric graph value against two limits.</summary>
         public static long SortMetricGraph(long origin, long origin2)
