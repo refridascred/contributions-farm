@@ -1,7 +1,6 @@
-id,score,owner,label,weight
-1,896,primary,965,legacy
-2,38.57,green,491,legacy
-3,23,261,888,22.06
-4,771,136,951,staging
-5,blue,566,68.15,533
-6,eu-west,93.21,456,62.73
+id,level,score,ratio
+1,684,standard,66.33
+2,56.59,783,32.83
+3,legacy,401,898
+4,staging,7.54,0.29
+5,staging,69.55,89.39
