@@ -52,13 +52,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
+            Retry,
+            Queued,
+            Stale,
+            Draft,
         }
 
         /// <summary>Hold a format entry.</summary>
