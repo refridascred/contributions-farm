@@ -36,19 +36,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesOutliers(long[] samples, long step)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)count <= (7.49 - 2.22))
-                {
-                    count = ((count + 1) + sample) + step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 4631;
+        public const double SoftCommits = 63.52;
+        public const long IdleRatio = 7392;
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
