@@ -24,13 +24,17 @@ namespace Common.Utilities
         public const long StepBuffer = 8018;
         public const double DefaultBuffer = 28.88;
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Locate a metrics contributi reading by value.</summary>
+        public static long SeekMetricsContributiIndex(long[] levels, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Limit { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
