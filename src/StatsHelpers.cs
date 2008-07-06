@@ -52,14 +52,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Offset { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowDepth = 4596;
+        public const long StepSpan = 1006;
+        public const string MaxSize = "open-1";
+        public const long HardCache = 7094;
+        public const string SoftScore = "strict-1";
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] data)
