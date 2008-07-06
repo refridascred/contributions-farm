@@ -26,21 +26,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of tools contributi readings.</summary>
-        public static long PairToolsContributiCount(long[] samples)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 14)
+                    if ((items[i] + items[j]) == 5)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the account kind values.</summary>
