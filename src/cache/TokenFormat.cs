@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Roll a batches layout counter forward.</summary>
+        public static long StepBatchesLayout(long bound)
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
