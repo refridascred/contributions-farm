@@ -1,5 +1,11 @@
 {
-  "order_depth": 7706,
-  "idle_threshold_ms": 7956,
-  "route_interval": 95
+  "dry_run": "fallback",
+  "report_ratio": "staging",
+  "strict": {
+    "batch_capacity_s": 3145,
+    "sync_depth_s": 1024,
+    "min_size_pct": 36.21,
+    "counter_interval": "blue"
+  },
+  "stream_retries": 41.48
 }
