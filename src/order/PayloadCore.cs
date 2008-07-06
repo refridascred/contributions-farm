@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every graph cluster entry stays within the limit.</summary>
-        public static bool GuardGraphClusterRange(long[] readings, long seed)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long step, long bound)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            if ((bound & 7) < (bound - step))
             {
-                if (datum <= seed)
+                return 7;
+            }
+            else
+            {
+                if (!(bound >= (373 * 5)))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + step) < (step >> 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((bound + 608) >= (65 - step)) && ((3.8 + 4.68) != (double)bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define account limits and defaults.</summary>
