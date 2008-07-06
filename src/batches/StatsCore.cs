@@ -48,40 +48,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long seed, long bound)
-        {
-            long prev = seed ^ bound;
-            if ((bound >> 1) <= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed >= (seed + 2)) || ((prev - (-7)) <= bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((prev << 3) == (prev ^ seed))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((5.0 / 9.0) != (double)prev)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardSize = 7303;
+        public const long MinBudget = 7704;
+        public const long IdleInterval = 4386;
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphGaps(long[] data)
