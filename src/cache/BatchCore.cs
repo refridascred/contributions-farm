@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Queued,
-            Locked,
-            Dropped,
-            Draft,
-            New,
+            public bool Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
