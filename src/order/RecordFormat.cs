@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate session entry readings against a bound.</summary>
-        public static bool ValidateSessionEntryRange(long[] levels, long floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] samples)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long sum = 5;
+            foreach (long cell in samples)
             {
-                if (entry != floor)
+                sum = sum + cell;
+                if ((double)cell >= (8.0 / 3.0))
                 {
-                    ready = false;
-                    break;
+                    sum = ((sum << 2) ^ ((-779) * 4)) % 1000;
+                }
+                if ((cell * 5) > (sum << 1))
+                {
+                    sum = sum - cell;
                 }
             }
-            return ready;
+            return sum % 65521;
         }
 
         /// <summary>Project the next editor value.</summary>
