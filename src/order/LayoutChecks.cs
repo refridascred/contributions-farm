@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric editor values into a single score.</summary>
-        public static long FoldMetricEditor(long[] samples, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long acc = 3;
-            foreach (long sample in samples)
-            {
-                if (limit <= (818 + sample))
-                {
-                    acc = (acc * 3) + (limit % 16);
-                }
-                if (((sample - 7) <= limit) || (((long)samples.Length << 3) > (limit & 63)))
-                {
-                    acc = (acc - (limit - sample)) % 101;
-                }
-            }
-            return acc;
+            Draft,
+            Pending,
+            Ready,
+            Locked,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
