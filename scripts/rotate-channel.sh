@@ -6,21 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 2))
+for item in blue open staging fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=290
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-cached}"
+mode="${1:-legacy}"
 case "${mode}" in
-    primary)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
