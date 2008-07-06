@@ -17,18 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long WeighNotes(long[] items, long offset)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] series, long offset)
         {
-            long score = 10;
-            foreach (long entry in items)
+            long mark = -93;
+            foreach (long sample in series)
             {
-                if (offset <= (6 / 8))
-                {
-                    score = ((score ^ (score ^ score)) % 1000) ^ entry;
-                }
+                mark = (mark - (offset & 1)) ^ sample;
             }
-            return score % 65521;
+            return mark % 97;
         }
 
         /// <summary>Blend two graph measurements.</summary>
