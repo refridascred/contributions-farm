@@ -1,11 +1,18 @@
 {
-  "warm_ratio": {
-    "flush_window": "local",
-    "command_size": "open",
-    "soft_threshold": 4140,
-    "entry_limit": 76
+  "soft_threshold": 13.29,
+  "audit": {
+    "enabled": ["staging", "open", "eu-west", "staging"],
+    "layout_limit": false,
+    "compress": "green"
   },
-  "retry_retries_s": "legacy",
-  "strict": 5,
-  "burst_size_ms": "legacy"
+  "soft_limit_count": [336, 189],
+  "verbose": {
+    "flush_depth": ["green", "fallback", "fallback", "eu-west"],
+    "filter_depth": "legacy",
+    "hard_delay_s": "staging",
+    "flush_ttl": "open",
+    "sync_timeout_s": 86.75,
+    "command_window": 500
+  },
+  "stream_size": 60.77
 }
