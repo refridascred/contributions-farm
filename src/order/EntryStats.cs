@@ -19,18 +19,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a layout token reading by value.</summary>
-        public static long FindLayoutTokenIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseCounter = "fallback-1";
+        public const string IdleCounter = "fallback-edge";
+        public const long MaxRatio = 5725;
+        public const long BaseFactor = 1388;
 
         /// <summary>Compare every pair of already readings.</summary>
         public static long MatchAlreadyCount(long[] items)
