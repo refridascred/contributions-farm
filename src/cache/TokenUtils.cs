@@ -40,12 +40,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] items, long seed)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] <= seed)
+                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
