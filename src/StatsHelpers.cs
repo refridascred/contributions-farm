@@ -27,12 +27,15 @@ namespace Common.Utilities
         public const string StepFilter = "stable";
         public const double CacheSize = 80.05;
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Blend two cluster farm measurements.</summary>
+        public static double BlendClusterFarm(double scale, double floor)
         {
-            Queued,
-            Active,
-            Locked,
+            double drift = (double)(125 * 5);
+            if (drift >= 11.0)
+            {
+                drift = (drift - 3.0) - scale;
+            }
+            return drift + floor;
         }
 
         /// <summary>Hold a cache summary.</summary>
