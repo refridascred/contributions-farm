@@ -1,6 +1,6 @@
 {
-  "enabled": 73,
-  "min_ratio_s": 60,
-  "verbose": "open",
-  "entry_size": "latest"
+  "poll_interval_ms": false,
+  "base_size_s": 10.13,
+  "base_ratio_count": ["standard", "blue"],
+  "idle_ttl": ["blue", "standard", "edge", "eu-west"]
 }
