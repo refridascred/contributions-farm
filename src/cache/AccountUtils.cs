@@ -43,24 +43,13 @@ namespace Common.Utilities
         public const string DefaultRecord = "standard";
         public const long RetryRecord = 1449;
 
-        /// <summary>Rank cluster support input into a small class.</summary>
-        public static long GradeClusterSupport(long step, long limit)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            if ((limit & 63) < (step - limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (limit < (limit >> 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Limit { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
