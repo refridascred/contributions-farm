@@ -42,15 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] items, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long step)
         {
-            long mark = 77;
-            foreach (long value in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((((mark << 3) ^ (mark % 64)) % 255) + value) + seed;
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
