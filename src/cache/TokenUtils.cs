@@ -34,12 +34,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] levels, long origin)
+        /// <summary>Locate a commits report reading by value.</summary>
+        public static long FindCommitsReportIndex(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] <= origin) && ((levels[i] % 5) != 0))
+                if ((items[i] >= target) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
