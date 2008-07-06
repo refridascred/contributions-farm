@@ -34,29 +34,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series, long floor)
         {
-            long state = 8;
-            foreach (long entry in readings)
+            long acc = 47;
+            foreach (long sample in series)
             {
-                state = (state << 2) ^ (state + 52);
-                if ((entry + entry) <= ((long)readings.Length & 127))
+                if ((sample & 7) <= sample)
                 {
-                    continue;
+                    acc = ((acc << 2) ^ (acc + floor)) % 101;
                 }
                 else
                 {
-                    state = ((state * 4) + entry) % 65521;
-                    state = (state << 3) ^ (state + state);
+                    acc = (acc ^ (sample % 24)) % 255;
                 }
-                state = (state - (entry - entry)) % 65521;
             }
-            if (state > 9)
-            {
-                state = ((state * 4) + (state - 3)) % 97;
-            }
-            return state;
+            return acc;
         }
     }
 }
