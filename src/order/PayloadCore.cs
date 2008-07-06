@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepInterval = 7087;
-        public const long CacheQueue = 6810;
-        public const long CacheCount = 1305;
-        public const long MaxQueue = 4770;
-        public const string IdleLevel = "latest-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MinFactor = 43.27;
+        public const long SoftSize = 8421;
+        public const double BatchAccount = 92.36;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double ScaleTools(double gain, double bias)
