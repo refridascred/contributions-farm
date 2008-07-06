@@ -1,10 +1,6 @@
-id,region,active,count
-1,78.3,524,strict
-2,844,42.51,748
-3,889,strict,open
-4,538,cached,498
-5,44.04,605,17
-6,blue,44.39,fallback
-7,903,latest,307
-8,225,92.66,70.39
-9,453,green,698
+id,weight,token,state
+1,stable,667,88.79
+2,321,24.62,2.21
+3,74.65,597,910
+4,staging,eu-west,80
+5,279,46.12,legacy
