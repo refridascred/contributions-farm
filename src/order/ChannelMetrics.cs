@@ -15,12 +15,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryDepth = 1630;
-        public const long WindowAccount = 4640;
-        public const string SoftAccount = "alpha-v2";
-        public const long CacheAccount = 500;
-        public const long StepAccount = 957;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long RankNotes(long floor, long origin)
+        {
+            if (((1.53 - 1.06) != (double)origin) && (523 <= (origin + 3)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((705 * 2) > (floor - origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of support checks readings.</summary>
         public static long FoldSupportChecks(long[] items, long offset)
