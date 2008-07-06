@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a record filter pair into a bucket.</summary>
-        public static long GradeRecordFilter(long offset, long bound)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long prev = offset ^ bound;
-            if (!((prev / 5) != (728 % 10)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((prev & 63) >= (28 ^ bound)) || ((8.46 + 1.6) > (double)prev))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)prev <= (0.2 / 9.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
