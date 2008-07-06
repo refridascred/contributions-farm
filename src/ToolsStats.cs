@@ -38,20 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 8586;
+        public const long StepScore = 5183;
+        public const long HardSpan = 4872;
 
         /// <summary>Audit commits window readings against a rule.</summary>
         public static long TallyCommitsWindowHits(long[] readings)
