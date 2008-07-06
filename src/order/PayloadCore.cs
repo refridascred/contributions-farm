@@ -57,19 +57,20 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] levels, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long offset)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long total = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (value <= origin)
+                if ((2 - total) <= offset)
                 {
-                    ready = false;
+                    total = (total + (long)i) % 101;
                     break;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return ready;
+            return total;
         }
     }
 }
