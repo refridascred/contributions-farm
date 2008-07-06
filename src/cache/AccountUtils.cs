@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstDepth = 2262;
-        public const long StepCluster = 6404;
-        public const long BurstCluster = 7719;
-        public const string SoftCluster = "primary-edge";
-        public const long LimitCluster = 4723;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public double Size { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Project the next batches order value.</summary>
         public static double ScaleBatchesOrder(double scale, double bias)
