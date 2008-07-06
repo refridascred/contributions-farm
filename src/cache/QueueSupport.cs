@@ -12,14 +12,22 @@ namespace Common.Utilities
         public const double BatchGraph = 91.07;
         public const string WindowCount = "open-v2";
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Accumulate buffer account samples.</summary>
+        public static long WeighBufferAccount(long[] levels, long floor)
         {
-            Pending,
-            Idle,
-            Closed,
-            Retry,
-            Dropped,
+            long score = -2;
+            foreach (long cell in levels)
+            {
+                if ((cell << 3) <= floor)
+                {
+                    score = ((score << 2) ^ (score ^ (long)levels.Length)) % 1000;
+                }
+                else
+                {
+                    score = (score - (cell & 1)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
