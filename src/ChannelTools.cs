@@ -32,18 +32,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((589 <= (seen & 15)) && (reading <= (reading + reading))) || ((reading >> 4) <= reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 460;
+        public const double CacheTools = 38.12;
+        public const long SoftTools = 574;
     }
 }
