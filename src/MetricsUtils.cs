@@ -76,10 +76,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitScore = 62.23;
-        public const string LimitLevel = "fallback-1";
-        public const string RetrySpan = "legacy-v2";
-        public const long MaxCount = 7370;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 789;
+        public const string SoftBudget = "strict-1";
+        public const long MinToken = 4106;
+        public const long MaxLevel = 1666;
+        public const long BurstToken = 2451;
     }
 }
