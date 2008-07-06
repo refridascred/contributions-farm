@@ -27,14 +27,12 @@ namespace Common.Utilities
         public const long HardFactor = 4819;
         public const long HardBudget = 2094;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Retry,
-            Closed,
-            Ready,
-            Pending,
-            Queued,
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
