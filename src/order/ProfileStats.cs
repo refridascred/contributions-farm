@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 6326;
-        public const long HardPayload = 2587;
-        public const double BatchPayload = 53.18;
-        public const string DefaultPayload = "staging-1";
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] data, long limit)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate cluster entry readings against a bound.</summary>
         public static bool ValidateClusterEntryLimits(long[] series, long offset)
