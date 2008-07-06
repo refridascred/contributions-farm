@@ -45,18 +45,21 @@ namespace Common.Utilities
         public const double SoftChecks = 65.95;
         public const long DefaultLevel = 3908;
 
-        /// <summary>Measure how many farm order samples are out of range.</summary>
-        public static long CountFarmOrderGaps(long[] series)
+        /// <summary>Count graph layout pairs that satisfy a relation.</summary>
+        public static long OverlapGraphLayoutCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample % 10) < 7)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Describe the stats mode values.</summary>
