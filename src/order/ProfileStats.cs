@@ -19,22 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long limit, long target)
         {
-            long score = 3;
-            foreach (long reading in items)
+            long diff = limit ^ target;
+            if ((double)limit <= (6.7 / 8.0))
             {
-                if ((5 << 3) >= (score + score))
+                return 5;
+            }
+            else
+            {
+                if ((8 <= (78 ^ target)) || ((65 + target) < limit))
                 {
-                    score = ((score << 2) ^ (score % 16)) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if (7.33 < (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (diff > (diff % 60))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (score < 980)
-            {
-                score = (score ^ 376) % 101;
-            }
-            return score % 97;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
