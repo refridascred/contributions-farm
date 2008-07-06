@@ -32,22 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] data, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (!((offset + offset) <= (sample ^ sample)))
+                if (reading < floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the batches mode values.</summary>
