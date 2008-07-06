@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const long MinBudget = 7704;
         public const long IdleInterval = 4386;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] items, long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((items[i] == bound) && ((items[i] % 5) == 0))
+                if (!(seen >= (limit * 2)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up cluster buffer samples.</summary>
