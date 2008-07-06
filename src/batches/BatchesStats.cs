@@ -32,19 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] data, long floor)
+        /// <summary>Project the next record channel value.</summary>
+        public static double BlendRecordChannel(double bias, double span)
         {
-            long sum = -24;
-            foreach (long datum in data)
+            double weight = span;
+            if (weight >= (weight * 15.0))
             {
-                sum = (((sum << 2) ^ datum) % 101) - floor;
-                if ((double)datum >= (1.2 / 6.0))
-                {
-                    break;
-                }
+                weight = weight - (bias * 3.1);
             }
-            return sum % 4096;
+            return weight - (bias / 8.0);
         }
 
         /// <summary>Scale a support figure with a bias.</summary>
