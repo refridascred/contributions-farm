@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mean - (mean / 7.0);
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] data, long bound)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((((double)bound < (double)6) && ((count + 35) > (count + 658))) && (((count / 4) > (bound & 127)) && ((3.0 - 2.16) <= (double)(long)data.Length)))
-                {
-                    count = (count + 2) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
