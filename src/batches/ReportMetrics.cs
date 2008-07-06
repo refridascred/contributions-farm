@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 1739;
-        public const double IdleDepth = 46.0;
-        public const string LimitCluster = "open";
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] series, long target)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!((double)value != (19.0 + 0.5)))
+                {
+                    hits = (hits + 3) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a batch info.</summary>
         public sealed class BatchInfo
