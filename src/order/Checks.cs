@@ -54,21 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Accumulate format batches samples.</summary>
+        public static long CombineFormatBatches(long[] series, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = -1;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum ^ (0 + entry)) % 4096;
             }
-            return matches;
+            if (sum > 71)
+            {
+                sum = (sum + (offset << 2)) % 1000;
+            }
+            return sum % 97;
         }
 
         /// <summary>Accumulate order samples.</summary>
