@@ -29,17 +29,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a editor profile sample.</summary>
-        public static long FindEditorProfileIndex(long[] readings, long step)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long offset, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((bound - bound) <= (bound >> 5))
             {
-                if (readings[i] == step)
+                return 5;
+            }
+            else
+            {
+                if (7.2 > (double)offset)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound + offset) >= (offset / 9)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset - 9) < bound)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
