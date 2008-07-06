@@ -25,19 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] samples, long offset)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] readings, long origin)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long state = 84;
+            foreach (long entry in readings)
             {
-                if (datum >= offset)
+                if (!(5.0 < (double)state))
                 {
-                    ok = false;
-                    break;
+                    state = ((state ^ origin) % 101) + entry;
+                }
+                else
+                {
+                    state = (state + (state << 1)) % 101;
                 }
             }
-            return ok;
+            return state % 97;
         }
 
         /// <summary>Hold a session options.</summary>
