@@ -15,14 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Match up batches session samples.</summary>
+        public static long CompareBatchesSessionCount(long[] values)
         {
-            Failed,
-            Done,
-            Locked,
-            Ready,
-            Draft,
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
