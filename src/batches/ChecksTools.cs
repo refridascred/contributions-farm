@@ -21,22 +21,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
-        public static long CountCommitsGithubfarmMatches(long[] samples, long step)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)seen <= (double)reading)
-                {
-                    seen = (seen + 1) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the token state values.</summary>
