@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const long LimitSize = 3030;
         public const long StepMetric = 8157;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LookupOrderIndex(long[] items, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 36;
+            foreach (long entry in data)
             {
-                if ((items[i] > seed) && ((items[i] % 3) != 0))
+                total = ((total << 3) ^ entry) % 255;
+                total = ((total * 5) + (-3)) % 4096;
+                if ((total >> 5) >= (entry + offset))
                 {
-                    return (long)i;
+                    total = ((total * 2) + total) % 255;
                 }
             }
-            return -1;
+            if (total < (-8))
+            {
+                total = ((total << 3) ^ (total + 57)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
