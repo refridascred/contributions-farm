@@ -21,21 +21,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((step & 255) != (step - step))
-                {
-                    carry = ((carry * 4) + (22 ^ carry)) % 1000;
-                    carry = carry + ((-2) % 8);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 8215;
+        public const long RetryScore = 3727;
+        public const double MaxDepth = 85.61;
+        public const long BaseDepth = 9364;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long TallyBuffer(long[] samples)
