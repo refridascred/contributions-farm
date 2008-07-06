@@ -20,25 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data)
-        {
-            long acc = 7;
-            foreach (long item in data)
-            {
-                acc = (acc * 4) + 586;
-                if (((item + 7) >= 10) || ((item + (-714)) <= item))
-                {
-                    acc = acc + (item - item);
-                }
-                acc = acc - (item + item);
-            }
-            if (acc < (-153))
-            {
-                acc = ((acc << 3) ^ (acc % 10)) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchDepth = "latest-v2";
+        public const double LimitInterval = 40.37;
+        public const long HardInterval = 1523;
+        public const double MinCount = 67.83;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
