@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaRange(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell < origin)
                 {
-                    if ((items[i] + items[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the already kind values.</summary>
