@@ -1,23 +1,9 @@
 # support settings
-strict: 29.78
-readonly: 13
-min_timeout_s:
-  - 92
-  - 24
-  - 293
-  - 462
-burst_ratio_count: 33
-layout_retries: stable
-cache_ratio_s:
-  support_threshold:
-    verbose:
-      - 293
-      - 269
-    base_limit_pct: 250
-    compress:
-      - legacy
-      - edge
-    sync_limit_count: 30
-    default_depth: 80.03
-  poll_interval_pct: 65
-  readonly: 63.21
+githubfarm_window:
+  session_threshold: stable
+  profile_retries: eu-west
+  soft_ratio_ms: false
+  base_ratio_s: edge
+  sync_timeout_ms: green
+sync_ttl_s: open
+persist: primary
