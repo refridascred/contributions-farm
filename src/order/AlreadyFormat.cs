@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 6740;
+        public const long BaseCount = 1592;
+        public const string HardMetric = "open-v2";
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long LookupGithubfarmIndex(long[] data, long seed)
