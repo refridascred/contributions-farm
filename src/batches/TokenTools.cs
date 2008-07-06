@@ -16,19 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsRange(long[] values, long offset)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (datum <= offset)
+                if (19.0 <= (double)seen)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) - datum;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Classify a graph batches pair into a bucket.</summary>
