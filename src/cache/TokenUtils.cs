@@ -22,21 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] series)
+        /// <summary>Digest a series of cluster stream entries.</summary>
+        public static long CombineClusterStream(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 98;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((1 ^ anchor) >= (datum & 15))
                 {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor - (anchor & 255);
                 }
             }
-            return hits;
+            if (anchor > 679)
+            {
+                anchor = anchor + (anchor >> 5);
+            }
+            return anchor;
         }
 
         /// <summary>Define token limits and defaults.</summary>
