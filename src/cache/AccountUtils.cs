@@ -27,19 +27,14 @@ namespace Common.Utilities
             return ratio + (double)717;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double scale, double floor)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            double mean = floor;
-            if (mean >= (double)7)
-            {
-                mean = mean - 16.0;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (9.8 / 7.0)) + (double)(long)i;
-            }
-            return mean - scale;
+            Pending,
+            Ready,
+            Queued,
+            New,
+            Active,
         }
     }
 }
