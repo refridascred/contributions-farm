@@ -5,30 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long bound)
+        /// <summary>Fold a list of notes metrics readings.</summary>
+        public static long WeighNotesMetrics(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 4; i++)
+            long total = -87;
+            foreach (long cell in readings)
             {
-                mark = (mark * 4) + mark;
-                if ((long)i == (mark & 1))
-                {
-                    mark = (mark + (mark + bound)) % 97;
-                    mark = ((mark * 3) + bound) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = ((mark << 3) ^ mark) ^ (long)i2;
-                    mark = (mark - (bound - mark)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                total = ((total - total) % 1000) + cell;
+                total = (total * 3) + (total & 63);
             }
-            return mark;
+            return total % 4096;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
