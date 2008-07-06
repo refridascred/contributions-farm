@@ -40,15 +40,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Pending,
-            Dropped,
-            Failed,
-            Queued,
-            Ready,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 6192;
+        public const long WindowProfile = 46;
+        public const string BatchLevel = "latest";
+        public const long LimitProfile = 8133;
+        public const long HardProfile = 6813;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
