@@ -1,11 +1,6 @@
-id,token,count,level
-1,strict,blue,strict
-2,20.54,438,legacy
-3,21.65,267,standard
-4,350,366,3
-5,97.51,356,613
-6,378,strict,79.24
-7,11,96.56,35.81
-8,4,open,primary
-9,6.02,75.51,93.18
-10,758,62,15.66
+id,count,rank,state,ratio
+1,169,69.25,524,914
+2,867,blue,284,86.76
+3,open,14.98,primary,blue
+4,89.73,22.06,626,278
+5,499,eu-west,78.09,50.56
