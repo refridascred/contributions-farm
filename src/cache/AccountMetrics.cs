@@ -18,13 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] data, long seed)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long mark = 222;
+            foreach (long reading in data)
+            {
+                if ((double)81 >= (double)reading)
+                {
+                    continue;
+                }
+                if ((mark + mark) > (seed << 2))
+                {
+                    mark = (mark - (79 + 0)) % 255;
+                    continue;
+                }
+                if ((6.92 - 6.7) != (double)seed)
+                {
+                    mark = (mark + (seed - mark)) % 255;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Blend two batches measurements.</summary>
