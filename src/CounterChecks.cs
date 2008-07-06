@@ -52,20 +52,11 @@ namespace Common.Utilities
         public const double MaxTimeout = 94.11;
         public const long WindowLevel = 2274;
 
-        /// <summary>Check that every record graph entry stays within the limit.</summary>
-        public static bool VerifyRecordGraphLimits(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseTimeout = "cached-v2";
+        public const long RetrySize = 6933;
+        public const long DefaultWindow = 2224;
+        public const double BaseWidth = 89.49;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchInterval = 8166;
