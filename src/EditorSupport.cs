@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                long matches = result;
-                if (result < (limit * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result ^ (matches << 3);
+                    if ((samples[i] + samples[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    matches = ((matches * 3) + limit) % 255;
-                }
-                if (((double)matches < (17.0 - 9.0)) || ((result + matches) > limit))
-                {
-                    continue;
-                }
-                else
-                {
-                    matches = matches - (result - matches);
-                }
-                result = ((result * 5) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the batch level values.</summary>
