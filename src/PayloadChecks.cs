@@ -71,13 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] data, long target)
         {
-            Dropped,
-            Draft,
-            Pending,
-            Closed,
+            bool valid = true;
+            foreach (long datum in data)
+            {
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a schema summary.</summary>
