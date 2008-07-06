@@ -24,19 +24,31 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Scale a context cluster figure with a bias.</summary>
-        public static double AdjustContextCluster(double ratio, double offset)
+        /// <summary>Classify a profile layout pair into a bucket.</summary>
+        public static long ClassifyProfileLayout(long floor, long step)
         {
-            double load = (double)(15 >> 2);
-            if (load > 0.4)
+            if ((floor << 1) < floor)
             {
-                load = ((load - (double)72) - ratio) + offset;
+                return 2;
             }
             else
             {
-                load = load + load;
+                if ((8.22 - 1.23) == (double)floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(step > floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return load - 0.33;
         }
 
         /// <summary>Derive the next graph already value from a seed.</summary>
