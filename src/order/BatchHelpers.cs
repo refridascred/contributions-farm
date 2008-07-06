@@ -45,13 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
