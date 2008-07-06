@@ -26,16 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] items)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long mix = 72;
-            foreach (long entry in items)
-            {
-                mix = (mix ^ entry) % 97;
-                mix = ((mix << 3) ^ (mix + mix)) % 65521;
-            }
-            return mix % 97;
+            Closed,
+            Locked,
+            New,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
