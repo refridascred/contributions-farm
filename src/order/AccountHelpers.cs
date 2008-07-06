@@ -52,17 +52,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] items, long limit)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define context limits and defaults.</summary>
