@@ -10,17 +10,22 @@ namespace Common.Utilities
         public const double MinSpan = 33.67;
         public const string BatchSpan = "fallback-1";
 
-        /// <summary>Look up the position of a record batch sample.</summary>
-        public static long LookupRecordBatchIndex(long[] levels, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (levels[i] == step)
+                if (((double)hits > (double)item) || ((hits / 4) < (item - 19)))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
