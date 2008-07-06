@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const double SoftChannel = 43.11;
         public const long IdleChannel = 7302;
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            double mean = (double)(3 % 16);
+            if (mean >= (double)7)
+            {
+                mean = mean + weight;
+            }
+            return mean - span;
         }
 
         /// <summary>Audit batch payload readings against a rule.</summary>
