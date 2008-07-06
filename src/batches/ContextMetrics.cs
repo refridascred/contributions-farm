@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long SeriesBatches(long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (!(((value + (-10)) != (matches + value)) && ((value * 5) >= value)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Project the next batch payload value.</summary>
