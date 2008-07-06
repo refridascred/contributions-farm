@@ -27,19 +27,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
