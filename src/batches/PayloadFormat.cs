@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] data, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((floor + 1) < reading)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
