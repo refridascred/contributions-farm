@@ -1,6 +1,6 @@
 {
-  "base_ratio": ["latest", "latest"],
-  "soft_capacity_ms": 12,
-  "dry_run": 57,
-  "burst_limit_s": 60
+  "flush_limit_ms": 8476,
+  "flush_depth": "eu-west",
+  "notes_depth": [43, 70, 399],
+  "burst_timeout_count": "latest"
 }
