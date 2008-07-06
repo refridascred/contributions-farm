@@ -56,17 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first schema report entry that matches the target.</summary>
-        public static long LookupSchemaReportIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 4351;
+        public const string WindowBatches = "latest-1";
+        public const long BaseRatio = 4897;
     }
 }
