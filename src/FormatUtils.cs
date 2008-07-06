@@ -11,24 +11,16 @@ namespace Common.Utilities
         public const long DefaultRoute = 5408;
         public const long HardRoute = 7514;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long limit)
         {
-            if (((seed + seed) < 462) && ((4 * 4) == (step % 5)))
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
+                result = (result * 3) + ((long)i + result);
+                result = ((result * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((step ^ 4) <= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return result;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
