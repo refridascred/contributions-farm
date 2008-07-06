@@ -27,17 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 14; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                result = ((result * 3) + ((long)i / 5)) % 4096;
-                result = (result - (bound ^ (long)i)) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
