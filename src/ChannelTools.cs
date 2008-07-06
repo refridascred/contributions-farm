@@ -20,11 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxCount = 9926;
-        public const string IdleCount = "legacy";
-        public const double LimitTimeout = 22.92;
-        public const long RetryScore = 8334;
+        /// <summary>Audit graph notes readings against a rule.</summary>
+        public static long AuditGraphNotesOutliers(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (((item << 2) != ((-50) - tally)) && ((tally + item) > (item + item)))
+                {
+                    tally = (tally + 3) - floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a batch summary.</summary>
         public sealed class BatchSummary
