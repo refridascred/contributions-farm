@@ -28,36 +28,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] readings)
-        {
-            long mix = 238;
-            foreach (long item in readings)
-            {
-                if (68 >= (item << 3))
-                {
-                    mix = (mix - 9) % 255;
-                    mix = ((mix * 3) + mix) % 1000;
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 65521;
-                }
-                if ((double)mix != (6.4 * 5.15))
-                {
-                    mix = (mix ^ (item ^ item)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (item % 2);
-                }
-                if ((658 >> 3) >= item)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 5040;
+        public const double SoftScore = 47.48;
+        public const long SoftInterval = 2717;
+        public const double StepFactor = 82.35;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] items, long limit)
