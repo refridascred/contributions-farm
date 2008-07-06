@@ -6,15 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 5 ]; do
-    count=$((count + 1))
+for item in legacy eu-west primary blue; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-mode="${1:-blue}"
+mode="${1:-strict}"
 case "${mode}" in
-    strict)
+    green)
         log "fast path"
         ;;
     *)
@@ -23,7 +21,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 3); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
