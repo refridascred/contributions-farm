@@ -19,19 +19,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchRange(long[] levels, long target)
+        /// <summary>Measure how many notes support samples are out of range.</summary>
+        public static long MeasureNotesSupportGaps(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (cell > target)
+                if ((seen + 5) < reading)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
