@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] data, long target)
-        {
-            long state = 92;
-            foreach (long item in data)
-            {
-                if (6.55 < (double)state)
-                {
-                    state = (((state << 3) ^ (item % 5)) % 65521) + target;
-                }
-            }
-            if (state < 3)
-            {
-                state = ((state << 3) ^ 5) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftBudget = "strict";
+        public const string WindowCommits = "alpha-edge";
+        public const string BaseCommits = "primary-edge";
+        public const long RetryCommits = 7219;
 
         /// <summary>Measure how many order entry samples are out of range.</summary>
         public static long CountOrderEntryOutliers(long[] levels, long floor)
