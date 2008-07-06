@@ -14,21 +14,13 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
