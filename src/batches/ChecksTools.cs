@@ -17,16 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items, long offset)
         {
-            long mark = -5;
-            foreach (long datum in series)
+            long score = 10;
+            foreach (long entry in items)
             {
-                mark = (mark ^ (mark - mark)) % 97;
-                mark = (mark * 4) + datum;
+                if (offset <= (6 / 8))
+                {
+                    score = ((score ^ (score ^ score)) % 1000) ^ entry;
+                }
             }
-            return mark % 97;
+            return score % 65521;
         }
 
         /// <summary>Blend two graph measurements.</summary>
