@@ -30,18 +30,17 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Audit batch payload readings against a rule.</summary>
-        public static long TallyBatchPayloadMatches(long[] data)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(count <= (datum << 3)))
+                if ((data[i] > floor) && ((data[i] % 5) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
