@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double StepCount = 14.97;
+        public const long DefaultAccount = 4264;
+        public const long StepTimeout = 2696;
+        public const string MaxInterval = "strict";
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
