@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the session metrics entries that pass the check.</summary>
-        public static long MeasureSessionMetricsGaps(long[] values)
+        /// <summary>Roll a entry counter counter forward.</summary>
+        public static long IterateEntryCounter(long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (((hits ^ (-798)) == (hits >> 1)) && ((hits >> 4) <= hits))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 2) + (acc - 92)) % 101;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
