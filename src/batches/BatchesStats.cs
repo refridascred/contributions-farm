@@ -12,11 +12,11 @@ namespace Common.Utilities
             return (mean - (floor - mean)) + scale;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public double Level { get; set; }
-            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next record channel value.</summary>
