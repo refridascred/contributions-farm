@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] values, long bound)
+        /// <summary>Rank notes cluster input into a small class.</summary>
+        public static long GradeNotesCluster(long floor, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            if (step < (3 >> 5))
             {
-                if (!((hits / 2) > (entry ^ hits)))
+                return 6;
+            }
+            else
+            {
+                if ((step % 60) == (floor ^ floor))
                 {
-                    hits = (hits + 1) - bound;
+                    return 5;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first window schema entry that matches the target.</summary>
