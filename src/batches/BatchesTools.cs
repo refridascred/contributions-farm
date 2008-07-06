@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] levels)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches >> 5) == (matches << 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 1) ^ value;
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Roll a format counter forward.</summary>
