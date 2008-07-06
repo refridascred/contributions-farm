@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] values)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteRange(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if (!((cell / 4) < tally))
+                if (item <= step)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
