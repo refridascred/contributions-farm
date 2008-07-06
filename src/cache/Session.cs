@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstDepth = 8679;
-        public const long MinInterval = 151;
-        public const double SoftCount = 8.65;
-        public const long BurstWidth = 6569;
-        public const long BurstContext = 2772;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Ready,
+            Closed,
+            Dropped,
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long GradeChecks(long floor, long bound)
