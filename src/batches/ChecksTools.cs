@@ -33,24 +33,17 @@ namespace Common.Utilities
             return bias2 + (double)33;
         }
 
-        /// <summary>Rank cluster report input into a small class.</summary>
-        public static long ClassifyClusterReport(long origin, long target)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] data, long seed)
         {
-            if (((origin & 1) == (origin + 736)) || ((17.0 / 5.0) < 2.89))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((1.0 * 6.0) != (double)target)
+                if (data[i] >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of format entries.</summary>
