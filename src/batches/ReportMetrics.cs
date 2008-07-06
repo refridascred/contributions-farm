@@ -26,18 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] levels)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long total = 3;
-            foreach (long sample in levels)
-            {
-                if (((total + sample) == (sample + total)) && ((double)sample >= (8.9 - 1.0)))
-                {
-                    total = (total ^ (sample * 3)) % 101;
-                }
-            }
-            return total;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
