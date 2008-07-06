@@ -28,21 +28,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count cluster layout pairs that satisfy a relation.</summary>
-        public static long MatchClusterLayoutCount(long[] data)
+        /// <summary>Locate a route order reading by value.</summary>
+        public static long FindRouteOrderIndex(long[] data, long origin)
         {
-            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (data[i] > origin)
                 {
-                    if ((data[i] + data[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
