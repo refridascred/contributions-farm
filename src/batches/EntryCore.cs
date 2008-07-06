@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double weight, double floor)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
         {
-            double load = weight;
-            return load + floor;
+            long carry = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((step & 255) != (step - step))
+                {
+                    carry = ((carry * 4) + (22 ^ carry)) % 1000;
+                    carry = carry + ((-2) % 8);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
