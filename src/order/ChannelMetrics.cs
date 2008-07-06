@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a stream stats value against two limits.</summary>
-        public static long GradeStreamStats(long origin, long step)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] items, long offset)
         {
-            long span = origin + step;
-            if (((span & 255) <= (9 * 4)) && ((8.81 - 8.2) <= (double)origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + 8) < (18 + span))
+                if (items[i] > offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.0 / 5.0) >= (double)span)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
