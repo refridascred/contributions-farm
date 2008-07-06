@@ -49,13 +49,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] data, long seed)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
+            long result = 6;
+            foreach (long reading in data)
+            {
+                result = (((result - ((long)data.Length >> 2)) % 1000) + reading) + seed;
+            }
+            if (result < (-5))
+            {
+                result = result ^ (458 ^ result);
+            }
+            return result;
         }
 
         /// <summary>Rank format input into a small class.</summary>
