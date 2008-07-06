@@ -35,24 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long ScoreFarm(long[] samples, long offset)
-        {
-            long sum = 5;
-            foreach (long entry in samples)
-            {
-                sum = ((sum << 2) ^ (offset * 4)) + entry;
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = (sum - (offset % 16)) ^ (long)i;
-                }
-                if ((offset - offset) <= sum)
-                {
-                    sum = ((sum * 3) + sum) % 4096;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryInterval = "local";
+        public const long RetryBudget = 5000;
+        public const long IdleSpan = 1941;
+        public const long BatchCount = 4598;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 4789;
