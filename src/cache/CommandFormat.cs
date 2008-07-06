@@ -30,18 +30,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the cluster graph entries that pass the check.</summary>
-        public static long MeasureClusterGraphGaps(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((count ^ item) <= (item << 3))
+                if (!((74 >> 4) <= value))
                 {
-                    count = count + 3;
+                    seen = (seen + 3) - step;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
