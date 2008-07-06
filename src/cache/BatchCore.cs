@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] values, long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double bias, double bias2)
         {
-            long total = -824;
-            foreach (long value in values)
+            double bias3 = (double)650 - (bias2 - 7.19);
+            if (bias3 < (bias3 * 3.58))
             {
-                if (((total + step) < (44 - value)) || (total > ((long)values.Length ^ value)))
-                {
-                    total = total - step;
-                }
-                if ((value + value) > (94 ^ 933))
-                {
-                    total = ((total << 2) ^ (value >> 2)) % 4096;
-                }
+                bias3 = bias3 - (double)(-78);
             }
-            if (total > (-177))
-            {
-                total = ((total * 2) + (step % 100)) % 97;
-            }
-            return total;
+            return bias3 + (bias - bias2);
         }
 
         /// <summary>Hold a batch options.</summary>
