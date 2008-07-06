@@ -32,13 +32,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            Pending,
+            Ready,
+            Queued,
+            Synced,
         }
     }
 }
