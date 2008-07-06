@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] data, long origin)
         {
-            Active,
-            Ready,
-            Draft,
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits >> 4) < datum)
+                {
+                    hits = (hits + 2) + origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first filter queue entry that matches the target.</summary>
