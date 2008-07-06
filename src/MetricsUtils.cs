@@ -47,31 +47,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long offset, long seed)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long step)
         {
-            if ((double)seed != (1.3 + 6.94))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset - 90) <= (seed + seed)))
+                if ((data[i] == step) && ((data[i] % 2) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((5.1 / 2.0) > (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate graph samples.</summary>
