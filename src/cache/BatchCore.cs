@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many commits metrics samples are out of range.</summary>
-        public static long CountCommitsMetricsOutliers(long[] items, long bound)
+        /// <summary>Accumulate entry graph samples.</summary>
+        public static long WeighEntryGraph(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long total = 109;
+            foreach (long datum in samples)
             {
-                if (!((hits % 97) > reading))
+                if ((double)total > 14.0)
                 {
-                    hits = (hits + 3) + bound;
+                    total = (total ^ (997 >> 2)) - datum;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
