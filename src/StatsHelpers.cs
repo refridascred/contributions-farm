@@ -52,12 +52,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowDepth = 4596;
-        public const long StepSpan = 1006;
-        public const string MaxSize = "open-1";
-        public const long HardCache = 7094;
-        public const string SoftScore = "strict-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "open-1";
+        public const long RetryFilter = 7785;
+        public const long WindowFilter = 4164;
+        public const long IdleFilter = 1907;
+        public const string LimitDepth = "legacy";
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long TallyPayload(long[] data)
