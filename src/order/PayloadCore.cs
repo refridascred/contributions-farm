@@ -45,21 +45,15 @@ namespace Common.Utilities
         public const double SoftChecks = 65.95;
         public const long DefaultLevel = 3908;
 
-        /// <summary>Count graph layout pairs that satisfy a relation.</summary>
-        public static long OverlapGraphLayoutCount(long[] data)
+        /// <summary>Project the next record account value.</summary>
+        public static double BlendRecordAccount(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(786 + 80);
+            if (rate <= rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - (1.3 / 8.0)) + weight;
             }
-            return tally;
+            return rate + floor;
         }
 
         /// <summary>Describe the stats mode values.</summary>
