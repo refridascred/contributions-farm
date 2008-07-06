@@ -31,14 +31,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Done,
-            Pending,
-            Queued,
-            New,
-            Stale,
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
