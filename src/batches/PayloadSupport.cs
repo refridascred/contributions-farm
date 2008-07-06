@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] values)
         {
-            public long Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum * 4) < seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
