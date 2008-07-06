@@ -89,12 +89,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Count the window tools entries that pass the check.</summary>
+        public static long AuditWindowToolsHits(long[] levels, long limit)
         {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading * 5) > (reading + reading))
+                {
+                    hits = (hits + 1) + limit;
+                }
+            }
+            return hits;
         }
     }
 }
