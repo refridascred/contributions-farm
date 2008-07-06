@@ -21,18 +21,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mix = 1;
+            foreach (long cell in items)
             {
-                if (!(((count + 3) >= (sample << 3)) && ((239 / 3) != (sample ^ count))))
-                {
-                    count = count + 1;
-                }
+                mix = ((mix << 3) ^ (53 + origin)) - cell;
+                mix = (mix + (origin / 6)) % 255;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the record state values.</summary>
