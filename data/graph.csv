@@ -1,11 +1,6 @@
-id,level,weight,region
-1,blue,25.71,400
-2,73.24,primary,17.75
-3,874,823,278
-4,201,local,edge
-5,blue,eu-west,legacy
-6,legacy,326,935
-7,87.07,edge,68.25
-8,667,latest,820
-9,10.47,45,168
-10,65.66,50.13,edge
+id,ratio,token,score,rank
+1,green,262,636,91.92
+2,eu-west,73.2,edge,65.39
+3,13.85,26,705,fallback
+4,20.88,41.45,legacy,edge
+5,0.22,701,423,182
