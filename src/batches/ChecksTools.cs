@@ -18,14 +18,12 @@ namespace Common.Utilities
         public const double HardNotes = 32.94;
         public const long DefaultBudget = 7488;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 7111;
+        public const string BatchWidth = "latest-1";
+        public const long SoftOrder = 3882;
+        public const long RetryTimeout = 6722;
+        public const long DefaultLevel = 3022;
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool CheckGraphBounds(long[] series, long floor)
