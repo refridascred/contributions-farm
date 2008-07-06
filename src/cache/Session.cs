@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a record checks value against two limits.</summary>
-        public static long ClassifyRecordChecks(long bound, long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if ((bound - 173) == (5 % 10))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed >> 2) >= (bound & 7))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Idle,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Count the githubfarm counter entries that pass the check.</summary>
