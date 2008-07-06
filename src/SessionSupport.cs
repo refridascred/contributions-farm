@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings, long bound)
+        /// <summary>Check that every metric metrics entry stays within the limit.</summary>
+        public static bool GuardMetricMetricsBounds(long[] values, long floor)
         {
-            long result = -803;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if ((double)result > (double)9)
+                if (datum != floor)
                 {
-                    result = (((result - (result * 2)) % 101) - value) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Fold a list of already readings.</summary>
