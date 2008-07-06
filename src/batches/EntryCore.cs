@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (total - bound) - (long)i2;
-                    total = total - (767 - total);
-                }
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Ready,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
