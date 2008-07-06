@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] series, long offset)
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long total = 986;
+            foreach (long value in series)
+            {
+                total = ((total - (total & 255)) - value) - offset;
+            }
+            return total % 97;
         }
 
         /// <summary>Match up cache samples.</summary>
