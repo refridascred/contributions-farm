@@ -1,12 +1,11 @@
 {
-  "hard_capacity_pct": "stable",
-  "persist": "staging",
-  "cache_depth_count": {
-    "profile_ttl": 2750,
-    "queue_threshold": "fallback",
-    "cache_threshold_ms": 44.07,
-    "sync_window_ms": 72,
-    "notes_delay": true,
-    "warm_retries_s": 87.88
-  }
+  "support_threshold": 6025,
+  "token_threshold": {
+    "flush_limit_ms": true,
+    "warm_depth": 24,
+    "burst_ttl_s": 21.32
+  },
+  "soft_capacity_ms": "strict",
+  "metric_depth": false,
+  "cache_timeout": "cached"
 }
