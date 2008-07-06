@@ -1,5 +1,6 @@
 {
-  "audit": 60,
-  "poll_retries": 39,
-  "burst_timeout": 46.48
+  "persist": "cached",
+  "batch_interval": "stable",
+  "default_ttl_count": 70.39,
+  "retry_interval_count": 1024
 }
