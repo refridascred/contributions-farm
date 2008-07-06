@@ -1,8 +1,6 @@
-id,score,state,weight
-1,open,190,edge
-2,33.02,cached,1.04
-3,296,264,666
-4,latest,blue,91.99
-5,289,94.53,884
-6,primary,87.85,141
-7,staging,79.98,501
+id,rank,active
+1,403,296
+2,333,blue
+3,89,746
+4,943,53.26
+5,74,87.03
