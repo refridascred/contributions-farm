@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate layout window samples.</summary>
-        public static long TotalLayoutWindow(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long target2)
         {
-            long acc = 151;
-            foreach (long entry in data)
+            long lane = target + target2;
+            if (!(target2 < (lane - lane)))
             {
-                if ((acc >> 4) <= (acc * 2))
+                return 2;
+            }
+            else
+            {
+                if (target > (2 << 1))
                 {
-                    acc = (acc * 3) + acc;
+                    return 1;
                 }
                 else
                 {
-                    acc = ((acc * 2) + (entry + entry)) % 4096;
+                    return 6;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
