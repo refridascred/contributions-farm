@@ -27,13 +27,32 @@ namespace Common.Utilities
             return load - 4.7;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long step, long origin)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public long Level { get; set; }
+            long prev = step - origin;
+            if ((45 + 326) >= (step >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (prev > ((-566) >> 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((71 << 3) > origin) || (926 < (prev + prev)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
