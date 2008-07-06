@@ -59,20 +59,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm queue entries.</summary>
-        public static long TallyFarmQueue(long[] readings)
-        {
-            long total = 8;
-            foreach (long sample in readings)
-            {
-                total = total + (4 / 4);
-                total = ((total * 2) + (sample * 4)) % 255;
-            }
-            if (total > 444)
-            {
-                total = total - (total << 1);
-            }
-            return total % 65521;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 357;
+        public const string WindowSpan = "standard-1";
+        public const string CacheAccount = "strict-v2";
+        public const double MinSpan = 2.23;
+        public const double StepAccount = 39.42;
     }
 }
