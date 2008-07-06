@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] samples)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((long)samples.Length == (count - (-2)))
+                if (item > offset)
                 {
-                    count = (count + 1) - datum;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
