@@ -22,21 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry window samples.</summary>
-        public static long OverlapEntryWindowCount(long[] data)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a filter summary.</summary>
