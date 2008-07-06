@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue staging; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in local legacy strict eu-west; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=53
-log "limit is ${BUFFER_LIMIT}"
