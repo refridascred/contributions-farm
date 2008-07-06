@@ -1,8 +1,12 @@
 {
-  "cache_size_s": 4.91,
-  "sync_window": 500,
-  "warm_interval_count": 1139,
-  "burst_ratio_ms": 76.09,
-  "retry_interval": ["edge", "stable", "primary", "local"],
-  "enabled": ["open", "stable", "primary", "stable"]
+  "hard_capacity_pct": "stable",
+  "persist": "staging",
+  "cache_depth_count": {
+    "profile_ttl": 2750,
+    "queue_threshold": "fallback",
+    "cache_threshold_ms": 44.07,
+    "sync_window_ms": 72,
+    "notes_delay": true,
+    "warm_retries_s": 87.88
+  }
 }
