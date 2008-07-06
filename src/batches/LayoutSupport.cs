@@ -71,12 +71,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public string Score { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public double Count { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double DefaultQueue = 28.01;
+        public const long RetryQueue = 2968;
+        public const long BatchRatio = 6967;
+        public const long BatchQueue = 8416;
     }
 }
