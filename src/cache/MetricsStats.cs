@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 11.58;
-        public const long MaxWindow = 4394;
-        public const double HardWidth = 31.1;
-        public const long MinWindow = 9820;
-        public const long HardRatio = 1741;
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BaseSession = 5450;
