@@ -32,13 +32,23 @@ namespace Common.Utilities
         public const double SoftRatio = 53.21;
         public const double DefaultFactor = 97.39;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double ratio, double offset)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            double mean = offset;
+            if (mean < offset)
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (double)88;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (ratio + ratio)) - (double)(long)i;
+            }
+            return mean + ratio;
         }
     }
 }
