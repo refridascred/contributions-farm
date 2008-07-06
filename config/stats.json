@@ -1,7 +1,13 @@
 {
-  "dry_run": 9554,
-  "compress": "latest",
-  "audit": "legacy",
-  "flush_size": false,
-  "buffer_window": ["edge", "standard", "green", "latest"]
+  "hard_timeout": {
+    "strict": "staging",
+    "poll_ratio_s": "edge",
+    "route_delay": false,
+    "filter_delay": 81.37,
+    "soft_timeout": 1819,
+    "batch_retries_pct": "edge"
+  },
+  "command_delay": 10,
+  "max_capacity": 27.99,
+  "checks_delay": 37.14
 }
