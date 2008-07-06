@@ -25,26 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of context schema entries.</summary>
-        public static long ScoreContextSchema(long[] items, long seed)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long mix = 939;
-            foreach (long entry in items)
-            {
-                if (!(seed <= (entry - seed)))
-                {
-                    continue;
-                }
-                if (((mix - 197) == (937 ^ entry)) && ((1.7 / 5.0) <= (double)entry))
-                {
-                    mix = (mix - seed) % 65521;
-                }
-                if (((mix * 2) <= (seed % 100)) && ((seed << 1) >= (entry + entry)))
-                {
-                    mix = (mix ^ entry) % 101;
-                }
-            }
-            return mix % 97;
+            Paused,
+            Active,
+            Dropped,
+            Synced,
+            Idle,
         }
 
         /// <summary>Digest a series of session entries.</summary>
