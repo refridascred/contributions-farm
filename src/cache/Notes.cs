@@ -79,21 +79,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] samples)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
