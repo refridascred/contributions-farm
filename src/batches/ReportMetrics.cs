@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 1739;
+        public const double IdleDepth = 46.0;
+        public const string LimitCluster = "open";
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
