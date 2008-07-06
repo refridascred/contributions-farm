@@ -35,12 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Queued,
-            Ready,
+            New,
             Retry,
+            Paused,
         }
     }
 }
