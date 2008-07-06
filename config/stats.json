@@ -1,11 +1,22 @@
 {
-  "batch_size": true,
-  "flush_capacity": 4450,
-  "dry_run": {
-    "hard_interval_pct": 4575,
-    "report_ratio": "open",
-    "batches_window": 89.72
+  "window_capacity": {
+    "account_capacity": {
+      "flush_timeout_s": "green",
+      "verbose": ["primary", "staging"],
+      "retry_size_pct": "primary",
+      "dry_run": "blue"
+    },
+    "route_threshold": {
+      "base_retries": ["staging", "blue"],
+      "dry_run": 30,
+      "hard_threshold_pct": 35.25,
+      "readonly": 8169,
+      "warm_capacity_count": 6
+    },
+    "warm_retries": true
   },
-  "default_capacity": true,
-  "schema_capacity": true
+  "base_depth_count": false,
+  "flush_window": false,
+  "soft_retries_s": 73,
+  "entry_ratio": "legacy"
 }
