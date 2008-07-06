@@ -41,10 +41,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardSize = 7303;
-        public const long MinBudget = 7704;
-        public const long IdleInterval = 4386;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items)
+        {
+            long mark = 0;
+            foreach (long cell in items)
+            {
+                if (((mark + cell) >= cell) || ((cell / 6) > (cell + cell)))
+                {
+                    mark = (mark ^ 791) % 255;
+                }
+                mark = (mark - cell) % 97;
+            }
+            if (mark < 7)
+            {
+                mark = ((mark << 2) ^ 7) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesMatches(long[] levels, long limit)
