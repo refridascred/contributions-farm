@@ -30,11 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            Active,
+            Paused,
+            Ready,
+            Stale,
+            Draft,
         }
     }
 }
