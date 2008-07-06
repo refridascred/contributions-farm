@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every batch token entry stays within the limit.</summary>
