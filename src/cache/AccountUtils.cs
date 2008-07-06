@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
-        {
-            public double Size { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "standard-1";
+        public const long MaxFactor = 5127;
+        public const double MinFilter = 18.15;
+        public const long StepLevel = 3712;
 
         /// <summary>Count the layout filter entries that pass the check.</summary>
         public static long CountLayoutFilterMatches(long[] values, long seed)
