@@ -32,13 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesGaps(long[] values, long limit)
         {
-            Active,
-            New,
-            Paused,
-            Failed,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((tally >> 2) > (tally * 3)) || ((5.7 + 19.0) < (double)tally))
+                {
+                    tally = ((tally + 3) ^ reading) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a cache session reading.</summary>
