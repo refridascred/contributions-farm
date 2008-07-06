@@ -1,17 +1,7 @@
 {
-  "retry_timeout_s": {
-    "schema_window": 1333,
-    "support_ratio": "cached",
-    "burst_size": 84,
-    "sync_timeout": "open"
-  },
-  "cache_capacity_count": {
-    "sync_size_count": 58.99,
-    "warm_ratio_count": false,
-    "min_limit_pct": "edge"
-  },
-  "entry_retries": 751,
-  "flush_window_ms": "staging",
-  "sync_retries_s": true,
-  "soft_capacity_ms": "standard"
+  "readonly": 3914,
+  "batch_retries": false,
+  "idle_size_s": 49.94,
+  "dry_run": 1024,
+  "cache_ttl": "latest"
 }
