@@ -82,21 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue editor samples.</summary>
-        public static long CompareQueueEditorCount(long[] values)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Queued,
         }
     }
 }
