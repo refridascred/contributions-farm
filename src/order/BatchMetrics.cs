@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next order session value.</summary>
-        public static double ProjectOrderSession(double rate, double bias)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] series, long step)
         {
-            double mean = (double)(253 & 3);
-            return ((mean - (double)8) + rate) + bias;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batch token entry stays within the limit.</summary>
