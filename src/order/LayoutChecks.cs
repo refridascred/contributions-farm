@@ -19,23 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] levels, long offset)
+        /// <summary>Iterate the cache record series from a seed.</summary>
+        public static long RollCacheRecord(long limit)
         {
-            long carry = -168;
-            foreach (long reading in levels)
+            long sum = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((951 - 3) < offset))
-                {
-                    carry = (carry << 3) ^ (carry % 7);
-                    carry = ((carry << 3) ^ (reading + offset)) % 1000;
-                }
-                if ((double)carry <= 13.0)
-                {
-                    carry = carry + 40;
-                }
+                sum = ((sum << 3) ^ (3 * 3)) % 255;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
