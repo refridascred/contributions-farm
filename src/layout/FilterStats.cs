@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Filter stats helpers.</summary>
     public static class FilterStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRatio = 1691;
-        public const long BaseDepth = 199;
-        public const long MaxRoute = 1941;
-        public const long WindowSpan = 4110;
-        public const long BaseRoute = 8813;
+        /// <summary>Validate farm graph readings against a bound.</summary>
+        public static bool GuardFarmGraphRange(long[] items, long target)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
