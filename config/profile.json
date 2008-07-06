@@ -1,18 +1,7 @@
 {
-  "soft_threshold": 13.29,
-  "audit": {
-    "enabled": ["staging", "open", "eu-west", "staging"],
-    "layout_limit": false,
-    "compress": "green"
-  },
-  "soft_limit_count": [336, 189],
-  "verbose": {
-    "flush_depth": ["green", "fallback", "fallback", "eu-west"],
-    "filter_depth": "legacy",
-    "hard_delay_s": "staging",
-    "flush_ttl": "open",
-    "sync_timeout_s": 86.75,
-    "command_window": 500
-  },
-  "stream_size": 60.77
+  "record_ttl": 60,
+  "dry_run": 78.3,
+  "retry_capacity": ["stable", "open", "open", "blue"],
+  "command_size": 99,
+  "min_size": 500
 }
