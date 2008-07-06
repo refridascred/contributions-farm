@@ -1,7 +1,12 @@
 {
-  "base_threshold_pct": 5039,
-  "persist": true,
-  "soft_limit": "strict",
-  "warm_limit_ms": "cached",
-  "report_capacity": ["standard", "primary", "latest", "latest"]
+  "retry_ratio_ms": "staging",
+  "cache_size_ms": 54,
+  "burst_retries_count": "stable",
+  "min_window": {
+    "buffer_timeout": 79.29,
+    "profile_ratio": 47.1,
+    "persist": "green",
+    "retry_depth": 500,
+    "retry_threshold": 4061
+  }
 }
