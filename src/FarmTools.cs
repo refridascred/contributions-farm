@@ -34,31 +34,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long step2)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings, long step)
         {
-            if ((step ^ step2) >= (step & 31))
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step == (5.1 - 8.0))
+                if ((entry >> 2) == (step % 24))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step2 + step2) != (step2 & 31))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
