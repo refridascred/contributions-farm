@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings, long origin)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            double rate = span;
+            if (rate <= (rate / 4.0))
             {
-                if ((-95) >= (origin >> 2))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                rate = rate - (span + ratio);
             }
-            return seen;
+            else
+            {
+                rate = rate - (ratio + span);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
