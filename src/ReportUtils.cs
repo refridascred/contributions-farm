@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const long MinCount = 3066;
         public const long RetryCount = 4659;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] readings, long floor)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((9 + floor) < (5 + 0))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 2097;
+        public const double BurstSize = 95.33;
+        public const long StepLevel = 3084;
+        public const double BurstBudget = 1.76;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long DefaultEntry = 4789;
