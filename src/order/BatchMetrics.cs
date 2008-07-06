@@ -34,21 +34,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] readings, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 88;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)floor > (11.0 / 3.0))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum - (sum - floor);
+                }
+                if (((sample - sum) <= sample) && (25 < ((-473) - sample)))
+                {
+                    sum = (sum ^ sum) % 1000;
+                }
+                if ((floor / 7) == (sample >> 1))
+                {
+                    break;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a format options.</summary>
