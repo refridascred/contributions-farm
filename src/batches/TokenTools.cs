@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the session stream entries that pass the check.</summary>
-        public static long CountSessionStreamGaps(long[] levels)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (350 >= reading)
+                if (value >= floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
