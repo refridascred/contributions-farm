@@ -52,22 +52,13 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmGaps(long[] samples, long origin)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (origin > item)
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a format entry.</summary>
