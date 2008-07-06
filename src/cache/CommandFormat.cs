@@ -69,17 +69,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] items, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 654;
+            foreach (long value in items)
             {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
+                total = ((total * 3) + (value - 1)) % 101;
+                total = ((total * 2) + (value + bound)) % 255;
+                if ((0 - bound) == (bound % 2))
                 {
-                    return (long)i;
+                    total = (total + (bound >> 5)) % 101;
                 }
             }
-            return -1;
+            if (total < 2)
+            {
+                total = (total - total) % 101;
+            }
+            return total % 1000;
         }
     }
 }
