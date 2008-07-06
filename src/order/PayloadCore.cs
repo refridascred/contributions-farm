@@ -45,15 +45,23 @@ namespace Common.Utilities
         public const double SoftChecks = 65.95;
         public const long DefaultLevel = 3908;
 
-        /// <summary>Project the next record account value.</summary>
-        public static double BlendRecordAccount(double weight, double floor)
+        /// <summary>Blend two batch buffer measurements.</summary>
+        public static double ScaleBatchBuffer(double bias, double bias2)
         {
-            double rate = (double)(786 + 80);
-            if (rate <= rate)
+            double scale = bias - bias;
+            if (scale <= 1.4)
             {
-                rate = (rate - (1.3 / 8.0)) + weight;
+                scale = scale + (double)31;
             }
-            return rate + floor;
+            else
+            {
+                scale = scale - bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (8.15 - 16.0);
         }
 
         /// <summary>Describe the stats mode values.</summary>
