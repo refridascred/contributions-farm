@@ -32,19 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double drift = offset;
-            if (drift >= gain)
-            {
-                drift = drift + (9.9 / 7.0);
-            }
-            else
-            {
-                drift = drift - (6.7 * 6.91);
-            }
-            return drift + gain;
+            Pending,
+            Ready,
+            Idle,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
