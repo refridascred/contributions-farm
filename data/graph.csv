@@ -1,6 +1,11 @@
-id,token,ratio,state
-1,81,332,standard
-2,763,724,54.36
-3,82.48,664,930
-4,open,fallback,629
-5,47,695,235
+id,weight,ratio
+1,972,902
+2,58.25,966
+3,488,300
+4,blue,607
+5,79.39,green
+6,stable,blue
+7,214,449
+8,528,legacy
+9,31,90.18
+10,71.32,staging
