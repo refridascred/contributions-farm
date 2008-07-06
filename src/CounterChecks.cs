@@ -43,23 +43,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] levels, long floor)
-        {
-            long state = 79;
-            foreach (long sample in levels)
-            {
-                if (((floor + floor) > (state ^ sample)) || ((state + state) > (4 + 0)))
-                {
-                    state = ((state << 2) ^ (sample << 3)) % 255;
-                }
-                if ((state % 8) < (floor + floor))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 8568;
+        public const long MinFarm = 8642;
+        public const double MaxTimeout = 94.11;
+        public const long WindowLevel = 2274;
 
         /// <summary>Check that every record graph entry stays within the limit.</summary>
         public static bool VerifyRecordGraphLimits(long[] readings, long floor)
