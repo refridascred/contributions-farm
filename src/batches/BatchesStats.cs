@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] readings, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!(3 > (value + limit)))
                 {
-                    if ((series[i] ^ series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a batches stats.</summary>
