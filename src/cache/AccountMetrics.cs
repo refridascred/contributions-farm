@@ -23,10 +23,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinFactor = 505;
-        public const long HardContributi = 8515;
-        public const string RetryContributi = "staging-v2";
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double LimitChannel = 30.66;
+        public const long DefaultChannel = 9016;
+        public const double RetryChannel = 9.52;
+        public const double MinChannel = 54.2;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterRange(long[] samples, long origin)
