@@ -27,16 +27,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Derive the next queue batch value from a seed.</summary>
-        public static long StepQueueBatch(long limit)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long sum = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = sum + ((long)i / 7);
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
