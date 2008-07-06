@@ -14,16 +14,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the window farm series from a seed.</summary>
-        public static long RollWindowFarm(long offset)
+        /// <summary>Look up the position of a command metrics sample.</summary>
+        public static long LookupCommandMetricsIndex(long[] data, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = mark - ((long)i + (long)i);
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((data[i] > limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a already snapshot.</summary>
