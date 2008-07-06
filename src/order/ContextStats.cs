@@ -20,15 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] series, long floor)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double floor)
         {
-            long acc = 635;
-            foreach (long reading in series)
+            double drift = floor / 6.0;
+            if (drift >= drift)
             {
-                acc = (((acc + (82 + (long)series.Length)) % 255) - reading) + floor;
+                drift = drift + (floor - floor);
             }
-            return acc % 97;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - weight) + (double)(long)i;
+            }
+            return drift - (weight / 7.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
