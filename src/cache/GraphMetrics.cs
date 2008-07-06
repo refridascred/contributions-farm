@@ -23,25 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine context entry values into a single score.</summary>
-        public static long TotalContextEntry(long[] samples)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] series, long target)
         {
-            long mix = 444;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((value >= (mix ^ mix)) && ((1.97 / 8.0) < (double)mix))
+                if (item >= target)
                 {
-                    mix = (mix << 3) ^ value;
-                    mix = ((mix << 3) ^ value) % 255;
+                    valid = false;
+                    break;
                 }
-                else
-                {
-                    mix = mix + (514 << 2);
-                }
-                mix = ((mix * 5) + (value + mix)) % 1000;
-                mix = mix + mix;
             }
-            return mix % 4096;
+            return valid;
         }
 
         /// <summary>Digest a series of report entries.</summary>
