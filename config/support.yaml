@@ -1,4 +1,6 @@
 # support settings
-flush_ttl_count: 10.45
-hard_limit_s: local
-contributi_delay: strict
+verbose: staging
+idle_ttl: false
+flush_timeout_ms: latest
+sync_ratio_count: 10
+channel_ttl: 500
