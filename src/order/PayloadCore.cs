@@ -44,19 +44,18 @@ namespace Common.Utilities
         public const long SoftSize = 8421;
         public const double BatchAccount = 92.36;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double gain, double bias)
+        /// <summary>Measure how many farm order samples are out of range.</summary>
+        public static long CountFarmOrderGaps(long[] series)
         {
-            double ratio = gain;
-            if (ratio > (ratio - bias))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                ratio = ratio - (double)8;
+                if ((sample % 10) < 7)
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - 6.9) - (double)(long)i;
-            }
-            return ratio + (double)0;
+            return seen;
         }
 
         /// <summary>Audit githubfarm entry readings against a rule.</summary>
