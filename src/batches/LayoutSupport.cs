@@ -43,15 +43,17 @@ namespace Common.Utilities
         public const long RetryNotes = 4298;
         public const double MaxNotes = 57.08;
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] items)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] data, long limit)
         {
-            long score = -875;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score + (1 * 2)) % 97) + reading;
+                if ((data[i] >= limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Audit channel stream readings against a rule.</summary>
