@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long SoftAccount = 7208;
         public const long CacheRatio = 292;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] series)
+        /// <summary>Look up the position of a window githubfarm sample.</summary>
+        public static long LookupWindowGithubfarmIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits << 2) > hits)
+                if (values[i] < offset)
                 {
-                    hits = (hits + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
