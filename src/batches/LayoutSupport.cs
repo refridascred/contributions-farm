@@ -55,21 +55,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 2;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = ((acc ^ datum) % 65521) - floor;
+                acc = ((acc << 2) ^ (datum & 15)) % 97;
             }
-            return seen;
+            if (acc < 9)
+            {
+                acc = (acc << 3) ^ (acc << 2);
+            }
+            return acc;
         }
 
         /// <summary>Hold a buffer entry.</summary>
