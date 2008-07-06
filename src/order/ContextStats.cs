@@ -33,12 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double rate, double offset)
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            double weight = offset;
+            if (weight <= (rate + 5.01))
+            {
+                weight = weight + (0.1 * 18.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (offset - weight)) + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
