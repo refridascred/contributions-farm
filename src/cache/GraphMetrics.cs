@@ -74,13 +74,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Active,
-            Locked,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstScore = 5656;
+        public const long CacheRatio = 2864;
+        public const double BurstRecord = 92.05;
     }
 }
