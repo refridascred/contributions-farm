@@ -36,18 +36,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] readings, long step)
+        /// <summary>Audit metric checks readings against a rule.</summary>
+        public static long MeasureMetricChecksGaps(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((entry >> 2) == (step % 24))
+                if ((1.1 - 5.69) > (double)floor)
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) ^ sample;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
