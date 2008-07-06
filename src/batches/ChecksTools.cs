@@ -48,21 +48,19 @@ namespace Common.Utilities
             return rate + (double)(-31);
         }
 
-        /// <summary>Match up entry command samples.</summary>
-        public static long CompareEntryCommandCount(long[] data)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell != seed)
                 {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
