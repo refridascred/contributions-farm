@@ -82,17 +82,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] values, long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long seed, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (seed <= (target * 4))
             {
-                if (values[i] <= target)
+                return 8;
+            }
+            else
+            {
+                if (seed <= 29)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
