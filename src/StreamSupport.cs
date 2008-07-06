@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every layout graph entry stays within the limit.</summary>
-        public static bool GuardLayoutGraphBounds(long[] data, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long total = 7;
+            foreach (long reading in samples)
             {
-                if (sample >= offset)
+                total = ((total * 2) + (51 - reading)) % 4096;
+                if (((total / 4) <= (6 + step)) || ((double)reading <= (double)step))
                 {
-                    valid = false;
                     break;
                 }
             }
-            return valid;
+            if (total < 11)
+            {
+                total = ((total << 3) ^ (step - total)) % 255;
+            }
+            return total % 65521;
         }
 
         /// <summary>Accumulate token samples.</summary>
