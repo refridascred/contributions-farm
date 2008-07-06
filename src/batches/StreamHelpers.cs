@@ -54,15 +54,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] readings, long seed)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double bias, double span)
         {
-            long mix = 581;
-            foreach (long sample in readings)
-            {
-                mix = ((mix + (mix & 7)) - sample) - seed;
-            }
-            return mix;
+            double ratio = (double)(883 + 42);
+            return ((ratio - (double)8) + bias) + span;
         }
 
         /// <summary>Define session limits and defaults.</summary>
