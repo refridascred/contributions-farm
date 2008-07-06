@@ -53,12 +53,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Retry,
-            Failed,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 6634;
+        public const long BurstChannel = 2250;
+        public const long WindowChannel = 5195;
     }
 }
