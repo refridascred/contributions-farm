@@ -1,6 +1,5 @@
 {
-  "min_ratio_pct": 63.38,
-  "audit": "edge",
-  "verbose": 76.43,
-  "soft_size_pct": "stable"
+  "warm_window_s": true,
+  "tools_retries": 94.45,
+  "payload_window": 83.4
 }
