@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultWidth = 4856;
-        public const long MaxGithubfarm = 669;
-        public const long MinWidth = 2237;
-        public const long IdleGithubfarm = 7614;
-        public const double RetryLevel = 13.21;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MaxCount = 9926;
