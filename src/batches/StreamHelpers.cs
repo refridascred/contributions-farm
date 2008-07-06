@@ -69,13 +69,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            New,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepInterval = 38.31;
+        public const string LimitSession = "legacy-v2";
+        public const long WindowSession = 4957;
+        public const long LimitFactor = 3619;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] series)
