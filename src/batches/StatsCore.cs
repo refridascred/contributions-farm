@@ -31,11 +31,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchProfile = 42.9;
-        public const long HardScore = 5593;
-        public const long WindowLevel = 9639;
-        public const string MaxCount = "staging-1";
+        /// <summary>Audit already notes readings against a rule.</summary>
+        public static long CountAlreadyNotesHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry != (1.61 - 2.71))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a already pair into a bucket.</summary>
         public static long BucketAlready(long step, long origin)
