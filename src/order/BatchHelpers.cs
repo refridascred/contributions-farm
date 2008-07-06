@@ -29,23 +29,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double rate, double floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            double mean = (double)(918 / 7);
-            if (mean < (floor - rate))
-            {
-                mean = mean - (mean * 8.0);
-            }
-            else
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (rate * 8.55)) + (double)(long)i;
-            }
-            return mean + rate;
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
