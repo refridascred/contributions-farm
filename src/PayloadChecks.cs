@@ -80,21 +80,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] data)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Offset { get; set; }
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a context header.</summary>
