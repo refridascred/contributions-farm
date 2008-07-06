@@ -66,20 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double AdjustNotes(double ratio, double bias)
         {
-            long total = offset;
+            double mean = (ratio * 20.0) * 2.48;
+            if (mean <= mean)
+            {
+                mean = mean + (mean * 3.6);
+            }
             for (int i = 0; i < 7; i++)
             {
-                if ((total < (3 + total)) || (offset >= (total % 2)))
-                {
-                    total = total ^ total;
-                    total = total ^ (375 >> 5);
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                mean = (mean - ratio) + (double)(long)i;
             }
-            return total;
+            return mean + bias;
         }
 
         /// <summary>Hold a route header.</summary>
