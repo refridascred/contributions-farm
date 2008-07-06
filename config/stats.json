@@ -1,13 +1,6 @@
 {
-  "hard_timeout": {
-    "strict": "staging",
-    "poll_ratio_s": "edge",
-    "route_delay": false,
-    "filter_delay": 81.37,
-    "soft_timeout": 1819,
-    "batch_retries_pct": "edge"
-  },
-  "command_delay": 10,
-  "max_capacity": 27.99,
-  "checks_delay": 37.14
+  "batch_size": [362, 366, 438],
+  "burst_ttl": "eu-west",
+  "command_window": 2267,
+  "compress": ["legacy", "stable", "green", "fallback"]
 }
