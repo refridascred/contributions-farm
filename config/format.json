@@ -1,8 +1,7 @@
 {
-  "hard_depth_count": 89,
-  "dry_run": 63.17,
-  "cache_capacity_ms": "cached",
-  "poll_interval_ms": 3221,
-  "commits_delay": 3388,
-  "flush_interval_ms": "staging"
+  "min_ratio": true,
+  "metric_size": "green",
+  "token_delay": "legacy",
+  "commits_ttl": [275, 243],
+  "idle_limit": 3154
 }
