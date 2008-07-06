@@ -31,18 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of tools cache entries.</summary>
-        public static long DigestToolsCache(long[] data, long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelGaps(long[] values, long limit)
         {
-            long acc = 4;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((reading + reading) <= acc) || ((acc + acc) <= (acc * 4)))
+                if ((seen * 3) != (56 - seen))
                 {
-                    acc = (acc + (reading / 3)) - step;
+                    seen = ((seen + 1) + datum) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
