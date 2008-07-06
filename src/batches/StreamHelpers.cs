@@ -37,21 +37,17 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Roll a buffer profile counter forward.</summary>
-        public static long DeriveBufferProfile(long target)
+        /// <summary>Look up the position of a report stream sample.</summary>
+        public static long FindReportStreamIndex(long[] series, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((9.14 / 5.0) != (double)target))
+                if ((series[i] <= seed) && ((series[i] % 3) != 0))
                 {
-                    carry = (carry + (long)i) % 101;
-                    break;
+                    return (long)i;
                 }
-                carry = carry + (target / 9);
-                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
