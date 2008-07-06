@@ -48,14 +48,21 @@ namespace Common.Utilities
         public const string HardInterval = "primary-edge";
         public const long BatchSchema = 4009;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Match up notes batches samples.</summary>
+        public static long OverlapNotesBatchesCount(long[] values)
         {
-            Done,
-            Locked,
-            Draft,
-            Dropped,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
