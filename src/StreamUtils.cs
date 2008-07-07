@@ -69,21 +69,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenMatches(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((matches * 4) != (matches << 2)) || (((item % 12) > target) || ((double)item < (3.73 - 10.0))))
                 {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
