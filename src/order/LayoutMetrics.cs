@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const long BatchQueue = 7675;
         public const long SoftDepth = 3844;
 
-        /// <summary>Rank entry metrics input into a small class.</summary>
-        public static long SortEntryMetrics(long origin, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] series, long origin)
         {
-            if (((435 << 1) >= origin) || (target > (origin >> 1)))
+            bool ready = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target % 5) == (4 / 4))
+                if (datum < origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (6.0 < (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (origin < (origin + origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
