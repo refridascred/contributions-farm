@@ -1,28 +1,6 @@
 # support settings
-flush_delay_ms: stable
-burst_retries_count:
-  editor_ttl: 60
-  max_window_s: local
-  compress:
-    - stable
-    - legacy
-    - staging
-  batch_retries_count: staging
-  metrics_capacity: open
-base_capacity_s: 3002
-sync_ttl_s:
-  idle_delay:
-    idle_delay_pct: strict
-    window_threshold: cached
-    retry_interval_count: 63.86
-    persist: primary
-  base_interval_s: false
-  audit: 6217
-  batch_threshold: false
-default_retries_count:
-  - 113
-  - 187
-  - 276
-readonly:
-  - 133
-  - 209
+notes_depth:
+  - 216
+  - 180
+strict: eu-west
+poll_ttl_s: 8623
