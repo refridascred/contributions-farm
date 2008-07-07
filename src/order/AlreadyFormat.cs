@@ -39,14 +39,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Paused,
-            Closed,
-            Retry,
-            Synced,
-            Locked,
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
