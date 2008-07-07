@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many channel support samples are out of range.</summary>
-        public static long CountChannelSupportOutliers(long[] samples, long bound)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterGaps(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((bound + hits) > (bound % 2))
+                if (!((long)samples.Length < count))
                 {
-                    hits = (hits + 2) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = ((count + 2) - datum) - offset;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
