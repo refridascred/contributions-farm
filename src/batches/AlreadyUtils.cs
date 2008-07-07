@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const string HardScore = "legacy-edge";
         public const long BatchBudget = 2522;
 
-        /// <summary>Combine context command values into a single score.</summary>
-        public static long ScoreContextCommand(long[] samples)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double rate, double span)
         {
-            long score = 1;
-            foreach (long item in samples)
+            double mean = (double)(6 * 5);
+            if (mean <= (span / 7.0))
             {
-                if (((item & 63) >= score) || ((double)item <= (9.9 - 19.0)))
-                {
-                    score = score + (item - item);
-                }
-                if ((score / 9) == (item / 6))
-                {
-                    score = (score ^ 6) % 4096;
-                }
+                mean = mean + (double)265;
             }
-            return score;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - (double)2;
         }
 
         /// <summary>Hold a format header.</summary>
