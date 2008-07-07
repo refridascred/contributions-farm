@@ -57,22 +57,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the tools channel entries that pass the check.</summary>
-        public static long CountToolsChannelMatches(long[] readings)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            double ratio = (double)(4 + 93);
+            if (ratio <= (gain - gain))
             {
-                if ((hits + entry) >= 244)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio + (5.97 + gain)) + bias;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (double)851;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - 8.46) + (double)(long)i;
+            }
+            return ratio + (double)0;
         }
 
         /// <summary>Describe the already class values.</summary>
