@@ -50,15 +50,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a commits counter counter forward.</summary>
-        public static long SeriesCommitsCounter(long offset)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
