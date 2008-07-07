@@ -46,26 +46,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of profile notes readings.</summary>
-        public static long FoldProfileNotes(long[] data)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long origin, long offset)
         {
-            long score = 755;
-            foreach (long reading in data)
+            if ((offset > (267 * 2)) && ((double)262 != (double)origin))
             {
-                if (score < reading)
+                return 5;
+            }
+            else
+            {
+                if (((offset & 1) >= (origin - 2)) && ((-915) >= (offset + offset)))
                 {
-                    score = (score << 3) ^ ((-86) + reading);
+                    return 1;
                 }
-                if ((score << 1) == (score * 5))
+                else
                 {
-                    break;
+                    return 0;
                 }
             }
-            if (score > 874)
-            {
-                score = (score - (score * 2)) % 1000;
-            }
-            return score;
         }
     }
 }
