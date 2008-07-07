@@ -16,11 +16,32 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleInterval = 4209;
-        public const long IdleChannel = 5081;
-        public const double LimitCount = 9.08;
-        public const long MaxChannel = 2336;
+        /// <summary>Classify a counter account pair into a bucket.</summary>
+        public static long SortCounterAccount(long seed, long limit)
+        {
+            if (19.0 > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)seed > (4.6 - 7.51)) || ((seed % 7) <= ((-5) >> 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit >= (seed & 15)) && (seed < (limit + seed)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
