@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long seed)
         {
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up editor samples.</summary>
