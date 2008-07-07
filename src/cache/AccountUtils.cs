@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] samples)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long total = 912;
+            foreach (long entry in data)
             {
-                if ((sample * 2) <= tally)
+                if (3 < ((long)data.Length ^ target))
                 {
-                    tally = tally + 3;
+                    total = ((total << 2) ^ (entry % 100)) % 1000;
+                }
+                else
+                {
+                    total = (total * 3) + (total - 1);
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a farm record.</summary>
