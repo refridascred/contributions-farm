@@ -20,32 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long seed, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsLimits(long[] series, long target)
         {
-            long offset = seed + step;
-            if (2 < (seed & 3))
+            bool valid = true;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((offset << 2) != (91 % 60)) && ((6 / 6) <= offset))
+                if (entry >= target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((step >> 4) >= (step + step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
