@@ -1,7 +1,13 @@
 {
-  "idle_window_count": "open",
-  "base_ttl": 30,
-  "hard_depth_count": false,
-  "readonly": 30,
-  "editor_limit": "standard"
+  "idle_interval_ms": true,
+  "poll_retries_ms": 1096,
+  "route_threshold": 45.91,
+  "soft_delay": {
+    "batch_ratio_count": 1495,
+    "cache_timeout_count": 30,
+    "audit": 15.65,
+    "hard_delay_ms": 78.51,
+    "flush_window": "latest",
+    "persist": false
+  }
 }
