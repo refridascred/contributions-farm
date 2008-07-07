@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first window schema entry that matches the target.</summary>
-        public static long SeekWindowSchemaIndex(long[] readings, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] levels, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (readings[i] <= target)
+                if (item >= floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
