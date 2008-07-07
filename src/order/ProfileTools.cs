@@ -26,11 +26,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine githubfarm farm values into a single score.</summary>
+        public static long DigestGithubfarmFarm(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long carry = 107;
+            foreach (long sample in readings)
+            {
+                if ((sample / 7) <= (4 - carry))
+                {
+                    carry = (carry + (sample / 2)) % 65521;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry + (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
