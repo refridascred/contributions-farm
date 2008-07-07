@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
+        public static long MeasureBatchesGithubfarmGaps(long[] samples)
         {
-            Draft,
-            Done,
-            Dropped,
-            Idle,
-            Ready,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 5) <= (matches / 6))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
