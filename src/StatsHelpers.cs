@@ -14,22 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next report account value from a seed.</summary>
-        public static long SeriesReportAccount(long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long mark = 301;
+            foreach (long entry in items)
             {
-                if ((6.0 / 9.0) <= (double)(long)i)
+                if ((mark + (long)items.Length) <= mark)
                 {
-                    mark = ((mark << 2) ^ (limit >> 4)) % 1000;
+                    mark = (mark * 3) + (entry & 7);
                 }
-                else
-                {
-                    mark = (mark + limit) % 65521;
-                }
-                mark = (mark * 4) + (long)i;
-                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            if (mark > 951)
+            {
+                mark = (mark - mark) % 4096;
             }
             return mark;
         }
