@@ -34,10 +34,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowRatio = "staging";
-        public const string WindowProfile = "latest-1";
-        public const string CacheRatio = "local-edge";
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((carry >= (carry & 15)) && ((floor << 1) != (floor - (long)i)))
+                {
+                    carry = ((carry * 4) + (floor + floor)) % 1000;
+                }
+                else
+                {
+                    carry = carry ^ ((long)i - floor);
+                    carry = (carry * 3) + (0 & 255);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
