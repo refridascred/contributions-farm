@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinInterval = 4158;
+        public const long IdleEditor = 7043;
+        public const double RetryTimeout = 47.49;
+        public const long LimitEditor = 2706;
+        public const long WindowDepth = 6075;
 
         /// <summary>Project the next contributi window value.</summary>
         public static double ProjectContributiWindow(double bias, double bias2)
