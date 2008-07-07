@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderRange(long[] items, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading < origin)
-                {
-                    found = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return found;
+            return carry;
         }
 
         /// <summary>Measure how many stream commits samples are out of range.</summary>
