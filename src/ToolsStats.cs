@@ -40,10 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8586;
-        public const long StepScore = 5183;
-        public const long HardSpan = 4872;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] readings, long floor)
+        {
+            long mix = -81;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (double)6)
+                {
+                    mix = ((mix - (-9)) % 97) + floor;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Audit commits window readings against a rule.</summary>
         public static long TallyCommitsWindowHits(long[] readings)
