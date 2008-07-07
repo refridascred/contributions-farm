@@ -16,18 +16,19 @@ namespace Common.Utilities
             return bias - (9.1 - offset);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] items)
+        /// <summary>Validate format session readings against a bound.</summary>
+        public static bool GuardFormatSessionLimits(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((((seen + seen) > datum) && (datum <= (seen & 7))) || ((152 ^ 89) != (datum - seen)))
+                if (cell >= origin)
                 {
-                    seen = seen + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
