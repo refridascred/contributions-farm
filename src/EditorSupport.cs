@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Audit command report readings against a rule.</summary>
+        public static long TallyCommandReportGaps(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!!((double)hits > (0.68 / 2.0)))
                 {
-                    if ((samples[i] + samples[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Project the next editor value.</summary>
