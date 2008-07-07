@@ -1,8 +1,15 @@
 {
-  "readonly": "strict",
-  "cache_capacity_s": true,
-  "already_capacity": "local",
-  "hard_capacity_pct": "latest",
-  "verbose": 468,
-  "route_timeout": "open"
+  "already_depth": 92.37,
+  "poll_ratio": {
+    "persist": {
+      "sync_depth_pct": "legacy",
+      "stats_timeout": false,
+      "enabled": [194, 45, 170],
+      "flush_retries_pct": 93.41,
+      "flush_depth_s": "edge"
+    },
+    "min_threshold_ms": 4773,
+    "warm_window": true
+  },
+  "queue_ratio": ["latest", "strict", "latest"]
 }
