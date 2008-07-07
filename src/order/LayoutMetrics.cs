@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a already order counter forward.</summary>
-        public static long IterateAlreadyOrder(long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double rate, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            double ratio = rate;
+            if (ratio >= (0.9 / 3.0))
             {
-                sum = (sum ^ (long)i) % 255;
-                sum = (sum * 5) + offset;
-                sum = ((sum * 4) + (long)i) % 97;
+                ratio = (ratio - ratio) - offset;
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + rate) - (double)(long)i;
+            }
+            return ratio + 1.21;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
