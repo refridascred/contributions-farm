@@ -19,22 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many order entry samples are out of range.</summary>
-        public static long CountOrderEntryOutliers(long[] levels, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long score = 8;
+            foreach (long cell in levels)
             {
-                if ((hits << 1) >= 58)
+                if ((score >> 1) == (score - cell))
                 {
-                    hits = ((hits + 3) + reading) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (score << 3) ^ step;
                 }
             }
-            return hits;
+            if (score < 71)
+            {
+                score = (score - step) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
