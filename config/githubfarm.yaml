@@ -1,11 +1,37 @@
 # githubfarm settings
-batch_interval_pct:
-  - latest
-  - open
-  - staging
-support_capacity: true
-flush_delay:
-  - 30
-  - 57
-  - 131
-  - 121
+base_depth_pct: true
+soft_capacity: eu-west
+poll_window:
+  base_depth_count:
+    - 266
+    - 193
+    - 500
+    - 86
+  counter_retries:
+    retry_depth_ms: true
+    buffer_window:
+      - blue
+      - edge
+      - staging
+      - edge
+    audit: 46
+    sync_size_count:
+      - 182
+      - 434
+    burst_capacity_ms: 77.04
+  notes_capacity: 87.05
+  warm_delay_s:
+    base_size_ms: 91
+    sync_interval: 51.18
+    readonly: standard
+    verbose:
+      - 258
+      - 58
+      - 20
+    commits_retries: 1120
+enabled: 60
+idle_size_ms:
+  burst_threshold: 65.18
+  burst_window: 0.08
+  poll_size: false
+poll_retries_ms: 4063
