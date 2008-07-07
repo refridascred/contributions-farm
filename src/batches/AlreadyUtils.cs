@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Check that every farm batch entry stays within the limit.</summary>
-        public static bool VerifyFarmBatchLimits(long[] items, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            bool flag = true;
-            foreach (long cell in items)
-            {
-                if (cell >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            New,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
