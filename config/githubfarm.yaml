@@ -1,4 +1,19 @@
 # githubfarm settings
-verbose: 2
-min_delay_count: eu-west
-tools_capacity: 28.02
+record_timeout: blue
+format_ttl: open
+stream_depth:
+  - latest
+  - standard
+  - fallback
+  - fallback
+cluster_interval: 100
+hard_capacity_count:
+  persist: 47.56
+  githubfarm_window:
+    - 286
+    - 36
+    - 455
+  burst_timeout_pct: 100
+  burst_capacity: green
+  route_ttl: eu-west
+schema_retries: true
