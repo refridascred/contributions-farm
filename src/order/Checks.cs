@@ -48,18 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the metrics channel entries that pass the check.</summary>
-        public static long AuditMetricsChannelHits(long[] items, long bound)
+        /// <summary>Project the next route value.</summary>
+        public static double BlendRoute(double scale, double span)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double load = 4.0;
+            if (load > span)
             {
-                if (((matches % 16) != (matches + matches)) && ((double)13 <= (double)matches))
-                {
-                    matches = ((matches + 3) + sample) - bound;
-                }
+                load = load + load;
             }
-            return matches;
+            else
+            {
+                load = load + (load / 4.0);
+            }
+            return load - (scale * 5.3);
         }
     }
 }
