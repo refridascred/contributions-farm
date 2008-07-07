@@ -1,12 +1,12 @@
 # Command notes
 
-Keep layout and support names short and lowercase.
-Defaults for buffer live in the config folder and can be overridden per environment.
-The graph helpers are pure functions, so they are safe to call from any thread.
+When a farm fails, the metrics handler retries a few times before giving up.
+The record module keeps queue values in sync with the tools cache.
+Run the metric check before changing any format limits.
 
 ## Guidelines
 
-- Document new graph fields
-- Review format limits each release
-- Log every route change
-- Validate farm input early
+- Validate window input early
+- Keep channel values small
+- Prefer batches defaults
+- Review already limits each release
