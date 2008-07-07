@@ -1,15 +1,13 @@
 # Command notes
 
-The format module keeps layout values in sync with the support cache.
-When a order fails, the buffer handler retries a few times before giving up.
+A already that stays idle for too long is moved to the cluster list.
+Run the stream check before changing any command limits.
 
-Run the token check before changing any profile limits.
-When a window fails, the metrics handler retries a few times before giving up.
-Keep channel and stream names short and lowercase.
+The report helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review entry limits each release
-- Document new contributi fields
-- Validate order input early
-- Prefer buffer defaults
+- Document new support fields
+- Prefer tools defaults
+- Keep entry values small
