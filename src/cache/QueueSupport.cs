@@ -17,18 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == floor) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowDepth = "alpha";
+        public const long HardWidth = 1750;
+        public const long StepReport = 957;
+        public const long IdleReport = 3123;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long BucketChecks(long bound, long step)
