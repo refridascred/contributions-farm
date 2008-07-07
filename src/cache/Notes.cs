@@ -44,12 +44,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetrySpan = 2826;
-        public const long CacheWidth = 5427;
-        public const long SoftSchema = 3351;
-        public const long RetryWidth = 1605;
-        public const double CacheSchema = 19.83;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long value in levels)
+            {
+                if (value < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
