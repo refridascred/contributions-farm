@@ -47,18 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account schema entries that pass the check.</summary>
-        public static long AuditAccountSchemaOutliers(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheOutliers(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((649 + hits) <= (hits << 1))
+                if ((item << 2) < (22 & 15))
                 {
-                    hits = (hits + 1) - entry;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
