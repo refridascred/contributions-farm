@@ -15,12 +15,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinDepth = 31.18;
-        public const string WindowContributi = "alpha-v2";
-        public const long SoftFactor = 86;
-        public const long BaseContributi = 6072;
-        public const long WindowSize = 5007;
+        /// <summary>Combine context command values into a single score.</summary>
+        public static long ScoreContextCommand(long[] samples)
+        {
+            long score = 1;
+            foreach (long item in samples)
+            {
+                if (((item & 63) >= score) || ((double)item <= (9.9 - 19.0)))
+                {
+                    score = score + (item - item);
+                }
+                if ((score / 9) == (item / 6))
+                {
+                    score = (score ^ 6) % 4096;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
