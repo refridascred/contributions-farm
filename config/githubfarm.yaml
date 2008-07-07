@@ -1,7 +1,4 @@
 # githubfarm settings
-flush_capacity_count:
-  - local
-  - cached
-  - cached
-min_ratio: true
-audit: 32
+verbose: 2
+min_delay_count: eu-west
+tools_capacity: 28.02
