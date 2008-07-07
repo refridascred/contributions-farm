@@ -1,12 +1,7 @@
 {
-  "warm_timeout_pct": {
-    "strict": "edge",
-    "audit": [484, 387, 166, 255],
-    "burst_window_count": "blue"
-  },
-  "verbose": "stable",
-  "sync_delay": 8709,
-  "token_timeout": 682,
-  "strict": "standard",
-  "soft_interval_ms": "eu-west"
+  "soft_timeout": 1024,
+  "order_threshold": false,
+  "default_capacity_pct": "local",
+  "max_window_ms": true,
+  "readonly": 100
 }
