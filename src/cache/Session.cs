@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Queued,
-            New,
-            Active,
-            Locked,
-            Stale,
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
