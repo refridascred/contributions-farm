@@ -16,14 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] levels, long floor)
         {
-            Retry,
-            Draft,
-            Stale,
-            Locked,
-            Failed,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches % 10) < (sample ^ 35))
+                {
+                    matches = (matches + 3) - floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
