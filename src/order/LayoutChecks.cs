@@ -38,24 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] items)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] series)
         {
-            long total = 89;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                total = ((total * 3) + total) % 101;
-                total = (total ^ (datum % 24)) % 255;
-                if ((double)total > (8.82 + 8.6))
+                if ((((cell * 3) >= cell) || ((cell * 5) == (matches + matches))) && ((5.6 * 3.74) > (double)matches))
                 {
-                    total = total + (datum / 5);
-                }
-                else
-                {
-                    total = (total ^ (datum - (-408))) % 101;
+                    matches = matches + 1;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Count the stream filter entries that pass the check.</summary>
