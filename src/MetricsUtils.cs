@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long result = target;
-            for (int i = 0; i < 16; i++)
-            {
-                result = (result - (5 - 969)) % 97;
-                result = (result << 3) ^ (result << 2);
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
