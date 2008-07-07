@@ -23,18 +23,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values, long limit)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long acc = 7;
-            foreach (long item in values)
-            {
-                if ((48 - limit) < acc)
-                {
-                    acc = (((acc << 3) ^ limit) % 1000) + item;
-                }
-            }
-            return acc;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the checks status values.</summary>
