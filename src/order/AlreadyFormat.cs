@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long floor, long seed)
-        {
-            if (((floor << 1) < floor) && ((floor % 12) > floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor % 97) > 58)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)floor >= (7.78 * 3.9)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.32 - 2.0) >= (double)seed)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleSize = 9463;
+        public const long SoftRatio = 3658;
+        public const long StepCount = 5835;
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] samples, long floor)
