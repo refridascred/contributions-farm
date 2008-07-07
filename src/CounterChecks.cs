@@ -70,17 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] data, long seed)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
