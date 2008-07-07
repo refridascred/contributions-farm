@@ -32,10 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 750;
-        public const long DefaultLevel = 5516;
-        public const double LimitSpan = 49.04;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Paused,
+            Failed,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
