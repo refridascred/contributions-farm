@@ -23,13 +23,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            Queued,
-            Dropped,
-            Done,
-            Locked,
+            long carry = target;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((target >> 4) < target)
+                {
+                    carry = (carry - (long)i) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
