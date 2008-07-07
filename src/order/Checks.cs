@@ -20,15 +20,24 @@ namespace Common.Utilities
         public const string BaseWidth = "standard-edge";
         public const string BatchRatio = "alpha";
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long offset, long target)
         {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
+            if ((7.47 * 2.22) < (double)target)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if ((target >> 5) > 56)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
