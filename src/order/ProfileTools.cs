@@ -28,20 +28,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)target >= (1.89 - 20.0))
-                {
-                    long prev = (target / 8) ^ (carry << 3);
-                    carry = (carry - (prev >> 3)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
