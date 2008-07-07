@@ -51,23 +51,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two contributi editor measurements.</summary>
-        public static double ScaleContributiEditor(double gain, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] data, long floor)
         {
-            double bias = 15.0;
-            if (bias < 3.59)
+            long count = 0;
+            foreach (long item in data)
             {
-                bias = (bias - offset) - gain;
+                if ((floor - 2) <= count)
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                bias = bias - (bias + bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = bias - (double)(long)i;
-            }
-            return bias - (12.0 + offset);
+            return count;
         }
 
         /// <summary>Describe the tools mode values.</summary>
