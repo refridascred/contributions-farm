@@ -57,11 +57,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public bool Mode { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinScore = "cached-v2";
+        public const double WindowStats = 4.44;
+        public const double HardSize = 79.79;
+        public const long BurstRatio = 384;
     }
 }
