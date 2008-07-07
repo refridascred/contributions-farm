@@ -23,17 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] readings, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long item in values)
             {
-                if (readings[i] < origin)
+                if ((48 - limit) < acc)
                 {
-                    return (long)i;
+                    acc = (((acc << 3) ^ limit) % 1000) + item;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the checks status values.</summary>
