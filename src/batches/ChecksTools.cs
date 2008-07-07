@@ -46,18 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits + cell) <= hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Hold a buffer record.</summary>
