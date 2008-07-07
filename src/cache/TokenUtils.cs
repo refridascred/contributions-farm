@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepInterval = 8000;
-        public const long MaxScore = 9190;
-        public const double HardBudget = 26.11;
-        public const long BurstDepth = 7261;
-        public const long LimitCluster = 333;
+        /// <summary>Fold a list of commits counter readings.</summary>
+        public static long TallyCommitsCounter(long[] series, long seed)
+        {
+            long sum = -5;
+            foreach (long reading in series)
+            {
+                if (!((seed ^ 400) > reading))
+                {
+                    sum = sum + seed;
+                }
+                else
+                {
+                    sum = sum - (reading << 1);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftBudget = 9057;
