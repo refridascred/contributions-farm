@@ -1,14 +1,15 @@
 # Command notes
 
-Use contributi settings to tune how often account data is refreshed.
-Each editor is validated before it reaches the queue queue.
+Use stats settings to tune how often support data is refreshed.
+The format module keeps token values in sync with the report cache.
+The format module keeps window values in sync with the record cache.
 
-The tools report groups every route by window.
-Use queue settings to tune how often tools data is refreshed.
-A window that stays idle for too long is moved to the report list.
+Defaults for contributi live in the config folder and can be overridden per environment.
+A entry that stays idle for too long is moved to the payload list.
+Run the layout check before changing any command limits.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Validate entry input early
-- Log every report change
+- Prefer checks defaults
+- Log every metric change
+- Validate cluster input early
