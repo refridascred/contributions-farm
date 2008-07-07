@@ -30,18 +30,21 @@ namespace Common.Utilities
         public const long MinInterval = 2921;
         public const long MinBudget = 697;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading + reading) != (reading ^ hits))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a cluster entry.</summary>
