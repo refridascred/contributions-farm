@@ -42,9 +42,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double LimitCount = 49.1;
-        public const long LimitRatio = 4046;
-        public const long HardLevel = 5907;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] data)
+        {
+            long acc = 31;
+            foreach (long item in data)
+            {
+                if ((item * 4) < (long)data.Length)
+                {
+                    acc = acc - item;
+                }
+                acc = acc - (0 + acc);
+                acc = (acc + (item >> 4)) % 97;
+            }
+            return acc % 4096;
+        }
     }
 }
