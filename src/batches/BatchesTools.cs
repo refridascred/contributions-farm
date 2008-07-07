@@ -31,13 +31,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] items, long step)
         {
-            Paused,
-            Locked,
-            Synced,
-            Done,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((count > (count & 127)) && ((21 & 15) > step)) && (((6.09 * 19.0) <= (double)datum) || ((step + step) < (count & 255))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
