@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long SortFarm(long limit, long limit2)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long edge = limit + limit2;
-            if ((limit2 & 7) > (51 ^ limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 1) < (993 - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit2 < (2 + limit)) || ((double)edge > (double)limit))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((edge * 3) == (limit2 << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
