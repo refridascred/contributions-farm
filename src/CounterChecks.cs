@@ -47,17 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] data, long target)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((922 >> 2) >= (bound - step))
             {
-                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((567 ^ step) > (bound ^ bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (step >= (step + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
