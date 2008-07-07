@@ -70,18 +70,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] data)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((hits >> 1) < ((-24) << 2)))
+                if (items[i] >= target)
                 {
-                    hits = (hits + 1) ^ value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
