@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseEntry = "standard";
+        public const long CacheEntry = 1331;
+        public const long MinWidth = 8290;
+        public const long BurstEntry = 7181;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
