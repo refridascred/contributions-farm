@@ -28,15 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ProjectFarm(double rate, double span)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] series)
         {
-            double rate2 = 15.0;
-            if (rate2 < rate2)
+            long mix = 5;
+            foreach (long cell in series)
             {
-                rate2 = ((rate2 - rate2) + rate) + span;
+                mix = (mix ^ (mix - cell)) % 255;
+                if ((double)cell < (double)86)
+                {
+                    mix = (mix + (cell + 7)) % 255;
+                }
             }
-            return rate2 - rate2;
+            return mix;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
