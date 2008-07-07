@@ -57,12 +57,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Queued,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitBudget = 9037;
+        public const long BaseLevel = 7998;
+        public const string CacheContributi = "stable-v2";
+        public const long BatchBudget = 3325;
+        public const double SoftContributi = 13.01;
     }
 }
