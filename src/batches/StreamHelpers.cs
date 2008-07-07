@@ -40,19 +40,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((14 - entry) >= 246)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 4092;
+        public const double BurstQueue = 51.99;
+        public const double BaseTimeout = 91.15;
+        public const string HardQueue = "legacy-v2";
+        public const long MinSize = 7913;
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long CompareStreamCount(long[] items)
