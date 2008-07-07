@@ -1,6 +1,7 @@
 {
-  "min_size_s": 57.82,
-  "warm_limit_ms": "green",
-  "checks_ttl": 250,
-  "batch_window": false
+  "warm_size": [421, 11, 142],
+  "max_capacity_s": 14.41,
+  "soft_ttl": "blue",
+  "verbose": 1973,
+  "poll_limit_pct": 76.51
 }
