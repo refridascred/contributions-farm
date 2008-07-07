@@ -10,24 +10,11 @@ namespace Common.Utilities
         public const double StepAlready = 69.95;
         public const long MinAlready = 2641;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] data)
-        {
-            long anchor = 5;
-            foreach (long value in data)
-            {
-                if ((9.68 / 4.0) <= (double)value)
-                {
-                    anchor = (anchor ^ anchor) % 97;
-                }
-                anchor = (anchor - (anchor - anchor)) % 1000;
-                if ((anchor * 4) > (anchor + 868))
-                {
-                    anchor = ((anchor * 2) + (anchor & 7)) % 101;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardProfile = "primary";
+        public const string HardRatio = "staging-v2";
+        public const double MaxProfile = 30.94;
+        public const string MaxDepth = "standard";
 
         /// <summary>Validate buffer contributi readings against a bound.</summary>
         public static bool CheckBufferContributiBounds(long[] levels, long offset)
