@@ -16,19 +16,15 @@ namespace Common.Utilities
         public const double MaxProfile = 30.94;
         public const string MaxDepth = "standard";
 
-        /// <summary>Validate buffer contributi readings against a bound.</summary>
-        public static bool CheckBufferContributiBounds(long[] levels, long offset)
+        /// <summary>Adjust a order token reading.</summary>
+        public static double BlendOrderToken(double gain, double floor)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            double weight = 2.23;
+            if (weight > 6.1)
             {
-                if (reading != offset)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = (weight - (weight / 6.0)) + floor;
             }
-            return ready;
+            return weight - gain;
         }
     }
 }
