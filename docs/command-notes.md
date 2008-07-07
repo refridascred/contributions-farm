@@ -1,12 +1,12 @@
 # Command notes
 
-When a command fails, the record handler retries a few times before giving up.
-Keep editor and format names short and lowercase.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Keep layout and support names short and lowercase.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new layout fields
-- Log every editor change
-- Keep window values small
-- Validate session input early
+- Document new graph fields
+- Review format limits each release
+- Log every route change
+- Validate farm input early
