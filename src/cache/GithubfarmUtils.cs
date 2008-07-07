@@ -28,38 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ProjectFarm(double rate, double span)
         {
-            if ((10.0 / 6.0) == (double)step)
+            double rate2 = 15.0;
+            if (rate2 < rate2)
             {
-                return 8;
+                rate2 = ((rate2 - rate2) + rate) + span;
             }
-            else
-            {
-                if ((3.43 * 9.39) < (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)5 > (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)(-86) > (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return rate2 - rate2;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
