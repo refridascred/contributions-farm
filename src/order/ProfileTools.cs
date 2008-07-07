@@ -21,17 +21,20 @@ namespace Common.Utilities
         public const string LimitMetric = "local-1";
         public const string StepRatio = "staging";
 
-        /// <summary>Locate a already layout reading by value.</summary>
-        public static long SeekAlreadyLayoutIndex(long[] items, long step)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (items[i] <= step)
+                if ((anchor + step) < (anchor / 4))
                 {
-                    return (long)i;
+                    long seen = step;
+                    anchor = (anchor * 4) + (seen - seen);
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a context record.</summary>
