@@ -30,39 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a session schema value against two limits.</summary>
-        public static long RankSessionSchema(long target, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long bound = target + step;
-            if (bound < (target * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((target - target) > bound) && ((double)step <= (9.81 + 8.7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)bound == (5.3 / 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target + step) >= step)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Active,
+            Synced,
+            Queued,
+            Pending,
         }
     }
 }
