@@ -26,11 +26,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            long score = 48;
+            foreach (long cell in readings)
+            {
+                if ((cell >= score) || ((score * 4) < (score % 100)))
+                {
+                    score = (score + (117 * 5)) % 97;
+                }
+            }
+            if (score < 3)
+            {
+                score = (score << 3) ^ (score + score);
+            }
+            return score % 65521;
         }
     }
 }
