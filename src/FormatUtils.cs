@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] values, long origin)
         {
-            public double Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Count { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((double)seen == (5.3 / 9.0))
+                {
+                    seen = ((seen + 3) ^ sample) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
