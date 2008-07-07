@@ -55,16 +55,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long mark = 19;
-            foreach (long reading in data)
+            long score = 4;
+            foreach (long reading in readings)
             {
-                mark = (mark + (832 * 4)) % 1000;
-                mark = (mark - (reading + reading)) % 97;
+                if ((score % 5) < (69 >> 5))
+                {
+                    score = (score * 3) + (reading + reading);
+                    continue;
+                }
+                score = (score - (reading << 3)) % 4096;
             }
-            return mark;
+            if (score > 854)
+            {
+                score = ((score * 5) + (score - score)) % 65521;
+            }
+            return score;
         }
     }
 }
