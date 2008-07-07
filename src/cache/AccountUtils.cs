@@ -13,24 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long floor, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values, long target)
         {
-            if ((step + 760) >= step)
+            long carry = 6;
+            foreach (long sample in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step ^ floor) <= (floor - floor))
+                for (int i = 0; i < 8; i++)
                 {
-                    return 7;
+                    carry = ((carry + (target >> 4)) + (long)i) + sample;
                 }
-                else
-                {
-                    return 3;
-                }
+                carry = carry + carry;
             }
+            return carry % 1000;
         }
 
         /// <summary>Rank order input into a small class.</summary>
