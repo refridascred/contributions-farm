@@ -41,19 +41,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricBounds(long[] values, long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long AuditAccountGaps(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (reading >= seed)
+                if (!(0.72 < (double)sample))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) + step;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Find the first metric queue entry that matches the target.</summary>
