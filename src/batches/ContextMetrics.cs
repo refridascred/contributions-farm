@@ -16,18 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] levels, long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((matches % 10) < (sample ^ 35))
+                if (reading <= origin)
                 {
-                    matches = (matches + 3) - floor;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of command entries.</summary>
