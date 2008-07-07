@@ -44,15 +44,11 @@ namespace Common.Utilities
         public const long BatchChecks = 663;
         public const string CacheChecks = "standard-edge";
 
-        /// <summary>Blend two cluster farm measurements.</summary>
-        public static double BlendClusterFarm(double scale, double floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double drift = (double)(125 * 5);
-            if (drift >= 11.0)
-            {
-                drift = (drift - 3.0) - scale;
-            }
-            return drift + floor;
+            public long Region { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
