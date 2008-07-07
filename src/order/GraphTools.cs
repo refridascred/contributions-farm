@@ -32,12 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] samples, long target)
         {
-            Ready,
-            Queued,
-            Synced,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
