@@ -1,8 +1,6 @@
 # githubfarm settings
-batch_capacity: local
-cache_delay_count:
-  - 252
-  - 309
-  - 469
-  - 169
-counter_interval: 160
+warm_ttl_s: latest
+max_ttl: 81.03
+compress: true
+warm_ttl: false
+notes_ttl: 7922
