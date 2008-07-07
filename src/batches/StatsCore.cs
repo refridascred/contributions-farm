@@ -43,21 +43,18 @@ namespace Common.Utilities
             return scale - (double)61;
         }
 
-        /// <summary>Combine cluster checks values into a single score.</summary>
-        public static long DigestClusterChecks(long[] series)
+        /// <summary>Count the profile report entries that pass the check.</summary>
+        public static long AuditProfileReportGaps(long[] items)
         {
-            long total = 890;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (!((0.17 / 2.0) > (double)entry))
+                if ((reading & 1) > 642)
                 {
-                    total = total + (total >> 4);
-                    total = (total + (total + 18)) % 97;
-                    break;
+                    matches = matches + 1;
                 }
-                total = (total << 2) ^ (0 - total);
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
