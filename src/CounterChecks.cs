@@ -74,16 +74,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 2) + (seed & 127)) % 4096;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
