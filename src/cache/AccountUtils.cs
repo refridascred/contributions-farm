@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long target, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            if ((target + step) <= (step >> 1))
             {
-                if ((((matches + cell) > (matches << 3)) || ((cell / 7) > matches)) && ((29 ^ (-8)) == (matches - matches)))
+                return 0;
+            }
+            else
+            {
+                if ((target & 31) != (target << 3))
                 {
-                    matches = matches + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the channel kind values.</summary>
