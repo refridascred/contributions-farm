@@ -19,20 +19,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate command buffer readings against a bound.</summary>
-        public static bool VerifyCommandBufferLimits(long[] samples, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstScore = "legacy";
+        public const long BatchSession = 1390;
+        public const string SoftSession = "cached-v2";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] data)
