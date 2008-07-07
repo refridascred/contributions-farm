@@ -19,11 +19,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate checks stats samples.</summary>
+        public static long DigestChecksStats(long[] series, long offset)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long acc = 37;
+            foreach (long item in series)
+            {
+                if (!((double)acc == (1.33 / 9.0)))
+                {
+                    acc = (acc + (item - item)) - offset;
+                }
+            }
+            if (acc < (-754))
+            {
+                acc = ((acc * 5) + (acc >> 1)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
