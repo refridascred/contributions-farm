@@ -1,5 +1,13 @@
 {
-  "dry_run": 3551,
-  "enabled": ["edge", "standard"],
-  "idle_size_s": 100
+  "max_timeout": "legacy",
+  "channel_delay": 250,
+  "burst_limit_count": {
+    "retry_delay": ["standard", "local", "standard"],
+    "warm_capacity_s": [460, 76],
+    "retry_ttl": 42,
+    "base_interval_s": "latest"
+  },
+  "burst_timeout_count": 23,
+  "soft_ttl_pct": [167, 105, 376, 166],
+  "burst_delay_ms": 715
 }
