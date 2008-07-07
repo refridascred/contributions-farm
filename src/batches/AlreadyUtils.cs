@@ -37,13 +37,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            Synced,
+            Pending,
+            New,
         }
 
         /// <summary>Compare every pair of route readings.</summary>
