@@ -1,8 +1,9 @@
-id,state,label,active,count
-1,edge,118,790,16.11
-2,580,strict,standard,907
-3,local,705,165,780
-4,eu-west,legacy,487,blue
-5,728,legacy,eu-west,51.97
-6,601,80,strict,legacy
-7,949,69.0,467,5.8
+id,weight,region,score
+1,419,76.23,6
+2,59.56,534,664
+3,17.41,167,eu-west
+4,local,50.24,2.47
+5,fallback,38.45,942
+6,967,90.43,60.23
+7,182,524,27.22
+8,43,67.69,edge
