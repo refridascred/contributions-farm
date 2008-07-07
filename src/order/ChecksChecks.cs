@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ratio + (13.0 - offset);
         }
 
-        /// <summary>Accumulate counter commits samples.</summary>
-        public static long FoldCounterCommits(long[] readings)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCount(long[] data)
         {
-            long score = 5;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 9) >= score)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score + 7) % 255;
+                    if ((data[i] - data[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
