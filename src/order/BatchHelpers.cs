@@ -31,19 +31,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] data, long seed)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Queued,
+            Done,
+            Draft,
         }
     }
 }
