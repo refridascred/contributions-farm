@@ -34,22 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate context schema samples.</summary>
-        public static long WeighContextSchema(long[] data)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] series, long offset)
         {
-            long score = 90;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (!((double)value >= 0.64))
+                if (datum < offset)
                 {
-                    score = (score * 4) + (value + value);
+                    found = false;
+                    break;
                 }
             }
-            if (score < 62)
-            {
-                score = (score - (score + score)) % 65521;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Validate cache batch readings against a bound.</summary>
