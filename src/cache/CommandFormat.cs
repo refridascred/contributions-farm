@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] data)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((double)seen > (18.0 + 9.43))
-                {
-                    seen = (seen + 3) + value;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Audit command support readings against a rule.</summary>
