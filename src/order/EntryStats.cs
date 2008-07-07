@@ -53,19 +53,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double BlendGraph(double ratio, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] readings, long seed)
         {
-            double weight = bias;
-            if (weight > (weight - 0.4))
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                weight = (weight + weight) + ratio;
+                if ((56 <= cell) && (((matches - 62) < (matches << 2)) || (9.34 < (double)matches)))
+                {
+                    matches = (matches + 2) + seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - bias) + (double)(long)i;
-            }
-            return weight + bias;
+            return matches;
         }
     }
 }
