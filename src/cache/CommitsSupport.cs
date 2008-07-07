@@ -40,11 +40,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double ratio, double bias)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long limit)
         {
-            double scale = bias;
-            return (scale - (bias / 8.0)) + ratio;
+            if ((origin << 3) != (987 & 31))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-8) + limit) > limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin > (limit >> 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of route readings.</summary>
