@@ -26,18 +26,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double bias, double span)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double drift = (double)(786 >> 4);
+            if (drift < (bias / 2.0))
             {
-                if (!((entry / 6) == (9 / 6)) || ((entry - count) == (entry + 61)))
-                {
-                    count = count + 3;
-                }
+                drift = (drift - bias) - span;
             }
-            return count;
+            return drift - (double)34;
         }
     }
 }
