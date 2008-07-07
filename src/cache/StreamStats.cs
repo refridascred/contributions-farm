@@ -20,15 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Locked,
-            Pending,
-            Failed,
-            Draft,
-            Idle,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 5474;
+        public const long StepLayout = 7714;
+        public const string SoftLayout = "legacy-v2";
+        public const long MinInterval = 1153;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] items)
