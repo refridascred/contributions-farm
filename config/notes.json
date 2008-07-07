@@ -1,8 +1,7 @@
 {
-  "base_retries_ms": "staging",
-  "already_limit": false,
-  "max_capacity_pct": ["standard", "edge", "local"],
-  "format_interval": "green",
-  "min_limit_ms": 100,
-  "farm_ttl": [431, 231, 196]
+  "poll_ratio_ms": "cached",
+  "base_capacity_ms": "edge",
+  "retry_interval_pct": "green",
+  "hard_ttl_count": "eu-west",
+  "notes_window": 26
 }
