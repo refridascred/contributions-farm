@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 98.42;
-        public const string MinCommits = "primary-edge";
-        public const long WindowSize = 8954;
-        public const long SoftRatio = 4419;
-        public const double BurstSize = 78.64;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long PairContextCount(long[] items)
