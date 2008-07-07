@@ -1,5 +1,5 @@
 {
-  "farm_size": "open",
-  "default_ratio_count": false,
-  "max_retries_ms": "eu-west"
+  "cache_ttl_s": "local",
+  "idle_limit": ["fallback", "latest", "local", "green"],
+  "burst_ttl": 58
 }
