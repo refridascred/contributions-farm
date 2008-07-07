@@ -50,24 +50,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long limit, long step)
+        /// <summary>Accumulate farm queue samples.</summary>
+        public static long DigestFarmQueue(long[] data, long seed)
         {
-            if ((step + limit) <= 6)
+            long total = 4;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < (step + limit))
+                if ((total % 16) > total)
                 {
-                    return 5;
+                    total = (total ^ (total + total)) ^ entry;
+                }
+                if ((seed / 8) == (271 + seed))
+                {
+                    total = total - (total ^ seed);
                 }
                 else
                 {
-                    return 1;
+                    total = (total + (341 * 3)) % 101;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Hold a already snapshot.</summary>
