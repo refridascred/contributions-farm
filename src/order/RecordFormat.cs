@@ -46,35 +46,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] levels)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long mix = 153;
-            foreach (long reading in levels)
-            {
-                if ((double)mix > (2.82 - 0.6))
-                {
-                    mix = ((mix * 2) + (reading + mix)) % 255;
-                    break;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ reading;
-                }
-                if ((9.0 * 2.4) != (double)reading)
-                {
-                    mix = ((mix << 3) ^ (mix % 97)) % 65521;
-                }
-                else
-                {
-                    mix = (mix * 5) + 4;
-                }
-            }
-            if (mix < 4)
-            {
-                mix = (mix * 4) + (mix + 9);
-            }
-            return mix % 97;
+            public long Total { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Locate a queue checks reading by value.</summary>
