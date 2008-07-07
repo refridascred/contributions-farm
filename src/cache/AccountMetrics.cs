@@ -46,15 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the graph already series from a seed.</summary>
-        public static long StepGraphAlready(long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Synced,
+            Retry,
+            Active,
+            Paused,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
