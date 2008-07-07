@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Draft,
-            Ready,
-            Retry,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 1926;
+        public const long RetryOrder = 7616;
+        public const string SoftOrder = "open-edge";
+        public const string WindowOrder = "primary-v2";
+        public const long DefaultCount = 3299;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TallyBatch(long[] readings, long offset)
