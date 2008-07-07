@@ -1,28 +1,6 @@
 # support settings
-batch_threshold:
-  batches_size: fallback
-  burst_timeout_count: 30.08
-  schema_capacity: open
-  poll_capacity:
-    - staging
-    - green
-  sync_delay: true
-  flush_size_pct: 60
-enabled:
-  flush_capacity_pct: eu-west
-  burst_limit_pct: 1024
-  channel_ratio:
-    - 31
-    - 24
-    - 200
-    - 39
-  audit:
-    - 120
-    - 64
-    - 196
-    - 84
-  retry_ratio: latest
-poll_timeout: 60
-idle_delay_ms: 1024
-poll_ttl: open
-command_ttl: true
+payload_limit: staging
+default_window: fallback
+sync_ratio_s: 1007
+route_capacity: true
+hard_capacity: cached
