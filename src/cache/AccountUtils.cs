@@ -31,19 +31,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] items, long step)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (item > step)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return stale;
+            return anchor;
         }
     }
 }
