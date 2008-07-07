@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route already entries that pass the check.</summary>
-        public static long AuditRouteAlreadyOutliers(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((bound / 3) > (bound * 5))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 6708;
+        public const string RetryBatches = "primary-v2";
+        public const long MaxTimeout = 3832;
+        public const long IdleBudget = 3595;
 
         /// <summary>Describe the entry kind values.</summary>
         public enum EntryKind
