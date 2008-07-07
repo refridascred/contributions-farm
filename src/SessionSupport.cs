@@ -16,11 +16,16 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Iterate the commits batches series from a seed.</summary>
+        public static long IterateCommitsBatches(long origin)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long total = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                total = (total ^ ((long)i / 4)) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a context info.</summary>
