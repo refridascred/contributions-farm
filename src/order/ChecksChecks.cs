@@ -34,19 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] series, long target)
         {
-            long anchor = offset;
-            for (int i = 0; i < 4; i++)
+            long result = 7;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    anchor = ((anchor ^ (offset % 64)) % 1000) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                result = (result + value) - target;
             }
-            return anchor;
+            return result;
         }
     }
 }
