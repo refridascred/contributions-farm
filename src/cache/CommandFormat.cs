@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit command support readings against a rule.</summary>
