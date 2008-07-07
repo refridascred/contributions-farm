@@ -16,18 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile metrics readings against a rule.</summary>
-        public static long TallyProfileMetricsMatches(long[] items, long target)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)sample == (double)matches)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 2) - target;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a tools record reading by value.</summary>
