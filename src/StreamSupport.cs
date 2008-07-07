@@ -37,18 +37,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit payload token readings against a rule.</summary>
-        public static long TallyPayloadTokenGaps(long[] samples, long step)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long limit, long seed)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long slot = limit ^ seed;
+            if ((slot + 215) <= limit)
             {
-                if (((sample >> 3) > sample) && ((tally - sample) < (67 - tally)))
+                return 1;
+            }
+            else
+            {
+                if ((slot - limit) < (slot - 84))
                 {
-                    tally = (tally + 3) - step;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed < (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - seed) > (seed / 7))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
