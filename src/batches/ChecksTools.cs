@@ -22,16 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Audit checks token readings against a rule.</summary>
+        public static long TallyChecksTokenGaps(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                result = result ^ result;
-                result = ((result * 4) + (long)i) % 4093;
+                if ((double)matches == (0.84 - 0.7))
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Fold a list of payload window readings.</summary>
