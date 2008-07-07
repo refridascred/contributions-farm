@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long floor)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = ((acc * 5) + (floor + 9)) % 1000;
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
