@@ -33,12 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double scale, double bias)
-        {
-            double mean = (double)(8 * 3);
-            return ((mean + 12.0) + scale) + bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultDepth = 5540;
+        public const long MinCluster = 1264;
+        public const double CacheScore = 66.47;
+        public const long DefaultInterval = 9092;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterGaps(long[] series, long offset)
