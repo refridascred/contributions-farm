@@ -34,17 +34,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long limit)
+        /// <summary>Iterate the buffer batches series from a seed.</summary>
+        public static long SeriesBufferBatches(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((series[i] <= limit) && ((series[i] % 3) != 0))
+                result = (result ^ (46 - limit)) % 255;
+                if ((((long)i + (long)i) < (55 >> 3)) && ((6.0 - 9.5) < (double)limit))
                 {
-                    return (long)i;
+                    result = result + (limit >> 4);
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
