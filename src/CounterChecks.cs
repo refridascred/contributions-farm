@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowRatio = 1091;
+        public const double StepLayout = 0.85;
+        public const long MinLayout = 4786;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheBounds(long[] levels, long floor)
