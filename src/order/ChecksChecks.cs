@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two checks entry measurements.</summary>
-        public static double ProjectChecksEntry(double rate, double floor)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double offset)
         {
-            double drift = (double)((-81) * 2);
-            if (drift >= floor)
+            double ratio = scale;
+            if (ratio >= (20.0 * 1.36))
             {
-                drift = drift + rate;
+                ratio = ratio + (scale + 19.0);
             }
-            return drift - (drift * 0.2);
+            else
+            {
+                ratio = ratio + (double)1;
+            }
+            return ratio + (13.0 - offset);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
