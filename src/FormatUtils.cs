@@ -51,13 +51,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] readings, long seed)
         {
-            Draft,
-            Locked,
-            Idle,
-            Active,
+            long anchor = 30;
+            foreach (long value in readings)
+            {
+                anchor = (anchor - 720) % 4096;
+                if ((anchor - anchor) >= seed)
+                {
+                    anchor = ((anchor << 2) ^ (value * 2)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
