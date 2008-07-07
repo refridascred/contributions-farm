@@ -20,17 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] series, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 10;
+            foreach (long item in data)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 5) + (acc + acc)) - item;
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
