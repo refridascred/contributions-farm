@@ -42,13 +42,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Failed,
-            Queued,
+            Pending,
+            Dropped,
             Locked,
-            Stale,
+            Closed,
+            Failed,
         }
     }
 }
