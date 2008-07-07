@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of stats farm readings.</summary>
-        public static long MatchStatsFarmCount(long[] values)
+        /// <summary>Find the first queue stats entry that matches the target.</summary>
+        public static long LocateQueueStatsIndex(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] < offset)
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a already options.</summary>
