@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseScore = 70.74;
-        public const string CacheCount = "strict-v2";
-        public const long BurstEntry = 5601;
-        public const long MaxCount = 5889;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardDepth = 5153;
+        public const double SoftFactor = 47.71;
+        public const long MaxInterval = 3510;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
