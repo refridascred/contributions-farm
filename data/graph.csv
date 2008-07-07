@@ -1,7 +1,8 @@
-id,ratio
-1,latest
-2,816
-3,73
-4,green
-5,76.78
-6,strict
+id,state,weight,level
+1,673,56.31,standard
+2,498,48.93,719
+3,892,50.46,latest
+4,32.72,782,809
+5,legacy,cached,blue
+6,43,blue,447
+7,62,11.55,568
