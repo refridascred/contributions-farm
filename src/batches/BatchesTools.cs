@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long step)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 7722;
+        public const double BaseMetrics = 26.6;
+        public const long WindowMetrics = 8539;
+        public const string MinCount = "primary-1";
+        public const double CacheRatio = 77.99;
 
         /// <summary>Compare every pair of commits cache readings.</summary>
         public static long OverlapCommitsCacheCount(long[] data)
