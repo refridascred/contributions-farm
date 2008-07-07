@@ -33,14 +33,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
-        {
-            public long Ratio { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string LimitScore = "primary";
+        public const string SoftCount = "latest-edge";
+        public const string StepCount = "staging-edge";
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long AuditChannelHits(long[] items, long floor)
