@@ -55,18 +55,19 @@ namespace Common.Utilities
             return ratio - (double)90;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsGaps(long[] values, long bound)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (bound < ((long)values.Length >> 1))
+                if (cell > limit)
                 {
-                    tally = (tally + 2) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
