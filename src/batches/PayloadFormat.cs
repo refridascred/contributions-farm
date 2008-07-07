@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BaseSupport = "stable-edge";
+        public const long RetryTimeout = 9606;
+        public const long DefaultSupport = 3837;
+        public const long BurstWidth = 6484;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
