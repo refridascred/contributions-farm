@@ -32,22 +32,18 @@ namespace Common.Utilities
         public const long WindowInterval = 3667;
         public const double BatchChecks = 58.3;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] samples)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadOutliers(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (((datum - datum) >= (1 / 4)) && ((31 >> 1) > count))
+                if ((matches * 3) > matches)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = ((matches + 1) + datum) - bound;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
