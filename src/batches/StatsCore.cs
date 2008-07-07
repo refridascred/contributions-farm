@@ -43,18 +43,18 @@ namespace Common.Utilities
             return scale - (double)61;
         }
 
-        /// <summary>Count the profile report entries that pass the check.</summary>
-        public static long AuditProfileReportGaps(long[] items)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items, long offset)
         {
-            long matches = 0;
+            long count = 0;
             foreach (long reading in items)
             {
-                if ((reading & 1) > 642)
+                if (!(((offset + 59) != (count << 1)) || ((49 & 255) < reading)))
                 {
-                    matches = matches + 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
