@@ -1,21 +1,24 @@
 # entry settings
-soft_ratio_count:
-  compress: 15.64
-  audit: true
-  sync_window_ms: 5
-  burst_interval_ms:
-    - 462
-    - 281
-    - 107
-    - 1
-  soft_delay_count:
-    - 94
-    - 123
-    - 31
-dry_run:
-  - stable
-  - fallback
-  - blue
-  - stable
-enabled: false
-max_depth_s: 8429
+flush_limit_s: fallback
+record_limit:
+  format_ratio: 4357
+  burst_limit_count: 8458
+  stats_threshold: 37.61
+  persist: 1024
+  graph_ratio: 53
+  sync_ratio_ms: true
+sync_threshold:
+  - 482
+  - 249
+  - 269
+githubfarm_ratio: open
+record_ratio:
+  entry_capacity: 100
+  persist:
+    - 259
+    - 423
+  support_depth: 100
+  strict:
+    idle_ratio_pct: 5661
+    stream_depth: 1024
+    cache_timeout_pct: true
