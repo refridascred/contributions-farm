@@ -48,15 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order checks readings against a rule.</summary>
-        public static long TallyOrderChecksGaps(long[] items)
+        /// <summary>Match up layout session samples.</summary>
+        public static long CompareLayoutSessionCount(long[] values)
         {
             long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits * 2) >= (sample << 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] - values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
