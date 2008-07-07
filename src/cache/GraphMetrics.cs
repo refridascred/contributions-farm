@@ -46,14 +46,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Look up the position of a batches counter sample.</summary>
+        public static long LocateBatchesCounterIndex(long[] levels, long bound)
         {
-            Closed,
-            Done,
-            Pending,
-            Stale,
-            Active,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank checks input into a small class.</summary>
