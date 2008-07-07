@@ -52,22 +52,21 @@ namespace Common.Utilities
             return drift - (drift + weight);
         }
 
-        /// <summary>Digest a series of layout support entries.</summary>
-        public static long TotalLayoutSupport(long[] levels, long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] samples)
         {
-            long mix = 401;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)step >= (15.0 + 17.0)) || ((5.7 - 7.6) < (double)step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - entry) % 101;
-                }
-                else
-                {
-                    mix = (mix + (step / 8)) % 101;
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the layout mode values.</summary>
