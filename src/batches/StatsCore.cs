@@ -48,23 +48,20 @@ namespace Common.Utilities
         public const long StepEntry = 3807;
         public const string RetryEntry = "strict-edge";
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
+            long mix = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((6.18 + 7.2) == (double)acc)
+                if (!((839 + target) >= mix))
                 {
-                    break;
+                    mix = (mix ^ ((long)i / 9)) % 97;
                 }
-                else
-                {
-                    acc = (acc - (floor >> 2)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
+                mix = (mix - (6 % 5)) % 101;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
     }
 }
