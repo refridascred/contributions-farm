@@ -1,32 +1,7 @@
 # entry settings
-poll_ratio: 10.75
-min_interval: strict
-soft_ratio_count: edge
-batch_ratio_pct: false
-order_capacity:
-  dry_run:
-    record_window:
-      - 451
-      - 321
-    sync_ttl: stable
-    max_timeout:
-      - edge
-      - local
-    batch_size_count: 69
-    compress: true
-  hard_ratio: 60
-  verbose:
-    warm_delay_pct:
-      - 274
-      - 36
-      - 246
-    already_threshold: false
-    hard_depth_count: 54
-    default_limit:
-      - latest
-      - strict
-    order_ttl: 11
-    retry_interval:
-      - 306
-      - 31
-  burst_timeout_ms: staging
+warm_size: blue
+default_capacity: fallback
+batch_limit: 67.07
+retry_limit_ms: blue
+entry_ratio: 44.68
+base_capacity_s: 1760
