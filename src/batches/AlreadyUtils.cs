@@ -43,14 +43,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long floor)
         {
-            Pending,
-            Stale,
-            Closed,
-            Done,
-            Idle,
+            long state = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                state = state - (long)i;
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the buffer window entries that pass the check.</summary>
