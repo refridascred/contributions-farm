@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long state = 4;
+            foreach (long datum in levels)
             {
-                if ((double)datum <= (9.5 + 9.6))
-                {
-                    seen = seen + 2;
-                }
+                state = ((state * 3) + datum) % 65521;
             }
-            return seen;
+            if (state < 349)
+            {
+                state = (state << 2) ^ (bound << 1);
+            }
+            return state % 4096;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
