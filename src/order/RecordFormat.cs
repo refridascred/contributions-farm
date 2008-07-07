@@ -49,12 +49,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            double ratio = span;
+            if (ratio < gain)
+            {
+                ratio = ratio + (span + gain);
+            }
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio - ratio;
         }
     }
 }
