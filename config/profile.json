@@ -1,7 +1,17 @@
 {
-  "poll_size_ms": 41.28,
-  "retry_size": false,
-  "verbose": false,
-  "window_capacity": 31,
-  "sync_limit_s": 30
+  "warm_capacity_count": {
+    "compress": {
+      "graph_window": "open",
+      "batch_interval": 14.36,
+      "strict": 100,
+      "enabled": "staging",
+      "format_depth": [24, 440],
+      "contributi_ttl": "standard"
+    },
+    "cluster_delay": 56,
+    "context_size": 30,
+    "support_threshold": "strict"
+  },
+  "token_timeout": "staging",
+  "queue_limit": 49.18
 }
