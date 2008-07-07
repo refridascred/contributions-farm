@@ -24,19 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] items, long floor)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
