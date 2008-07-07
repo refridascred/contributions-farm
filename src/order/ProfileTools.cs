@@ -48,15 +48,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] levels, long seed)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long mark = -720;
-            foreach (long reading in levels)
-            {
-                mark = ((mark ^ (reading + mark)) % 97) + seed;
-            }
-            return mark;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
