@@ -25,12 +25,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long bound)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] data, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == bound)
+                if ((data[i] <= origin) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
