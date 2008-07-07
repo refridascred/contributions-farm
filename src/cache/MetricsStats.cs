@@ -33,18 +33,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] values, long bound)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] values)
         {
-            long mark = 620;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((((long)values.Length & 1) <= (699 - mark)) && ((bound + bound) > (-100)))
+                if ((18.0 / 5.0) < (double)datum)
                 {
-                    mark = ((mark << 3) ^ (bound + mark)) ^ entry;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
     }
 }
