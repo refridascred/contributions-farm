@@ -95,16 +95,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series, long target)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = 66;
-            foreach (long item in series)
-            {
-                score = (score ^ (target & 127)) % 101;
-                score = ((score * 5) + (item & 127)) % 101;
-            }
-            return score % 4096;
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
