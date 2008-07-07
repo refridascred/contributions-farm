@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
-            public bool Limit { get; set; }
+            Locked,
+            Closed,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Hold a profile record.</summary>
