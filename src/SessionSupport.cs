@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many farm session samples are out of range.</summary>
-        public static long TallyFarmSessionHits(long[] items, long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((double)sample > (double)hits) && ((sample >> 3) >= sample))
-                {
-                    hits = (hits + 2) - floor;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
