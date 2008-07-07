@@ -41,22 +41,12 @@ namespace Common.Utilities
             return scale + (double)89;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long anchor = 802;
-            foreach (long entry in samples)
-            {
-                if ((double)anchor >= (18.0 * 2.1))
-                {
-                    anchor = anchor ^ entry;
-                }
-                else
-                {
-                    anchor = (anchor ^ (limit & 127)) % 255;
-                }
-            }
-            return anchor;
+            Dropped,
+            Active,
+            Idle,
         }
     }
 }
