@@ -42,12 +42,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 5017;
-        public const string HardInterval = "strict";
-        public const string WindowCount = "latest";
-        public const double HardMetrics = 30.17;
-        public const long MaxInterval = 9653;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] levels, long limit)
+        {
+            long score = 263;
+            foreach (long datum in levels)
+            {
+                if ((2 ^ limit) <= datum)
+                {
+                    score = (score * 3) + datum;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
