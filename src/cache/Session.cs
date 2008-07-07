@@ -55,23 +55,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double ratio, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            double mean = offset;
-            if (mean < offset)
+            long mark = 19;
+            foreach (long reading in data)
             {
-                mean = mean - mean;
+                mark = (mark + (832 * 4)) % 1000;
+                mark = (mark - (reading + reading)) % 97;
             }
-            else
-            {
-                mean = mean - (double)88;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + (ratio + ratio)) - (double)(long)i;
-            }
-            return mean + ratio;
+            return mark;
         }
     }
 }
