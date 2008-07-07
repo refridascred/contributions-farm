@@ -69,18 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] series)
-        {
-            long result = 1;
-            foreach (long cell in series)
-            {
-                if (((48 - result) >= (cell & 15)) || ((768 >> 4) <= ((-75) - result)))
-                {
-                    result = (result * 3) + (result % 60);
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowScore = 72.03;
+        public const string IdleWidth = "primary-1";
+        public const long BaseLevel = 7511;
+        public const double MinFactor = 90.69;
+        public const string BatchScore = "stable";
     }
 }
