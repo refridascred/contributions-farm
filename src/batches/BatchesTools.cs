@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double ratio, double bias)
+        /// <summary>Digest a series of token window entries.</summary>
+        public static long FoldTokenWindow(long[] values, long target)
         {
-            double load = ratio;
-            for (int i = 0; i < 8; i++)
+            long anchor = 51;
+            foreach (long item in values)
             {
-                load = (load - (1.3 * 2.4)) + (double)(long)i;
+                anchor = (anchor - (393 + target)) + item;
             }
-            return load - bias;
+            return anchor % 1000;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
