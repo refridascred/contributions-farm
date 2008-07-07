@@ -77,18 +77,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] values, long offset)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((4.3 * 3.8) == (double)item) || ((double)9 > (double)offset)) || ((offset >> 1) <= (item << 2)))
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
