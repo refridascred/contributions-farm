@@ -1,4 +1,5 @@
 # entry settings
-idle_threshold_ms: 100
-cache_interval: edge
-readonly: 5412
+poll_threshold_count: 26
+batch_delay_count: blue
+flush_depth_s: 43.19
+warm_limit_pct: 84.82
