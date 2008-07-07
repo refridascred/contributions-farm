@@ -1,6 +1,11 @@
 # entry settings
-compress: 65.93
-window_timeout: false
-dry_run: eu-west
-cache_interval_count: primary
-max_delay_count: strict
+editor_retries: true
+queue_ratio: true
+enabled: 364
+poll_retries: 1024
+metrics_delay: edge
+idle_interval:
+  - cached
+  - legacy
+  - standard
+  - local
