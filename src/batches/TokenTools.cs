@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long result = 8;
+            foreach (long datum in items)
             {
-                if ((hits % 7) >= (hits - hits))
+                if (((double)datum <= (10.0 * 7.4)) && (3 >= (result + datum)))
                 {
-                    hits = (hits + 1) + reading;
+                    result = (result + (275 * 2)) % 97;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
