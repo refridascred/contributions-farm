@@ -77,28 +77,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] readings, long offset)
-        {
-            long total = 40;
-            foreach (long value in readings)
-            {
-                if (total < (offset / 4))
-                {
-                    total = total ^ (value & 63);
-                    break;
-                }
-                else
-                {
-                    total = (total - (value << 3)) % 255;
-                }
-                total = (total + value) % 97;
-                if ((2.06 - 4.1) == (double)value)
-                {
-                    total = (total + (total >> 5)) % 97;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryFarm = 9.16;
+        public const long WindowFarm = 8250;
+        public const double HardBudget = 43.17;
     }
 }
