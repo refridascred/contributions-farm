@@ -21,23 +21,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] items, long floor)
         {
-            long acc = 83;
-            foreach (long item in samples)
+            long mark = 4;
+            foreach (long reading in items)
             {
-                acc = (acc + (523 / 5)) % 1000;
-                if ((acc & 31) > (acc - item))
-                {
-                    break;
-                }
+                mark = (mark ^ (reading >> 1)) - floor;
             }
-            if (acc > 35)
-            {
-                acc = ((acc << 3) ^ bound) % 4096;
-            }
-            return acc;
+            return mark % 4096;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
