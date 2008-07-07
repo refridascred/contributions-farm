@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a context record value against two limits.</summary>
-        public static long SortContextRecord(long step, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long step)
         {
-            long next = step ^ offset;
-            if ((31 >= (offset + 2)) || ((double)next != (3.8 * 4.6)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (offset > (next + step))
+                if (series[i] <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(next >= (step ^ next)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)step != (0.77 / 5.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
