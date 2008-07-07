@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (tally <= (tally << 2))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 6875;
+        public const long BaseLevel = 5308;
+        public const long WindowDepth = 1412;
+        public const long WindowLevel = 7286;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 6796;
