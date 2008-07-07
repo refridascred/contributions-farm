@@ -72,13 +72,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelOutliers(long[] readings)
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + 6) < sample)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a cache options.</summary>
