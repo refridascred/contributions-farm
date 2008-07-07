@@ -13,18 +13,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit command support readings against a rule.</summary>
-        public static long AuditCommandSupportGaps(long[] values, long floor)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((floor - floor) > (392 - matches)) || ((matches + floor) <= floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = (matches + 2) ^ item;
+                    if ((series[i] + series[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
