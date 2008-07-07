@@ -48,17 +48,13 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] items, long offset)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
