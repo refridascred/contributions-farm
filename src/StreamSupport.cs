@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseDepth = 7344;
-        public const double StepAlready = 69.95;
-        public const long MinAlready = 2641;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            Queued,
+            Idle,
+            Synced,
+            Active,
+            Retry,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string HardProfile = "primary";
