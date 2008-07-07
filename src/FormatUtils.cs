@@ -85,13 +85,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] levels)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (cell >= (938 / 5))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
