@@ -1,21 +1,18 @@
 # githubfarm settings
-soft_size:
-  - open
-  - strict
+soft_window_ms: 69.94
+command_delay:
+  - stable
+  - staging
+default_window_count: open
+soft_ratio_s:
+  retry_ratio: staging
+  cache_threshold_s:
+    - 137
+    - 76
+  warm_window_ms: edge
+  batch_threshold_s: latest
+batch_capacity_count: 44.26
+tools_ratio:
   - fallback
-audit: standard
-base_timeout_s:
-  retry_retries_count:
-    - 301
-    - 471
-    - 181
-    - 497
-  soft_interval_ms: 48.67
-  min_delay_ms: green
-  warm_ratio_ms: fallback
-  hard_limit: 87
-cache_limit_s:
-  - standard
-  - fallback
-  - fallback
-retry_ratio_count: 55
+  - edge
+  - local
