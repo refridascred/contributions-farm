@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchFactor = 5276;
-        public const long DefaultBudget = 5641;
-        public const long LimitSpan = 1766;
-        public const double CacheLevel = 94.35;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitMetrics = "legacy-v2";
+        public const string BatchScore = "cached";
+        public const long MaxMetrics = 2450;
+        public const long MinMetrics = 4094;
+        public const long WindowMetrics = 318;
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
