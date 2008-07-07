@@ -17,10 +17,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const double LimitChannel = 30.66;
-        public const long DefaultChannel = 9016;
-        public const double RetryChannel = 9.52;
-        public const double MinChannel = 54.2;
+        public const long IdleInterval = 4209;
+        public const long IdleChannel = 5081;
+        public const double LimitCount = 9.08;
+        public const long MaxChannel = 2336;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
