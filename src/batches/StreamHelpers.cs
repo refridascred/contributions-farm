@@ -15,15 +15,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate stream counter samples.</summary>
-        public static long ScoreStreamCounter(long[] series)
+        /// <summary>Match up route samples.</summary>
+        public static long PairRouteCount(long[] items)
         {
-            long total = 7;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + datum) % 255;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total % 97;
+            return matches;
         }
 
         /// <summary>Describe the commits mode values.</summary>
