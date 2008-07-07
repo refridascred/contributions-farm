@@ -1,13 +1,12 @@
 # Command notes
 
-When a order fails, the batches handler retries a few times before giving up.
-Each buffer is validated before it reaches the entry queue.
-
-When a queue fails, the layout handler retries a few times before giving up.
-Each account is validated before it reaches the cache queue.
+When a command fails, the record handler retries a few times before giving up.
+Keep editor and format names short and lowercase.
+The tools helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer window defaults
-- Log every commits change
-- Keep session values small
+- Document new layout fields
+- Log every editor change
+- Keep window values small
+- Validate session input early
