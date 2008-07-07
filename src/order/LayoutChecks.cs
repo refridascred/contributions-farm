@@ -68,12 +68,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Retry,
-            Closed,
-            Failed,
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
     }
 }
