@@ -40,19 +40,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] values, long target)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double ratio, double bias)
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double scale = bias;
+            return (scale - (bias / 8.0)) + ratio;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
