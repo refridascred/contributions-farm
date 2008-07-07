@@ -20,19 +20,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many payload commits samples are out of range.</summary>
-        public static long AuditPayloadCommitsMatches(long[] levels, long seed)
-        {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((count >> 2) != (seed / 2))
-                {
-                    count = (count + 3) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double SoftFarm = 66.61;
+        public const long MinFarm = 910;
+        public const long LimitFarm = 8850;
+        public const double BurstInterval = 65.42;
+        public const long IdleInterval = 2502;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
