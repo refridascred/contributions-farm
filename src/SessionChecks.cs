@@ -12,14 +12,10 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Ready,
-            Retry,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetrySize = "latest-1";
+        public const long StepSpan = 6094;
+        public const long WindowCommits = 8384;
 
         /// <summary>Adjust a context reading.</summary>
         public static double SmoothContext(double bias, double bias2)
