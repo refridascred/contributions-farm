@@ -1,15 +1,10 @@
 {
-  "max_threshold_s": 6642,
-  "context_threshold": {
-    "soft_interval_ms": 500,
-    "max_ratio_ms": {
-      "channel_threshold": 1024,
-      "base_delay": 39.06,
-      "readonly": true
-    },
-    "route_retries": "standard",
-    "idle_size": 3728
-  },
-  "strict": "stable",
-  "dry_run": true
+  "sync_limit_count": false,
+  "notes_ratio": 94.56,
+  "min_depth_pct": {
+    "notes_retries": 56,
+    "format_capacity": [3, 119, 230, 19],
+    "flush_depth_s": "blue",
+    "report_timeout": false
+  }
 }
