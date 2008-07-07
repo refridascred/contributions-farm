@@ -14,33 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long bound, long offset)
-        {
-            long span = bound - offset;
-            if ((6.65 < (double)span) && ((offset - bound) == (span / 8)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((-6) <= (50 ^ span))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound / 5) > offset) || ((bound + span) <= offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheDepth = 5351;
+        public const string WindowCommand = "cached-1";
+        public const long LimitCommand = 2150;
+        public const string SoftRatio = "fallback-edge";
+        public const long RetryCommand = 234;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long CombineGraph(long[] items)
