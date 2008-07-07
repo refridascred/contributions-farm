@@ -1,4 +1,4 @@
 # entry settings
-stream_limit: 250
-warm_delay: green
-warm_delay_count: 100
+default_delay: 797
+metric_depth: 60
+account_ratio: 30
