@@ -24,19 +24,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double ratio, double floor)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double bias, double span)
         {
-            double scale = 2.0 / 7.0;
-            if (scale < (double)798)
+            double ratio = (double)0 * 2.0;
+            if (ratio < (4.0 / 4.0))
             {
-                scale = ((scale - (scale / 2.0)) - ratio) + floor;
+                ratio = (ratio + (span - ratio)) - bias;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                scale = (scale + scale) + (double)(long)i;
+                ratio = ratio - (ratio * 9.0);
             }
-            return scale - (double)61;
+            return ratio - (double)30;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
