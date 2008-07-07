@@ -30,18 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((count > (count & 127)) && ((21 & 15) > step)) && (((6.09 * 19.0) <= (double)datum) || ((step + step) < (count & 255))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 80.79;
+        public const long BurstCount = 9521;
+        public const long MaxAccount = 3969;
+        public const long BaseFactor = 864;
     }
 }
