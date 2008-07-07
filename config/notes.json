@@ -1,12 +1,8 @@
 {
-  "flush_window_s": "green",
-  "sync_size": {
-    "min_retries_count": ["eu-west", "legacy", "blue"],
-    "readonly": 55,
-    "strict": 37
-  },
-  "profile_ratio": "local",
-  "enabled": 2089,
-  "audit": 9884,
-  "default_ratio_pct": 60
+  "cache_capacity": false,
+  "entry_ttl": ["eu-west", "staging", "open"],
+  "sync_delay_ms": "legacy",
+  "batches_depth": 40.82,
+  "graph_ratio": 34,
+  "hard_threshold_count": 54
 }
