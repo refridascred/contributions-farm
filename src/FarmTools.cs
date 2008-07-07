@@ -22,22 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream record samples are out of range.</summary>
-        public static long CountStreamRecordMatches(long[] items, long floor)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((((floor + count) < count) && ((cell ^ floor) < (floor << 2))) && ((floor >> 3) < cell))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
