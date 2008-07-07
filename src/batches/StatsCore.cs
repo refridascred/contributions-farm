@@ -48,11 +48,17 @@ namespace Common.Utilities
         public const long StepFactor = 4612;
         public const double IdleScore = 78.99;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] data, long floor)
         {
-            public bool Ratio { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
