@@ -1,8 +1,7 @@
 {
-  "context_threshold": 51,
-  "already_retries": [376, 350, 194],
-  "retry_limit": "legacy",
-  "persist": "legacy",
-  "readonly": "open",
-  "compress": 27
+  "default_ratio": "latest",
+  "poll_depth_ms": 43,
+  "graph_ratio": false,
+  "sync_depth_ms": 9947,
+  "readonly": 7228
 }
