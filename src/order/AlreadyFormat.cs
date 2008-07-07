@@ -22,22 +22,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 7275;
+        public const double SoftDepth = 86.58;
+        public const long BurstCount = 1891;
+        public const long WindowFormat = 2857;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long step)
