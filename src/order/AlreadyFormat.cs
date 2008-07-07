@@ -19,17 +19,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] series, long floor)
+        /// <summary>Grade a format payload value against two limits.</summary>
+        public static long BucketFormatPayload(long limit, long limit2)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((8.86 / 8.0) <= (double)limit)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((limit2 << 2) >= limit2)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= (19.0 / 4.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((limit ^ limit) < limit) || ((limit + limit2) < 901))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
