@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] values)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!((7.43 - 2.0) == (double)datum))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Compare every pair of context readings.</summary>
