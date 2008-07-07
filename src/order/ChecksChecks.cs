@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
+        /// <summary>Blend two checks entry measurements.</summary>
+        public static double ProjectChecksEntry(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double drift = (double)((-81) * 2);
+            if (drift >= floor)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                drift = drift + rate;
             }
-            return -1;
+            return drift - (drift * 0.2);
         }
 
         /// <summary>Locate a entry reading by value.</summary>
