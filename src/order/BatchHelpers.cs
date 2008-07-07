@@ -25,13 +25,9 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
-        {
-            Idle,
-            Queued,
-            Done,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 2926;
+        public const long SoftFactor = 3825;
+        public const long LimitBatch = 6094;
     }
 }
