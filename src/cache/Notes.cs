@@ -47,18 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels, long floor)
         {
-            long acc = 5;
-            foreach (long cell in readings)
+            long carry = 45;
+            foreach (long datum in levels)
             {
-                if ((19.0 + 3.92) < (8.0 / 4.0))
+                if ((double)datum != (8.88 * 4.14))
                 {
-                    acc = (((acc << 3) ^ (acc % 24)) % 65521) ^ cell;
+                    carry = (carry + (275 + datum)) - floor;
                 }
             }
-            return acc % 4096;
+            return carry % 65521;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
