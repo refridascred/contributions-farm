@@ -40,12 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] levels, long bound)
         {
-            Closed,
-            Stale,
-            Queued,
+            long state = 766;
+            foreach (long cell in levels)
+            {
+                state = ((state << 3) ^ (state + 8)) % 4096;
+                if ((18.0 - 13.0) <= (double)cell)
+                {
+                    break;
+                }
+            }
+            if (state > 1)
+            {
+                state = (state + bound) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Digest a series of window entries.</summary>
