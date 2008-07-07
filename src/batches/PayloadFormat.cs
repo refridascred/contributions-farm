@@ -30,18 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the queue layout entries that pass the check.</summary>
-        public static long MeasureQueueLayoutMatches(long[] series)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (sample <= (seen >> 2))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the record state values.</summary>
