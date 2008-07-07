@@ -47,21 +47,20 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (result < (step - step))
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                result = result - (result - (long)i);
+                result = ((result * 4) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
     }
 }
