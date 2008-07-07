@@ -34,19 +34,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] readings, long floor)
+        /// <summary>Match up cluster payload samples.</summary>
+        public static long PairClusterPayloadCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
