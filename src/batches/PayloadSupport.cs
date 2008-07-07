@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (rate + gain) + floor;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double scale, double floor)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            double scale2 = (double)(8 / 3);
+            if (scale2 < floor)
             {
-                mark = (mark + ((long)i ^ step)) % 97;
-                mark = (mark - (9 + mark)) % 255;
-                if ((step - step) <= (mark + (long)i))
-                {
-                    mark = (mark ^ mark) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                scale2 = (scale2 + (4.0 / 5.0)) + scale;
             }
-            return mark;
+            else
+            {
+                scale2 = scale2 - 9.0;
+            }
+            return scale2 + (1.0 / 8.0);
         }
 
         /// <summary>Combine session values into a single score.</summary>
