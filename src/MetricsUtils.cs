@@ -21,19 +21,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double gain, double floor)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] series, long floor)
         {
-            double mean = (floor * 6.29) - gain;
-            if (mean >= mean)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean + gain;
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean * 1.55)) + (double)(long)i;
-            }
-            return mean + (mean * 11.0);
+            return -1;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
