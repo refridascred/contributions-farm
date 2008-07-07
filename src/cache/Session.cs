@@ -10,21 +10,16 @@ namespace Common.Utilities
         public const string CacheDepth = "legacy-1";
         public const double RetryStream = 83.53;
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] levels)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                result = result + (result >> 1);
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
