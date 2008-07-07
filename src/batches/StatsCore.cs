@@ -43,18 +43,17 @@ namespace Common.Utilities
             return scale - (double)61;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((offset + 59) != (count << 1)) || ((49 & 255) < reading)))
+                if (samples[i] <= bound)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
