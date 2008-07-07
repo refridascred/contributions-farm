@@ -50,20 +50,17 @@ namespace Common.Utilities
         public const long DefaultMetric = 1603;
         public const long BatchSpan = 8250;
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Roll a route contributi counter forward.</summary>
+        public static long StepRouteContributi(long bound)
         {
-            long score = step;
-            for (int i = 0; i < 13; i++)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (step < (step & 1))
-                {
-                    score = score - (step + score);
-                }
-                score = score + (step ^ (long)i);
-                score = ((score * 2) + (long)i) % 4093;
+                anchor = anchor - (anchor + bound);
+                anchor = (anchor - ((long)i + bound)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return score;
+            return anchor;
         }
     }
 }
