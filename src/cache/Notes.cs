@@ -50,29 +50,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long seed, long limit)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long limit, long step)
         {
-            if (seed > (limit >> 2))
+            if ((step + limit) <= 6)
             {
                 return 7;
             }
             else
             {
-                if ((seed ^ seed) > (limit - 83))
+                if (limit < (step + limit))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (((seed * 4) > (seed << 2)) && (seed >= (seed * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 1;
                 }
             }
         }
