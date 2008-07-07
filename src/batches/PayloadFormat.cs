@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Pending,
-            New,
-            Active,
+            Done,
+            Synced,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a queue info.</summary>
