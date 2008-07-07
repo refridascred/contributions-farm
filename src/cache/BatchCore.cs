@@ -32,23 +32,14 @@ namespace Common.Utilities
         public const string WindowOrder = "primary-v2";
         public const long DefaultCount = 3299;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long total = 490;
-            foreach (long datum in values)
-            {
-                total = ((total << 3) ^ 0) % 4096;
-                if ((datum - datum) > (datum % 97))
-                {
-                    total = ((total << 2) ^ (total >> 3)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (datum ^ datum)) % 97;
-                }
-            }
-            return total % 4096;
+            Dropped,
+            Stale,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
