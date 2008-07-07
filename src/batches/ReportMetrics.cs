@@ -57,11 +57,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] items)
         {
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches + matches) >= (matches + sample))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
