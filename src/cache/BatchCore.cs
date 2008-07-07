@@ -42,18 +42,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadHits(long[] samples, long step)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (reading > (count >> 5))
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            Ready,
+            Idle,
+            Failed,
         }
     }
 }
