@@ -50,25 +50,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long target, long origin)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long diff = target ^ origin;
-            if (((origin - origin) <= ((-92) + target)) || (origin >= 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((diff & 15) > (-164))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a command header.</summary>
