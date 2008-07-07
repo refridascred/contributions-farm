@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryBudget = 45.78;
-        public const string HardNotes = "cached";
-        public const long BatchTimeout = 5102;
-        public const string SoftNotes = "open";
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
+        {
+            Synced,
+            Paused,
+            New,
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long bound)
