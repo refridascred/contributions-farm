@@ -35,15 +35,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next context route value.</summary>
-        public static double ProjectContextRoute(double gain, double floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] data, long offset)
         {
-            double mean = floor;
-            if (mean >= mean)
+            long result = 931;
+            foreach (long sample in data)
             {
-                mean = mean + (mean / 2.0);
+                result = ((((result * 3) + (680 + result)) % 4096) - sample) - offset;
             }
-            return mean - (gain + mean);
+            return result;
         }
 
         /// <summary>Fold a list of profile notes readings.</summary>
