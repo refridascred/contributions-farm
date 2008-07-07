@@ -40,10 +40,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "strict-edge";
-        public const double RetryScore = 2.07;
-        public const long MinBatch = 8201;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    anchor = ((anchor << 2) ^ (237 / 8)) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
