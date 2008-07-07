@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long BaseTimeout = 5285;
         public const long BaseScore = 1521;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] levels, long seed)
         {
-            Locked,
-            Retry,
-            Idle,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (((value - seed) != (24 ^ seed)) || ((value >= (value + seed)) && (value > (tally - tally))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
