@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 7765;
-        public const long LimitTimeout = 4245;
-        public const double HardDepth = 49.62;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] series, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((offset >> 5) < 75)
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of filter channel readings.</summary>
         public static long DigestFilterChannel(long[] readings, long step)
