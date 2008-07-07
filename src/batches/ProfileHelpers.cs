@@ -28,21 +28,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Compare every pair of graph window readings.</summary>
-        public static long MatchGraphWindowCount(long[] data)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Closed,
+            Paused,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
