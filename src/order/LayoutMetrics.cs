@@ -23,18 +23,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the checks account entries that pass the check.</summary>
-        public static long TallyChecksAccountHits(long[] readings, long floor)
+        /// <summary>Iterate the support commits series from a seed.</summary>
+        public static long RollSupportCommits(long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)tally == (double)floor)
+                if ((target & 31) <= 55)
                 {
-                    tally = (tally + 3) - value;
+                    break;
                 }
+                else
+                {
+                    sum = (sum ^ (13 - target)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Describe the checks status values.</summary>
