@@ -31,11 +31,19 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheSpan = 2306;
-        public const long IdleChecks = 3975;
-        public const string RetryTimeout = "latest-edge";
-        public const long LimitSize = 5581;
-        public const double RetryChecks = 48.89;
+        /// <summary>Check that every tools session entry stays within the limit.</summary>
+        public static bool CheckToolsSessionBounds(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
