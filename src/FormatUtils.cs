@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public double Ratio { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 3414;
+        public const long RetryGraph = 8352;
+        public const long BatchGraph = 3297;
 
         /// <summary>Check that every record entry entry stays within the limit.</summary>
         public static bool VerifyRecordEntryLimits(long[] data, long target)
