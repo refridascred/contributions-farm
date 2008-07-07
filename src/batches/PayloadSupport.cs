@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double DefaultSchema = 18.24;
         public const long BaseDepth = 6959;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double scale, double floor)
+        /// <summary>Count the payload metrics entries that pass the check.</summary>
+        public static long MeasurePayloadMetricsOutliers(long[] data, long offset)
         {
-            double scale2 = (double)(8 / 3);
-            if (scale2 < floor)
+            long count = 0;
+            foreach (long value in data)
             {
-                scale2 = (scale2 + (4.0 / 5.0)) + scale;
+                if (offset > (5 % 100))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            else
-            {
-                scale2 = scale2 - 9.0;
-            }
-            return scale2 + (1.0 / 8.0);
+            return count;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
