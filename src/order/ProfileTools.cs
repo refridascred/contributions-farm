@@ -43,24 +43,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long offset, long limit)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if (207 <= (limit - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset + offset) == (limit - 7))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Done,
+            Idle,
+            Draft,
+            Active,
         }
     }
 }
