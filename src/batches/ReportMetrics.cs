@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine format cache values into a single score.</summary>
-        public static long DigestFormatCache(long[] levels, long offset)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] levels, long origin)
         {
-            long sum = 8;
-            foreach (long reading in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)levels.Length << 2) <= (8 >> 5))
+                if (levels[i] <= origin)
                 {
-                    sum = ((sum + (83 / 2)) + reading) - offset;
+                    return (long)i;
                 }
             }
-            if (sum > (-873))
-            {
-                sum = (sum << 3) ^ sum;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
