@@ -44,10 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 6909;
-        public const double BatchEditor = 81.05;
-        public const long HardEditor = 2600;
-        public const long LimitEditor = 9717;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] series, long step)
+        {
+            long sum = 958;
+            foreach (long sample in series)
+            {
+                if ((step + step) >= (sample - sample))
+                {
+                    sum = sum + sample;
+                }
+                else
+                {
+                    sum = sum ^ (sample - sum);
+                }
+            }
+            return sum % 1000;
+        }
     }
 }
