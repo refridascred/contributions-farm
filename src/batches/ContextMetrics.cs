@@ -43,13 +43,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            Locked,
-            Ready,
-            Stale,
-            Queued,
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
