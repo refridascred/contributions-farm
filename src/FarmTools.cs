@@ -19,11 +19,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] series, long bound)
         {
-            public long Offset { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (reading > (hits * 2))
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate graph githubfarm readings against a bound.</summary>
