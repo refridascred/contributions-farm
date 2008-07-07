@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Idle,
+            New,
+            Ready,
             Pending,
-            Paused,
-            Dropped,
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
