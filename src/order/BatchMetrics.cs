@@ -67,35 +67,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] samples)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] series, long step)
         {
-            long state = 42;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((double)reading >= (0.9 + 1.0))
+                if (seen >= step)
                 {
-                    state = (state ^ (13 >> 5)) % 1000;
-                    state = state ^ (state >> 3);
-                }
-                if (((9.8 - 9.5) == (double)state) || ((state >> 3) == (state + 71)))
-                {
-                    state = state + state;
-                }
-                if ((reading >> 4) < (state ^ state))
-                {
-                    state = (state ^ reading) % 255;
-                }
-                else
-                {
-                    state = (state << 2) ^ state;
+                    seen = (seen + 3) ^ reading;
                 }
             }
-            if (state > 148)
-            {
-                state = ((state << 3) ^ (state + state)) % 1000;
-            }
-            return state % 97;
+            return seen;
         }
     }
 }
