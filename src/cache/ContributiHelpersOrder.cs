@@ -29,11 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] values, long step)
         {
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
