@@ -16,20 +16,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] readings, long seed)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double RetryRatio = 41.37;
+        public const long DefaultEntry = 7125;
+        public const long WindowBudget = 4774;
+        public const string BaseBudget = "local-1";
+        public const string RetryScore = "standard";
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long CountGithubfarmMatches(long[] items, long step)
