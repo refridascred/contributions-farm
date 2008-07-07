@@ -22,14 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Pending,
-            Failed,
-            Done,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowRatio = 5205;
+        public const string BatchMetric = "strict";
+        public const string IdleSpan = "local-1";
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] items, long seed)
