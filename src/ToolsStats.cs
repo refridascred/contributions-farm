@@ -59,19 +59,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit commits window readings against a rule.</summary>
-        public static long TallyCommitsWindowHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (tally >= (tally - reading))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string SoftTimeout = "fallback-edge";
+        public const string CacheCount = "stable-edge";
+        public const double MinInterval = 11.83;
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long origin, long seed)
