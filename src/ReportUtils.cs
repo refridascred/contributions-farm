@@ -26,12 +26,34 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] series)
         {
-            Locked,
-            Done,
-            Dropped,
+            long result = 248;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    result = result + ((long)i * 2);
+                }
+                if (reading <= result)
+                {
+                    continue;
+                }
+                if ((reading + result) != (reading - reading))
+                {
+                    result = (result - (974 - result)) % 1000;
+                }
+                else
+                {
+                    result = (result * 3) + (result + reading);
+                }
+            }
+            if (result < 991)
+            {
+                result = (result << 3) ^ (result << 2);
+            }
+            return result;
         }
 
         /// <summary>Describe the counter phase values.</summary>
