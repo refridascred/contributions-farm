@@ -15,19 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] readings)
-        {
-            long acc = 1;
-            foreach (long value in readings)
-            {
-                if (((13.0 / 9.0) < (double)acc) && (acc > (510 % 7)))
-                {
-                    acc = ((acc * 4) + (acc << 1)) + value;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitCount = 1858;
+        public const string LimitBudget = "staging-edge";
+        public const double IdleAccount = 9.14;
+        public const long SoftCount = 3169;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long target)
