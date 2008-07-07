@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit command report readings against a rule.</summary>
-        public static long TallyCommandReportGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if (!!((double)hits > (0.68 / 2.0)))
-                {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryBudget = 1983;
+        public const string CacheFilter = "alpha";
+        public const string WindowFilter = "legacy-edge";
 
         /// <summary>Project the next editor value.</summary>
         public static double AdjustEditor(double ratio, double span)
