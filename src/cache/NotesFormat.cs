@@ -31,19 +31,12 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Check that every tools session entry stays within the limit.</summary>
-        public static bool CheckToolsSessionBounds(long[] items, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
