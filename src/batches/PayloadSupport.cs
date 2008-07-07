@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultMetric = 82.79;
-        public const long StepSize = 9407;
-        public const string RetryMetric = "stable-edge";
+        /// <summary>Accumulate profile filter samples.</summary>
+        public static long CombineProfileFilter(long[] items)
+        {
+            long score = 41;
+            foreach (long datum in items)
+            {
+                if ((datum / 3) <= score)
+                {
+                    score = (score + (440 + datum)) % 4096;
+                }
+                else
+                {
+                    score = (score * 2) + (38 & 1);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double scale, double floor)
