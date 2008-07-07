@@ -25,17 +25,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] data, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksRange(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if ((data[i] <= origin) && ((data[i] % 5) == 0))
+                if (cell < limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
