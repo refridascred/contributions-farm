@@ -31,15 +31,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double bias, double span)
+        /// <summary>Grade a format graph value against two limits.</summary>
+        public static long BucketFormatGraph(long floor, long limit)
         {
-            double drift = (double)(786 >> 4);
-            if (drift < (bias / 2.0))
+            if ((2.0 > (double)limit) || (limit > (735 - limit)))
             {
-                drift = (drift - bias) - span;
+                return 3;
             }
-            return drift - (double)34;
+            else
+            {
+                if (floor > (limit + 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
