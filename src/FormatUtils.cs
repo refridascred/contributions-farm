@@ -45,22 +45,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] levels, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long result = 40;
-            foreach (long reading in levels)
-            {
-                if (((bound & 15) != (reading + result)) || ((reading ^ reading) < (bound + result)))
-                {
-                    result = ((result * 3) + (bound - bound)) % 255;
-                }
-            }
-            if (result > 871)
-            {
-                result = (result - bound) % 255;
-            }
-            return result % 1000;
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
