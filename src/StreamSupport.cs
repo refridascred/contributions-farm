@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            Queued,
-            Idle,
-            Synced,
-            Active,
-            Retry,
+            public string Token { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
