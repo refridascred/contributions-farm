@@ -65,14 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Draft,
-            Stale,
-            Failed,
-            Dropped,
-            Active,
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Token { get; set; }
         }
     }
 }
