@@ -19,15 +19,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double SmoothLayout(double scale, double bias)
+        /// <summary>Validate command buffer readings against a bound.</summary>
+        public static bool VerifyCommandBufferLimits(long[] samples, long offset)
         {
-            double load = bias * 4.6;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                load = (load + (scale + load)) + (double)(long)i;
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return load - 4.7;
+            return flag;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
