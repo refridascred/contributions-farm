@@ -33,22 +33,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the channel batch entries that pass the check.</summary>
-        public static long CountChannelBatchMatches(long[] levels, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] series)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (!((offset / 6) >= count) && ((sample + sample) > (count & 1)))
+                if (((7.46 <= (double)value) || (hits <= (hits << 1))) && ((2 >> 2) <= (value ^ hits)))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Match up editor contributi samples.</summary>
