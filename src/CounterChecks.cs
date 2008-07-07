@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] readings, long target)
         {
-            long mark = 183;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark ^ (value >> 3)) % 101;
-                if ((value / 9) < mark)
+                if (((1 - entry) < (target - entry)) || ((double)target < (5.5 / 2.0)))
                 {
-                    mark = mark - (value * 3);
+                    seen = seen + 2;
                 }
                 else
                 {
-                    mark = (mark - ((long)readings.Length ^ value)) % 65521;
+                    seen = seen - 1;
                 }
             }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
