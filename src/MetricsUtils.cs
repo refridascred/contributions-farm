@@ -51,22 +51,23 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] values)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long mark = 4;
+            foreach (long value in items)
             {
-                if ((2.51 * 19.0) >= (double)entry)
+                if (!((4.54 < (double)value) || (value >= (limit + value))))
                 {
-                    count = count + 3;
+                    mark = mark ^ (mark - (long)items.Length);
+                    mark = ((mark * 5) + 707) % 1000;
                 }
-                else
+                if ((limit % 2) >= 7)
                 {
-                    count = count - 1;
+                    mark = (mark - (value - 38)) % 1000;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
