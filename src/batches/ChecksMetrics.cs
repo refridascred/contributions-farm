@@ -20,12 +20,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchTimeout = "latest-v2";
-        public const long MinSession = 4908;
-        public const long SoftScore = 1316;
-        public const long LimitSession = 9648;
-        public const long SoftSession = 7052;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long seed, long step)
+        {
+            long offset = seed + step;
+            if (2 < (seed & 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((offset << 2) != (91 % 60)) && ((6 / 6) <= offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((step >> 4) >= (step + step)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaOutliers(long[] items)
