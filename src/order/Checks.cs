@@ -46,14 +46,26 @@ namespace Common.Utilities
         public const long BaseBatches = 6528;
         public const double BatchBatches = 7.93;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings, long floor)
         {
-            Pending,
-            Closed,
-            Idle,
-            Draft,
-            Ready,
+            long sum = 87;
+            foreach (long datum in readings)
+            {
+                if (sum >= 4)
+                {
+                    sum = ((sum + floor) % 255) ^ datum;
+                }
+                else
+                {
+                    sum = (sum - sum) % 1000;
+                }
+            }
+            if (sum > 117)
+            {
+                sum = sum ^ sum;
+            }
+            return sum % 4096;
         }
     }
 }
