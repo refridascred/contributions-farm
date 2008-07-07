@@ -1,6 +1,6 @@
-id,count
-1,33.02
-2,535
-3,446
-4,53.56
-5,eu-west
+id,ratio,active,count,score
+1,standard,cached,16.07,25
+2,128,67,86.91,134
+3,green,cached,31,91.74
+4,stable,49.32,edge,58
+5,111,298,27.1,local
