@@ -38,21 +38,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((double)target < (3.5 - 5.13)) && ((target >> 5) >= (target * 2)))
-                {
-                    acc = acc - (long)i;
-                    acc = (acc ^ (long)i) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBudget = 8550;
+        public const double HardBatch = 67.8;
+        public const long MaxBatch = 2837;
+        public const long HardTimeout = 6868;
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] samples)
