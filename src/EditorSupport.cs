@@ -40,18 +40,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] levels, long limit)
+        /// <summary>Audit window route readings against a rule.</summary>
+        public static long TallyWindowRouteMatches(long[] values, long offset)
         {
-            long score = 263;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((2 ^ limit) <= datum)
+                if (((offset - entry) <= (offset & 7)) || ((entry % 3) >= ((-350) * 4)))
                 {
-                    score = (score * 3) + datum;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Hold a layout stats.</summary>
