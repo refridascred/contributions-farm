@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepNotes = "standard-v2";
-        public const string HardScore = "legacy-edge";
-        public const long BatchBudget = 2522;
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = (acc ^ acc) % 1000;
+                acc = (acc * 3) + (limit / 3);
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long FoldRecord(long[] series)
