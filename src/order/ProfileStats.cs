@@ -39,21 +39,22 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 178;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((sum / 5) >= sum) || (sample < sum))
                 {
-                    if ((samples[i] - samples[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum - (sample ^ sample)) % 65521;
                 }
             }
-            return count;
+            if (sum < (-27))
+            {
+                sum = (sum - sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of profile notes readings.</summary>
