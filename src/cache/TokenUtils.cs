@@ -27,17 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] data, long seed)
+        /// <summary>Audit batches checks readings against a rule.</summary>
+        public static long MeasureBatchesChecksHits(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (data[i] >= seed)
+                if ((datum * 5) >= (seen * 2))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
