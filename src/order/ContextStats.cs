@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((origin / 9) == (item + origin))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Pending,
+            Queued,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
