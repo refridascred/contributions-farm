@@ -49,19 +49,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cache batch readings against a bound.</summary>
-        public static bool GuardCacheBatchRange(long[] levels, long seed)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Queued,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
