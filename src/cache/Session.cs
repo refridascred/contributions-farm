@@ -49,39 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long RankProfile(long offset, long target)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long next = offset + target;
-            if (530 < target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((5.39 / 6.0) != (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset ^ offset) <= next)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((622 / 3) >= target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Locked,
+            Dropped,
+            Paused,
         }
     }
 }
