@@ -59,18 +59,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many notes format samples are out of range.</summary>
-        public static long TallyNotesFormatGaps(long[] series, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)limit >= (4.04 * 8.9))
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 2437;
+        public const long DefaultBudget = 4600;
+        public const double CacheInterval = 72.47;
     }
 }
