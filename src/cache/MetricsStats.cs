@@ -15,12 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a session schema counter forward.</summary>
+        public static long SeriesSessionSchema(long offset)
         {
-            public string Weight { get; set; } = "";
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = mark - ((long)i >> 3);
+                    mark = mark + ((long)i2 + offset);
+                }
+                mark = mark ^ (mark - 85);
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
