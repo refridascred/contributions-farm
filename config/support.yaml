@@ -1,7 +1,9 @@
 # support settings
-contributi_ttl: eu-west
-sync_threshold: standard
-batch_size_ms: legacy
-base_ratio_ms:
-  - blue
-  - open
+command_ratio: 66
+window_capacity:
+  - legacy
+  - strict
+  - primary
+stream_timeout: primary
+min_retries_s: false
+retry_size: 79
