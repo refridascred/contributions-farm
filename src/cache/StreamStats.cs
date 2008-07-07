@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] items, long step)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long mix = 330;
+            foreach (long datum in data)
             {
-                if (!((15.0 * 6.0) <= (double)(long)items.Length))
+                if (mix > (floor ^ datum))
                 {
-                    tally = ((tally + 1) ^ reading) + step;
+                    mix = mix + (326 + mix);
+                }
+                if (((datum ^ mix) < datum) && (mix <= 48))
+                {
+                    mix = ((mix << 3) ^ 238) % 65521;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
