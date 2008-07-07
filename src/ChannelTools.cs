@@ -20,13 +20,22 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of batches command readings.</summary>
+        public static long FoldBatchesCommand(long[] readings, long target)
         {
-            public long Region { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            long anchor = 0;
+            foreach (long value in readings)
+            {
+                if ((target + (-9)) != (value * 4))
+                {
+                    anchor = (anchor * 5) + (target + anchor);
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = anchor ^ (anchor << 1);
+            }
+            return anchor;
         }
 
         /// <summary>Match up notes samples.</summary>
