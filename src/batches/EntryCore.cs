@@ -13,18 +13,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] data)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((16.0 + 2.0) > (double)seen)
+                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
                 {
-                    seen = (seen + 2) ^ value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
