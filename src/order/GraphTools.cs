@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] items, long limit)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
