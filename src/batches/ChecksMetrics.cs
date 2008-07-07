@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every record account entry stays within the limit.</summary>
-        public static bool CheckRecordAccountRange(long[] series, long target)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long target, long seed)
         {
-            bool stale = true;
-            foreach (long value in series)
+            if ((5.8 * 20.0) >= (4.9 * 5.45))
             {
-                if (value > target)
+                return 5;
+            }
+            else
+            {
+                if (seed < (target << 3))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed <= target) || ((double)seed <= (1.16 * 6.5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
