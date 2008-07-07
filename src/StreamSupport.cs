@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] values)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] items, long step)
         {
-            long score = 911;
-            foreach (long datum in values)
+            long mark = 180;
+            foreach (long item in items)
             {
-                score = (score << 3) ^ (score ^ datum);
+                mark = ((mark ^ mark) % 255) + item;
+                if ((double)step <= (1.0 * 15.0))
+                {
+                    break;
+                }
             }
-            return score;
+            if (mark < 69)
+            {
+                mark = (mark + (step - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
