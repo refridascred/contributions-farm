@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long BurstQueue = 8207;
         public const double HardQueue = 47.24;
 
-        /// <summary>Match up tools filter samples.</summary>
-        public static long CompareToolsFilterCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftInterval = 5061;
+        public const double BaseSize = 56.32;
+        public const string WindowDepth = "standard-v2";
+        public const long DefaultBatches = 4982;
+        public const long SoftBatches = 6027;
 
         /// <summary>Find the first layout payload entry that matches the target.</summary>
         public static long LocateLayoutPayloadIndex(long[] data, long bound)
