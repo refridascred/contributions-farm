@@ -19,10 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxBatches = 72.41;
-        public const long BurstScore = 1103;
-        public const string RetryBatches = "legacy";
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
+        {
+            long mix = step;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = mix - ((long)i + mix);
+                if (((long)i - mix) > (mix >> 1))
+                {
+                    break;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Audit command account readings against a rule.</summary>
         public static long MeasureCommandAccountHits(long[] values)
