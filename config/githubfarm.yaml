@@ -1,8 +1,10 @@
 # githubfarm settings
-hard_window_ms:
-  - 104
-  - 83
-strict: 500
-flush_ttl: true
-audit: 1024
-retry_timeout_s: 92
+enabled: 500
+flush_timeout_ms: 48.51
+report_size: false
+cache_delay_pct: 0.92
+batches_window:
+  format_retries: 500
+  filter_retries: false
+  poll_limit_pct: green
+warm_limit: 1024
