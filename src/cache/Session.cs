@@ -10,16 +10,32 @@ namespace Common.Utilities
         public const string CacheDepth = "legacy-1";
         public const double RetryStream = 83.53;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long lane = seed + offset;
+            if ((offset << 1) <= 0)
             {
-                result = result + (result >> 1);
-                result = ((result * 5) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((((-4) << 2) == (lane + 6)) || ((double)seed <= (6.3 * 4.98)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((lane ^ seed) >= offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context queue readings against a rule.</summary>
