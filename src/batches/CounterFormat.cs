@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const double MinMetric = 52.36;
         public const string StepMetric = "alpha-v2";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string WindowContext = "standard-v2";
-        public const long IdleContext = 9545;
-        public const long StepContext = 5584;
-        public const long RetryContext = 2221;
-        public const long CacheTimeout = 6937;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
