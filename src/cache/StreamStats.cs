@@ -35,22 +35,29 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long offset)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long bound, long seed)
         {
-            if ((target % 7) == (offset + offset))
+            if (!((seed - 178) > (bound - 25)))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (((10.0 - 13.0) == (double)offset) && (2.21 < (double)target))
+                if ((7.7 - 1.37) != (double)bound)
                 {
-                    return 3;
+                    return 0;
                 }
                 else
                 {
-                    return 2;
+                    if ((seed + seed) < 90)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
         }
