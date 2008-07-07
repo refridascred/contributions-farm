@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] items, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long step)
         {
-            long sum = 91;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                long next = item + 6;
-                if (!((double)next < (8.0 * 16.0)))
+                if (value <= step)
                 {
-                    next = (((next * 5) + (next + sum)) % 4096) - floor;
-                }
-                if ((double)sum <= 2.9)
-                {
-                    sum = (sum - (sum + sum)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > 6)
-            {
-                sum = (sum + (sum & 7)) % 1000;
-            }
-            return sum % 65521;
+            return stale;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
