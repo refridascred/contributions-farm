@@ -15,10 +15,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MinWindow = "primary-v2";
-        public const long CacheBudget = 4565;
-        public const double BaseSize = 1.0;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinBudget = 8576;
+        public const long LimitReport = 443;
+        public const long HardReport = 8483;
+        public const string RetryFactor = "staging-edge";
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] items, long origin)
