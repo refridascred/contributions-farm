@@ -36,22 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long sum = 40;
-            foreach (long datum in levels)
-            {
-                if (!(sum <= datum))
-                {
-                    sum = (sum - (sum ^ 3)) % 255;
-                }
-            }
-            if (sum > (-83))
-            {
-                sum = (sum + sum) % 4096;
-            }
-            return sum;
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
