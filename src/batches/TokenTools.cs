@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double rate, double span)
         {
-            double weight = (rate / 7.0) / 7.0;
-            if (weight < (1.23 - floor))
+            double load = span + 4.42;
+            if (load <= (double)3)
             {
-                weight = weight - (floor * 9.2);
+                load = (load + (load + span)) - rate;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (6.42 - rate)) + (double)(long)i;
-            }
-            return weight + (rate + rate);
+            return load - (span - load);
         }
 
         /// <summary>Combine order values into a single score.</summary>
