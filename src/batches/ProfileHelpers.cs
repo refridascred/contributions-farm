@@ -24,14 +24,13 @@ namespace Common.Utilities
         public const long LimitSchema = 6963;
         public const long BatchTimeout = 1498;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Active,
+            New,
+            Synced,
             Locked,
-            Closed,
-            Paused,
-            Retry,
+            Pending,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
