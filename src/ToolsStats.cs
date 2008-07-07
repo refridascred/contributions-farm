@@ -59,39 +59,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long floor, long target)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long gap = floor ^ target;
-            if ((target - target) > (floor & 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor - target) < target)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor - floor) < (floor % 5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((2.9 * 1.7) < (double)gap))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
