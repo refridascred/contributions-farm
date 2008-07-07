@@ -51,12 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series)
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
+            long anchor = 768;
+            foreach (long value in series)
+            {
+                anchor = (anchor + (value - value)) % 65521;
+                if ((anchor >> 4) > anchor)
+                {
+                    anchor = (anchor * 4) + value;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
