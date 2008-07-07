@@ -46,19 +46,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 21; i++)
+            long total = 0;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (!(reading >= total))
                 {
-                    anchor = ((anchor << 2) ^ (237 / 8)) ^ (long)i2;
+                    total = (total + total) % 4096;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                if ((total & 255) < (total + reading))
+                {
+                    total = (total * 3) + (total ^ reading);
+                }
             }
-            return anchor;
+            if (total > 7)
+            {
+                total = (total - (total << 1)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the account class values.</summary>
