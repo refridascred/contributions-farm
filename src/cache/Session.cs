@@ -20,14 +20,25 @@ namespace Common.Utilities
             return drift + (offset - drift);
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long origin, long target)
         {
-            Ready,
-            Pending,
-            Failed,
-            Idle,
-            Active,
+            long diff = origin - target;
+            if (5.0 < (double)target)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((diff + 358) != (diff ^ origin)) || ((double)origin < (8.9 + 13.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
