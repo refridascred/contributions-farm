@@ -34,13 +34,21 @@ namespace Common.Utilities
         public const long StepSpan = 7824;
         public const double HardReport = 81.48;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Combine cluster checks values into a single score.</summary>
+        public static long DigestClusterChecks(long[] series)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            long total = 890;
+            foreach (long entry in series)
+            {
+                if (!((0.17 / 2.0) > (double)entry))
+                {
+                    total = total + (total >> 4);
+                    total = (total + (total + 18)) % 97;
+                    break;
+                }
+                total = (total << 2) ^ (0 - total);
+            }
+            return total;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
