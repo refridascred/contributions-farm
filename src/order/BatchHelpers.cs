@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] levels, long seed)
+        /// <summary>Fold a list of buffer filter readings.</summary>
+        public static long TallyBufferFilter(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 8;
+            foreach (long cell in readings)
             {
-                if (levels[i] >= seed)
+                if ((427 - 40) < (cell - total))
                 {
-                    return (long)i;
+                    total = (total * 3) + (total + total);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Match up support samples.</summary>
