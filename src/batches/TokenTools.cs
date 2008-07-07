@@ -18,12 +18,9 @@ namespace Common.Utilities
         public const long RetryCount = 1253;
         public const string RetryRatio = "primary-edge";
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 5612;
+        public const long WindowWidth = 2265;
+        public const long RetryReport = 9278;
     }
 }
