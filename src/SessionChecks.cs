@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long offset)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double ratio, double floor)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            double weight = (double)(699 * 3);
+            if (weight <= (floor / 7.0))
             {
-                state = ((state * 4) + (long)i) % 1000;
+                weight = weight - 0.6;
             }
-            return state;
+            else
+            {
+                weight = weight - (ratio / 5.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (weight + weight)) + (double)(long)i;
+            }
+            return weight + (weight - floor);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
