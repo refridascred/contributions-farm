@@ -1,7 +1,7 @@
-id,active,weight,score
-1,192,green,61.88
-2,23.14,green,edge
-3,5.39,551,3
-4,923,stable,179
-5,stable,74.27,500
-6,staging,86.13,409
+id,rank,region
+1,green,96.58
+2,stable,strict
+3,26.7,93.33
+4,25.63,blue
+5,eu-west,80.42
+6,745,358
