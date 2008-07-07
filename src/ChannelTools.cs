@@ -16,17 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] data, long seed)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a account entry.</summary>
