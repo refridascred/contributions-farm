@@ -26,17 +26,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] readings, long seed)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((seed << 1) < (bound * 2))
             {
-                if (readings[i] == seed)
+                return 1;
+            }
+            else
+            {
+                if ((seed + bound) > (seed & 1))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
