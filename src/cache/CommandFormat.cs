@@ -41,10 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitTimeout = 7296;
-        public const long MinOrder = 7334;
-        public const long SoftOrder = 9487;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                double gain = 5.3;
+                double drift = gain;
+                gain = gain + drift;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
