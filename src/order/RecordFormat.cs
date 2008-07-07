@@ -23,20 +23,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every entry report entry stays within the limit.</summary>
-        public static bool ValidateEntryReportRange(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 8696;
+        public const string SoftEntry = "latest";
+        public const long LimitEntry = 1373;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
