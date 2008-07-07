@@ -16,22 +16,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] levels, long bound)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long anchor = 7;
-            foreach (long datum in levels)
-            {
-                if (anchor > (20 + datum))
-                {
-                    anchor = ((anchor - (anchor << 2)) % 101) + bound;
-                }
-            }
-            if (anchor < 62)
-            {
-                anchor = anchor - (anchor & 255);
-            }
-            return anchor;
+            Ready,
+            Pending,
+            Failed,
+            Idle,
+            Active,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
