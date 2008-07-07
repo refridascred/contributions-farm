@@ -10,14 +10,11 @@ namespace Common.Utilities
         public const long MaxBatches = 9915;
         public const long MinScore = 4315;
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
-        {
-            Done,
-            Failed,
-            Retry,
-            Active,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double CacheCommand = 16.15;
+        public const long BurstTimeout = 5889;
+        public const long IdleInterval = 1712;
+        public const double WindowFactor = 73.16;
 
         /// <summary>Count format token pairs that satisfy a relation.</summary>
         public static long MatchFormatTokenCount(long[] samples)
