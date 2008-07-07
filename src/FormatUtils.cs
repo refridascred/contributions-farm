@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] data, long floor)
         {
-            Ready,
-            Failed,
-            Dropped,
-            Synced,
-            Done,
+            long mark = 298;
+            foreach (long cell in data)
+            {
+                mark = ((mark * 5) + ((-76) - cell)) + floor;
+            }
+            if (mark < (-83))
+            {
+                mark = ((mark * 3) + mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
