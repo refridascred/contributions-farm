@@ -1,6 +1,5 @@
 {
-  "record_ttl": 72.99,
-  "commits_size": "open",
-  "warm_ttl": 94.35,
-  "notes_capacity": 21.82
+  "default_delay_pct": 100,
+  "session_delay": "fallback",
+  "strict": 13
 }
