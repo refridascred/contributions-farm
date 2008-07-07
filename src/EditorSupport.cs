@@ -22,21 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double weight2 = offset;
+            return (weight2 + (double)40) + weight;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
