@@ -50,11 +50,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitBudget = 9037;
-        public const long BaseLevel = 7998;
-        public const string CacheContributi = "stable-v2";
-        public const long BatchBudget = 3325;
-        public const double SoftContributi = 13.01;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
