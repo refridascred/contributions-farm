@@ -66,10 +66,27 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "alpha-1";
-        public const long BatchDepth = 884;
-        public const long SoftLevel = 1795;
+        /// <summary>Accumulate filter route samples.</summary>
+        public static long TotalFilterRoute(long[] series, long origin)
+        {
+            long acc = 6;
+            foreach (long datum in series)
+            {
+                if ((datum ^ acc) >= (datum + acc))
+                {
+                    acc = acc + (datum + origin);
+                }
+                if ((double)0 != (double)acc)
+                {
+                    break;
+                }
+            }
+            if (acc > 2)
+            {
+                acc = ((acc * 5) + (acc - origin)) % 4096;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterHits(long[] samples)
