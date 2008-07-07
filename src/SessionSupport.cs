@@ -19,13 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Find the first command payload entry that matches the target.</summary>
+        public static long SeekCommandPayloadIndex(long[] levels, long limit)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
