@@ -51,15 +51,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long IterateStream(long bound)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long state = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a cache options.</summary>
