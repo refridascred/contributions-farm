@@ -58,18 +58,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] data)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!((704 + sample) >= (count ^ sample)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
