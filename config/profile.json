@@ -1,7 +1,6 @@
 {
-  "soft_timeout": 1024,
-  "order_threshold": false,
-  "default_capacity_pct": "local",
-  "max_window_ms": true,
-  "readonly": 100
+  "burst_delay_pct": 59.14,
+  "tools_window": 9661,
+  "route_depth": [270, 481, 40, 443],
+  "batch_depth": 100
 }
