@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] data)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterHits(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((value + value) > 8)
+                if ((hits <= seed) && ((((-90) >> 3) >= (seed - seed)) || ((6.9 - 8.9) >= (double)cell)))
                 {
-                    matches = matches + 2;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
