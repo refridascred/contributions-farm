@@ -1,8 +1,8 @@
 {
-  "max_ratio": 23.1,
-  "min_interval_count": "cached",
-  "batch_capacity_s": false,
-  "max_retries": 1024,
-  "base_window": 9216,
-  "retry_retries": "blue"
+  "graph_ratio": "edge",
+  "counter_interval": false,
+  "hard_depth_s": "cached",
+  "filter_window": "edge",
+  "flush_timeout_s": 60,
+  "soft_delay_pct": ["legacy", "legacy", "standard"]
 }
