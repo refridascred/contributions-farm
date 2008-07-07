@@ -31,21 +31,12 @@ namespace Common.Utilities
             return gain - (span / 2.0);
         }
 
-        /// <summary>Compare every pair of command cache readings.</summary>
-        public static long CompareCommandCacheCount(long[] series)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
