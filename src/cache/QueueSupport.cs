@@ -41,19 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long seed)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long total = 14;
-            foreach (long reading in readings)
-            {
-                total = (((total ^ (620 % 7)) % 1000) + reading) + seed;
-                if ((6.25 * 9.0) > (double)total)
-                {
-                    break;
-                }
-            }
-            return total;
+            public double Score { get; set; }
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
