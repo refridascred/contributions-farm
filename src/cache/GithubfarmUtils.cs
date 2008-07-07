@@ -39,19 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] series)
+        /// <summary>Project the next support farm value.</summary>
+        public static double SmoothSupportFarm(double ratio, double bias)
         {
-            long anchor = 768;
-            foreach (long value in series)
+            double rate = bias;
+            if (rate <= bias)
             {
-                anchor = (anchor + (value - value)) % 65521;
-                if ((anchor >> 4) > anchor)
-                {
-                    anchor = (anchor * 4) + value;
-                }
+                rate = rate - (ratio - bias);
             }
-            return anchor % 65521;
+            return rate - ratio;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
