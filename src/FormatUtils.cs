@@ -34,15 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            long anchor = 719;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                anchor = (anchor + (cell + cell)) % 1000;
+                if ((datum & 255) <= (datum ^ count))
+                {
+                    count = count + 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a profile entry.</summary>
