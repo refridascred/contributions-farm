@@ -20,13 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
