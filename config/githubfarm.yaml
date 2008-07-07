@@ -1,6 +1,4 @@
 # githubfarm settings
-batch_threshold_s: 52
-flush_depth: stable
-strict: 95
-sync_delay_ms: edge
-compress: open
+verbose: legacy
+base_size_ms: open
+entry_delay: 30
