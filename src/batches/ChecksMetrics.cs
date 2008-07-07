@@ -71,25 +71,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long origin, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long gap = origin - target;
-            if ((64 >> 4) > (gap - gap))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin != (7.0 * 4.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
