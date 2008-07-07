@@ -14,10 +14,27 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 9789;
-        public const long BaseTimeout = 5285;
-        public const long BaseScore = 1521;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] readings, long limit)
+        {
+            long result = 47;
+            foreach (long item in readings)
+            {
+                if ((item ^ item) <= (item - result))
+                {
+                    result = ((result + (result + 5)) % 97) - limit;
+                }
+                else
+                {
+                    result = (result + result) % 97;
+                }
+                if ((double)(long)readings.Length <= (double)result)
+                {
+                    break;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferMatches(long[] levels, long seed)
