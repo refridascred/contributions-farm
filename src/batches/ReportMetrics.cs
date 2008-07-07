@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] items, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((bound - bound) > (target % 2))
             {
-                if ((items[i] >= bound) && ((items[i] % 5) != 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound + target) < (-4))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
