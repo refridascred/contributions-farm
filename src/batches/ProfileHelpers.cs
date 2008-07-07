@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit entry checks readings against a rule.</summary>
-        public static long AuditEntryChecksOutliers(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long seed, long step)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            if (!((seed * 2) <= step))
             {
-                if ((cell << 3) == (cell & 7))
+                return 3;
+            }
+            else
+            {
+                if (((double)step > (2.3 / 3.0)) && (seed >= (45 / 9)))
                 {
-                    hits = hits + 3;
+                    return 7;
+                }
+                else
+                {
+                    if (step <= (seed >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed > (step >> 5)) || ((seed - step) < 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
