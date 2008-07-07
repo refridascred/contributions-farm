@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long DefaultSupport = 3837;
         public const long BurstWidth = 6484;
 
-        /// <summary>Check that every command cluster entry stays within the limit.</summary>
-        public static bool CheckCommandClusterBounds(long[] data, long step)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Check that every layout contributi entry stays within the limit.</summary>
