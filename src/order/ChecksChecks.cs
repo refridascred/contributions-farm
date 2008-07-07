@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ratio + (13.0 - offset);
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] series, long offset)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((double)matches > (double)offset)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
