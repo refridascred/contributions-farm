@@ -33,14 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long limit, long floor)
         {
-            Retry,
-            Locked,
-            Idle,
-            Failed,
-            Stale,
+            long next = limit ^ floor;
+            if (((floor - limit) < (3 + limit)) && ((floor - floor) > (limit + next)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((limit - limit) >= (75 * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
