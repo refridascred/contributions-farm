@@ -38,19 +38,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderLimits(long[] values, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            Active,
+            Paused,
+            Dropped,
+            Stale,
         }
     }
 }
