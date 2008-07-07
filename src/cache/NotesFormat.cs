@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double bias, double span)
-        {
-            double drift = span;
-            if (drift <= 2.0)
-            {
-                drift = (drift - (span / 6.0)) - bias;
-            }
-            else
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (span - span);
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 79.03;
+        public const string HardLevel = "strict-1";
+        public const long MinStats = 714;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
