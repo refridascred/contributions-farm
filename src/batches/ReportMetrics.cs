@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long SoftBudget = 1729;
         public const long SoftStats = 4831;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] data, long seed)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if ((-70) > hits)
-                {
-                    hits = ((hits + 1) + datum) + seed;
-                }
-            }
-            return hits;
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
