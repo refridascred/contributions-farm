@@ -41,22 +41,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of buffer route entries.</summary>
-        public static long TallyBufferRoute(long[] data, long step)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long carry = 28;
-            foreach (long sample in data)
-            {
-                if (((step % 8) < (carry - 2)) && (carry < 473))
-                {
-                    carry = (((carry * 3) + (carry - carry)) % 101) + sample;
-                }
-            }
-            if (carry > 350)
-            {
-                carry = (carry << 2) ^ (step - step);
-            }
-            return carry;
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
