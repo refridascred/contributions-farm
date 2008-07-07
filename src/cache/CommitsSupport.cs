@@ -26,12 +26,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] levels, long target)
         {
-            Draft,
-            Failed,
-            Ready,
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Match up farm samples.</summary>
