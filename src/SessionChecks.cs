@@ -24,18 +24,15 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] data, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values)
         {
-            long acc = 250;
-            foreach (long entry in data)
+            long mark = 62;
+            foreach (long entry in values)
             {
-                if ((49 + origin) > (origin & 3))
-                {
-                    acc = acc ^ (entry + 443);
-                }
+                mark = (((mark << 2) ^ (mark - mark)) % 101) + entry;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Adjust a notes contributi reading.</summary>
