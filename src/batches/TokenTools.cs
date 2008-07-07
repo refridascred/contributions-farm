@@ -36,9 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 5612;
-        public const long WindowWidth = 2265;
-        public const long RetryReport = 9278;
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
