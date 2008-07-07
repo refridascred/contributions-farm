@@ -1,8 +1,4 @@
 # githubfarm settings
-hard_size_pct: false
-soft_window_ms: 3.08
-flush_ttl_pct:
-  - green
-  - staging
-  - stable
-  - green
+flush_limit: eu-west
+hard_ttl: false
+compress: fallback
