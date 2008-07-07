@@ -24,24 +24,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long bound, long offset)
+        /// <summary>Count the cache payload entries that pass the check.</summary>
+        public static long AuditCachePayloadMatches(long[] values, long offset)
         {
-            if ((bound - offset) >= offset)
+            long seen = 0;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + bound) <= offset)
+                if ((offset - 46) >= (seen - seen))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) ^ item;
                 }
             }
+            return seen;
         }
     }
 }
