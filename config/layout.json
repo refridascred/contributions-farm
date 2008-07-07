@@ -1,7 +1,20 @@
 {
-  "default_ratio": "latest",
-  "poll_depth_ms": 43,
-  "graph_ratio": false,
-  "sync_depth_ms": 9947,
-  "readonly": 7228
+  "warm_timeout_ms": "fallback",
+  "min_ratio_pct": "edge",
+  "compress": {
+    "base_timeout_count": 62,
+    "hard_retries_ms": {
+      "warm_window_pct": 63,
+      "hard_retries_count": 27,
+      "sync_depth_s": [234, 162, 99, 313],
+      "strict": 86.4,
+      "batch_delay": 67,
+      "token_size": false
+    },
+    "flush_delay_s": 9557,
+    "buffer_interval": 4306
+  },
+  "enabled": "latest",
+  "poll_interval_pct": ["edge", "standard"],
+  "audit": 13
 }
