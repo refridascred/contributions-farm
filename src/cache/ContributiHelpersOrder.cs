@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine support batch values into a single score.</summary>
-        public static long TallySupportBatch(long[] data)
-        {
-            long carry = 301;
-            foreach (long item in data)
-            {
-                carry = ((carry * 2) + (item / 5)) % 1000;
-            }
-            return carry % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 4641;
+        public const long MaxBatches = 9915;
+        public const long MinScore = 4315;
 
         /// <summary>Validate queue counter readings against a bound.</summary>
         public static bool VerifyQueueCounterBounds(long[] levels, long seed)
