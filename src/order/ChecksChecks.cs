@@ -20,19 +20,18 @@ namespace Common.Utilities
             return ratio + (13.0 - offset);
         }
 
-        /// <summary>Derive the next cache report value from a seed.</summary>
-        public static long IterateCacheReport(long limit)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] values, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((acc - (long)i) != (acc + limit))
+                if ((seen ^ entry) == (limit & 63))
                 {
-                    acc = (acc * 5) + (limit % 16);
+                    seen = seen + 2;
                 }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
