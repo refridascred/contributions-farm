@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 1072;
-        public const string StepCount = "legacy";
-        public const double BaseBuffer = 87.72;
-        public const long BurstCount = 83;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((34 >> 1) <= (sample + step))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const double HardAccount = 89.74;
