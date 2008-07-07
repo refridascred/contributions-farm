@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsMatches(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample > (5.0 - 2.0))
+                {
+                    matches = (matches + 1) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks level values.</summary>
