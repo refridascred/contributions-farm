@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west; do
+mode="${1:-edge}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in latest green stable standard; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 8 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=288
+log "limit is ${COMMAND_LIMIT}"
