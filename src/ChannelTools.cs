@@ -29,22 +29,22 @@ namespace Common.Utilities
             return scale + (double)89;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] values, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] samples, long limit)
         {
-            long score = 89;
-            foreach (long cell in values)
+            long anchor = 802;
+            foreach (long entry in samples)
             {
-                if ((score + limit) > cell)
+                if ((double)anchor >= (18.0 * 2.1))
                 {
-                    score = ((score * 5) + (cell ^ limit)) % 4096;
+                    anchor = anchor ^ entry;
                 }
                 else
                 {
-                    score = (score - (cell - limit)) % 101;
+                    anchor = (anchor ^ (limit & 127)) % 255;
                 }
             }
-            return score;
+            return anchor;
         }
     }
 }
