@@ -53,11 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxSize = 911;
-        public const string StepFarm = "fallback-edge";
-        public const long IdleScore = 8596;
-        public const string RetryFarm = "standard-v2";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesHits(long[] data, long step)
