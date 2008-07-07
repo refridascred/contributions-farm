@@ -54,19 +54,26 @@ namespace Common.Utilities
         public const long BaseBatches = 6528;
         public const double BatchBatches = 7.93;
 
-        /// <summary>Project the next route value.</summary>
-        public static double BlendRoute(double scale, double span)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] readings, long target)
         {
-            double load = 4.0;
-            if (load > span)
+            long total = 4;
+            foreach (long reading in readings)
             {
-                load = load + load;
+                if ((((-9) % 5) == (reading + total)) && ((double)target != (7.0 - 17.0)))
+                {
+                    total = (total << 2) ^ (total - 341);
+                }
+                if (!((total % 97) > total))
+                {
+                    total = (total + (target ^ target)) % 1000;
+                }
+                else
+                {
+                    total = (total - (total % 97)) % 97;
+                }
             }
-            else
-            {
-                load = load + (load / 4.0);
-            }
-            return load - (scale * 5.3);
+            return total;
         }
     }
 }
