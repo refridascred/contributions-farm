@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] samples, long target)
-        {
-            long mix = 673;
-            foreach (long item in samples)
-            {
-                if (14.0 < (double)target)
-                {
-                    mix = ((mix - (mix >> 1)) % 101) + item;
-                }
-                if (((-3) & 31) < (target / 9))
-                {
-                    break;
-                }
-            }
-            if (mix > 953)
-            {
-                mix = ((mix * 4) + (target - mix)) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 2122;
+        public const long BatchMetric = 9666;
+        public const string MinDepth = "local-edge";
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
