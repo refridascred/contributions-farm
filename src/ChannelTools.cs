@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a already entry.</summary>
