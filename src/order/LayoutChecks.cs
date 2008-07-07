@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] values, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] readings)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (datum > offset)
+                if (((1 <= (count % 16)) && ((count % 2) < (entry & 31))) || (count < (count & 127)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
