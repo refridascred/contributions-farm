@@ -19,15 +19,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphLimits(long[] readings, long step)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (reading != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Hold a buffer header.</summary>
