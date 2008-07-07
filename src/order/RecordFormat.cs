@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = (sum ^ (origin * 5)) % 97;
-                sum = ((sum * 2) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstLevel = 3112;
+        public const string LimitChannel = "standard";
+        public const long MinDepth = 3454;
+        public const long StepRatio = 6573;
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] values)
