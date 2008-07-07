@@ -1,14 +1,8 @@
 # githubfarm settings
-entry_retries: strict
-batch_timeout_s: staging
-burst_threshold_s:
-  flush_window_count: true
-  audit: 5254
-  idle_interval_pct: 5417
-  compress: 41
-  idle_threshold: 500
-  dry_run: false
-default_ratio_pct: true
-sync_limit_count:
-  - local
-  - cached
+hard_window_ms:
+  - 104
+  - 83
+strict: 500
+flush_ttl: true
+audit: 1024
+retry_timeout_s: 92
