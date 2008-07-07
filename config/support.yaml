@@ -1,5 +1,4 @@
 # support settings
-cache_timeout_s: 75.98
-strict: 100
-max_capacity_pct: 792
-stream_interval: staging
+batch_depth: eu-west
+payload_timeout: standard
+base_ttl: 30
