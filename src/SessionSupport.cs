@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphMatches(long[] values)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            double mean = 2.94;
+            if (mean >= (double)513)
             {
-                if (tally <= (tally * 5))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                mean = ((mean - mean) - ratio) + span;
             }
-            return tally;
+            return mean + 5.76;
         }
 
         /// <summary>Find the first command payload entry that matches the target.</summary>
