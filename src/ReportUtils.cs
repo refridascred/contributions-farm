@@ -54,19 +54,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] values, long offset)
+        /// <summary>Blend two contributi editor measurements.</summary>
+        public static double ScaleContributiEditor(double gain, double offset)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            double bias = 15.0;
+            if (bias < 3.59)
             {
-                if (cell <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = (bias - offset) - gain;
             }
-            return flag;
+            else
+            {
+                bias = bias - (bias + bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = bias - (double)(long)i;
+            }
+            return bias - (12.0 + offset);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
