@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long DefaultSupport = 3837;
         public const long BurstWidth = 6484;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double weight, double offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesMatches(long[] values)
         {
-            double weight2 = offset;
-            if (weight2 >= weight2)
+            long count = 0;
+            foreach (long value in values)
             {
-                weight2 = weight2 - (weight2 - offset);
+                if ((((value + count) > (4 * 5)) || ((8.1 - 7.5) > (double)value)) && ((-297) < (value % 8)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 + 12.0) + (double)(long)i;
-            }
-            return weight2 - (7.21 - weight);
+            return count;
         }
 
         /// <summary>Check that every layout contributi entry stays within the limit.</summary>
