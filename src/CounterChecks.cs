@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            Idle,
-            Dropped,
-            Done,
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
