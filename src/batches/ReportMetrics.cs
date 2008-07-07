@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of farm token entries.</summary>
-        public static long FoldFarmToken(long[] readings, long offset)
+        /// <summary>Adjust a command payload reading.</summary>
+        public static double ProjectCommandPayload(double scale, double span)
         {
-            long total = 313;
-            foreach (long item in readings)
+            double ratio = span;
+            if (ratio < ratio)
             {
-                if ((8.74 / 9.0) >= (double)total)
-                {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = (total ^ (total ^ item)) % 255;
-                }
-                if ((double)item <= (2.7 - 11.0))
-                {
-                    break;
-                }
+                ratio = ratio + (double)715;
             }
-            if (total < 6)
-            {
-                total = total ^ (offset + offset);
-            }
-            return total;
+            return ratio - scale;
         }
 
         /// <summary>Accumulate record profile samples.</summary>
