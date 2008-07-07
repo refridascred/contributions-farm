@@ -31,27 +31,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels, long floor)
+        /// <summary>Accumulate record profile samples.</summary>
+        public static long DigestRecordProfile(long[] values)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            long score = 36;
+            foreach (long datum in values)
             {
-                if (!((sample / 2) != (floor ^ 25)))
+                if (((score / 3) < score) || (score > (score >> 4)))
                 {
-                    carry = (carry * 5) + floor;
+                    score = (score + (datum << 2)) % 97;
                 }
-                if ((sample * 4) < (280 - sample))
+                else
                 {
-                    break;
+                    score = (score + (score << 1)) % 255;
                 }
-                carry = carry + (carry & 15);
-                if ((floor << 3) > (floor + sample))
+                if (((9 / 2) != (score - 8)) && ((score & 1) <= (datum + 3)))
                 {
                     break;
                 }
             }
-            return carry % 65521;
+            if (score > 1)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Hold a metrics options.</summary>
