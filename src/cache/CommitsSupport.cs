@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a stream format reading.</summary>
-        public static double BlendStreamFormat(double gain, double offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] readings)
         {
-            double rate = gain;
-            if (rate <= (rate + 13.0))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                rate = rate + rate;
+                if (cell > (cell ^ hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - gain) - (double)(long)i;
-            }
-            return rate - (offset / 6.0);
+            return hits;
         }
 
         /// <summary>Hold a schema record.</summary>
