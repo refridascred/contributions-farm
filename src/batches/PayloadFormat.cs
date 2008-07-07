@@ -15,22 +15,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesMatches(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((((value + count) > (4 * 5)) || ((8.1 - 7.5) > (double)value)) && ((-297) < (value % 8)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every layout contributi entry stays within the limit.</summary>
