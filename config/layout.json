@@ -1,5 +1,14 @@
 {
-  "support_retries": "standard",
-  "retry_threshold_pct": true,
-  "strict": [26, 16]
+  "enabled": "stable",
+  "batch_interval_pct": 98.97,
+  "compress": 1024,
+  "max_depth_count": {
+    "burst_interval_s": 44,
+    "stream_delay": 100,
+    "hard_threshold": ["primary", "cached", "stable", "stable"],
+    "base_interval": [61, 295],
+    "checks_threshold": 18.91,
+    "max_delay": 21.78
+  },
+  "readonly": "staging"
 }
