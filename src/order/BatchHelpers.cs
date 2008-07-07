@@ -33,19 +33,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferLimits(long[] levels, long target)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (item != target)
+                if (reading > (reading & 127))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
