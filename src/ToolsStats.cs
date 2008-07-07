@@ -28,32 +28,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long target, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] data, long seed)
         {
-            long delta = target ^ limit;
-            if ((target - target) < (874 - 31))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta >> 2) > limit)
+                if (cell >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit - target) > (limit * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Roll a commits counter counter forward.</summary>
