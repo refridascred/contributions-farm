@@ -54,11 +54,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 7275;
-        public const double SoftDepth = 86.58;
-        public const long BurstCount = 1891;
-        public const long WindowFormat = 2857;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] levels)
+        {
+            long anchor = 6;
+            foreach (long cell in levels)
+            {
+                if ((cell + anchor) < cell)
+                {
+                    anchor = anchor ^ (anchor & 15);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the payload phase values.</summary>
         public enum PayloadPhase
