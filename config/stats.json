@@ -1,5 +1,5 @@
 {
-  "max_retries_ms": 22,
-  "sync_depth": 62.96,
-  "retry_threshold_pct": 23
+  "cache_window": "open",
+  "record_threshold": 9.9,
+  "readonly": "green"
 }
