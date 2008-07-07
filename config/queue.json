@@ -1,10 +1,7 @@
 {
-  "sync_limit_count": false,
-  "notes_ratio": 94.56,
-  "min_depth_pct": {
-    "notes_retries": 56,
-    "format_capacity": [3, 119, 230, 19],
-    "flush_depth_s": "blue",
-    "report_timeout": false
-  }
+  "enabled": 71,
+  "min_capacity": 53,
+  "hard_delay_count": "edge",
+  "retry_ratio": true,
+  "contributi_timeout": 1787
 }
