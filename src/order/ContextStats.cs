@@ -51,15 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Match up editor contributi samples.</summary>
+        public static long MatchEditorContributiCount(long[] values)
         {
-            long total = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total * 2) + (datum + total)) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return total;
+            return seen;
         }
     }
 }
