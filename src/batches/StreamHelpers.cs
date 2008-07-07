@@ -27,17 +27,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Locate a tools record reading by value.</summary>
-        public static long LookupToolsRecordIndex(long[] items, long offset)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Roll a session counter forward.</summary>
