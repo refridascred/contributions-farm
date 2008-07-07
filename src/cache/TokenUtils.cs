@@ -20,16 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepInterval = 8000;
+        public const long MaxScore = 9190;
+        public const double HardBudget = 26.11;
+        public const long BurstDepth = 7261;
+        public const long LimitCluster = 333;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long SoftBudget = 9057;
