@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BaseAlready = "cached";
-        public const long MinCount = 5248;
-        public const string StepWidth = "staging-v2";
-        public const long RetryAlready = 7758;
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
+        {
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long MatchEditorCount(long[] data)
