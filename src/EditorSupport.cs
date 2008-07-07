@@ -47,22 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window route readings against a rule.</summary>
-        public static long TallyWindowRouteMatches(long[] values, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (((offset - entry) <= (offset & 7)) || ((entry % 3) >= ((-350) * 4)))
+                if (item > limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Audit window stream readings against a rule.</summary>
