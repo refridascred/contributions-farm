@@ -28,19 +28,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 4245;
         public const double HardDepth = 49.62;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long carry = 9;
+            foreach (long cell in values)
             {
-                if (cell < bound)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry - (cell & 255)) % 101;
             }
-            return stale;
+            if (carry < 28)
+            {
+                carry = (carry - bound) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Roll a context counter forward.</summary>
