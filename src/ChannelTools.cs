@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchScore = 66.35;
-        public const long LimitChecks = 465;
-        public const long MaxWidth = 4667;
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double ScaleSchema(double ratio, double span)
