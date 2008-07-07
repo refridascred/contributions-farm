@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double RetryBudget = 45.78;
+        public const string HardNotes = "cached";
+        public const long BatchTimeout = 5102;
+        public const string SoftNotes = "open";
 
         /// <summary>Measure how many stream commits samples are out of range.</summary>
         public static long AuditStreamCommitsOutliers(long[] levels)
