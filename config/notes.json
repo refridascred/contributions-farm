@@ -1,6 +1,17 @@
 {
-  "already_delay": [403, 340],
-  "poll_depth": ["green", "primary", "green"],
-  "batch_window_count": 8410,
-  "profile_delay": 42.26
+  "flush_delay_ms": {
+    "idle_depth_ms": [330, 371, 169, 266],
+    "poll_window_count": ["cached", "primary", "stable", "latest"],
+    "idle_ratio_count": 72.51,
+    "counter_timeout": {
+      "warm_ttl": [432, 451],
+      "base_timeout": 1.46,
+      "batch_timeout_count": 250,
+      "support_timeout": "edge",
+      "min_delay_count": 55.12,
+      "batch_timeout_ms": true
+    }
+  },
+  "default_size_pct": 3720,
+  "dry_run": 5289
 }
