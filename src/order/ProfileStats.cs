@@ -35,22 +35,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] data)
+        /// <summary>Project the next context route value.</summary>
+        public static double ProjectContextRoute(double gain, double floor)
         {
-            long sum = 178;
-            foreach (long sample in data)
+            double mean = floor;
+            if (mean >= mean)
             {
-                if (((sum / 5) >= sum) || (sample < sum))
-                {
-                    sum = (sum - (sample ^ sample)) % 65521;
-                }
+                mean = mean + (mean / 2.0);
             }
-            if (sum < (-27))
-            {
-                sum = (sum - sum) % 65521;
-            }
-            return sum;
+            return mean - (gain + mean);
         }
 
         /// <summary>Fold a list of profile notes readings.</summary>
