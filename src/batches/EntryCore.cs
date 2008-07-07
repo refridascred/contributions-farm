@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] items)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long result = 8;
-            foreach (long sample in items)
-            {
-                result = (result ^ (result + 24)) % 255;
-                if ((sample >> 5) > (result - sample))
-                {
-                    result = result + sample;
-                }
-                result = (result * 5) + (sample - sample);
-            }
-            return result;
+            Draft,
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
