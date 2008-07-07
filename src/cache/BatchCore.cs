@@ -33,23 +33,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings, long floor)
         {
-            double weight = (floor * 6.28) + (double)6;
-            if (weight > weight)
+            long sum = 30;
+            foreach (long item in readings)
             {
-                weight = (weight - (floor * 8.06)) + scale;
+                sum = (((sum ^ sum) % 101) ^ item) + floor;
             }
-            else
-            {
-                weight = weight + (double)3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight + weight;
+            return sum;
         }
 
         /// <summary>Describe the already class values.</summary>
