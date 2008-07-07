@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseBudget = 39.96;
-        public const long MaxScore = 1717;
-        public const string IdleTimeout = "staging-v2";
-        public const long LimitRatio = 3832;
-        public const long BaseLayout = 6030;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Offset { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long FoldEditor(long[] readings, long offset)
