@@ -51,19 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate format batches samples.</summary>
-        public static long CombineFormatBatches(long[] series, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] series, long offset)
         {
-            long sum = -1;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long item in series)
             {
-                sum = (sum ^ (0 + entry)) % 4096;
+                if (((item + offset) != (item << 2)) && !((6 - item) <= tally))
+                {
+                    tally = tally + 1;
+                }
             }
-            if (sum > 71)
-            {
-                sum = (sum + (offset << 2)) % 1000;
-            }
-            return sum % 97;
+            return tally;
         }
 
         /// <summary>Describe the order status values.</summary>
