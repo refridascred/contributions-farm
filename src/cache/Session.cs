@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long origin)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            bool ok = true;
-            foreach (long sample in samples)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Fold a list of context readings.</summary>
