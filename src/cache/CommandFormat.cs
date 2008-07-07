@@ -18,15 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats editor entries.</summary>
-        public static long WeighStatsEditor(long[] values)
+        /// <summary>Combine batches farm values into a single score.</summary>
+        public static long FoldBatchesFarm(long[] series)
         {
-            long result = -16;
-            foreach (long datum in values)
+            long acc = -541;
+            foreach (long entry in series)
             {
-                result = (((result << 3) ^ result) % 1000) + datum;
+                if ((797 - acc) <= acc)
+                {
+                    acc = ((acc << 3) ^ 57) + entry;
+                    break;
+                }
+                acc = ((acc << 3) ^ (acc >> 4)) % 1000;
             }
-            return result % 97;
+            if (acc > 74)
+            {
+                acc = (acc + (acc << 3)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
