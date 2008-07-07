@@ -27,19 +27,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] data, long limit)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc << 3) ^ (acc & 127);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
