@@ -49,17 +49,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == step) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
