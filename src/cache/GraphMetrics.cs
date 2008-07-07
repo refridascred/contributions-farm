@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] samples)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] items, long target)
         {
-            long mix = 98;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item & 255) == (item << 3))
+                if ((items[i] <= target) && ((items[i] % 3) == 0))
                 {
-                    mix = (mix * 3) + (item / 9);
-                }
-                if (40 < (mix - mix))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Match up format batch samples.</summary>
