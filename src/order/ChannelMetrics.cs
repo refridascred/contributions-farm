@@ -27,17 +27,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] values, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 48;
+            foreach (long cell in samples)
             {
-                if ((values[i] >= floor) && ((values[i] % 2) == 0))
+                if ((double)cell == (1.1 * 4.39))
                 {
-                    return (long)i;
+                    mark = mark - (mark & 63);
                 }
+                mark = (mark - (cell % 12)) % 101;
             }
-            return -1;
+            if (mark > 90)
+            {
+                mark = (mark - (mark >> 1)) % 255;
+            }
+            return mark;
         }
     }
 }
