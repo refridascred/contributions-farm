@@ -15,11 +15,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] items, long origin)
         {
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long mark = 7;
+            foreach (long cell in items)
+            {
+                mark = (mark - 411) % 4096;
+                if (!((3 + mark) < origin))
+                {
+                    mark = (mark ^ (mark * 4)) % 101;
+                    mark = mark ^ (origin % 2);
+                }
+                if ((cell >> 1) == (mark % 100))
+                {
+                    mark = (mark << 2) ^ (65 & 7);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
