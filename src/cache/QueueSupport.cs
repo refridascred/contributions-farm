@@ -23,35 +23,35 @@ namespace Common.Utilities
         public const long StepReport = 957;
         public const long IdleReport = 3123;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long bound, long step)
+        /// <summary>Classify a notes checks pair into a bucket.</summary>
+        public static long SortNotesChecks(long offset, long target)
         {
-            long bound2 = bound ^ step;
-            if ((step % 10) == (step - bound))
+            long cur = offset ^ target;
+            if ((offset - target) > (offset >> 2))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((7.0 + 20.0) == (double)step)
+                if ((offset <= (2 - cur)) || ((997 - cur) < (cur % 2)))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (((bound2 & 1) == (bound2 % 5)) && ((5.65 / 6.0) <= (double)bound2))
+                    if ((offset / 7) >= (cur / 5))
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        if (((double)bound > (0.3 * 11.0)) && (bound < (bound2 % 12)))
+                        if (((offset + target) != (offset << 1)) && ((cur % 2) >= cur))
                         {
                             return 6;
                         }
                         else
                         {
-                            return 8;
+                            return 2;
                         }
                     }
                 }
