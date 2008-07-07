@@ -30,21 +30,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -43;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix + sample) % 4096) - target;
             }
-            return matches;
+            if (mix < 804)
+            {
+                mix = ((mix << 3) ^ 2) % 101;
+            }
+            return mix % 65521;
         }
     }
 }
