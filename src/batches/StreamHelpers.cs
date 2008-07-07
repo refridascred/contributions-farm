@@ -55,12 +55,17 @@ namespace Common.Utilities
             return weight + (18.0 * 5.1);
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] samples, long bound)
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
