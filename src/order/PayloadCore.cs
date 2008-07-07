@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a schema record reading by value.</summary>
-        public static long SeekSchemaRecordIndex(long[] levels, long limit)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Draft,
+            Done,
+            Queued,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
