@@ -1,16 +1,14 @@
 # githubfarm settings
-window_limit: true
-layout_timeout:
-  poll_size_s: 1134
-  cache_size_count: open
-  token_ratio: 6173
-  strict:
-    verbose: 73.77
-    stream_timeout: false
-    stream_retries: true
-    compress: 76.85
-    warm_threshold: 13.89
-base_capacity_pct: cached
-warm_size: false
-graph_size: 27.67
-compress: open
+entry_retries: strict
+batch_timeout_s: staging
+burst_threshold_s:
+  flush_window_count: true
+  audit: 5254
+  idle_interval_pct: 5417
+  compress: 41
+  idle_threshold: 500
+  dry_run: false
+default_ratio_pct: true
+sync_limit_count:
+  - local
+  - cached
