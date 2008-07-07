@@ -23,17 +23,12 @@ namespace Common.Utilities
         public const long BatchFactor = 9481;
         public const double SoftSize = 12.88;
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] samples, long offset)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            New,
+            Failed,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
