@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public string Token { get; set; } = "";
-            public double Score { get; set; }
-            public string Flag { get; set; } = "";
+            Ready,
+            Paused,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
