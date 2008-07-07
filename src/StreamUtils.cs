@@ -66,11 +66,13 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double RetryAlready = 57.17;
-        public const long SoftSize = 892;
-        public const string CacheAlready = "stable-edge";
-        public const long CacheCount = 6280;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long seed, long bound)
