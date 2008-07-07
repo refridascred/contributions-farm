@@ -40,19 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double floor)
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long CountAlreadyEntryHits(long[] series, long floor)
         {
-            double weight = floor;
-            if (weight <= (rate * 4.22))
+            long count = 0;
+            foreach (long cell in series)
             {
-                weight = weight + 8.0;
+                if ((double)count == (double)82)
+                {
+                    count = ((count + 3) ^ cell) - floor;
+                }
             }
-            else
-            {
-                weight = weight - 7.8;
-            }
-            return weight + (18.0 * 5.1);
+            return count;
         }
 
         /// <summary>Classify a farm channel pair into a bucket.</summary>
