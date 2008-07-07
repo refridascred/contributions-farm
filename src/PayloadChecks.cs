@@ -42,19 +42,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long bound)
+        /// <summary>Find the first order stream entry that matches the target.</summary>
+        public static long LookupOrderStreamIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell <= bound)
+                if (levels[i] < step)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Grade a stream cluster value against two limits.</summary>
