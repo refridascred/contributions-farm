@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 4381;
-        public const long MinDepth = 9519;
-        public const long IdleCache = 1801;
-        public const string BatchFactor = "cached-edge";
+        /// <summary>Project the next record value.</summary>
+        public static double SmoothRecord(double weight, double floor)
+        {
+            double rate = (double)(9 + 2);
+            if (rate > rate)
+            {
+                rate = ((rate - (double)4) + weight) + floor;
+            }
+            return rate + (1.63 * 11.0);
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] values)
