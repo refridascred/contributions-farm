@@ -32,14 +32,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaOutliers(long[] values)
         {
-            Queued,
-            Dropped,
-            Draft,
-            Paused,
-            Failed,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((long)values.Length < entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the filter class values.</summary>
