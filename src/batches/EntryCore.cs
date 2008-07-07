@@ -46,15 +46,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
-        {
-            Active,
-            Failed,
-            Done,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string StepLevel = "local-v2";
+        public const long RetryToken = 3152;
+        public const double HardBudget = 46.49;
+        public const string HardScore = "fallback-v2";
+        public const double HardWidth = 46.37;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
