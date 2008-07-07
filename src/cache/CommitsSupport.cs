@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] readings)
+        /// <summary>Combine record buffer values into a single score.</summary>
+        public static long WeighRecordBuffer(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long carry = 479;
+            foreach (long datum in values)
             {
-                if (cell > (cell ^ hits))
-                {
-                    hits = hits + 3;
-                }
+                carry = (carry ^ (carry ^ carry)) ^ datum;
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Hold a schema record.</summary>
