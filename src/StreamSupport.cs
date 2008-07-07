@@ -14,10 +14,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryBudget = 53.73;
-        public const long HardLevel = 6483;
-        public const long MaxProfile = 284;
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a order token reading.</summary>
         public static double BlendOrderToken(double gain, double floor)
