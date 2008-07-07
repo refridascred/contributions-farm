@@ -24,14 +24,10 @@ namespace Common.Utilities
         public const long LimitSchema = 6963;
         public const long BatchTimeout = 1498;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            New,
-            Synced,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string LimitLevel = "legacy-1";
+        public const long CacheAlready = 5108;
+        public const long IdleSize = 5582;
 
         /// <summary>Check that every order commits entry stays within the limit.</summary>
         public static bool CheckOrderCommitsBounds(long[] series, long offset)
