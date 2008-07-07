@@ -15,24 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((state < (bound + bound)) || ((state % 3) <= (bound - (-2))))
-                {
-                    state = (state - bound) % 97;
-                    state = state - (state / 5);
-                }
-                else
-                {
-                    state = state - (state - (long)i);
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            Active,
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
