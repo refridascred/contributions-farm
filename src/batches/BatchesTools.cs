@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long step)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Compare every pair of commits cache readings.</summary>
