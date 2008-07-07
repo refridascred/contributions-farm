@@ -51,39 +51,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long seed, long limit)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long offset = seed ^ limit;
-            if ((limit / 4) > limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((13.0 - 1.1) > (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit / 9) < (34 + 9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.39 - 3.1) != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Describe the route state values.</summary>
