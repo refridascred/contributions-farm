@@ -63,13 +63,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                total = total ^ (total ^ seed);
+                total = total - seed;
+                if ((double)total < (13.0 - 7.2))
+                {
+                    total = (total - (total % 5)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
