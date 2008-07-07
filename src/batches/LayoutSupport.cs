@@ -55,19 +55,21 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] levels, long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
