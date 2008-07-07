@@ -36,21 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long OverlapSupportCount(long[] samples)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((reading ^ hits) <= reading))
                 {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) + offset;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
