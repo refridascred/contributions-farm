@@ -35,12 +35,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultInterval = 5386;
-        public const long HardProfile = 9554;
-        public const long MinInterval = 4139;
-        public const double MaxBudget = 35.0;
-        public const long DefaultProfile = 3262;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Idle,
+            Pending,
+            Stale,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Accumulate commits samples.</summary>
         public static long TotalCommits(long[] series)
