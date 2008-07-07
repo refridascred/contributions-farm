@@ -69,13 +69,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportHits(long[] levels, long offset)
         {
-            Idle,
-            Queued,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((offset >> 4) != (124 >> 3))
+                {
+                    count = (count + 1) ^ reading;
+                }
+            }
+            return count;
         }
     }
 }
