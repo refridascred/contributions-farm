@@ -26,18 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long seed)
         {
-            long total = step;
-            for (int i = 0; i < 22; i++)
+            long total = 14;
+            foreach (long reading in readings)
             {
-                total = ((total * 4) + ((-7) >> 1)) % 101;
-                if ((double)(long)i > (2.7 - 16.0))
+                total = (((total ^ (620 % 7)) % 1000) + reading) + seed;
+                if ((6.25 * 9.0) > (double)total)
                 {
                     break;
                 }
-                total = ((total * 5) + (long)i) % 1000;
             }
             return total;
         }
