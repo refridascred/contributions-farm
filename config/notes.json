@@ -1,6 +1,14 @@
 {
-  "window_capacity": "eu-west",
-  "base_threshold_count": ["latest", "legacy", "blue"],
-  "command_ratio": 56,
-  "dry_run": false
+  "batch_limit_pct": false,
+  "account_delay": 58.8,
+  "sync_timeout_count": true,
+  "verbose": {
+    "soft_limit_s": "green",
+    "default_limit_pct": false,
+    "min_ratio": "local",
+    "base_threshold": false,
+    "cache_ttl_count": 250
+  },
+  "stream_timeout": 30,
+  "hard_size_s": 6512
 }
