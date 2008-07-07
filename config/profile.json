@@ -1,6 +1,11 @@
 {
-  "strict": ["cached", "blue", "standard"],
-  "burst_interval_s": 8286,
-  "retry_timeout_pct": true,
-  "soft_capacity": 83.96
+  "flush_size_ms": 81,
+  "persist": 250,
+  "strict": 21,
+  "buffer_window": {
+    "max_capacity_pct": 1024,
+    "retry_delay": true,
+    "audit": "primary"
+  },
+  "verbose": true
 }
