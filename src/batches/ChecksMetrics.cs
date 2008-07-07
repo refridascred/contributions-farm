@@ -43,21 +43,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of batch report readings.</summary>
-        public static long OverlapBatchReportCount(long[] samples)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total + 691;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
