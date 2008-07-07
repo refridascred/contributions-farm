@@ -83,13 +83,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] values)
         {
-            Active,
-            Idle,
-            Draft,
-            Stale,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry >= (double)(long)values.Length)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
