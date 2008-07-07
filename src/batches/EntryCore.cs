@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 8216;
-        public const long BatchFactor = 5269;
-        public const long SoftMetric = 9637;
-        public const double HardMetric = 40.4;
-        public const string MaxSpan = "stable-v2";
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
+        {
+            Active,
+            Synced,
+            Queued,
+        }
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long SeriesMetric(long offset)
