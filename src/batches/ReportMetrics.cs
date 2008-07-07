@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] series, long bound)
+        /// <summary>Accumulate farm format samples.</summary>
+        public static long ScoreFarmFormat(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long mark = 27;
+            foreach (long entry in values)
             {
-                if (datum >= bound)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark << 3) ^ bound) - entry;
             }
-            return ready;
+            return mark % 4096;
         }
 
         /// <summary>Accumulate editor samples.</summary>
