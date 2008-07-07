@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public bool Score { get; set; }
+            Stale,
+            Paused,
+            Active,
         }
     }
 }
