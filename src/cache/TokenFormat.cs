@@ -27,18 +27,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample >> 1) > sample)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 7836;
+        public const long MaxBuffer = 9917;
+        public const double BatchFactor = 20.93;
+        public const string StepTimeout = "cached-1";
     }
 }
