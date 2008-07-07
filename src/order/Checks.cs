@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Digest a series of record commits entries.</summary>
+        public static long DigestRecordCommits(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long result = 872;
+            foreach (long item in series)
+            {
+                result = (result << 2) ^ (item / 3);
+            }
+            if (result < 175)
+            {
+                result = ((result * 2) + (result - result)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
