@@ -23,12 +23,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the checks account entries that pass the check.</summary>
+        public static long TallyChecksAccountHits(long[] readings, long floor)
         {
-            Ready,
-            Active,
-            Failed,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((double)tally == (double)floor)
+                {
+                    tally = (tally + 3) - value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the checks status values.</summary>
