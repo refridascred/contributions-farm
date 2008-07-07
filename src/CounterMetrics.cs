@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 876;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (target < (value + value))
                 {
-                    if ((series[i] + series[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total ^ (total % 16)) % 65521;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
