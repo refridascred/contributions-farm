@@ -20,13 +20,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Grade a layout cluster value against two limits.</summary>
+        public static long BucketLayoutCluster(long target, long bound)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
+            if (((bound ^ 140) >= (target - target)) || ((192 / 8) < bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)target == (17.0 / 4.0)) || ((6.36 - 5.0) < (double)target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
