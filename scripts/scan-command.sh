@@ -7,11 +7,10 @@ log() {
 }
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 12); do
     total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in primary eu-west legacy local; do
-    log "checking ${item}"
-done
+COMMAND_LIMIT=482
+log "limit is ${COMMAND_LIMIT}"
