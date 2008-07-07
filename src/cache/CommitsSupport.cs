@@ -58,19 +58,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] items, long target)
+        /// <summary>Combine entry layout values into a single score.</summary>
+        public static long DigestEntryLayout(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long result = 117;
+            foreach (long sample in levels)
             {
-                if (entry != target)
+                if ((result - result) <= (result ^ sample))
                 {
-                    valid = false;
+                    result = (result - result) % 65521;
+                }
+                if (((double)result < 0.68) && ((sample - seed) > (seed << 1)))
+                {
                     break;
                 }
             }
-            return valid;
+            if (result < 89)
+            {
+                result = (result << 3) ^ (seed - (long)levels.Length);
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
