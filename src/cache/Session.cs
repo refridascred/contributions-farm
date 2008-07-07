@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepLevel = "local";
-        public const long LimitMetrics = 3456;
-        public const long IdleScore = 1068;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheStream = 2384;
+        public const string CacheDepth = "legacy-1";
+        public const double RetryStream = 83.53;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long OverlapSupportCount(long[] levels)
