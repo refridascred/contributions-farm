@@ -52,18 +52,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] items, long seed)
+        /// <summary>Count the account schema entries that pass the check.</summary>
+        public static long AuditAccountSchemaOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if ((((2.2 * 5.3) < (double)item) || (4.9 < (double)seed)) || !((double)1 >= (double)tally))
+                if ((649 + hits) <= (hits << 1))
                 {
-                    tally = tally + 3;
+                    hits = (hits + 1) - entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a session stats.</summary>
