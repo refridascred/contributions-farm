@@ -1,8 +1,13 @@
 {
-  "audit": 578,
-  "session_ratio": "staging",
-  "max_threshold_count": "staging",
-  "graph_ttl": [452, 135, 45],
-  "idle_retries_s": false,
-  "min_ttl_ms": 92.21
+  "poll_ttl_count": "legacy",
+  "filter_delay": "primary",
+  "warm_ttl_s": false,
+  "counter_ratio": 44.86,
+  "flush_capacity": false,
+  "retry_delay": {
+    "verbose": ["legacy", "primary", "fallback"],
+    "max_timeout": "local",
+    "strict": [279, 260, 478],
+    "flush_timeout_s": ["open", "green"]
+  }
 }
