@@ -33,22 +33,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] data, long target)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = 589;
+            foreach (long reading in data)
             {
-                if ((carry >= (carry & 15)) && ((floor << 1) != (floor - (long)i)))
-                {
-                    carry = ((carry * 4) + (floor + floor)) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ ((long)i - floor);
-                    carry = (carry * 3) + (0 & 255);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                carry = ((carry ^ carry) % 101) - reading;
+            }
+            if (carry < 0)
+            {
+                carry = (carry + (target + carry)) % 1000;
             }
             return carry;
         }
