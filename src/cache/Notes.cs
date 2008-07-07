@@ -60,14 +60,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            Done,
-            Ready,
-            New,
-            Idle,
-            Stale,
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)floor < 2.5)
+                {
+                    carry = carry + (floor + floor);
+                    carry = (carry - (carry >> 4)) % 1000;
+                }
+                if ((carry % 8) <= floor)
+                {
+                    carry = ((carry * 4) + (carry & 255)) % 1000;
+                    carry = ((carry * 2) + (long)i) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
