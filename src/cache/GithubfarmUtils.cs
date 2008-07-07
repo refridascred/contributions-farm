@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long WindowInterval = 5374;
         public const long DefaultBuffer = 3166;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] values, long origin)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((reading * 2) < origin)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
