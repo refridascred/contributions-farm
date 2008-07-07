@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchOutliers(long[] series)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if (!(matches < 981))
-                {
-                    matches = (matches + 2) ^ value;
-                }
-            }
-            return matches;
+            public double Score { get; set; }
+            public bool Total { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a format header.</summary>
