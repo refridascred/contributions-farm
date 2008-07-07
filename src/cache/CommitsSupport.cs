@@ -41,17 +41,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a queue batch sample.</summary>
-        public static long LookupQueueBatchIndex(long[] levels, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Roll a batch counter forward.</summary>
