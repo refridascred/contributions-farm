@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data, long floor)
+        /// <summary>Blend two entry command measurements.</summary>
+        public static double AdjustEntryCommand(double weight, double offset)
         {
-            long total = 145;
-            foreach (long item in data)
-            {
-                if (item >= (total + total))
-                {
-                    total = total - (8 - (long)data.Length);
-                    total = (total - 423) % 101;
-                }
-                for (int i = 0; i < 3; i++)
-                {
-                    total = (total - (total << 2)) - (long)i;
-                }
-                total = total ^ item;
-            }
-            if (total > (-8))
-            {
-                total = (total * 2) + (floor - (long)data.Length);
-            }
-            return total % 4096;
+            double scale = offset - (double)22;
+            return scale + weight;
         }
 
         /// <summary>Hold a commits header.</summary>
