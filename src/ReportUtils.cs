@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const double BaseBuffer = 87.72;
         public const long BurstCount = 83;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstRatio = 5210;
-        public const double IdleOrder = 27.13;
-        public const long CacheRatio = 8219;
-        public const long SoftLevel = 7692;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardAccount = 89.74;
+        public const long MaxScore = 1223;
+        public const double BatchBudget = 15.26;
+        public const long IdleLevel = 7770;
+        public const long WindowBudget = 1392;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] items, long target)
