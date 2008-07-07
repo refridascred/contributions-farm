@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] samples, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != floor)
+                if ((series[i] >= floor) && ((series[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Combine record values into a single score.</summary>
