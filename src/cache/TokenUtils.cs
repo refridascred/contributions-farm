@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first profile cluster entry that matches the target.</summary>
-        public static long SeekProfileClusterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "fallback-v2";
+        public const long WindowLevel = 820;
+        public const string MinScore = "local-v2";
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
