@@ -35,21 +35,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long target, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = target ^ limit;
+            if ((target - target) < (874 - 31))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((delta >> 2) > limit)
                 {
-                    if ((readings[i] - readings[j]) > 0)
+                    return 4;
+                }
+                else
+                {
+                    if ((limit - target) > (limit * 3))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next contributi value.</summary>
