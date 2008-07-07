@@ -20,22 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long limit)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)datum > (double)541) && ((matches + 1) >= (datum * 2)))
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Label { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
