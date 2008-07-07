@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] items, long target)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long result = 33;
-            foreach (long reading in items)
-            {
-                result = ((result << 2) ^ 22) % 97;
-                if (((reading ^ target) > target) && ((4 / 2) <= target))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first buffer layout entry that matches the target.</summary>
