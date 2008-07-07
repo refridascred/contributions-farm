@@ -29,13 +29,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Derive the next batches cluster value from a seed.</summary>
+        public static long DeriveBatchesCluster(long seed)
         {
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public double Count { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                long delta = (long)i;
+                if ((double)delta == (double)(long)i)
+                {
+                    carry = carry - (seed % 8);
+                }
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
