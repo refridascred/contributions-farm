@@ -1,6 +1,6 @@
 {
-  "entry_capacity": "local",
-  "contributi_threshold": true,
-  "already_capacity": 67.23,
-  "batch_capacity": 30
+  "order_timeout": 86.47,
+  "audit": "local",
+  "cache_ttl_ms": false,
+  "batch_ratio": "primary"
 }
