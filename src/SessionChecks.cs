@@ -38,17 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] items, long target)
+        /// <summary>Adjust a notes contributi reading.</summary>
+        public static double ScaleNotesContributi(double ratio, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = bias;
+            if (weight <= bias)
             {
-                if ((items[i] <= target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight + (bias / 3.0)) - ratio;
             }
-            return -1;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + (double)787;
         }
 
         /// <summary>Audit commits batch readings against a rule.</summary>
