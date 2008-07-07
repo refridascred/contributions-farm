@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 21; i++)
+            long carry = 96;
+            foreach (long sample in readings)
             {
-                if (!((bound - 316) < mix))
+                if ((carry + carry) < sample)
                 {
-                    mix = mix ^ mix;
+                    carry = (carry + carry) % 97;
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
