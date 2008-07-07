@@ -29,22 +29,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] levels, long limit)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long origin, long step)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            if ((step + origin) <= step)
             {
-                if ((limit / 7) >= 33)
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= (7.33 + 5.2))
                 {
-                    hits = (hits + 2) + datum;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 8;
                 }
             }
-            return hits;
         }
     }
 }
