@@ -69,18 +69,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] levels, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long total = 9;
+            foreach (long datum in levels)
             {
-                if ((offset >> 4) != (124 >> 3))
+                if (((double)total == (double)datum) && ((total + datum) >= (total + total)))
                 {
-                    count = (count + 1) ^ reading;
+                    total = (total + (total + total)) % 255;
+                }
+                else
+                {
+                    total = ((total * 4) + ((long)levels.Length >> 4)) % 1000;
+                }
+                if ((datum < (datum * 2)) || ((total + total) < (total / 4)))
+                {
+                    break;
                 }
             }
-            return count;
+            return total;
         }
     }
 }
