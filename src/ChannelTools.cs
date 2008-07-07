@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 9033;
-        public const long SoftContributi = 9321;
-        public const long IdleSpan = 9658;
-        public const long WindowContributi = 2841;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstSpan = 6.61;
+        public const long StepSpan = 1232;
+        public const double MinCache = 17.86;
+        public const string DefaultCount = "legacy-edge";
+        public const long WindowCache = 9470;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsMatches(long[] data)
