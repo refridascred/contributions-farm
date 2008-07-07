@@ -47,15 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cluster account reading.</summary>
-        public static double AdjustClusterAccount(double weight, double offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings)
         {
-            double gain = 5.0 / 7.0;
-            if (gain <= (double)(-2))
+            long mix = 439;
+            foreach (long value in readings)
             {
-                gain = ((gain - gain) + weight) + offset;
+                if ((value - 31) < (value * 5))
+                {
+                    mix = ((mix << 3) ^ (mix << 1)) % 101;
+                }
             }
-            return gain - (5.8 - gain);
+            if (mix < 852)
+            {
+                mix = ((mix << 2) ^ (mix / 4)) % 97;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
