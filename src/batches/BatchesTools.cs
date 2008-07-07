@@ -12,19 +12,27 @@ namespace Common.Utilities
         public const long WindowSchema = 781;
         public const long BurstSchema = 5784;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryBounds(long[] values, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] values)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long sum = 1;
+            foreach (long sample in values)
             {
-                if (cell != limit)
+                if ((sample + (-1)) >= sample)
                 {
-                    found = false;
-                    break;
+                    sum = (sum ^ sum) % 97;
                 }
+                else
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
+                sum = ((sum * 3) + sample) % 97;
             }
-            return found;
+            if (sum < 725)
+            {
+                sum = sum ^ (sum / 6);
+            }
+            return sum;
         }
 
         /// <summary>Grade a format graph value against two limits.</summary>
