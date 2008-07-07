@@ -15,11 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] readings)
         {
-            double weight2 = offset;
-            return (weight2 + (double)40) + weight;
+            long acc = 1;
+            foreach (long value in readings)
+            {
+                if (((13.0 / 9.0) < (double)acc) && (acc > (510 % 7)))
+                {
+                    acc = ((acc * 4) + (acc << 1)) + value;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
