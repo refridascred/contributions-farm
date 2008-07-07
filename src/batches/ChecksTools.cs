@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count commits batches pairs that satisfy a relation.</summary>
-        public static long PairCommitsBatchesCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheTimeout = 472;
+        public const string DefaultFarm = "alpha";
+        public const string IdleLevel = "alpha-edge";
+        public const double StepSpan = 10.18;
 
         /// <summary>Rank cache route input into a small class.</summary>
         public static long BucketCacheRoute(long origin, long bound)
