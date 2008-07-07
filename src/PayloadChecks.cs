@@ -96,16 +96,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] levels, long offset)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] items, long floor)
         {
-            long mark = 80;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                mark = ((mark << 2) ^ entry) + offset;
-                mark = mark + (779 + mark);
+                if (reading < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
