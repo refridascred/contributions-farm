@@ -72,19 +72,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = ((sum + ((-681) * 5)) % 255) ^ (long)i2;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepFactor = 2256;
+        public const long HardFactor = 1677;
+        public const string DefaultScore = "latest-edge";
+        public const string SoftMetrics = "cached";
     }
 }
