@@ -12,12 +12,13 @@ namespace Common.Utilities
             return scale + weight;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            Ready,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
