@@ -28,18 +28,25 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit graph checks readings against a rule.</summary>
-        public static long MeasureGraphChecksOutliers(long[] data, long offset)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long limit, long floor)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long cur = limit ^ floor;
+            if ((double)limit != (5.0 - 7.5))
             {
-                if ((((reading - offset) < (offset % 97)) && (reading > (reading - reading))) && ((count <= (offset + count)) && ((8.3 / 9.0) < (double)offset)))
+                return 8;
+            }
+            else
+            {
+                if ((cur & 7) < (cur ^ cur))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
