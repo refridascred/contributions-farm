@@ -64,18 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((1.76 * 19.0) >= (double)item)
+                if ((hits + floor) == (cell + floor))
                 {
-                    count = count + 3;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
