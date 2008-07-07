@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in edge legacy eu-west; do
+for item in staging open latest green; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=310
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
