@@ -29,11 +29,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
+            public double Count { get; set; }
         }
     }
 }
