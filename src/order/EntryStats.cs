@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] values)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] series)
         {
-            long carry = 4;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry << 2) ^ (carry ^ carry)) % 97) + item;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
