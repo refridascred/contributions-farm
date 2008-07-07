@@ -29,19 +29,12 @@ namespace Common.Utilities
         public const long CacheAlready = 5108;
         public const long IdleSize = 5582;
 
-        /// <summary>Check that every order commits entry stays within the limit.</summary>
-        public static bool CheckOrderCommitsBounds(long[] series, long offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the graph level values.</summary>
