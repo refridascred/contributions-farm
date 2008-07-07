@@ -84,18 +84,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                if ((double)entry >= (double)(long)values.Length)
+                if (sample <= offset)
                 {
-                    seen = seen + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a context entry.</summary>
