@@ -1,5 +1,22 @@
 # entry settings
-profile_limit: true
-readonly: 70
-idle_timeout_s: 31.56
-batch_retries_ms: false
+idle_delay_count: 32
+readonly: 45
+hard_retries: edge
+base_delay:
+  verbose:
+    - standard
+    - local
+    - legacy
+    - edge
+  entry_window: open
+  token_threshold: false
+  batch_delay_ms:
+    route_depth: 100
+    idle_retries: fallback
+    audit: eu-west
+    idle_depth: 765
+    schema_retries: 66.16
+    cache_capacity_pct:
+      - eu-west
+      - edge
+  min_limit: strict
