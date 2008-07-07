@@ -40,19 +40,38 @@ namespace Common.Utilities
         public const long MaxRatio = 4166;
         public const long WindowScore = 7526;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] data, long step)
+        /// <summary>Classify a graph account pair into a bucket.</summary>
+        public static long SortGraphAccount(long floor, long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            if ((bound + floor) < (floor >> 5))
             {
-                if (item < step)
+                return 5;
+            }
+            else
+            {
+                if (!((floor & 127) > (bound / 4)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((bound >> 4) > bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (bound > (floor >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
