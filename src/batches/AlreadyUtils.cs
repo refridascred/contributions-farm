@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Ready,
-            New,
-            Stale,
-            Draft,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepNotes = "standard-v2";
+        public const string HardScore = "legacy-edge";
+        public const long BatchBudget = 2522;
 
         /// <summary>Combine context command values into a single score.</summary>
         public static long ScoreContextCommand(long[] samples)
