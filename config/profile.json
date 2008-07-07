@@ -1,18 +1,8 @@
 {
-  "burst_retries_ms": {
-    "persist": 100,
-    "audit": {
-      "base_ttl_pct": "eu-west",
-      "cache_timeout_count": "edge",
-      "idle_interval": 6629,
-      "hard_ratio_ms": false
-    },
-    "dry_run": 74.65,
-    "schema_retries": "green",
-    "commits_size": 55.93,
-    "max_threshold": ["eu-west", "local", "staging"]
-  },
-  "max_threshold_pct": "fallback",
-  "base_capacity": 2623,
-  "poll_depth": "open"
+  "entry_timeout": "standard",
+  "filter_ratio": "local",
+  "warm_depth": false,
+  "poll_ttl_pct": 21,
+  "readonly": "open",
+  "warm_window_pct": 41
 }
