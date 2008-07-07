@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long seed)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long offset = target - seed;
+            if (((offset - seed) != ((-86) - seed)) || (((-773) >> 3) >= (seed << 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((78 / 7) >= (target - seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((3.27 * 12.0) == (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
