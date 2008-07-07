@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] items, long offset)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
