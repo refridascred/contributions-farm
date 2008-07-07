@@ -44,13 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] items, long step)
         {
-            Idle,
-            Closed,
-            Retry,
-            Draft,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
