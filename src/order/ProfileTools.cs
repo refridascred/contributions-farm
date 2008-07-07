@@ -25,11 +25,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 5937;
-        public const long MinMetric = 6723;
-        public const string LimitMetric = "local-1";
-        public const string StepRatio = "staging";
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = mark - ((long)i * 4);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long SeriesQueue(long step)
