@@ -20,11 +20,15 @@ namespace Common.Utilities
         public const long LimitSession = 9648;
         public const long SoftSession = 7052;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Digest a series of profile already entries.</summary>
+        public static long ScoreProfileAlready(long[] values)
         {
-            public double Level { get; set; }
-            public long Limit { get; set; }
+            long result = 0;
+            foreach (long datum in values)
+            {
+                result = ((result * 5) + datum) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate format metric readings against a bound.</summary>
