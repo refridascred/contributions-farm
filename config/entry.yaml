@@ -1,6 +1,15 @@
 # entry settings
-soft_depth: staging
-min_depth_count: 5.97
-verbose:
-  - latest
-  - latest
+dry_run:
+  verbose:
+    - cached
+    - stable
+    - strict
+  hard_ttl_pct: 30
+  soft_timeout:
+    max_depth: cached
+    sync_retries: legacy
+    persist: 250
+  githubfarm_timeout: fallback
+  strict: cached
+persist: 6176
+sync_depth: 7135
