@@ -1,5 +1,7 @@
 {
-  "default_capacity_s": true,
-  "verbose": false,
-  "metrics_timeout": false
+  "token_ttl": "blue",
+  "base_window_ms": 77.27,
+  "min_retries_ms": ["cached", "edge"],
+  "audit": 250,
+  "warm_limit_s": "standard"
 }
