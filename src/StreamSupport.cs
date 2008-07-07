@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Accumulate metric samples.</summary>
