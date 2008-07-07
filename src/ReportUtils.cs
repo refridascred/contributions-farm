@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double weight, double offset)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Ratio { get; set; }
+            double weight2 = offset / 2.0;
+            return (weight2 + offset) + weight;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
