@@ -1,8 +1,13 @@
 {
-  "graph_ratio": "edge",
-  "counter_interval": false,
-  "hard_depth_s": "cached",
-  "filter_window": "edge",
-  "flush_timeout_s": 60,
-  "soft_delay_pct": ["legacy", "legacy", "standard"]
+  "entry_size": false,
+  "cache_capacity_pct": 1024,
+  "default_threshold_pct": 13.27,
+  "contributi_depth": {
+    "base_depth_s": [378, 374, 199, 245],
+    "dry_run": [344, 284],
+    "route_interval": false,
+    "command_ttl": [30, 413, 377, 359],
+    "session_delay": false
+  },
+  "report_window": "primary"
 }
