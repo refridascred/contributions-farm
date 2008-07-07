@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series)
         {
-            Done,
-            Queued,
-            Dropped,
-            Stale,
-            New,
+            long sum = 2;
+            foreach (long cell in series)
+            {
+                long diff = cell;
+                sum = (sum - (diff & 3)) % 4096;
+                if ((double)(long)series.Length == (double)sum)
+                {
+                    sum = ((sum << 3) ^ sum) % 97;
+                }
+            }
+            if (sum < 69)
+            {
+                sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
