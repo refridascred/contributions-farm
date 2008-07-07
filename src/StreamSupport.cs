@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseDepth = 7344;
+        public const double StepAlready = 69.95;
+        public const long MinAlready = 2641;
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] data)
