@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
+            Idle,
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
