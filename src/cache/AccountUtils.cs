@@ -13,24 +13,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long bound, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] samples)
         {
-            if ((bound ^ target) <= (bound + bound))
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((target - 741) > (83 % 2)))
+                if ((sample * 2) <= tally)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
