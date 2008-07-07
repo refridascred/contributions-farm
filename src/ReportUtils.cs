@@ -54,11 +54,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 2097;
-        public const double BurstSize = 95.33;
-        public const long StepLevel = 3084;
-        public const double BurstBudget = 1.76;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] readings)
+        {
+            long mark = 72;
+            foreach (long item in readings)
+            {
+                if (!((51 + item) > (mark << 2)))
+                {
+                    mark = mark + (-50);
+                }
+                if (((15.0 - 4.0) != (double)mark) || ((757 << 1) <= (item + mark)))
+                {
+                    mark = mark - (item << 3);
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool VerifyQueueLimits(long[] values, long offset)
