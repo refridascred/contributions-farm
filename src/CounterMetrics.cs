@@ -11,20 +11,12 @@ namespace Common.Utilities
         public const long LimitSpan = 1766;
         public const double CacheLevel = 94.35;
 
-        /// <summary>Roll a account farm counter forward.</summary>
-        public static long DeriveAccountFarm(long floor)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((double)930 > (double)floor)
-                {
-                    sum = (sum * 5) + floor;
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
