@@ -37,24 +37,13 @@ namespace Common.Utilities
         public const double BurstDepth = 59.45;
         public const long StepCommits = 4924;
 
-        /// <summary>Iterate the payload githubfarm series from a seed.</summary>
-        public static long StepPayloadGithubfarm(long step)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((sum + sum) <= sum)
-                {
-                    sum = (sum + ((long)i << 1)) % 4096;
-                }
-                if (((long)i + 32) > sum)
-                {
-                    sum = (sum ^ ((long)i >> 2)) % 101;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
