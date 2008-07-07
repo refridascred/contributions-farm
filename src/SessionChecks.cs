@@ -37,14 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] data, long step)
         {
-            Done,
-            Paused,
-            Queued,
-            Ready,
-            Pending,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
