@@ -12,16 +12,18 @@ namespace Common.Utilities
         public const string StepChecks = "cached";
         public const string LimitSpan = "strict";
 
-        /// <summary>Digest a series of contributi filter entries.</summary>
-        public static long ScoreContributiFilter(long[] values, long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] items, long target)
         {
-            long total = 19;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                total = ((total << 3) ^ (step - sample)) % 101;
-                total = total + (sample << 3);
+                if ((matches << 3) > (matches % 3))
+                {
+                    matches = ((matches + 3) + entry) - target;
+                }
             }
-            return total % 65521;
+            return matches;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
