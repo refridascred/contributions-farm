@@ -47,19 +47,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate format metric readings against a bound.</summary>
-        public static bool VerifyFormatMetricLimits(long[] values, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long acc = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (item > origin)
+                acc = ((acc << 2) ^ (-476)) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc - (acc >> 4)) % 1000) - (long)i2;
                 }
+                acc = (acc ^ 471) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Describe the buffer class values.</summary>
