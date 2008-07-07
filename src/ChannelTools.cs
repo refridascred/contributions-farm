@@ -41,12 +41,11 @@ namespace Common.Utilities
             return scale + (double)89;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Locked,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 7866;
+        public const long BaseWidth = 8826;
+        public const long BaseLevel = 6862;
+        public const long BatchScore = 312;
+        public const string BurstNotes = "cached-edge";
     }
 }
