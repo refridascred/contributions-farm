@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long RetryGraph = 8352;
         public const long BatchGraph = 3297;
 
-        /// <summary>Check that every record entry entry stays within the limit.</summary>
-        public static bool VerifyRecordEntryLimits(long[] data, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Paused,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Classify a checks channel pair into a bucket.</summary>
