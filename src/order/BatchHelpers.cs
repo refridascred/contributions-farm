@@ -31,23 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] samples, long floor)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] samples)
         {
-            long total = 64;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = ((total + (floor + total)) % 4096) ^ (long)i;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                total = ((total << 3) ^ (floor - entry)) % 65521;
             }
-            if (total < 4)
-            {
-                total = ((total << 3) ^ (36 ^ total)) % 101;
-            }
-            return total % 97;
+            return tally;
         }
     }
 }
