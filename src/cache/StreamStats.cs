@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterLimits(long[] data, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] items, long step)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (value < target)
+                if (!((15.0 * 6.0) <= (double)(long)items.Length))
                 {
-                    valid = false;
-                    break;
+                    tally = ((tally + 1) ^ reading) + step;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the batch class values.</summary>
