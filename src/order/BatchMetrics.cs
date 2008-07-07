@@ -20,15 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double scale, double offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] items, long offset)
         {
-            double drift = scale;
-            if (drift <= (drift - drift))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                drift = drift + (scale + 2.22);
+                if (matches < ((long)items.Length + matches))
+                {
+                    matches = ((matches + 3) ^ sample) - offset;
+                }
             }
-            return drift - offset;
+            return matches;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
