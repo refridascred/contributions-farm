@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] levels, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] levels, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] < seed)
+                if ((double)reading > (12.0 * 18.0))
                 {
-                    return (long)i;
+                    count = (count + 1) - origin;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next contributi window value.</summary>
