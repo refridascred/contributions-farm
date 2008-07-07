@@ -46,13 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
-        {
-            Retry,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 2409;
+        public const string WindowSupport = "fallback-v2";
+        public const string SoftDepth = "primary-v2";
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
