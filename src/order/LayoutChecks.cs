@@ -38,13 +38,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long target)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public double Score { get; set; }
+            long acc = target;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = (acc ^ (628 - acc)) % 101;
+                acc = ((acc * 4) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Count the stream filter entries that pass the check.</summary>
