@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long BaseWidth = 1967;
         public const long MaxTimeout = 3;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] readings, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((20.0 - 4.47) < (20.0 - 3.7))
+                if (reading < seed)
                 {
-                    count = ((count + 3) + datum) + floor;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Scale a batch counter figure with a bias.</summary>
