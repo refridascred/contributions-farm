@@ -57,20 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] data)
+        /// <summary>Project the next metric farm value.</summary>
+        public static double ProjectMetricFarm(double ratio, double span)
         {
-            long acc = 31;
-            foreach (long item in data)
+            double bias = ratio;
+            for (int i = 0; i < 8; i++)
             {
-                if ((item * 4) < (long)data.Length)
-                {
-                    acc = acc - item;
-                }
-                acc = acc - (0 + acc);
-                acc = (acc + (item >> 4)) % 97;
+                bias = ((bias - (ratio - 6.7)) - (double)(long)i) - span;
             }
-            return acc % 4096;
+            return bias + (double)8;
         }
     }
 }
