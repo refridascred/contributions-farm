@@ -59,11 +59,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Audit cluster batches readings against a rule.</summary>
+        public static long MeasureClusterBatchesOutliers(long[] series, long floor)
         {
-            double ratio = (double)(6 ^ 48);
-            return (ratio + scale) + bias;
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (floor <= (18 % 2))
+                {
+                    matches = (matches + 3) ^ sample;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
