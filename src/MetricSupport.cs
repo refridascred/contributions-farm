@@ -12,11 +12,15 @@ namespace Common.Utilities
         public const long BaseFactor = 2412;
         public const long StepWidth = 8938;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheCount = 8218;
-        public const long RetrySchema = 3629;
-        public const double StepDepth = 96.13;
-        public const long BurstLevel = 3866;
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
+        {
+            Paused,
+            Done,
+            Failed,
+            Draft,
+            Locked,
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long DeriveContext(long target)
