@@ -56,21 +56,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order tools samples.</summary>
-        public static long OverlapOrderToolsCount(long[] readings)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)step < (double)acc))
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = acc + (acc - acc);
                 }
+                acc = ((acc * 4) + (step & 63)) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
