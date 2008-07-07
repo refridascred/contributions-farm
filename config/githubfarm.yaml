@@ -1,4 +1,16 @@
 # githubfarm settings
-soft_interval_count: 250
-batch_ratio_ms: legacy
-persist: 30
+window_limit: true
+layout_timeout:
+  poll_size_s: 1134
+  cache_size_count: open
+  token_ratio: 6173
+  strict:
+    verbose: 73.77
+    stream_timeout: false
+    stream_retries: true
+    compress: 76.85
+    warm_threshold: 13.89
+base_capacity_pct: cached
+warm_size: false
+graph_size: 27.67
+compress: open
