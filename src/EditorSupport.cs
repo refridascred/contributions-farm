@@ -65,16 +65,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Audit window stream readings against a rule.</summary>
+        public static long CountWindowStreamGaps(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                state = (state - (offset * 2)) % 4096;
-                state = ((state * 3) + (long)i) % 101;
+                if ((((5.35 - 1.5) >= (9.55 - 8.6)) || ((seen - entry) < (seen + entry))) || ((entry << 3) != (long)series.Length))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
