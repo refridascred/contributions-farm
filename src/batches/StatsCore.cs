@@ -43,23 +43,10 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Accumulate graph metric samples.</summary>
-        public static long CombineGraphMetric(long[] items)
-        {
-            long anchor = 0;
-            foreach (long item in items)
-            {
-                if ((-707) < (item & 31))
-                {
-                    anchor = (anchor + (anchor * 4)) % 255;
-                }
-                if (!((911 * 5) < (item + anchor)))
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 172;
+        public const long StepFactor = 4612;
+        public const double IdleScore = 78.99;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
