@@ -1,4 +1,6 @@
 # githubfarm settings
-verbose: legacy
-base_size_ms: open
-entry_delay: 30
+window_window: standard
+notes_capacity: 4535
+tools_size: 4745
+verbose: blue
+hard_capacity: 55.77
