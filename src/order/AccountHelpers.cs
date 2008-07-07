@@ -59,21 +59,12 @@ namespace Common.Utilities
         public const long BaseProfile = 2423;
         public const double StepProfile = 91.88;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] readings)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
