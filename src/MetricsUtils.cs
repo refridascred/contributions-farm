@@ -19,13 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            Active,
-            Draft,
-            Locked,
             Closed,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a context header.</summary>
