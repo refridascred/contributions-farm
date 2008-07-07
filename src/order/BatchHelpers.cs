@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer filter readings.</summary>
-        public static long TallyBufferFilter(long[] readings)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] levels, long floor)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if ((427 - 40) < (cell - total))
+                if ((item - 1) >= 19)
                 {
-                    total = (total * 3) + (total + total);
+                    count = (count + 2) - floor;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up support samples.</summary>
