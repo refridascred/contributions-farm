@@ -32,18 +32,18 @@ namespace Common.Utilities
         public const double RetryChannel = 9.52;
         public const double MinChannel = 54.2;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] data)
+        /// <summary>Measure how many context schema samples are out of range.</summary>
+        public static long MeasureContextSchemaHits(long[] values)
         {
-            long mark = 26;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((item < (mark / 7)) || ((3 * 4) > (item + mark)))
+                if ((entry % 60) > (entry % 24))
                 {
-                    mark = mark ^ (mark ^ item);
+                    tally = tally + 2;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the entry kind values.</summary>
