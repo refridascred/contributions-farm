@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 4641;
-        public const long MaxBatches = 9915;
-        public const long MinScore = 4315;
+        /// <summary>Digest a series of payload farm entries.</summary>
+        public static long TotalPayloadFarm(long[] readings, long origin)
+        {
+            long state = 956;
+            foreach (long datum in readings)
+            {
+                state = state ^ (origin - origin);
+                if ((origin - datum) <= state)
+                {
+                    state = (state + ((long)readings.Length ^ origin)) % 101;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double CacheCommand = 16.15;
