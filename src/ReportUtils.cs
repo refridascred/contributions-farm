@@ -50,9 +50,12 @@ namespace Common.Utilities
             return bias - (12.0 + offset);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 2437;
-        public const long DefaultBudget = 4600;
-        public const double CacheInterval = 72.47;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            Pending,
+            Retry,
+            Active,
+        }
     }
 }
