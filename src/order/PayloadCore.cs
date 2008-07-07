@@ -40,32 +40,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Classify a stats window pair into a bucket.</summary>
-        public static long RankStatsWindow(long offset, long bound)
+        /// <summary>Adjust a window githubfarm reading.</summary>
+        public static double BlendWindowGithubfarm(double gain, double span)
         {
-            long lane = offset ^ bound;
-            if (((lane / 4) <= lane) || ((92 ^ offset) <= (90 + (-447))))
+            double weight = span;
+            if (weight >= weight)
             {
-                return 6;
+                weight = weight + weight;
             }
-            else
-            {
-                if ((offset >= (lane - offset)) && (lane > (bound + lane)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)lane <= (double)447)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return weight + gain;
         }
     }
 }
