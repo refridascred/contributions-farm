@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            double ratio = scale;
-            if (ratio >= (20.0 * 1.36))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + (scale + 19.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (double)1;
-            }
-            return ratio + (13.0 - offset);
+            return seen;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
