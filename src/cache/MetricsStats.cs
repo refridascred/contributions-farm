@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public double Stamp { get; set; }
-            public long Owner { get; set; }
+            public long Count { get; set; }
+            public double Weight { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every account githubfarm entry stays within the limit.</summary>
