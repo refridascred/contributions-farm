@@ -68,13 +68,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long target, long target2)
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
+            if ((target + target) >= 1)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((-878) * 5) > (target - target2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((13.0 / 2.0) <= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
