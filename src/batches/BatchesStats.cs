@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long CompareProfileCount(long[] data)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
