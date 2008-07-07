@@ -25,24 +25,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)origin > (5.4 / 9.0))
-                {
-                    anchor = (anchor + ((long)i % 64)) % 1000;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (((anchor * 2) + ((long)i << 2)) % 1000) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MaxLevel = 58.66;
+        public const double BurstRecord = 63.48;
+        public const double MinRecord = 86.68;
+        public const double SoftSize = 54.5;
+        public const long LimitRecord = 1654;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long CountFormatHits(long[] samples)
