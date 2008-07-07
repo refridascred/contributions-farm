@@ -47,17 +47,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next order batch value from a seed.</summary>
-        public static long SeriesOrderBatch(long offset)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result + (offset + offset)) % 97;
-                result = ((result << 3) ^ (long)i) % 1000;
-                result = ((result * 4) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
