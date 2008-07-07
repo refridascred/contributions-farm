@@ -1,13 +1,13 @@
 # githubfarm settings
-window_window: 47.29
-max_timeout_ms:
-  burst_threshold_s: fallback
-  min_ratio_ms:
-    - 115
-    - 121
-  warm_delay_ms: 2554
-command_threshold:
-  - 222
-  - 242
-  - 427
-soft_timeout_pct: false
+base_limit_pct:
+  readonly: 7741
+  enabled: 27
+  batch_window_count: primary
+  min_threshold_s:
+    - blue
+    - local
+  soft_limit_ms: 1024
+poll_ratio: open
+min_timeout: false
+sync_timeout_ms: 29.54
+cache_delay: staging
