@@ -32,18 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] levels, long seed)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (((value - seed) != (24 ^ seed)) || ((value >= (value + seed)) && (value > (tally - tally))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
