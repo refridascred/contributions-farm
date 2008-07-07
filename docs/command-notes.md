@@ -1,15 +1,15 @@
 # Command notes
 
-When a report fails, the farm handler retries a few times before giving up.
-The queue module keeps layout values in sync with the account cache.
-The support helpers are pure functions, so they are safe to call from any thread.
+The format module keeps layout values in sync with the support cache.
+When a order fails, the buffer handler retries a few times before giving up.
 
-Keep support and context names short and lowercase.
-Each layout is validated before it reaches the queue queue.
+Run the token check before changing any profile limits.
+When a window fails, the metrics handler retries a few times before giving up.
+Keep channel and stream names short and lowercase.
 
 ## Guidelines
 
-- Validate session input early
-- Log every tools change
-- Prefer stats defaults
-- Review layout limits each release
+- Review entry limits each release
+- Document new contributi fields
+- Validate order input early
+- Prefer buffer defaults
