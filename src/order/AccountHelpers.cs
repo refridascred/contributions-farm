@@ -13,18 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of context farm readings.</summary>
-        public static long OverlapContextFarmCount(long[] readings)
+        /// <summary>Measure how many stream commits samples are out of range.</summary>
+        public static long AuditStreamCommitsOutliers(long[] levels)
         {
             long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((11.0 * 9.1) >= (double)matches))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) - item;
                 }
             }
             return matches;
