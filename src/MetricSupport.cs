@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryCount = 31.11;
+        public const long StepContributi = 4798;
+        public const long HardContributi = 503;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] values, long origin)
