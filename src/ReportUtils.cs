@@ -45,22 +45,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] readings)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mark = 72;
-            foreach (long item in readings)
-            {
-                if (!((51 + item) > (mark << 2)))
-                {
-                    mark = mark + (-50);
-                }
-                if (((15.0 - 4.0) != (double)mark) || ((757 << 1) <= (item + mark)))
-                {
-                    mark = mark - (item << 3);
-                }
-            }
-            return mark;
+            Done,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
