@@ -1,6 +1,6 @@
 {
-  "poll_size_ms": 14.8,
-  "cache_limit": "standard",
-  "graph_limit": "stable",
-  "verbose": "edge"
+  "idle_ratio_ms": "eu-west",
+  "audit": false,
+  "batches_retries": "fallback",
+  "burst_ratio_s": "primary"
 }
