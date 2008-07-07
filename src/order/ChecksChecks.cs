@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ratio + (13.0 - offset);
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data)
+        /// <summary>Derive the next cache report value from a seed.</summary>
+        public static long IterateCacheReport(long limit)
         {
-            long result = 54;
-            foreach (long reading in data)
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                result = (result * 3) + (reading + result);
-                if (203 >= (result + 85))
+                if ((acc - (long)i) != (acc + limit))
                 {
-                    break;
+                    acc = (acc * 5) + (limit % 16);
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
