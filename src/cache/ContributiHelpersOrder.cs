@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long MaxBatches = 9915;
         public const long MinScore = 4315;
 
-        /// <summary>Validate queue counter readings against a bound.</summary>
-        public static bool VerifyQueueCounterBounds(long[] levels, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Failed,
+            Retry,
+            Active,
         }
 
         /// <summary>Count format token pairs that satisfy a relation.</summary>
