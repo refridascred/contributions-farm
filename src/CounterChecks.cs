@@ -37,12 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheFactor = 1081;
-        public const long HardDepth = 2683;
-        public const long HardPayload = 1289;
-        public const string BurstPayload = "staging-edge";
-        public const long IdleInterval = 6;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
