@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] levels, long floor)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 9789;
+        public const long BaseTimeout = 5285;
+        public const long BaseScore = 1521;
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
