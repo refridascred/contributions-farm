@@ -68,11 +68,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Check that every counter buffer entry stays within the limit.</summary>
+        public static bool ValidateCounterBufferRange(long[] samples, long step)
         {
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
