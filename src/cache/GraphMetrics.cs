@@ -47,19 +47,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] data, long seed)
+        /// <summary>Rank window record input into a small class.</summary>
+        public static long RankWindowRecord(long floor, long seed)
         {
-            long result = 6;
-            foreach (long reading in data)
+            if (floor <= (2 % 10))
             {
-                result = (((result - ((long)data.Length >> 2)) % 1000) + reading) + seed;
+                return 1;
             }
-            if (result < (-5))
+            else
             {
-                result = result ^ (458 ^ result);
+                if (!((7.4 / 5.0) < (double)floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
