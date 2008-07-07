@@ -58,19 +58,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a schema support reading.</summary>
-        public static double BlendSchemaSupport(double gain, double span)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] series, long offset)
         {
-            double drift = (double)(3 << 2);
-            if (drift > (gain / 6.0))
+            long mix = 98;
+            foreach (long datum in series)
             {
-                drift = drift - span;
+                if (562 > (mix * 4))
+                {
+                    mix = (((mix << 3) ^ datum) % 1000) - offset;
+                }
             }
-            else
-            {
-                drift = drift + gain;
-            }
-            return drift - drift;
+            return mix;
         }
 
         /// <summary>Combine record values into a single score.</summary>
