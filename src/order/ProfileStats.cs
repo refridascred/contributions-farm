@@ -42,17 +42,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Look up the position of a stats graph sample.</summary>
-        public static long FindStatsGraphIndex(long[] levels, long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 625;
+            foreach (long cell in data)
             {
-                if (levels[i] == bound)
+                if ((cell - cell) >= sum)
                 {
-                    return (long)i;
+                    sum = sum - (cell - cell);
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
