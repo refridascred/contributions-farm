@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] items, long offset)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (matches < ((long)items.Length + matches))
+                if (item <= limit)
                 {
-                    matches = ((matches + 3) ^ sample) - offset;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Accumulate schema buffer samples.</summary>
