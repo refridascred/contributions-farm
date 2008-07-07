@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long WindowMetrics = 4932;
         public const string HardMetrics = "stable";
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Pending,
-            Dropped,
-            Locked,
-            Closed,
-            Failed,
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
