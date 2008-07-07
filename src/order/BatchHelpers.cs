@@ -20,15 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] data)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long acc = 10;
-            foreach (long item in data)
-            {
-                acc = ((acc * 5) + (acc + acc)) - item;
-            }
-            return acc % 65521;
+            public double Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the payload state values.</summary>
