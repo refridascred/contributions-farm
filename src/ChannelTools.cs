@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double ratio, double offset)
         {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            double bias = offset;
+            if (bias <= (offset * 1.9))
+            {
+                bias = (bias + offset) - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (offset + 5.33)) + (double)(long)i;
+            }
+            return bias + 2.0;
         }
 
         /// <summary>Hold a already entry.</summary>
