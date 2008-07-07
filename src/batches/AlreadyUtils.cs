@@ -30,25 +30,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long floor)
         {
-            long prev = offset + seed;
-            if (((double)offset != (double)93) || ((seed & 63) >= seed))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (25 > (offset - prev))
+                if (samples[i] > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the channel status values.</summary>
