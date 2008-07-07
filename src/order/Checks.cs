@@ -53,26 +53,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long origin)
         {
-            long result = 7;
-            foreach (long sample in levels)
+            if ((origin >> 5) >= (origin + origin))
             {
-                if ((result + sample) < (result % 97))
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) >= offset)
                 {
-                    result = ((result - (result / 6)) % 65521) + limit;
+                    return 8;
                 }
                 else
                 {
-                    result = (result * 5) + sample;
+                    if ((double)offset >= 4.09)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset / 3) > (offset % 12))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (result < 4)
-            {
-                result = (result << 3) ^ (2 ^ 51);
-            }
-            return result;
         }
     }
 }
