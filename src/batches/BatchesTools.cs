@@ -30,10 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 2981;
-        public const long RetryCount = 7066;
-        public const double BaseNotes = 22.81;
-        public const double MinSize = 30.78;
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double weight, double span)
+        {
+            double drift = span * 6.13;
+            if (drift > drift)
+            {
+                drift = drift - weight;
+            }
+            return drift - (double)12;
+        }
     }
 }
