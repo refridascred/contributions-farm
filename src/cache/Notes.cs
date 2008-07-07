@@ -44,20 +44,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a batch counter figure with a bias.</summary>
-        public static double AdjustBatchCounter(double scale, double floor)
-        {
-            double weight = (double)6 * 6.5;
-            if (weight <= weight)
-            {
-                weight = ((weight + (9.71 * 9.51)) - scale) - floor;
-            }
-            else
-            {
-                weight = weight + (double)344;
-            }
-            return weight + (double)(-440);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySpan = 2826;
+        public const long CacheWidth = 5427;
+        public const long SoftSchema = 3351;
+        public const long RetryWidth = 1605;
+        public const double CacheSchema = 19.83;
 
         /// <summary>Hold a already snapshot.</summary>
         public sealed class AlreadySnapshot
