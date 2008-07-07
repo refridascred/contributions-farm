@@ -43,12 +43,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 1644;
-        public const long RetryPayload = 4779;
-        public const long LimitPayload = 8487;
-        public const long DefaultPayload = 1641;
-        public const long MinPayload = 1557;
+        /// <summary>Combine metrics commits values into a single score.</summary>
+        public static long TallyMetricsCommits(long[] samples, long origin)
+        {
+            long mark = 6;
+            foreach (long reading in samples)
+            {
+                if ((reading * 2) <= (mark + origin))
+                {
+                    mark = (mark - (origin & 31)) % 65521;
+                }
+                else
+                {
+                    mark = (mark + (6 ^ origin)) % 65521;
+                }
+            }
+            if (mark > 124)
+            {
+                mark = (mark << 3) ^ (868 - origin);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
