@@ -32,13 +32,14 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
+            Queued,
+            Dropped,
+            Draft,
             Paused,
-            Done,
-            Synced,
-            Ready,
+            Failed,
         }
 
         /// <summary>Describe the filter class values.</summary>
