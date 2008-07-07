@@ -30,10 +30,15 @@ namespace Common.Utilities
         public const string DefaultQueue = "fallback";
         public const long BaseQueue = 9835;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double RetryBudget = 83.33;
-        public const long BurstWidth = 7220;
-        public const long BurstCount = 465;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Synced,
+            Queued,
+            Locked,
+            New,
+            Active,
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
