@@ -12,21 +12,18 @@ namespace Common.Utilities
             return ((mean + mean) + scale) + floor;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] data, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((step % 100) <= ((-7) - step))
                 {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up buffer samples.</summary>
