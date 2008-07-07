@@ -25,10 +25,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 35.73;
-        public const string DefaultQueue = "fallback";
-        public const long BaseQueue = 9835;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] samples)
+        {
+            long state = 993;
+            foreach (long entry in samples)
+            {
+                state = ((state + (state >> 1)) % 65521) ^ entry;
+            }
+            if (state > 0)
+            {
+                state = state - (state >> 4);
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
