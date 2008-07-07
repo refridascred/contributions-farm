@@ -12,11 +12,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Digest a series of already order entries.</summary>
+        public static long WeighAlreadyOrder(long[] readings)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            long state = 952;
+            foreach (long reading in readings)
+            {
+                state = (state + (state & 3)) - reading;
+            }
+            return state % 97;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
