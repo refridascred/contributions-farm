@@ -42,11 +42,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 7271;
-        public const string SoftBatch = "standard";
-        public const string BurstBatch = "standard-edge";
-        public const long CacheDepth = 6121;
-        public const string SoftScore = "fallback-v2";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long limit, long target)
+        {
+            long lane = limit - target;
+            if (target < (limit - limit))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit - target) == (lane - lane))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((lane >> 2) <= 2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((3 + target) >= target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
