@@ -44,22 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] series, long step)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferRange(long[] values, long seed)
         {
-            long sum = 958;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                if ((step + step) >= (sample - sample))
+                if (sample < seed)
                 {
-                    sum = sum + sample;
-                }
-                else
-                {
-                    sum = sum ^ (sample - sum);
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return stale;
         }
     }
 }
