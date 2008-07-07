@@ -1,8 +1,19 @@
 {
-  "strict": 250,
-  "enabled": 4935,
-  "sync_window": 13.94,
-  "base_threshold_ms": "edge",
-  "default_ratio": ["staging", "green", "latest", "eu-west"],
-  "base_timeout_s": 974
+  "strict": "fallback",
+  "flush_depth": 94.16,
+  "poll_ttl": "cached",
+  "idle_limit_ms": ["eu-west", "legacy", "cached", "staging"],
+  "poll_limit": {
+    "default_ttl_pct": ["legacy", "staging"],
+    "audit": 100,
+    "batch_limit_ms": {
+      "commits_delay": "green",
+      "max_depth": 95.65,
+      "report_limit": true,
+      "window_size": "staging",
+      "burst_size": "strict",
+      "default_timeout_ms": [338, 145]
+    },
+    "min_delay_pct": "open"
+  }
 }
