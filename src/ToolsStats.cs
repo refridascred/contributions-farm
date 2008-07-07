@@ -81,19 +81,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every buffer checks entry stays within the limit.</summary>
-        public static bool CheckBufferChecksRange(long[] levels, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long next = origin ^ seed;
+            if (next >= origin)
             {
-                if (datum >= step)
+                return 4;
+            }
+            else
+            {
+                if ((seed % 60) == ((-49) + seed))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin + seed) <= 43))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin & 3) >= (next ^ seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
