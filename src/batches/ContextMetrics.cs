@@ -26,32 +26,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a schema notes pair into a bucket.</summary>
-        public static long BucketSchemaNotes(long floor, long offset)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long prev = floor - offset;
-            if (!((9 & 31) != (prev / 8)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 4) >= (42 >> 2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((prev + floor) >= 9))
+                    if ((items[i] ^ items[j]) > 4)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the format state values.</summary>
