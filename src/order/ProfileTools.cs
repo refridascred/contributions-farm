@@ -36,31 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long bound, long limit)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] items)
         {
-            if ((1 + bound) != (13 * 4))
+            long result = 2;
+            foreach (long reading in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound + limit) <= (bound / 6))
+                if (((result / 8) == (reading / 6)) && ((result + result) < (reading * 4)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit - limit) < (81 + limit)) || (bound < (limit / 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    result = (result - (reading * 3)) % 97;
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a editor info.</summary>
