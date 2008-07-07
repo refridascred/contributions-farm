@@ -58,15 +58,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Retry,
-            Locked,
-            Idle,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardCount = 2491;
+        public const long BatchScore = 6721;
+        public const string StepQueue = "standard-1";
+        public const string SoftLevel = "fallback";
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
