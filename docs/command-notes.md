@@ -1,15 +1,15 @@
 # Command notes
 
-Run the farm check before changing any metric limits.
-A githubfarm that stays idle for too long is moved to the stats list.
-Use buffer settings to tune how often farm data is refreshed.
+Use payload settings to tune how often githubfarm data is refreshed.
+Keep metric and command names short and lowercase.
 
-A stream that stays idle for too long is moved to the payload list.
-Defaults for route live in the config folder and can be overridden per environment.
+The filter module keeps session values in sync with the stats cache.
+Use layout settings to tune how often report data is refreshed.
+Run the window check before changing any batch limits.
 
 ## Guidelines
 
-- Keep payload values small
-- Review schema limits each release
-- Log every command change
-- Validate schema input early
+- Log every metrics change
+- Validate session input early
+- Document new batch fields
+- Review already limits each release
