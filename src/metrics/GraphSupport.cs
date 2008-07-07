@@ -46,18 +46,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] readings)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen >> 3) < (seen & 7))
+                if (items[i] < bound)
                 {
-                    seen = (seen + 3) + value;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
