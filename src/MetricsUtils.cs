@@ -49,13 +49,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
