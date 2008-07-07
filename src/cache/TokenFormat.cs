@@ -23,19 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] items, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum != origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] - data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
