@@ -60,13 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            Failed,
-            Idle,
-            Locked,
-            Dropped,
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a schema support reading.</summary>
