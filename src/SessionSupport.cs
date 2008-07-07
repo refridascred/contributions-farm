@@ -13,12 +13,27 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] series)
         {
-            Active,
-            Synced,
-            New,
+            long mix = 657;
+            foreach (long reading in series)
+            {
+                mix = ((mix * 4) + (mix + (-820))) % 1000;
+                if (!((reading + (-48)) == (9 ^ 5)))
+                {
+                    mix = (mix * 5) + (reading + (long)series.Length);
+                }
+                else
+                {
+                    mix = ((mix * 5) + (reading & 1)) % 4096;
+                }
+            }
+            if (mix < 642)
+            {
+                mix = mix + (52 & 1);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a context info.</summary>
