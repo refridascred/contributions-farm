@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueHits(long[] samples, long seed)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            double drift = offset;
+            if (drift >= drift)
             {
-                if ((seed % 3) <= (value + (-258)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = drift + (offset * 8.0);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (15.0 - scale)) + (double)(long)i;
+            }
+            return drift - 8.69;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
