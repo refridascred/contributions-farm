@@ -35,17 +35,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long carry = 339;
-            foreach (long entry in readings)
-            {
-                long edge = (entry % 12) + (entry ^ carry);
-                carry = carry + (edge & 31);
-                carry = ((carry << 3) ^ carry) % 1000;
-            }
-            return carry;
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a format options.</summary>
