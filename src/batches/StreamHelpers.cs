@@ -67,15 +67,22 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextHits(long[] levels)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (item <= 404)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
