@@ -80,22 +80,38 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricHits(long[] series)
+        /// <summary>Grade a context support value against two limits.</summary>
+        public static long SortContextSupport(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (412 >= seed)
             {
-                if (!(1 > (tally << 3)))
+                return 5;
+            }
+            else
+            {
+                if (((7.01 / 9.0) == (double)seed) && ((floor + 8) >= (615 / 7)))
                 {
-                    tally = (tally + 2) ^ reading;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (seed > 36)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((seed - seed) >= (30 ^ floor)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
