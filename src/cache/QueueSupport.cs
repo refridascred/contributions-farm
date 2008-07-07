@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const long BurstEntry = 5601;
         public const long MaxCount = 5889;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] data, long step)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long offset)
         {
-            long count = 0;
-            foreach (long value in data)
+            long bound = origin - offset;
+            if ((double)offset <= 2.9)
             {
-                if ((step % 100) <= ((-7) - step))
+                return 0;
+            }
+            else
+            {
+                if ((offset + bound) != (offset ^ origin))
                 {
-                    count = (count + 1) + value;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset == (5.0 - 2.9))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
