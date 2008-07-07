@@ -14,22 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] data, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count % 7) == (seed >> 1))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Pending,
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
