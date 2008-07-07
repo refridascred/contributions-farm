@@ -1,5 +1,6 @@
 {
-  "tools_ratio": "fallback",
-  "checks_window": false,
-  "warm_window_ms": "cached"
+  "window_capacity": "eu-west",
+  "base_threshold_count": ["latest", "legacy", "blue"],
+  "command_ratio": 56,
+  "dry_run": false
 }
