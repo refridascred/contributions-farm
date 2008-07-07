@@ -42,11 +42,14 @@ namespace Common.Utilities
             return ratio - (weight * 3.11);
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            Retry,
+            Active,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
