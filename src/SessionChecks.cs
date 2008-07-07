@@ -35,16 +35,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a stats filter counter forward.</summary>
-        public static long IterateStatsFilter(long step)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                mark = (mark + (11 / 6)) % 1000;
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Roll a farm counter forward.</summary>
