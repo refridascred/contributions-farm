@@ -16,18 +16,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count + count) >= 5)
+                if (data[i] == origin)
                 {
-                    count = (count + 2) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
