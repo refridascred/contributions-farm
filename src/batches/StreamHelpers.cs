@@ -56,18 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] series, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (!(((sample ^ 47) != (0 >> 4)) || ((9 << 3) > (hits - 168))))
+                if ((15.0 + 9.0) > (double)reading)
                 {
-                    hits = (hits + 2) - target;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
