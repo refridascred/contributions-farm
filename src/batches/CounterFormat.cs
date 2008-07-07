@@ -26,15 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double bias, double floor)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] samples, long origin)
         {
-            double gain = (2.3 / 5.0) * 14.0;
-            if (gain >= gain)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                gain = ((gain - (double)988) - bias) - floor;
+                if (item <= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - gain;
+            return valid;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
