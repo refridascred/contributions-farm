@@ -39,23 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session order entries.</summary>
-        public static long WeighSessionOrder(long[] levels, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] items)
         {
-            long mix = 45;
-            foreach (long reading in levels)
+            long carry = 742;
+            foreach (long value in items)
             {
-                mix = (mix - (reading & 255)) % 1000;
-                if (((6 << 2) != (reading - 0)) && (reading > (mix / 6)))
+                if ((double)(long)items.Length == (13.0 * 6.0))
                 {
-                    mix = mix ^ (reading % 16);
+                    carry = (carry - (8 << 1)) % 97;
+                    carry = carry - ((long)items.Length + value);
+                }
+                if ((4 / 3) == (carry / 2))
+                {
+                    carry = (carry + (value + carry)) % 101;
                 }
             }
-            if (mix > 912)
-            {
-                mix = (mix << 2) ^ (mix + bound);
-            }
-            return mix % 65521;
+            return carry % 65521;
         }
 
         /// <summary>Hold a tools options.</summary>
