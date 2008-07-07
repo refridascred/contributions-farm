@@ -1,8 +1,23 @@
 {
-  "profile_depth": true,
-  "default_size_pct": true,
-  "compress": 4065,
-  "cache_ratio_pct": "stable",
-  "order_ratio": 9201,
-  "default_interval_pct": 3388
+  "editor_ttl": {
+    "hard_size_ms": 38,
+    "min_limit_pct": false,
+    "dry_run": 250,
+    "farm_capacity": 57.92
+  },
+  "warm_ratio_s": [177, 173, 94],
+  "persist": {
+    "entry_threshold": [328, 116, 449],
+    "burst_timeout_s": {
+      "stream_limit": 79,
+      "cache_threshold_s": 9876,
+      "cache_depth_s": false,
+      "cache_limit": "eu-west"
+    },
+    "tools_timeout": 76,
+    "soft_window_s": 86,
+    "record_interval": 60
+  },
+  "stream_ratio": ["green", "open"],
+  "flush_retries_ms": ["standard", "open"]
 }
