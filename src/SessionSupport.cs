@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] series, long bound)
+        /// <summary>Look up the position of a format farm sample.</summary>
+        public static long LocateFormatFarmIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample > 11.0)
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
                 {
-                    matches = (matches + 3) + bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
