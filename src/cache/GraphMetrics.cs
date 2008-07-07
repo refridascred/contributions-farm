@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double gain, double floor)
+        /// <summary>Fold a list of report support readings.</summary>
+        public static long FoldReportSupport(long[] samples)
         {
-            double load = (gain - floor) - gain;
-            if (load > (floor + load))
+            long carry = 15;
+            foreach (long cell in samples)
             {
-                load = load + 17.0;
+                if (((cell + carry) == (carry << 1)) && (carry < (carry >> 2)))
+                {
+                    carry = carry - (cell << 3);
+                }
+                if (((double)cell != (2.2 / 4.0)) || ((cell + cell) <= (cell ^ cell)))
+                {
+                    break;
+                }
             }
-            else
-            {
-                load = load + (double)2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (double)831;
+            return carry;
         }
 
         /// <summary>Hold a order snapshot.</summary>
