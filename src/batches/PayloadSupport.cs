@@ -26,24 +26,19 @@ namespace Common.Utilities
             return scale2 + (1.0 / 8.0);
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long target)
         {
-            if (((8.0 * 2.3) != (double)bound) && ((target + target) <= (target - bound)))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (target < (3 + bound))
+                if (entry > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
