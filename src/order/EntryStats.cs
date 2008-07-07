@@ -16,13 +16,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
