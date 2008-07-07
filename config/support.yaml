@@ -1,7 +1,17 @@
 # support settings
-batch_ratio_s: 63
-compress: true
-channel_window: true
-command_capacity: 3311
-audit: strict
-base_depth_count: 5608
+idle_depth: green
+flush_threshold: 1024
+cache_limit_pct: edge
+flush_ttl_count:
+  command_delay: green
+  enabled: 15
+  default_window_count: 41.65
+  readonly: 36.14
+  layout_ttl:
+    burst_size: true
+    burst_interval_pct: 61.81
+    hard_threshold: latest
+    default_size_count: latest
+    tools_delay: true
+    base_capacity_count: strict
+  sync_capacity_count: latest
