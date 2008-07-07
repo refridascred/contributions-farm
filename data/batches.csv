@@ -1,7 +1,6 @@
-id,region,score,ratio
-1,87.05,local,86
-2,997,staging,latest
-3,909,cached,55.98
-4,60.87,edge,15.08
-5,standard,47.13,338
-6,581,87.21,staging
+id,rank,token,level,score
+1,481,87.7,blue,199
+2,6.56,91.54,green,cached
+3,48.88,34.92,primary,514
+4,912,56,55.14,latest
+5,9.11,360,39.75,cached
