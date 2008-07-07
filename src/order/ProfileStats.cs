@@ -55,18 +55,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] items)
+        /// <summary>Match up batches window samples.</summary>
+        public static long OverlapBatchesWindowCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count - 0) > 14)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) + value;
+                    if ((items[i] - items[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
