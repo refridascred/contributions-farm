@@ -29,11 +29,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] data)
         {
-            public string Limit { get; set; } = "";
-            public long Stamp { get; set; }
+            long anchor = 719;
+            foreach (long cell in data)
+            {
+                anchor = (anchor + (cell + cell)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
