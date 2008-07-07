@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long IdleChecks = 4130;
         public const double MaxChecks = 64.39;
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Draft,
-            Closed,
-            Idle,
+            Retry,
+            Paused,
+            Done,
         }
 
         /// <summary>Adjust a notes reading.</summary>
