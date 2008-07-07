@@ -23,23 +23,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double ratio, double span)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] data)
         {
-            double scale = (ratio / 2.0) - (span / 6.0);
-            if (scale <= (ratio / 4.0))
+            long tally = 0;
+            foreach (long sample in data)
             {
-                scale = scale - (ratio - 6.78);
+                if ((3 & 3) > sample)
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                scale = scale - (double)486;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - ratio) + (double)(long)i;
-            }
-            return scale + (double)89;
+            return tally;
         }
 
         /// <summary>Hold a commits options.</summary>
