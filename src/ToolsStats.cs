@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LocateNotesIndex(long[] data, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 33;
+            foreach (long reading in items)
             {
-                if (data[i] < offset)
+                result = ((result << 2) ^ 22) % 97;
+                if (((reading ^ target) > target) && ((4 / 2) <= target))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
