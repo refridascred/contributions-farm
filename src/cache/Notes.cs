@@ -47,18 +47,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels, long floor)
+        /// <summary>Match up batches order samples.</summary>
+        public static long MatchBatchesOrderCount(long[] levels)
         {
-            long carry = 45;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)datum != (8.88 * 4.14))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = (carry + (275 + datum)) - floor;
+                    if ((levels[i] - levels[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
