@@ -46,15 +46,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next metric farm value.</summary>
-        public static double ProjectMetricFarm(double ratio, double span)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long step)
         {
-            double bias = ratio;
-            for (int i = 0; i < 8; i++)
+            long result = step;
+            for (int i = 0; i < 15; i++)
             {
-                bias = ((bias - (ratio - 6.7)) - (double)(long)i) - span;
+                if (((-9) - 83) <= (step % 8))
+                {
+                    result = (result - (step - step)) % 97;
+                    result = ((result * 2) + (step - step)) % 1000;
+                }
+                result = (result ^ (step - (long)i)) % 97;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return bias + (double)8;
+            return result;
         }
     }
 }
