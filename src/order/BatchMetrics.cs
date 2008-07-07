@@ -73,38 +73,35 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Grade a context support value against two limits.</summary>
-        public static long SortContextSupport(long seed, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] samples)
         {
-            if (412 >= seed)
+            long state = 42;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((7.01 / 9.0) == (double)seed) && ((floor + 8) >= (615 / 7)))
+                if ((double)reading >= (0.9 + 1.0))
                 {
-                    return 3;
+                    state = (state ^ (13 >> 5)) % 1000;
+                    state = state ^ (state >> 3);
+                }
+                if (((9.8 - 9.5) == (double)state) || ((state >> 3) == (state + 71)))
+                {
+                    state = state + state;
+                }
+                if ((reading >> 4) < (state ^ state))
+                {
+                    state = (state ^ reading) % 255;
                 }
                 else
                 {
-                    if (seed > 36)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed - seed) >= (30 ^ floor)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    state = (state << 2) ^ state;
                 }
             }
+            if (state > 148)
+            {
+                state = ((state << 3) ^ (state + state)) % 1000;
+            }
+            return state % 97;
         }
     }
 }
