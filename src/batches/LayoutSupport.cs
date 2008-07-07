@@ -66,21 +66,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryNotes = 5826;
+        public const long WindowCount = 4608;
+        public const string HardNotes = "cached";
     }
 }
