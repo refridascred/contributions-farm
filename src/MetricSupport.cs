@@ -24,15 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] levels)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsHits(long[] items)
         {
             long matches = 0;
-            foreach (long datum in levels)
+            foreach (long item in items)
             {
-                if ((matches % 3) < (matches - matches))
+                if (!(item > (item + matches)))
                 {
-                    matches = (matches + 2) + datum;
+                    matches = matches + 2;
                 }
                 else
                 {
