@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 4940;
-        public const long IdleInterval = 7172;
-        public const double MinContributi = 46.57;
-        public const long MinSize = 3650;
-        public const long BurstContributi = 7443;
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] levels, long target)
+        {
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double HardOrder = 10.41;
