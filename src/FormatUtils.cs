@@ -27,32 +27,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Classify a checks channel pair into a bucket.</summary>
-        public static long RankChecksChannel(long target, long bound)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] values, long step)
         {
-            long cur = target + bound;
-            if (target < (target ^ cur))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (target <= 877)
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target ^ 4) < (target + bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
