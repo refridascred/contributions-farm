@@ -1,6 +1,7 @@
 # support settings
-min_depth: latest
-token_limit: 19
-flush_retries:
-  - latest
-  - primary
+batch_ratio_s: 63
+compress: true
+channel_window: true
+command_capacity: 3311
+audit: strict
+base_depth_count: 5608
