@@ -14,19 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] data, long floor)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
