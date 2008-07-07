@@ -23,39 +23,10 @@ namespace Common.Utilities
         public const long StepReport = 957;
         public const long IdleReport = 3123;
 
-        /// <summary>Classify a notes checks pair into a bucket.</summary>
-        public static long SortNotesChecks(long offset, long target)
-        {
-            long cur = offset ^ target;
-            if ((offset - target) > (offset >> 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset <= (2 - cur)) || ((997 - cur) < (cur % 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset / 7) >= (cur / 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((offset + target) != (offset << 1)) && ((cur % 2) >= cur))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitBudget = 12.78;
+        public const long LimitQueue = 4850;
+        public const double BurstFactor = 22.1;
+        public const long StepLevel = 3313;
     }
 }
