@@ -19,19 +19,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] levels, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long offset)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Hold a buffer header.</summary>
