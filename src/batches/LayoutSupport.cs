@@ -33,12 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseRatio = 465;
-        public const double MaxCount = 31.19;
-        public const double BurstSpan = 21.64;
-        public const long MaxRatio = 4166;
-        public const long WindowScore = 7526;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen + seen) > value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a graph account pair into a bucket.</summary>
         public static long SortGraphAccount(long floor, long bound)
