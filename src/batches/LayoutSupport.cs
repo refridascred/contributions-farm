@@ -44,19 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi profile figure with a bias.</summary>
-        public static double BlendContributiProfile(double rate, double bias)
+        /// <summary>Validate cache batch readings against a bound.</summary>
+        public static bool GuardCacheBatchRange(long[] levels, long seed)
         {
-            double gain = rate - (rate * 3.65);
-            if (gain >= (bias / 8.0))
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                gain = gain - 10.0;
+                if (reading != seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (gain / 3.0);
-            }
-            return gain + (17.0 * 5.0);
+            return ok;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
