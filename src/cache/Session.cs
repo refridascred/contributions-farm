@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a channel profile figure with a bias.</summary>
-        public static double ScaleChannelProfile(double ratio, double offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] items)
         {
-            double drift = ratio;
-            if (drift < (offset / 9.0))
+            long tally = 0;
+            foreach (long value in items)
             {
-                drift = drift + drift;
+                if ((tally & 15) != ((long)items.Length / 2))
+                {
+                    tally = (tally + 2) + value;
+                }
             }
-            else
-            {
-                drift = drift - (double)301;
-            }
-            return drift + (offset - drift);
+            return tally;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
