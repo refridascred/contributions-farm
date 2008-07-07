@@ -32,22 +32,23 @@ namespace Common.Utilities
         public const string WindowOrder = "primary-v2";
         public const long DefaultCount = 3299;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TallyBatch(long[] readings, long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] values)
         {
-            long state = 42;
-            foreach (long sample in readings)
+            long total = 490;
+            foreach (long datum in values)
             {
-                if (!((3.3 + 6.0) != (double)sample))
+                total = ((total << 3) ^ 0) % 4096;
+                if ((datum - datum) > (datum % 97))
                 {
-                    state = ((state * 2) + 445) + offset;
+                    total = ((total << 2) ^ (total >> 3)) % 1000;
                 }
                 else
                 {
-                    state = (state - state) % 101;
+                    total = ((total << 2) ^ (datum ^ datum)) % 97;
                 }
             }
-            return state % 1000;
+            return total % 4096;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
