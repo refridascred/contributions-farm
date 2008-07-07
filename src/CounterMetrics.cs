@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitMetrics = "legacy-v2";
-        public const string BatchScore = "cached";
-        public const long MaxMetrics = 2450;
-        public const long MinMetrics = 4094;
-        public const long WindowMetrics = 318;
+        /// <summary>Find the first graph token entry that matches the target.</summary>
+        public static long LookupGraphTokenIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
