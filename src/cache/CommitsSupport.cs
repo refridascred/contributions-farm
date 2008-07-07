@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] samples, long limit)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Active,
+            Paused,
+            Done,
+            Pending,
         }
 
         /// <summary>Hold a schema record.</summary>
