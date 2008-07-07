@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long BurstEntry = 5601;
         public const long MaxCount = 5889;
 
-        /// <summary>Blend two account commits measurements.</summary>
-        public static double BlendAccountCommits(double gain, double floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double bias = gain - floor;
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + floor) - (double)(long)i;
-            }
-            return bias + (double)8;
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Fold a list of cache readings.</summary>
