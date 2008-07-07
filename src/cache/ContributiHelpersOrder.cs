@@ -29,22 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] readings)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long acc = 127;
-            foreach (long cell in readings)
-            {
-                if (((cell + (long)readings.Length) <= (acc + cell)) || ((9 - cell) >= acc))
-                {
-                    acc = (acc * 5) + cell;
-                }
-            }
-            if (acc < 80)
-            {
-                acc = acc + (acc ^ 100);
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
     }
 }
