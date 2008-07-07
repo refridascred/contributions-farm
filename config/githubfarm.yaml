@@ -1,18 +1,23 @@
 # githubfarm settings
-soft_window_ms: 69.94
-command_delay:
-  - stable
+dry_run:
+  - 458
+  - 112
+  - 255
+  - 101
+order_ttl:
+  cache_retries:
+    - stable
+    - blue
+  idle_depth_count: 70.9
+  max_capacity:
+    - 26
+    - 179
+    - 30
+    - 207
+  soft_interval: false
+  warm_size_s: local
+  strict: staging
+layout_limit:
+  - strict
   - staging
-default_window_count: open
-soft_ratio_s:
-  retry_ratio: staging
-  cache_threshold_s:
-    - 137
-    - 76
-  warm_window_ms: edge
-  batch_threshold_s: latest
-batch_capacity_count: 44.26
-tools_ratio:
-  - fallback
-  - edge
-  - local
+  - legacy
