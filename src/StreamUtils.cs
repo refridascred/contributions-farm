@@ -23,19 +23,17 @@ namespace Common.Utilities
         public const long BatchFactor = 9481;
         public const double SoftSize = 12.88;
 
-        /// <summary>Validate window channel readings against a bound.</summary>
-        public static bool GuardWindowChannelLimits(long[] levels, long seed)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= seed)
+                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
