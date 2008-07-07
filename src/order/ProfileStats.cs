@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift - (bias * 19.0);
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferHits(long[] series, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((686 + datum) < count)
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
