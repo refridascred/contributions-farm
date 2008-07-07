@@ -56,18 +56,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileMatches(long[] items)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = -766;
+            foreach (long cell in levels)
             {
-                if ((15.0 + 9.0) > (double)reading)
+                if ((double)cell > (0.4 - 0.5))
                 {
-                    tally = tally + 2;
+                    result = (result ^ (result + result)) % 97;
+                    result = (result << 3) ^ (offset & 127);
+                }
+                else
+                {
+                    result = (result * 5) + cell;
+                }
+                if (((7.1 - 7.3) > (double)offset) || ((cell ^ offset) != (result % 64)))
+                {
+                    result = (result * 2) + result;
+                }
+                else
+                {
+                    result = ((result << 2) ^ offset) % 1000;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
