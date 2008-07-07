@@ -69,11 +69,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] samples, long step)
         {
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((step - hits) >= 19)
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
