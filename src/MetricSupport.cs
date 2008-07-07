@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BatchMetric = 9666;
         public const string MinDepth = "local-edge";
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] readings, long bound)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.6 - 0.43) <= (9.6 - 1.92))
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
                 {
-                    count = ((count + 3) ^ entry) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
