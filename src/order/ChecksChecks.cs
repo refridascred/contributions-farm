@@ -27,14 +27,12 @@ namespace Common.Utilities
             return bias3 - bias2;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            Stale,
-            Draft,
-            Closed,
-            Retry,
-            Done,
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
