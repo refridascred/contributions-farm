@@ -29,18 +29,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Audit cache contributi readings against a rule.</summary>
-        public static long TallyCacheContributiHits(long[] values, long seed)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long WeighToken(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long total = 50;
+            foreach (long item in readings)
             {
-                if (3.25 < (double)seed)
+                if (!((total >> 1) == (item % 8)))
                 {
-                    tally = (tally + 3) - item;
+                    total = total ^ (total * 2);
+                }
+                if ((double)item <= (9.2 / 6.0))
+                {
+                    total = ((total * 4) + (item * 2)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 4) + (total - 315)) % 4096;
                 }
             }
-            return tally;
+            return total % 1000;
         }
     }
 }
