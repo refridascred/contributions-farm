@@ -41,17 +41,23 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Look up the position of a context notes sample.</summary>
-        public static long LocateContextNotesIndex(long[] samples, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double scale, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = scale - (double)131;
+            if (weight > weight)
             {
-                if (samples[i] <= step)
-                {
-                    return (long)i;
-                }
+                weight = weight - (offset + weight);
             }
-            return -1;
+            else
+            {
+                weight = weight - (offset * 6.5);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - scale;
         }
     }
 }
