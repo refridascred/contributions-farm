@@ -1,11 +1,11 @@
 # Batch notes
 
-The command report groups every tools by checks.
-The batch module keeps batch values in sync with the context cache.
-The entry module keeps payload values in sync with the command cache.
+The checks module keeps batch values in sync with the farm cache.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate cluster input early
-- Review already limits each release
-- Prefer channel defaults
+- Prefer filter defaults
+- Validate booking input early
+- Review token limits each release
+- Log every commits change
