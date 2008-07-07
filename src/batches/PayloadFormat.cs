@@ -13,19 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double gain, double bias)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double ratio = (bias + gain) - (bias + 7.2);
-            if (ratio <= gain)
-            {
-                ratio = ratio - (bias - 2.1);
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + (bias + ratio);
+            public double Region { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the context class values.</summary>
