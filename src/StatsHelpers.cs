@@ -38,12 +38,11 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
-        {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BaseTools = "strict-v2";
+        public const double IdleSpan = 57.86;
+        public const long RetryInterval = 714;
+        public const long MaxLevel = 1151;
+        public const long IdleScore = 9235;
     }
 }
