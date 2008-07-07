@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] items, long step)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mark = 180;
-            foreach (long item in items)
-            {
-                mark = ((mark ^ mark) % 255) + item;
-                if ((double)step <= (1.0 * 15.0))
-                {
-                    break;
-                }
-            }
-            if (mark < 69)
-            {
-                mark = (mark + (step - mark)) % 1000;
-            }
-            return mark;
+            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
