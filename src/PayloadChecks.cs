@@ -96,26 +96,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] samples, long seed)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] levels, long offset)
         {
-            long score = 5;
-            foreach (long item in samples)
+            long mark = 80;
+            foreach (long entry in levels)
             {
-                if (score < (5 % 64))
-                {
-                    score = ((score * 2) + (item + seed)) % 97;
-                }
-                if ((double)item >= (8.98 / 6.0))
-                {
-                    break;
-                }
+                mark = ((mark << 2) ^ entry) + offset;
+                mark = mark + (779 + mark);
             }
-            if (score > (-80))
-            {
-                score = (score << 3) ^ (score ^ 0);
-            }
-            return score % 4096;
+            return mark;
         }
     }
 }
