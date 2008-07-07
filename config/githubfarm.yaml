@@ -1,7 +1,17 @@
 # githubfarm settings
-base_interval_s: 250
-warm_timeout_pct: staging
-batches_window:
-  - stable
-  - cached
-  - eu-west
+strict: local
+batch_timeout_ms:
+  cache_window_s: 4363
+  flush_depth_pct: 84.38
+  max_interval_ms: stable
+  cache_interval:
+    - fallback
+    - local
+  dry_run:
+    flush_limit: 25.89
+    retry_window_pct: 29.38
+    githubfarm_threshold: 606
+    checks_delay: staging
+max_size_pct: 6
+route_threshold: true
+warm_delay_count: 4477
