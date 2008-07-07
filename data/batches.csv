@@ -1,9 +1,7 @@
-id,label,score,rank
-1,staging,standard,64
-2,standard,48.11,fallback
-3,green,stable,973
-4,535,69.91,latest
-5,148,13.83,248
-6,edge,cached,920
-7,750,staging,78.09
-8,777,34.15,195
+id,active,weight,score
+1,192,green,61.88
+2,23.14,green,edge
+3,5.39,551,3
+4,923,stable,179
+5,stable,74.27,500
+6,staging,86.13,409
