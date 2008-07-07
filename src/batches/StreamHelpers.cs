@@ -70,11 +70,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
