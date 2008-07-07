@@ -51,12 +51,40 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstFactor = 7895;
-        public const long BurstInterval = 9508;
-        public const long SoftPayload = 5177;
-        public const string RetryCount = "staging-1";
-        public const double LimitPayload = 38.4;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long seed, long limit)
+        {
+            long offset = seed ^ limit;
+            if ((limit / 4) > limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((13.0 - 1.1) > (double)offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 9) < (34 + 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.39 - 3.1) != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
