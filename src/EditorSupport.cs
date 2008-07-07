@@ -42,10 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseBudget = 2157;
-        public const long SoftStats = 5634;
-        public const double IdleStats = 15.55;
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
+        {
+            Draft,
+            Queued,
+            Locked,
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long target, long origin)
