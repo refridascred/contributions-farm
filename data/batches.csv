@@ -1,6 +1,7 @@
-id,weight,score
-1,local,291
-2,legacy,81
-3,92.83,75.89
-4,86,270
-5,25.74,eu-west
+id,count,token
+1,249,42.42
+2,145,797
+3,green,cached
+4,144,local
+5,standard,20.44
+6,fallback,825
