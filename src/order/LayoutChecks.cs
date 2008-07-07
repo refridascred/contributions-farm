@@ -57,19 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] levels, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (target > state)
+                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
                 {
-                    state = ((state * 4) + (target % 10)) % 4096;
+                    return (long)i;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
     }
 }
