@@ -29,21 +29,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count editor command pairs that satisfy a relation.</summary>
-        public static long MatchEditorCommandCount(long[] data)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((348 - 51) > (target ^ target))
                 {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
