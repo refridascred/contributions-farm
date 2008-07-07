@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleCommand = "local";
-        public const long SoftCommand = 696;
-        public const long MinCommand = 4940;
-        public const long StepFactor = 6007;
-        public const long BatchDepth = 9715;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterLimits(long[] data, long target)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Describe the batch class values.</summary>
         public enum BatchClass
