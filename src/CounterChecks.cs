@@ -58,19 +58,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter buffer entry stays within the limit.</summary>
-        public static bool ValidateCounterBufferRange(long[] samples, long step)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long score = 9;
+            foreach (long value in data)
             {
-                if (sample >= step)
+                if (!(((value - value) == (score << 3)) || ((score % 7) >= (score ^ value))))
                 {
-                    found = false;
-                    break;
+                    score = score + (score + score);
+                }
+                if ((value - value) < value)
+                {
+                    score = ((score * 2) + (score % 8)) % 4096;
                 }
             }
-            return found;
+            return score;
         }
     }
 }
