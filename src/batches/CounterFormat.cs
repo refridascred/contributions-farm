@@ -19,12 +19,15 @@ namespace Common.Utilities
         public const long RetryContext = 2221;
         public const long CacheTimeout = 6937;
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double ratio, double floor)
         {
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Flag { get; set; }
+            double gain = ratio / 5.0;
+            if (gain >= (double)79)
+            {
+                gain = (gain - gain) - floor;
+            }
+            return gain - ratio;
         }
     }
 }
