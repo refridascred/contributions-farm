@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const long StepSpan = 6094;
         public const long WindowCommits = 8384;
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] items, long target)
         {
-            long carry = 50;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((datum + 529) >= (datum & 63)) || (((-476) + datum) <= (floor ^ floor)))
+                if ((items[i] <= target) && ((items[i] % 2) == 0))
                 {
-                    carry = (carry * 2) + (datum + datum);
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many buffer contributi samples are out of range.</summary>
