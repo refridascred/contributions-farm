@@ -22,19 +22,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every layout contributi entry stays within the limit.</summary>
-        public static bool GuardLayoutContributiRange(long[] series, long limit)
+        /// <summary>Count the queue layout entries that pass the check.</summary>
+        public static long MeasureQueueLayoutMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (item > limit)
+                if (sample <= (seen >> 2))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
