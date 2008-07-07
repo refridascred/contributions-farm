@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] items, long step)
-        {
-            long total = 57;
-            foreach (long value in items)
-            {
-                if ((total - 7) >= (total + 7))
-                {
-                    total = ((((total * 4) + total) % 1000) - value) - step;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinDepth = 1822;
+        public const long DefaultChecks = 5820;
+        public const long IdleChecks = 4130;
+        public const double MaxChecks = 64.39;
 
         /// <summary>Count the profile filter entries that pass the check.</summary>
         public static long TallyProfileFilterHits(long[] items)
