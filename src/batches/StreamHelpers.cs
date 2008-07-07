@@ -34,20 +34,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((14 - entry) >= 246)
                 {
-                    total = (total ^ bound) % 4096;
-                    total = total + ((long)i2 - total);
+                    seen = seen + 3;
                 }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
