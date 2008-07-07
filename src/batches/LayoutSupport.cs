@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 1739;
+        public const double LimitStats = 84.59;
+        public const long BatchLevel = 5849;
 
         /// <summary>Adjust a queue counter reading.</summary>
         public static double ScaleQueueCounter(double bias, double bias2)
