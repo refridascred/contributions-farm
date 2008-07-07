@@ -1,6 +1,7 @@
 {
-  "min_size_s": "strict",
-  "warm_capacity": ["open", "open", "standard", "legacy"],
-  "poll_limit_ms": 60,
-  "stream_ttl": "legacy"
+  "persist": true,
+  "sync_interval_ms": 9836,
+  "compress": 500,
+  "hard_depth_s": "local",
+  "max_size_s": "strict"
 }
