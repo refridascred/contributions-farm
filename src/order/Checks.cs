@@ -59,21 +59,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            New,
+            Paused,
+            Dropped,
         }
     }
 }
