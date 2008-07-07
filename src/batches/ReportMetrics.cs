@@ -42,21 +42,13 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of commits batches readings.</summary>
-        public static long MatchCommitsBatchesCount(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Queued,
+            Locked,
+            Stale,
         }
     }
 }
