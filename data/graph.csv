@@ -1,8 +1,6 @@
-id,region,weight
-1,42.49,green
-2,615,23.84
-3,326,306
-4,standard,968
-5,local,strict
-6,edge,1
-7,stable,blue
+id,active,state,rank
+1,standard,910,93.24
+2,latest,102,fallback
+3,cached,79.92,553
+4,green,53.58,12.95
+5,57.41,372,eu-west
