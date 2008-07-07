@@ -1,13 +1,5 @@
 # support settings
-batch_limit_pct: blue
-flush_ratio_count:
-  - 123
-  - 421
-  - 227
-  - 215
-max_limit:
-  - fallback
-  - primary
-retry_depth: 21
-batch_ratio_pct: 89.04
-persist: 30
+flush_delay_count: 46
+verbose: green
+batch_depth_count: edge
+support_limit: edge
