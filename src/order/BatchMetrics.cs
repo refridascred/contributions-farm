@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] levels, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long score = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)sample > (4.0 * 7.6))
-                {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score << 3) ^ 700;
+                score = (score + (score % 12)) % 97;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate schema buffer samples.</summary>
