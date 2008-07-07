@@ -20,22 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the cluster graph entries that pass the check.</summary>
-        public static long AuditClusterGraphHits(long[] series, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenRange(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (((limit ^ 29) > hits) && (((double)hits > (0.95 * 0.72)) && ((reading ^ 0) > (hits & 63))))
+                if (value >= bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
