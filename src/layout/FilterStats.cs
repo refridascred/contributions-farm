@@ -28,11 +28,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] data, long offset)
         {
-            public double Total { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((((item / 7) > (230 % 97)) || ((offset - 396) <= 485)) || ((item << 1) != (offset ^ matches)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
