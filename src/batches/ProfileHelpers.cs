@@ -39,10 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepSchema = 1660;
-        public const long LimitSchema = 6963;
-        public const long BatchTimeout = 1498;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (((entry - seen) > entry) || ((entry + entry) < (entry + 334)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string LimitLevel = "legacy-1";
