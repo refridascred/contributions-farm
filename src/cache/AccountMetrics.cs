@@ -46,10 +46,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 2332;
-        public const string HardInterval = "primary-edge";
-        public const long BatchSchema = 4009;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatRange(long[] data, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count account cache pairs that satisfy a relation.</summary>
         public static long CompareAccountCacheCount(long[] items)
