@@ -18,19 +18,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] items, long offset)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long mix = 1;
+            foreach (long reading in data)
             {
-                if (value > offset)
+                if (!((double)248 >= (double)mix))
                 {
-                    stale = false;
-                    break;
+                    mix = (((mix * 2) + (mix - 144)) ^ reading) - offset;
                 }
             }
-            return stale;
+            return mix % 4096;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
