@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a profile record figure with a bias.</summary>
-        public static double ProjectProfileRecord(double bias, double bias2)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            double gain = bias;
-            if (gain >= (double)59)
-            {
-                gain = gain + (bias + bias);
-            }
-            return gain + (bias - bias2);
+            public double Weight { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate filter samples.</summary>
