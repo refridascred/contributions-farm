@@ -32,12 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Pending,
-            Dropped,
-            Done,
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
