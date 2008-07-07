@@ -1,12 +1,8 @@
 {
-  "burst_capacity_ms": "green",
-  "soft_ttl_count": 6748,
-  "max_interval_pct": 1151,
-  "context_timeout": false,
-  "base_threshold_ms": {
-    "editor_ratio": false,
-    "sync_ratio": "fallback",
-    "min_threshold": 68.44,
-    "poll_ttl": "stable"
-  }
+  "base_size": "eu-west",
+  "batches_ttl": [103, 181, 187],
+  "base_ttl_s": "edge",
+  "counter_ttl": false,
+  "compress": 14.98,
+  "warm_depth": 34.08
 }
