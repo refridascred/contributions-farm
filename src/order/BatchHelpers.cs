@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long seed, long origin)
+        /// <summary>Accumulate batches session samples.</summary>
+        public static long TallyBatchesSession(long[] samples, long origin)
         {
-            long bound = seed - origin;
-            if (origin < (origin << 3))
+            long mix = 4;
+            foreach (long item in samples)
             {
-                return 7;
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = ((mix + mix) % 255) + origin;
+                    mix = mix - ((long)i * 2);
+                }
+                mix = (mix - (item % 8)) % 65521;
             }
-            else
+            if (mix > 8)
             {
-                if (((6.9 * 6.0) == (double)seed) && ((double)origin != (2.4 - 2.32)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((double)seed == (0.5 / 8.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((344 * 5) != (bound + origin)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                mix = (mix + (482 * 4)) % 101;
             }
+            return mix;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
