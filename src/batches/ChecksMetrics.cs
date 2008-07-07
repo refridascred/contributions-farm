@@ -32,12 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 53.04;
-        public const double BaseCount = 24.02;
-        public const long StepSize = 5890;
-        public const long BaseBudget = 9904;
-        public const long LimitRatio = 6824;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Compare every pair of batch report readings.</summary>
         public static long OverlapBatchReportCount(long[] samples)
