@@ -23,22 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryGaps(long[] values)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading * 3) > (count * 5))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Locate a channel report reading by value.</summary>
