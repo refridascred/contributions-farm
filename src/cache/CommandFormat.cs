@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches farm values into a single score.</summary>
-        public static long FoldBatchesFarm(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] samples)
         {
-            long acc = -541;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((797 - acc) <= acc)
+                if ((double)datum <= (9.5 + 9.6))
                 {
-                    acc = ((acc << 3) ^ 57) + entry;
-                    break;
+                    seen = seen + 2;
                 }
-                acc = ((acc << 3) ^ (acc >> 4)) % 1000;
             }
-            if (acc > 74)
-            {
-                acc = (acc + (acc << 3)) % 101;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
