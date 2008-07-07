@@ -51,23 +51,17 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] readings, long bound)
         {
-            long state = 19;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.7 - 3.2) >= (double)state)
+                if (readings[i] >= bound)
                 {
-                    state = (state * 3) + seed;
-                    continue;
-                }
-                if (((state & 3) <= reading) && ((6.97 * 1.4) == (double)seed))
-                {
-                    state = ((state << 2) ^ reading) % 97;
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
