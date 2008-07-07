@@ -19,10 +19,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSpan = 6378;
-        public const string BatchSize = "staging-edge";
-        public const long HardInterval = 7263;
+        /// <summary>Check that every layout contributi entry stays within the limit.</summary>
+        public static bool GuardLayoutContributiRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Look up the position of a metrics sample.</summary>
         public static long FindMetricsIndex(long[] series, long floor)
