@@ -1,22 +1,6 @@
 {
-  "compress": 60,
-  "audit": "open",
-  "schema_depth": "local",
-  "sync_interval": 21.04,
-  "soft_ratio_s": [321, 343],
-  "burst_timeout_s": {
-    "window_capacity": 100,
-    "max_interval": 60,
-    "burst_window_s": {
-      "farm_delay": true,
-      "idle_timeout_pct": 48,
-      "token_threshold": "legacy",
-      "flush_ttl_count": "open",
-      "batch_delay": ["strict", "blue"],
-      "hard_capacity_pct": 97
-    },
-    "route_interval": 89.47,
-    "commits_retries": 100,
-    "soft_delay": 47
-  }
+  "compress": "edge",
+  "verbose": "fallback",
+  "flush_delay": "cached",
+  "order_timeout": "open"
 }
