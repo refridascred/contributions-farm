@@ -13,17 +13,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] levels, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long floor, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step + 760) >= step)
             {
-                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((step ^ floor) <= (floor - floor))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the session kind values.</summary>
