@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteGaps(long[] data)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (!((hits + item) > (item << 1)))
+                if (entry < offset)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
