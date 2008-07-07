@@ -23,11 +23,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 6708;
-        public const string RetryBatches = "primary-v2";
-        public const long MaxTimeout = 3832;
-        public const long IdleBudget = 3595;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long limit, long step)
+        {
+            if (7.55 <= (double)step)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((4 / 9) != (limit + (-590)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] items)
