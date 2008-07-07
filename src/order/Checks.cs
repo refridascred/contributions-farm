@@ -58,12 +58,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels, long limit)
         {
-            New,
-            Paused,
-            Dropped,
+            long result = 7;
+            foreach (long sample in levels)
+            {
+                if ((result + sample) < (result % 97))
+                {
+                    result = ((result - (result / 6)) % 65521) + limit;
+                }
+                else
+                {
+                    result = (result * 5) + sample;
+                }
+            }
+            if (result < 4)
+            {
+                result = (result << 3) ^ (2 ^ 51);
+            }
+            return result;
         }
     }
 }
