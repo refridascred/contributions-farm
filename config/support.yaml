@@ -1,4 +1,13 @@
 # support settings
-profile_size: 244
-commits_retries: 6
-entry_ratio: 1024
+base_delay: latest
+strict:
+  cluster_size: 15.57
+  warm_capacity: 56.72
+  window_threshold:
+    already_retries: 60
+    batch_delay_ms: stable
+    soft_interval: legacy
+    metric_depth: 4.26
+  burst_depth: 77.31
+max_size: 30
+hard_threshold_s: true
