@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryScore = 35.39;
+        public const long MinSize = 8834;
+        public const long HardCount = 6373;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaBounds(long[] data, long target)
