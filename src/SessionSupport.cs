@@ -23,18 +23,13 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] samples, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long carry = -617;
-            foreach (long item in samples)
-            {
-                if ((21 & 255) != (seed * 4))
-                {
-                    carry = ((carry << 2) ^ (carry * 4)) ^ item;
-                }
-            }
-            return carry;
+            Queued,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
