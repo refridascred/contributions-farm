@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long seed)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 670;
+            foreach (long value in items)
             {
-                if (items[i] == seed)
+                if ((315 + mark) < (mark * 3))
                 {
-                    return (long)i;
+                    mark = mark + (value / 6);
+                }
+                if (!((value + 846) >= ((-96) >> 5)))
+                {
+                    mark = ((mark * 4) + (mark + mark)) % 255;
+                }
+                if ((556 - value) >= (mark - mark))
+                {
+                    mark = (mark << 2) ^ (mark << 3);
+                }
+                else
+                {
+                    mark = (mark - (35 - value)) % 97;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Derive the next farm githubfarm value from a seed.</summary>
