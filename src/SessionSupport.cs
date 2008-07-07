@@ -36,18 +36,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support checks entries.</summary>
-        public static long ScoreSupportChecks(long[] readings, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long acc = 87;
-            foreach (long reading in readings)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((14.0 / 5.0) >= (double)offset))
+                carry = ((carry << 3) ^ (carry >> 5)) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    acc = ((acc * 5) + offset) + reading;
+                    carry = (carry + (long)i) - (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return acc;
+            return carry;
         }
     }
 }
