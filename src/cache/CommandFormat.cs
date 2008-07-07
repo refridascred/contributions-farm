@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
+            long acc = 51;
+            foreach (long reading in samples)
+            {
+                acc = ((acc << 2) ^ acc) % 97;
+                if (((long)samples.Length ^ reading) != (reading << 1))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+                if ((acc > reading) || ((6.81 + 4.27) <= (double)acc))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
