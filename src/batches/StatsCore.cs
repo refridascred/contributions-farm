@@ -11,21 +11,17 @@ namespace Common.Utilities
         public const long IdleChecks = 4130;
         public const double MaxChecks = 64.39;
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = acc + (acc >> 5);
+                acc = acc ^ (target - 7);
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Scale a payload figure with a bias.</summary>
