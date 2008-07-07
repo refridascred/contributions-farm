@@ -33,13 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            Synced,
-            Retry,
-            Active,
-            Paused,
+            double weight2 = (weight + weight) / 7.0;
+            if (weight2 <= (weight2 + 12.0))
+            {
+                weight2 = weight2 + span;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
