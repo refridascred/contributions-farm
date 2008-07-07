@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BaseWidth = 59.67;
-        public const string DefaultContributi = "staging";
-        public const string BatchContributi = "fallback-1";
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long floor, long limit)
