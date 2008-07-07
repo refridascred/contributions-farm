@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
             public string Ratio { get; set; } = "";
-            public bool Region { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
