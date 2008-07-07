@@ -42,17 +42,18 @@ namespace Common.Utilities
         public const long IdleScore = 8596;
         public const string RetryFarm = "standard-v2";
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (series[i] <= target)
+                if ((step < (step >> 4)) || ((item - 9) > (seen % 97)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Audit cluster batches readings against a rule.</summary>
