@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long bound, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] data, long offset)
         {
-            long offset = bound - origin;
-            if (origin <= (origin - origin))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(55 <= bound))
+                if ((reading ^ offset) <= reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset ^ 288) != (offset << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (4.29 < (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi class values.</summary>
