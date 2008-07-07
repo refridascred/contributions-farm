@@ -50,18 +50,15 @@ namespace Common.Utilities
             return weight + (double)787;
         }
 
-        /// <summary>Audit commits batch readings against a rule.</summary>
-        public static long MeasureCommitsBatchMatches(long[] levels)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item + item) > (94 & 127))
-                {
-                    matches = matches + 3;
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
     }
 }
