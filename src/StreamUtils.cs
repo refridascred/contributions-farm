@@ -52,11 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowSize = "strict-edge";
-        public const string RetryLevel = "standard-1";
-        public const long BurstCommand = 380;
-        public const long BaseTimeout = 5500;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double bias, double offset)
