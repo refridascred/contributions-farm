@@ -14,23 +14,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] data)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((double)(long)data.Length <= 12.0)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinScore = "legacy-1";
+        public const double WindowRoute = 59.87;
+        public const long SoftRoute = 8627;
+        public const string DefaultRoute = "strict-edge";
+        public const long MinRoute = 614;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long LookupRecordIndex(long[] samples, long target)
