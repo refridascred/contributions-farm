@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryContributi = 16.76;
-        public const long BatchContributi = 4922;
-        public const string HardContributi = "fallback-edge";
-        public const string DefaultInterval = "open-1";
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Done,
+            Closed,
+            Paused,
+            Synced,
+            Active,
+        }
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long GradeProfile(long origin, long floor)
