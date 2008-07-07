@@ -22,15 +22,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteGaps(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                score = ((score * 3) + (long)i) % 101;
+                if (!((hits + item) > (item << 1)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return score;
+            return hits;
         }
     }
 }
