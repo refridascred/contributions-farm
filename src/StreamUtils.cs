@@ -60,15 +60,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double bias, double offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long offset)
         {
-            double weight = (double)(21 / 6);
+            long acc = offset;
             for (int i = 0; i < 8; i++)
             {
-                weight = ((weight - 15.0) - (double)(long)i) - offset;
+                long gap = acc;
+                acc = ((acc << 3) ^ ((long)i ^ gap)) % 97;
+                gap = (gap ^ 49) % 101;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return weight - bias;
+            return acc;
         }
 
         /// <summary>Hold a channel options.</summary>
