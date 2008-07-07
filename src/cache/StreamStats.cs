@@ -26,11 +26,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseScore = "alpha";
-        public const double WindowTimeout = 55.09;
-        public const long MaxFactor = 3108;
-        public const string BaseToken = "strict-1";
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Done,
+            Synced,
+            New,
+            Dropped,
+            Closed,
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long LookupFarmIndex(long[] values, long origin)
