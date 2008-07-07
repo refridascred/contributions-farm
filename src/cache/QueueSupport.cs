@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "staging-1";
-        public const long RetryAccount = 6506;
-        public const long WindowTimeout = 4212;
-        public const long LimitScore = 2987;
+        /// <summary>Adjust a buffer route reading.</summary>
+        public static double BlendBufferRoute(double gain, double span)
+        {
+            double gain2 = gain;
+            if (gain2 <= (20.0 * 15.0))
+            {
+                gain2 = gain2 - (span - gain2);
+            }
+            return gain2 - 2.4;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const string WindowDepth = "alpha";
