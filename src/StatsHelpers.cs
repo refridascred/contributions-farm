@@ -32,14 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Paused,
-            Failed,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 5453;
+        public const long BurstTimeout = 3220;
+        public const long RetryFactor = 4272;
+        public const double StepNotes = 98.95;
+        public const long DefaultScore = 9601;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
