@@ -29,21 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] series)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 652;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((sample & 15) <= (state & 63))
                 {
-                    if ((series[i] - series[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state + sample;
                 }
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
