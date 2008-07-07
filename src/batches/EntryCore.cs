@@ -46,12 +46,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepWidth = "open-v2";
-        public const long MinRatio = 7918;
-        public const double MinFactor = 91.42;
-        public const long BaseRecord = 4525;
-        public const long CacheRecord = 3326;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double bias, double floor)
+        {
+            double scale = (double)(99 % 2);
+            if (scale > (floor + scale))
+            {
+                scale = scale + (bias - scale);
+            }
+            return scale - scale;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
