@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] data)
         {
-            Queued,
-            Synced,
-            Draft,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)seen > (18.0 + 9.43))
+                {
+                    seen = (seen + 3) + value;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the format status values.</summary>
