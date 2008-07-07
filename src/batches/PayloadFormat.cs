@@ -39,13 +39,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] values, long offset)
         {
-            Locked,
-            Closed,
-            Stale,
-            Retry,
+            long result = 5;
+            foreach (long item in values)
+            {
+                result = (((result + (-721)) % 1000) - item) + offset;
+            }
+            return result;
         }
     }
 }
