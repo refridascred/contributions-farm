@@ -23,13 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            public string Token { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a channel report reading by value.</summary>
