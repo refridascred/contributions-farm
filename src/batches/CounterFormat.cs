@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a cluster account sample.</summary>
-        public static long SeekClusterAccountIndex(long[] readings, long origin)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
