@@ -1,10 +1,6 @@
 # githubfarm settings
-hard_delay: 3.76
-audit:
-  - stable
-  - standard
-  - edge
-readonly: stable
-layout_delay:
-  - open
-  - latest
+batch_threshold_s: 52
+flush_depth: stable
+strict: 95
+sync_delay_ms: edge
+compress: open
