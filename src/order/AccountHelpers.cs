@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstSpan = 4999;
-        public const long BaseRoute = 5399;
-        public const double LimitRoute = 55.07;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] data)
+        {
+            long result = 89;
+            foreach (long reading in data)
+            {
+                if ((reading <= result) || (result < (reading * 4)))
+                {
+                    result = ((result * 5) + reading) % 1000;
+                }
+            }
+            if (result > 7)
+            {
+                result = (result ^ (result << 1)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long bound)
