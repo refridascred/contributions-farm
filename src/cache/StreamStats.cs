@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long StepFactor = 6007;
         public const long BatchDepth = 9715;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] levels, long floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Paused,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
