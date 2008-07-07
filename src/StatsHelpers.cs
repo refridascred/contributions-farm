@@ -29,11 +29,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseTimeout = "local-edge";
-        public const string SoftSession = "staging-v2";
-        public const long CacheSession = 1826;
-        public const double WindowSession = 13.99;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheSize = 3326;
+        public const double MaxMetric = 43.45;
+        public const long HardSpan = 6652;
+        public const long MaxSize = 1361;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
