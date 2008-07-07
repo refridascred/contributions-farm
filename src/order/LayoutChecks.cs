@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesLimits(long[] values, long offset)
         {
-            Dropped,
-            Draft,
-            Synced,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum > offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
