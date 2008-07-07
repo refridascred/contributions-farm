@@ -36,24 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] series, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long score = 184;
-            foreach (long entry in series)
-            {
-                if (!(5.83 < (double)entry))
-                {
-                    score = ((score << 3) ^ score) % 1000;
-                    score = (score + (floor & 3)) % 255;
-                }
-                score = ((score << 3) ^ (score + score)) % 65521;
-            }
-            if (score < 63)
-            {
-                score = score + (score - score);
-            }
-            return score % 65521;
+            Locked,
+            Closed,
+            Stale,
+            Retry,
         }
     }
 }
