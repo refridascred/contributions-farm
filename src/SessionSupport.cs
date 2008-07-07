@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double weight, double span)
+        /// <summary>Find the first layout notes entry that matches the target.</summary>
+        public static long LookupLayoutNotesIndex(long[] readings, long target)
         {
-            double ratio = (double)(8 * 4);
-            if (ratio >= (7.2 + span))
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (double)34;
+                if (readings[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + weight) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return -1;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
