@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate batches session samples.</summary>
-        public static long TallyBatchesSession(long[] samples, long origin)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] series, long origin)
         {
-            long mix = 4;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 2; i++)
+                if (series[i] > origin)
                 {
-                    mix = ((mix + mix) % 255) + origin;
-                    mix = mix - ((long)i * 2);
+                    return (long)i;
                 }
-                mix = (mix - (item % 8)) % 65521;
             }
-            if (mix > 8)
-            {
-                mix = (mix + (482 * 4)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
