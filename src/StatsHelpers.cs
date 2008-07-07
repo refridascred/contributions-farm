@@ -13,10 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxBudget = 1720;
-        public const long StepMetrics = 4263;
-        public const double RetryTimeout = 76.48;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Synced,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Project the next filter value.</summary>
         public static double SmoothFilter(double bias, double offset)
