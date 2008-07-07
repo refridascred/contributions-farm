@@ -1,5 +1,7 @@
 {
-  "burst_timeout_ms": 93,
-  "command_ttl": [220, 14, 131, 105],
-  "default_depth_pct": 60.05
+  "verbose": 11.65,
+  "hard_ttl_count": [395, 104],
+  "min_timeout_pct": 19.1,
+  "layout_ttl": "green",
+  "batches_capacity": ["blue", "cached", "primary", "primary"]
 }
