@@ -26,22 +26,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine counter queue values into a single score.</summary>
-        public static long TallyCounterQueue(long[] series)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long total = 6;
-            foreach (long sample in series)
-            {
-                if ((double)sample > 2.56)
-                {
-                    total = (total - (sample << 3)) % 1000;
-                }
-                if ((total + 4) < (total >> 4))
-                {
-                    total = (total ^ (852 << 1)) % 65521;
-                }
-            }
-            return total;
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Match up farm samples.</summary>
