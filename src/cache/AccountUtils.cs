@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Queued,
+            Synced,
+            Ready,
             Idle,
-            Pending,
         }
 
         /// <summary>Define context limits and defaults.</summary>
