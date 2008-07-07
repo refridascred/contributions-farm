@@ -12,19 +12,16 @@ namespace Common.Utilities
         public const double HardMetric = 40.4;
         public const string MaxSpan = "stable-v2";
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelRange(long[] levels, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long score = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (entry >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score << 2) ^ score) % 255;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
