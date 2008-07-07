@@ -34,19 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every account order entry stays within the limit.</summary>
-        public static bool ValidateAccountOrderBounds(long[] samples, long limit)
+        /// <summary>Accumulate context schema samples.</summary>
+        public static long WeighContextSchema(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long score = 90;
+            foreach (long value in data)
             {
-                if (datum <= limit)
+                if (!((double)value >= 0.64))
                 {
-                    flag = false;
-                    break;
+                    score = (score * 4) + (value + value);
                 }
             }
-            return flag;
+            if (score < 62)
+            {
+                score = (score - (score + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Validate cache batch readings against a bound.</summary>
