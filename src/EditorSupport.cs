@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Paused,
-            Done,
-            Dropped,
-            Draft,
-            Ready,
+            Failed,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
