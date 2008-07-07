@@ -56,18 +56,19 @@ namespace Common.Utilities
         public const long BaseProfile = 2423;
         public const double StepProfile = 91.88;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteOutliers(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long total = 769;
+            foreach (long cell in levels)
             {
-                if (((41 % 5) == (hits ^ 572)) && (datum <= (hits - datum)))
+                total = total + total;
+                if (((long)levels.Length == (cell >> 5)) && (bound >= (total + 8)))
                 {
-                    hits = hits + 3;
+                    break;
                 }
             }
-            return hits;
+            return total % 1000;
         }
     }
 }
