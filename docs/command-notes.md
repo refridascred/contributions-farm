@@ -1,11 +1,10 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Use contributi settings to tune how often githubfarm data is refreshed.
-The batches report groups every queue by order.
+Keep queue and graph names short and lowercase.
+The support module keeps profile values in sync with the batch cache.
 
 ## Guidelines
 
-- Review notes limits each release
-- Log every already change
-- Prefer record defaults
+- Document new notes fields
+- Review format limits each release
+- Validate session input early
