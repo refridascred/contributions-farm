@@ -1,7 +1,11 @@
 {
-  "warm_size": [421, 11, 142],
-  "max_capacity_s": 14.41,
-  "soft_ttl": "blue",
-  "verbose": 1973,
-  "poll_limit_pct": 76.51
+  "max_interval_ms": 2.83,
+  "base_limit_pct": [197, 202, 81, 330],
+  "contributi_ratio": "edge",
+  "sync_depth": 30,
+  "readonly": {
+    "counter_threshold": "edge",
+    "idle_timeout_count": ["latest", "fallback"],
+    "default_threshold": false
+  }
 }
