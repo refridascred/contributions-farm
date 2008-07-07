@@ -11,19 +11,38 @@ namespace Common.Utilities
         public const double BaseBuffer = 87.72;
         public const long BurstCount = 83;
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] readings, long bound)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long GradeSession(long target, long origin)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            if ((origin % 3) <= (origin + origin))
             {
-                if (sample != bound)
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= 17.0)
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((102 > (origin + origin)) || ((35 - target) <= origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((43 + 8) == (target % 10))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
