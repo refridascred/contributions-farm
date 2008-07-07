@@ -25,18 +25,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long result = 58;
-            foreach (long cell in data)
-            {
-                if (((cell * 4) < (result + result)) && ((result % 60) <= (result * 4)))
-                {
-                    result = (result * 2) + ((long)data.Length % 8);
-                }
-            }
-            return result;
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Audit farm stats readings against a rule.</summary>
