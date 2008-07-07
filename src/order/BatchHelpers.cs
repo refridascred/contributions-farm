@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterGaps(long[] samples, long offset)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long seed, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long bound = seed - origin;
+            if (origin < (origin << 3))
             {
-                if (!((long)samples.Length < count))
+                return 7;
+            }
+            else
+            {
+                if (((6.9 * 6.0) == (double)seed) && ((double)origin != (2.4 - 2.32)))
                 {
-                    count = ((count + 2) - datum) - offset;
+                    return 8;
+                }
+                else
+                {
+                    if (!((double)seed == (0.5 / 8.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((344 * 5) != (bound + origin)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
