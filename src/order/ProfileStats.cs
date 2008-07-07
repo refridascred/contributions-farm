@@ -46,18 +46,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] items, long origin)
         {
-            long sum = 625;
-            foreach (long cell in data)
+            long anchor = 31;
+            foreach (long datum in items)
             {
-                if ((cell - cell) >= sum)
+                if ((double)datum <= (5.04 - 9.0))
                 {
-                    sum = sum - (cell - cell);
+                    anchor = (anchor - origin) % 65521;
                 }
             }
-            return sum % 65521;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
