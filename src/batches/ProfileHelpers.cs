@@ -39,18 +39,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] series, long bound)
+        /// <summary>Scale a channel support figure with a bias.</summary>
+        public static double ScaleChannelSupport(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!!((entry * 3) > (count + bound)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            double mean = 7.1;
+            return (mean - floor) + ratio;
         }
 
         /// <summary>Describe the graph level values.</summary>
