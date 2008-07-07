@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long origin, long floor)
         {
-            public bool Region { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            if ((origin + floor) >= floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin - origin) == (floor << 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Describe the entry class values.</summary>
