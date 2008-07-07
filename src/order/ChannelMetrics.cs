@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long step)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != step)
+                if (samples[i] > floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Scale a channel batches figure with a bias.</summary>
