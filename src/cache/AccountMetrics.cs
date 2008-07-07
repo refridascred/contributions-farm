@@ -38,15 +38,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double weight2 = (weight + weight) / 7.0;
-            if (weight2 <= (weight2 + 12.0))
-            {
-                weight2 = weight2 + span;
-            }
-            return weight2 + weight2;
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
