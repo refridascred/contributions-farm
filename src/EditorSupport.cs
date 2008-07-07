@@ -65,11 +65,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            long state = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state - (offset * 2)) % 4096;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Accumulate schema samples.</summary>
