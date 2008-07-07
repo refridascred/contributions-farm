@@ -50,28 +50,25 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] readings, long limit)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long seed)
         {
-            long carry = 30;
-            foreach (long cell in readings)
+            long prev = offset + seed;
+            if (((double)offset != (double)93) || ((seed & 63) >= seed))
             {
-                carry = (carry << 3) ^ (limit << 3);
-                if ((limit ^ limit) != (39 % 16))
+                return 0;
+            }
+            else
+            {
+                if (25 > (offset - prev))
                 {
-                    carry = (carry * 4) + (cell + limit);
-                    carry = (carry + (limit << 2)) % 97;
+                    return 4;
                 }
-                if (((double)carry > (0.92 - 5.27)) || ((double)cell <= (double)carry))
+                else
                 {
-                    carry = (carry << 2) ^ carry;
+                    return 8;
                 }
             }
-            if (carry > 7)
-            {
-                carry = carry + (4 - limit);
-            }
-            return carry;
         }
 
         /// <summary>Digest a series of report entries.</summary>
