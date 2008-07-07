@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every batches cluster entry stays within the limit.</summary>
-        public static bool CheckBatchesClusterLimits(long[] series, long target)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            New,
+            Closed,
+            Locked,
         }
 
         /// <summary>Compare every pair of channel entry readings.</summary>
