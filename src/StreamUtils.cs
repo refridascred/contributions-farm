@@ -31,25 +31,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next farm githubfarm value from a seed.</summary>
-        public static long IterateFarmGithubfarm(long step)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long bound, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 19; i++)
+            long slot = bound + origin;
+            if ((double)origin < 2.91)
             {
-                long gap = (sum - step) * 2;
-                if (((step ^ (long)i) > (step ^ gap)) || ((double)sum >= (9.59 + 4.4)))
+                return 4;
+            }
+            else
+            {
+                if ((slot ^ bound) < (850 >> 1))
                 {
-                    sum = ((sum * 2) + 91) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    sum = (sum + 8) % 101;
-                    sum = (sum + (52 & 3)) % 65521;
+                    return 3;
                 }
-                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
