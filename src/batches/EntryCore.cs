@@ -59,22 +59,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] samples, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiGaps(long[] data, long step)
         {
-            long score = 848;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((9.7 / 2.0) <= (double)seed)
+                if ((step >= (271 + tally)) && ((tally % 12) >= (step * 3)))
                 {
-                    score = ((score - ((-83) - seed)) % 1000) + cell;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            if (score < 8)
-            {
-                score = ((score << 3) ^ score) % 4096;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
