@@ -23,13 +23,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Rank profile layout input into a small class.</summary>
+        public static long SortProfileLayout(long seed, long limit)
         {
-            public long Count { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            if ((double)limit >= (double)seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed ^ seed) > (limit ^ limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a stats info.</summary>
