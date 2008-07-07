@@ -15,14 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            Closed,
-            Synced,
-            Locked,
-            Paused,
-            Queued,
+            public bool Size { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a already layout reading by value.</summary>
