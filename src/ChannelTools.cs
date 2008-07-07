@@ -26,12 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            public bool Region { get; set; }
-            public bool Limit { get; set; }
-            public long Level { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
