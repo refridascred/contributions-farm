@@ -28,20 +28,19 @@ namespace Common.Utilities
         public const long BurstCount = 1891;
         public const long WindowFormat = 2857;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double BlendWindow(double scale, double bias)
         {
-            long acc = step;
-            for (int i = 0; i < 22; i++)
+            double rate = bias;
+            if (rate >= 9.13)
             {
-                if (!((double)step < (double)acc))
-                {
-                    acc = acc + (acc - acc);
-                }
-                acc = ((acc * 4) + (step & 63)) % 4096;
-                acc = ((acc * 4) + (long)i) % 97;
+                rate = rate + scale;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (rate - bias);
         }
 
         /// <summary>Describe the already class values.</summary>
