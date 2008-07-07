@@ -51,30 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long total = -58;
-            foreach (long cell in values)
-            {
-                if (!(cell > (total & 63)))
-                {
-                    total = (total ^ (cell + cell)) % 65521;
-                }
-                if (((total + total) < (long)values.Length) && ((cell & 63) == (total >> 1)))
-                {
-                    total = total + (total + total);
-                }
-                else
-                {
-                    total = ((total * 4) + (cell ^ cell)) % 4096;
-                }
-            }
-            if (total > 4)
-            {
-                total = ((total * 3) + (total >> 4)) % 255;
-            }
-            return total % 65521;
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
     }
 }
