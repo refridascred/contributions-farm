@@ -34,20 +34,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next batches cluster value from a seed.</summary>
-        public static long DeriveBatchesCluster(long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                long delta = (long)i;
-                if ((double)delta == (double)(long)i)
+                if (((item / 9) > seen) || ((double)item >= (1.0 * 0.7)))
                 {
-                    carry = carry - (seed % 8);
+                    seen = seen + 1;
                 }
-                carry = ((carry * 2) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
     }
 }
