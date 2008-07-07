@@ -13,12 +13,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MaxBudget = 1720;
+        public const long StepMetrics = 4263;
+        public const double RetryTimeout = 76.48;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string DefaultLevel = "legacy-edge";
