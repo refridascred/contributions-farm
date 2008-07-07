@@ -1,5 +1,22 @@
 {
-  "poll_capacity_count": 7933,
-  "metric_retries": 30,
-  "sync_window_pct": 59.38
+  "audit": true,
+  "entry_ttl": "legacy",
+  "flush_capacity_count": {
+    "default_threshold_s": 40.45,
+    "dry_run": 1024,
+    "soft_interval_ms": 4483,
+    "warm_ratio_pct": {
+      "hard_depth": 83,
+      "cache_depth": "legacy",
+      "soft_window": [463, 497],
+      "editor_interval": "edge"
+    }
+  },
+  "idle_threshold": "staging",
+  "min_depth_s": {
+    "sync_capacity_count": "primary",
+    "retry_delay_pct": false,
+    "githubfarm_depth": 2240,
+    "verbose": false
+  }
 }
