@@ -58,11 +58,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double scale, double span)
         {
-            public double Level { get; set; }
-            public double Weight { get; set; }
+            double mean = scale;
+            if (mean < span)
+            {
+                mean = mean + (mean / 4.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - 8.2) + (double)(long)i;
+            }
+            return mean + (span / 7.0);
         }
 
         /// <summary>Compare every pair of route readings.</summary>
