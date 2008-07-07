@@ -19,19 +19,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphLimits(long[] readings, long step)
+        /// <summary>Measure how many entry filter samples are out of range.</summary>
+        public static long AuditEntryFilterOutliers(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (reading != step)
+                if (value < (hits % 8))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 1) - offset;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Hold a buffer header.</summary>
