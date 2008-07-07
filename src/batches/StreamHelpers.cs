@@ -50,19 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support already entry stays within the limit.</summary>
-        public static bool GuardSupportAlreadyLimits(long[] data, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Synced,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
