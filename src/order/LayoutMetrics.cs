@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "alpha-edge";
+        public const string BaseSpan = "primary";
+        public const long CacheQueue = 9738;
+        public const string SoftQueue = "primary-v2";
+        public const long DefaultSize = 8417;
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] readings)
