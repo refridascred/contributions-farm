@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const double LimitRatio = 86.69;
         public const string LimitBuffer = "cached";
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = 20;
-            foreach (long item in items)
-            {
-                result = (result << 2) ^ (item ^ result);
-            }
-            return result % 97;
+            Idle,
+            Queued,
+            Pending,
         }
     }
 }
