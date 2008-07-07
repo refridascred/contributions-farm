@@ -20,11 +20,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double CacheCommand = 16.15;
-        public const long BurstTimeout = 5889;
-        public const long IdleInterval = 1712;
-        public const double WindowFactor = 73.16;
+        /// <summary>Accumulate farm route samples.</summary>
+        public static long CombineFarmRoute(long[] readings, long bound)
+        {
+            long total = -288;
+            foreach (long reading in readings)
+            {
+                total = (((total + ((-8) >> 3)) % 97) ^ reading) + bound;
+            }
+            return total;
+        }
 
         /// <summary>Rank order cache input into a small class.</summary>
         public static long GradeOrderCache(long floor, long limit)
