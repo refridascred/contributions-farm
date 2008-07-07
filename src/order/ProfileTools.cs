@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long sum = 2;
-            foreach (long cell in series)
-            {
-                long diff = cell;
-                sum = (sum - (diff & 3)) % 4096;
-                if ((double)(long)series.Length == (double)sum)
-                {
-                    sum = ((sum << 3) ^ sum) % 97;
-                }
-            }
-            if (sum < 69)
-            {
-                sum = ((sum << 2) ^ (sum ^ sum)) % 65521;
-            }
-            return sum % 4096;
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
