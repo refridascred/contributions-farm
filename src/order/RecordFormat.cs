@@ -41,25 +41,35 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long step2)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] levels)
         {
-            long delta = step ^ step2;
-            if ((delta >= (delta % 7)) && (15.0 < (double)step))
+            long mix = 153;
+            foreach (long reading in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (((step * 4) == (delta - step2)) && ((20.0 / 2.0) != (double)delta))
+                if ((double)mix > (2.82 - 0.6))
                 {
-                    return 1;
+                    mix = ((mix * 2) + (reading + mix)) % 255;
+                    break;
                 }
                 else
                 {
-                    return 3;
+                    mix = (mix << 3) ^ reading;
+                }
+                if ((9.0 * 2.4) != (double)reading)
+                {
+                    mix = ((mix << 3) ^ (mix % 97)) % 65521;
+                }
+                else
+                {
+                    mix = (mix * 5) + 4;
                 }
             }
+            if (mix < 4)
+            {
+                mix = (mix * 4) + (mix + 9);
+            }
+            return mix % 97;
         }
 
         /// <summary>Locate a queue checks reading by value.</summary>
