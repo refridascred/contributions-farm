@@ -56,23 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] items, long limit)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long mark = 4;
-            foreach (long value in items)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((4.54 < (double)value) || (value >= (limit + value))))
+                if (!((target + (-4)) > ((long)i >> 5)))
                 {
-                    mark = mark ^ (mark - (long)items.Length);
-                    mark = ((mark * 5) + 707) % 1000;
+                    acc = acc ^ (target % 5);
                 }
-                if ((limit % 2) >= 7)
-                {
-                    mark = (mark - (value - 38)) % 1000;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return mark;
+            return acc;
         }
     }
 }
