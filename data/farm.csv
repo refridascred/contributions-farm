@@ -1,6 +1,11 @@
-id,label,state,rank
-1,22,edge,stable
-2,529,90,open
-3,open,83.05,72.58
-4,362,77.31,292
-5,23.59,13.97,370
+id,level
+1,96.4
+2,11.13
+3,eu-west
+4,161
+5,standard
+6,staging
+7,local
+8,fallback
+9,legacy
+10,910
