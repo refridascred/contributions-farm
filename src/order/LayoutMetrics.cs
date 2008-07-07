@@ -23,23 +23,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the support commits series from a seed.</summary>
-        public static long RollSupportCommits(long target)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long BucketRecord(long bound, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            if (!((double)bound >= (double)22))
             {
-                if ((target & 31) <= 55)
+                return 5;
+            }
+            else
+            {
+                if (8 >= (limit + limit))
                 {
-                    break;
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum ^ (13 - target)) % 255;
+                    if ((12.0 * 0.7) <= (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((bound * 3) <= (1 ^ bound)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                sum = ((sum * 2) + (long)i) % 101;
             }
-            return sum;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
