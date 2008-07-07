@@ -35,13 +35,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            public double Owner { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
