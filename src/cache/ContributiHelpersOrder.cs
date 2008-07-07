@@ -31,18 +31,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] series)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits <= (2.3 * 11.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 2) + value;
+                    if ((readings[i] - readings[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
