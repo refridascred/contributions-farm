@@ -64,9 +64,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultInterval = "primary-v2";
-        public const long HardCommand = 6704;
-        public const string BurstCommand = "latest";
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Closed,
+            Active,
+            Retry,
+            Queued,
+        }
     }
 }
