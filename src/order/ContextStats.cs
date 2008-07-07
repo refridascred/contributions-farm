@@ -14,39 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long origin, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings, long step)
         {
-            long gap = origin ^ step;
-            if (step < gap)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if (((6.0 / 3.0) != (double)origin) || ((7.2 + 7.03) > (double)step))
+                if (((cell + step) > 712) || (((670 / 8) >= step) || ((8.78 - 6.0) >= (double)step)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step ^ gap) != (step / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step % 5) >= step)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
