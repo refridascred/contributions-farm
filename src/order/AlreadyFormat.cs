@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] readings, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            if (((floor << 1) < floor) && ((floor % 12) > floor))
             {
-                if (((item & 15) != (seen * 3)) || (1.0 < (double)item))
+                return 8;
+            }
+            else
+            {
+                if ((floor % 97) > 58)
                 {
-                    seen = (seen + 2) + step;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!((double)floor >= (7.78 * 3.9)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.32 - 2.0) >= (double)seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
