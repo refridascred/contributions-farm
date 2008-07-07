@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Look up the position of a cluster account sample.</summary>
+        public static long SeekClusterAccountIndex(long[] readings, long origin)
         {
-            long score = 322;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.0 - 3.0) > (double)score)
+                if (readings[i] >= origin)
                 {
-                    score = ((score << 2) ^ (score - 57)) % 1000;
+                    return (long)i;
                 }
-                if ((reading >> 1) <= (reading * 3))
-                {
-                    score = (score + (reading / 7)) % 4096;
-                    break;
-                }
-                score = (score + (score + score)) % 255;
             }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
