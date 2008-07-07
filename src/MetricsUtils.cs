@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items)
         {
-            long acc = bound;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                acc = (acc + (bound << 2)) % 101;
-                acc = ((acc * 3) + (long)i) % 1000;
+                if (((seen * 4) != (65 - seen)) && ((double)item >= (4.0 - 1.0)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
