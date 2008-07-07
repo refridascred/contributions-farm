@@ -78,21 +78,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Adjust a schema support reading.</summary>
+        public static double BlendSchemaSupport(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(3 << 2);
+            if (drift > (gain / 6.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift - span;
             }
-            return hits;
+            else
+            {
+                drift = drift + gain;
+            }
+            return drift - drift;
         }
 
         /// <summary>Rank support input into a small class.</summary>
