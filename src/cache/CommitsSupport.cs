@@ -76,11 +76,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] readings)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((long)readings.Length > (hits - 764))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
     }
 }
