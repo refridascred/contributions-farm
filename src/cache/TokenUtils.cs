@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long step)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] levels, long step)
         {
-            long total = step;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (!!((step - 6) < total))
+                if (datum > step)
                 {
-                    total = ((total * 2) + (long)i) % 1000;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Match up metrics samples.</summary>
