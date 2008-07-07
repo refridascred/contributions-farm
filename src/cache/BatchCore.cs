@@ -64,9 +64,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinLevel = 3525;
-        public const double BurstNotes = 63.12;
-        public const string LimitRatio = "local-edge";
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
+        {
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
