@@ -40,23 +40,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)tally < (8.3 + 7.7))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "strict-edge";
+        public const double RetryScore = 2.07;
+        public const long MinBatch = 8201;
 
         /// <summary>Describe the account class values.</summary>
         public enum AccountClass
