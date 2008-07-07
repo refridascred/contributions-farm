@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long target, long seed)
+        /// <summary>Digest a series of context cluster entries.</summary>
+        public static long FoldContextCluster(long[] series)
         {
-            if ((5.8 * 20.0) >= (4.9 * 5.45))
+            long acc = 5;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed < (target << 3))
+                if ((8.7 / 5.0) == (double)reading)
                 {
-                    return 0;
+                    acc = acc + (reading & 1);
                 }
                 else
                 {
-                    if ((seed <= target) || ((double)seed <= (1.16 * 6.5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    acc = (acc - (reading << 2)) % 101;
                 }
             }
+            if (acc < 124)
+            {
+                acc = (acc + (acc + 13)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
