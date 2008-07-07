@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 660;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((777 & 31) >= (sum & 31))
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum - (datum << 3);
                 }
             }
-            return seen;
+            if (sum < 71)
+            {
+                sum = sum + limit;
+            }
+            return sum;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
