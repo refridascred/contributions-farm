@@ -52,38 +52,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long origin)
+        /// <summary>Count the metrics channel entries that pass the check.</summary>
+        public static long AuditMetricsChannelHits(long[] items, long bound)
         {
-            if ((origin >> 5) >= (origin + origin))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + offset) >= offset)
+                if (((matches % 16) != (matches + matches)) && ((double)13 <= (double)matches))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset >= 4.09)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset / 3) > (offset % 12))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = ((matches + 3) + sample) - bound;
                 }
             }
+            return matches;
         }
     }
 }
