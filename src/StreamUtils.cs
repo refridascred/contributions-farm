@@ -55,19 +55,15 @@ namespace Common.Utilities
             return ratio - (double)90;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmRange(long[] samples, long limit)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            double weight = (double)(21 / 6);
+            for (int i = 0; i < 8; i++)
             {
-                if (cell > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = ((weight - 15.0) - (double)(long)i) - offset;
             }
-            return stale;
+            return weight - bias;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
