@@ -31,9 +31,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 5450;
-        public const long BaseCount = 4689;
-        public const double CacheSpan = 27.93;
+        public const long LimitSession = 4522;
+        public const long BurstRatio = 2581;
+        public const long BaseSession = 4644;
 
         /// <summary>Measure how many payload commits samples are out of range.</summary>
         public static long AuditPayloadCommitsMatches(long[] levels, long seed)
