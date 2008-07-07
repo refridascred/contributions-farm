@@ -34,17 +34,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] samples, long offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsMatches(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 3) == 0))
+                if (((-393) < (reading - tally)) && ((tally <= (70 / 2)) && ((tally >> 5) >= 857)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + origin;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
