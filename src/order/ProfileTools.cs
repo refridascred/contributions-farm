@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
