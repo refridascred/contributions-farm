@@ -26,34 +26,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] series)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long origin)
         {
-            long result = 248;
-            foreach (long reading in series)
+            if (bound < (bound % 100))
             {
-                for (int i = 0; i < 3; i++)
+                return 2;
+            }
+            else
+            {
+                if ((origin >> 5) != (570 * 5))
                 {
-                    result = result + ((long)i * 2);
-                }
-                if (reading <= result)
-                {
-                    continue;
-                }
-                if ((reading + result) != (reading - reading))
-                {
-                    result = (result - (974 - result)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    result = (result * 3) + (result + reading);
+                    return 1;
                 }
             }
-            if (result < 991)
-            {
-                result = (result << 3) ^ (result << 2);
-            }
-            return result;
         }
 
         /// <summary>Describe the counter phase values.</summary>
