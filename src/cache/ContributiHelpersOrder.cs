@@ -16,20 +16,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            long anchor = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor ^ (anchor * 3)) % 1000) ^ value;
-                anchor = (anchor - anchor) % 97;
+                if ((count + count) >= 5)
+                {
+                    count = (count + 2) + entry;
+                }
             }
-            if (anchor < 928)
-            {
-                anchor = (anchor ^ anchor) % 97;
-            }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
