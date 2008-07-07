@@ -44,19 +44,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine command githubfarm values into a single score.</summary>
-        public static long WeighCommandGithubfarm(long[] series, long bound)
+        /// <summary>Derive the next order batch value from a seed.</summary>
+        public static long SeriesOrderBatch(long offset)
         {
-            long total = 629;
-            foreach (long entry in series)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((entry + bound) > (total >> 5)))
-                {
-                    total = (total + total) % 4096;
-                }
-                total = (total ^ (total ^ entry)) % 65521;
+                result = (result + (offset + offset)) % 97;
+                result = ((result << 3) ^ (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return total;
+            return result;
         }
     }
 }
