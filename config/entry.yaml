@@ -1,22 +1,17 @@
 # entry settings
-idle_delay_count: 32
-readonly: 45
-hard_retries: edge
-base_delay:
-  verbose:
-    - standard
-    - local
-    - legacy
-    - edge
-  entry_window: open
-  token_threshold: false
-  batch_delay_ms:
-    route_depth: 100
-    idle_retries: fallback
-    audit: eu-west
-    idle_depth: 765
-    schema_retries: 66.16
-    cache_capacity_pct:
-      - eu-west
-      - edge
-  min_limit: strict
+graph_window: 92.83
+entry_window: open
+enabled:
+  readonly: primary
+  context_timeout: 99
+  flush_interval: 22.89
+  cache_depth_s: 250
+default_size_count:
+  readonly: open
+  base_ratio_ms: 32.25
+  idle_delay_pct:
+    soft_size_s: 25.4
+    hard_limit: fallback
+    flush_ratio_s: 4415
+  batch_interval_pct: true
+  farm_window: false
