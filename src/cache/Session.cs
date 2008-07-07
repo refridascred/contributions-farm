@@ -38,17 +38,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] items, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileOutliers(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((items[i] < limit) && ((items[i] % 5) != 0))
+                if ((long)readings.Length < (207 & 31))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
