@@ -41,14 +41,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Ready,
-            Stale,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 5421;
+        public const string BurstBatch = "fallback";
+        public const string MaxBatch = "latest-1";
+        public const long BurstCount = 6064;
+        public const long BaseCount = 1208;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long limit)
