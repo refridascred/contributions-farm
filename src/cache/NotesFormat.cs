@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] levels, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                mark = ((mark * 4) + (long)i) % 101;
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Project the next batches already value.</summary>
