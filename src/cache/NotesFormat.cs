@@ -41,23 +41,14 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double scale, double offset)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            double weight = scale - (double)131;
-            if (weight > weight)
-            {
-                weight = weight - (offset + weight);
-            }
-            else
-            {
-                weight = weight - (offset * 6.5);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - scale;
+            Synced,
+            New,
+            Locked,
+            Paused,
+            Pending,
         }
     }
 }
