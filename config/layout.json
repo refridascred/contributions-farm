@@ -1,6 +1,26 @@
 {
-  "audit": "stable",
-  "base_ttl_ms": [28, 227, 142],
-  "hard_timeout_count": "staging",
-  "max_capacity_count": 1835
+  "stream_capacity": {
+    "notes_retries": "legacy",
+    "max_timeout_count": ["fallback", "staging", "latest", "strict"],
+    "batch_ratio_s": {
+      "default_limit": [83, 52, 89, 451],
+      "base_size": "edge",
+      "channel_timeout": [130, 385, 378],
+      "format_delay": "legacy",
+      "base_interval": [278, 430]
+    },
+    "base_delay": {
+      "dry_run": 47.94,
+      "base_window_count": "fallback",
+      "min_limit": 70.8,
+      "burst_timeout_s": "local",
+      "retry_depth_count": true,
+      "tools_threshold": 9349
+    },
+    "idle_capacity": 3927
+  },
+  "cluster_ratio": false,
+  "dry_run": "cached",
+  "retry_interval": 26,
+  "max_depth": 47
 }
