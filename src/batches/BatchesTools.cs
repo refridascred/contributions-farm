@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long WindowSchema = 781;
         public const long BurstSchema = 5784;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardCount = 3649;
-        public const double DefaultBudget = 53.7;
-        public const string WindowSize = "primary-v2";
-        public const string BurstStream = "latest";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstSpan = "legacy-1";
+        public const double DefaultBatches = 50.25;
+        public const long BurstBatches = 7738;
+        public const long WindowSpan = 3817;
+        public const long CacheBatches = 5907;
 
         /// <summary>Grade a format graph value against two limits.</summary>
         public static long BucketFormatGraph(long floor, long limit)
