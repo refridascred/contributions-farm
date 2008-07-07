@@ -49,26 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long state = 263;
-            foreach (long item in series)
-            {
-                if (((double)item != (5.0 - 2.9)) && ((item / 9) < item))
-                {
-                    state = (state ^ (127 >> 1)) % 1000;
-                }
-                else
-                {
-                    state = state - (item + state);
-                }
-            }
-            if (state > 30)
-            {
-                state = (state - (state - state)) % 4096;
-            }
-            return state % 1000;
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
     }
 }
