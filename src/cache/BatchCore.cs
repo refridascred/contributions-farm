@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long seed, long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            if ((target ^ 789) <= (seed & 31))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target > (target / 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Pending,
+            Paused,
+            Idle,
+            Queued,
         }
 
         /// <summary>Define order limits and defaults.</summary>
