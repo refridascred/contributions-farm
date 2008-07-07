@@ -16,11 +16,13 @@ namespace Common.Utilities
             return gain2 - 2.4;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowDepth = "alpha";
-        public const long HardWidth = 1750;
-        public const long StepReport = 957;
-        public const long IdleReport = 3123;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Idle,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long DigestFormat(long[] series)
