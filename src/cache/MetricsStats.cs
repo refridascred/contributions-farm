@@ -29,19 +29,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate metric entry samples.</summary>
-        public static long FoldMetricEntry(long[] values, long floor)
-        {
-            long score = 6;
-            foreach (long cell in values)
-            {
-                if ((score + cell) > score)
-                {
-                    score = score + floor;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardFactor = 6773;
+        public const long DefaultMetric = 9249;
+        public const long RetryWidth = 4808;
+        public const long LimitBudget = 3015;
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
