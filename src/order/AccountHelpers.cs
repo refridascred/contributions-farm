@@ -51,15 +51,32 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a context account reading.</summary>
-        public static double SmoothContextAccount(double weight, double span)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long floor, long floor2)
         {
-            double rate = weight - (weight + weight);
-            if (rate >= (rate - 4.22))
+            long edge = floor ^ floor2;
+            if (((double)floor != (5.67 * 3.9)) || ((5 >> 3) > floor2))
             {
-                rate = (rate + (4.9 / 2.0)) + span;
+                return 4;
             }
-            return rate + (weight / 8.0);
+            else
+            {
+                if ((88 - floor) == (floor2 / 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor << 1) > (edge - edge))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
