@@ -66,17 +66,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] levels, long bound)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            Failed,
         }
     }
 }
