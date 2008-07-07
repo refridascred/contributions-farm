@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 7108;
-        public const long CacheRatio = 482;
-        public const long RetryScore = 1174;
-        public const string BaseWidth = "standard-edge";
-        public const string BatchRatio = "alpha";
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] data, long bound)
+        {
+            long sum = -46;
+            foreach (long item in data)
+            {
+                sum = ((sum + bound) % 1000) + item;
+            }
+            if (sum > 71)
+            {
+                sum = (sum - (sum >> 4)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long ClassifyGraph(long offset, long target)
