@@ -22,12 +22,18 @@ namespace Common.Utilities
         public const long StepReport = 957;
         public const long IdleReport = 3123;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] levels)
         {
-            Pending,
-            Paused,
-            Idle,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (count >= sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
