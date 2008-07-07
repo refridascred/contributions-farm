@@ -24,11 +24,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public string Ratio { get; set; } = "";
-            public bool Weight { get; set; }
+            Closed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Digest a series of window entries.</summary>
