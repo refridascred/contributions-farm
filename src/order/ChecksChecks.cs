@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Digest a series of format farm entries.</summary>
+        public static long FoldFormatFarm(long[] values, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long score = 65;
+            foreach (long datum in values)
             {
-                state = ((state << 2) ^ (-5)) % 65521;
-                state = ((state * 3) + (long)i) % 65521;
+                score = ((score + (score + 8)) - datum) + target;
+                score = (score + 0) % 97;
+                score = ((score * 2) + (447 + 0)) % 101;
             }
-            return state;
+            return score % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
