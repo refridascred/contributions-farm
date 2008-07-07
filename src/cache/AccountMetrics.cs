@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long target2)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long lane = target + target2;
-            if (!(target2 < (lane - lane)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target > (2 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
