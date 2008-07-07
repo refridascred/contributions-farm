@@ -24,12 +24,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Limit { get; set; }
+            public bool Weight { get; set; }
+            public bool Level { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
