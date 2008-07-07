@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] series, long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long origin)
         {
-            long acc = 197;
-            foreach (long sample in series)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((floor * 2) < (acc % 100))
-                {
-                    acc = ((acc << 2) ^ (sample * 3)) % 97;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
