@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long target, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricOutliers(long[] data, long limit)
         {
-            if ((target + step) <= (step >> 1))
+            long hits = 0;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target & 31) != (target << 3))
+                if (18.0 > (double)hits)
                 {
-                    return 8;
+                    hits = ((hits + 1) ^ value) - limit;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the cluster level values.</summary>
