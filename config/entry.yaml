@@ -1,20 +1,4 @@
 # entry settings
-order_size:
-  - edge
-  - latest
-batch_interval:
-  - 339
-  - 298
-  - 233
-  - 373
-verbose:
-  - strict
-  - legacy
-checks_depth:
-  hard_size_s: 68
-  verbose: 33
-  retry_limit: 8.09
-  warm_ratio_s: local
-  payload_interval: latest
-  audit: latest
-editor_ratio: eu-west
+base_ratio_s: green
+cache_timeout_pct: standard
+commits_ttl: open
