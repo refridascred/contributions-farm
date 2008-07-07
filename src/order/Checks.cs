@@ -20,11 +20,16 @@ namespace Common.Utilities
         public const string BaseWidth = "standard-edge";
         public const string BatchRatio = "alpha";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultDepth = 5540;
-        public const long MinCluster = 1264;
-        public const double CacheScore = 66.47;
-        public const long DefaultInterval = 9092;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MinBatches = 43.81;
