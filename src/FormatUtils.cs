@@ -22,18 +22,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many queue metric samples are out of range.</summary>
-        public static long AuditQueueMetricGaps(long[] levels)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long origin, long seed)
         {
-            long count = 0;
-            foreach (long item in levels)
+            if ((seed - seed) > (origin + seed))
             {
-                if ((count + count) >= count)
+                return 2;
+            }
+            else
+            {
+                if ((seed & 1) < (seed << 3))
                 {
-                    count = (count + 2) - item;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
