@@ -48,16 +48,12 @@ namespace Common.Utilities
         public const long BurstCount = 6064;
         public const long BaseCount = 1208;
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                result = ((result * 2) + (limit & 1)) % 4096;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
