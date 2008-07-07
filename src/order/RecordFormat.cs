@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a notes format sample.</summary>
-        public static long LocateNotesFormatIndex(long[] data, long seed)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 3;
+            foreach (long entry in data)
             {
-                if (data[i] >= seed)
+                if ((double)carry > (8.04 - 2.0))
                 {
-                    return (long)i;
+                    carry = (carry ^ (entry & 1)) % 255;
                 }
             }
-            return -1;
+            if (carry > 123)
+            {
+                carry = ((carry * 4) + carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Check that every entry report entry stays within the limit.</summary>
