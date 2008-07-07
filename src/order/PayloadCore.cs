@@ -54,15 +54,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a window githubfarm reading.</summary>
-        public static double BlendWindowGithubfarm(double gain, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            double weight = span;
-            if (weight >= weight)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return weight + gain;
+            return tally;
         }
     }
 }
