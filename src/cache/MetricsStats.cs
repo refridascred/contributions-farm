@@ -25,12 +25,23 @@ namespace Common.Utilities
         public const long RetryWidth = 4808;
         public const long LimitBudget = 3015;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 37.76;
-        public const long IdleBuffer = 7868;
-        public const long LimitTimeout = 5125;
-        public const double LimitRatio = 86.69;
-        public const string LimitBuffer = "cached";
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((57 ^ hits) > cell)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
