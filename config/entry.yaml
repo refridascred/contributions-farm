@@ -1,17 +1,8 @@
 # entry settings
-default_ratio_count:
-  base_retries_count:
-    - 123
-    - 75
-    - 303
-  min_interval_s: 60
-  flush_ttl_pct: 119
-base_ttl_ms:
-  idle_limit:
-    - 136
-    - 447
-    - 140
-  burst_interval_count: fallback
-  support_window: green
-  min_size_s: 8.25
-base_retries_ms: 27.08
+soft_window: true
+flush_ttl_pct:
+  - fallback
+  - eu-west
+batch_ttl_count: 67
+flush_capacity_count: 32
+hard_ratio_count: 7827
