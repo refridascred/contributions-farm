@@ -39,15 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support farm value.</summary>
-        public static double SmoothSupportFarm(double ratio, double bias)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long origin)
         {
-            double rate = bias;
-            if (rate <= bias)
+            if ((10.0 / 6.0) == (double)step)
             {
-                rate = rate - (ratio - bias);
+                return 8;
             }
-            return rate - ratio;
+            else
+            {
+                if ((3.43 * 9.39) < (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)5 > (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)(-86) > (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
