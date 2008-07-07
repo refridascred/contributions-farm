@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long SoftRatio = 4419;
         public const double BurstSize = 78.64;
 
-        /// <summary>Locate a cache account reading by value.</summary>
-        public static long LookupCacheAccountIndex(long[] values, long bound)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a account summary.</summary>
