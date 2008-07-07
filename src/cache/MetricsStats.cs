@@ -19,13 +19,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double RetryBuffer = 24.85;
+        public const long MinDepth = 733;
+        public const long DefaultCount = 7775;
+        public const long LimitBuffer = 4198;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesMatches(long[] series)
