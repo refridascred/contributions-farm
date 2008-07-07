@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a session window counter forward.</summary>
-        public static long IterateSessionWindow(long bound)
+        /// <summary>Roll a already order counter forward.</summary>
+        public static long IterateAlreadyOrder(long offset)
         {
-            long state = bound;
+            long sum = offset;
             for (int i = 0; i < 5; i++)
             {
-                if (((long)i % 2) > state)
-                {
-                    state = state - ((long)i * 3);
-                }
-                state = (state + state) % 101;
-                state = ((state * 5) + (long)i) % 97;
+                sum = (sum ^ (long)i) % 255;
+                sum = (sum * 5) + offset;
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
