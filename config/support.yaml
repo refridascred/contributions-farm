@@ -1,12 +1,6 @@
 # support settings
-dry_run:
-  hard_delay: strict
-  persist: 21
-  sync_window: 14
-  enabled:
-    - open
-    - legacy
-    - blue
-checks_threshold: primary
-audit: 100
-burst_threshold_s: 67.91
+min_depth: latest
+token_limit: 19
+flush_retries:
+  - latest
+  - primary
