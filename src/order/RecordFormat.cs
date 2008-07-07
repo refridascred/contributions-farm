@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstLevel = 3112;
-        public const string LimitChannel = "standard";
-        public const long MinDepth = 3454;
-        public const long StepRatio = 6573;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Weight { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] values)
