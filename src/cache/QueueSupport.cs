@@ -11,32 +11,15 @@ namespace Common.Utilities
         public const long BurstEntry = 5601;
         public const long MaxCount = 5889;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long offset)
+        /// <summary>Blend two account commits measurements.</summary>
+        public static double BlendAccountCommits(double gain, double floor)
         {
-            long bound = origin - offset;
-            if ((double)offset <= 2.9)
+            double bias = gain - floor;
+            for (int i = 0; i < 7; i++)
             {
-                return 0;
+                bias = (bias + floor) - (double)(long)i;
             }
-            else
-            {
-                if ((offset + bound) != (offset ^ origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset == (5.0 - 2.9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return bias + (double)8;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
