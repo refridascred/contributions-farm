@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Stale,
-            Failed,
-            Retry,
-            New,
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
