@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const string IdleDepth = "stable-v2";
         public const long BatchChannel = 4100;
 
-        /// <summary>Project the next token value.</summary>
-        public static double ProjectToken(double bias, double bias2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] values, long floor)
         {
-            double weight = (double)(38 + 92);
-            return ((weight - (double)16) + bias) + bias2;
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
