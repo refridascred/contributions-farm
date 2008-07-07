@@ -16,18 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the record route entries that pass the check.</summary>
-        public static long AuditRecordRouteMatches(long[] series, long origin)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long mix = 747;
+            foreach (long cell in readings)
             {
-                if (((949 % 16) >= (origin << 3)) || ((double)value >= (7.51 + 2.13)))
-                {
-                    seen = seen + 1;
-                }
+                mix = (((mix * 2) + (cell - cell)) % 1000) + bound;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
