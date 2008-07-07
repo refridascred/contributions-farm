@@ -54,14 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            Queued,
-            Paused,
-            Pending,
-            Ready,
-            Active,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
