@@ -43,14 +43,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Audit farm stats readings against a rule.</summary>
+        public static long CountFarmStatsGaps(long[] samples)
         {
-            Failed,
-            Stale,
-            Queued,
-            Done,
-            Idle,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((seen - seen) >= entry)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the counter class values.</summary>
