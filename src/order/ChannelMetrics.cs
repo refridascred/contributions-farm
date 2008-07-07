@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            if (((double)seed <= (double)871) || ((6.0 - 7.05) <= (double)seed))
             {
-                if (sample < target)
+                return 1;
+            }
+            else
+            {
+                if ((15.0 * 17.0) > (double)seed)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((double)limit > (6.89 * 6.11)) && (21 > (seed + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
