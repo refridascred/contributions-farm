@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public double Limit { get; set; }
-            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Find the first layout notes entry that matches the target.</summary>
