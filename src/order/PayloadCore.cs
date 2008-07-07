@@ -54,21 +54,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Digest a series of githubfarm support entries.</summary>
+        public static long TotalGithubfarmSupport(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = -433;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3.61 + 3.1) < (double)step)
                 {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total + ((-850) * 3)) % 4096) + datum;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total + total)) % 1000;
                 }
             }
-            return tally;
+            return total % 1000;
         }
     }
 }
