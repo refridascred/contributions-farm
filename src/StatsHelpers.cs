@@ -18,12 +18,24 @@ namespace Common.Utilities
         public const long StepMetrics = 4263;
         public const double RetryTimeout = 76.48;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string DefaultLevel = "legacy-edge";
-        public const double MaxFilter = 37.0;
-        public const long MinFilter = 326;
-        public const string StepFilter = "stable";
-        public const double CacheSize = 80.05;
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double bias, double offset)
+        {
+            double weight = 6.01;
+            if (weight >= (double)(-66))
+            {
+                weight = weight - (bias - bias);
+            }
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (double)4;
+        }
 
         /// <summary>Blend two cluster farm measurements.</summary>
         public static double BlendClusterFarm(double scale, double floor)
