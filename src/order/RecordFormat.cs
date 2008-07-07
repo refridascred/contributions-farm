@@ -39,13 +39,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long step2)
         {
-            Synced,
-            Queued,
-            Draft,
-            Paused,
+            long delta = step ^ step2;
+            if ((delta >= (delta % 7)) && (15.0 < (double)step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step * 4) == (delta - step2)) && ((20.0 / 2.0) != (double)delta))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next entry value.</summary>
