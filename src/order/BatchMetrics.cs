@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Roll a profile cluster counter forward.</summary>
-        public static long StepProfileCluster(long seed)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] data, long seed)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((anchor + anchor) > (seed << 1)))
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    anchor = (anchor ^ (5 / 5)) % 1000;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
