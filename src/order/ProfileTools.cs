@@ -43,12 +43,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long offset, long limit)
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            if (207 <= (limit - offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset + offset) == (limit - 7))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
