@@ -1,17 +1,5 @@
 {
-  "hard_limit_ms": true,
-  "record_threshold": {
-    "strict": false,
-    "flush_threshold": 6434,
-    "profile_threshold": 70,
-    "default_timeout": "local",
-    "persist": 100
-  },
-  "enabled": "staging",
-  "payload_capacity": true,
-  "buffer_interval": {
-    "max_ttl_pct": "eu-west",
-    "idle_retries_pct": true,
-    "flush_capacity_pct": 15
-  }
+  "compress": 48.26,
+  "max_threshold": 23.33,
+  "readonly": 87.36
 }
