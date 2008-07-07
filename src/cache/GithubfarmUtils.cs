@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] data, long bound)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double scale, double offset)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double mean = (15.0 + offset) + offset;
+            if (mean <= scale)
             {
-                if ((bound + seen) > seen)
-                {
-                    seen = (seen + 1) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - scale;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (offset * 5.09)) + (double)(long)i;
+            }
+            return mean + offset;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
