@@ -37,19 +37,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] items, long bound)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine already values into a single score.</summary>
