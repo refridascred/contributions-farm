@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double weight, double offset)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            double load = weight;
-            if (load >= (weight - load))
-            {
-                load = load - (double)6;
-            }
-            return load - (weight + offset);
+            Active,
+            Ready,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
