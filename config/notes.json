@@ -1,6 +1,7 @@
 {
-  "channel_window": "edge",
-  "already_limit": "cached",
-  "cache_window": "open",
-  "retry_limit_count": [202, 369, 4]
+  "channel_depth": false,
+  "payload_threshold": 82,
+  "batch_limit_ms": "eu-west",
+  "flush_timeout_pct": 88,
+  "githubfarm_delay": "eu-west"
 }
