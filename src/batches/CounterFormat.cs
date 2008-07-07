@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Combine route window values into a single score.</summary>
+        public static long TotalRouteWindow(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 51;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix + mix) + datum;
             }
-            return count;
+            if (mix < 6)
+            {
+                mix = (mix - (mix - mix)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
