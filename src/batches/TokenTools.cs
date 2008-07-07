@@ -15,19 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value + 34) >= (value - value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepRecord = "fallback-v2";
+        public const string BurstRecord = "latest-1";
+        public const long RetryCount = 1253;
+        public const string RetryRatio = "primary-edge";
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long AuditSchemaOutliers(long[] levels, long target)
