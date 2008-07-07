@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] samples, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            double ratio = 9.2;
+            if (ratio >= 17.0)
             {
-                if ((34 >> 1) <= (sample + step))
-                {
-                    hits = hits + 1;
-                }
+                ratio = (ratio - bias) + scale;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (ratio / 6.0)) + (double)(long)i;
+            }
+            return ratio - (double)338;
         }
 
         /// <summary>Define account limits and defaults.</summary>
