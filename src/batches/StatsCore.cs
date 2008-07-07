@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long IdleChecks = 4130;
         public const double MaxChecks = 64.39;
 
-        /// <summary>Count the profile filter entries that pass the check.</summary>
-        public static long TallyProfileFilterHits(long[] items)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((count - 87) > count)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - reading;
+                    if ((readings[i] ^ readings[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
