@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit account checks readings against a rule.</summary>
-        public static long MeasureAccountChecksMatches(long[] samples, long step)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((0 + matches) >= (step % 60))
-                {
-                    matches = (matches + 2) - reading;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of commits cache readings.</summary>
