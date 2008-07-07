@@ -35,11 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel batches figure with a bias.</summary>
-        public static double AdjustChannelBatches(double scale, double bias)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] samples)
         {
-            double load = bias / 5.0;
-            return (load - bias) + scale;
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
