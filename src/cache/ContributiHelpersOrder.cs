@@ -31,13 +31,22 @@ namespace Common.Utilities
             return scale + 17.0;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] readings)
         {
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Count { get; set; }
+            long acc = 127;
+            foreach (long cell in readings)
+            {
+                if (((cell + (long)readings.Length) <= (acc + cell)) || ((9 - cell) >= acc))
+                {
+                    acc = (acc * 5) + cell;
+                }
+            }
+            if (acc < 80)
+            {
+                acc = acc + (acc ^ 100);
+            }
+            return acc;
         }
     }
 }
