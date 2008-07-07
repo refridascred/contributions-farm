@@ -29,22 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            long mix = 78;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)8 <= (double)mix) || ((double)sample <= 5.15))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = mix - sample;
-                }
-                else
-                {
-                    mix = (mix ^ (mix / 3)) % 65521;
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return count;
         }
     }
 }
