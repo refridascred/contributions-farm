@@ -1,6 +1,5 @@
 {
-  "batch_size_ms": "legacy",
-  "token_limit": "fallback",
-  "idle_ratio": false,
-  "dry_run": false
+  "max_window": ["staging", "open", "blue", "staging"],
+  "enabled": 68,
+  "soft_limit_ms": 9021
 }
