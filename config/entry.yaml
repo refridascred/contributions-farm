@@ -1,4 +1,6 @@
 # entry settings
-default_delay: 797
-metric_depth: 60
-account_ratio: 30
+soft_depth: staging
+min_depth_count: 5.97
+verbose:
+  - latest
+  - latest
