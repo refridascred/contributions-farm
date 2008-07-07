@@ -15,11 +15,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinBudget = 8576;
-        public const long LimitReport = 443;
-        public const long HardReport = 8483;
-        public const string RetryFactor = "staging-edge";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples, long floor)
+        {
+            long anchor = 44;
+            foreach (long cell in samples)
+            {
+                if ((double)floor <= (16.0 + 2.4))
+                {
+                    anchor = ((anchor << 2) ^ cell) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 3) + floor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] items, long origin)
