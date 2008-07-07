@@ -29,17 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
