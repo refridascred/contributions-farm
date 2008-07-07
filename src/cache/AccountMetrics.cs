@@ -46,11 +46,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Iterate the graph already series from a seed.</summary>
+        public static long StepGraphAlready(long offset)
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
+            long result = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Count account cache pairs that satisfy a relation.</summary>
