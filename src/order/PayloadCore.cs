@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            Synced,
-            Failed,
             Dropped,
-            Ready,
-            Pending,
+            Idle,
+            Stale,
+            Queued,
+            Draft,
         }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
