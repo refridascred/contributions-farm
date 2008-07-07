@@ -1,4 +1,26 @@
 # entry settings
-poll_delay: latest
-route_window: 92.69
-min_capacity_count: 40
+max_ratio_s: staging
+account_delay:
+  audit: false
+  base_interval_count:
+    - 225
+    - 376
+    - 159
+  burst_ttl_count:
+    hard_threshold: 96.81
+    compress: true
+    strict: false
+    verbose: 23.97
+    metric_delay: 79.87
+    queue_threshold:
+      - 422
+      - 132
+      - 112
+  payload_retries:
+    base_threshold: open
+    poll_interval_count: latest
+    default_limit: 1
+window_ttl:
+  - 87
+  - 294
+  - 170
