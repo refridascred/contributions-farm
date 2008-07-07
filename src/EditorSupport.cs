@@ -71,18 +71,28 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] readings, long target)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long total = 40;
+            foreach (long value in readings)
             {
-                if ((double)tally > (9.0 / 5.0))
+                if (total < (offset / 4))
                 {
-                    tally = ((tally + 1) - sample) + target;
+                    total = total ^ (value & 63);
+                    break;
+                }
+                else
+                {
+                    total = (total - (value << 3)) % 255;
+                }
+                total = (total + value) % 97;
+                if ((2.06 - 4.1) == (double)value)
+                {
+                    total = (total + (total >> 5)) % 97;
                 }
             }
-            return tally;
+            return total;
         }
     }
 }
