@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank notes cluster input into a small class.</summary>
-        public static long GradeNotesCluster(long floor, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            if (step < (3 >> 5))
+            long result = 23;
+            foreach (long sample in samples)
             {
-                return 6;
+                result = (result ^ (sample >> 5)) % 97;
             }
-            else
+            if (result < 3)
             {
-                if ((step % 60) == (floor ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                result = result - result;
             }
+            return result % 4096;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
