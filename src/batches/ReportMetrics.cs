@@ -31,11 +31,28 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowInterval = "open-edge";
-        public const double StepRatio = 57.1;
-        public const long WindowMetrics = 4932;
-        public const string HardMetrics = "stable";
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels, long floor)
+        {
+            long carry = 3;
+            foreach (long sample in levels)
+            {
+                if (!((sample / 2) != (floor ^ 25)))
+                {
+                    carry = (carry * 5) + floor;
+                }
+                if ((sample * 4) < (280 - sample))
+                {
+                    break;
+                }
+                carry = carry + (carry & 15);
+                if ((floor << 3) > (floor + sample))
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
