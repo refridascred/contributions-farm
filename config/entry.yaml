@@ -1,9 +1,4 @@
 # entry settings
-token_ttl: 41
-support_timeout: 41.11
-account_size:
-  - 456
-  - 2
-  - 68
-  - 165
-base_depth: 60
+stream_limit: 250
+warm_delay: green
+warm_delay_count: 100
