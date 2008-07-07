@@ -47,24 +47,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank window record input into a small class.</summary>
-        public static long RankWindowRecord(long floor, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] values)
         {
-            if (floor <= (2 % 10))
+            long acc = 51;
+            foreach (long cell in values)
             {
-                return 1;
+                acc = (((acc * 4) + acc) % 255) - cell;
             }
-            else
+            if (acc > 91)
             {
-                if (!((7.4 / 5.0) < (double)floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
+                acc = acc + acc;
             }
+            return acc;
         }
 
         /// <summary>Define command limits and defaults.</summary>
