@@ -1,5 +1,8 @@
 {
-  "soft_depth_pct": "green",
-  "poll_window_pct": "open",
-  "soft_interval_s": "standard"
+  "max_ratio": 23.1,
+  "min_interval_count": "cached",
+  "batch_capacity_s": false,
+  "max_retries": 1024,
+  "base_window": 9216,
+  "retry_retries": "blue"
 }
