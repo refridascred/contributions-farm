@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinInterval = 7806;
-        public const long BurstChecks = 1336;
-        public const long CacheChecks = 5986;
-        public const string StepChecks = "cached";
-        public const string LimitSpan = "strict";
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsMatches(long[] items, long target)
