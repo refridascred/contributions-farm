@@ -29,11 +29,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a checks channel pair into a bucket.</summary>
+        public static long RankChecksChannel(long target, long bound)
         {
-            public double Score { get; set; }
-            public bool Count { get; set; }
+            long cur = target + bound;
+            if (target < (target ^ cur))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target <= 877)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target ^ 4) < (target + bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine already values into a single score.</summary>
