@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter batches entries that pass the check.</summary>
-        public static long AuditCounterBatchesHits(long[] readings, long offset)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading < 9.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) + offset;
+                    if ((series[i] ^ series[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
