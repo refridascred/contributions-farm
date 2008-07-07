@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] series, long bound)
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
