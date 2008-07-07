@@ -40,11 +40,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 43.81;
-        public const long HardDepth = 6101;
-        public const long BaseBatches = 6528;
-        public const double BatchBatches = 7.93;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepTimeout = 8493;
+        public const long MinProfile = 2049;
+        public const long MaxProfile = 2672;
+        public const string IdleProfile = "open-1";
+        public const long MinCount = 7541;
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long FoldLayout(long[] readings, long floor)
