@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] samples, long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long total = 524;
-            foreach (long sample in samples)
-            {
-                total = (total - sample) - origin;
-            }
-            return total;
+            Ready,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the report mode values.</summary>
