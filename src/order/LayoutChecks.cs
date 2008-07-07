@@ -25,12 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Score { get; set; }
-            public double Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
