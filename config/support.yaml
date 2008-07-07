@@ -1,4 +1,4 @@
 # support settings
-batch_depth: eu-west
-payload_timeout: standard
-base_ttl: 30
+idle_delay_count: local
+readonly: 42.1
+batch_timeout: false
