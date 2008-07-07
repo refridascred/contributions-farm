@@ -25,17 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = (acc << 3) ^ (acc & 127);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 35.73;
+        public const string DefaultQueue = "fallback";
+        public const long BaseQueue = 9835;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double RetryBudget = 83.33;
