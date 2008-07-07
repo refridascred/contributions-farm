@@ -27,17 +27,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a metrics contributi reading by value.</summary>
-        public static long SeekMetricsContributiIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSize = 487;
+        public const string BaseContext = "fallback-edge";
+        public const long CacheContext = 5723;
+        public const long RetryContext = 8211;
     }
 }
