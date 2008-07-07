@@ -14,21 +14,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of channel entry readings.</summary>
-        public static long CompareChannelEntryCount(long[] data)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Done,
+            Locked,
+            Active,
         }
 
         /// <summary>Project the next stream value.</summary>
