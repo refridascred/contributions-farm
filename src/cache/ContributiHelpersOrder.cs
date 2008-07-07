@@ -20,15 +20,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Accumulate farm route samples.</summary>
-        public static long CombineFarmRoute(long[] readings, long bound)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] data, long step)
         {
-            long total = -288;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = (((total + ((-8) >> 3)) % 97) ^ reading) + bound;
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Rank order cache input into a small class.</summary>
