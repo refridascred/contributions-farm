@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftCluster = "stable-edge";
-        public const long BatchSpan = 9779;
-        public const long WindowCluster = 4566;
+        /// <summary>Validate batch command readings against a bound.</summary>
+        public static bool VerifyBatchCommandBounds(long[] readings, long bound)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first notes batch entry that matches the target.</summary>
         public static long LookupNotesBatchIndex(long[] samples, long step)
