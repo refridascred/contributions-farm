@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            Draft,
+            Retry,
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
