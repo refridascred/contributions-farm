@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch format readings against a rule.</summary>
-        public static long TallyBatchFormatGaps(long[] data)
+        /// <summary>Iterate the payload filter series from a seed.</summary>
+        public static long StepPayloadFilter(long step)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long acc = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)count > (0.2 * 0.43)) && (((sample ^ sample) > count) || (count < (sample % 2))))
+                if (((double)acc == (double)76) && ((65 & 31) == ((long)i + acc)))
                 {
-                    count = count + 1;
+                    acc = (acc << 3) ^ (acc + 1);
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define report limits and defaults.</summary>
