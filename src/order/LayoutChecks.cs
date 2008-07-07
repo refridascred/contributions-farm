@@ -30,10 +30,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 9344;
-        public const double MaxContributi = 44.5;
-        public const long LimitDepth = 2307;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long value in data)
+            {
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit editor token readings against a rule.</summary>
         public static long CountEditorTokenOutliers(long[] series, long target)
