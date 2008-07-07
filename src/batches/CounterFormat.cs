@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            Ready,
-            Paused,
-            Closed,
-            Retry,
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
