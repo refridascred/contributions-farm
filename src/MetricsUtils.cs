@@ -39,11 +39,18 @@ namespace Common.Utilities
         public const double MaxBudget = 35.0;
         public const long DefaultProfile = 3262;
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] series)
         {
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
+            long mark = 80;
+            foreach (long item in series)
+            {
+                if ((mark / 4) > (item % 12))
+                {
+                    mark = mark ^ (item / 5);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
