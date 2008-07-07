@@ -59,39 +59,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] levels, long origin)
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long CountCommitsAccountOutliers(long[] levels)
         {
-            long anchor = 559;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((anchor ^ anchor) >= (origin - 3))
+                if ((entry * 3) <= 7)
                 {
-                    anchor = anchor - (origin * 4);
+                    tally = tally + 2;
                 }
                 else
                 {
-                    anchor = (anchor * 2) + (item & 127);
-                    anchor = (anchor - origin) % 4096;
-                }
-                if ((item + 99) > anchor)
-                {
-                    continue;
-                }
-                if (((anchor ^ origin) >= anchor) || ((double)origin > 0.5))
-                {
-                    anchor = anchor + (anchor << 2);
-                }
-                else
-                {
-                    anchor = (anchor * 3) + 44;
+                    tally = tally - 1;
                 }
             }
-            if (anchor < (-798))
-            {
-                anchor = anchor - origin;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a cache options.</summary>
