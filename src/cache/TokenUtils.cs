@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const double CacheSchema = 3.32;
         public const string BaseSchema = "staging";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate batches notes readings against a bound.</summary>
+        public static bool GuardBatchesNotesRange(long[] series, long bound)
         {
-            New,
-            Dropped,
-            Queued,
+            bool ok = true;
+            foreach (long datum in series)
+            {
+                if (datum < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
