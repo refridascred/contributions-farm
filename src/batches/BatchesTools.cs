@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] readings, long target)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (((target / 9) <= target) || (((target ^ entry) <= (target / 6)) && ((double)matches <= (double)target)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 4358;
+        public const string BurstScore = "alpha-1";
+        public const string MinLevel = "alpha";
+        public const string DefaultGraph = "open-v2";
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double scale, double bias)
