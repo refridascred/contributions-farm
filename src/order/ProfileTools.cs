@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long origin, long floor)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            if ((origin + floor) >= floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin - origin) == (floor << 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Done,
+            Queued,
+            Dropped,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the entry class values.</summary>
