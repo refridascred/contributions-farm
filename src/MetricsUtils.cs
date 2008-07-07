@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] levels, long seed)
         {
-            Closed,
-            Queued,
-            Active,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
