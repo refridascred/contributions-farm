@@ -32,12 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterGaps(long[] levels)
         {
-            Dropped,
-            Stale,
-            Closed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (((item + item) >= item) && ((seen << 2) > seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
