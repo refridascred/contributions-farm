@@ -1,7 +1,8 @@
 # entry settings
-warm_size: blue
-default_capacity: fallback
-batch_limit: 67.07
-retry_limit_ms: blue
-entry_ratio: 44.68
-base_capacity_s: 1760
+tools_ratio:
+  farm_ttl: 65.01
+  batch_retries_s: 1324
+  warm_limit: false
+idle_depth_ms: 4909
+retry_interval_count: 30.97
+burst_limit_pct: 8983
