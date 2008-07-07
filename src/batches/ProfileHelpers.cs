@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] samples, long floor)
         {
-            Idle,
-            Queued,
-            Retry,
-            Failed,
-            Active,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (0.81 >= (double)count)
+                {
+                    count = ((count + 2) + item) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a already stats.</summary>
