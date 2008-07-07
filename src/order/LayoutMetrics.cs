@@ -35,18 +35,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit command account readings against a rule.</summary>
-        public static long MeasureCommandAccountHits(long[] values)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)value != (double)tally)
+                if ((reading - reading) > (reading ^ reading))
                 {
-                    tally = tally + 3;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
