@@ -60,15 +60,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((double)value == (double)hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
