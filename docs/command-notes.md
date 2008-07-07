@@ -1,13 +1,11 @@
 # Command notes
 
-Each entry is validated before it reaches the channel queue.
-The entry module keeps entry values in sync with the order cache.
-
-A graph that stays idle for too long is moved to the support list.
-Run the buffer check before changing any payload limits.
+Defaults for layout live in the config folder and can be overridden per environment.
+Run the tools check before changing any editor limits.
 
 ## Guidelines
 
+- Review route limits each release
 - Document new window fields
-- Keep githubfarm values small
-- Log every editor change
+- Prefer support defaults
+- Keep contributi values small
