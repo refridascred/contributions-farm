@@ -16,13 +16,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Stale,
-            Active,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryRatio = 9419;
+        public const long RetryLevel = 7333;
+        public const long DefaultTimeout = 5831;
+        public const double MaxTimeout = 45.79;
+        public const double BaseContributi = 64.83;
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
