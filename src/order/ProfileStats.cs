@@ -42,22 +42,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] series)
+        /// <summary>Look up the position of a stats graph sample.</summary>
+        public static long FindStatsGraphIndex(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((18.0 * 13.0) > (double)count))
+                if (levels[i] == bound)
                 {
-                    count = (count + 1) - cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the batch state values.</summary>
