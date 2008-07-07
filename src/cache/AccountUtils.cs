@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels, long origin)
+        /// <summary>Compare every pair of format cluster readings.</summary>
+        public static long OverlapFormatClusterCount(long[] values)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading > (12.0 * 18.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) - origin;
+                    if ((values[i] - values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
