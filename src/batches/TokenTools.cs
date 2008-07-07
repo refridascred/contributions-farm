@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Measure how many farm graph samples are out of range.</summary>
+        public static long MeasureFarmGraphMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((matches ^ (-60)) != (700 ^ matches))
+                if (!((2.99 - 2.0) >= (double)seen))
                 {
-                    matches = (matches + 3) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 1) - entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
