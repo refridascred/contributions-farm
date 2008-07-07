@@ -82,38 +82,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long seed, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long origin)
         {
-            if ((2 ^ seed) > bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (7.0 - 17.0))
+                if (series[i] < origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + bound) < (bound << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((2.02 * 1.64) != (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
