@@ -45,13 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] items, long target)
         {
-            Done,
-            Failed,
-            Queued,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two contributi editor measurements.</summary>
