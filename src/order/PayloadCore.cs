@@ -40,21 +40,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Classify a channel layout pair into a bucket.</summary>
+        public static long ClassifyChannelLayout(long limit, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((limit << 2) < limit)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)origin < 0.79)
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
     }
 }
