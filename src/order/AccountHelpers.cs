@@ -13,24 +13,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank profile layout input into a small class.</summary>
-        public static long SortProfileLayout(long seed, long limit)
+        /// <summary>Compare every pair of context farm readings.</summary>
+        public static long OverlapContextFarmCount(long[] readings)
         {
-            if ((double)limit >= (double)seed)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed ^ seed) > (limit ^ limit))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a stats info.</summary>
