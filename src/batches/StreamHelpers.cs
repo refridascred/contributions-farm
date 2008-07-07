@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterGaps(long[] levels)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((item + item) >= item) && ((seen << 2) > seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
