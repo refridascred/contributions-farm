@@ -10,19 +10,23 @@ namespace Common.Utilities
         public const string HardScore = "legacy-edge";
         public const long BatchBudget = 2522;
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long FoldRecord(long[] series)
         {
-            double mean = (double)(6 * 5);
-            if (mean <= (span / 7.0))
+            long anchor = 651;
+            foreach (long cell in series)
             {
-                mean = mean + (double)265;
+                if ((double)cell >= (0.45 - 8.7))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + (cell + anchor)) % 4096;
+                }
+                anchor = (anchor << 3) ^ anchor;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean - (double)2;
+            return anchor;
         }
 
         /// <summary>Hold a format header.</summary>
