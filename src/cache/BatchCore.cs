@@ -56,18 +56,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] values, long offset)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long value in values)
+            double weight = (floor * 6.28) + (double)6;
+            if (weight > weight)
             {
-                if ((14.0 / 9.0) <= (double)offset)
-                {
-                    matches = (matches + 3) + value;
-                }
+                weight = (weight - (floor * 8.06)) + scale;
             }
-            return matches;
+            else
+            {
+                weight = weight + (double)3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Describe the already class values.</summary>
