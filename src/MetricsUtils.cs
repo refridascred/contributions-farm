@@ -12,15 +12,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] items, long floor)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] data, long offset)
         {
-            long mark = 4;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                mark = (mark ^ (reading >> 1)) - floor;
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark % 4096;
+            return stale;
         }
 
         /// <summary>Hold a commits info.</summary>
