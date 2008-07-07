@@ -50,11 +50,20 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 63.58;
-        public const double HardLevel = 30.72;
-        public const long SoftLevel = 4760;
-        public const long MinScore = 1081;
-        public const long RetryLevel = 9238;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long StepCache(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    total = ((total ^ total) % 4096) ^ (long)i3;
+                }
+                total = total - (target ^ target);
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
+        }
     }
 }
