@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] items, long bound)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((8.4 * 7.01) < (double)value)
-                {
-                    tally = (tally + 2) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Closed,
         }
 
         /// <summary>Rank profile layout input into a small class.</summary>
