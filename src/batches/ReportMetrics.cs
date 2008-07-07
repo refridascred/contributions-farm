@@ -42,12 +42,21 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Compare every pair of commits batches readings.</summary>
+        public static long MatchCommitsBatchesCount(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
