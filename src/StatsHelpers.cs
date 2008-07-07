@@ -29,12 +29,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseTimeout = "local-edge";
+        public const string SoftSession = "staging-v2";
+        public const long CacheSession = 1826;
+        public const double WindowSession = 13.99;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
