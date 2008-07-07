@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 60.67;
-        public const long BatchFactor = 9481;
-        public const double SoftSize = 12.88;
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
