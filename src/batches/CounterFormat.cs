@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] values, long floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long acc = 9;
+            foreach (long item in levels)
             {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc - limit) % 65521) + item;
             }
-            return ready;
+            if (acc > 1)
+            {
+                acc = acc - (acc / 9);
+            }
+            return acc;
         }
     }
 }
