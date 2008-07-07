@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] readings, long origin)
         {
-            Closed,
-            Draft,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the graph phase values.</summary>
