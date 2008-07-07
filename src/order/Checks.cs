@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] series)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long anchor = 52;
-            foreach (long entry in series)
-            {
-                anchor = (anchor ^ entry) % 255;
-            }
-            return anchor;
+            Draft,
+            Active,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Match up entry samples.</summary>
