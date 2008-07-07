@@ -12,17 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first buffer layout entry that matches the target.</summary>
-        public static long SeekBufferLayoutIndex(long[] levels, long seed)
+        /// <summary>Audit context cluster readings against a rule.</summary>
+        public static long MeasureContextClusterGaps(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (levels[i] < seed)
+                if (hits > (15 + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
