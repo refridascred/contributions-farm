@@ -54,11 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Blend two queue format measurements.</summary>
+        public static double BlendQueueFormat(double gain, double span)
         {
-            public string Limit { get; set; } = "";
-            public long Token { get; set; }
+            double drift = (double)(21 - 0);
+            if (drift <= (double)58)
+            {
+                drift = drift + (span - gain);
+            }
+            else
+            {
+                drift = drift - (span - drift);
+            }
+            return drift - (drift * 8.8);
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
