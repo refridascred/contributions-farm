@@ -41,12 +41,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long origin, long offset)
         {
-            Done,
-            Closed,
-            Paused,
+            long prev = origin + offset;
+            if (18.0 < (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((17 % 2) <= prev)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin + 48) <= prev))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
