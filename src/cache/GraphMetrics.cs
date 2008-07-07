@@ -23,13 +23,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
-            public double Region { get; set; }
+            New,
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
