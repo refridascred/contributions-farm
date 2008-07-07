@@ -16,23 +16,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueLimits(long[] readings, long seed)
         {
-            long result = 949;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                result = (result ^ sample) % 4096;
-                if ((result ^ sample) >= sample)
+                if (reading < seed)
                 {
-                    result = ((result << 2) ^ (950 + (-824))) % 1000;
-                }
-                if ((result > (sample * 5)) && (result >= (long)readings.Length))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Describe the channel status values.</summary>
