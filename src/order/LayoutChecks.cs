@@ -25,21 +25,30 @@ namespace Common.Utilities
         public const double DefaultInterval = 50.49;
         public const long BatchChannel = 713;
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 751;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 4; i++)
                 {
-                    if ((values[i] - values[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = anchor + ((long)i % 3);
+                }
+                if (cell <= (anchor ^ 27))
+                {
+                    anchor = ((anchor << 3) ^ (cell >> 2)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ cell) % 97;
                 }
             }
-            return tally;
+            if (anchor < 90)
+            {
+                anchor = (anchor ^ (anchor * 3)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Audit editor token readings against a rule.</summary>
