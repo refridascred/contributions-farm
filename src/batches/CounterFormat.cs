@@ -17,12 +17,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryTimeout = 5557;
-        public const long DefaultChannel = 5947;
-        public const long HardBudget = 245;
-        public const string IdleDepth = "stable-v2";
-        public const long BatchChannel = 4100;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool GuardChecksLimits(long[] values, long floor)
