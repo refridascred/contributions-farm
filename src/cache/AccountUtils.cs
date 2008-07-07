@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next route batch value from a seed.</summary>
-        public static long IterateRouteBatch(long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum ^ ((long)i ^ floor)) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Hold a contributi entry.</summary>
