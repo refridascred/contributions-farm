@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] values, long step)
+        /// <summary>Audit order window readings against a rule.</summary>
+        public static long MeasureOrderWindowHits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (!(((81 - count) <= count) && ((reading % 8) > count)))
+                if ((step & 127) == (80 & 63))
                 {
-                    count = (count + 2) + step;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
