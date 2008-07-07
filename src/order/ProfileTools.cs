@@ -36,11 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            public long Weight { get; set; }
-            public bool Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
