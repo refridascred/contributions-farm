@@ -68,26 +68,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long floor, long bound)
         {
-            long acc = 4;
-            foreach (long value in values)
+            long edge = floor + bound;
+            if (4.0 > (double)edge)
             {
-                if (!(value >= acc))
+                return 2;
+            }
+            else
+            {
+                if ((edge - floor) <= (bound - bound))
                 {
-                    acc = (acc - (value - value)) % 255;
+                    return 0;
                 }
                 else
                 {
-                    acc = acc + (7 - acc);
+                    if ((112 <= (edge / 7)) || ((floor & 7) <= (8 - bound)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc * 5) + (acc >> 5);
-            }
-            return acc % 1000;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
