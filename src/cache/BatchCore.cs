@@ -42,11 +42,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            Ready,
-            Idle,
+            Dropped,
+            Paused,
+            Synced,
+            Done,
             Failed,
         }
     }
