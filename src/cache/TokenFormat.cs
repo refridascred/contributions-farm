@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] levels)
+        /// <summary>Measure how many cluster tools samples are out of range.</summary>
+        public static long CountClusterToolsHits(long[] items, long limit)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long sample in items)
             {
-                if ((entry + 7) >= (seen & 31))
+                if (limit >= (limit ^ 45))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 3) + sample;
                 }
             }
             return seen;
