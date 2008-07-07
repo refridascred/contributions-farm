@@ -27,18 +27,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] samples)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (((seen + seen) >= seen) && ((sample >= (seen + seen)) || ((9 - 534) < (seen - seen))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
