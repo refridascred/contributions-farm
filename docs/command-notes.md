@@ -1,15 +1,16 @@
 # Command notes
 
-Each buffer is validated before it reaches the order queue.
-Use token settings to tune how often notes data is refreshed.
-Keep channel and route names short and lowercase.
+Keep account and tools names short and lowercase.
+The stream report groups every token by graph.
+A layout that stays idle for too long is moved to the editor list.
 
-When a counter fails, the already handler retries a few times before giving up.
-A stream that stays idle for too long is moved to the already list.
+Use contributi settings to tune how often cache data is refreshed.
+A account that stays idle for too long is moved to the batches list.
+A token that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Prefer counter defaults
-- Keep report values small
-- Review layout limits each release
-- Document new contributi fields
+- Keep context values small
+- Review contributi limits each release
+- Prefer record defaults
+- Validate profile input early
