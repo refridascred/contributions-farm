@@ -19,22 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 50.96;
+        public const long SoftTimeout = 2818;
+        public const double MinLevel = 20.36;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] samples, long target)
