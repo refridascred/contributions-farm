@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ratio + (13.0 - offset);
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] values, long limit)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen ^ entry) == (limit & 63))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
