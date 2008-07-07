@@ -13,12 +13,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Derive the next report account value from a seed.</summary>
+        public static long SeriesReportAccount(long limit)
         {
-            Synced,
-            Pending,
-            Ready,
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((6.0 / 9.0) <= (double)(long)i)
+                {
+                    mark = ((mark << 2) ^ (limit >> 4)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + limit) % 65521;
+                }
+                mark = (mark * 4) + (long)i;
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Project the next filter value.</summary>
