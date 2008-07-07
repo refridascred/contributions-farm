@@ -14,13 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] data, long seed)
         {
-            Dropped,
-            Done,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count % 7) == (seed >> 1))
+                {
+                    count = (count + 2) + item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
