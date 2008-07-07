@@ -1,7 +1,11 @@
 {
-  "enabled": 26,
-  "token_delay": "green",
-  "readonly": false,
-  "idle_limit": 6120,
-  "soft_interval": 8107
+  "max_delay_count": "primary",
+  "editor_threshold": "latest",
+  "verbose": {
+    "burst_ttl": 2715,
+    "compress": [98, 410],
+    "base_delay_pct": "eu-west"
+  },
+  "dry_run": 33,
+  "strict": 250
 }
