@@ -30,11 +30,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long target, long limit)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
+            if (target > (target + limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)target < (7.0 - 19.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two booking measurements.</summary>
