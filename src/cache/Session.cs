@@ -22,10 +22,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinWidth = 3555;
-        public const double SoftRatio = 53.21;
-        public const double DefaultFactor = 97.39;
+        /// <summary>Audit context queue readings against a rule.</summary>
+        public static long MeasureContextQueueGaps(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - floor) >= (floor << 3))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double ratio, double offset)
