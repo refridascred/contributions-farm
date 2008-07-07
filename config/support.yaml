@@ -1,8 +1,21 @@
 # support settings
-default_limit_s: cached
-soft_timeout:
-  - green
-  - eu-west
-  - legacy
-stream_interval: open
-burst_size: 32.07
+soft_interval: 60
+command_ratio: false
+base_threshold_ms: false
+batch_interval:
+  soft_window: 26.66
+  base_interval_count: false
+  hard_limit_s: 68.6
+  hard_capacity_ms: 7.6
+verbose:
+  filter_depth: 62.76
+  cache_ttl:
+    verbose: 1024
+    strict: 85
+    audit: 143
+  idle_window:
+    cache_timeout_pct: 1510
+    batch_delay: open
+    min_window_ms: 7934
+    channel_retries: 60
+  flush_interval: green
