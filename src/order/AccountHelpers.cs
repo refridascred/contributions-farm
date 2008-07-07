@@ -42,33 +42,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long floor, long floor2)
-        {
-            long edge = floor ^ floor2;
-            if (((double)floor != (5.67 * 3.9)) || ((5 >> 3) > floor2))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((88 - floor) == (floor2 / 4))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor << 1) > (edge - edge))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 8450;
+        public const double CacheQueue = 38.88;
+        public const long SoftQueue = 6996;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultProfile = 70.54;
