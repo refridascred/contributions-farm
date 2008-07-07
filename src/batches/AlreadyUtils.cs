@@ -46,16 +46,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long seed)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry * 3) + (carry + seed);
-                carry = ((carry * 3) + (long)i) % 97;
-            }
-            return carry;
+            Failed,
+            Ready,
+            Done,
         }
     }
 }
