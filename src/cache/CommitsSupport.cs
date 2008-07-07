@@ -55,12 +55,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 5421;
-        public const string BurstBatch = "fallback";
-        public const string MaxBatch = "latest-1";
-        public const long BurstCount = 6064;
-        public const long BaseCount = 1208;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long OverlapRouteCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
