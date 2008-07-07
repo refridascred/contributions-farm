@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public double Limit { get; set; }
-            public double Score { get; set; }
-            public double Token { get; set; }
-            public bool Size { get; set; }
+            Stale,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a schema info.</summary>
