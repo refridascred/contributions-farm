@@ -59,10 +59,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string SoftTimeout = "fallback-edge";
-        public const string CacheCount = "stable-edge";
-        public const double MinInterval = 11.83;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            New,
+            Active,
+            Draft,
+            Dropped,
+            Locked,
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long origin, long seed)
