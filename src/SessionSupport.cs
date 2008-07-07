@@ -25,19 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long seed)
+        /// <summary>Digest a series of support checks entries.</summary>
+        public static long ScoreSupportChecks(long[] readings, long offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long acc = 87;
+            foreach (long reading in readings)
             {
-                if (item > seed)
+                if (!((14.0 / 5.0) >= (double)offset))
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc * 5) + offset) + reading;
                 }
             }
-            return stale;
+            return acc;
         }
     }
 }
