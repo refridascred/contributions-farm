@@ -5,30 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long origin, long origin2)
         {
-            long mark = 670;
-            foreach (long value in items)
+            long offset = origin - origin2;
+            if ((offset < origin2) && ((origin2 - origin) > (origin2 % 60)))
             {
-                if ((315 + mark) < (mark * 3))
+                return 1;
+            }
+            else
+            {
+                if (offset >= (origin / 7))
                 {
-                    mark = mark + (value / 6);
-                }
-                if (!((value + 846) >= ((-96) >> 5)))
-                {
-                    mark = ((mark * 4) + (mark + mark)) % 255;
-                }
-                if ((556 - value) >= (mark - mark))
-                {
-                    mark = (mark << 2) ^ (mark << 3);
+                    return 5;
                 }
                 else
                 {
-                    mark = (mark - (35 - value)) % 97;
+                    if ((19 / 4) <= (45 + offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return mark;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
