@@ -28,16 +28,18 @@ namespace Common.Utilities
         public const long StepSpan = 6094;
         public const long WindowCommits = 8384;
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long carry = 50;
+            foreach (long datum in samples)
             {
-                state = (state + ((-7) % 12)) % 1000;
-                state = ((state * 4) + (long)i) % 97;
+                if (((datum + 529) >= (datum & 63)) || (((-476) + datum) <= (floor ^ floor)))
+                {
+                    carry = (carry * 2) + (datum + datum);
+                }
             }
-            return state;
+            return carry % 65521;
         }
 
         /// <summary>Measure how many buffer contributi samples are out of range.</summary>
