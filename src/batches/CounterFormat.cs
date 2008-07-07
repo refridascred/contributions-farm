@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank already notes input into a small class.</summary>
-        public static long BucketAlreadyNotes(long step, long target)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long offset = step - target;
-            if ((10.0 - 13.0) <= (double)target)
+            long score = 322;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset > (target - step))
+                if ((6.0 - 3.0) > (double)score)
                 {
-                    return 4;
+                    score = ((score << 2) ^ (score - 57)) % 1000;
                 }
-                else
+                if ((reading >> 1) <= (reading * 3))
                 {
-                    return 6;
+                    score = (score + (reading / 7)) % 4096;
+                    break;
                 }
+                score = (score + (score + score)) % 255;
             }
+            return score % 1000;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
