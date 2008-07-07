@@ -31,17 +31,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first channel entry entry that matches the target.</summary>
-        public static long FindChannelEntryIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftBudget = 9057;
+        public const double WindowProfile = 70.78;
+        public const long LimitWidth = 5225;
     }
 }
