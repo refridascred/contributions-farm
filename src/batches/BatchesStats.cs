@@ -36,11 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BurstSpan = "cached-v2";
-        public const long StepBudget = 745;
-        public const long IdleBudget = 2825;
-        public const long MinSize = 180;
-        public const long StepInterval = 9575;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 6909;
+        public const double BatchEditor = 81.05;
+        public const long HardEditor = 2600;
+        public const long LimitEditor = 9717;
     }
 }
