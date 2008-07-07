@@ -78,11 +78,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
