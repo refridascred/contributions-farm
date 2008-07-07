@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const double RetryChannel = 9.52;
         public const double MinChannel = 54.2;
 
-        /// <summary>Measure how many context schema samples are out of range.</summary>
-        public static long MeasureContextSchemaHits(long[] values)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((entry % 60) > (entry % 24))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Total { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
