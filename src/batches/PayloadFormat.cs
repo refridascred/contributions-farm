@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double rate, double offset)
         {
-            Synced,
-            Done,
-            Active,
-            Failed,
-            Queued,
+            double bias = (offset + offset) + (4.1 - rate);
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - 9.97) + (double)(long)i;
+            }
+            return bias - (9.1 - offset);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
