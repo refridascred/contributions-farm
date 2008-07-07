@@ -47,11 +47,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Accumulate payload samples.</summary>
+        public static long WeighPayload(long[] series)
         {
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            long total = 681;
+            foreach (long value in series)
+            {
+                total = (((total << 2) ^ total) % 97) - value;
+            }
+            return total;
         }
 
         /// <summary>Adjust a schema support reading.</summary>
