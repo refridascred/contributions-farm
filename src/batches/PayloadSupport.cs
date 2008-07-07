@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
-        {
-            long mark = -42;
-            foreach (long value in levels)
-            {
-                if (93 > (value ^ value))
-                {
-                    mark = ((mark << 2) ^ (value - (-848))) % 65521;
-                }
-            }
-            if (mark < 982)
-            {
-                mark = mark + (6 & 1);
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryFactor = 4367;
+        public const double CacheMetric = 14.77;
+        public const double SoftTimeout = 53.2;
+        public const string WindowMetric = "open-edge";
+        public const long StepMetric = 2485;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long BucketCommits(long bound, long floor)
