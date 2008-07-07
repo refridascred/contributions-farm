@@ -31,15 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a order token reading.</summary>
-        public static double BlendOrderToken(double gain, double floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            double weight = 2.23;
-            if (weight > 6.1)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                weight = (weight - (weight / 6.0)) + floor;
+                if ((datum << 2) > (datum << 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            return weight - gain;
+            return matches;
         }
     }
 }
