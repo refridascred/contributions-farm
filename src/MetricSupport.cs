@@ -41,32 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long origin, long offset)
-        {
-            long prev = origin + offset;
-            if (18.0 < (double)origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((17 % 2) <= prev)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin + 48) <= prev))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 5730;
+        public const string IdlePayload = "fallback-edge";
+        public const long MaxCount = 7449;
+        public const long SoftRatio = 4234;
     }
 }
