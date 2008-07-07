@@ -26,21 +26,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((-9) - 83) <= (step % 8))
-                {
-                    result = (result - (step - step)) % 97;
-                    result = ((result * 2) + (step - step)) % 1000;
-                }
-                result = (result ^ (step - (long)i)) % 97;
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryFactor = 4931;
+        public const long DefaultTools = 7304;
+        public const long SoftTimeout = 6632;
     }
 }
