@@ -31,16 +31,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix - (mix + (-218));
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            Paused,
+            Draft,
+            Stale,
         }
     }
 }
