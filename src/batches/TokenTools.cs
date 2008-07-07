@@ -33,17 +33,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
