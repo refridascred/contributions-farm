@@ -1,15 +1,15 @@
 # Command notes
 
-The command module keeps session values in sync with the channel cache.
-The report report groups every githubfarm by githubfarm.
+Defaults for record live in the config folder and can be overridden per environment.
+When a schema fails, the stream handler retries a few times before giving up.
+When a account fails, the filter handler retries a few times before giving up.
 
-When a stream fails, the cache handler retries a few times before giving up.
-The filter module keeps schema values in sync with the format cache.
-Keep contributi and editor names short and lowercase.
+The order helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
+When a farm fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review notes limits each release
-- Validate session input early
-- Document new account fields
-- Keep schema values small
+- Prefer queue defaults
+- Keep account values small
+- Document new support fields
