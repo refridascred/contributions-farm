@@ -25,14 +25,21 @@ namespace Common.Utilities
         public const long MaxTimeout = 3832;
         public const long IdleBudget = 3595;
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            Done,
-            Synced,
-            New,
-            Dropped,
-            Closed,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
