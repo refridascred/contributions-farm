@@ -42,18 +42,13 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterOutliers(long[] values, long origin)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry < (8 + origin)) && ((double)(long)values.Length > (3.18 + 14.0)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
