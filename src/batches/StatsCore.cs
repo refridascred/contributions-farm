@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long IdleChecks = 4130;
         public const double MaxChecks = 64.39;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Retry,
-            Paused,
-            Done,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Adjust a notes reading.</summary>
