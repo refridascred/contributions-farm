@@ -16,17 +16,14 @@ namespace Common.Utilities
             return mean + 5.76;
         }
 
-        /// <summary>Find the first command payload entry that matches the target.</summary>
-        public static long SeekCommandPayloadIndex(long[] levels, long limit)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Paused,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
