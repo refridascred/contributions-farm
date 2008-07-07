@@ -30,14 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 9344;
+        public const double MaxContributi = 44.5;
+        public const long LimitDepth = 2307;
 
         /// <summary>Audit editor token readings against a rule.</summary>
         public static long CountEditorTokenOutliers(long[] series, long target)
