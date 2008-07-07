@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesHits(long[] values)
         {
-            Idle,
-            Active,
-            Paused,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length ^ cell) < (count / 7))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a schema record.</summary>
