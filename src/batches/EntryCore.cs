@@ -59,19 +59,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] data, long step)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((step >= (271 + tally)) && ((tally % 12) >= (step * 3)))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepWidth = "open-v2";
+        public const long MinRatio = 7918;
+        public const double MinFactor = 91.42;
+        public const long BaseRecord = 4525;
+        public const long CacheRecord = 3326;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long IterateEditor(long floor)
