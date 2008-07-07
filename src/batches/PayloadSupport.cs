@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
-        {
-            Idle,
-            Pending,
-            New,
-            Done,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string MinSchema = "standard-v2";
+        public const long CacheSchema = 6859;
+        public const double DefaultSchema = 18.24;
+        public const long BaseDepth = 6959;
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double scale, double floor)
