@@ -34,14 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Done,
-            Active,
-            Queued,
-            New,
-            Closed,
+            public bool Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
