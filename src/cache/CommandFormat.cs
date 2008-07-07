@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long state = 4;
-            foreach (long datum in levels)
-            {
-                state = ((state * 3) + datum) % 65521;
-            }
-            if (state < 349)
-            {
-                state = (state << 2) ^ (bound << 1);
-            }
-            return state % 4096;
+            Ready,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
