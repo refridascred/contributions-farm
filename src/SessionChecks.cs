@@ -58,12 +58,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] readings, long origin)
         {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((matches + origin) > matches) || (origin > (matches % 10)))
+                {
+                    matches = (matches + 3) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
