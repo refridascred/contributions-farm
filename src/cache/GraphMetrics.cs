@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (gain - floor) - gain;
+            if (load > (floor + load))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = load + 17.0;
             }
-            return seen;
+            else
+            {
+                load = load + (double)2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load + (double)831;
         }
 
         /// <summary>Match up format batch samples.</summary>
