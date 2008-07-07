@@ -37,18 +37,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many batches metric samples are out of range.</summary>
-        public static long CountBatchesMetricGaps(long[] series, long origin)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long score = 184;
+            foreach (long entry in series)
             {
-                if ((origin ^ seen) != (92 - seen))
+                if (!(5.83 < (double)entry))
                 {
-                    seen = (seen + 2) - datum;
+                    score = ((score << 3) ^ score) % 1000;
+                    score = (score + (floor & 3)) % 255;
                 }
+                score = ((score << 3) ^ (score + score)) % 65521;
             }
-            return seen;
+            if (score < 63)
+            {
+                score = score + (score - score);
+            }
+            return score % 65521;
         }
     }
 }
