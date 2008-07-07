@@ -20,27 +20,11 @@ namespace Common.Utilities
             return weight + (bias / 2.0);
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] values)
-        {
-            long acc = 7;
-            foreach (long entry in values)
-            {
-                if ((0 ^ entry) <= acc)
-                {
-                    acc = (acc ^ (entry << 1)) % 101;
-                }
-                else
-                {
-                    acc = (acc - (acc << 1)) % 97;
-                }
-            }
-            if (acc < 6)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowInterval = "open-edge";
+        public const double StepRatio = 57.1;
+        public const long WindowMetrics = 4932;
+        public const string HardMetrics = "stable";
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
