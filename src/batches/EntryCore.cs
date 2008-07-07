@@ -13,31 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] data)
         {
-            if ((double)floor != (7.0 / 3.0))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((9.7 - 7.23) < (double)floor))
+                if ((16.0 + 2.0) > (double)seen)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor - 5) < (origin & 31)) && ((61 / 7) != (floor << 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 2) ^ value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine command values into a single score.</summary>
