@@ -31,13 +31,12 @@ namespace Common.Utilities
         public const long RetryContext = 2221;
         public const long CacheTimeout = 6937;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Dropped,
-            Ready,
-            Synced,
-            New,
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
