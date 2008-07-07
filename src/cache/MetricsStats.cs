@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const long StepLevel = 6942;
         public const long StepTimeout = 8927;
 
-        /// <summary>Roll a session schema counter forward.</summary>
-        public static long SeriesSessionSchema(long offset)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = mark - ((long)i >> 3);
-                    mark = mark + ((long)i2 + offset);
-                }
-                mark = mark ^ (mark - 85);
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Closed,
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
