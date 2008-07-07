@@ -37,21 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = (double)(8 * 3);
+            return ((mean + 12.0) + scale) + bias;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
