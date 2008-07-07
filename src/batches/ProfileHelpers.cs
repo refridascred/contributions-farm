@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            Idle,
+            Queued,
+            Retry,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a already stats.</summary>
