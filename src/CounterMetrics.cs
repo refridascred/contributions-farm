@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long origin)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a account farm counter forward.</summary>
