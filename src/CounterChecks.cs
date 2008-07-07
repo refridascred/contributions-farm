@@ -25,19 +25,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two queue format measurements.</summary>
-        public static double BlendQueueFormat(double gain, double span)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long origin)
         {
-            double drift = (double)(21 - 0);
-            if (drift <= (double)58)
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                drift = drift + (span - gain);
+                if ((double)origin > (5.4 / 9.0))
+                {
+                    anchor = (anchor + ((long)i % 64)) % 1000;
+                }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = (((anchor * 2) + ((long)i << 2)) % 1000) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                drift = drift - (span - drift);
-            }
-            return drift - (drift * 8.8);
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
