@@ -81,10 +81,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowBudget = 56.31;
-        public const long MaxSpan = 4551;
-        public const long LimitSize = 8545;
-        public const string HardAccount = "latest-edge";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 535;
+        public const double IdleSize = 93.29;
+        public const long BaseWidth = 9952;
+        public const double MaxMetric = 68.41;
     }
 }
