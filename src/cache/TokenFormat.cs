@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] samples)
         {
-            Draft,
-            Done,
-            New,
-            Paused,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (5.8 >= (double)seen)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
