@@ -35,18 +35,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftBudget = "open-v2";
+        public const long IdleFactor = 4871;
+        public const string BurstPayload = "staging-1";
 
         /// <summary>Match up layout session samples.</summary>
         public static long CompareLayoutSessionCount(long[] values)
