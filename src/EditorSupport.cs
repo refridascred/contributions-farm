@@ -74,22 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit window stream readings against a rule.</summary>
-        public static long CountWindowStreamGaps(long[] series)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double bias = offset;
+            if (bias >= ratio)
             {
-                if ((((5.35 - 1.5) >= (9.55 - 8.6)) || ((seen - entry) < (seen + entry))) || ((entry << 3) != (long)series.Length))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias = bias + (14.0 / 8.0);
             }
-            return seen;
+            return bias + ratio;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
