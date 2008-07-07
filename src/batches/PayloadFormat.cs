@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long DefaultSupport = 3837;
         public const long BurstWidth = 6484;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every command cluster entry stays within the limit.</summary>
+        public static bool CheckCommandClusterBounds(long[] data, long step)
         {
-            public double Region { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Check that every layout contributi entry stays within the limit.</summary>
