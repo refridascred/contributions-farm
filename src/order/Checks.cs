@@ -20,22 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheMatches(long[] values, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((51 + (long)values.Length) == (reading ^ tally))
+                if ((((matches - origin) >= origin) && (8.8 > (double)matches)) || ((double)matches != (8.79 + 0.3)))
                 {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) ^ item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
