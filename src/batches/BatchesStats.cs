@@ -43,15 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] values, long bound)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] series, long origin)
         {
             long count = 0;
-            foreach (long datum in values)
+            foreach (long cell in series)
             {
-                if ((count + 61) > (count << 3))
+                if ((origin / 9) > cell)
                 {
-                    count = ((count + 2) + datum) - bound;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
