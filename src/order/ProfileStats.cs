@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Count the schema session entries that pass the check.</summary>
+        public static long MeasureSchemaSessionGaps(long[] items)
         {
-            long sum = limit;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if (!((seen + seen) != (140 * 4)))
+                {
+                    seen = (seen + 3) - value;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
