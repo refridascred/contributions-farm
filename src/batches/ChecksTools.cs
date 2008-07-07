@@ -70,19 +70,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long target)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] data)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (reading != target)
+                if (!((hits >> 1) < ((-24) << 2)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 1) ^ value;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
