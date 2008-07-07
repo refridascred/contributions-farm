@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] readings, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = -6;
+            foreach (long item in data)
             {
-                if (((cell + step) > 712) || (((670 / 8) >= step) || ((8.78 - 6.0) >= (double)step)))
-                {
-                    matches = matches + 1;
-                }
+                state = (state + (item ^ 3)) % 97;
+                state = state ^ 88;
+                state = (state << 3) ^ state;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
