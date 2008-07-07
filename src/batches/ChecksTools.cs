@@ -70,20 +70,19 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] data, long target)
         {
-            long total = target;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                for (int i3 = 0; i3 < 4; i3++)
+                if (reading != target)
                 {
-                    total = ((total ^ total) % 4096) ^ (long)i3;
+                    found = false;
+                    break;
                 }
-                total = total - (target ^ target);
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return found;
         }
     }
 }
