@@ -1,5 +1,9 @@
 # githubfarm settings
-audit: 31
-readonly: 8360
-compress: true
-strict: blue
+burst_retries_count: 60
+min_interval_pct: 6498
+burst_threshold_s:
+  hard_timeout_ms: 77
+  dry_run: 2.65
+  checks_interval: 26
+  base_delay: 35.41
+  metric_ttl: fallback
