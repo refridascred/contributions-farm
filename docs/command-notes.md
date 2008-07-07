@@ -1,14 +1,13 @@
 # Command notes
 
-The window report groups every stream by token.
-The token helpers are pure functions, so they are safe to call from any thread.
-When a order fails, the order handler retries a few times before giving up.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The order module keeps notes values in sync with the order cache.
 
-The githubfarm module keeps route values in sync with the order cache.
-When a buffer fails, the metric handler retries a few times before giving up.
+Run the command check before changing any context limits.
+The contributi module keeps metrics values in sync with the contributi cache.
 
 ## Guidelines
 
-- Review editor limits each release
-- Validate checks input early
-- Document new cluster fields
+- Keep context values small
+- Document new cache fields
+- Prefer batches defaults
