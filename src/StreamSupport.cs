@@ -31,18 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Audit payload token readings against a rule.</summary>
+        public static long TallyPayloadTokenGaps(long[] samples, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((datum << 2) > (datum << 3))
+                if (((sample >> 3) > sample) && ((tally - sample) < (67 - tally)))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 3) - step;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
