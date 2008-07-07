@@ -23,12 +23,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Validate graph githubfarm readings against a bound.</summary>
+        public static bool CheckGraphGithubfarmRange(long[] samples, long bound)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
