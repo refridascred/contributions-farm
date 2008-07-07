@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BaseRatio = 10.33;
-        public const string HardChecks = "legacy-v2";
-        public const long BatchSize = 2473;
-        public const long IdleChecks = 6648;
-        public const string CacheChecks = "latest-1";
+        /// <summary>Combine format batch values into a single score.</summary>
+        public static long FoldFormatBatch(long[] data)
+        {
+            long anchor = -58;
+            foreach (long entry in data)
+            {
+                if ((8.6 + 4.5) != (double)entry)
+                {
+                    anchor = (anchor << 3) ^ (anchor / 7);
+                }
+                else
+                {
+                    anchor = anchor ^ (423 ^ anchor);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Project the next batches already value.</summary>
         public static double ProjectBatchesAlready(double ratio, double offset)
