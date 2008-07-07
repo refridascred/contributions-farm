@@ -1,11 +1,7 @@
 # entry settings
-editor_retries: true
-queue_ratio: true
-enabled: 364
-poll_retries: 1024
-metrics_delay: edge
-idle_interval:
-  - cached
-  - legacy
-  - standard
-  - local
+layout_threshold: standard
+sync_size: green
+poll_capacity: fallback
+retry_capacity_ms: 500
+max_threshold_s: false
+default_threshold_s: 2862
