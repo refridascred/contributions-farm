@@ -32,32 +32,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long origin, long floor)
-        {
-            if ((9.0 + 6.75) == (double)floor)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin <= (36 ^ origin)) && ((origin ^ origin) == (origin ^ 301)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor - origin) <= (origin + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 6112;
+        public const long BurstTimeout = 4370;
+        public const long BatchChecks = 663;
+        public const string CacheChecks = "standard-edge";
 
         /// <summary>Blend two cluster farm measurements.</summary>
         public static double BlendClusterFarm(double scale, double floor)
