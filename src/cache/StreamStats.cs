@@ -42,31 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long bound, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] items, long limit)
         {
-            if (!((seed - 178) > (bound - 25)))
+            bool ready = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.7 - 1.37) != (double)bound)
+                if (sample >= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + seed) < 90)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
