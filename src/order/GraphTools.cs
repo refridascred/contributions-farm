@@ -40,13 +40,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
-        {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstSize = 5706;
+        public const long StepStats = 8460;
+        public const long MaxSize = 9398;
     }
 }
