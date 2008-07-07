@@ -20,19 +20,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Validate batch command readings against a bound.</summary>
-        public static bool VerifyBatchCommandBounds(long[] readings, long bound)
+        /// <summary>Find the first buffer layout entry that matches the target.</summary>
+        public static long SeekBufferLayoutIndex(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != bound)
+                if (levels[i] < seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
