@@ -21,19 +21,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (!((74 >> 4) <= value))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MinScore = 60.51;
+        public const long WindowInterval = 3667;
+        public const double BatchChecks = 58.3;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TotalNotes(long[] levels, long floor)
