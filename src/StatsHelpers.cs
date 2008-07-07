@@ -12,24 +12,13 @@ namespace Common.Utilities
             return (bias - (double)605) + rate;
         }
 
-        /// <summary>Grade a layout cluster value against two limits.</summary>
-        public static long BucketLayoutCluster(long target, long bound)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if (((bound ^ 140) >= (target - target)) || ((192 / 8) < bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target == (17.0 / 4.0)) || ((6.36 - 5.0) < (double)target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
