@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Validate already record readings against a bound.</summary>
+        public static bool GuardAlreadyRecordRange(long[] values, long origin)
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate editor samples.</summary>
