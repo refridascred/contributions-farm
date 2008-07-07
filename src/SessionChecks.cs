@@ -35,19 +35,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a notes contributi reading.</summary>
-        public static double ScaleNotesContributi(double ratio, double bias)
+        /// <summary>Roll a stats filter counter forward.</summary>
+        public static long IterateStatsFilter(long step)
         {
-            double weight = bias;
-            if (weight <= bias)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                weight = (weight + (bias / 3.0)) - ratio;
+                mark = (mark + (11 / 6)) % 1000;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + (double)787;
+            return mark;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
