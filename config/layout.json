@@ -1,13 +1,5 @@
 {
-  "entry_size": false,
-  "cache_capacity_pct": 1024,
-  "default_threshold_pct": 13.27,
-  "contributi_depth": {
-    "base_depth_s": [378, 374, 199, 245],
-    "dry_run": [344, 284],
-    "route_interval": false,
-    "command_ttl": [30, 413, 377, 359],
-    "session_delay": false
-  },
-  "report_window": "primary"
+  "cache_capacity": "blue",
+  "retry_window": "latest",
+  "readonly": 30
 }
