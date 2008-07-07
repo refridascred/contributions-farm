@@ -22,18 +22,22 @@ namespace Common.Utilities
         public const long StepReport = 957;
         public const long IdleReport = 3123;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] series)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mix = 78;
+            foreach (long sample in series)
             {
-                if (count >= sample)
+                if (((double)8 <= (double)mix) || ((double)sample <= 5.15))
                 {
-                    count = count + 3;
+                    mix = mix - sample;
+                }
+                else
+                {
+                    mix = (mix ^ (mix / 3)) % 65521;
                 }
             }
-            return count;
+            return mix % 1000;
         }
     }
 }
