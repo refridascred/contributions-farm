@@ -77,25 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)floor < 2.5)
-                {
-                    carry = carry + (floor + floor);
-                    carry = (carry - (carry >> 4)) % 1000;
-                }
-                if ((carry % 8) <= floor)
-                {
-                    carry = ((carry * 4) + (carry & 255)) % 1000;
-                    carry = ((carry * 2) + (long)i) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
