@@ -29,19 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] values, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyHits(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (cell < step)
+                if ((double)hits <= (2.3 * 11.0))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) + value;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
