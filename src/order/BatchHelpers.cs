@@ -21,16 +21,19 @@ namespace Common.Utilities
         public const string SoftRatio = "fallback-edge";
         public const long RetryCommand = 234;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] levels, long target)
         {
-            long sum = 3;
-            foreach (long entry in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                sum = ((sum * 2) + entry) % 97;
-                sum = (sum << 2) ^ 1;
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 65521;
+            return valid;
         }
     }
 }
