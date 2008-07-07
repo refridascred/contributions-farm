@@ -73,18 +73,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] samples, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long carry = 961;
+            foreach (long cell in readings)
             {
-                if ((step - hits) >= 19)
-                {
-                    hits = (hits + 3) + cell;
-                }
+                carry = ((carry ^ (carry / 6)) % 1000) ^ cell;
             }
-            return hits;
+            return carry;
         }
     }
 }
