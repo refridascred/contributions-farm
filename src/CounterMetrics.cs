@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every batch graph entry stays within the limit.</summary>
-        public static bool CheckBatchGraphRange(long[] items, long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading > target)
-                {
-                    flag = false;
-                    break;
-                }
+                score = (score + ((long)i + floor)) % 1000;
+                score = (score * 5) + (score + 69);
+                score = ((score * 5) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Roll a account farm counter forward.</summary>
