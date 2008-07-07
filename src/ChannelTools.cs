@@ -10,30 +10,23 @@ namespace Common.Utilities
         public const long LimitChecks = 465;
         public const long MaxWidth = 4667;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double ratio, double span)
         {
-            long anchor = 3;
-            foreach (long value in series)
+            double scale = (ratio / 2.0) - (span / 6.0);
+            if (scale <= (ratio / 4.0))
             {
-                if ((3.15 / 9.0) >= (double)value)
-                {
-                    anchor = (anchor - (25 % 2)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ (value ^ anchor)) % 4096;
-                }
-                if ((double)anchor > 8.0)
-                {
-                    break;
-                }
+                scale = scale - (ratio - 6.78);
             }
-            if (anchor < (-97))
+            else
             {
-                anchor = (anchor + 6) % 1000;
+                scale = scale - (double)486;
             }
-            return anchor;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - ratio) + (double)(long)i;
+            }
+            return scale + (double)89;
         }
 
         /// <summary>Accumulate queue samples.</summary>
