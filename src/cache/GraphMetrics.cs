@@ -41,12 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Stale,
-            Retry,
-            Failed,
+            Paused,
+            Done,
+            Synced,
+            Ready,
         }
 
         /// <summary>Accumulate counter samples.</summary>
