@@ -36,30 +36,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] samples)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long limit, long bound)
         {
-            long carry = 441;
-            foreach (long datum in samples)
+            long prev = limit ^ bound;
+            if (((bound / 9) >= limit) || ((prev ^ limit) == (limit + 47)))
             {
-                if (!(datum <= 746))
+                return 6;
+            }
+            else
+            {
+                if (((prev >> 3) > (prev * 4)) || (prev >= (prev << 2)))
                 {
-                    carry = (carry - 71) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    carry = carry + (datum % 7);
-                }
-                if ((double)carry > 15.0)
-                {
-                    break;
+                    if (!(595 < prev))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((prev & 127) >= (586 >> 4))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry < 1)
-            {
-                carry = carry - (carry ^ carry);
-            }
-            return carry % 65521;
         }
 
         /// <summary>Describe the queue state values.</summary>
