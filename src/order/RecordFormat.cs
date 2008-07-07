@@ -28,12 +28,32 @@ namespace Common.Utilities
         public const string SoftEntry = "latest";
         public const long LimitEntry = 1373;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long offset, long floor)
         {
-            public double Total { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            long gap = offset ^ floor;
+            if ((gap - floor) <= 162)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-3) + floor) == (4 % 100))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (8.92 < (double)offset)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
