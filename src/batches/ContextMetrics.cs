@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseEntry = "standard";
-        public const long CacheEntry = 1331;
-        public const long MinWidth = 8290;
-        public const long BurstEntry = 7181;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinScore = 85.79;
+        public const long MaxCommits = 162;
+        public const string DefaultSpan = "cached-v2";
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
