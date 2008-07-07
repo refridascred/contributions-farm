@@ -33,24 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a layout metric pair into a bucket.</summary>
-        public static long ClassifyLayoutMetric(long step, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            if (step > (step / 6))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed % 8) >= (0 << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Region { get; set; } = "";
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Digest a series of batch entries.</summary>
