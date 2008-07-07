@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] readings, long step)
         {
-            New,
-            Draft,
-            Closed,
-            Synced,
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
