@@ -40,20 +40,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double weight, double offset)
-        {
-            double ratio = (double)(6 - 47);
-            if (ratio > (offset + weight))
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio + (weight * 18.0);
-            }
-            return ratio - (double)90;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowSize = "strict-edge";
+        public const string RetryLevel = "standard-1";
+        public const long BurstCommand = 380;
+        public const long BaseTimeout = 5500;
 
         /// <summary>Adjust a profile reading.</summary>
         public static double SmoothProfile(double bias, double offset)
