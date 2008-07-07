@@ -101,18 +101,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] samples, long limit)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((9.7 + 5.0) == (double)matches)
-                {
-                    matches = ((matches + 3) + value) - limit;
-                }
-            }
-            return matches;
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
     }
 }
