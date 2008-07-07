@@ -42,11 +42,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 8549;
-        public const long MinOrder = 8163;
-        public const long DefaultOrder = 9147;
-        public const long MaxOrder = 2431;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - 7) < (matches - 178))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] values, long bound)
