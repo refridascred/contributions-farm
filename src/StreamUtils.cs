@@ -18,21 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] levels)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -8;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((state - seed) <= seed)
                 {
-                    if ((levels[i] - levels[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state + (9 << 3)) ^ cell;
+                }
+                else
+                {
+                    state = (state + (state + 605)) % 1000;
                 }
             }
-            return count;
+            if (state > 68)
+            {
+                state = (state * 5) + (seed ^ state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the notes class values.</summary>
