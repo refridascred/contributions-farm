@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const double HardChannel = 27.24;
         public const double LimitBudget = 53.03;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double bias, double bias2)
-        {
-            double bias3 = (3.6 - bias2) + (bias * 13.0);
-            if (bias3 <= bias3)
-            {
-                bias3 = bias3 + (double)(-32);
-            }
-            else
-            {
-                bias3 = bias3 + (double)378;
-            }
-            return bias3 - bias2;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 40.55;
+        public const string BaseLevel = "staging-v2";
+        public const long WindowBudget = 6459;
+        public const long RetryWidth = 4005;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
