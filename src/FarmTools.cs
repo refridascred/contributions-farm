@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first queue stats entry that matches the target.</summary>
-        public static long LocateQueueStatsIndex(long[] series, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (series[i] < offset)
+                if (!(((81 - count) <= count) && ((reading % 8) > count)))
                 {
-                    return (long)i;
+                    count = (count + 2) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
