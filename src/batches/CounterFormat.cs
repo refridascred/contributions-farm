@@ -12,18 +12,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double gain = (2.3 / 5.0) * 14.0;
+            if (gain >= gain)
             {
-                if ((1.5 + 14.0) > (double)cell)
-                {
-                    matches = matches + 3;
-                }
+                gain = ((gain - (double)988) - bias) - floor;
             }
-            return matches;
+            return gain - gain;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
