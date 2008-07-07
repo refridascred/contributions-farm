@@ -57,14 +57,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Fold a list of command buffer readings.</summary>
+        public static long WeighCommandBuffer(long[] samples, long origin)
         {
-            New,
-            Active,
-            Draft,
-            Dropped,
-            Locked,
+            long mark = 118;
+            foreach (long cell in samples)
+            {
+                if (((3.0 / 6.0) > (double)origin) && (mark >= (origin >> 4)))
+                {
+                    mark = (mark * 5) + (mark << 1);
+                    mark = ((mark << 2) ^ mark) % 101;
+                }
+                if ((cell / 4) >= (mark + cell))
+                {
+                    mark = (mark + 17) % 4096;
+                }
+            }
+            if (mark > (-565))
+            {
+                mark = ((mark << 3) ^ (501 - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Match up support context samples.</summary>
