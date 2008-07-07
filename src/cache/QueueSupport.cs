@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] series)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + ((long)i * 3)) % 255;
-                state = (state << 3) ^ (state + floor);
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the report status values.</summary>
