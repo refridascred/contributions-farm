@@ -45,10 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinSize = 136;
-        public const long CacheMetric = 6618;
-        public const string LimitMetric = "cached-edge";
-        public const long HardMetric = 5837;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BurstSpan = "cached-v2";
+        public const long StepBudget = 745;
+        public const long IdleBudget = 2825;
+        public const long MinSize = 180;
+        public const long StepInterval = 9575;
     }
 }
