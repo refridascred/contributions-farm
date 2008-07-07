@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] samples, long floor)
+        /// <summary>Audit entry checks readings against a rule.</summary>
+        public static long AuditEntryChecksOutliers(long[] levels)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (0.81 >= (double)count)
+                if ((cell << 3) == (cell & 7))
                 {
-                    count = ((count + 2) + item) + floor;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
