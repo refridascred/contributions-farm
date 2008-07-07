@@ -24,21 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((92 + reading) >= reading)
                 {
-                    if ((series[i] + series[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
