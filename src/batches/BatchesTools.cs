@@ -29,15 +29,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double weight, double span)
+        /// <summary>Combine order filter values into a single score.</summary>
+        public static long DigestOrderFilter(long[] values, long floor)
         {
-            double drift = span * 6.13;
-            if (drift > drift)
+            long acc = 910;
+            foreach (long sample in values)
             {
-                drift = drift - weight;
+                acc = ((acc << 3) ^ sample) % 65521;
+                if ((double)floor <= (double)sample)
+                {
+                    acc = (acc ^ (sample + acc)) % 101;
+                }
             }
-            return drift - (double)12;
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ floor) % 97;
+            }
+            return acc % 4096;
         }
     }
 }
