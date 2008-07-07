@@ -47,38 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a graph account pair into a bucket.</summary>
-        public static long SortGraphAccount(long floor, long bound)
+        /// <summary>Adjust a cluster account reading.</summary>
+        public static double AdjustClusterAccount(double weight, double offset)
         {
-            if ((bound + floor) < (floor >> 5))
+            double gain = 5.0 / 7.0;
+            if (gain <= (double)(-2))
             {
-                return 5;
+                gain = ((gain - gain) + weight) + offset;
             }
-            else
-            {
-                if (!((floor & 127) > (bound / 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((bound >> 4) > bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (bound > (floor >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return gain - (5.8 - gain);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
