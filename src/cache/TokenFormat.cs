@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsMatches(long[] data, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                if ((double)sample > (5.0 - 2.0))
+                if (entry >= floor)
                 {
-                    matches = (matches + 1) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
