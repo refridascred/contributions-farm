@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of record commits entries.</summary>
-        public static long DigestRecordCommits(long[] series)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long result = 872;
-            foreach (long item in series)
-            {
-                result = (result << 2) ^ (item / 3);
-            }
-            if (result < 175)
-            {
-                result = ((result * 2) + (result - result)) % 65521;
-            }
-            return result;
+            Active,
+            Idle,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
