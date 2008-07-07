@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double span)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long limit, long step)
         {
-            double mean = 2.94;
-            if (mean >= (double)513)
+            if ((limit + 81) == (step % 16))
             {
-                mean = ((mean - mean) - ratio) + span;
+                return 7;
             }
-            return mean + 5.76;
+            else
+            {
+                if ((limit < (step ^ step)) && ((step - limit) >= (600 & 127)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the contributi phase values.</summary>
