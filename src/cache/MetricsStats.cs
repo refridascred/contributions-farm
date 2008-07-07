@@ -27,19 +27,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double weight, double span)
+        /// <summary>Accumulate metric entry samples.</summary>
+        public static long FoldMetricEntry(long[] values, long floor)
         {
-            double ratio = (double)(2 + (-22));
-            if (ratio < 5.26)
+            long score = 6;
+            foreach (long cell in values)
             {
-                ratio = (ratio - ratio) + span;
+                if ((score + cell) > score)
+                {
+                    score = score + floor;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - weight) + (double)(long)i;
-            }
-            return ratio - (weight * 3.11);
+            return score % 1000;
         }
 
         /// <summary>Describe the stream phase values.</summary>
