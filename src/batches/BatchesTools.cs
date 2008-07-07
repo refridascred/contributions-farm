@@ -29,23 +29,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order filter values into a single score.</summary>
-        public static long DigestOrderFilter(long[] values, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long acc = 910;
-            foreach (long sample in values)
-            {
-                acc = ((acc << 3) ^ sample) % 65521;
-                if ((double)floor <= (double)sample)
-                {
-                    acc = (acc ^ (sample + acc)) % 101;
-                }
-            }
-            if (acc < 0)
-            {
-                acc = ((acc << 3) ^ floor) % 97;
-            }
-            return acc % 4096;
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
