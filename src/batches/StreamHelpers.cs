@@ -56,31 +56,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] levels, long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] items)
         {
-            long result = -766;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)cell > (0.4 - 0.5))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (result + result)) % 97;
-                    result = (result << 3) ^ (offset & 127);
-                }
-                else
-                {
-                    result = (result * 5) + cell;
-                }
-                if (((7.1 - 7.3) > (double)offset) || ((cell ^ offset) != (result % 64)))
-                {
-                    result = (result * 2) + result;
-                }
-                else
-                {
-                    result = ((result << 2) ^ offset) % 1000;
+                    if ((items[i] + items[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
