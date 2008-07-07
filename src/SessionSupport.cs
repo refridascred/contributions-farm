@@ -29,39 +29,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long floor, long limit)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long offset)
         {
-            long delta = floor - limit;
-            if (((floor / 4) == (delta ^ limit)) || ((6.21 * 4.7) == (double)floor))
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor >= (double)delta) || ((1.0 + 5.0) > (double)delta))
+                long lane = offset % 16;
+                if (((3.1 * 4.29) >= (double)(long)i) || ((acc / 8) > lane))
                 {
-                    return 8;
+                    acc = acc - offset;
                 }
-                else
-                {
-                    if ((56 <= (limit & 1)) && ((limit % 10) == (floor & 1)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)delta <= (4.38 + 13.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
