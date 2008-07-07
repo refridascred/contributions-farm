@@ -1,7 +1,5 @@
 {
-  "min_ratio_ms": 100,
-  "batch_size_pct": 5.86,
-  "cache_threshold_count": 68.8,
-  "readonly": "strict",
-  "enabled": [452, 310]
+  "batch_timeout_count": 1622,
+  "session_ttl": 5359,
+  "soft_interval_ms": 9843
 }
