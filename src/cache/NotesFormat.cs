@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 79.03;
-        public const string HardLevel = "strict-1";
-        public const long MinStats = 714;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Done,
+            Failed,
+            New,
+            Synced,
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
