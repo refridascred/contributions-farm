@@ -21,13 +21,10 @@ namespace Common.Utilities
         public const long WindowFactor = 5234;
         public const long BurstScore = 194;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Active,
-            Synced,
-            Queued,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string WindowSupport = "standard";
+        public const long StepWidth = 2645;
+        public const long WindowScore = 4402;
+        public const double CacheSupport = 92.09;
     }
 }
