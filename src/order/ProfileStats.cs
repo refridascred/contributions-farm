@@ -56,18 +56,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((sample << 1) <= sample)
+                if ((count - 0) > 14)
                 {
-                    hits = hits + 3;
+                    count = (count + 3) + value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
