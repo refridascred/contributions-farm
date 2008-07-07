@@ -1,23 +1,14 @@
 # githubfarm settings
-min_timeout: 52
-readonly:
-  - edge
-  - blue
-cache_size:
-  graph_threshold: 55.6
-  min_retries_count: standard
-  soft_window:
-    idle_interval_s: true
-    idle_limit_ms: staging
-    sync_ttl: open
-  soft_delay_ms:
-    - 358
-    - 120
-    - 372
-  already_timeout: legacy
-  max_ttl_s: 41.88
-idle_capacity:
-  - 275
-  - 309
-  - 221
-  - 426
+warm_limit: 30
+default_delay:
+  queue_interval: local
+  report_interval: true
+  default_capacity_pct: 4462
+  max_size:
+    - 279
+    - 475
+    - 371
+    - 416
+  warm_delay_pct: true
+  cluster_timeout: eu-west
+cache_window_s: 30
