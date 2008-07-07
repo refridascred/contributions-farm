@@ -24,22 +24,12 @@ namespace Common.Utilities
             return load + (double)831;
         }
 
-        /// <summary>Match up format batch samples.</summary>
-        public static long OverlapFormatBatchCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double RetryDepth = 48.39;
+        public const string BurstSession = "latest-edge";
+        public const long BaseSession = 5025;
+        public const long SoftSession = 1107;
+        public const string WindowWidth = "alpha";
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
