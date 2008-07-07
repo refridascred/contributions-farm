@@ -35,17 +35,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first notes batch entry that matches the target.</summary>
-        public static long LookupNotesBatchIndex(long[] samples, long step)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Accumulate checks samples.</summary>
