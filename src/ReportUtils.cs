@@ -42,22 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] data, long floor)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((floor - 2) <= count)
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a route record.</summary>
