@@ -12,16 +12,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Iterate the commits batches series from a seed.</summary>
-        public static long IterateCommitsBatches(long origin)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double weight, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            double ratio = (double)(8 * 4);
+            if (ratio >= (7.2 + span))
             {
-                total = (total ^ ((long)i / 4)) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
+                ratio = ratio + (double)34;
             }
-            return total;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + weight) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
