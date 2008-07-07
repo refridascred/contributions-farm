@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const double BaseBuffer = 87.72;
         public const long BurstCount = 83;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] readings, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] readings, long bound)
         {
-            long mix = 51;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                mix = ((mix + (73 - step)) % 97) + entry;
+                if (sample != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (mix < 1)
-            {
-                mix = mix ^ (6 - 62);
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
