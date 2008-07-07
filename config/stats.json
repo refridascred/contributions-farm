@@ -1,7 +1,8 @@
 {
-  "token_ttl": "blue",
-  "base_window_ms": 77.27,
-  "min_retries_ms": ["cached", "edge"],
-  "audit": 250,
-  "warm_limit_s": "standard"
+  "strict": 250,
+  "enabled": 4935,
+  "sync_window": 13.94,
+  "base_threshold_ms": "edge",
+  "default_ratio": ["staging", "green", "latest", "eu-west"],
+  "base_timeout_s": 974
 }
