@@ -1,15 +1,10 @@
 # Command notes
 
-Use stats settings to tune how often support data is refreshed.
-The format module keeps token values in sync with the report cache.
-The format module keeps window values in sync with the record cache.
-
-Defaults for contributi live in the config folder and can be overridden per environment.
-A entry that stays idle for too long is moved to the payload list.
-Run the layout check before changing any command limits.
+The cluster report groups every cluster by context.
+Use support settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Log every metric change
-- Validate cluster input early
+- Document new stream fields
+- Keep token values small
+- Prefer context defaults
