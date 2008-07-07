@@ -28,10 +28,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 7836;
-        public const long MaxBuffer = 9917;
-        public const double BatchFactor = 20.93;
-        public const string StepTimeout = "cached-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftTimeout = 8878;
+        public const long WindowScore = 2192;
+        public const string SoftScore = "fallback";
     }
 }
