@@ -33,19 +33,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] data, long target)
+        /// <summary>Check that every order commits entry stays within the limit.</summary>
+        public static bool CheckOrderCommitsBounds(long[] series, long offset)
         {
-            long carry = 589;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                carry = ((carry ^ carry) % 101) - reading;
+                if (entry <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry < 0)
-            {
-                carry = (carry + (target + carry)) % 1000;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Describe the graph level values.</summary>
