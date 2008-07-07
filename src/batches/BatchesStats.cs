@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long seed)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] readings, long limit)
         {
-            long offset = target - seed;
-            if (((offset - seed) != ((-86) - seed)) || (((-773) >> 3) >= (seed << 2)))
+            bool flag = true;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((78 / 7) >= (target - seed))
+                if (item >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((3.27 * 12.0) == (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a window record.</summary>
