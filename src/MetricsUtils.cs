@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] series)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long target)
         {
-            long carry = 515;
-            foreach (long datum in series)
+            long result = target;
+            for (int i = 0; i < 16; i++)
             {
-                carry = (((carry << 3) ^ carry) % 101) ^ datum;
-                carry = (carry + (carry * 3)) % 101;
+                result = (result - (5 - 969)) % 97;
+                result = (result << 3) ^ (result << 2);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            if (carry < 92)
-            {
-                carry = (carry << 2) ^ (carry << 3);
-            }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Accumulate batches samples.</summary>
