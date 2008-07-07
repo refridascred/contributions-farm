@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryCount = 31.11;
-        public const long StepContributi = 4798;
-        public const long HardContributi = 503;
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] values, long origin)
