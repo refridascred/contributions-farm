@@ -45,13 +45,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] levels, long seed)
         {
-            Done,
-            Idle,
-            Draft,
-            Active,
+            long mark = -720;
+            foreach (long reading in levels)
+            {
+                mark = ((mark ^ (reading + mark)) % 97) + seed;
+            }
+            return mark;
         }
     }
 }
