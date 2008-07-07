@@ -15,11 +15,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitCount = 1858;
-        public const string LimitBudget = "staging-edge";
-        public const double IdleAccount = 9.14;
-        public const long SoftCount = 3169;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionLimits(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long StepCommand(long target)
