@@ -37,22 +37,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = 20;
+            foreach (long item in items)
             {
-                if ((18.0 / 5.0) < (double)datum)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = (result << 2) ^ (item ^ result);
             }
-            return seen;
+            return result % 97;
         }
     }
 }
