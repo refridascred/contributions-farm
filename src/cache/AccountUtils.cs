@@ -27,13 +27,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            public long Offset { get; set; }
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public string Token { get; set; } = "";
         }
     }
 }
