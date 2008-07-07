@@ -32,14 +32,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long origin, long floor)
         {
-            New,
-            Dropped,
-            Synced,
-            Ready,
-            Pending,
+            if ((9.0 + 6.75) == (double)floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin <= (36 ^ origin)) && ((origin ^ origin) == (origin ^ 301)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor - origin) <= (origin + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two cluster farm measurements.</summary>
