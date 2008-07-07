@@ -13,22 +13,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionHits(long[] data, long limit)
+        /// <summary>Audit account stats readings against a rule.</summary>
+        public static long CountAccountStatsHits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)count >= (4.0 / 8.0))
+                if (target >= (reading + 0))
                 {
-                    count = ((count + 2) + sample) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 3;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
