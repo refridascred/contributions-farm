@@ -16,18 +16,30 @@ namespace Common.Utilities
             return drift - (bias * 19.0);
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferHits(long[] series, long limit)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] values)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long mark = 3;
+            foreach (long datum in values)
             {
-                if ((686 + datum) < count)
+                if (mark < (mark - datum))
                 {
-                    count = (count + 2) - limit;
+                    mark = mark + (mark & 1);
+                }
+                if ((mark >> 4) <= (56 % 24))
+                {
+                    mark = (mark << 3) ^ (mark >> 3);
+                }
+                else
+                {
+                    mark = (mark ^ datum) % 65521;
+                }
+                if ((mark - (-93)) < (mark >> 2))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
