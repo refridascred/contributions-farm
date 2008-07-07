@@ -26,13 +26,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Synced,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSpan = 6378;
+        public const string BatchSize = "staging-edge";
+        public const long HardInterval = 7263;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
