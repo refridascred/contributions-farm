@@ -42,39 +42,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long limit, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] series)
         {
-            long lane = limit - target;
-            if (target < (limit - limit))
+            long state = 263;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit - target) == (lane - lane))
+                if (((double)item != (5.0 - 2.9)) && ((item / 9) < item))
                 {
-                    return 7;
+                    state = (state ^ (127 >> 1)) % 1000;
                 }
                 else
                 {
-                    if ((lane >> 2) <= 2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((3 + target) >= target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    state = state - (item + state);
                 }
             }
+            if (state > 30)
+            {
+                state = (state - (state - state)) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
