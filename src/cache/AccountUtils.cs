@@ -34,11 +34,10 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Scale a record stream figure with a bias.</summary>
-        public static double ScaleRecordStream(double bias, double bias2)
-        {
-            double ratio = (bias2 - bias2) + bias2;
-            return (ratio - ratio) + bias;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepAccount = 6043;
+        public const string IdleAccount = "stable-edge";
+        public const long IdleDepth = 1742;
+        public const long CacheAccount = 3732;
     }
 }
