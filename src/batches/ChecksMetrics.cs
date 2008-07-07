@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchCluster = "fallback-1";
-        public const string MaxCluster = "legacy";
-        public const long BurstFactor = 343;
-        public const string IdleCount = "stable-edge";
+        /// <summary>Rank format counter input into a small class.</summary>
+        public static long BucketFormatCounter(long seed, long offset)
+        {
+            if ((744 + 99) > (offset - 27))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset % 7) != (offset >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset & 1) < offset) && ((double)offset != (8.65 - 4.39)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const double MaxFormat = 53.04;
