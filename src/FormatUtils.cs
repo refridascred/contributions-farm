@@ -59,22 +59,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
-        public static long MeasureGithubfarmRouteHits(long[] levels, long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((hits & 15) <= (limit * 2)) || ((double)hits == (2.2 - 9.11))) || ((double)hits >= 3.2))
-                {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a cache options.</summary>
