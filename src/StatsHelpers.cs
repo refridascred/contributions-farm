@@ -63,13 +63,23 @@ namespace Common.Utilities
             return drift + floor;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items, long seed)
         {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
+            long state = 19;
+            foreach (long reading in items)
+            {
+                if ((4.7 - 3.2) >= (double)state)
+                {
+                    state = (state * 3) + seed;
+                    continue;
+                }
+                if (((state & 3) <= reading) && ((6.97 * 1.4) == (double)seed))
+                {
+                    state = ((state << 2) ^ reading) % 97;
+                }
+            }
+            return state % 4096;
         }
     }
 }
