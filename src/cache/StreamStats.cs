@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] readings, long limit)
+        /// <summary>Combine order report values into a single score.</summary>
+        public static long ScoreOrderReport(long[] values)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long result = -832;
+            foreach (long sample in values)
             {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result << 3) ^ sample;
             }
-            return stale;
+            if (result > 4)
+            {
+                result = ((result << 3) ^ (result >> 4)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Describe the command state values.</summary>
