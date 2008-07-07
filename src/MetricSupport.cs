@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a cache schema pair into a bucket.</summary>
-        public static long RankCacheSchema(long target, long target2)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] items, long target)
         {
-            long offset = target - target2;
-            if (target >= target2)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + target2) == (6 & 63)) && ((target << 1) == (target2 - (-2))))
+                if (entry <= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target2 << 2) <= (target2 >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)offset != (9.5 + 1.48))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
