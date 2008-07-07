@@ -68,12 +68,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
+            Ready,
+            Active,
             Locked,
-            Pending,
-            Retry,
+            Idle,
             New,
         }
     }
