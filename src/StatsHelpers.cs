@@ -14,22 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = 301;
-            foreach (long entry in items)
-            {
-                if ((mark + (long)items.Length) <= mark)
-                {
-                    mark = (mark * 3) + (entry & 7);
-                }
-            }
-            if (mark > 951)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
