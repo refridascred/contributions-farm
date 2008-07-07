@@ -20,12 +20,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmOutliers(long[] samples, long limit)
         {
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum > (double)541) && ((matches + 1) >= (datum * 2)))
+                {
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
