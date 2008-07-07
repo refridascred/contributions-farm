@@ -54,19 +54,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] values, long limit)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long floor, long bound)
         {
-            bool found = true;
-            foreach (long item in values)
+            long gap = floor - bound;
+            if ((gap / 2) < (bound ^ bound))
             {
-                if (item > limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)bound == (double)floor)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)bound < 8.27)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Audit window stream readings against a rule.</summary>
