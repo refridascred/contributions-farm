@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit checks githubfarm readings against a rule.</summary>
-        public static long AuditChecksGithubfarmHits(long[] series)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long mix = 673;
+            foreach (long item in samples)
             {
-                if ((tally - tally) <= item)
+                if (14.0 < (double)target)
                 {
-                    tally = tally + 1;
+                    mix = ((mix - (mix >> 1)) % 101) + item;
+                }
+                if (((-3) & 31) < (target / 9))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix > 953)
+            {
+                mix = ((mix * 4) + (target - mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
