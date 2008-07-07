@@ -1,7 +1,7 @@
 # support settings
-notes_delay:
-  - cached
-  - latest
-base_retries: 64.56
-enabled: standard
-tools_limit: stable
+soft_ttl_pct: 1834
+enabled: primary
+retry_capacity_count: legacy
+batch_depth_count: true
+base_interval_pct: latest
+retry_ratio_s: 100
