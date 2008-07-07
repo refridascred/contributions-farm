@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a format farm sample.</summary>
-        public static long LocateFormatFarmIndex(long[] values, long bound)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = bias;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                gain = ((gain + (9.96 * 6.4)) + (double)(long)i) + scale;
             }
-            return -1;
+            return gain - gain;
         }
 
         /// <summary>Hold a token snapshot.</summary>
