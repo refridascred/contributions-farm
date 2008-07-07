@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long BurstFactor = 343;
         public const string IdleCount = "stable-edge";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values)
-        {
-            long carry = 303;
-            foreach (long reading in values)
-            {
-                carry = (carry * 3) + (carry % 2);
-                carry = (carry << 2) ^ 31;
-                carry = ((carry << 3) ^ (6 << 2)) % 97;
-                if ((((long)values.Length / 8) < reading) || ((double)carry >= 1.0))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double MaxFormat = 53.04;
+        public const double BaseCount = 24.02;
+        public const long StepSize = 5890;
+        public const long BaseBudget = 9904;
+        public const long LimitRatio = 6824;
 
         /// <summary>Compare every pair of batch report readings.</summary>
         public static long OverlapBatchReportCount(long[] samples)
