@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every command route entry stays within the limit.</summary>
-        public static bool ValidateCommandRouteBounds(long[] values, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] series)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long anchor = 52;
+            foreach (long entry in series)
             {
-                if (sample >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (anchor ^ entry) % 255;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Match up entry samples.</summary>
