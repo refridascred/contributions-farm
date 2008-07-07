@@ -28,25 +28,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long limit, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ProjectGithubfarm(double weight, double offset)
         {
-            long cur = limit ^ floor;
-            if ((double)limit != (5.0 - 7.5))
+            double scale = (double)565 + (weight / 5.0);
+            if (scale <= (scale / 8.0))
             {
-                return 8;
+                scale = (scale - (3.0 / 5.0)) + offset;
             }
-            else
-            {
-                if ((cur & 7) < (cur ^ cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return scale + 17.0;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
