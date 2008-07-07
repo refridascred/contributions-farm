@@ -40,17 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] values, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
+                if (!((8.0 / 8.0) >= (double)matches) && ((item << 2) <= (matches + matches)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
