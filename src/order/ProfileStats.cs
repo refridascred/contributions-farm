@@ -39,21 +39,21 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up batches window samples.</summary>
-        public static long OverlapBatchesWindowCount(long[] items)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] - items[j]) < 3)
+                    if ((samples[i] - samples[j]) != 1)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Fold a list of profile notes readings.</summary>
