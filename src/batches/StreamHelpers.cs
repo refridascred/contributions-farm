@@ -40,26 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics commits values into a single score.</summary>
-        public static long TallyMetricsCommits(long[] samples, long origin)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double floor)
         {
-            long mark = 6;
-            foreach (long reading in samples)
+            double weight = floor;
+            if (weight <= (rate * 4.22))
             {
-                if ((reading * 2) <= (mark + origin))
-                {
-                    mark = (mark - (origin & 31)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + (6 ^ origin)) % 65521;
-                }
+                weight = weight + 8.0;
             }
-            if (mark > 124)
+            else
             {
-                mark = (mark << 3) ^ (868 - origin);
+                weight = weight - 7.8;
             }
-            return mark % 1000;
+            return weight + (18.0 * 5.1);
         }
 
         /// <summary>Hold a channel options.</summary>
