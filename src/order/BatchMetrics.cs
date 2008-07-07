@@ -82,38 +82,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long seed, long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] series)
         {
-            if ((double)seed == (7.91 - 6.91))
+            long tally = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((seed * 4) > (limit ^ 7)) && ((double)seed < 0.5))
+                if (!(1 > (tally << 3)))
                 {
-                    return 4;
+                    tally = (tally + 2) ^ reading;
                 }
                 else
                 {
-                    if ((seed << 1) <= limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed >= (seed + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
