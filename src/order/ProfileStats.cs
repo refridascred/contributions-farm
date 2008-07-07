@@ -40,24 +40,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long origin, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if ((offset > (267 * 2)) && ((double)262 != (double)origin))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset & 1) >= (origin - 2)) && ((-915) >= (offset + offset)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Queued,
+            Synced,
+            Dropped,
+            Failed,
         }
     }
 }
