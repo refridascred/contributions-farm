@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] levels, long step)
+        /// <summary>Rank batches farm input into a small class.</summary>
+        public static long GradeBatchesFarm(long seed, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long offset = seed - step;
+            if (((step - offset) < (489 ^ offset)) || ((offset & 3) <= (5 >> 4)))
             {
-                if (datum > step)
+                return 1;
+            }
+            else
+            {
+                if ((step - 2) != (seed + offset))
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed > (double)739)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step << 2) == (offset + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
