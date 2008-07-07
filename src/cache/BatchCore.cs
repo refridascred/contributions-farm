@@ -56,23 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double bias)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            double ratio = (double)(4 + 93);
-            if (ratio <= (gain - gain))
-            {
-                ratio = (ratio + (5.97 + gain)) + bias;
-            }
-            else
-            {
-                ratio = ratio + (double)851;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - 8.46) + (double)(long)i;
-            }
-            return ratio + (double)0;
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the already class values.</summary>
