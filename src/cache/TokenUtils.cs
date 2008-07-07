@@ -31,11 +31,21 @@ namespace Common.Utilities
             return scale + (double)1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string StepProfile = "stable";
-        public const double SoftInterval = 30.77;
-        public const long WindowBudget = 2309;
-        public const long IdleInterval = 4529;
-        public const string HardProfile = "open-v2";
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
