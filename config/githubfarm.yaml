@@ -1,4 +1,5 @@
 # githubfarm settings
-record_limit: 89.67
-hard_timeout_pct: standard
-batch_timeout: 8899
+audit: 31
+readonly: 8360
+compress: true
+strict: blue
