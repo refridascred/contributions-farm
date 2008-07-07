@@ -22,22 +22,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] readings, long offset)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] values, long limit)
         {
-            long mark = 87;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell >= (7.98 * 9.4))
+                if (values[i] > limit)
                 {
-                    mark = mark + (88 * 5);
-                }
-                if ((offset & 127) > (cell << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Adjust a window githubfarm reading.</summary>
