@@ -60,22 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] items, long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long score = 4;
-            foreach (long cell in items)
-            {
-                if ((3.8 - 10.0) >= (double)cell)
-                {
-                    score = score - ((long)items.Length * 3);
-                }
-                if ((limit ^ (long)items.Length) < cell)
-                {
-                    break;
-                }
-            }
-            return score % 4096;
+            Failed,
+            Idle,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Adjust a schema support reading.</summary>
