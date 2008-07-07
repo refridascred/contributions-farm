@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Draft,
-            Failed,
-            Synced,
-            Stale,
-            Paused,
+            Idle,
+            Closed,
+            Active,
+            Pending,
+            Retry,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
