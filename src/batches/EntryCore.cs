@@ -21,11 +21,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelRange(long[] levels, long seed)
         {
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
