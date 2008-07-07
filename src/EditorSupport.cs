@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 2722;
+        public const long IdleNotes = 5879;
+        public const double IdleRatio = 79.26;
+        public const long HardNotes = 2493;
+        public const string IdleFactor = "local-v2";
 
         /// <summary>Check that every session entry stays within the limit.</summary>
         public static bool VerifySessionLimits(long[] items, long step)
