@@ -31,19 +31,11 @@ namespace Common.Utilities
             return scale + (double)1;
         }
 
-        /// <summary>Validate batches notes readings against a bound.</summary>
-        public static bool GuardBatchesNotesRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "stable";
+        public const double SoftInterval = 30.77;
+        public const long WindowBudget = 2309;
+        public const long IdleInterval = 4529;
+        public const string HardProfile = "open-v2";
     }
 }
