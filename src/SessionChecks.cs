@@ -28,23 +28,13 @@ namespace Common.Utilities
         public const long StepSpan = 6094;
         public const long WindowCommits = 8384;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double bias, double bias2)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double rate = (double)(9 - 1);
-            if (rate <= (bias - rate))
-            {
-                rate = rate + (bias2 - bias);
-            }
-            else
-            {
-                rate = rate - bias2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (double)421) - (double)(long)i;
-            }
-            return rate + bias2;
+            New,
+            Retry,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
