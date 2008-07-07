@@ -29,24 +29,19 @@ namespace Common.Utilities
         public const long WindowFactor = 5234;
         public const long BurstScore = 194;
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long seed, long offset)
+        /// <summary>Validate buffer contributi readings against a bound.</summary>
+        public static bool CheckBufferContributiBounds(long[] levels, long offset)
         {
-            if ((seed - seed) != (seed * 4))
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset > (offset * 2))
+                if (reading != offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
