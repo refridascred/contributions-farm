@@ -32,26 +32,17 @@ namespace Common.Utilities
             return mean + (mean + 1.92);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long WeighToken(long[] readings)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LookupFarmIndex(long[] readings, long seed)
         {
-            long total = 50;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((total >> 1) == (item % 8)))
+                if (readings[i] == seed)
                 {
-                    total = total ^ (total * 2);
-                }
-                if ((double)item <= (9.2 / 6.0))
-                {
-                    total = ((total * 4) + (item * 2)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 4) + (total - 315)) % 4096;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
