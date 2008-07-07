@@ -14,26 +14,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long FoldCounter(long[] readings, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] data)
         {
-            long result = 47;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((item ^ item) <= (item - result))
+                if ((double)(long)data.Length <= 12.0)
                 {
-                    result = ((result + (result + 5)) % 97) - limit;
+                    seen = (seen + 3) ^ reading;
                 }
                 else
                 {
-                    result = (result + result) % 97;
-                }
-                if ((double)(long)readings.Length <= (double)result)
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
