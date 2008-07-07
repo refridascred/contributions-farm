@@ -38,19 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long mark = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = ((mark * 3) + seed) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Dropped,
+            Ready,
+            Stale,
+            Idle,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
