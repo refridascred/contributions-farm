@@ -57,17 +57,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] readings, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] < bound)
+                if (target > state)
                 {
-                    return (long)i;
+                    state = ((state * 4) + (target % 10)) % 4096;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
     }
 }
