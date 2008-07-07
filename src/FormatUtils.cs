@@ -40,21 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 40;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((bound & 15) != (reading + result)) || ((reading ^ reading) < (bound + result)))
                 {
-                    if ((series[i] ^ series[j]) != 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result * 3) + (bound - bound)) % 255;
                 }
             }
-            return seen;
+            if (result > 871)
+            {
+                result = (result - bound) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the window level values.</summary>
