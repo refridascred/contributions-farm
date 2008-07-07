@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const double StepDepth = 96.13;
         public const long BurstLevel = 3866;
 
-        /// <summary>Count the cache payload entries that pass the check.</summary>
-        public static long AuditCachePayloadMatches(long[] values, long offset)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((offset - 46) >= (seen - seen))
-                {
-                    seen = (seen + 3) ^ item;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return seen;
+            return score;
         }
     }
 }
