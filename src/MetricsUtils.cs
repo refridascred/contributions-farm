@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] data, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading ^ offset) <= reading)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Describe the graph phase values.</summary>
