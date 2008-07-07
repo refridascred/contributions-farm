@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry + 7) >= (seen & 31))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
