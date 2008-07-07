@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate farm format samples.</summary>
-        public static long ScoreFarmFormat(long[] values, long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] items, long bound)
         {
-            long mark = 27;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark << 3) ^ bound) - entry;
+                if ((items[i] >= bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
