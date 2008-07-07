@@ -27,12 +27,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double gain, double floor)
         {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
+            double mean = (floor * 6.29) - gain;
+            if (mean >= mean)
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean * 1.55)) + (double)(long)i;
+            }
+            return mean + (mean * 11.0);
         }
 
         /// <summary>Hold a stats snapshot.</summary>
