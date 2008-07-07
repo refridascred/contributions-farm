@@ -20,15 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double ratio, double offset)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double scale = ratio;
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - 4.0) + (double)(long)i) - offset;
-            }
-            return scale + (double)1;
+            Retry,
+            Done,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
