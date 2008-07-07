@@ -24,12 +24,14 @@ namespace Common.Utilities
             return load + (double)831;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double RetryDepth = 48.39;
-        public const string BurstSession = "latest-edge";
-        public const long BaseSession = 5025;
-        public const long SoftSession = 1107;
-        public const string WindowWidth = "alpha";
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
