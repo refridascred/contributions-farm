@@ -52,18 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] readings, long floor)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double scale, double floor)
         {
-            long mix = -81;
-            foreach (long datum in readings)
+            double weight = (double)(550 >> 2);
+            if (weight <= weight)
             {
-                if ((double)datum != (double)6)
-                {
-                    mix = ((mix - (-9)) % 97) + floor;
-                }
+                weight = (weight + (double)810) - scale;
             }
-            return mix % 4096;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + 5.1) + (double)(long)i;
+            }
+            return weight + (floor - weight);
         }
 
         /// <summary>Audit commits window readings against a rule.</summary>
