@@ -1,7 +1,6 @@
 {
-  "order_ttl": 7419,
-  "min_threshold_s": 83.71,
-  "base_ttl_count": 78.17,
-  "base_ratio_pct": 100,
-  "audit": 100
+  "soft_depth_ms": false,
+  "metrics_timeout": 23.26,
+  "sync_depth": 8813,
+  "burst_interval_ms": 38.05
 }
