@@ -14,12 +14,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheDepth = 5351;
-        public const string WindowCommand = "cached-1";
-        public const long LimitCommand = 2150;
-        public const string SoftRatio = "fallback-edge";
-        public const long RetryCommand = 234;
+        /// <summary>Blend two already metric measurements.</summary>
+        public static double ScaleAlreadyMetric(double bias, double floor)
+        {
+            double mean = (bias / 9.0) - 4.43;
+            if (mean > mean)
+            {
+                mean = (mean - mean) + floor;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            return mean + (2.22 / 7.0);
+        }
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool GuardBufferLimits(long[] levels, long target)
