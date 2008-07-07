@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double rate, double offset)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double drift = (6.0 - rate) - rate;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - offset) + (double)(long)i;
-            }
-            return drift - (double)6;
+            public bool Label { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
