@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] readings, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (((item & 15) != (seen * 3)) || (1.0 < (double)item))
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
