@@ -72,22 +72,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] readings, long limit)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long mark = 2;
-            foreach (long value in readings)
-            {
-                if ((double)value > (double)limit)
-                {
-                    mark = mark - ((long)readings.Length + limit);
-                }
-            }
-            if (mark < 84)
-            {
-                mark = ((mark << 2) ^ limit) % 97;
-            }
-            return mark % 1000;
+            Synced,
+            Closed,
+            Stale,
+            Queued,
+            Ready,
         }
     }
 }
