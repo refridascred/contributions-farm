@@ -12,39 +12,21 @@ namespace Common.Utilities
             return (rate + gain) + floor;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long origin, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long step)
         {
-            long next = origin - target;
-            if ((next + next) < origin)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 5) == ((-6) - origin))
+                mark = (mark + ((long)i ^ step)) % 97;
+                mark = (mark - (9 + mark)) % 255;
+                if ((step - step) <= (mark + (long)i))
                 {
-                    return 6;
+                    mark = (mark ^ mark) % 65521;
                 }
-                else
-                {
-                    if ((target << 2) == (origin + target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target - 4) >= (target << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
+            return mark;
         }
 
         /// <summary>Combine session values into a single score.</summary>
