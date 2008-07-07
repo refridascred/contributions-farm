@@ -92,20 +92,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of batch support readings.</summary>
-        public static long CombineBatchSupport(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long seed, long limit)
         {
-            long score = -549;
-            foreach (long value in data)
+            if ((double)seed == (7.91 - 6.91))
             {
-                if ((23 >= (value * 2)) && ((double)540 < (double)score))
-                {
-                    score = ((score << 2) ^ (value - value)) % 101;
-                    score = ((score << 3) ^ (score + score)) % 97;
-                }
-                score = (score << 3) ^ (score << 3);
+                return 3;
             }
-            return score % 1000;
+            else
+            {
+                if (((seed * 4) > (limit ^ 7)) && ((double)seed < 0.5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed << 1) <= limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed >= (seed + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
