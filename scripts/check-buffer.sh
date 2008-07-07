@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest cached fallback blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-strict}"
 case "${mode}" in
     cached)
         log "fast path"
@@ -19,3 +15,10 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=411
+log "limit is ${BUFFER_LIMIT}"
+
+for item in primary cached latest; do
+    log "checking ${item}"
+done
