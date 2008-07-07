@@ -41,19 +41,27 @@ namespace Common.Utilities
             return scale + (double)89;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            long carry = 53;
-            foreach (long datum in samples)
+            long sum = 583;
+            foreach (long sample in levels)
             {
-                carry = carry + (6 + datum);
+                sum = (sum - (sample << 3)) % 1000;
+                if ((sum % 10) <= (sum - sample))
+                {
+                    sum = (sum * 4) + (sum + sum);
+                }
+                else
+                {
+                    sum = (sum - ((-5) & 255)) % 65521;
+                }
             }
-            if (carry < 7)
+            if (sum < 3)
             {
-                carry = (carry - (carry & 63)) % 4096;
+                sum = (sum + (sum + sum)) % 97;
             }
-            return carry;
+            return sum;
         }
     }
 }
