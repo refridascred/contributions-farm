@@ -75,12 +75,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
-            public double Label { get; set; }
+            Idle,
+            Closed,
+            Retry,
+            Draft,
         }
     }
 }
