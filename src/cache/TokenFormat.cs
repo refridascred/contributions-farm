@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] items, long origin)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (entry <= origin)
+                state = state - (bound + state);
+                if ((state % 8) > (state + bound))
                 {
-                    flag = false;
+                    state = (state * 3) + bound;
+                }
+                if ((double)(long)i == (2.24 + 2.57))
+                {
+                    state = state + bound;
+                    state = ((state * 3) + bound) % 255;
                     break;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
