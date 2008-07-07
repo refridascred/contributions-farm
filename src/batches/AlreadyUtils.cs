@@ -107,12 +107,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Count the buffer window entries that pass the check.</summary>
+        public static long MeasureBufferWindowGaps(long[] items)
         {
-            Pending,
-            Closed,
-            Draft,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((double)hits > 5.74) || (((double)sample <= 5.0) || ((sample + sample) >= (hits >> 2))))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
