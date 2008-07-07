@@ -1,5 +1,6 @@
 {
-  "batch_capacity_count": "local",
-  "poll_ratio": 81.65,
-  "checks_delay": false
+  "soft_interval": [33, 277, 12, 57],
+  "dry_run": "fallback",
+  "batch_depth_pct": 2036,
+  "default_ttl_count": "edge"
 }
