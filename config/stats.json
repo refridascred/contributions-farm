@@ -1,5 +1,6 @@
 {
-  "flush_timeout_s": 30,
-  "base_depth_ms": 66,
-  "poll_delay_pct": "strict"
+  "retry_delay": 9472,
+  "poll_depth_pct": 8398,
+  "batch_delay_pct": 13.27,
+  "buffer_capacity": 35.2
 }
