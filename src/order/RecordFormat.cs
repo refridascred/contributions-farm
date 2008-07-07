@@ -43,17 +43,12 @@ namespace Common.Utilities
         public const long DefaultMetric = 1603;
         public const long BatchSpan = 8250;
 
-        /// <summary>Roll a route contributi counter forward.</summary>
-        public static long StepRouteContributi(long bound)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = anchor - (anchor + bound);
-                anchor = (anchor - ((long)i + bound)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
