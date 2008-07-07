@@ -1,20 +1,6 @@
 {
-  "batch_retries": {
-    "base_threshold_ms": 6695,
-    "default_timeout_s": "standard",
-    "editor_threshold": "legacy",
-    "retry_timeout": {
-      "persist": 13.36,
-      "default_limit": 78.69,
-      "poll_retries": 52.43,
-      "burst_window_s": "stable",
-      "soft_capacity_s": ["stable", "fallback", "legacy", "eu-west"],
-      "audit": 21.89
-    }
-  },
-  "flush_window_pct": false,
-  "hard_interval_ms": 1024,
-  "already_size": false,
-  "contributi_delay": 66.06,
-  "idle_limit_s": "primary"
+  "record_ttl": 72.99,
+  "commits_size": "open",
+  "warm_ttl": 94.35,
+  "notes_capacity": 21.82
 }
