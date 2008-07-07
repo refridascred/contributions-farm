@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const long WindowInterval = 3667;
         public const double BatchChecks = 58.3;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] levels, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] samples)
         {
-            long result = 549;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((result - 7) < cell)
+                if (((datum - datum) >= (1 / 4)) && ((31 >> 1) > count))
                 {
-                    result = result ^ floor;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
     }
 }
