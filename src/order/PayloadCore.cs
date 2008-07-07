@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long step, long bound)
+        /// <summary>Locate a schema record reading by value.</summary>
+        public static long SeekSchemaRecordIndex(long[] levels, long limit)
         {
-            if ((bound & 7) < (bound - step))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(bound >= (373 * 5)))
+                if (levels[i] == limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + step) < (step >> 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((bound + 608) >= (65 - step)) && ((3.8 + 4.68) != (double)bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
