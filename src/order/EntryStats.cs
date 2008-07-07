@@ -54,18 +54,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] readings, long seed)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((56 <= cell) && (((matches - 62) < (matches << 2)) || (9.34 < (double)matches)))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            Locked,
+            Pending,
+            Retry,
+            New,
         }
     }
 }
