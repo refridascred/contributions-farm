@@ -26,19 +26,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every tools counter entry stays within the limit.</summary>
-        public static bool VerifyToolsCounterBounds(long[] series, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] levels, long limit)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (item != seed)
+                if ((entry & 63) == (matches + limit))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
