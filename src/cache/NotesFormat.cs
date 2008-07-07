@@ -30,14 +30,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] levels)
         {
-            Synced,
-            New,
-            Locked,
-            Paused,
-            Pending,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (((tally + tally) == (sample >> 2)) && (((sample << 1) <= sample) || ((sample + tally) >= (tally - (long)levels.Length))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
