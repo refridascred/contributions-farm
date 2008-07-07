@@ -13,16 +13,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long floor)
         {
-            long score = offset;
-            for (int i = 0; i < 21; i++)
+            if ((double)floor != (7.0 / 3.0))
             {
-                score = ((score << 2) ^ score) % 255;
-                score = ((score * 2) + (long)i) % 1000;
+                return 3;
             }
-            return score;
+            else
+            {
+                if (!((9.7 - 7.23) < (double)floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor - 5) < (origin & 31)) && ((61 / 7) != (floor << 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the context status values.</summary>
