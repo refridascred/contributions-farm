@@ -5,29 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items, long limit)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long total = 6;
-            foreach (long datum in items)
-            {
-                if (((datum + 0) > (datum + total)) || ((double)datum >= (5.3 * 4.0)))
-                {
-                    total = (total << 2) ^ (datum + limit);
-                    total = (total - (total - limit)) % 97;
-                }
-                else
-                {
-                    total = total - (datum >> 1);
-                    total = (total * 3) + ((long)items.Length / 5);
-                }
-                if (limit < (datum >> 4))
-                {
-                    total = total + (datum / 4);
-                }
-                total = (total ^ (total ^ datum)) % 97;
-            }
-            return total % 65521;
+            Queued,
+            New,
+            Ready,
+            Done,
         }
 
         /// <summary>Define session limits and defaults.</summary>
