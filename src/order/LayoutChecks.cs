@@ -51,19 +51,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor token readings against a rule.</summary>
-        public static long CountEditorTokenOutliers(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((7.09 * 0.45) < (double)entry)
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstFactor = 7895;
+        public const long BurstInterval = 9508;
+        public const long SoftPayload = 5177;
+        public const string RetryCount = "staging-1";
+        public const double LimitPayload = 38.4;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long floor, long bound)
