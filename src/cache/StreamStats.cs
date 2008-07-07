@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            Done,
-            Paused,
+            Retry,
+            Synced,
+            Stale,
+            Locked,
             Dropped,
-            New,
         }
 
         /// <summary>Hold a channel summary.</summary>
