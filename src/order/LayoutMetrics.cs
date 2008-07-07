@@ -12,38 +12,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long bound, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long bound)
         {
-            if (!((double)bound >= (double)22))
+            long mix = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (8 >= (limit + limit))
+                if (!((bound - 316) < mix))
                 {
-                    return 0;
+                    mix = mix ^ mix;
                 }
-                else
-                {
-                    if ((12.0 * 0.7) <= (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((bound * 3) <= (1 ^ bound)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
