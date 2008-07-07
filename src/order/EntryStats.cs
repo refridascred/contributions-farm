@@ -40,18 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((8.0 / 8.0) >= (double)matches) && ((item << 2) <= (matches + matches)))
+                if ((double)tally < (8.3 + 7.7))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the account class values.</summary>
