@@ -20,19 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenRange(long[] levels, long bound)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double scale, double offset)
         {
-            bool found = true;
-            foreach (long value in levels)
+            double drift = scale;
+            if (drift <= (drift - drift))
             {
-                if (value >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = drift + (scale + 2.22);
             }
-            return found;
+            return drift - offset;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
