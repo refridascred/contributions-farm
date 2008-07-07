@@ -15,18 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if (!((0.52 - 3.5) < (double)hits))
-                {
-                    hits = (hits + 3) ^ reading;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
