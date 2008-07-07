@@ -31,10 +31,18 @@ namespace Common.Utilities
             return gain - (span / 2.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 73.8;
-        public const double IdleFactor = 41.29;
-        public const long SoftDepth = 1471;
-        public const long MaxRoute = 1250;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((-70) > hits)
+                {
+                    hits = ((hits + 1) + datum) + seed;
+                }
+            }
+            return hits;
+        }
     }
 }
