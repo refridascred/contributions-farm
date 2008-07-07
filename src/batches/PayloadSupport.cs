@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double ratio, double floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples)
         {
-            double gain = ratio;
-            if (gain <= 1.17)
+            long result = 0;
+            foreach (long datum in samples)
             {
-                gain = (gain + gain) - floor;
+                if ((double)result <= (0.5 / 6.0))
+                {
+                    result = (result * 3) + (datum << 2);
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (result < 39)
             {
-                gain = (gain - 12.0) + (double)(long)i;
+                result = result + result;
             }
-            return gain + gain;
+            return result;
         }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
