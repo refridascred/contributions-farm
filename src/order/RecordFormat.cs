@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Check that every entry report entry stays within the limit.</summary>
+        public static bool ValidateEntryReportRange(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item < origin)
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Hold a tools summary.</summary>
