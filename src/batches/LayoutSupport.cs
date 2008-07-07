@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 1739;
-        public const double LimitStats = 84.59;
-        public const long BatchLevel = 5849;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] samples, long step)
+        {
+            long total = 61;
+            foreach (long entry in samples)
+            {
+                if ((step % 12) < (step / 2))
+                {
+                    total = ((total ^ (4 - step)) % 97) ^ entry;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long MatchToolsCount(long[] levels)
