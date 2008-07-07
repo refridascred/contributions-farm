@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long acc = 602;
-            foreach (long sample in data)
-            {
-                acc = ((acc - acc) % 4096) ^ sample;
-            }
-            if (acc < (-77))
-            {
-                acc = (acc - (acc & 3)) % 4096;
-            }
-            return acc % 65521;
+            public double Token { get; set; }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
