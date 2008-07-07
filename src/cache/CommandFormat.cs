@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the buffer token entries that pass the check.</summary>
-        public static long AuditBufferTokenOutliers(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((origin + origin) < (entry * 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 515;
+        public const long HardDepth = 5326;
+        public const double IdleBudget = 71.61;
+        public const string BaseSize = "legacy-edge";
 
         /// <summary>Digest a series of stats editor entries.</summary>
         public static long WeighStatsEditor(long[] values)
