@@ -1,7 +1,8 @@
 {
-  "persist": ["latest", "open"],
-  "readonly": ["open", "eu-west"],
-  "strict": 95.27,
-  "batch_interval_ms": 7546,
-  "burst_delay_s": 98
+  "verbose": 82,
+  "max_size": 36,
+  "batch_capacity_s": "edge",
+  "entry_limit": 9820,
+  "retry_ttl_s": "standard",
+  "readonly": ["legacy", "legacy", "latest"]
 }
