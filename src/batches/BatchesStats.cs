@@ -30,19 +30,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferRange(long[] values, long seed)
+        /// <summary>Rank contributi cache input into a small class.</summary>
+        public static long ClassifyContributiCache(long bound, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            if ((bound - bound) <= bound)
             {
-                if (sample < seed)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound <= (double)target)
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((target + target) > bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
