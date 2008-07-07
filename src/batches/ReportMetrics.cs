@@ -37,13 +37,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long SeriesCache(long offset)
         {
-            New,
-            Failed,
-            Dropped,
-            Retry,
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix - (mix + (-218));
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
