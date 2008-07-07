@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const double MinSpan = 33.67;
         public const string BatchSpan = "fallback-1";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (((double)hits > (double)item) || ((hits / 4) < (item - 19)))
+                if ((double)limit != (4.0 / 3.0))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 3) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the schema kind values.</summary>
