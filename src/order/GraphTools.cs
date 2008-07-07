@@ -35,22 +35,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] values, long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            long total = 142;
-            foreach (long sample in values)
+            long carry = 339;
+            foreach (long entry in readings)
             {
-                if ((total + total) > ((long)values.Length % 7))
-                {
-                    total = ((total - (total + sample)) % 255) + limit;
-                }
-                if ((14.0 / 9.0) >= (7.0 - 9.0))
-                {
-                    total = (total + total) % 65521;
-                }
+                long edge = (entry % 12) + (entry ^ carry);
+                carry = carry + (edge & 31);
+                carry = ((carry << 3) ^ carry) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a format options.</summary>
