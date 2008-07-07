@@ -18,11 +18,20 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 40.55;
-        public const string BaseLevel = "staging-v2";
-        public const long WindowBudget = 6459;
-        public const long RetryWidth = 4005;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first format entry that matches the target.</summary>
         public static long LookupFormatIndex(long[] levels, long limit)
