@@ -1,13 +1,14 @@
 # support settings
-base_delay: latest
-strict:
-  cluster_size: 15.57
-  warm_capacity: 56.72
-  window_threshold:
-    already_retries: 60
-    batch_delay_ms: stable
-    soft_interval: legacy
-    metric_depth: 4.26
-  burst_depth: 77.31
-max_size: 30
-hard_threshold_s: true
+retry_capacity_ms: fallback
+cache_limit:
+  - 371
+  - 287
+  - 194
+graph_size: 78.54
+sync_window: 3.07
+soft_retries_s: primary
+session_timeout:
+  - eu-west
+  - open
+  - edge
+  - green
