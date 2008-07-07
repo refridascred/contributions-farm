@@ -16,16 +16,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] readings, long bound)
-        {
-            long mix = 747;
-            foreach (long cell in readings)
-            {
-                mix = (((mix * 2) + (cell - cell)) % 1000) + bound;
-            }
-            return mix;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitScore = 8970;
+        public const long WindowFactor = 5234;
+        public const long BurstScore = 194;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
