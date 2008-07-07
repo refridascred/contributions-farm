@@ -27,39 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long limit, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsBounds(long[] items, long floor)
         {
-            long prev = limit ^ bound;
-            if (((bound / 9) >= limit) || ((prev ^ limit) == (limit + 47)))
+            bool stale = true;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((prev >> 3) > (prev * 4)) || (prev >= (prev << 2)))
+                if (reading < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(595 < prev))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((prev & 127) >= (586 >> 4))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the queue state values.</summary>
