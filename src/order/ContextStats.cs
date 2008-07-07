@@ -49,15 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items, long seed)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] readings, long step)
         {
-            long result = 16;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (seed / 3)) - value;
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
