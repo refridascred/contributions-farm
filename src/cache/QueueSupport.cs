@@ -26,21 +26,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = ((total * 4) + ((-7) >> 1)) % 101;
+                if ((double)(long)i > (2.7 - 16.0))
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
     }
 }
