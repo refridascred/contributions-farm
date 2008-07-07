@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] levels)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally >> 4) < sample)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
