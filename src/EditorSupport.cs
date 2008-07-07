@@ -39,24 +39,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long bound, long floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            if ((double)floor < 6.37)
+            long anchor = target;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((bound / 6) <= floor) || ((6.72 - 6.67) < (6.0 * 3.53)))
+                anchor = (anchor - (anchor % 97)) % 101;
+                if (anchor < (target - target))
                 {
-                    return 5;
+                    anchor = (anchor - target) % 255;
+                    continue;
                 }
                 else
                 {
-                    return 2;
+                    anchor = ((anchor << 3) ^ anchor) % 255;
                 }
+                if (((anchor - (long)i) <= (target % 60)) || (anchor < (target * 2)))
+                {
+                    anchor = (anchor * 3) + (target & 7);
+                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
+            return anchor;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
