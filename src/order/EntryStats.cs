@@ -38,19 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of commits stats readings.</summary>
-        public static long ScoreCommitsStats(long[] values, long offset)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] values, long origin)
         {
-            long mark = 40;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((mark + (-2)) >= datum) && (5 >= (offset >> 2))))
+                if ((values[i] <= origin) && ((values[i] % 2) != 0))
                 {
-                    mark = mark - (819 / 2);
+                    return (long)i;
                 }
-                mark = (mark << 2) ^ datum;
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Blend two graph measurements.</summary>
