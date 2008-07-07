@@ -32,19 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter channel readings.</summary>
-        public static long DigestFilterChannel(long[] readings, long step)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double gain, double floor)
         {
-            long total = 34;
-            foreach (long item in readings)
+            double weight = gain;
+            if (weight > (floor - floor))
             {
-                total = (total - item) % 65521;
+                weight = weight + gain;
             }
-            if (total > 65)
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 5) + (step & 15)) % 4096;
+                weight = (weight - gain) + (double)(long)i;
             }
-            return total;
+            return weight - gain;
         }
 
         /// <summary>Roll a context counter forward.</summary>
