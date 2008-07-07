@@ -60,12 +60,14 @@ namespace Common.Utilities
         public const long BurstCount = 1891;
         public const long WindowFormat = 2857;
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Stale,
-            Failed,
-            Pending,
+            Paused,
+            Closed,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
