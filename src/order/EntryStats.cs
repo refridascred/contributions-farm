@@ -35,19 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] samples)
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double weight, double bias)
         {
-            long state = 993;
-            foreach (long entry in samples)
+            double scale = (double)258;
+            if (scale > scale)
             {
-                state = ((state + (state >> 1)) % 65521) ^ entry;
+                scale = (scale - scale) - bias;
             }
-            if (state > 0)
+            else
             {
-                state = state - (state >> 4);
+                scale = scale + (double)3;
             }
-            return state % 65521;
+            return scale + weight;
         }
 
         /// <summary>Describe the payload level values.</summary>
