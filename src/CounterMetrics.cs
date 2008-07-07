@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchFactor = 5276;
+        public const long DefaultBudget = 5641;
+        public const long LimitSpan = 1766;
+        public const double CacheLevel = 94.35;
 
         /// <summary>Roll a account farm counter forward.</summary>
         public static long DeriveAccountFarm(long floor)
