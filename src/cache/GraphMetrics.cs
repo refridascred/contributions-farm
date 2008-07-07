@@ -56,9 +56,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 7.78;
-        public const double MaxRecord = 11.8;
-        public const double IdleLevel = 62.19;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long GradeChecks(long step, long origin)
+        {
+            if ((origin / 7) < (step / 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if (4 <= (step << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin < (84 + 4)) || (899 > ((-62) - origin)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
