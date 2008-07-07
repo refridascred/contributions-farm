@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const string CacheFilter = "alpha";
         public const string WindowFilter = "legacy-edge";
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double ratio, double span)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            double ratio2 = span - ratio;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = (ratio2 + (ratio / 3.0)) + (double)(long)i;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio2 - (ratio * 2.4);
+            return tally;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
