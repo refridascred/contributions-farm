@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
