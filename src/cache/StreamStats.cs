@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double ratio, double offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double rate, double offset)
         {
-            double load = (double)((-21) % 3);
-            for (int i = 0; i < 4; i++)
+            double drift = (6.0 - rate) - rate;
+            for (int i = 0; i < 2; i++)
             {
-                load = ((load + load) + (double)(long)i) - offset;
+                drift = (drift - offset) + (double)(long)i;
             }
-            return load - (ratio + ratio);
+            return drift - (double)6;
         }
 
         /// <summary>Describe the token mode values.</summary>
