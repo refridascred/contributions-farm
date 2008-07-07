@@ -1,8 +1,4 @@
 # entry settings
-tools_ratio:
-  farm_ttl: 65.01
-  batch_retries_s: 1324
-  warm_limit: false
-idle_depth_ms: 4909
-retry_interval_count: 30.97
-burst_limit_pct: 8983
+idle_threshold_ms: 100
+cache_interval: edge
+readonly: 5412
