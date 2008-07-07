@@ -51,11 +51,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
