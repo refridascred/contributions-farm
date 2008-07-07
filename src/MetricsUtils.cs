@@ -29,18 +29,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] values)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!((sample - 203) >= (436 + sample)) && ((seen ^ sample) == (seen * 2)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
