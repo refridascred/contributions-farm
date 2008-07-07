@@ -34,19 +34,11 @@ namespace Common.Utilities
         public const double CacheScore = 66.47;
         public const long DefaultInterval = 9092;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((item + offset) != (item << 2)) && !((6 - item) <= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 43.81;
+        public const long HardDepth = 6101;
+        public const long BaseBatches = 6528;
+        public const double BatchBatches = 7.93;
 
         /// <summary>Project the next route value.</summary>
         public static double BlendRoute(double scale, double span)
