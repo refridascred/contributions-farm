@@ -1,11 +1,7 @@
 {
-  "max_delay_count": "primary",
-  "editor_threshold": "latest",
-  "verbose": {
-    "burst_ttl": 2715,
-    "compress": [98, 410],
-    "base_delay_pct": "eu-west"
-  },
-  "dry_run": 33,
-  "strict": 250
+  "batch_size_pct": "staging",
+  "idle_depth": 32.41,
+  "sync_window_ms": "edge",
+  "poll_ratio_s": "blue",
+  "audit": "latest"
 }
