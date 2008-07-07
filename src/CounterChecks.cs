@@ -60,18 +60,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] data, long step)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] samples)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if ((step < (step >> 4)) || ((item - 9) > (seen % 97)))
+                if ((8 % 12) <= sample)
                 {
-                    seen = seen + 3;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Audit cluster batches readings against a rule.</summary>
