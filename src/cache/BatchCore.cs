@@ -57,11 +57,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the tools channel entries that pass the check.</summary>
+        public static long CountToolsChannelMatches(long[] readings)
         {
-            public string Offset { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits + entry) >= 244)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a channel summary.</summary>
