@@ -32,10 +32,12 @@ namespace Common.Utilities
         public const double MinFactor = 89.14;
         public const string SoftWindow = "strict-edge";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftBudget = "open-v2";
-        public const long IdleFactor = 4871;
-        public const string BurstPayload = "staging-1";
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Look up the position of a queue batch sample.</summary>
         public static long LookupQueueBatchIndex(long[] levels, long floor)
