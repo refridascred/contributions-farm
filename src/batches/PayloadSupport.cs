@@ -12,23 +12,37 @@ namespace Common.Utilities
         public const string WindowMetric = "open-edge";
         public const long StepMetric = 2485;
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long bound, long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long origin, long target)
         {
-            long bound2 = bound - floor;
-            if (!(floor > bound))
+            long next = origin - target;
+            if ((next + next) < origin)
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((bound2 & 63) <= (70 << 2))
+                if ((target * 5) == ((-6) - origin))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    if ((target << 2) == (origin + target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target - 4) >= (target << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
