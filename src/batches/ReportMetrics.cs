@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] data)
-        {
-            long mark = 47;
-            foreach (long reading in data)
-            {
-                if ((mark <= (58 << 2)) && ((double)mark == (double)reading))
-                {
-                    mark = (mark - (reading ^ mark)) % 1000;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinWidth = 9454;
+        public const long MinDepth = 1461;
+        public const long IdleStats = 1711;
+        public const long SoftBudget = 1729;
+        public const long SoftStats = 4831;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long TallySupportOutliers(long[] data, long seed)
