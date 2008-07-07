@@ -55,31 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a stream cluster value against two limits.</summary>
-        public static long SortStreamCluster(long origin, long floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            if ((1.12 / 9.0) < (double)(-73))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin ^ origin) != (floor ^ origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor / 9) >= (floor - floor)) && (origin > (floor - 282)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Retry,
+            Locked,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Hold a batches record.</summary>
