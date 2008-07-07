@@ -1,5 +1,8 @@
 {
-  "retry_timeout_s": "open",
-  "base_retries_ms": 1.33,
-  "burst_depth": "legacy"
+  "readonly": "strict",
+  "cache_capacity_s": true,
+  "already_capacity": "local",
+  "hard_capacity_pct": "latest",
+  "verbose": 468,
+  "route_timeout": "open"
 }
