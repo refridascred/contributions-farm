@@ -19,12 +19,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftDepth = 4.72;
-        public const long BatchEntry = 9212;
-        public const long DefaultDepth = 5995;
-        public const string RetryEntry = "standard-v2";
-        public const long StepEntry = 2030;
+        /// <summary>Roll a account farm counter forward.</summary>
+        public static long DeriveAccountFarm(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((double)930 > (double)floor)
+                {
+                    sum = (sum * 5) + floor;
+                    continue;
+                }
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] data)
