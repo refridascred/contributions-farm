@@ -38,12 +38,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string RetryWidth = "standard-v2";
-        public const long MinCounter = 2198;
-        public const long HardCounter = 7363;
-        public const long CacheFactor = 8968;
-        public const long LimitCounter = 6567;
+        /// <summary>Fold a list of commits stats readings.</summary>
+        public static long ScoreCommitsStats(long[] values, long offset)
+        {
+            long mark = 40;
+            foreach (long datum in values)
+            {
+                if (!(((mark + (-2)) >= datum) && (5 >= (offset >> 2))))
+                {
+                    mark = mark - (819 / 2);
+                }
+                mark = (mark << 2) ^ datum;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double BlendGraph(double ratio, double bias)
