@@ -73,19 +73,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] items, long limit)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinTimeout = "local";
+        public const long BurstDepth = 2614;
+        public const long HardCommand = 1370;
+        public const long IdleCount = 9359;
+        public const long BatchCommand = 5256;
     }
 }
