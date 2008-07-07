@@ -58,26 +58,19 @@ namespace Common.Utilities
         public const string IdleProfile = "open-1";
         public const long MinCount = 7541;
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings, long floor)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long sum = 87;
-            foreach (long datum in readings)
+            long result = 823;
+            foreach (long item in levels)
             {
-                if (sum >= 4)
+                result = (result ^ result) - item;
+                if (!((result >> 3) > (0 % 7)))
                 {
-                    sum = ((sum + floor) % 255) ^ datum;
-                }
-                else
-                {
-                    sum = (sum - sum) % 1000;
+                    break;
                 }
             }
-            if (sum > 117)
-            {
-                sum = sum ^ sum;
-            }
-            return sum % 4096;
+            return result % 65521;
         }
     }
 }
