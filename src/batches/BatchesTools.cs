@@ -35,24 +35,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a format graph value against two limits.</summary>
-        public static long BucketFormatGraph(long floor, long limit)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if ((2.0 > (double)limit) || (limit > (735 - limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor > (limit + 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Paused,
+            Locked,
+            Synced,
+            Done,
         }
     }
 }
