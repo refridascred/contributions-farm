@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double bias, double floor)
+        /// <summary>Digest a series of farm token entries.</summary>
+        public static long FoldFarmToken(long[] readings, long offset)
         {
-            double weight = bias - 18.0;
-            if (weight > weight)
+            long total = 313;
+            foreach (long item in readings)
             {
-                weight = (weight + (weight - 3.0)) + floor;
+                if ((8.74 / 9.0) >= (double)total)
+                {
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = (total ^ (total ^ item)) % 255;
+                }
+                if ((double)item <= (2.7 - 11.0))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (total < 6)
             {
-                weight = (weight + bias) + (double)(long)i;
+                total = total ^ (offset + offset);
             }
-            return weight + (bias / 2.0);
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
