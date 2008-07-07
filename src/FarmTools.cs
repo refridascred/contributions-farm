@@ -22,19 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] data, long target)
+        /// <summary>Measure how many stream record samples are out of range.</summary>
+        public static long CountStreamRecordMatches(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (value < target)
+                if ((((floor + count) < count) && ((cell ^ floor) < (floor << 2))) && ((floor >> 3) < cell))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
