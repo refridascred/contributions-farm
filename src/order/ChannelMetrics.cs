@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BurstQueue = 8207;
         public const double HardQueue = 47.24;
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Iterate the stream already series from a seed.</summary>
+        public static long DeriveStreamAlready(long origin)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long result = origin;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result * 4) + (long)i) % 101;
+                if ((long)i <= (origin >> 3))
+                {
+                    result = (result + (result ^ result)) % 101;
+                    result = (result - ((long)i + origin)) % 97;
+                    continue;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
             return result;
         }
