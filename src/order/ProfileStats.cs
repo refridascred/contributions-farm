@@ -16,27 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] samples, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long origin)
         {
-            long mark = 8;
+            bool found = true;
             foreach (long cell in samples)
             {
-                mark = (mark + (mark + mark)) + cell;
-                if (((mark << 1) < limit) || ((1.27 - 4.82) <= (double)mark))
+                if (cell > origin)
                 {
-                    mark = ((mark * 5) + (mark & 3)) % 97;
-                }
-                if ((13.0 - 7.0) > (8.1 * 2.9))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (mark > 585)
-            {
-                mark = ((mark * 3) + limit) % 97;
-            }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Match up farm samples.</summary>
