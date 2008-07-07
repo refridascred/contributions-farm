@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmRange(long[] items, long limit)
         {
-            long result = 23;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                result = (result ^ (sample >> 5)) % 97;
+                if (reading < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result < 3)
-            {
-                result = result - result;
-            }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
