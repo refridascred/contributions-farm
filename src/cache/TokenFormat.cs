@@ -36,17 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a notes command reading by value.</summary>
-        public static long SeekNotesCommandIndex(long[] series, long floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (series[i] > floor)
+                if ((sample >> 1) > sample)
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
