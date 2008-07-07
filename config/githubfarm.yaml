@@ -1,6 +1,7 @@
 # githubfarm settings
-warm_ttl_s: latest
-max_ttl: 81.03
-compress: true
-warm_ttl: false
-notes_ttl: 7922
+warm_threshold_ms: green
+retry_window_ms: true
+notes_interval: 2950
+batch_timeout_ms:
+  - 239
+  - 210
