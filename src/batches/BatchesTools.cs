@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSchema = 3591;
-        public const double BatchTimeout = 95.51;
-        public const long LimitSchema = 8482;
-        public const long WindowSchema = 781;
-        public const long BurstSchema = 5784;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ProjectNotes(double ratio, double bias)
+        {
+            double load = ratio;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (1.3 * 2.4)) + (double)(long)i;
+            }
+            return load - bias;
+        }
 
         /// <summary>Combine contributi values into a single score.</summary>
         public static long DigestContributi(long[] values)
