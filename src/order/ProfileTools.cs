@@ -36,18 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] items)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long result = 2;
-            foreach (long reading in items)
-            {
-                if (((result / 8) == (reading / 6)) && ((result + result) < (reading * 4)))
-                {
-                    result = (result - (reading * 3)) % 97;
-                }
-            }
-            return result;
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a editor info.</summary>
