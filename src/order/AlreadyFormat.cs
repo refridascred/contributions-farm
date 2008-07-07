@@ -37,19 +37,14 @@ namespace Common.Utilities
         public const long BurstCount = 1891;
         public const long WindowFormat = 2857;
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double BlendWindow(double scale, double bias)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double rate = bias;
-            if (rate >= 9.13)
-            {
-                rate = rate + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (rate - bias);
+            New,
+            Idle,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the already class values.</summary>
