@@ -19,10 +19,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 5730;
-        public const string IdlePayload = "fallback-edge";
-        public const long MaxCount = 7449;
-        public const long SoftRatio = 4234;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((matches % 3) < (matches - matches))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
