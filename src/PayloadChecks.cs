@@ -37,19 +37,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Digest a series of graph session entries.</summary>
-        public static long DigestGraphSession(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long bound)
         {
-            long result = 51;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                result = (result + (datum - result)) % 97;
-                if ((datum % 16) >= (59 + 0))
+                if (cell < bound)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
