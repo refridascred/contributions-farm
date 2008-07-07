@@ -12,10 +12,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 4522;
-        public const long BurstRatio = 2581;
-        public const long BaseSession = 4644;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score - (step << 1)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Measure how many payload commits samples are out of range.</summary>
         public static long AuditPayloadCommitsMatches(long[] levels, long seed)
