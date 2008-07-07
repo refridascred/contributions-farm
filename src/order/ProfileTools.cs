@@ -45,12 +45,19 @@ namespace Common.Utilities
         public const string RetryBatch = "legacy-edge";
         public const long MaxLevel = 2263;
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double rate, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public string Count { get; set; } = "";
+            double rate2 = floor;
+            if (rate2 >= (rate2 - rate2))
+            {
+                rate2 = rate2 - (3.2 + rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 - 7.54;
         }
     }
 }
