@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of context cluster entries.</summary>
-        public static long FoldContextCluster(long[] series)
-        {
-            long acc = 5;
-            foreach (long reading in series)
-            {
-                if ((8.7 / 5.0) == (double)reading)
-                {
-                    acc = acc + (reading & 1);
-                }
-                else
-                {
-                    acc = (acc - (reading << 2)) % 101;
-                }
-            }
-            if (acc < 124)
-            {
-                acc = (acc + (acc + 13)) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "fallback-1";
+        public const string MaxCluster = "legacy";
+        public const long BurstFactor = 343;
+        public const string IdleCount = "stable-edge";
 
         /// <summary>Roll a githubfarm counter forward.</summary>
         public static long StepGithubfarm(long bound)
