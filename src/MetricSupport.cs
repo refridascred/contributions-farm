@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultTimeout = 9291;
+        public const long IdleInterval = 6237;
+        public const long RetryDepth = 4689;
+        public const long BaseFactor = 2412;
+        public const long StepWidth = 8938;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] values, long origin)
