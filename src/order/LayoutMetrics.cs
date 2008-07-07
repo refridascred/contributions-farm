@@ -18,14 +18,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            Synced,
-            Queued,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxBatches = 72.41;
+        public const long BurstScore = 1103;
+        public const string RetryBatches = "legacy";
 
         /// <summary>Audit command account readings against a rule.</summary>
         public static long MeasureCommandAccountHits(long[] values)
