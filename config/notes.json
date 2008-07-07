@@ -1,11 +1,5 @@
 {
-  "max_interval_ms": 2.83,
-  "base_limit_pct": [197, 202, 81, 330],
-  "contributi_ratio": "edge",
-  "sync_depth": 30,
-  "readonly": {
-    "counter_threshold": "edge",
-    "idle_timeout_count": ["latest", "fallback"],
-    "default_threshold": false
-  }
+  "retry_timeout_s": "open",
+  "base_retries_ms": 1.33,
+  "burst_depth": "legacy"
 }
