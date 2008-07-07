@@ -89,13 +89,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long seed)
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
-            public double Limit { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 2) + (seed & 127)) % 4096;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
