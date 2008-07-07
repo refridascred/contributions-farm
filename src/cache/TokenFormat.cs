@@ -41,32 +41,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long floor)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long bound)
         {
-            long span = origin ^ floor;
-            if ((span <= (span + origin)) && ((origin % 24) <= (floor >> 2)))
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((544 + span) > 8)
+                if (entry >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin / 4) < (5 - floor)) || (6.89 < 12.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
