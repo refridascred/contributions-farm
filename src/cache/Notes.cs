@@ -42,21 +42,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up batches order samples.</summary>
-        public static long MatchBatchesOrderCount(long[] levels)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long SortBuffer(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (seed > (limit >> 2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((seed ^ seed) > (limit - 83))
                 {
-                    if ((levels[i] - levels[j]) != 14)
+                    return 1;
+                }
+                else
+                {
+                    if (((seed * 4) > (seed << 2)) && (seed >= (seed * 2)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
