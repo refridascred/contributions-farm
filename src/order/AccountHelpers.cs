@@ -73,19 +73,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels, long bound)
+        /// <summary>Validate report stream readings against a bound.</summary>
+        public static bool CheckReportStreamLimits(long[] readings, long seed)
         {
-            long total = 769;
-            foreach (long cell in levels)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                total = total + total;
-                if (((long)levels.Length == (cell >> 5)) && (bound >= (total + 8)))
+                if (sample != seed)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return total % 1000;
+            return flag;
         }
     }
 }
