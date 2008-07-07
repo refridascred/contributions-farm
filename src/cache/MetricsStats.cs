@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every account githubfarm entry stays within the limit.</summary>
-        public static bool ValidateAccountGithubfarmBounds(long[] readings, long step)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
