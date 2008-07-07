@@ -1,6 +1,7 @@
 {
-  "compress": "edge",
-  "verbose": "fallback",
-  "flush_delay": "cached",
-  "order_timeout": "open"
+  "verbose": "standard",
+  "base_ttl_ms": ["standard", "strict", "latest"],
+  "sync_window_s": 81.09,
+  "default_window": false,
+  "sync_threshold_s": "blue"
 }
