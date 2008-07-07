@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every record account entry stays within the limit.</summary>
+        public static bool CheckRecordAccountRange(long[] series, long target)
         {
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define session limits and defaults.</summary>
