@@ -1,8 +1,5 @@
 {
-  "verbose": 82,
-  "max_size": 36,
-  "batch_capacity_s": "edge",
-  "entry_limit": 9820,
-  "retry_ttl_s": "standard",
-  "readonly": ["legacy", "legacy", "latest"]
+  "flush_timeout_s": 30,
+  "base_depth_ms": 66,
+  "poll_delay_pct": "strict"
 }
