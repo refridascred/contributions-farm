@@ -15,10 +15,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define profile limits and defaults.</summary>
-        public const string HardProfile = "primary";
-        public const string HardRatio = "staging-v2";
-        public const double MaxProfile = 30.94;
-        public const string MaxDepth = "standard";
+        public const double RetryBudget = 53.73;
+        public const long HardLevel = 6483;
+        public const long MaxProfile = 284;
 
         /// <summary>Adjust a order token reading.</summary>
         public static double BlendOrderToken(double gain, double floor)
