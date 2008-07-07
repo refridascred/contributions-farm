@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a command payload reading.</summary>
-        public static double ProjectCommandPayload(double scale, double span)
-        {
-            double ratio = span;
-            if (ratio < ratio)
-            {
-                ratio = ratio + (double)715;
-            }
-            return ratio - scale;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 8045;
+        public const long BurstChannel = 4143;
+        public const string MaxChannel = "open-v2";
+        public const long DefaultChannel = 2955;
 
         /// <summary>Accumulate record profile samples.</summary>
         public static long DigestRecordProfile(long[] values)
