@@ -1,7 +1,9 @@
-id,owner,score
-1,latest,46.73
-2,strict,34.93
-3,cached,84.12
-4,22.89,84.7
-5,stable,open
-6,47.23,green
+id,label,score,rank
+1,staging,standard,64
+2,standard,48.11,fallback
+3,green,stable,973
+4,535,69.91,latest
+5,148,13.83,248
+6,edge,cached,920
+7,750,staging,78.09
+8,777,34.15,195
