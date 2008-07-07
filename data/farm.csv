@@ -1,8 +1,7 @@
-id,weight,active,score
-1,strict,38.2,61.34
-2,2.54,454,standard
-3,261,edge,846
-4,954,952,strict
-5,40.62,77.12,primary
-6,154,12,324
-7,18.88,942,standard
+id,active,owner,region
+1,83.5,695,896
+2,open,197,14.01
+3,348,873,600
+4,52.71,78.32,primary
+5,10.22,323,strict
+6,edge,35.03,110
