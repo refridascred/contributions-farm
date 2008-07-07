@@ -1,14 +1,15 @@
 {
-  "batch_limit_pct": false,
-  "account_delay": 58.8,
-  "sync_timeout_count": true,
-  "verbose": {
-    "soft_limit_s": "green",
-    "default_limit_pct": false,
-    "min_ratio": "local",
-    "base_threshold": false,
-    "cache_ttl_count": 250
-  },
-  "stream_timeout": 30,
-  "hard_size_s": 6512
+  "poll_limit_ms": "staging",
+  "githubfarm_limit": false,
+  "account_capacity": [271, 395, 35],
+  "cache_timeout_count": {
+    "batch_timeout_count": ["primary", "eu-west"],
+    "base_size_pct": ["latest", "latest"],
+    "audit": 1095,
+    "batch_interval": {
+      "window_threshold": 25.8,
+      "report_limit": true,
+      "persist": 33
+    }
+  }
 }
