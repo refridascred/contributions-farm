@@ -1,13 +1,9 @@
 # entry settings
-enabled:
-  - 29
-  - 125
-  - 86
-base_limit: true
-cache_ratio_s: 5619
-default_window_s: 5745
-poll_delay:
-  readonly: legacy
-  min_ratio_count: 94
-  base_capacity: local
-  min_retries_count: blue
+token_ttl: 41
+support_timeout: 41.11
+account_size:
+  - 456
+  - 2
+  - 68
+  - 165
+base_depth: 60
