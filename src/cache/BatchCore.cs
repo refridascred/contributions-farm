@@ -51,19 +51,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] items, long step)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadHits(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (reading <= step)
+                if (reading > (count >> 5))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + step;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
