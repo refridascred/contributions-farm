@@ -52,12 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-            public double Flag { get; set; }
+            Queued,
+            Paused,
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
