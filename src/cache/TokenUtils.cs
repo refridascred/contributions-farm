@@ -26,9 +26,21 @@ namespace Common.Utilities
         public const string StepWidth = "staging-v2";
         public const long RetryAlready = 7758;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftBudget = 9057;
-        public const double WindowProfile = 70.78;
-        public const long LimitWidth = 5225;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long MatchEditorCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
