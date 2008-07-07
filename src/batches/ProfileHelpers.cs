@@ -75,26 +75,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter route samples.</summary>
-        public static long TotalFilterRoute(long[] series, long origin)
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double gain, double offset)
         {
-            long acc = 6;
-            foreach (long datum in series)
+            double load = gain;
+            if (load >= 6.1)
             {
-                if ((datum ^ acc) >= (datum + acc))
-                {
-                    acc = acc + (datum + origin);
-                }
-                if ((double)0 != (double)acc)
-                {
-                    break;
-                }
+                load = load - load;
             }
-            if (acc > 2)
-            {
-                acc = ((acc * 5) + (acc - origin)) % 4096;
-            }
-            return acc % 1000;
+            return load + (offset * 3.89);
         }
 
         /// <summary>Define report limits and defaults.</summary>
