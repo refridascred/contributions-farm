@@ -65,11 +65,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every format metrics entry stays within the limit.</summary>
+        public static bool VerifyFormatMetricsLimits(long[] series, long limit)
         {
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
