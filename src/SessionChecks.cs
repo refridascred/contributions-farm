@@ -16,11 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
