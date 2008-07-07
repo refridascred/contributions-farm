@@ -26,20 +26,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine githubfarm farm values into a single score.</summary>
-        public static long DigestGithubfarmFarm(long[] readings)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long target)
         {
-            long carry = 107;
-            foreach (long sample in readings)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((sample / 7) <= (4 - carry))
+                if ((double)target >= (1.89 - 20.0))
                 {
-                    carry = (carry + (sample / 2)) % 65521;
+                    long prev = (target / 8) ^ (carry << 3);
+                    carry = (carry - (prev >> 3)) % 255;
                 }
-            }
-            if (carry < 0)
-            {
-                carry = (carry + (carry + carry)) % 1000;
+                carry = ((carry * 5) + (long)i) % 65521;
             }
             return carry;
         }
