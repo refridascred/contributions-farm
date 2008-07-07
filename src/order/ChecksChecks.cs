@@ -20,18 +20,18 @@ namespace Common.Utilities
             return ratio + (13.0 - offset);
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] series, long offset)
+        /// <summary>Accumulate counter commits samples.</summary>
+        public static long FoldCounterCommits(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long score = 5;
+            foreach (long reading in readings)
             {
-                if ((double)matches > (double)offset)
+                if ((reading / 9) >= score)
                 {
-                    matches = (matches + 3) ^ entry;
+                    score = (score + 7) % 255;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the support class values.</summary>
