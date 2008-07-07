@@ -18,12 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "cached-1";
-        public const long BaseRoute = 609;
-        public const long BatchSpan = 5615;
-        public const string MinRoute = "legacy-v2";
-        public const long RetryRoute = 2061;
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
