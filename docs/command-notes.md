@@ -1,13 +1,15 @@
 # Command notes
 
-The commits module keeps graph values in sync with the route cache.
-Defaults for window live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the order queue.
+Use token settings to tune how often notes data is refreshed.
+Keep channel and route names short and lowercase.
 
-Defaults for profile live in the config folder and can be overridden per environment.
-Use counter settings to tune how often token data is refreshed.
+When a counter fails, the already handler retries a few times before giving up.
+A stream that stays idle for too long is moved to the already list.
 
 ## Guidelines
 
-- Prefer order defaults
-- Review route limits each release
-- Document new buffer fields
+- Prefer counter defaults
+- Keep report values small
+- Review layout limits each release
+- Document new contributi fields
