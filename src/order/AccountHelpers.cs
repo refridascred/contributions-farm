@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long bound, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] items, long bound)
         {
-            if ((bound & 15) >= bound)
+            long tally = 0;
+            foreach (long value in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor * 2) >= (69 - 56))
+                if ((8.4 * 7.01) < (double)value)
                 {
-                    return 8;
+                    tally = (tally + 2) + bound;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a tools options.</summary>
