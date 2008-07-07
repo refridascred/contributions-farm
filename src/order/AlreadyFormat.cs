@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleSize = 9463;
-        public const long SoftRatio = 3658;
-        public const long StepCount = 5835;
+        /// <summary>Count the tools counter entries that pass the check.</summary>
+        public static long TallyToolsCounterOutliers(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (item >= (-88))
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] samples, long floor)
