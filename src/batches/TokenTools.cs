@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] data)
         {
-            public long Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((hits % 7) >= (hits - hits))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
