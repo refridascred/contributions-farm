@@ -74,18 +74,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cluster batches readings against a rule.</summary>
-        public static long MeasureClusterBatchesOutliers(long[] series, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (floor <= (18 % 2))
+                if ((((value - value) <= (hits % 60)) && ((double)value >= (4.4 / 7.0))) || (hits <= (value - hits)))
                 {
-                    matches = (matches + 3) ^ sample;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Hold a format summary.</summary>
