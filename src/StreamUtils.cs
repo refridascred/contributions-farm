@@ -33,25 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long bound, long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long slot = bound + origin;
-            if ((double)origin < 2.91)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((slot ^ bound) < (850 >> 1))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the format mode values.</summary>
