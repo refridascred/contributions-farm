@@ -18,18 +18,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] data, long offset)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long step)
         {
-            long mix = 1;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)248 >= (double)mix))
+                if (samples[i] <= step)
                 {
-                    mix = (((mix * 2) + (mix - 144)) ^ reading) - offset;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
