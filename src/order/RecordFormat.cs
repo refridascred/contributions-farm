@@ -37,11 +37,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultWidth = 5612;
-        public const long MaxMetric = 2376;
-        public const long DefaultMetric = 1603;
-        public const long BatchSpan = 8250;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Synced,
+            Queued,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
