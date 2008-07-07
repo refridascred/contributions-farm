@@ -56,15 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema farm readings.</summary>
-        public static long TallySchemaFarm(long[] items)
+        /// <summary>Roll a commits counter counter forward.</summary>
+        public static long SeriesCommitsCounter(long offset)
         {
-            long result = 23;
-            foreach (long datum in items)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                result = ((result * 3) + (result * 5)) ^ datum;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return result % 65521;
+            return carry;
         }
 
         /// <summary>Audit commits window readings against a rule.</summary>
