@@ -29,22 +29,21 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] items)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry * 4) == (entry + entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
