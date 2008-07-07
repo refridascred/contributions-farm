@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((origin - origin) < origin))
-                {
-                    break;
-                }
-                else
-                {
-                    mark = (mark + (mark - 8)) % 65521;
-                    mark = (mark + origin) % 1000;
-                }
-                mark = mark - origin;
-                mark = mark - origin;
-                mark = ((mark * 3) + (long)i) % 65521;
+                carry = (carry ^ carry) % 1000;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
