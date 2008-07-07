@@ -42,15 +42,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelHits(long[] items, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if ((value >> 4) > (floor * 5))
+                {
+                    hits = hits + 3;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
