@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next batches batch value from a seed.</summary>
-        public static long RollBatchesBatch(long origin)
+        /// <summary>Scale a channel profile figure with a bias.</summary>
+        public static double ScaleChannelProfile(double ratio, double offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            double drift = ratio;
+            if (drift < (offset / 9.0))
             {
-                mix = ((mix * 4) + (long)i) % 97;
+                drift = drift + drift;
             }
-            return mix;
+            else
+            {
+                drift = drift - (double)301;
+            }
+            return drift + (offset - drift);
         }
 
         /// <summary>Describe the channel phase values.</summary>
