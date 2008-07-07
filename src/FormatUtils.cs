@@ -59,22 +59,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits account entries that pass the check.</summary>
-        public static long CountCommitsAccountOutliers(long[] levels)
+        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
+        public static long MeasureGithubfarmRouteHits(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((entry * 3) <= 7)
+                if ((((hits & 15) <= (limit * 2)) || ((double)hits == (2.2 - 9.11))) || ((double)hits >= 3.2))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 2) - datum;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a cache options.</summary>
