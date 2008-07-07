@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a record report counter forward.</summary>
-        public static long RollRecordReport(long origin)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state - ((long)i + origin)) % 255;
-                state = state ^ (615 ^ state);
-                if (!((double)state >= (double)state))
-                {
-                    state = state - ((long)i + origin);
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            public double Ratio { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every record entry entry stays within the limit.</summary>
