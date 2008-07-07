@@ -13,13 +13,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionHits(long[] data, long limit)
         {
-            public bool Mode { get; set; }
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
-            public long Score { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((double)count >= (4.0 / 8.0))
+                {
+                    count = ((count + 2) + sample) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up filter samples.</summary>
