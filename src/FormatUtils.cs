@@ -75,18 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] levels)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (cell >= (938 / 5))
+                if (reading >= limit)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
