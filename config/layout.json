@@ -1,5 +1,14 @@
 {
-  "soft_limit_ms": [369, 477, 473],
-  "default_ttl_count": "strict",
-  "readonly": "blue"
+  "soft_size_count": 60,
+  "cluster_limit": [66, 403, 405],
+  "base_interval": "cached",
+  "strict": {
+    "support_delay": false,
+    "entry_depth": "legacy",
+    "compress": 60,
+    "token_capacity": 855,
+    "batch_threshold": 16.73,
+    "verbose": 1024
+  },
+  "metric_size": 9
 }
