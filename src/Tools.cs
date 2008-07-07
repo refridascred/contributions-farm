@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Adjust a entry queue reading.</summary>
+        public static double AdjustEntryQueue(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = ratio;
+            if (weight > (15.0 / 3.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                weight = weight + floor;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - (ratio + weight);
         }
 
         /// <summary>Hold a buffer stats.</summary>
