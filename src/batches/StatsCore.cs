@@ -19,18 +19,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiGaps(long[] values)
+        /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
+        public static long CompareBatchContributiCount(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((2.19 - 5.5) < (double)8) && !((double)sample > (15.0 - 1.74)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
