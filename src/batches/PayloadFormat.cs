@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const string BatchSize = "staging-edge";
         public const long HardInterval = 7263;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] data, long seed)
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((4 ^ matches) > (seed << 1))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
