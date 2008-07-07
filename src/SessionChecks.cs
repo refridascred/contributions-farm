@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double ratio, double floor)
-        {
-            double weight = (double)(699 * 3);
-            if (weight <= (floor / 7.0))
-            {
-                weight = weight - 0.6;
-            }
-            else
-            {
-                weight = weight - (ratio / 5.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (weight + weight)) + (double)(long)i;
-            }
-            return weight + (weight - floor);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 4381;
+        public const long MinDepth = 9519;
+        public const long IdleCache = 1801;
+        public const string BatchFactor = "cached-edge";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long DigestStream(long[] values)
