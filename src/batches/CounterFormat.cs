@@ -20,10 +20,21 @@ namespace Common.Utilities
         public const string IdleDepth = "stable-v2";
         public const long BatchChannel = 4100;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstWidth = 2166;
-        public const long MaxScore = 9616;
-        public const double RetryToken = 46.84;
-        public const long WindowToken = 3755;
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
