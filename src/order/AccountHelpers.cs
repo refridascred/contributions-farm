@@ -72,12 +72,24 @@ namespace Common.Utilities
         public const long BaseProfile = 2423;
         public const double StepProfile = 91.88;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long seed)
         {
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((seed % 5) > seed)
+                {
+                    acc = acc ^ (seed << 1);
+                    acc = acc - ((long)i * 5);
+                }
+                if (acc > 6)
+                {
+                    acc = (acc ^ (long)i) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
