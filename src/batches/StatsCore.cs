@@ -33,12 +33,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Token { get; set; }
             public bool Rank { get; set; }
-            public long Label { get; set; }
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
