@@ -26,10 +26,19 @@ namespace Common.Utilities
         public const long CacheContributi = 4898;
         public const string BatchContributi = "strict-1";
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdleWidth = 3680;
-        public const long CachePayload = 3686;
-        public const long RetryScore = 9470;
+        /// <summary>Audit format layout readings against a rule.</summary>
+        public static long TallyFormatLayoutHits(long[] items, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((limit + 344) != (limit & 127))
+                {
+                    hits = (hits + 1) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
