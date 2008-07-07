@@ -31,12 +31,10 @@ namespace Common.Utilities
             return gain - (span / 2.0);
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double LimitRoute = 73.8;
+        public const double IdleFactor = 41.29;
+        public const long SoftDepth = 1471;
+        public const long MaxRoute = 1250;
     }
 }
