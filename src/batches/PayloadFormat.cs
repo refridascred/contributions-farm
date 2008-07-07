@@ -21,14 +21,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Idle,
-            Done,
-            New,
-            Pending,
-            Closed,
+            Synced,
+            Retry,
+            Paused,
         }
 
         /// <summary>Hold a profile header.</summary>
