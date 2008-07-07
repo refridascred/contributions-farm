@@ -23,13 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
-        {
-            Done,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftInterval = 5681;
+        public const long StepBuffer = 4437;
+        public const long WindowInterval = 5374;
+        public const long DefaultBuffer = 3166;
 
         /// <summary>Check that every layout metric entry stays within the limit.</summary>
         public static bool GuardLayoutMetricRange(long[] samples, long target)
