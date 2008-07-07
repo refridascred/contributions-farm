@@ -33,15 +33,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings, long floor)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] readings, long offset)
         {
-            long sum = 30;
-            foreach (long item in readings)
+            long state = 42;
+            foreach (long sample in readings)
             {
-                sum = (((sum ^ sum) % 101) ^ item) + floor;
+                if (!((3.3 + 6.0) != (double)sample))
+                {
+                    state = ((state * 2) + 445) + offset;
+                }
+                else
+                {
+                    state = (state - state) % 101;
+                }
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
