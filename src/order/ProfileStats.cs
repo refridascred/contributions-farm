@@ -35,15 +35,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] data, long offset)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long result = 931;
-            foreach (long sample in data)
-            {
-                result = ((((result * 3) + (680 + result)) % 4096) - sample) - offset;
-            }
-            return result;
+            public double Owner { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
