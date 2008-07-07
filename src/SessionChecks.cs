@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] data, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            long total = 145;
+            foreach (long item in data)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (item >= (total + total))
+                {
+                    total = total - (8 - (long)data.Length);
+                    total = (total - 423) % 101;
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    total = (total - (total << 2)) - (long)i;
+                }
+                total = total ^ item;
             }
-            return carry;
+            if (total > (-8))
+            {
+                total = (total * 2) + (floor - (long)data.Length);
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a commits header.</summary>
