@@ -37,19 +37,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long target)
+        /// <summary>Find the first channel entry entry that matches the target.</summary>
+        public static long FindChannelEntryIndex(long[] data, long target)
         {
-            long mix = -43;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix + sample) % 4096) - target;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 804)
-            {
-                mix = ((mix << 3) ^ 2) % 101;
-            }
-            return mix % 65521;
+            return -1;
         }
     }
 }
