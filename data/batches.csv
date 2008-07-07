@@ -1,10 +1,6 @@
-id,label,count
-1,stable,598
-2,latest,56.09
-3,78.74,376
-4,755,local
-5,65.02,515
-6,latest,439
-7,727,26.87
-8,green,858
-9,strict,775
+id,score,token
+1,85.31,stable
+2,85.44,eu-west
+3,386,120
+4,553,9.75
+5,40.2,953
