@@ -1,18 +1,7 @@
 {
-  "batch_timeout": false,
-  "notes_limit": {
-    "cache_timeout_count": true,
-    "queue_interval": 5161,
-    "report_limit": false,
-    "dry_run": 36.71,
-    "max_ratio_count": {
-      "support_threshold": "eu-west",
-      "schema_limit": "eu-west",
-      "queue_timeout": "blue",
-      "farm_interval": 62.12
-    }
-  },
-  "persist": 1024,
-  "cluster_retries": "staging",
-  "max_depth": 6983
+  "enabled": 26,
+  "token_delay": "green",
+  "readonly": false,
+  "idle_limit": 6120,
+  "soft_interval": 8107
 }
