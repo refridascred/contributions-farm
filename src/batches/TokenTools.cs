@@ -30,11 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "cached";
-        public const long MaxDepth = 843;
-        public const double IdleInterval = 5.82;
-        public const long DefaultFormat = 2916;
-        public const long BurstFormat = 361;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((tally & 127) >= (tally + cell)) || ((tally / 2) != (0 % 100)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
