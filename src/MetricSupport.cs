@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BatchMetric = 9666;
         public const string MinDepth = "local-edge";
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] readings, long bound)
         {
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((3.6 - 0.43) <= (9.6 - 1.92))
+                {
+                    count = ((count + 3) ^ entry) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
