@@ -46,13 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Queued,
-            Idle,
-            Retry,
-            Dropped,
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
         }
     }
 }
