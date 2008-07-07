@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const long LimitTimeout = 4245;
         public const double HardDepth = 49.62;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] values, long bound)
+        /// <summary>Fold a list of filter channel readings.</summary>
+        public static long DigestFilterChannel(long[] readings, long step)
         {
-            long carry = 9;
-            foreach (long cell in values)
+            long total = 34;
+            foreach (long item in readings)
             {
-                carry = (carry - (cell & 255)) % 101;
+                total = (total - item) % 65521;
             }
-            if (carry < 28)
+            if (total > 65)
             {
-                carry = (carry - bound) % 101;
+                total = ((total * 5) + (step & 15)) % 4096;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Roll a context counter forward.</summary>
