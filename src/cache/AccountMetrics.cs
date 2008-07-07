@@ -57,21 +57,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count account cache pairs that satisfy a relation.</summary>
-        public static long CompareAccountCacheCount(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] series, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (series[i] <= floor)
                 {
-                    if ((items[i] + items[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
