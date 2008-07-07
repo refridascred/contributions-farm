@@ -19,19 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate counter metric readings against a bound.</summary>
-        public static bool ValidateCounterMetricBounds(long[] levels, long origin)
+        /// <summary>Iterate the filter batch series from a seed.</summary>
+        public static long RollFilterBatch(long step)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = anchor - step;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
