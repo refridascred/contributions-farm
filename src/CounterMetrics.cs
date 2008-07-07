@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first graph token entry that matches the target.</summary>
-        public static long LookupGraphTokenIndex(long[] series, long target)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Locked,
+            Draft,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a checks snapshot.</summary>
