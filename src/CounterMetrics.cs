@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout editor readings against a rule.</summary>
-        public static long TallyLayoutEditorMatches(long[] samples, long origin)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry << 3) == (origin - seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftDepth = 4.72;
+        public const long BatchEntry = 9212;
+        public const long DefaultDepth = 5995;
+        public const string RetryEntry = "standard-v2";
+        public const long StepEntry = 2030;
 
         /// <summary>Compare every pair of cluster readings.</summary>
         public static long OverlapClusterCount(long[] data)
