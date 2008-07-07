@@ -19,11 +19,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinDepth = "fallback-v2";
-        public const long BatchCommand = 3189;
-        public const long MaxCommand = 3635;
-        public const string StepInterval = "local-v2";
+        /// <summary>Count the profile filter entries that pass the check.</summary>
+        public static long TallyProfileFilterHits(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count - 87) > count)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long StepBudget = 7711;
