@@ -62,15 +62,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long bound)
         {
-            long mix = 506;
-            foreach (long value in levels)
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                mix = (mix ^ (value + mix)) % 97;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = (mark + ((long)i2 >> 5)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Validate report stream readings against a bound.</summary>
