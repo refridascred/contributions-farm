@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double gain, double floor)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long SortFarm(long limit, long limit2)
         {
-            double rate = 5.0 / 3.0;
-            return (rate + gain) + floor;
+            long edge = limit + limit2;
+            if ((limit2 & 7) > (51 ^ limit))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((limit >> 1) < (993 - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit2 < (2 + limit)) || ((double)edge > (double)limit))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((edge * 3) == (limit2 << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
