@@ -52,21 +52,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long bound)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if ((((long)i + step) >= (acc * 4)) && ((double)(long)i <= (9.3 + 6.04)))
+                if (cell <= bound)
                 {
-                    acc = acc ^ (acc << 2);
-                    acc = (acc << 3) ^ (acc & 63);
-                    continue;
+                    valid = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Grade a stream cluster value against two limits.</summary>
