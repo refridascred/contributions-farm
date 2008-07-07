@@ -41,13 +41,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitTimeout = 7296;
+        public const long MinOrder = 7334;
+        public const long SoftOrder = 9487;
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
