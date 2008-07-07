@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 2014;
-        public const string BaseLevel = "alpha-edge";
-        public const long MinCount = 3066;
-        public const long RetryCount = 4659;
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] readings, long step)
+        {
+            long mix = 51;
+            foreach (long entry in readings)
+            {
+                mix = ((mix + (73 - step)) % 97) + entry;
+            }
+            if (mix < 1)
+            {
+                mix = mix ^ (6 - 62);
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long StepRecord = 2097;
