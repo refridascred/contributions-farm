@@ -20,17 +20,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long step)
+        /// <summary>Count the token record entries that pass the check.</summary>
+        public static long AuditTokenRecordHits(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
+                if ((4.75 * 8.8) > (double)tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - value) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank order cache input into a small class.</summary>
