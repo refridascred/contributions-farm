@@ -23,18 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= offset) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 8718;
+        public const string BurstBudget = "local";
+        public const long BaseWidth = 1967;
+        public const long MaxTimeout = 3;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TotalGraph(long[] items, long origin)
