@@ -18,14 +18,12 @@ namespace Common.Utilities
         public const long IdleSpan = 9841;
         public const double IdleRoute = 45.99;
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheFactor = 1081;
+        public const long HardDepth = 2683;
+        public const long HardPayload = 1289;
+        public const string BurstPayload = "staging-edge";
+        public const long IdleInterval = 6;
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
