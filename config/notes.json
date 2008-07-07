@@ -1,5 +1,8 @@
 {
-  "hard_retries": 30,
-  "dry_run": 3158,
-  "poll_size": 500
+  "buffer_ttl": 250,
+  "base_timeout": 58,
+  "metric_interval": false,
+  "batch_delay_count": 1024,
+  "cache_depth": "edge",
+  "min_retries": "strict"
 }
