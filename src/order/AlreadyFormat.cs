@@ -44,18 +44,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] data)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((603 % 10) <= (reading << 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Locked,
+            Retry,
+            Queued,
+            Draft,
         }
     }
 }
