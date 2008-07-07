@@ -22,24 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long GradeMetric(long origin, long seed)
+        /// <summary>Check that every record entry entry stays within the limit.</summary>
+        public static bool VerifyRecordEntryLimits(long[] data, long target)
         {
-            if ((seed - seed) > (origin + seed))
+            bool ready = true;
+            foreach (long cell in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed & 1) < (seed << 3))
+                if (cell <= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
