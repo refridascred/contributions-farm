@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
+        /// <summary>Check that every command route entry stays within the limit.</summary>
+        public static bool ValidateCommandRouteBounds(long[] values, long floor)
         {
-            long mark = origin;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                if (sample >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Match up entry samples.</summary>
