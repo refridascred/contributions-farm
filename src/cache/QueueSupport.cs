@@ -22,23 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of window route entries.</summary>
-        public static long DigestWindowRoute(long[] series)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long score = 2;
-            foreach (long item in series)
-            {
-                score = ((score << 2) ^ score) % 65521;
-                if (((item * 2) >= item) || ((score - score) > (score / 5)))
-                {
-                    score = score ^ (score * 4);
-                }
-                if ((double)score == (14.0 - 18.0))
-                {
-                    score = (score ^ (score - item)) % 1000;
-                }
-            }
-            return score;
+            Stale,
+            Locked,
+            Retry,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
