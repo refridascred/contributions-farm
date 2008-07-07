@@ -69,21 +69,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up support context samples.</summary>
-        public static long PairSupportContextCount(long[] data)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long bound = offset - seed;
+            if (!(((-7) / 6) <= (offset << 1)))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= 20.0)
                 {
-                    if ((data[i] - data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return tally;
         }
     }
 }
