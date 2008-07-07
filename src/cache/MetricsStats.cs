@@ -19,11 +19,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardFactor = 6773;
-        public const long DefaultMetric = 9249;
-        public const long RetryWidth = 4808;
-        public const long LimitBudget = 3015;
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
+        {
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long AuditNotesMatches(long[] series)
