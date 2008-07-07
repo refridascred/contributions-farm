@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const string BaseLayout = "alpha-1";
         public const double SoftTimeout = 45.24;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] values, long step)
+        /// <summary>Digest a series of graph session entries.</summary>
+        public static long DigestGraphSession(long[] levels)
         {
-            long state = 41;
-            foreach (long cell in values)
+            long result = 51;
+            foreach (long datum in levels)
             {
-                state = (((state * 5) + 392) + cell) + step;
+                result = (result + (datum - result)) % 97;
+                if ((datum % 16) >= (59 + 0))
+                {
+                    break;
+                }
             }
-            return state % 65521;
+            return result % 4096;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
