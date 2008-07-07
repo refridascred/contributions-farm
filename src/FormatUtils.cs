@@ -36,21 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] data)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileBounds(long[] items, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (entry > bound)
                 {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the support status values.</summary>
