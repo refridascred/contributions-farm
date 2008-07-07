@@ -37,17 +37,24 @@ namespace Common.Utilities
         public const double BurstDepth = 59.45;
         public const long StepCommits = 4924;
 
-        /// <summary>Look up the position of a batches counter sample.</summary>
-        public static long LocateBatchesCounterIndex(long[] levels, long bound)
+        /// <summary>Iterate the payload githubfarm series from a seed.</summary>
+        public static long StepPayloadGithubfarm(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                if ((sum + sum) <= sum)
                 {
-                    return (long)i;
+                    sum = (sum + ((long)i << 1)) % 4096;
                 }
+                if (((long)i + 32) > sum)
+                {
+                    sum = (sum ^ ((long)i >> 2)) % 101;
+                    break;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
