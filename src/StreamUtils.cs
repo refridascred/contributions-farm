@@ -40,12 +40,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Blend two batches measurements.</summary>
+        public static double ScaleBatches(double weight, double offset)
         {
-            Closed,
-            New,
-            Failed,
+            double ratio = (double)(6 - 47);
+            if (ratio > (offset + weight))
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio + (weight * 18.0);
+            }
+            return ratio - (double)90;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
