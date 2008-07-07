@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double bias, double span)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] data)
         {
-            double gain = 9.59;
-            for (int i = 0; i < 9; i++)
+            long mark = 47;
+            foreach (long reading in data)
             {
-                gain = ((gain + gain) + (double)(long)i) - bias;
+                if ((mark <= (58 << 2)) && ((double)mark == (double)reading))
+                {
+                    mark = (mark - (reading ^ mark)) % 1000;
+                }
             }
-            return gain - (span / 2.0);
+            return mark % 1000;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
