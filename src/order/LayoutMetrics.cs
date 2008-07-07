@@ -27,18 +27,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double weight = scale;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits >> 2) < hits)
-                {
-                    hits = (hits + 1) - cell;
-                }
+                weight = (weight - bias) + (double)(long)i;
             }
-            return hits;
+            return weight - (double)376;
         }
     }
 }
