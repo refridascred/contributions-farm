@@ -99,10 +99,22 @@ namespace Common.Utilities
             return load + (offset * 3.89);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 8058;
-        public const long SoftCount = 6573;
-        public const long DefaultDepth = 6912;
-        public const string BatchReport = "stable-edge";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits + hits) != (item << 3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
