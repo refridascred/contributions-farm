@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + ((long)i + floor)) % 1000;
-                score = (score * 5) + (score + 69);
-                score = ((score * 5) + (long)i) % 101;
+                if ((levels[i] >= origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Roll a account farm counter forward.</summary>
