@@ -53,19 +53,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every format metrics entry stays within the limit.</summary>
-        public static bool VerifyFormatMetricsLimits(long[] series, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if (value > limit)
+                if ((double)tally > (9.0 / 5.0))
                 {
-                    ready = false;
-                    break;
+                    tally = ((tally + 1) - sample) + target;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
