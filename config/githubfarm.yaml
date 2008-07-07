@@ -1,17 +1,7 @@
 # githubfarm settings
-strict: local
-batch_timeout_ms:
-  cache_window_s: 4363
-  flush_depth_pct: 84.38
-  max_interval_ms: stable
-  cache_interval:
-    - fallback
-    - local
-  dry_run:
-    flush_limit: 25.89
-    retry_window_pct: 29.38
-    githubfarm_threshold: 606
-    checks_delay: staging
-max_size_pct: 6
-route_threshold: true
-warm_delay_count: 4477
+flush_capacity_count:
+  - local
+  - cached
+  - cached
+min_ratio: true
+audit: 32
