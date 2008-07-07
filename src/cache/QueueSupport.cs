@@ -30,12 +30,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long bound, long step)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long bound2 = bound ^ step;
+            if ((step % 10) == (step - bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7.0 + 20.0) == (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound2 & 1) == (bound2 % 5)) && ((5.65 / 6.0) <= (double)bound2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)bound > (0.3 * 11.0)) && (bound < (bound2 % 12)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
