@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 1769;
-        public const long BurstTimeout = 2434;
-        public const double BaseWindow = 60.92;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 10.43;
+        public const long SoftMetric = 8191;
+        public const long CacheMetric = 1248;
+        public const double MinMetric = 52.36;
+        public const string StepMetric = "alpha-v2";
 
         /// <summary>Define context limits and defaults.</summary>
         public const string WindowContext = "standard-v2";
