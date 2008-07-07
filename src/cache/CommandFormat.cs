@@ -55,11 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public bool Owner { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 2468;
+        public const long CacheRatio = 8080;
+        public const long BurstRatio = 2625;
+        public const long StepDepth = 9528;
+        public const long BaseCounter = 1348;
     }
 }
