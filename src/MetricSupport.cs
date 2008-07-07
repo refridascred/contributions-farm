@@ -12,14 +12,17 @@ namespace Common.Utilities
         public const long BaseFactor = 2412;
         public const long StepWidth = 8938;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] readings, long seed)
         {
-            Paused,
-            Done,
-            Failed,
-            Draft,
-            Locked,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
