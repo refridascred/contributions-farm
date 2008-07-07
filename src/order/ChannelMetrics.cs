@@ -20,11 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] levels, long offset)
         {
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
