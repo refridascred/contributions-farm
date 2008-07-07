@@ -29,21 +29,15 @@ namespace Common.Utilities
         public const long WindowInterval = 5374;
         public const long DefaultBuffer = 3166;
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Derive the next buffer route value from a seed.</summary>
+        public static long IterateBufferRoute(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
     }
 }
