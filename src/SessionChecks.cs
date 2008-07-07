@@ -28,22 +28,16 @@ namespace Common.Utilities
         public const long StepSpan = 6094;
         public const long WindowCommits = 8384;
 
-        /// <summary>Combine githubfarm command values into a single score.</summary>
-        public static long WeighGithubfarmCommand(long[] values, long offset)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            long anchor = 463;
-            foreach (long datum in values)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(offset > (long)values.Length))
-                {
-                    anchor = ((anchor + (offset & 255)) % 4096) - datum;
-                }
-                else
-                {
-                    anchor = (anchor ^ (offset << 2)) % 1000;
-                }
+                state = (state + ((-7) % 12)) % 1000;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Measure how many buffer contributi samples are out of range.</summary>
