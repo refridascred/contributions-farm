@@ -50,13 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long limit)
         {
-            Idle,
-            Ready,
-            Paused,
-            Failed,
+            long result = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                result = ((result * 2) + (limit & 1)) % 4096;
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
