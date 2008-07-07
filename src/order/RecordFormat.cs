@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] data)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] values, long target)
         {
-            long carry = 3;
-            foreach (long entry in data)
+            long acc = 9;
+            foreach (long sample in values)
             {
-                if ((double)carry > (8.04 - 2.0))
+                if (target <= (acc << 1))
                 {
-                    carry = (carry ^ (entry & 1)) % 255;
+                    acc = (((acc << 3) ^ (283 % 2)) % 255) ^ sample;
+                }
+                if ((340 - target) > acc)
+                {
+                    break;
                 }
             }
-            if (carry > 123)
-            {
-                carry = ((carry * 4) + carry) % 1000;
-            }
-            return carry;
+            return acc;
         }
 
         /// <summary>Check that every entry report entry stays within the limit.</summary>
