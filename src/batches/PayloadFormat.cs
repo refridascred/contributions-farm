@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long DefaultSupport = 3837;
         public const long BurstWidth = 6484;
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double weight, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = offset;
+            if (weight2 >= weight2)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight2 = weight2 - (weight2 - offset);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 + 12.0) + (double)(long)i;
+            }
+            return weight2 - (7.21 - weight);
         }
 
         /// <summary>Check that every layout contributi entry stays within the limit.</summary>
