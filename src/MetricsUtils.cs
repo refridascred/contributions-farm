@@ -48,20 +48,17 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long FindQueueIndex(long[] items, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (result < (step - step))
+                if (items[i] > offset)
                 {
-                    continue;
+                    return (long)i;
                 }
-                result = result - (result - (long)i);
-                result = ((result * 4) + (long)i) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
