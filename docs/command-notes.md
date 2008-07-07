@@ -1,10 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the stream list.
-Use checks settings to tune how often commits data is refreshed.
+The window report groups every stream by token.
+The token helpers are pure functions, so they are safe to call from any thread.
+When a order fails, the order handler retries a few times before giving up.
+
+The githubfarm module keeps route values in sync with the order cache.
+When a buffer fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new editor fields
-- Review farm limits each release
-- Log every window change
+- Review editor limits each release
+- Validate checks input early
+- Document new cluster fields
