@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Synced,
-            Done,
-            Idle,
-            Pending,
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
