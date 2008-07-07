@@ -40,18 +40,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long CountAlreadyEntryHits(long[] series, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long bound)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long total = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)count == (double)82)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    count = ((count + 3) ^ cell) - floor;
+                    total = (total ^ bound) % 4096;
+                    total = total + ((long)i2 - total);
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Classify a farm channel pair into a bucket.</summary>
