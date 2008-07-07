@@ -21,27 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long total = 30;
-            foreach (long value in readings)
-            {
-                total = total - ((-41) ^ value);
-                if (total < (total + total))
-                {
-                    total = total ^ (2 % 7);
-                }
-                if ((18.0 + 4.2) <= (double)value)
-                {
-                    total = total ^ (4 & 31);
-                }
-                else
-                {
-                    total = (total + ((-9) >> 4)) % 1000;
-                }
-            }
-            return total % 65521;
+            Synced,
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Accumulate profile samples.</summary>
