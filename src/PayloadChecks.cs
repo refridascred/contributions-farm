@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer cache readings against a bound.</summary>
-        public static bool CheckBufferCacheLimits(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "legacy-v2";
+        public const long MaxLayout = 2684;
+        public const double WindowLayout = 27.17;
+        public const string BaseLayout = "alpha-1";
+        public const double SoftTimeout = 45.24;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TallyPayload(long[] values, long step)
