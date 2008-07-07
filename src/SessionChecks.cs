@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two entry command measurements.</summary>
-        public static double AdjustEntryCommand(double weight, double offset)
+        /// <summary>Combine schema filter values into a single score.</summary>
+        public static long DigestSchemaFilter(long[] samples, long bound)
         {
-            double scale = offset - (double)22;
-            return scale + weight;
+            long score = 70;
+            foreach (long reading in samples)
+            {
+                if (bound >= (reading - 9))
+                {
+                    score = (score + (reading / 2)) % 4096;
+                }
+            }
+            if (score > 43)
+            {
+                score = (score - score) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
