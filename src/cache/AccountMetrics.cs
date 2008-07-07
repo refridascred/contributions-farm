@@ -53,21 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long MatchCommitsCount(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)sample <= (double)limit)
                 {
-                    if ((values[i] + values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
