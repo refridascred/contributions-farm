@@ -31,22 +31,18 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] items, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterOutliers(long[] values, long origin)
         {
-            long score = 833;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (floor < (14 - datum))
+                if ((entry < (8 + origin)) && ((double)(long)values.Length > (3.18 + 14.0)))
                 {
-                    score = (score << 2) ^ ((long)items.Length + floor);
-                }
-                else
-                {
-                    score = (score ^ datum) % 4096;
+                    count = count + 1;
                 }
             }
-            return score;
+            return count;
         }
     }
 }
