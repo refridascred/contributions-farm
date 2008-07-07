@@ -11,33 +11,11 @@ namespace Common.Utilities
         public const double HardSize = 0.76;
         public const string HardMetric = "alpha-edge";
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long origin)
-        {
-            long delta = bound + origin;
-            if (((origin % 97) <= 64) || ((origin >> 4) > (bound + delta)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3 << 2) >= (delta % 97))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta << 3) < (893 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryWidth = 3029;
+        public const string BurstTimeout = "cached";
+        public const string BatchSupport = "fallback-1";
+        public const double MaxSupport = 33.62;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long BucketRoute(long step, long origin)
