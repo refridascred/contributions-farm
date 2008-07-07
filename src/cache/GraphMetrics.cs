@@ -41,18 +41,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many profile buffer samples are out of range.</summary>
-        public static long TallyProfileBufferGaps(long[] series)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (((-615) >> 2) <= (seen * 2))
-                {
-                    seen = (seen + 2) - cell;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Rank checks input into a small class.</summary>
