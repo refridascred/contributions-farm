@@ -55,17 +55,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] series, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (series[i] <= floor)
+                if (!((tally - tally) >= 3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
