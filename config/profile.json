@@ -1,6 +1,8 @@
 {
-  "buffer_threshold": "legacy",
-  "route_ratio": 43,
-  "cache_capacity": 2161,
-  "counter_delay": "blue"
+  "batch_capacity": 90.67,
+  "retry_capacity_ms": false,
+  "flush_size_s": "green",
+  "burst_timeout_s": "stable",
+  "poll_delay": 257,
+  "command_size": "standard"
 }
