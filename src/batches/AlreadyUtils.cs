@@ -20,14 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchOutliers(long[] series)
         {
-            Retry,
-            Idle,
-            Closed,
-            New,
-            Locked,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (!(matches < 981))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
