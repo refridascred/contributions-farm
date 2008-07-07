@@ -19,16 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long origin)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            long delta = bound + origin;
+            if (((origin % 97) <= 64) || ((origin >> 4) > (bound + delta)))
             {
-                total = ((total << 2) ^ (offset + total)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((3 << 2) >= (delta % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta << 3) < (893 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits header.</summary>
