@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
-        {
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BatchBudget = "standard";
+        public const double WindowDepth = 28.63;
+        public const double MinDepth = 83.34;
+        public const long MinLevel = 8745;
 
         /// <summary>Describe the route status values.</summary>
         public enum RouteStatus
