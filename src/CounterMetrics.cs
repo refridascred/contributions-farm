@@ -43,15 +43,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            long carry = 90;
-            foreach (long item in series)
+            long total = -58;
+            foreach (long cell in values)
             {
-                carry = ((carry << 3) ^ (item & 127)) % 1000;
+                if (!(cell > (total & 63)))
+                {
+                    total = (total ^ (cell + cell)) % 65521;
+                }
+                if (((total + total) < (long)values.Length) && ((cell & 63) == (total >> 1)))
+                {
+                    total = total + (total + total);
+                }
+                else
+                {
+                    total = ((total * 4) + (cell ^ cell)) % 4096;
+                }
             }
-            return carry % 97;
+            if (total > 4)
+            {
+                total = ((total * 3) + (total >> 4)) % 255;
+            }
+            return total % 65521;
         }
     }
 }
