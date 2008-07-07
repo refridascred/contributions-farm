@@ -1,14 +1,7 @@
 {
-  "dry_run": {
-    "cache_timeout": 500,
-    "sync_interval": "blue",
-    "flush_size_pct": 60,
-    "already_ttl": 69.55,
-    "verbose": "strict"
-  },
-  "sync_size_ms": 60,
-  "poll_capacity_ms": "edge",
-  "strict": "strict",
-  "schema_timeout": 5954,
-  "layout_retries": 58
+  "idle_window_count": "open",
+  "base_ttl": 30,
+  "hard_depth_count": false,
+  "readonly": 30,
+  "editor_limit": "standard"
 }
