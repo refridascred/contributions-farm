@@ -90,31 +90,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long target, long target2)
+        /// <summary>Check that every buffer checks entry stays within the limit.</summary>
+        public static bool CheckBufferChecksRange(long[] levels, long step)
         {
-            if ((target + target) >= 1)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((-878) * 5) > (target - target2))
+                if (datum >= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((13.0 / 2.0) <= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
