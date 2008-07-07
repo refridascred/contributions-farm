@@ -55,21 +55,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowBudget = 56.31;
+        public const long MaxSpan = 4551;
+        public const long LimitSize = 8545;
+        public const string HardAccount = "latest-edge";
     }
 }
