@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long MinMetrics = 4094;
         public const long WindowMetrics = 318;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            Ready,
+            Draft,
+            Queued,
         }
 
         /// <summary>Describe the tools mode values.</summary>
