@@ -1,13 +1,6 @@
 {
-  "schema_interval": 250,
-  "hard_interval": 8247,
-  "record_window": "primary",
-  "report_capacity": "green",
-  "batch_threshold": {
-    "min_interval": ["open", "standard", "legacy"],
-    "cache_window_pct": true,
-    "soft_interval_s": 29.53,
-    "default_interval_ms": [247, 289, 203, 341],
-    "batch_size_pct": ["local", "local", "green", "local"]
-  }
+  "batch_ratio_count": 36.8,
+  "persist": 20.1,
+  "min_retries_pct": [237, 396, 272, 366],
+  "enabled": "cached"
 }
