@@ -60,10 +60,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long HardPayload = 172;
-        public const long StepFactor = 4612;
-        public const double IdleScore = 78.99;
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((((2.2 * 5.3) < (double)item) || (4.9 < (double)seed)) || !((double)1 >= (double)tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a context sample.</summary>
         public static long FindContextIndex(long[] data, long floor)
