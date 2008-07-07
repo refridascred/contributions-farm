@@ -1,10 +1,11 @@
 # Command notes
 
-When a channel fails, the window handler retries a few times before giving up.
-Use commits settings to tune how often entry data is refreshed.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Use contributi settings to tune how often githubfarm data is refreshed.
+The batches report groups every queue by order.
 
 ## Guidelines
 
-- Log every layout change
-- Validate order input early
-- Review session limits each release
+- Review notes limits each release
+- Log every already change
+- Prefer record defaults
