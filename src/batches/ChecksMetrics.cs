@@ -62,20 +62,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinBatches = "latest";
+        public const long WindowCount = 7804;
+        public const long MinCount = 4696;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long StepStats = 6403;
