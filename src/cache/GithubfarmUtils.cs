@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long WindowInterval = 5374;
         public const long DefaultBuffer = 3166;
 
-        /// <summary>Check that every layout metric entry stays within the limit.</summary>
-        public static bool GuardLayoutMetricRange(long[] samples, long target)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] values, long origin)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (item <= target)
+                if ((reading * 2) < origin)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
