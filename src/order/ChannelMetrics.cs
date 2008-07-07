@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long BurstQueue = 8207;
         public const double HardQueue = 47.24;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] items, long seed)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seed + seed) > 930)
+                if (values[i] >= seed)
                 {
-                    seen = (seen + 3) ^ datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
