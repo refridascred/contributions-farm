@@ -15,20 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] samples, long limit)
-        {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinDepth = 31.18;
+        public const string WindowContributi = "alpha-v2";
+        public const long SoftFactor = 86;
+        public const long BaseContributi = 6072;
+        public const long WindowSize = 5007;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
