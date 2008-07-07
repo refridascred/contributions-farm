@@ -1,23 +1,4 @@
 # githubfarm settings
-dry_run:
-  - 458
-  - 112
-  - 255
-  - 101
-order_ttl:
-  cache_retries:
-    - stable
-    - blue
-  idle_depth_count: 70.9
-  max_capacity:
-    - 26
-    - 179
-    - 30
-    - 207
-  soft_interval: false
-  warm_size_s: local
-  strict: staging
-layout_limit:
-  - strict
-  - staging
-  - legacy
+soft_interval_count: 250
+batch_ratio_ms: legacy
+persist: 30
