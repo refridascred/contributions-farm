@@ -24,10 +24,19 @@ namespace Common.Utilities
             return weight + (weight - floor);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetrySize = "latest-1";
-        public const long StepSpan = 6094;
-        public const long WindowCommits = 8384;
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] data, long origin)
+        {
+            long acc = 250;
+            foreach (long entry in data)
+            {
+                if ((49 + origin) > (origin & 3))
+                {
+                    acc = acc ^ (entry + 443);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] items, long target)
