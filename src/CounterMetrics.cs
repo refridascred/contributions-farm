@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series, long target)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] samples, long step)
         {
-            long total = 876;
-            foreach (long value in series)
+            long total = 651;
+            foreach (long sample in samples)
             {
-                if (target < (value + value))
+                if ((sample + step) < step)
                 {
-                    total = (total ^ (total % 16)) % 65521;
+                    total = (total + (1 + 0)) % 97;
                 }
             }
-            return total;
+            return total % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
