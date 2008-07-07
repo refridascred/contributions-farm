@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long bound, long origin)
         {
-            Draft,
-            Done,
-            Active,
-            Failed,
-            Queued,
+            long offset = bound - origin;
+            if (origin <= (origin - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(55 <= bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset ^ 288) != (offset << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (4.29 < (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the contributi class values.</summary>
