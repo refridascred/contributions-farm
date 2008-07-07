@@ -1,6 +1,17 @@
 {
-  "poll_retries_s": "blue",
-  "audit": "latest",
-  "warm_timeout_ms": true,
-  "layout_depth": [366, 298, 330, 48]
+  "session_ratio": "cached",
+  "idle_ratio_s": "legacy",
+  "batch_delay": 74.83,
+  "batch_interval": 6080,
+  "min_threshold_count": {
+    "batch_limit_ms": "strict",
+    "base_delay_ms": {
+      "cache_interval_pct": false,
+      "sync_ttl": 96.19,
+      "compress": 30.28,
+      "idle_capacity_ms": true,
+      "default_delay_ms": "staging"
+    },
+    "max_ttl_count": false
+  }
 }
