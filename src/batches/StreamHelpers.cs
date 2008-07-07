@@ -56,31 +56,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a farm channel pair into a bucket.</summary>
-        public static long RankFarmChannel(long origin, long bound)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] series, long target)
         {
-            if (!((origin + origin) > 532))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-26) >= origin) && ((792 - origin) <= bound))
+                if (!(((sample ^ 47) != (0 >> 4)) || ((9 << 3) > (hits - 168))))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin <= 226)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 2) - target;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
