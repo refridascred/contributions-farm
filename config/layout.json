@@ -1,6 +1,16 @@
 {
-  "metric_limit": 6468,
-  "verbose": [251, 390, 185],
-  "poll_window_ms": 56.2,
-  "retry_depth": 60
+  "base_delay_ms": {
+    "readonly": {
+      "cache_interval_ms": ["primary", "staging", "standard", "strict"],
+      "burst_size_ms": "cached",
+      "context_depth": 2689,
+      "verbose": 4336,
+      "command_retries": 94.43
+    },
+    "batch_timeout_s": 20,
+    "metric_window": 92.11
+  },
+  "default_ttl": 8385,
+  "burst_depth_s": 100,
+  "cluster_interval": 1024
 }
