@@ -29,34 +29,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm counter value against two limits.</summary>
-        public static long RankFarmCounter(long bound, long origin)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long limit, long target)
         {
-            if (origin < (44 & 63))
+            if ((double)target > (13.0 + 4.46))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((0.15 - 7.8) > (double)origin)
+                if ((target + 2) > (limit << 2))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (((-35) > (origin << 1)) || ((origin & 63) <= (94 >> 4)))
+                    if ((limit - target) < 77)
                     {
                         return 7;
                     }
                     else
                     {
-                        if (((origin + bound) > bound) && (3 > (bound / 7)))
+                        if (0.3 < (double)limit)
                         {
-                            return 3;
+                            return 5;
                         }
                         else
                         {
-                            return 8;
+                            return 6;
                         }
                     }
                 }
