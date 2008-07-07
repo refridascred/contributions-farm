@@ -43,12 +43,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a channel support figure with a bias.</summary>
-        public static double ScaleChannelSupport(double ratio, double floor)
-        {
-            double mean = 7.1;
-            return (mean - floor) + ratio;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowRatio = "staging";
+        public const string WindowProfile = "latest-1";
+        public const string CacheRatio = "local-edge";
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
