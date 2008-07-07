@@ -1,8 +1,17 @@
 # entry settings
-sync_threshold: 9446
-stream_delay: 30
-sync_retries_pct:
-  - blue
-  - legacy
-  - local
-  - standard
+readonly: strict
+soft_depth:
+  verbose: local
+  readonly: false
+  schema_ttl: 76
+  hard_retries_ms:
+    - 176
+    - 357
+    - 483
+    - 80
+entry_window: 1.88
+flush_retries_ms: 86.47
+default_ttl:
+  - 9
+  - 126
+base_delay_count: false
