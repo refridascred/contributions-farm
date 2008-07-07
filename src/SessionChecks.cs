@@ -21,17 +21,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LocateProfileIndex(long[] values, long seed)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double bias, double bias2)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = (double)(9 - 1);
+            if (rate <= (bias - rate))
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                rate = rate + (bias2 - bias);
             }
-            return -1;
+            else
+            {
+                rate = rate - bias2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (double)421) - (double)(long)i;
+            }
+            return rate + bias2;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
