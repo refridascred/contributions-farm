@@ -1,13 +1,7 @@
 {
-  "idle_interval_ms": true,
-  "poll_retries_ms": 1096,
-  "route_threshold": 45.91,
-  "soft_delay": {
-    "batch_ratio_count": 1495,
-    "cache_timeout_count": 30,
-    "audit": 15.65,
-    "hard_delay_ms": 78.51,
-    "flush_window": "latest",
-    "persist": false
-  }
+  "order_ttl": 7419,
+  "min_threshold_s": 83.71,
+  "base_ttl_count": 78.17,
+  "base_ratio_pct": 100,
+  "audit": 100
 }
