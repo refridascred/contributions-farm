@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 4358;
-        public const string BurstScore = "alpha-1";
-        public const string MinLevel = "alpha";
-        public const string DefaultGraph = "open-v2";
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] series)
+        {
+            long score = 2;
+            foreach (long item in series)
+            {
+                if ((4.5 - 6.1) <= (double)item)
+                {
+                    score = score + (item << 1);
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Blend two layout measurements.</summary>
         public static double SmoothLayout(double scale, double bias)
