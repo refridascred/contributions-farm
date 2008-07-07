@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Classify a queue filter pair into a bucket.</summary>
+        public static long BucketQueueFilter(long offset, long target)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
+            if (target <= (22 % 16))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((offset ^ offset) < (5 - target)) && ((double)target > (double)6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.54 + 12.0) >= (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((-19) > (offset & 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of session order entries.</summary>
