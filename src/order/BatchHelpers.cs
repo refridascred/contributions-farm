@@ -26,24 +26,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] items)
         {
-            if ((seed << 1) < (bound * 2))
+            long sum = 3;
+            foreach (long entry in items)
             {
-                return 1;
+                sum = ((sum * 2) + entry) % 97;
+                sum = (sum << 2) ^ 1;
             }
-            else
-            {
-                if ((seed + bound) > (seed & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum % 65521;
         }
     }
 }
