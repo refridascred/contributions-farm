@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long BatchTimeout = 5102;
         public const string SoftNotes = "open";
 
-        /// <summary>Measure how many stream commits samples are out of range.</summary>
-        public static long AuditStreamCommitsOutliers(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((11.0 * 9.1) >= (double)matches))
-                {
-                    matches = (matches + 2) - item;
-                }
+                sum = ((sum * 3) + (sum / 2)) % 65521;
+                sum = sum - (bound + sum);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a stats info.</summary>
