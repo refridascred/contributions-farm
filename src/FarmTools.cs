@@ -31,14 +31,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Idle,
-            Paused,
-            Locked,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 9990;
+        public const long DefaultFactor = 3536;
+        public const string SoftBatches = "primary-edge";
+        public const long BatchBatches = 2426;
     }
 }
