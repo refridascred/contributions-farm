@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
-        {
-            Synced,
-            Paused,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstSpan = 4999;
+        public const long BaseRoute = 5399;
+        public const double LimitRoute = 55.07;
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long bound)
