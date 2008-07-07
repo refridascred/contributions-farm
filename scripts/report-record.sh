@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 9 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+RECORD_LIMIT=464
+log "limit is ${RECORD_LIMIT}"
 
-for item in blue stable; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-legacy}"
 case "${mode}" in
-    blue)
+    primary)
         log "fast path"
         ;;
     *)
