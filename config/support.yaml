@@ -1,18 +1,5 @@
 # support settings
-batch_retries_pct: 24.11
-sync_depth:
-  hard_ttl_s: true
-  warm_depth_ms: blue
-  poll_ttl_s: 86.12
-  checks_ttl: edge
-  min_limit_count:
-    min_interval_pct: 33.83
-    account_delay: legacy
-    channel_interval:
-      - standard
-      - latest
-readonly: open
-hard_timeout_ms: strict
-max_window:
-  - 207
-  - 57
+cache_timeout_s: 75.98
+strict: 100
+max_capacity_pct: 792
+stream_interval: staging
