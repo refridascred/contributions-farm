@@ -60,13 +60,11 @@ namespace Common.Utilities
         public const long BurstCount = 1891;
         public const long WindowFormat = 2857;
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            New,
-            Idle,
-            Done,
-            Queued,
+            Stale,
+            Failed,
             Pending,
         }
 
