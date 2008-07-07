@@ -32,19 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsLimits(long[] series, long target)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (entry >= target)
+                sum = ((sum << 3) ^ (sum - (long)i)) % 101;
+                if ((sum >= (bound - (long)i)) || ((sum - bound) < (sum + sum)))
                 {
-                    valid = false;
-                    break;
+                    sum = (sum << 3) ^ 732;
                 }
+                sum = (sum * 5) + (sum % 97);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
