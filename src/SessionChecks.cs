@@ -16,13 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Done,
-            Paused,
-            Failed,
-            Locked,
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
