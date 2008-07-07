@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
+            Paused,
             Idle,
-            Closed,
-            Active,
-            Pending,
-            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
