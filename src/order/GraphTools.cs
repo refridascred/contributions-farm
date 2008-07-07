@@ -43,17 +43,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = anchor + 4;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleWidth = 3680;
+        public const long CachePayload = 3686;
+        public const long RetryScore = 9470;
 
         /// <summary>Hold a record snapshot.</summary>
         public sealed class RecordSnapshot
