@@ -40,24 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long offset, long floor)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            if ((46 / 4) >= (floor * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + floor) > (offset & 127))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Closed,
+            Paused,
         }
     }
 }
