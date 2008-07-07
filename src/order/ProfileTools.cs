@@ -37,12 +37,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] series)
         {
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
-            public long Mode { get; set; }
+            long state = 25;
+            foreach (long entry in series)
+            {
+                state = (((state << 2) ^ (0 + 47)) % 1000) + entry;
+            }
+            return state;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
