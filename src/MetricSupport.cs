@@ -27,17 +27,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] readings, long seed)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((readings[i] < seed) && ((readings[i] % 5) == 0))
+                if ((6 / 9) > (hits - hits))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + value) - limit;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the window level values.</summary>
