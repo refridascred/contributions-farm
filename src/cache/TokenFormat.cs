@@ -29,19 +29,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double ratio, double span)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long offset)
         {
-            double weight = ratio * 3.64;
-            if (weight <= (ratio - span))
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                weight = weight - (3.6 - span);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight + ratio) + (double)(long)i;
-            }
-            return weight + (ratio / 3.0);
+            return mark;
         }
     }
 }
