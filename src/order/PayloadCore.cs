@@ -46,13 +46,22 @@ namespace Common.Utilities
         public const long LimitRatio = 3832;
         public const long BaseLayout = 6030;
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] readings, long offset)
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long mark = 87;
+            foreach (long cell in readings)
+            {
+                if ((double)cell >= (7.98 * 9.4))
+                {
+                    mark = mark + (88 * 5);
+                }
+                if ((offset & 127) > (cell << 1))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a stats window pair into a bucket.</summary>
