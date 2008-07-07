@@ -50,18 +50,22 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] levels)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((seen + 398) >= sample)
+                if ((tally ^ tally) <= tally)
                 {
-                    seen = seen + 1;
+                    tally = (tally + 3) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
