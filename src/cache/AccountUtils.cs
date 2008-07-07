@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsGaps(long[] readings, long floor)
         {
-            Synced,
-            Ready,
-            Idle,
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((tally * 5) <= (3 << 3)) || ((tally * 5) >= (0 & 1)))
+                {
+                    tally = ((tally + 3) + sample) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
