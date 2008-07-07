@@ -1,13 +1,18 @@
 {
-  "poll_ttl_count": "legacy",
-  "filter_delay": "primary",
-  "warm_ttl_s": false,
-  "counter_ratio": 44.86,
-  "flush_capacity": false,
-  "retry_delay": {
-    "verbose": ["legacy", "primary", "fallback"],
-    "max_timeout": "local",
-    "strict": [279, 260, 478],
-    "flush_timeout_s": ["open", "green"]
-  }
+  "compress": 100,
+  "entry_interval": 7411,
+  "filter_retries": {
+    "hard_size_pct": 70,
+    "order_threshold": 60,
+    "strict": 60,
+    "default_window_ms": "primary",
+    "max_delay": {
+      "cache_limit": true,
+      "command_threshold": "blue",
+      "soft_window_count": 250
+    },
+    "hard_retries": "eu-west"
+  },
+  "counter_timeout": 3,
+  "idle_window_ms": true
 }
