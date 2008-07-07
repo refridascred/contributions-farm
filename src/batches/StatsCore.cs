@@ -28,25 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter graph pair into a bucket.</summary>
-        public static long ClassifyCounterGraph(long origin, long origin2)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double ratio, double floor)
         {
-            long bound = origin ^ origin2;
-            if ((origin2 / 6) >= (origin2 ^ origin2))
+            double scale = 2.0 / 7.0;
+            if (scale < (double)798)
             {
-                return 8;
+                scale = ((scale - (scale / 2.0)) - ratio) + floor;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (bound < (3 << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale = (scale + scale) + (double)(long)i;
             }
+            return scale - (double)61;
         }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
