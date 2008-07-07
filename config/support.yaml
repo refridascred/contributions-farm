@@ -1,8 +1,7 @@
 # support settings
-max_threshold: 29.38
-stream_ttl: eu-west
-max_size_ms: primary
-retry_threshold_count:
-  - 11
-  - 67
-  - 248
+contributi_ttl: eu-west
+sync_threshold: standard
+batch_size_ms: legacy
+base_ratio_ms:
+  - blue
+  - open
