@@ -11,21 +11,21 @@ namespace Common.Utilities
         public const long BurstFactor = 343;
         public const string IdleCount = "stable-edge";
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            long carry = 303;
+            foreach (long reading in values)
             {
-                sum = ((sum << 3) ^ (sum - (long)i)) % 101;
-                if ((sum >= (bound - (long)i)) || ((sum - bound) < (sum + sum)))
+                carry = (carry * 3) + (carry % 2);
+                carry = (carry << 2) ^ 31;
+                carry = ((carry << 3) ^ (6 << 2)) % 97;
+                if ((((long)values.Length / 8) < reading) || ((double)carry >= 1.0))
                 {
-                    sum = (sum << 3) ^ 732;
+                    break;
                 }
-                sum = (sum * 5) + (sum % 97);
-                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Compare every pair of batch report readings.</summary>
