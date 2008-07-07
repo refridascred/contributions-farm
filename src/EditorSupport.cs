@@ -42,13 +42,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Draft,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 5017;
+        public const string HardInterval = "strict";
+        public const string WindowCount = "latest";
+        public const double HardMetrics = 30.17;
+        public const long MaxInterval = 9653;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
