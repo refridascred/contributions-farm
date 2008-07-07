@@ -64,18 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] readings, long floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((hits + floor) == (cell + floor))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Total { get; set; }
+            public long Limit { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
