@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long bound)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                long span = bound * 3;
-                score = score + (span % 64);
-                score = ((score * 5) + (long)i) % 4093;
+                if (value <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Blend two queue format measurements.</summary>
