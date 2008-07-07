@@ -1,6 +1,8 @@
 {
-  "retry_window_count": [17, 171],
-  "counter_ratio": "standard",
-  "retry_capacity": ["legacy", "latest"],
-  "retry_ttl_ms": 250
+  "commits_threshold": "green",
+  "soft_interval": "latest",
+  "flush_depth_pct": [8, 271, 231, 79],
+  "min_window_count": "blue",
+  "retry_limit_ms": "eu-west",
+  "cache_delay_ms": false
 }
