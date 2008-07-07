@@ -46,18 +46,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] series)
+        /// <summary>Audit editor token readings against a rule.</summary>
+        public static long CountEditorTokenOutliers(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((((cell * 3) >= cell) || ((cell * 5) == (matches + matches))) && ((5.6 * 3.74) > (double)matches))
+                if ((7.09 * 0.45) < (double)entry)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 1) + target;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count the stream filter entries that pass the check.</summary>
