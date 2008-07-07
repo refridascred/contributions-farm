@@ -52,15 +52,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] levels, long offset)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long score = 26;
-            foreach (long sample in levels)
-            {
-                score = (score + offset) ^ sample;
-            }
-            return score;
+            Ready,
+            Active,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a session header.</summary>
