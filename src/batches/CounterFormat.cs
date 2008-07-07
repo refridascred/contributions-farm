@@ -13,20 +13,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] samples, long origin)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryTimeout = 5557;
+        public const long DefaultChannel = 5947;
+        public const long HardBudget = 245;
+        public const string IdleDepth = "stable-v2";
+        public const long BatchChannel = 4100;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstWidth = 2166;
