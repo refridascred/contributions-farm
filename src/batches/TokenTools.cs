@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Ratio { get; set; }
-            public double Token { get; set; }
+            Draft,
+            New,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define record limits and defaults.</summary>
