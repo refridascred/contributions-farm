@@ -55,11 +55,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterRange(long[] items, long floor)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
