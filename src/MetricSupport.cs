@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultTimeout = 9291;
-        public const long IdleInterval = 6237;
-        public const long RetryDepth = 4689;
-        public const long BaseFactor = 2412;
-        public const long StepWidth = 8938;
+        /// <summary>Audit checks githubfarm readings against a rule.</summary>
+        public static long AuditChecksGithubfarmHits(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally - tally) <= item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] readings, long seed)
