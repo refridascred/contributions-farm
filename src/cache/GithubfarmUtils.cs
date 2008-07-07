@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BatchMetric = 97.23;
-        public const string StepMetric = "alpha";
-        public const double HardSize = 0.76;
-        public const string HardMetric = "alpha-edge";
+        /// <summary>Check that every batches cluster entry stays within the limit.</summary>
+        public static bool CheckBatchesClusterLimits(long[] series, long target)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of channel entry readings.</summary>
         public static long CompareChannelEntryCount(long[] data)
