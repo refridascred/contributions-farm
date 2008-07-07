@@ -16,17 +16,19 @@ namespace Common.Utilities
             return drift - (drift * 0.2);
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 54;
+            foreach (long reading in data)
             {
-                if (samples[i] <= step)
+                result = (result * 3) + (reading + result);
+                if (203 >= (result + 85))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
