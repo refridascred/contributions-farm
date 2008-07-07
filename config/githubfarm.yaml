@@ -1,35 +1,10 @@
 # githubfarm settings
-verbose:
+hard_delay: 3.76
+audit:
+  - stable
+  - standard
+  - edge
+readonly: stable
+layout_delay:
   - open
-  - stable
-  - stable
-  - blue
-compress:
-  - 398
-  - 267
-  - 336
-burst_delay_s:
-  dry_run:
-    - 295
-    - 300
-    - 377
-  editor_retries: standard
-  batch_ttl: 1024
-  default_threshold_ms: blue
-  base_size_pct:
-    compress: 16
-    default_retries:
-      - legacy
-      - green
-      - stable
-      - local
-    hard_retries_s:
-      - 198
-      - 414
-      - 244
-      - 196
-    strict:
-      - standard
-      - local
-    schema_capacity: 9088
-hard_delay: green
+  - latest
