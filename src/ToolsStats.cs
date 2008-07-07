@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Active,
+            Ready,
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
