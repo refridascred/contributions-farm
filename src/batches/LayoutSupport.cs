@@ -26,20 +26,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] series, long offset)
-        {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseRatio = 465;
+        public const double MaxCount = 31.19;
+        public const double BurstSpan = 21.64;
+        public const long MaxRatio = 4166;
+        public const long WindowScore = 7526;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool ValidateEditorRange(long[] data, long step)
