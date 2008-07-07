@@ -19,10 +19,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BurstScore = "legacy";
-        public const long BatchSession = 1390;
-        public const string SoftSession = "cached-v2";
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] data)
