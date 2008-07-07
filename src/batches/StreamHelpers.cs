@@ -50,12 +50,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 4092;
-        public const double BurstQueue = 51.99;
-        public const double BaseTimeout = 91.15;
-        public const string HardQueue = "legacy-v2";
-        public const long MinSize = 7913;
+        /// <summary>Check that every support already entry stays within the limit.</summary>
+        public static bool GuardSupportAlreadyLimits(long[] data, long bound)
+        {
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample >= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
         public static long CompareStreamCount(long[] items)
