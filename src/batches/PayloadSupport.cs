@@ -23,18 +23,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload metrics entries that pass the check.</summary>
-        public static long MeasurePayloadMetricsOutliers(long[] data, long offset)
+        /// <summary>Check that every stream batch entry stays within the limit.</summary>
+        public static bool GuardStreamBatchLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (offset > (5 % 100))
+                if (datum <= origin)
                 {
-                    count = (count + 1) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Look up the position of a queue counter sample.</summary>
