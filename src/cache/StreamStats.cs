@@ -30,11 +30,13 @@ namespace Common.Utilities
             return load - (ratio + ratio);
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public string Region { get; set; } = "";
-            public double Limit { get; set; }
+            New,
+            Retry,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
