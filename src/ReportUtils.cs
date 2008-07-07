@@ -60,11 +60,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public string Label { get; set; } = "";
-            public double Count { get; set; }
+            public bool Weight { get; set; }
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
