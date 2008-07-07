@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long BurstQueue = 8207;
         public const double HardQueue = 47.24;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] values, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
