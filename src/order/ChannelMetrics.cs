@@ -47,21 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long MatchQueueCount(long[] samples)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((values[i] >= floor) && ((values[i] % 2) == 0))
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
