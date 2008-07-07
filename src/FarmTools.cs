@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long seed)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] series, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 197;
+            foreach (long sample in series)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                if ((floor * 2) < (acc % 100))
+                {
+                    acc = ((acc << 2) ^ (sample * 3)) % 97;
+                }
             }
             return acc;
         }
