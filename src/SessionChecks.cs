@@ -24,38 +24,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long limit, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LocateProfileIndex(long[] values, long seed)
         {
-            if ((double)target > (13.0 + 4.46))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target + 2) > (limit << 2))
+                if (values[i] <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit - target) < 77)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (0.3 < (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
