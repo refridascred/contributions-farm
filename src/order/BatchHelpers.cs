@@ -22,18 +22,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] items, long target)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long span = bound - offset;
+            if ((6.65 < (double)span) && ((offset - bound) == (span / 8)))
             {
-                if ((matches << 3) > (matches % 3))
+                return 7;
+            }
+            else
+            {
+                if ((-6) <= (50 ^ span))
                 {
-                    matches = ((matches + 3) + entry) - target;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound / 5) > offset) || ((bound + span) <= offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate graph samples.</summary>
