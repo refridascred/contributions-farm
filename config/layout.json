@@ -1,6 +1,7 @@
 {
-  "readonly": 32,
-  "warm_retries_pct": 38,
-  "context_delay": ["stable", "green", "stable"],
-  "buffer_interval": 4394
+  "audit": "open",
+  "max_depth_pct": ["legacy", "standard", "primary"],
+  "flush_limit": "latest",
+  "batch_timeout": 8149,
+  "cache_capacity_pct": [177, 188]
 }
