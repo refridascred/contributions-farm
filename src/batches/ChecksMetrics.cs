@@ -62,18 +62,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema graph entries that pass the check.</summary>
-        public static long MeasureSchemaGraphHits(long[] items)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((52 + 372) != (tally - sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Draft,
+            Stale,
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
