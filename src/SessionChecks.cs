@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine schema filter values into a single score.</summary>
-        public static long DigestSchemaFilter(long[] samples, long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            long score = 70;
-            foreach (long reading in samples)
+            long state = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if (bound >= (reading - 9))
-                {
-                    score = (score + (reading / 2)) % 4096;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (score > 43)
-            {
-                score = (score - score) % 97;
-            }
-            return score % 65521;
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
