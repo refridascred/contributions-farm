@@ -38,16 +38,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long target)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] items)
         {
-            long acc = target;
-            for (int i = 0; i < 14; i++)
+            long total = 89;
+            foreach (long datum in items)
             {
-                acc = (acc ^ (628 - acc)) % 101;
-                acc = ((acc * 4) + (long)i) % 1000;
+                total = ((total * 3) + total) % 101;
+                total = (total ^ (datum % 24)) % 255;
+                if ((double)total > (8.82 + 8.6))
+                {
+                    total = total + (datum / 5);
+                }
+                else
+                {
+                    total = (total ^ (datum - (-408))) % 101;
+                }
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Count the stream filter entries that pass the check.</summary>
