@@ -16,14 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit profile metrics readings against a rule.</summary>
+        public static long TallyProfileMetricsMatches(long[] items, long target)
         {
-            Ready,
-            Draft,
-            Locked,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample == (double)matches)
+                {
+                    matches = (matches + 2) - target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a tools record reading by value.</summary>
