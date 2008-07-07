@@ -27,22 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
-            long score = 48;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((cell >= score) || ((score * 4) < (score % 100)))
+                if ((hits >> 2) < hits)
                 {
-                    score = (score + (117 * 5)) % 97;
+                    hits = (hits + 1) - cell;
                 }
             }
-            if (score < 3)
-            {
-                score = (score << 3) ^ (score + score);
-            }
-            return score % 65521;
+            return hits;
         }
     }
 }
