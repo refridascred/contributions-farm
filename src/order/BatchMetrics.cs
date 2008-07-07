@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] values)
+        /// <summary>Count the cluster graph entries that pass the check.</summary>
+        public static long AuditClusterGraphHits(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((limit ^ 29) > hits) && (((double)hits > (0.95 * 0.72)) && ((reading ^ 0) > (hits & 63))))
                 {
-                    if ((values[i] ^ values[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Accumulate notes samples.</summary>
