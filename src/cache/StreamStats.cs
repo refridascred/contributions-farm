@@ -20,22 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate token report samples.</summary>
-        public static long FoldTokenReport(long[] levels, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = 145;
-            foreach (long entry in levels)
-            {
-                if ((seed / 8) == (seed / 9))
-                {
-                    anchor = (anchor + (seed - seed)) ^ entry;
-                }
-            }
-            if (anchor > (-347))
-            {
-                anchor = (anchor + 217) % 97;
-            }
-            return anchor;
+            Locked,
+            Pending,
+            Failed,
+            Draft,
+            Idle,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
