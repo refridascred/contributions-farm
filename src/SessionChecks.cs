@@ -63,19 +63,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] data, long step)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
