@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 2) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every entry report entry stays within the limit.</summary>
