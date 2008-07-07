@@ -25,12 +25,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] levels, long seed)
         {
-            Active,
-            Done,
-            Retry,
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit farm stats readings against a rule.</summary>
