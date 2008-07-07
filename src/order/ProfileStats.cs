@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the schema session entries that pass the check.</summary>
-        public static long MeasureSchemaSessionGaps(long[] items)
+        /// <summary>Project the next stream counter value.</summary>
+        public static double AdjustStreamCounter(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double drift = 11.0;
+            if (drift >= (double)3)
             {
-                if (!((seen + seen) != (140 * 4)))
-                {
-                    seen = (seen + 3) - value;
-                }
+                drift = (drift + (bias - drift)) + gain;
             }
-            return seen;
+            return drift - (bias * 19.0);
         }
 
         /// <summary>Hold a command stats.</summary>
