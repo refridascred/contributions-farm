@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long offset)
+        /// <summary>Scale a profile record figure with a bias.</summary>
+        public static double ProjectProfileRecord(double bias, double bias2)
         {
-            if ((8.0 + 6.0) != (double)origin)
+            double gain = bias;
+            if (gain >= (double)59)
             {
-                return 1;
+                gain = gain + (bias + bias);
             }
-            else
-            {
-                if ((origin + 9) != (origin << 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin - origin) >= (offset & 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return gain + (bias - bias2);
         }
 
         /// <summary>Accumulate filter samples.</summary>
