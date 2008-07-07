@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] levels)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((((count & 31) >= 991) || ((60 + count) >= (entry & 7))) && (entry <= (count >> 5)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
