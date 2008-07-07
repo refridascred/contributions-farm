@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] samples, long step)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long total = 61;
-            foreach (long entry in samples)
-            {
-                if ((step % 12) < (step / 2))
-                {
-                    total = ((total ^ (4 - step)) % 97) ^ entry;
-                }
-            }
-            return total;
+            Ready,
+            Failed,
+            New,
+            Queued,
+            Synced,
         }
 
         /// <summary>Accumulate checks stats samples.</summary>
