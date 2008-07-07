@@ -47,22 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] items)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long total = 461;
+            foreach (long sample in data)
             {
-                if ((((long)items.Length << 3) == (tally >> 4)) && (reading > (tally % 16)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total ^ (bound ^ total)) % 65521) ^ sample;
             }
-            return tally;
+            return total;
         }
     }
 }
