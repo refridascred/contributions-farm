@@ -56,12 +56,11 @@ namespace Common.Utilities
         public const long BurstCount = 6064;
         public const long BaseCount = 1208;
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
             public long Score { get; set; }
+            public double Region { get; set; }
         }
     }
 }
