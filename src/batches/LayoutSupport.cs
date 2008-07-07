@@ -15,22 +15,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate checks stats samples.</summary>
-        public static long DigestChecksStats(long[] series, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long limit)
         {
-            long acc = 37;
-            foreach (long item in series)
+            if ((double)limit >= (5.7 - 6.0))
             {
-                if (!((double)acc == (1.33 / 9.0)))
+                return 3;
+            }
+            else
+            {
+                if (((limit >> 5) >= (bound - limit)) || (limit <= (bound ^ bound)))
                 {
-                    acc = (acc + (item - item)) - offset;
+                    return 5;
+                }
+                else
+                {
+                    if ((3.8 - 5.8) == (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - bound) <= (limit / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (acc < (-754))
-            {
-                acc = ((acc * 5) + (acc >> 1)) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
