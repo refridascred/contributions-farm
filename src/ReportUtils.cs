@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double bias)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            double ratio = 9.2;
-            if (ratio >= 17.0)
-            {
-                ratio = (ratio - bias) + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio - (ratio / 6.0)) + (double)(long)i;
-            }
-            return ratio - (double)338;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
