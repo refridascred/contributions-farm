@@ -26,18 +26,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] values, long offset)
+        /// <summary>Audit cache contributi readings against a rule.</summary>
+        public static long TallyCacheContributiHits(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (!((reading ^ hits) <= reading))
+                if (3.25 < (double)seed)
                 {
-                    hits = (hits + 2) + offset;
+                    tally = (tally + 3) - item;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
