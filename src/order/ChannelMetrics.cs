@@ -20,12 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 10.41;
-        public const string CacheCount = "standard";
-        public const double CacheOrder = 4.21;
-        public const double IdleBudget = 92.97;
-        public const long BurstInterval = 3791;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long offset, long seed)
+        {
+            if (73 <= (offset << 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= 5.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset <= (double)43)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] samples)
