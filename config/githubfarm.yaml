@@ -1,19 +1,21 @@
 # githubfarm settings
-record_timeout: blue
-format_ttl: open
-stream_depth:
-  - latest
+soft_size:
+  - open
+  - strict
+  - fallback
+audit: standard
+base_timeout_s:
+  retry_retries_count:
+    - 301
+    - 471
+    - 181
+    - 497
+  soft_interval_ms: 48.67
+  min_delay_ms: green
+  warm_ratio_ms: fallback
+  hard_limit: 87
+cache_limit_s:
   - standard
   - fallback
   - fallback
-cluster_interval: 100
-hard_capacity_count:
-  persist: 47.56
-  githubfarm_window:
-    - 286
-    - 36
-    - 455
-  burst_timeout_pct: 100
-  burst_capacity: green
-  route_ttl: eu-west
-schema_retries: true
+retry_ratio_count: 55
