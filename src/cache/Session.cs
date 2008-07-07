@@ -20,32 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] levels, long bound)
         {
-            long lane = seed + offset;
-            if ((offset << 1) <= 0)
+            long anchor = 7;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((((-4) << 2) == (lane + 6)) || ((double)seed <= (6.3 * 4.98)))
+                if (anchor > (20 + datum))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((lane ^ seed) >= offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    anchor = ((anchor - (anchor << 2)) % 101) + bound;
                 }
             }
+            if (anchor < 62)
+            {
+                anchor = anchor - (anchor & 255);
+            }
+            return anchor;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
