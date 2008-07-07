@@ -28,14 +28,10 @@ namespace Common.Utilities
         public const long StepSpan = 6094;
         public const long WindowCommits = 8384;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
-        {
-            New,
-            Retry,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double DefaultScore = 41.58;
+        public const string LimitLevel = "stable";
+        public const long HardGraph = 3011;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
