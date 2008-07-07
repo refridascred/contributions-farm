@@ -36,18 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics graph entries.</summary>
-        public static long WeighMetricsGraph(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long mix = 4;
-            foreach (long item in items)
+            long sum = 40;
+            foreach (long datum in levels)
             {
-                if ((mix >= (item - (long)items.Length)) || ((40 - 203) == (item + item)))
+                if (!(sum <= datum))
                 {
-                    mix = (mix - (mix / 5)) % 101;
+                    sum = (sum - (sum ^ 3)) % 255;
                 }
             }
-            return mix;
+            if (sum > (-83))
+            {
+                sum = (sum + sum) % 4096;
+            }
+            return sum;
         }
     }
 }
