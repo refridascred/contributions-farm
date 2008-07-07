@@ -41,10 +41,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MinScore = 60.51;
-        public const long WindowInterval = 3667;
-        public const double BatchChecks = 58.3;
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
