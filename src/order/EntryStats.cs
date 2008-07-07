@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BatchFarm = 3077;
         public const long BatchRatio = 7059;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] levels, long origin)
+        /// <summary>Locate a layout cluster reading by value.</summary>
+        public static long LookupLayoutClusterIndex(long[] items, long offset)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry >= origin)
+                if (items[i] < offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
