@@ -30,18 +30,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] series)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long mark = 80;
-            foreach (long item in series)
-            {
-                if ((mark / 4) > (item % 12))
-                {
-                    mark = mark ^ (item / 5);
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
