@@ -57,22 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelOutliers(long[] readings)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data, long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long result = 7;
+            foreach (long item in data)
             {
-                if ((sample + 6) < sample)
+                if (((item + 3) == (result << 3)) && ((17.0 - 1.0) != (double)result))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result ^ (item ^ step)) % 65521;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
