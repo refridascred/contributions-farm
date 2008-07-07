@@ -60,19 +60,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                long gap = acc;
-                acc = ((acc << 3) ^ ((long)i ^ gap)) % 97;
-                gap = (gap ^ 49) % 101;
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySpan = 6138;
+        public const long MaxTools = 6706;
+        public const long BurstInterval = 6995;
+        public const string DefaultScore = "stable";
 
         /// <summary>Hold a channel options.</summary>
         public sealed class ChannelOptions
