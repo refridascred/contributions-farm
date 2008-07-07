@@ -55,15 +55,24 @@ namespace Common.Utilities
             return scale2 + (1.0 / 8.0);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] data, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long bound)
         {
-            long total = 461;
-            foreach (long sample in data)
+            if (((8.0 * 2.3) != (double)bound) && ((target + target) <= (target - bound)))
             {
-                total = ((total ^ (bound ^ total)) % 65521) ^ sample;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (target < (3 + bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
