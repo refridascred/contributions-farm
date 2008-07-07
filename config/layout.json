@@ -1,7 +1,17 @@
 {
-  "audit": "open",
-  "max_depth_pct": ["legacy", "standard", "primary"],
-  "flush_limit": "latest",
-  "batch_timeout": 8149,
-  "cache_capacity_pct": [177, 188]
+  "hard_limit_ms": true,
+  "record_threshold": {
+    "strict": false,
+    "flush_threshold": 6434,
+    "profile_threshold": 70,
+    "default_timeout": "local",
+    "persist": 100
+  },
+  "enabled": "staging",
+  "payload_capacity": true,
+  "buffer_interval": {
+    "max_ttl_pct": "eu-west",
+    "idle_retries_pct": true,
+    "flush_capacity_pct": 15
+  }
 }
