@@ -70,13 +70,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Locked,
             Retry,
-            Queued,
             Draft,
+            Ready,
         }
     }
 }
