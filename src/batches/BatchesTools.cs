@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const string MinCount = "primary-1";
         public const double CacheRatio = 77.99;
 
-        /// <summary>Compare every pair of commits cache readings.</summary>
-        public static long OverlapCommitsCacheCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardCount = 3649;
+        public const double DefaultBudget = 53.7;
+        public const string WindowSize = "primary-v2";
+        public const string BurstStream = "latest";
 
         /// <summary>Grade a format graph value against two limits.</summary>
         public static long BucketFormatGraph(long floor, long limit)
