@@ -22,18 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 10.41;
+        public const string CacheCount = "standard";
+        public const double CacheOrder = 4.21;
+        public const double IdleBudget = 92.97;
+        public const long BurstInterval = 3791;
 
         /// <summary>Match up queue samples.</summary>
         public static long MatchQueueCount(long[] samples)
