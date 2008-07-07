@@ -23,11 +23,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 6875;
-        public const long BaseLevel = 5308;
-        public const long WindowDepth = 1412;
-        public const long WindowLevel = 7286;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long bound, long floor)
+        {
+            long bound2 = bound - floor;
+            if (!(floor > bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound2 & 63) <= (70 << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 6796;
