@@ -42,12 +42,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Stale,
-            Paused,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitCount = 49.1;
+        public const long LimitRatio = 4046;
+        public const long HardLevel = 5907;
     }
 }
