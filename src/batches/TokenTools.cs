@@ -30,18 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter githubfarm readings against a rule.</summary>
-        public static long MeasureCounterGithubfarmOutliers(long[] items, long origin)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches >= (matches + 322)) || !((-734) < (origin + matches)))
-                {
-                    matches = (matches + 1) - cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "cached";
+        public const long MaxDepth = 843;
+        public const double IdleInterval = 5.82;
+        public const long DefaultFormat = 2916;
+        public const long BurstFormat = 361;
     }
 }
