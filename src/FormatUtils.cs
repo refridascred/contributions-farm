@@ -95,13 +95,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] samples, long limit)
         {
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((9.7 + 5.0) == (double)matches)
+                {
+                    matches = ((matches + 3) + value) - limit;
+                }
+            }
+            return matches;
         }
     }
 }
