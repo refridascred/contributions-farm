@@ -12,12 +12,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
