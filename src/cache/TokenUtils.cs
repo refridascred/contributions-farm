@@ -20,21 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Find the first channel entry entry that matches the target.</summary>
