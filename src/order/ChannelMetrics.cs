@@ -37,10 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 1281;
-        public const long BurstCount = 7792;
-        public const long StepRatio = 4494;
-        public const double StepBudget = 20.14;
+        /// <summary>Scale a channel batches figure with a bias.</summary>
+        public static double AdjustChannelBatches(double scale, double bias)
+        {
+            double load = bias / 5.0;
+            return (load - bias) + scale;
+        }
     }
 }
