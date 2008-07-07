@@ -58,18 +58,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] readings, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = 26;
+            foreach (long sample in levels)
             {
-                if (((matches + origin) > matches) || (origin > (matches % 10)))
-                {
-                    matches = (matches + 3) ^ item;
-                }
+                score = (score + offset) ^ sample;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
