@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a metric token reading by value.</summary>
-        public static long SeekMetricTokenIndex(long[] samples, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 5) != 0))
+                if ((seen ^ seen) <= (step + entry))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of record readings.</summary>
