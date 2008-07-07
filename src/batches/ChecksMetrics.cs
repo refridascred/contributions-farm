@@ -27,24 +27,22 @@ namespace Common.Utilities
         public const long LimitSession = 9648;
         public const long SoftSession = 7052;
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaOutliers(long[] items)
         {
-            long state = 2;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (((double)state > (9.04 + 1.0)) || ((double)state < (3.09 + 16.0)))
+                if (20.0 >= (double)tally)
                 {
-                    state = (state ^ (reading << 3)) % 101;
+                    tally = (tally + 3) ^ sample;
                 }
                 else
                 {
-                    state = (state + (reading - state)) % 4096;
-                    state = ((state << 2) ^ (reading + reading)) % 101;
+                    tally = tally - 1;
                 }
-                state = (state - (state << 2)) % 255;
             }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
