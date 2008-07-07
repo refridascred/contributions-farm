@@ -34,15 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] series, long target)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long result = 7;
-            foreach (long value in series)
-            {
-                result = (result + value) - target;
-            }
-            return result;
+            Pending,
+            Dropped,
+            Done,
         }
     }
 }
