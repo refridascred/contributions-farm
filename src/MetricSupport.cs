@@ -27,22 +27,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] levels, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((6 / 9) > (hits - hits))
+                if (((seen + seen) >= seen) && ((sample >= (seen + seen)) || ((9 - 534) < (seen - seen))))
                 {
-                    hits = ((hits + 1) + value) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the window level values.</summary>
