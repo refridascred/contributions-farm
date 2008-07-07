@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Project the next stream counter value.</summary>
-        public static double AdjustStreamCounter(double gain, double bias)
+        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
+        public static bool ValidateMetricsChannelBounds(long[] series, long floor)
         {
-            double drift = 11.0;
-            if (drift >= (double)3)
+            bool ready = true;
+            foreach (long item in series)
             {
-                drift = (drift + (bias - drift)) + gain;
+                if (item < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (bias * 19.0);
+            return ready;
         }
 
         /// <summary>Combine token values into a single score.</summary>
