@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Rank already notes input into a small class.</summary>
+        public static long BucketAlreadyNotes(long step, long target)
         {
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long offset = step - target;
+            if ((10.0 - 13.0) <= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if (offset > (target - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
