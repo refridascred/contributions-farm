@@ -55,17 +55,31 @@ namespace Common.Utilities
             return weight + (18.0 * 5.1);
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] samples, long bound)
+        /// <summary>Classify a farm channel pair into a bucket.</summary>
+        public static long RankFarmChannel(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!((origin + origin) > 532))
             {
-                if (samples[i] <= bound)
+                return 4;
+            }
+            else
+            {
+                if (((-26) >= origin) && ((792 - origin) <= bound))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= 226)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
