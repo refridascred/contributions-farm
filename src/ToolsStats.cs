@@ -26,11 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
