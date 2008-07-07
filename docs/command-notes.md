@@ -1,12 +1,11 @@
 # Command notes
 
-Run the commits check before changing any filter limits.
-The session report groups every order by githubfarm.
-The queue report groups every token by schema.
+The format helpers are pure functions, so they are safe to call from any thread.
+When a filter fails, the buffer handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer batch defaults
-- Review contributi limits each release
-- Log every already change
-- Document new command fields
+- Prefer cache defaults
+- Validate buffer input early
+- Keep queue values small
+- Document new stats fields
