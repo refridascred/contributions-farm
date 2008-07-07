@@ -23,24 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long limit, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            if (7.55 <= (double)step)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                return 6;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((4 / 9) != (limit + (-590)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return score;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
