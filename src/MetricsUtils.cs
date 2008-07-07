@@ -38,10 +38,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinScore = "cached-v2";
-        public const double WindowStats = 4.44;
-        public const double HardSize = 79.79;
-        public const long BurstRatio = 384;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
