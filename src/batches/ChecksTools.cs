@@ -56,18 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of payload window readings.</summary>
-        public static long WeighPayloadWindow(long[] levels, long limit)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long carry = 33;
-            foreach (long value in levels)
-            {
-                if ((limit << 1) != (6 << 1))
-                {
-                    carry = (carry - (carry + 59)) - value;
-                }
-            }
-            return carry % 1000;
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
