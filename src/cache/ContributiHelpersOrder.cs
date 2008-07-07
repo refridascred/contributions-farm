@@ -20,15 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ProjectGithubfarm(double weight, double offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] levels)
         {
-            double scale = (double)565 + (weight / 5.0);
-            if (scale <= (scale / 8.0))
+            long anchor = 0;
+            foreach (long value in levels)
             {
-                scale = (scale - (3.0 / 5.0)) + offset;
+                anchor = ((anchor ^ (anchor * 3)) % 1000) ^ value;
+                anchor = (anchor - anchor) % 97;
             }
-            return scale + 17.0;
+            if (anchor < 928)
+            {
+                anchor = (anchor ^ anchor) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
