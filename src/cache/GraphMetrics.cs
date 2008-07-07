@@ -63,12 +63,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double weight, double span)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            double gain = 5.0;
+            if (gain <= (weight * 20.0))
+            {
+                gain = gain + (span / 7.0);
+            }
+            return gain - (gain + 2.7);
         }
     }
 }
