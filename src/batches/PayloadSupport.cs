@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Paused,
-            Idle,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultMetric = 82.79;
+        public const long StepSize = 9407;
+        public const string RetryMetric = "stable-edge";
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double scale, double floor)
