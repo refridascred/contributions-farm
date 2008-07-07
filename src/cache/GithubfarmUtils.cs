@@ -62,22 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Audit profile cluster readings against a rule.</summary>
+        public static long AuditProfileClusterOutliers(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((tally ^ tally) <= tally)
+                if (((5 % 3) < count) && ((count + limit) >= (limit + entry)))
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
