@@ -34,12 +34,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if (!(sample >= 6))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits level values.</summary>
