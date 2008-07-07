@@ -1,5 +1,14 @@
 # support settings
-flush_delay_count: 46
-verbose: green
-batch_depth_count: edge
-support_limit: edge
+enabled:
+  - local
+  - blue
+hard_size_s:
+  base_window:
+    - 377
+    - 373
+  queue_delay: false
+  dry_run: blue
+  cache_threshold: true
+layout_capacity: staging
+githubfarm_retries: fallback
+verbose: 250
