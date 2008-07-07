@@ -66,15 +66,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Failed,
-            Pending,
-            Stale,
-            Idle,
-            New,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "alpha-1";
+        public const long BatchDepth = 884;
+        public const long SoftLevel = 1795;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterHits(long[] samples)
