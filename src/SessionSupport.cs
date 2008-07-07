@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double scale, double bias)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double gain = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = ((gain + (9.96 * 6.4)) + (double)(long)i) + scale;
-            }
-            return gain - gain;
+            public double Limit { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Iterate the commits batches series from a seed.</summary>
