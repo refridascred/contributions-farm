@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Idle,
+            Synced,
+            Done,
             Active,
-            Draft,
-            Closed,
+            Failed,
             Queued,
         }
 
