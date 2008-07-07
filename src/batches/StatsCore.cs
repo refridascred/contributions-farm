@@ -52,18 +52,11 @@ namespace Common.Utilities
         public const long StepEntry = 3807;
         public const string RetryEntry = "strict-edge";
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] series)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((14 + hits) <= datum)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Ratio { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
