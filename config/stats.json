@@ -1,14 +1,5 @@
 {
-  "audit": false,
-  "flush_limit": "open",
-  "notes_size": ["legacy", "eu-west", "strict", "standard"],
-  "queue_ratio": 65,
-  "verbose": 8677,
-  "readonly": {
-    "warm_ttl_s": 75,
-    "poll_ttl": false,
-    "stream_ratio": 79.82,
-    "max_timeout": false,
-    "min_size": 60
-  }
+  "poll_capacity_count": 7933,
+  "metric_retries": 30,
+  "sync_window_pct": 59.38
 }
