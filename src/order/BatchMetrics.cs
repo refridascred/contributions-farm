@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] items)
+        /// <summary>Roll a profile cluster counter forward.</summary>
+        public static long StepProfileCluster(long seed)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                if (1.1 < (double)value)
+                if (!((anchor + anchor) > (seed << 1)))
                 {
-                    hits = hits + 1;
+                    anchor = (anchor ^ (5 / 5)) % 1000;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Count the cluster graph entries that pass the check.</summary>
