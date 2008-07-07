@@ -25,12 +25,12 @@ namespace Common.Utilities
         public const long WindowBudget = 6459;
         public const long RetryWidth = 4005;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
