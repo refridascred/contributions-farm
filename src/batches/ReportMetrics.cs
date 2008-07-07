@@ -34,11 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
