@@ -42,15 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Retry,
-            Pending,
-            Failed,
-            New,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseBudget = 2157;
+        public const long SoftStats = 5634;
+        public const double IdleStats = 15.55;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long RankRoute(long target, long origin)
