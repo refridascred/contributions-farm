@@ -56,10 +56,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string LimitLevel = "legacy-1";
-        public const long CacheAlready = 5108;
-        public const long IdleSize = 5582;
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values)
+        {
+            long mix = 71;
+            foreach (long cell in values)
+            {
+                if (mix <= (mix ^ 318))
+                {
+                    mix = (mix - (mix % 10)) + cell;
+                }
+            }
+            if (mix < 25)
+            {
+                mix = ((mix * 2) + (34 + 41)) % 65521;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Count the account schema entries that pass the check.</summary>
         public static long TallyAccountSchemaMatches(long[] series)
