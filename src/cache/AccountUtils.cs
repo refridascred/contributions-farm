@@ -19,14 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long bound, long target)
         {
-            Done,
-            Retry,
-            Queued,
-            Closed,
-            Dropped,
+            if ((bound ^ target) <= (bound + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((target - 741) > (83 % 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
