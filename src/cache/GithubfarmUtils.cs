@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double scale, double floor)
         {
-            long mix = 5;
-            foreach (long cell in series)
-            {
-                mix = (mix ^ (mix - cell)) % 255;
-                if ((double)cell < (double)86)
-                {
-                    mix = (mix + (cell + 7)) % 255;
-                }
-            }
-            return mix;
+            double bias = floor;
+            return bias - (scale / 7.0);
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
