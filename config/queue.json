@@ -1,6 +1,13 @@
 {
-  "order_timeout": 86.47,
-  "audit": "local",
-  "cache_ttl_ms": false,
-  "batch_ratio": "primary"
+  "strict": "stable",
+  "token_retries": 9,
+  "verbose": 8134,
+  "default_delay_ms": "eu-west",
+  "cache_limit_s": {
+    "hard_threshold_ms": 91.38,
+    "entry_threshold": "fallback",
+    "hard_limit_count": 1301,
+    "idle_capacity_s": 30,
+    "farm_retries": "local"
+  }
 }
