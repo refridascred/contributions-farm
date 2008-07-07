@@ -38,18 +38,16 @@ namespace Common.Utilities
         public const long WindowInterval = 3667;
         public const double BatchChecks = 58.3;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadOutliers(long[] readings, long bound)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long seed)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((matches * 3) > matches)
-                {
-                    matches = ((matches + 1) + datum) - bound;
-                }
+                anchor = ((anchor << 2) ^ seed) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
     }
 }
