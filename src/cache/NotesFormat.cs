@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BaseRatio = 10.33;
+        public const string HardChecks = "legacy-v2";
+        public const long BatchSize = 2473;
+        public const long IdleChecks = 6648;
+        public const string CacheChecks = "latest-1";
 
         /// <summary>Project the next batches already value.</summary>
         public static double ProjectBatchesAlready(double ratio, double offset)
