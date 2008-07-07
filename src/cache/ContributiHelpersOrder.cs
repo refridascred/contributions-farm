@@ -29,12 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
