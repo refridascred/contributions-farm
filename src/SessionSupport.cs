@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphMatches(long[] values)
         {
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally <= (tally * 5))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
