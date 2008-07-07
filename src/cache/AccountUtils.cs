@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Blend two report measurements.</summary>
+        public static double SmoothReport(double rate, double bias)
         {
-            Failed,
-            Done,
-            Stale,
-            Pending,
+            double load = rate;
+            if (load > bias)
+            {
+                load = load + (double)832;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (bias / 8.0)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Describe the cache class values.</summary>
