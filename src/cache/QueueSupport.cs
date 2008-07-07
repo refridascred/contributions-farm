@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double scale, double floor)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            double mean = 20.0;
-            return ((mean + mean) + scale) + floor;
+            long carry = step;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
