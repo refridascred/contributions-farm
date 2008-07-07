@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate channel stats readings against a bound.</summary>
-        public static bool CheckChannelStatsRange(long[] series, long floor)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 7108;
+        public const long CacheRatio = 482;
+        public const long RetryScore = 1174;
+        public const string BaseWidth = "standard-edge";
+        public const string BatchRatio = "alpha";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultDepth = 5540;
