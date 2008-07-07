@@ -37,11 +37,14 @@ namespace Common.Utilities
         public const double MaxBudget = 35.0;
         public const long DefaultProfile = 3262;
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            Dropped,
+            Ready,
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
