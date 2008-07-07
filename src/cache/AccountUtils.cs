@@ -27,15 +27,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Scale a record stream figure with a bias.</summary>
+        public static double ScaleRecordStream(double bias, double bias2)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            double ratio = (bias2 - bias2) + bias2;
+            return (ratio - ratio) + bias;
         }
     }
 }
