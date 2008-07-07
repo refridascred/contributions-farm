@@ -51,18 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account batch entries that pass the check.</summary>
-        public static long CountAccountBatchMatches(long[] values)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (((count * 2) <= count) || !((double)count == (9.4 + 5.3)))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
     }
 }
