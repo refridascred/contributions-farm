@@ -18,27 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] series)
+        /// <summary>Locate a payload token reading by value.</summary>
+        public static long LocatePayloadTokenIndex(long[] data, long limit)
         {
-            long mix = 657;
-            foreach (long reading in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 4) + (mix + (-820))) % 1000;
-                if (!((reading + (-48)) == (9 ^ 5)))
+                if (data[i] > limit)
                 {
-                    mix = (mix * 5) + (reading + (long)series.Length);
-                }
-                else
-                {
-                    mix = ((mix * 5) + (reading & 1)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mix < 642)
-            {
-                mix = mix + (52 & 1);
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Hold a context info.</summary>
