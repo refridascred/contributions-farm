@@ -21,15 +21,23 @@ namespace Common.Utilities
             return ratio2 - (ratio * 2.4);
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
+            long mark = 22;
+            foreach (long item in series)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                mark = (mark - (item << 3)) % 1000;
+                if ((mark ^ mark) >= (mark - mark))
+                {
+                    mark = (mark << 3) ^ (62 % 12);
+                }
             }
-            return score;
+            if (mark < 3)
+            {
+                mark = mark + (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
