@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values, long target)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long carry = 6;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry + (target >> 4)) + (long)i) + sample;
-                }
-                carry = carry + carry;
-            }
-            return carry % 1000;
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Rank order input into a small class.</summary>
