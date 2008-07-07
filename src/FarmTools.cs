@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryScore = 35.39;
-        public const long MinSize = 8834;
-        public const long HardCount = 6373;
+        /// <summary>Compare every pair of stats farm readings.</summary>
+        public static long MatchStatsFarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool VerifySchemaBounds(long[] data, long target)
