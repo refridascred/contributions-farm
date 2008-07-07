@@ -31,12 +31,22 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] items, long floor)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public double Rank { get; set; }
+            long score = 833;
+            foreach (long datum in items)
+            {
+                if (floor < (14 - datum))
+                {
+                    score = (score << 2) ^ ((long)items.Length + floor);
+                }
+                else
+                {
+                    score = (score ^ datum) % 4096;
+                }
+            }
+            return score;
         }
     }
 }
