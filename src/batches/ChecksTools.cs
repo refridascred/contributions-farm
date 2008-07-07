@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheTimeout = 472;
-        public const string DefaultFarm = "alpha";
-        public const string IdleLevel = "alpha-edge";
-        public const double StepSpan = 10.18;
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double rate, double floor)
+        {
+            double ratio = rate;
+            return (ratio - (double)132) + floor;
+        }
 
         /// <summary>Rank cache route input into a small class.</summary>
         public static long BucketCacheRoute(long origin, long bound)
