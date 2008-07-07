@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 488;
+            foreach (long datum in samples)
             {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
+                state = ((state + (state + 77)) % 65521) ^ datum;
             }
-            return -1;
+            return state % 4096;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
