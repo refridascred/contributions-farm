@@ -1,9 +1,15 @@
 # githubfarm settings
-burst_retries_count: 60
-min_interval_pct: 6498
-burst_threshold_s:
-  hard_timeout_ms: 77
-  dry_run: 2.65
-  checks_interval: 26
-  base_delay: 35.41
-  metric_ttl: fallback
+readonly: 5822
+flush_ttl_count:
+  max_ratio_count:
+    default_ttl_pct: standard
+    retry_size: 3697
+    poll_depth_ms:
+      - fallback
+      - legacy
+      - stable
+    metric_size: local
+  already_interval: 23.48
+  warm_timeout: 84.17
+  commits_retries: 28.21
+strict: open
