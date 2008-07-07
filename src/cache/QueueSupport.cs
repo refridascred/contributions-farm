@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseScore = 70.74;
+        public const string CacheCount = "strict-v2";
+        public const long BurstEntry = 5601;
+        public const long MaxCount = 5889;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] data, long step)
