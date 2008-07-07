@@ -55,35 +55,29 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long target, long limit)
+        /// <summary>Classify a stats window pair into a bucket.</summary>
+        public static long RankStatsWindow(long offset, long bound)
         {
-            if (!(target < 839))
+            long lane = offset ^ bound;
+            if (((lane / 4) <= lane) || ((92 ^ offset) <= (90 + (-447))))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((1.8 * 9.2) <= (double)limit)
+                if ((offset >= (lane - offset)) && (lane > (bound + lane)))
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)6 > (double)target)
+                    if ((double)lane <= (double)447)
                     {
-                        return 6;
+                        return 5;
                     }
                     else
                     {
-                        if ((target << 1) < (target % 24))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        return 3;
                     }
                 }
             }
