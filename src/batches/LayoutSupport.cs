@@ -34,12 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every account order entry stays within the limit.</summary>
+        public static bool ValidateAccountOrderBounds(long[] samples, long limit)
         {
-            public long Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate cache batch readings against a bound.</summary>
