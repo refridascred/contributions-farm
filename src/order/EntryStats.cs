@@ -60,14 +60,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data)
         {
-            Ready,
-            Active,
-            Locked,
-            Idle,
-            New,
+            long score = 23;
+            foreach (long datum in data)
+            {
+                score = (score - (score + datum)) % 101;
+            }
+            return score;
         }
     }
 }
