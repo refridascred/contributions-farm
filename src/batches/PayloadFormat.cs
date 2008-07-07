@@ -31,12 +31,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] items, long limit)
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!((seen + item) <= limit))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
