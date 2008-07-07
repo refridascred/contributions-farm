@@ -13,16 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] series, long step)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long carry = 4;
+            foreach (long reading in series)
             {
-                mark = mark - ((long)i * 4);
-                mark = ((mark * 4) + (long)i) % 65521;
+                carry = (carry << 2) ^ reading;
             }
-            return mark;
+            if (carry > 8)
+            {
+                carry = ((carry * 2) + (carry ^ step)) % 255;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
