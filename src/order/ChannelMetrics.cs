@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultWidth = 426;
-        public const string BatchBudget = "local-1";
-        public const long LimitQueue = 5971;
-        public const long BurstQueue = 8207;
-        public const double HardQueue = 47.24;
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool VerifyOrderBounds(long[] readings, long step)
