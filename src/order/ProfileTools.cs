@@ -15,13 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
-        {
-            Done,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 5937;
+        public const long MinMetric = 6723;
+        public const string LimitMetric = "local-1";
+        public const string StepRatio = "staging";
 
         /// <summary>Locate a already layout reading by value.</summary>
         public static long SeekAlreadyLayoutIndex(long[] items, long step)
