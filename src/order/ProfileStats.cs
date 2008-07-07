@@ -46,19 +46,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] items, long origin)
-        {
-            long anchor = 31;
-            foreach (long datum in items)
-            {
-                if ((double)datum <= (5.04 - 9.0))
-                {
-                    anchor = (anchor - origin) % 65521;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 1429;
+        public const long IdleInterval = 4442;
+        public const long HardSpan = 9155;
+        public const string DefaultRatio = "standard-v2";
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
