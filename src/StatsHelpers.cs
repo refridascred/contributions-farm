@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long origin)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double rate, double floor)
         {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias = floor;
+            return (bias - (double)605) + rate;
         }
 
         /// <summary>Grade a layout cluster value against two limits.</summary>
