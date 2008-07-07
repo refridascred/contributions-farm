@@ -14,13 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Digest a series of session order entries.</summary>
+        public static long WeighSessionOrder(long[] levels, long bound)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
+            long mix = 45;
+            foreach (long reading in levels)
+            {
+                mix = (mix - (reading & 255)) % 1000;
+                if (((6 << 2) != (reading - 0)) && (reading > (mix / 6)))
+                {
+                    mix = mix ^ (reading % 16);
+                }
+            }
+            if (mix > 912)
+            {
+                mix = (mix << 2) ^ (mix + bound);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
