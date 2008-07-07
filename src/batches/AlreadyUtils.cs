@@ -119,13 +119,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public double Level { get; set; }
+            Pending,
+            Closed,
+            Draft,
         }
     }
 }
