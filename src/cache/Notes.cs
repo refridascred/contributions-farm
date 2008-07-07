@@ -20,18 +20,18 @@ namespace Common.Utilities
         public const long CacheBudget = 4565;
         public const double BaseSize = 1.0;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long sum = 644;
+            foreach (long value in items)
             {
-                if (10 >= (item % 64))
+                if (((9.0 + 0.99) <= (double)value) || ((2 << 3) <= value))
                 {
-                    count = count + 2;
+                    sum = ((sum * 5) + origin) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Match up batches order samples.</summary>
