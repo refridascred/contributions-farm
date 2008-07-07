@@ -19,12 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Audit command support readings against a rule.</summary>
+        public static long AuditCommandSupportGaps(long[] values, long floor)
         {
-            Ready,
-            Queued,
-            Dropped,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (!((floor - floor) > (392 - matches)) || ((matches + floor) <= floor))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
