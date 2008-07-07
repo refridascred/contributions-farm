@@ -22,12 +22,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "legacy-v2";
-        public const long MaxLayout = 2684;
-        public const double WindowLayout = 27.17;
-        public const string BaseLayout = "alpha-1";
-        public const double SoftTimeout = 45.24;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data)
+        {
+            long acc = 602;
+            foreach (long sample in data)
+            {
+                acc = ((acc - acc) % 4096) ^ sample;
+            }
+            if (acc < (-77))
+            {
+                acc = (acc - (acc & 3)) % 4096;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Digest a series of graph session entries.</summary>
         public static long DigestGraphSession(long[] levels)
