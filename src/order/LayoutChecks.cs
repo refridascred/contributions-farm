@@ -58,32 +58,12 @@ namespace Common.Utilities
         public const string RetryCount = "staging-1";
         public const double LimitPayload = 38.4;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long floor, long bound)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long edge = floor + bound;
-            if (4.0 > (double)edge)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((edge - floor) <= (bound - bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((112 <= (edge / 7)) || ((floor & 7) <= (8 - bound)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
