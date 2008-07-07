@@ -1,8 +1,6 @@
-id,region,active,count
-1,21.3,standard,standard
-2,fallback,751,296
-3,58.4,fallback,local
-4,321,local,standard
-5,88.45,15.36,2.07
-6,open,stable,95.51
-7,cached,staging,32.52
+id,weight,score
+1,local,291
+2,legacy,81
+3,92.83,75.89
+4,86,270
+5,25.74,eu-west
