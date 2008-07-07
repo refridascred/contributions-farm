@@ -25,21 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] data)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > seed)
                 {
-                    if ((data[i] - data[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
