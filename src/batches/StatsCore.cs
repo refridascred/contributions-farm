@@ -41,39 +41,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long step, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long edge = step - origin;
-            if (!((edge ^ origin) > step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step >= (step + step)) && ((origin - origin) >= (edge + edge)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.7 - 8.4) != (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)94 <= (double)edge)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
