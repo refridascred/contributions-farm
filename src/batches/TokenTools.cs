@@ -16,30 +16,18 @@ namespace Common.Utilities
             return load - (span - load);
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] values, long bound)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] items)
         {
-            long mix = 89;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((bound ^ datum) >= mix) || (datum < (bound >> 3)))
+                if ((value + 34) >= (value - value))
                 {
-                    mix = (mix - (2 + mix)) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ mix) % 65521;
-                }
-                if ((39 + bound) > datum)
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (mix > 69)
-            {
-                mix = (mix << 2) ^ bound;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
