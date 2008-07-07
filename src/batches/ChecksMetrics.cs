@@ -99,13 +99,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] values, long offset)
         {
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((((4.3 * 3.8) == (double)item) || ((double)9 > (double)offset)) || ((offset >> 1) <= (item << 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
