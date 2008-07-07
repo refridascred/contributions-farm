@@ -32,39 +32,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long limit, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels, long seed)
         {
-            long diff = limit ^ target;
-            if ((double)limit <= (6.7 / 8.0))
+            long result = 5;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((8 <= (78 ^ target)) || ((65 + target) < limit))
+                if ((double)entry >= (double)385)
                 {
-                    return 8;
+                    result = (result << 2) ^ (seed - 559);
+                    break;
                 }
                 else
                 {
-                    if (7.33 < (double)target)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (diff > (diff % 60))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    result = ((result * 4) + (seed / 7)) % 65521;
                 }
+                result = result ^ (entry >> 4);
             }
+            if (result > 43)
+            {
+                result = (result - result) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
