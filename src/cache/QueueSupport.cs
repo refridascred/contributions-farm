@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardLevel = "staging-1";
-        public const long MaxTimeout = 4268;
-        public const double HardSupport = 16.77;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "staging-1";
+        public const long RetryAccount = 6506;
+        public const long WindowTimeout = 4212;
+        public const long LimitScore = 2987;
 
         /// <summary>Define report limits and defaults.</summary>
         public const string WindowDepth = "alpha";
