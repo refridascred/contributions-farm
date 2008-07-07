@@ -26,21 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long LocateFarmIndex(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] == seed)
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
