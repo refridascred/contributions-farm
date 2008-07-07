@@ -48,17 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] series, long floor)
+        /// <summary>Count the metrics batches entries that pass the check.</summary>
+        public static long MeasureMetricsBatchesMatches(long[] values, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (series[i] == floor)
+                if ((734 - 952) <= (count << 1))
                 {
-                    return (long)i;
+                    count = ((count + 1) + entry) - bound;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
