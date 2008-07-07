@@ -1,4 +1,23 @@
 # githubfarm settings
-base_delay_pct: strict
-profile_delay: false
-verbose: false
+warm_threshold_s:
+  commits_delay: 68.91
+  soft_delay_pct:
+    - 270
+    - 148
+    - 21
+  base_timeout_ms: cached
+  farm_window:
+    route_depth: 60
+    flush_timeout:
+      - green
+      - green
+      - edge
+    batch_depth_pct: false
+    min_interval_ms: 33.81
+  sync_ratio_count: 41.56
+default_interval_s:
+  base_size_pct: 73
+  hard_threshold_s: strict
+  poll_depth_count: 83.96
+sync_retries_s: 547
+sync_limit_pct: eu-west
