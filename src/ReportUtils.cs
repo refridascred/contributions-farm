@@ -11,39 +11,11 @@ namespace Common.Utilities
         public const double BaseBuffer = 87.72;
         public const long BurstCount = 83;
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long GradeSession(long target, long origin)
-        {
-            if ((origin % 3) <= (origin + origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)target <= 17.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((102 > (origin + origin)) || ((35 - target) <= origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((43 + 8) == (target % 10))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstRatio = 5210;
+        public const double IdleOrder = 27.13;
+        public const long CacheRatio = 8219;
+        public const long SoftLevel = 7692;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] items, long target)
