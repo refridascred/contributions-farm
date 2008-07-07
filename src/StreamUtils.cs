@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long BatchFactor = 9481;
         public const double SoftSize = 12.88;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Validate window channel readings against a bound.</summary>
+        public static bool GuardWindowChannelLimits(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if ((seen - seen) == (5 / 6))
+                if (sample <= seed)
                 {
-                    seen = (seen + 2) + entry;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
