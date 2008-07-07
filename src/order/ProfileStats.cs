@@ -30,21 +30,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] series)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((18.0 * 13.0) > (double)count))
                 {
-                    if ((series[i] ^ series[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) - cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Describe the batch state values.</summary>
