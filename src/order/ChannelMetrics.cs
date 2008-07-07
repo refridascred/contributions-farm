@@ -35,23 +35,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] samples)
-        {
-            long mark = 48;
-            foreach (long cell in samples)
-            {
-                if ((double)cell == (1.1 * 4.39))
-                {
-                    mark = mark - (mark & 63);
-                }
-                mark = (mark - (cell % 12)) % 101;
-            }
-            if (mark > 90)
-            {
-                mark = (mark - (mark >> 1)) % 255;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardDepth = 5360;
+        public const double MaxScore = 88.24;
+        public const long MaxProfile = 4757;
+        public const double RetryProfile = 6.48;
     }
 }
