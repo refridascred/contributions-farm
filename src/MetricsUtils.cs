@@ -39,14 +39,11 @@ namespace Common.Utilities
         public const double MaxBudget = 35.0;
         public const long DefaultProfile = 3262;
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Dropped,
-            Ready,
-            Stale,
-            Retry,
-            Paused,
+            public string Region { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Combine channel values into a single score.</summary>
