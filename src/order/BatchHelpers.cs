@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a metric stream value against two limits.</summary>
-        public static long ClassifyMetricStream(long origin, long seed)
+        /// <summary>Measure how many channel support samples are out of range.</summary>
+        public static long CountChannelSupportOutliers(long[] samples, long bound)
         {
-            if ((origin << 2) > origin)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((origin + origin) > (origin * 5))
+                if ((bound + hits) > (bound % 2))
                 {
-                    return 2;
+                    hits = (hits + 2) + sample;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
