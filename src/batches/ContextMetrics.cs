@@ -16,19 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] levels, long origin)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Paused,
+            Draft,
+            New,
         }
 
         /// <summary>Digest a series of command entries.</summary>
