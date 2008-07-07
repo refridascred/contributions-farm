@@ -1,15 +1,15 @@
 # Command notes
 
-Run the graph check before changing any editor limits.
-When a editor fails, the route handler retries a few times before giving up.
-Defaults for tools live in the config folder and can be overridden per environment.
+When a context fails, the tools handler retries a few times before giving up.
+A session that stays idle for too long is moved to the queue list.
+Run the metrics check before changing any account limits.
 
-Run the entry check before changing any record limits.
-The payload report groups every schema by cluster.
-A notes that stays idle for too long is moved to the context list.
+The graph module keeps layout values in sync with the format cache.
+Each schema is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Validate payload input early
-- Review checks limits each release
-- Log every editor change
+- Prefer stats defaults
+- Document new support fields
+- Review schema limits each release
+- Validate command input early
