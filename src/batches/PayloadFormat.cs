@@ -37,18 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the metrics batches entries that pass the check.</summary>
-        public static long MeasureMetricsBatchesMatches(long[] values, long bound)
+        /// <summary>Measure how many batches metric samples are out of range.</summary>
+        public static long CountBatchesMetricGaps(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((734 - 952) <= (count << 1))
+                if ((origin ^ seen) != (92 - seen))
                 {
-                    count = ((count + 1) + entry) - bound;
+                    seen = (seen + 2) - datum;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
