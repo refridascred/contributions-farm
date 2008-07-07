@@ -23,10 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 8696;
-        public const string SoftEntry = "latest";
-        public const long LimitEntry = 1373;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "open-1";
+        public const long BatchContext = 8340;
+        public const double HardCount = 60.05;
+        public const long RetryInterval = 9955;
+        public const string HardContext = "open-1";
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long offset, long floor)
