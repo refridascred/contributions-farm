@@ -55,29 +55,35 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank stream token input into a small class.</summary>
-        public static long BucketStreamToken(long step, long offset)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long target, long limit)
         {
-            long step2 = step - offset;
-            if ((double)(-2) < (double)step2)
+            if (!(target < 839))
             {
                 return 3;
             }
             else
             {
-                if ((offset & 3) <= (step2 - step))
+                if ((1.8 * 9.2) <= (double)limit)
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((step + offset) > (step2 ^ 1))
+                    if ((double)6 > (double)target)
                     {
-                        return 2;
+                        return 6;
                     }
                     else
                     {
-                        return 1;
+                        if ((target << 1) < (target % 24))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
