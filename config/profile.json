@@ -1,8 +1,6 @@
 {
-  "enabled": 500,
-  "min_ttl": 82.62,
-  "base_timeout_count": "fallback",
-  "account_depth": [29, 312, 30, 372],
-  "burst_ttl_ms": 500,
-  "sync_ttl_count": 38
+  "flush_timeout_ms": "primary",
+  "poll_limit_pct": false,
+  "schema_interval": false,
+  "enabled": "eu-west"
 }
