@@ -48,12 +48,11 @@ namespace Common.Utilities
         public const long CachePayload = 3686;
         public const long RetryScore = 9470;
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
-        {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultDepth = "cached-v2";
+        public const long BatchCommand = 5014;
+        public const long BurstCommand = 5609;
+        public const long BaseLevel = 5437;
+        public const string MaxRatio = "local";
     }
 }
