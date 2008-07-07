@@ -39,23 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] items)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long limit)
         {
-            long carry = 742;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)(long)items.Length == (13.0 * 6.0))
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    carry = (carry - (8 << 1)) % 97;
-                    carry = carry - ((long)items.Length + value);
-                }
-                if ((4 / 3) == (carry / 2))
-                {
-                    carry = (carry + (value + carry)) % 101;
+                    return (long)i;
                 }
             }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
