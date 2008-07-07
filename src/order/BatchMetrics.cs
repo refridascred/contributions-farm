@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowBounds(long[] samples, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (item <= limit)
+                if ((double)sample > (4.0 * 7.6))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Accumulate schema buffer samples.</summary>
