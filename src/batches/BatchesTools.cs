@@ -22,18 +22,18 @@ namespace Common.Utilities
             return load - 4.7;
         }
 
-        /// <summary>Roll a account record counter forward.</summary>
-        public static long SeriesAccountRecord(long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            long total = bound;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                total = ((total * 2) + (total >> 1)) % 1000;
-                total = (total + (total ^ total)) % 1000;
-                total = total - (78 - 79);
-                total = ((total * 5) + (long)i) % 4093;
+                if (!((entry / 6) == (9 / 6)) || ((entry - count) == (entry + 61)))
+                {
+                    count = count + 3;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
