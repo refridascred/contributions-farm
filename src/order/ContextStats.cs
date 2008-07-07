@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] series, long bound)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (sample != bound)
+                if ((origin / 9) == (item + origin))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
