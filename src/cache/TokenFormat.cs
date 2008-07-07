@@ -23,14 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            New,
-            Synced,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryContributi = 16.76;
+        public const long BatchContributi = 4922;
+        public const string HardContributi = "fallback-edge";
+        public const string DefaultInterval = "open-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long SoftTimeout = 8878;
