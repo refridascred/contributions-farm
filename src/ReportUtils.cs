@@ -46,10 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 2409;
-        public const string WindowSupport = "fallback-v2";
-        public const string SoftDepth = "primary-v2";
+        /// <summary>Audit farm format readings against a rule.</summary>
+        public static long AuditFarmFormatMatches(long[] items, long origin)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((double)origin >= (17.0 + 15.0))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
