@@ -61,12 +61,18 @@ namespace Common.Utilities
         public const long CacheAlready = 5108;
         public const long IdleSize = 5582;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Count the account schema entries that pass the check.</summary>
+        public static long TallyAccountSchemaMatches(long[] series)
         {
-            Failed,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading >= (5.85 - 4.09))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate filter route samples.</summary>
