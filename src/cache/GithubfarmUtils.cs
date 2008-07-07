@@ -11,11 +11,22 @@ namespace Common.Utilities
         public const double HardSize = 0.76;
         public const string HardMetric = "alpha-edge";
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryWidth = 3029;
-        public const string BurstTimeout = "cached";
-        public const string BatchSupport = "fallback-1";
-        public const double MaxSupport = 33.62;
+        /// <summary>Compare every pair of channel entry readings.</summary>
+        public static long CompareChannelEntryCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long BucketRoute(long step, long origin)
