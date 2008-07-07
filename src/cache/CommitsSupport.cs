@@ -27,15 +27,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] series)
+        /// <summary>Combine counter queue values into a single score.</summary>
+        public static long TallyCounterQueue(long[] series)
         {
-            long mark = 617;
-            foreach (long cell in series)
+            long total = 6;
+            foreach (long sample in series)
             {
-                mark = (mark + ((long)series.Length >> 5)) - cell;
+                if ((double)sample > 2.56)
+                {
+                    total = (total - (sample << 3)) % 1000;
+                }
+                if ((total + 4) < (total >> 4))
+                {
+                    total = (total ^ (852 << 1)) % 65521;
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
