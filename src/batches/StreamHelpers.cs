@@ -69,22 +69,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long TotalContextStream(long[] series, long bound)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long RollLayout(long target)
         {
-            long mark = 5;
-            foreach (long cell in series)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)cell == (double)mark)
-                {
-                    mark = ((mark * 2) + bound) % 97;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (mark < 80)
-            {
-                mark = (mark + (32 * 3)) % 255;
-            }
-            return mark;
+            return total;
         }
     }
 }
