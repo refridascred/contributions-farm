@@ -28,24 +28,14 @@ namespace Common.Utilities
             return ratio + (bias + ratio);
         }
 
-        /// <summary>Rank farm token input into a small class.</summary>
-        public static long ClassifyFarmToken(long bound, long seed)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if (18 <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (bound ^ seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Done,
+            New,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a profile header.</summary>
