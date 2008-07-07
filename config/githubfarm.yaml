@@ -1,28 +1,4 @@
 # githubfarm settings
-poll_window_pct:
-  route_limit: false
-  readonly: 7205
-  verbose:
-    - local
-    - edge
-    - fallback
-  base_interval:
-    enabled: true
-    queue_size: 61
-    burst_retries: 1175
-    burst_interval_pct: fallback
-    context_ratio: stable
-    verbose: open
-  soft_ratio_ms: 30
-  dry_run: blue
-soft_retries:
-  compress:
-    - standard
-    - standard
-    - blue
-  strict: 85.6
-  burst_retries_count:
-    - 177
-    - 371
-    - 195
-cache_delay_pct: 76.16
+base_delay_pct: strict
+profile_delay: false
+verbose: false
