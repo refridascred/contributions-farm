@@ -23,12 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] samples, long seed)
+        /// <summary>Find the first layout payload entry that matches the target.</summary>
+        public static long LocateLayoutPayloadIndex(long[] data, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] == seed)
+                if ((data[i] > bound) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
