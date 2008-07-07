@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] data, long offset)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (data[i] > offset)
+                if (((target + (long)i) < ((long)i / 4)) || ((4.1 - 3.5) < (double)carry))
                 {
-                    return (long)i;
+                    carry = (carry - (target + (long)i)) % 4096;
+                    carry = (carry + (carry * 2)) % 1000;
                 }
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a profile entry.</summary>
