@@ -1,5 +1,5 @@
 {
-  "cache_capacity": "blue",
-  "retry_window": "latest",
-  "readonly": 30
+  "support_retries": "standard",
+  "retry_threshold_pct": true,
+  "strict": [26, 16]
 }
