@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] items, long seed)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seed < (double)count)
                 {
-                    if ((levels[i] - levels[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) - cell;
                 }
             }
             return count;
