@@ -1,8 +1,21 @@
 # entry settings
-soft_window: true
-flush_ttl_pct:
+soft_ratio_count:
+  compress: 15.64
+  audit: true
+  sync_window_ms: 5
+  burst_interval_ms:
+    - 462
+    - 281
+    - 107
+    - 1
+  soft_delay_count:
+    - 94
+    - 123
+    - 31
+dry_run:
+  - stable
   - fallback
-  - eu-west
-batch_ttl_count: 67
-flush_capacity_count: 32
-hard_ratio_count: 7827
+  - blue
+  - stable
+enabled: false
+max_depth_s: 8429
