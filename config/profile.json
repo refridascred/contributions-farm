@@ -1,13 +1,22 @@
 {
-  "max_timeout": "legacy",
-  "channel_delay": 250,
-  "burst_limit_count": {
-    "retry_delay": ["standard", "local", "standard"],
-    "warm_capacity_s": [460, 76],
-    "retry_ttl": 42,
-    "base_interval_s": "latest"
-  },
-  "burst_timeout_count": 23,
-  "soft_ttl_pct": [167, 105, 376, 166],
-  "burst_delay_ms": 715
+  "compress": 60,
+  "audit": "open",
+  "schema_depth": "local",
+  "sync_interval": 21.04,
+  "soft_ratio_s": [321, 343],
+  "burst_timeout_s": {
+    "window_capacity": 100,
+    "max_interval": 60,
+    "burst_window_s": {
+      "farm_delay": true,
+      "idle_timeout_pct": 48,
+      "token_threshold": "legacy",
+      "flush_ttl_count": "open",
+      "batch_delay": ["strict", "blue"],
+      "hard_capacity_pct": 97
+    },
+    "route_interval": 89.47,
+    "commits_retries": 100,
+    "soft_delay": 47
+  }
 }
