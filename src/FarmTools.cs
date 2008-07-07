@@ -25,10 +25,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 9990;
-        public const long DefaultFactor = 3536;
-        public const string SoftBatches = "primary-edge";
-        public const long BatchBatches = 2426;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] levels, long step)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((49 >> 2) != (step - datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
