@@ -30,19 +30,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((origin >= (origin ^ reading)) || ((tally / 7) != (origin / 5)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultInterval = 5386;
+        public const long HardProfile = 9554;
+        public const long MinInterval = 4139;
+        public const double MaxBudget = 35.0;
+        public const long DefaultProfile = 3262;
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
