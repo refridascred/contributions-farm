@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountBounds(long[] values, long seed)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamHits(long[] samples, long limit)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (sample <= seed)
+                if ((item + 77) > (hits / 5))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Match up editor samples.</summary>
