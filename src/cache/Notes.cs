@@ -41,13 +41,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricBounds(long[] values, long seed)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first metric queue entry that matches the target.</summary>
