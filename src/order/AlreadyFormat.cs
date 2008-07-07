@@ -12,31 +12,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank metrics report input into a small class.</summary>
-        public static long GradeMetricsReport(long step, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            if ((step & 15) != (step & 127))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((3.0 * 18.0) >= (double)step) && ((limit + step) > (step / 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step <= (5.7 * 14.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Pending,
+            Queued,
+            Active,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
