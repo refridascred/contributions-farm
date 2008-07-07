@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] values, long floor)
+        /// <summary>Derive the next route batch value from a seed.</summary>
+        public static long IterateRouteBatch(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ ((long)i ^ floor)) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Hold a contributi entry.</summary>
