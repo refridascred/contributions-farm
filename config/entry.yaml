@@ -1,16 +1,4 @@
 # entry settings
-flush_depth_count:
-  retry_capacity_count: 1133
-  cache_limit:
-    - 365
-    - 52
-  persist: 8155
-  dry_run: true
-  token_interval: stable
-enabled:
-  - open
-  - stable
-  - green
-  - fallback
-readonly: true
-persist: standard
+poll_delay: latest
+route_window: 92.69
+min_capacity_count: 40
