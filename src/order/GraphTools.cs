@@ -38,18 +38,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter session readings against a rule.</summary>
-        public static long TallyCounterSessionOutliers(long[] series)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long total = 142;
+            foreach (long sample in values)
             {
-                if ((double)matches != (4.0 / 3.0))
+                if ((total + total) > ((long)values.Length % 7))
                 {
-                    matches = (matches + 3) ^ sample;
+                    total = ((total - (total + sample)) % 255) + limit;
+                }
+                if ((14.0 / 9.0) >= (7.0 - 9.0))
+                {
+                    total = (total + total) % 65521;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a format options.</summary>
