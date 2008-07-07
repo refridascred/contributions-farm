@@ -23,12 +23,22 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] items)
         {
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((entry * 4) == (entry + entry))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
