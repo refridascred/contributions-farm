@@ -62,18 +62,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] data)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (count >= cell)
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
