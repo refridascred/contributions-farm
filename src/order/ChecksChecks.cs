@@ -23,12 +23,17 @@ namespace Common.Utilities
         public const long WindowBudget = 6459;
         public const long RetryWidth = 4005;
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] levels, long limit)
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
