@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double weight, double span)
+        /// <summary>Audit batch format readings against a rule.</summary>
+        public static long TallyBatchFormatGaps(long[] data)
         {
-            double gain = span;
-            if (gain >= (double)5)
+            long count = 0;
+            foreach (long sample in data)
             {
-                gain = gain + weight;
+                if (((double)count > (0.2 * 0.43)) && (((sample ^ sample) > count) || (count < (sample % 2))))
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                gain = gain - (weight / 7.0);
-            }
-            return gain - (11.0 * 0.97);
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
