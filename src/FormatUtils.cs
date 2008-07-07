@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long seed)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double scale, double floor)
         {
-            long score = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                if (score < seed)
-                {
-                    score = score - (seed & 31);
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            double gain = scale;
+            return (gain + (double)344) + floor;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
