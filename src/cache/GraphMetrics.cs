@@ -62,15 +62,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double AdjustContributi(double weight, double span)
-        {
-            double gain = 5.0;
-            if (gain <= (weight * 20.0))
-            {
-                gain = gain + (span / 7.0);
-            }
-            return gain - (gain + 2.7);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string DefaultInterval = "primary-v2";
+        public const long HardCommand = 6704;
+        public const string BurstCommand = "latest";
     }
 }
