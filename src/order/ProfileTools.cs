@@ -40,16 +40,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] series)
-        {
-            long state = 25;
-            foreach (long entry in series)
-            {
-                state = (((state << 2) ^ (0 + 47)) % 1000) + entry;
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchSpan = 23.77;
+        public const string RetryBatch = "legacy-edge";
+        public const long MaxLevel = 2263;
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
