@@ -1,10 +1,7 @@
-id,region,label,state
-1,83.65,78.61,69
-2,97.17,eu-west,840
-3,697,16,17.34
-4,latest,14,292
-5,latest,264,892
-6,610,fallback,78.7
-7,496,44.65,86.64
-8,standard,581,741
-9,30.87,fallback,blue
+id,rank,owner,score
+1,primary,standard,524
+2,185,495,461
+3,45.43,stable,67
+4,935,67,75.18
+5,standard,430,43.61
+6,stable,open,905
