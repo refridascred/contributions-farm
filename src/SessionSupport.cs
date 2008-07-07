@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload token reading by value.</summary>
-        public static long LocatePayloadTokenIndex(long[] data, long limit)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a context info.</summary>
