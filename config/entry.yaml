@@ -1,20 +1,16 @@
 # entry settings
-flush_threshold: strict
-min_threshold_count:
-  retry_timeout: false
-  profile_capacity: true
-  burst_interval_pct:
-    - 140
-    - 475
-  burst_size_pct: stable
-  cache_size:
-    cache_timeout:
-      - 339
-      - 161
-    metric_retries: 7687
-    flush_interval: 30
-  poll_timeout: 74.59
-hard_ttl_pct: false
-verbose: 40.37
-cluster_timeout: latest
-soft_timeout_s: 93.24
+flush_depth_count:
+  retry_capacity_count: 1133
+  cache_limit:
+    - 365
+    - 52
+  persist: 8155
+  dry_run: true
+  token_interval: stable
+enabled:
+  - open
+  - stable
+  - green
+  - fallback
+readonly: true
+persist: standard
