@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BurstQueue = 8207;
         public const double HardQueue = 47.24;
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long bound)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if (readings[i] <= bound)
+                if ((seed + seed) > 930)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up batches samples.</summary>
