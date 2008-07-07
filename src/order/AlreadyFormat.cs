@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BatchBudget = "standard";
-        public const double WindowDepth = 28.63;
-        public const double MinDepth = 83.34;
-        public const long MinLevel = 8745;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public long Owner { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long step)
