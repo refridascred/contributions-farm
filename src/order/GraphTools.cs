@@ -21,18 +21,10 @@ namespace Common.Utilities
         public const string DefaultRoute = "strict-edge";
         public const long MinRoute = 614;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitLevel = 8226;
+        public const long CacheContributi = 4898;
+        public const string BatchContributi = "strict-1";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long IdleWidth = 3680;
