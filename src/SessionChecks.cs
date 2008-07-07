@@ -29,13 +29,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Grade a farm counter value against two limits.</summary>
+        public static long RankFarmCounter(long bound, long origin)
         {
-            Ready,
-            Active,
-            Retry,
-            Locked,
+            if (origin < (44 & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((0.15 - 7.8) > (double)origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((-35) > (origin << 1)) || ((origin & 63) <= (94 >> 4)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin + bound) > bound) && (3 > (bound / 7)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a session header.</summary>
