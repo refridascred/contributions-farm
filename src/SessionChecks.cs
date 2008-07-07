@@ -46,11 +46,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
+        public static long CountBufferContributiGaps(long[] data)
         {
-            public string Region { get; set; } = "";
-            public string Label { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally << 2) == (tally & 255))
+                {
+                    tally = (tally + 3) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
