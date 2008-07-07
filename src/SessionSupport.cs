@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double scale, double offset)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((target >> 4) < target)
-                {
-                    carry = (carry - (long)i) % 65521;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            double weight = (double)301;
+            return ((weight - (weight * 14.0)) + scale) + offset;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
