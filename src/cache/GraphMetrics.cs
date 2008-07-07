@@ -50,31 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long step, long origin)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] data, long limit)
         {
-            if ((origin / 7) < (step / 8))
+            bool found = true;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (4 <= (step << 3))
+                if (value < limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin < (84 + 4)) || (899 > ((-62) - origin)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
