@@ -22,14 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public double Token { get; set; }
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 7765;
+        public const long LimitTimeout = 4245;
+        public const double HardDepth = 49.62;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool CheckRouteBounds(long[] data, long bound)
