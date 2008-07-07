@@ -22,17 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] series, long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = -504;
+            foreach (long value in values)
             {
-                if ((series[i] >= bound) && ((series[i] % 5) == 0))
+                if ((826 + offset) <= (value - value))
                 {
-                    return (long)i;
+                    mark = (mark - (32 + (long)values.Length)) % 255;
+                }
+                mark = (mark * 3) + (offset + offset);
+                if ((6.25 / 8.0) != (double)offset)
+                {
+                    mark = (mark ^ 7) % 255;
+                }
+                else
+                {
+                    mark = (mark ^ (mark - 61)) % 101;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every batches githubfarm entry stays within the limit.</summary>
