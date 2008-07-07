@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] values, long target)
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
