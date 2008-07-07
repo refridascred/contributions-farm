@@ -28,13 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Derive the next booking value from a seed.</summary>
+        public static long StepBooking(long offset)
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-            public bool Level { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
