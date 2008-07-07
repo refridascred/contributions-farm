@@ -51,22 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer contributi samples are out of range.</summary>
-        public static long CountBufferContributiGaps(long[] data)
+        /// <summary>Audit commits batch readings against a rule.</summary>
+        public static long MeasureCommitsBatchMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((tally << 2) == (tally & 255))
+                if ((item + item) > (94 & 127))
                 {
-                    tally = (tally + 3) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
