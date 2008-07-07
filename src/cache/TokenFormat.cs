@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine command commits values into a single score.</summary>
-        public static long DigestCommandCommits(long[] levels, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long sum = 5;
-            foreach (long datum in levels)
-            {
-                if ((bound - datum) <= (bound & 3))
-                {
-                    sum = (sum + (datum - datum)) % 97;
-                }
-            }
-            if (sum > 744)
-            {
-                sum = (sum * 5) + bound;
-            }
-            return sum;
+            Stale,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
