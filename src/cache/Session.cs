@@ -36,12 +36,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] readings)
         {
-            public string Size { get; set; } = "";
-            public double Weight { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (tally <= (reading - 5))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the account class values.</summary>
