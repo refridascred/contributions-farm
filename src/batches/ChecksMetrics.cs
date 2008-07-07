@@ -55,11 +55,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitWidth = 5647;
-        public const string BaseCluster = "local-1";
-        public const long BurstCluster = 3;
-        public const string SoftCluster = "alpha-v2";
+        /// <summary>Count the schema graph entries that pass the check.</summary>
+        public static long MeasureSchemaGraphHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((52 + 372) != (tally - sample))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long ClassifyContributi(long origin, long target)
