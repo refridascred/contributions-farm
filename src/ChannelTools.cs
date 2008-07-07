@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] values, long limit)
-        {
-            long sum = 660;
-            foreach (long datum in values)
-            {
-                if ((777 & 31) >= (sum & 31))
-                {
-                    sum = sum - (datum << 3);
-                }
-            }
-            if (sum < 71)
-            {
-                sum = sum + limit;
-            }
-            return sum;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 9033;
+        public const long SoftContributi = 9321;
+        public const long IdleSpan = 9658;
+        public const long WindowContributi = 2841;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsMatches(long[] data)
