@@ -22,14 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Draft,
-            Retry,
-            Ready,
-            Pending,
-            Active,
+            public long Token { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
