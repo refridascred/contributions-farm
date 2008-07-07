@@ -1,18 +1,5 @@
 {
-  "soft_timeout_s": 2627,
-  "tools_timeout": {
-    "poll_timeout": {
-      "warm_interval": ["strict", "green"],
-      "cache_size_count": 36,
-      "idle_capacity": 47.58,
-      "default_window_count": 34.12,
-      "support_capacity": 75,
-      "tools_limit": 61.52
-    },
-    "soft_ttl_s": 761,
-    "compress": 250
-  },
-  "readonly": 96,
-  "base_ttl_pct": 92,
-  "batch_window_count": "blue"
+  "farm_size": "open",
+  "default_ratio_count": false,
+  "max_retries_ms": "eu-west"
 }
