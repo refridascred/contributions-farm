@@ -37,22 +37,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of githubfarm support entries.</summary>
-        public static long TotalGithubfarmSupport(long[] samples, long step)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long seed)
         {
-            long total = -433;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((3.61 + 3.1) < (double)step)
+                if (data[i] <= seed)
                 {
-                    total = ((total + ((-850) * 3)) % 4096) + datum;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total + total)) % 1000;
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
