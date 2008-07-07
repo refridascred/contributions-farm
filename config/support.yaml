@@ -1,21 +1,28 @@
 # support settings
-soft_interval: 60
-command_ratio: false
-base_threshold_ms: false
-batch_interval:
-  soft_window: 26.66
-  base_interval_count: false
-  hard_limit_s: 68.6
-  hard_capacity_ms: 7.6
-verbose:
-  filter_depth: 62.76
-  cache_ttl:
-    verbose: 1024
-    strict: 85
-    audit: 143
-  idle_window:
-    cache_timeout_pct: 1510
-    batch_delay: open
-    min_window_ms: 7934
-    channel_retries: 60
-  flush_interval: green
+batch_threshold:
+  batches_size: fallback
+  burst_timeout_count: 30.08
+  schema_capacity: open
+  poll_capacity:
+    - staging
+    - green
+  sync_delay: true
+  flush_size_pct: 60
+enabled:
+  flush_capacity_pct: eu-west
+  burst_limit_pct: 1024
+  channel_ratio:
+    - 31
+    - 24
+    - 200
+    - 39
+  audit:
+    - 120
+    - 64
+    - 196
+    - 84
+  retry_ratio: latest
+poll_timeout: 60
+idle_delay_ms: 1024
+poll_ttl: open
+command_ttl: true
