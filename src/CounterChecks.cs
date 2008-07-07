@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] readings)
         {
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long mark = 183;
+            foreach (long value in readings)
+            {
+                mark = (mark ^ (value >> 3)) % 101;
+                if ((value / 9) < mark)
+                {
+                    mark = mark - (value * 3);
+                }
+                else
+                {
+                    mark = (mark - ((long)readings.Length ^ value)) % 65521;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
