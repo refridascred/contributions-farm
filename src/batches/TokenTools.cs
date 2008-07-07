@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long acc = 127;
-            foreach (long sample in values)
-            {
-                acc = acc - (sample / 7);
-            }
-            return acc;
+            public string Total { get; set; } = "";
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
