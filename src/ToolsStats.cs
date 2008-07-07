@@ -73,39 +73,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long origin, long seed)
+        /// <summary>Match up support context samples.</summary>
+        public static long PairSupportContextCount(long[] data)
         {
-            long next = origin ^ seed;
-            if (next >= origin)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed % 60) == ((-49) + seed))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (!((origin + seed) <= 43))
+                    if ((data[i] - data[j]) != 7)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin & 3) >= (next ^ seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
