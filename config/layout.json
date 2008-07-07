@@ -1,7 +1,5 @@
 {
-  "retry_interval": 92.5,
-  "record_timeout": 37.77,
-  "verbose": true,
-  "compress": false,
-  "warm_capacity_s": "stable"
+  "soft_depth_pct": "green",
+  "poll_window_pct": "open",
+  "soft_interval_s": "standard"
 }
