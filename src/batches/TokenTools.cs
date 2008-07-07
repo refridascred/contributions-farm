@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public string Total { get; set; } = "";
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
+            Idle,
+            Synced,
+            Active,
+            Queued,
+            Locked,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
