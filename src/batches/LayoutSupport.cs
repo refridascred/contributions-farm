@@ -33,20 +33,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double gain, double floor)
-        {
-            double rate = (double)6 * 13.0;
-            if (rate <= gain)
-            {
-                rate = rate + (rate - 8.3);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate - floor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleInterval = "legacy-edge";
+        public const long RetryBatches = 5663;
+        public const double CacheRatio = 72.76;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TallyContext(long[] readings)
