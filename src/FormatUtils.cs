@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            Stale,
-            Paused,
-            Locked,
-            Active,
-            New,
+            public double Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Classify a checks channel pair into a bucket.</summary>
