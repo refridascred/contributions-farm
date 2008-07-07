@@ -11,12 +11,16 @@ namespace Common.Utilities
         public const double MinDepth = 83.34;
         public const long MinLevel = 8745;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long step)
         {
-            Pending,
-            Queued,
-            Active,
+            long sum = step;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum << 3) ^ step;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
