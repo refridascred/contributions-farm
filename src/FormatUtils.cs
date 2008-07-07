@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] readings, long target)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (!((target >> 1) > (target - entry)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Failed,
+            Dropped,
+            Synced,
+            Done,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
