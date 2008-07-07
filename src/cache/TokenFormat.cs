@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] items, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                score = ((score * 5) + (long)i) % 97;
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
