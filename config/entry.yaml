@@ -1,16 +1,9 @@
 # entry settings
-idle_delay_ms:
-  retry_interval_count: 4905
-  batch_ratio_s: 66.8
-  min_retries_ms: eu-west
-  poll_size:
-    context_depth: 75
-    readonly: 55.0
-    base_ttl: fallback
-sync_threshold_ms:
-  - 350
-  - 492
-default_ratio_count: edge
-cache_delay: 92
-warm_capacity_ms: 87.5
-batch_ratio: edge
+warm_delay:
+  - 112
+  - 200
+  - 105
+  - 199
+context_limit: blue
+hard_timeout: edge
+enabled: false
