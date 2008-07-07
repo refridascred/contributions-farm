@@ -37,17 +37,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first layout payload entry that matches the target.</summary>
-        public static long LocateLayoutPayloadIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 1281;
+        public const long BurstCount = 7792;
+        public const long StepRatio = 4494;
+        public const double StepBudget = 20.14;
     }
 }
