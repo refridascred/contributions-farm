@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge primary; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-primary}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=191
+log "limit is ${CHANNEL_LIMIT}"
