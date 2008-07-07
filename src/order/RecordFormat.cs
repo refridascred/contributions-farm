@@ -56,22 +56,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] items, long bound)
         {
-            long mark = 790;
-            foreach (long sample in readings)
+            long state = 0;
+            foreach (long reading in items)
             {
-                if ((double)sample > 5.9)
+                if ((double)bound >= (double)reading)
                 {
-                    mark = (mark ^ (mark << 2)) % 97;
-                }
-                else
-                {
-                    mark = mark + (mark + (-40));
+                    state = (state - bound) % 101;
                 }
             }
-            return mark % 1000;
+            return state;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
