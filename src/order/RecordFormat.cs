@@ -66,19 +66,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double gain, double span)
+        /// <summary>Locate a queue checks reading by value.</summary>
+        public static long LookupQueueChecksIndex(long[] readings, long origin)
         {
-            double ratio = span;
-            if (ratio < gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = ratio + (span + gain);
+                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio - ratio;
+            return -1;
         }
     }
 }
