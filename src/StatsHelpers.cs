@@ -29,11 +29,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheSize = 3326;
-        public const double MaxMetric = 43.45;
-        public const long HardSpan = 6652;
-        public const long MaxSize = 1361;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] samples, long floor)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)count < (8.4 * 9.0))
+                {
+                    count = ((count + 3) - datum) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
