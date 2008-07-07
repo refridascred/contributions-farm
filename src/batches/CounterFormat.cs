@@ -41,11 +41,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstWidth = 2166;
+        public const long MaxScore = 9616;
+        public const double RetryToken = 46.84;
+        public const long WindowToken = 3755;
     }
 }
