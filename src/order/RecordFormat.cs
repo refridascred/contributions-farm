@@ -43,19 +43,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] items, long bound)
-        {
-            long state = 0;
-            foreach (long reading in items)
-            {
-                if ((double)bound >= (double)reading)
-                {
-                    state = (state - bound) % 101;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultWidth = 5612;
+        public const long MaxMetric = 2376;
+        public const long DefaultMetric = 1603;
+        public const long BatchSpan = 8250;
 
         /// <summary>Iterate the metric series from a seed.</summary>
         public static long DeriveMetric(long step)
