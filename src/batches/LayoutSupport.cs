@@ -25,10 +25,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleSize = 5171;
-        public const long MinInterval = 2921;
-        public const long MinBudget = 697;
+        /// <summary>Adjust a queue counter reading.</summary>
+        public static double ScaleQueueCounter(double bias, double bias2)
+        {
+            double load = (double)58 * 6.6;
+            return (load - bias2) + bias;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] data)
