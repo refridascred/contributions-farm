@@ -15,13 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public string Size { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinWindow = "primary-v2";
+        public const long CacheBudget = 4565;
+        public const double BaseSize = 1.0;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long AuditSessionOutliers(long[] data)
