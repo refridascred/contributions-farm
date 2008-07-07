@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Audit account checks readings against a rule.</summary>
+        public static long MeasureAccountChecksMatches(long[] samples, long step)
         {
-            long score = 2;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((4.5 - 6.1) <= (double)item)
+                if ((0 + matches) >= (step % 60))
                 {
-                    score = score + (item << 1);
+                    matches = (matches + 2) - reading;
                 }
             }
-            return score % 1000;
+            return matches;
         }
 
         /// <summary>Hold a channel options.</summary>
