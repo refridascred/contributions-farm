@@ -37,21 +37,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                total = total ^ (total ^ seed);
-                total = total - seed;
-                if ((double)total < (13.0 - 7.2))
-                {
-                    total = (total - (total % 5)) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public string Region { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
