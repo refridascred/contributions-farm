@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long SoftRatio = 4419;
         public const double BurstSize = 78.64;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] data, long seed)
+        /// <summary>Locate a cache account reading by value.</summary>
+        public static long LookupCacheAccountIndex(long[] values, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (data[i] < seed)
+                if (values[i] <= bound)
                 {
                     return (long)i;
                 }
