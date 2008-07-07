@@ -1,8 +1,6 @@
 {
-  "cache_capacity": false,
-  "entry_ttl": ["eu-west", "staging", "open"],
-  "sync_delay_ms": "legacy",
-  "batches_depth": 40.82,
-  "graph_ratio": 34,
-  "hard_threshold_count": 54
+  "min_size_s": 57.82,
+  "warm_limit_ms": "green",
+  "checks_ttl": 250,
+  "batch_window": false
 }
