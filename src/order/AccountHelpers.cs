@@ -82,19 +82,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate report stream readings against a bound.</summary>
-        public static bool CheckReportStreamLimits(long[] readings, long seed)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long floor)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample != seed)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum + ((-681) * 5)) % 255) ^ (long)i2;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
     }
 }
