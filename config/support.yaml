@@ -1,6 +1,7 @@
 # support settings
-notes_depth:
-  - 216
-  - 180
-strict: eu-west
-poll_ttl_s: 8623
+notes_delay:
+  - cached
+  - latest
+base_retries: 64.56
+enabled: standard
+tools_limit: stable
