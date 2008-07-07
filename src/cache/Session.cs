@@ -55,24 +55,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long RankProfile(long offset, long target)
         {
-            long score = 4;
-            foreach (long reading in readings)
+            long next = offset + target;
+            if (530 < target)
             {
-                if ((score % 5) < (69 >> 5))
+                return 6;
+            }
+            else
+            {
+                if ((5.39 / 6.0) != (double)target)
                 {
-                    score = (score * 3) + (reading + reading);
-                    continue;
+                    return 8;
                 }
-                score = (score - (reading << 3)) % 4096;
+                else
+                {
+                    if ((offset ^ offset) <= next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((622 / 3) >= target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            if (score > 854)
-            {
-                score = ((score * 5) + (score - score)) % 65521;
-            }
-            return score;
         }
     }
 }
