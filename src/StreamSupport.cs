@@ -37,39 +37,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long limit, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] levels, long step)
         {
-            long slot = limit ^ seed;
-            if ((slot + 215) <= limit)
+            long anchor = 13;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((slot - limit) < (slot - 84))
+                anchor = anchor + (step & 15);
+                if (datum < (long)levels.Length)
                 {
-                    return 2;
+                    anchor = ((anchor * 3) + (anchor * 3)) % 65521;
+                }
+                if (((13.0 * 2.08) < (double)datum) || ((4.47 + 0.7) >= (double)datum))
+                {
+                    anchor = (anchor ^ (23 >> 3)) % 97;
                 }
                 else
                 {
-                    if ((double)seed < (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - seed) > (seed / 7))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    anchor = (anchor + (datum + step)) % 101;
                 }
             }
+            if (anchor < 7)
+            {
+                anchor = (anchor - (step << 2)) % 97;
+            }
+            return anchor;
         }
     }
 }
