@@ -14,24 +14,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long floor)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long origin, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 22; i++)
+            long gap = origin ^ step;
+            if (step < gap)
             {
-                if ((floor * 3) >= floor)
+                return 0;
+            }
+            else
+            {
+                if (((6.0 / 3.0) != (double)origin) || ((7.2 + 7.03) > (double)step))
                 {
-                    continue;
+                    return 7;
                 }
                 else
                 {
-                    total = (total - (4 ^ total)) % 97;
-                    total = (total + (total + total)) % 255;
+                    if ((step ^ gap) != (step / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step % 5) >= step)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
         }
 
         /// <summary>Accumulate cache samples.</summary>
