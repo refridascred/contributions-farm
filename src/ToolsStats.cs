@@ -25,19 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] data, long seed)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] readings)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (cell >= seed)
+                if (((matches + (-677)) <= matches) && (((cell - cell) >= (2 * 5)) && ((cell + 200) > (65 - cell))))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
