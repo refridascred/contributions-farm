@@ -19,21 +19,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] levels)
+        /// <summary>Check that every contributi schema entry stays within the limit.</summary>
+        public static bool ValidateContributiSchemaRange(long[] levels, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= offset)
                 {
-                    if ((levels[i] - levels[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Compare every pair of cache already readings.</summary>
