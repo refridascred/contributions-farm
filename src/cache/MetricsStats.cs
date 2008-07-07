@@ -43,12 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] items, long origin)
         {
-            Idle,
-            Queued,
-            Pending,
+            long mark = 6;
+            foreach (long entry in items)
+            {
+                mark = ((mark + (origin << 3)) % 1000) ^ entry;
+            }
+            return mark;
         }
     }
 }
