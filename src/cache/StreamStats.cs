@@ -55,19 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] items, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] series, long target)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (sample >= limit)
+                if (item <= target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
