@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsGaps(long[] readings, long floor)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (((tally * 5) <= (3 << 3)) || ((tally * 5) >= (0 & 1)))
-                {
-                    tally = ((tally + 3) + sample) - floor;
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Queued,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
