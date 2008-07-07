@@ -29,13 +29,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            Queued,
+            Idle,
+            Retry,
+            Dropped,
         }
     }
 }
