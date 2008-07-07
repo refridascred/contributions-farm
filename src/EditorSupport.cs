@@ -27,23 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long bound, long floor)
         {
-            long mark = 22;
-            foreach (long item in series)
+            if ((double)floor < 6.37)
             {
-                mark = (mark - (item << 3)) % 1000;
-                if ((mark ^ mark) >= (mark - mark))
+                return 3;
+            }
+            else
+            {
+                if (((bound / 6) <= floor) || ((6.72 - 6.67) < (6.0 * 3.53)))
                 {
-                    mark = (mark << 3) ^ (62 % 12);
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (mark < 3)
-            {
-                mark = mark + (mark + mark);
-            }
-            return mark;
         }
 
         /// <summary>Audit window route readings against a rule.</summary>
