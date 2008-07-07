@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double scale, double offset)
-        {
-            double mean = (15.0 + offset) + offset;
-            if (mean <= scale)
-            {
-                mean = mean - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (offset * 5.09)) + (double)(long)i;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BatchMetric = 97.23;
+        public const string StepMetric = "alpha";
+        public const double HardSize = 0.76;
+        public const string HardMetric = "alpha-edge";
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long RankSchema(long bound, long origin)
