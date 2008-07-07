@@ -30,13 +30,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] data)
         {
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public string Total { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
