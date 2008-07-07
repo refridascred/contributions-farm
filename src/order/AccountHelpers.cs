@@ -56,12 +56,18 @@ namespace Common.Utilities
         public const long BaseProfile = 2423;
         public const double StepProfile = 91.88;
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteOutliers(long[] levels)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if (((41 % 5) == (hits ^ 572)) && (datum <= (hits - datum)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
