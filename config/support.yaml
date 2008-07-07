@@ -1,14 +1,18 @@
 # support settings
-enabled:
-  - local
-  - blue
-hard_size_s:
-  base_window:
-    - 377
-    - 373
-  queue_delay: false
-  dry_run: blue
-  cache_threshold: true
-layout_capacity: staging
-githubfarm_retries: fallback
-verbose: 250
+batch_retries_pct: 24.11
+sync_depth:
+  hard_ttl_s: true
+  warm_depth_ms: blue
+  poll_ttl_s: 86.12
+  checks_ttl: edge
+  min_limit_count:
+    min_interval_pct: 33.83
+    account_delay: legacy
+    channel_interval:
+      - standard
+      - latest
+readonly: open
+hard_timeout_ms: strict
+max_window:
+  - 207
+  - 57
