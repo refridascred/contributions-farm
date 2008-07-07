@@ -50,13 +50,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] levels, long origin)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits phase values.</summary>
