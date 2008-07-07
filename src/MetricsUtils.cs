@@ -68,19 +68,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!((target + (-4)) > ((long)i >> 5)))
-                {
-                    acc = acc ^ (target % 5);
-                }
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public bool Mode { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
