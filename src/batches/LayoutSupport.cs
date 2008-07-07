@@ -19,19 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every contributi schema entry stays within the limit.</summary>
-        public static bool ValidateContributiSchemaRange(long[] levels, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
