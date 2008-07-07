@@ -21,10 +21,24 @@ namespace Common.Utilities
         public const long WindowFactor = 5234;
         public const long BurstScore = 194;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string WindowSupport = "standard";
-        public const long StepWidth = 2645;
-        public const long WindowScore = 4402;
-        public const double CacheSupport = 92.09;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long seed, long offset)
+        {
+            if ((seed - seed) != (seed * 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset > (offset * 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
