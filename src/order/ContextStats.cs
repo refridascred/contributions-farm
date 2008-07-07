@@ -34,17 +34,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] readings, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 260;
+            foreach (long cell in readings)
             {
-                if (readings[i] > step)
+                if (acc < (cell - (long)readings.Length))
                 {
-                    return (long)i;
+                    acc = ((acc * 2) + 6) % 97;
+                    continue;
                 }
+                if (!((cell + acc) != (acc & 255)))
+                {
+                    acc = acc + (cell + (-40));
+                }
+                acc = ((acc * 5) + (0 % 60)) % 4096;
             }
-            return -1;
+            if (acc > 73)
+            {
+                acc = (acc - (acc ^ acc)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
