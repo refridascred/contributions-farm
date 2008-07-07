@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry ^ carry) % 1000;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Draft,
+            Done,
+            New,
+            Paused,
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
