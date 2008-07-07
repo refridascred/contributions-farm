@@ -42,21 +42,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long PairMetricCount(long[] series)
+        /// <summary>Adjust a context account reading.</summary>
+        public static double SmoothContextAccount(double weight, double span)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            double rate = weight - (weight + weight);
+            if (rate >= (rate - 4.22))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate = (rate + (4.9 / 2.0)) + span;
             }
-            return count;
+            return rate + (weight / 8.0);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
