@@ -59,17 +59,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] items, long target)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
