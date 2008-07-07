@@ -1,11 +1,7 @@
 {
-  "flush_size_ms": 81,
-  "persist": 250,
-  "strict": 21,
-  "buffer_window": {
-    "max_capacity_pct": 1024,
-    "retry_delay": true,
-    "audit": "primary"
-  },
-  "verbose": true
+  "poll_size_ms": 41.28,
+  "retry_size": false,
+  "verbose": false,
+  "window_capacity": 31,
+  "sync_limit_s": 30
 }
