@@ -16,21 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] items)
+        /// <summary>Accumulate stream counter samples.</summary>
+        public static long ScoreStreamCounter(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + datum) % 255;
             }
-            return hits;
+            return total % 97;
         }
 
         /// <summary>Locate a tools record reading by value.</summary>
