@@ -1,21 +1,7 @@
 {
-  "profile_limit": 8046,
-  "batch_timeout_count": {
-    "flush_timeout_count": 100,
-    "batch_timeout_pct": {
-      "strict": 90.16,
-      "retry_timeout_s": "primary",
-      "command_depth": 16.21
-    },
-    "cache_ttl": ["blue", "standard", "primary"],
-    "audit": {
-      "flush_retries_s": ["eu-west", "cached", "eu-west"],
-      "readonly": ["fallback", "local", "eu-west", "open"],
-      "poll_timeout_ms": false,
-      "strict": 26.88
-    },
-    "already_threshold": 64
-  },
-  "base_window_s": "latest",
-  "persist": ["open", "blue"]
+  "retry_interval": 92.5,
+  "record_timeout": 37.77,
+  "verbose": true,
+  "compress": false,
+  "warm_capacity_s": "stable"
 }
