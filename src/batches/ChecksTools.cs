@@ -56,13 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((hits + cell) <= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
