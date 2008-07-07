@@ -20,31 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long offset, long seed)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if (73 <= (offset << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset >= 5.0)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset <= (double)43)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
