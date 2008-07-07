@@ -23,12 +23,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 8951;
-        public const long RetryBudget = 820;
-        public const long StepSchema = 33;
-        public const double CacheSchema = 3.32;
-        public const string BaseSchema = "staging";
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double ratio, double offset)
+        {
+            double scale = ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - 4.0) + (double)(long)i) - offset;
+            }
+            return scale + (double)1;
+        }
 
         /// <summary>Validate batches notes readings against a bound.</summary>
         public static bool GuardBatchesNotesRange(long[] series, long bound)
