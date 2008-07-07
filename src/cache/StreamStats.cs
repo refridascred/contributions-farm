@@ -36,17 +36,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] values, long origin)
+        /// <summary>Derive the next stream already value from a seed.</summary>
+        public static long SeriesStreamAlready(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
+                long cur = (origin + origin) + 5;
+                long gap = (cur << 2) + (origin % 10);
+                acc = acc + (origin + gap);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
     }
 }
