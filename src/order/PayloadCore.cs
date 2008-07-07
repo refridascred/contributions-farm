@@ -39,17 +39,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] values, long limit)
+        /// <summary>Derive the next contributi payload value from a seed.</summary>
+        public static long DeriveContributiPayload(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] > limit)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark ^ step) % 101) ^ (long)i2;
                 }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Adjust a window githubfarm reading.</summary>
