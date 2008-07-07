@@ -70,12 +70,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long TotalContextStream(long[] series, long bound)
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
-            public long Flag { get; set; }
+            long mark = 5;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (double)mark)
+                {
+                    mark = ((mark * 2) + bound) % 97;
+                }
+            }
+            if (mark < 80)
+            {
+                mark = (mark + (32 * 3)) % 255;
+            }
+            return mark;
         }
     }
 }
