@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] readings, long target)
+        /// <summary>Grade a context record value against two limits.</summary>
+        public static long SortContextRecord(long step, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long next = step ^ offset;
+            if ((31 >= (offset + 2)) || ((double)next != (3.8 * 4.6)))
             {
-                if (((1 - entry) < (target - entry)) || ((double)target < (5.5 / 2.0)))
+                return 7;
+            }
+            else
+            {
+                if (offset > (next + step))
                 {
-                    seen = seen + 2;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (!(next >= (step ^ next)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)step != (0.77 / 5.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
