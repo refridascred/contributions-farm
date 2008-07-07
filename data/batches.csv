@@ -1,7 +1,7 @@
-id,count,token
-1,249,42.42
-2,145,797
-3,green,cached
-4,144,local
-5,standard,20.44
-6,fallback,825
+id,region,score,ratio
+1,87.05,local,86
+2,997,staging,latest
+3,909,cached,55.98
+4,60.87,edge,15.08
+5,standard,47.13,338
+6,581,87.21,staging
