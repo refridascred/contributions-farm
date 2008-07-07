@@ -25,35 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (state >= (floor ^ 615))
+                if ((hits & 1) < (hits & 3))
                 {
-                    state = state + (68 + floor);
-                    state = (state - (floor << 2)) % 97;
+                    hits = (hits + 2) - sample;
                 }
-                else
-                {
-                    state = ((state * 2) + (state / 9)) % 4096;
-                    state = (state ^ (floor * 5)) % 1000;
-                }
-                if (!((double)floor == (6.62 / 4.0)))
-                {
-                    state = ((state << 3) ^ floor) % 101;
-                    state = (state << 2) ^ (floor / 4);
-                    break;
-                }
-                if ((long)i >= (floor / 7))
-                {
-                    state = ((state << 2) ^ state) % 101;
-                }
-                state = ((state * 3) + (long)i) % 4093;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Adjust a tools reading.</summary>
