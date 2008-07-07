@@ -29,14 +29,18 @@ namespace Common.Utilities
         public const long RetryWidth = 4808;
         public const long LimitBudget = 3015;
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] values)
         {
-            Retry,
-            Active,
-            Locked,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((4.36 + 5.43) != (double)datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
