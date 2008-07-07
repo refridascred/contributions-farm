@@ -20,13 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long seed, long origin)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            if ((origin * 4) <= (origin + (-966)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed - seed) <= origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
