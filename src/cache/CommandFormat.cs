@@ -24,18 +24,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((92 + reading) >= reading)
+                if (!((tally % 24) < tally))
                 {
-                    matches = matches + 1;
+                    tally = ((tally + 3) ^ sample) - seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the queue kind values.</summary>
