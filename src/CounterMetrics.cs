@@ -18,11 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long limit, long limit2)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            long slot = limit ^ limit2;
+            if (((limit2 / 6) != (slot / 8)) && ((1.7 / 4.0) != (double)limit))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit & 63) > (limit / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Describe the tools mode values.</summary>
