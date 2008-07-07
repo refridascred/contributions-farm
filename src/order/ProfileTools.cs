@@ -26,20 +26,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long step)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((anchor + step) < (anchor / 4))
-                {
-                    long seen = step;
-                    anchor = (anchor * 4) + (seen - seen);
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
