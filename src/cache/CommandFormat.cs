@@ -41,18 +41,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long mark = seed;
+            for (int i = 0; i < 13; i++)
             {
-                double gain = 5.3;
-                double drift = gain;
-                gain = gain + drift;
-                result = ((result * 4) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = ((mark * 3) + seed) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
