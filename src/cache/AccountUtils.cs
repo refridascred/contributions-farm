@@ -13,16 +13,17 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long origin)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long LocateChecksIndex(long[] levels, long target)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark * 3) + (origin + mark);
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((levels[i] >= target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the session kind values.</summary>
