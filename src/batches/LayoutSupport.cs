@@ -41,14 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] data, long step)
         {
-            Idle,
-            Queued,
-            Active,
-            Retry,
-            Locked,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
