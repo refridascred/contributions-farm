@@ -1,17 +1,6 @@
 {
-  "profile_window": 1024,
-  "sync_depth_s": {
-    "base_delay_pct": 500,
-    "readonly": {
-      "sync_limit_s": 13,
-      "burst_size_ms": 1975,
-      "order_size": 500
-    },
-    "report_size": 1255,
-    "enabled": [39, 450]
-  },
-  "persist": 3152,
-  "flush_limit": "standard",
-  "burst_size_s": 58,
-  "max_retries_ms": "stable"
+  "hard_interval": [320, 382, 408],
+  "idle_timeout_count": "cached",
+  "enabled": 71.56,
+  "batch_delay_s": true
 }
