@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 4171;
         public const long SoftDepth = 5298;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long step)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long mix = step;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = mix - ((long)i + mix);
-                if (((long)i - mix) > (mix >> 1))
-                {
-                    break;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
-            }
-            return mix;
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
