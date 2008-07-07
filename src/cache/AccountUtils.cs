@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public double Limit { get; set; }
+            public bool Weight { get; set; }
             public long Level { get; set; }
-            public double Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
