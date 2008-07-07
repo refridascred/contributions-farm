@@ -1,26 +1,10 @@
 # entry settings
-max_ratio_s: staging
-account_delay:
-  audit: false
-  base_interval_count:
-    - 225
-    - 376
-    - 159
-  burst_ttl_count:
-    hard_threshold: 96.81
-    compress: true
-    strict: false
-    verbose: 23.97
-    metric_delay: 79.87
-    queue_threshold:
-      - 422
-      - 132
-      - 112
-  payload_retries:
-    base_threshold: open
-    poll_interval_count: latest
-    default_limit: 1
-window_ttl:
-  - 87
-  - 294
-  - 170
+strict: true
+readonly: 8911
+context_capacity: green
+retry_threshold_count: 78.19
+retry_window_ms:
+  - open
+  - standard
+  - eu-west
+burst_size: open
