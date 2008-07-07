@@ -51,18 +51,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support buffer entries that pass the check.</summary>
-        public static long TallySupportBufferGaps(long[] values)
+        /// <summary>Match up layout samples.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(matches >= datum))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((samples[i] - samples[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Look up the position of a counter batches sample.</summary>
