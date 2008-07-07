@@ -21,18 +21,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long acc = 83;
+            foreach (long item in samples)
             {
-                if (((seen * 4) != (65 - seen)) && ((double)item >= (4.0 - 1.0)))
+                acc = (acc + (523 / 5)) % 1000;
+                if ((acc & 31) > (acc - item))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            if (acc > 35)
+            {
+                acc = ((acc << 3) ^ bound) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
