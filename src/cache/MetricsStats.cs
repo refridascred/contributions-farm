@@ -27,12 +27,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double SoftFarm = 66.61;
-        public const long MinFarm = 910;
-        public const long LimitFarm = 8850;
-        public const double BurstInterval = 65.42;
-        public const long IdleInterval = 2502;
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double weight, double span)
+        {
+            double ratio = (double)(2 + (-22));
+            if (ratio < 5.26)
+            {
+                ratio = (ratio - ratio) + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - weight) + (double)(long)i;
+            }
+            return ratio - (weight * 3.11);
+        }
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
