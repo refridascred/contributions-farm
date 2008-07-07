@@ -1,7 +1,6 @@
 {
-  "enabled": 71,
-  "min_capacity": 53,
-  "hard_delay_count": "edge",
-  "retry_ratio": true,
-  "contributi_timeout": 1787
+  "entry_capacity": "local",
+  "contributi_threshold": true,
+  "already_capacity": 67.23,
+  "batch_capacity": 30
 }
