@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 3414;
-        public const long RetryGraph = 8352;
-        public const long BatchGraph = 3297;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!((target >> 1) > (target - entry)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
