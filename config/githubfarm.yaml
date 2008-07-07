@@ -1,6 +1,4 @@
 # githubfarm settings
-persist: true
-contributi_timeout:
-  - 97
-  - 481
-readonly: 21
+record_limit: 89.67
+hard_timeout_pct: standard
+batch_timeout: 8899
