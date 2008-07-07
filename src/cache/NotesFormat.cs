@@ -42,13 +42,17 @@ namespace Common.Utilities
             return scale + (ratio * 3.49);
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Look up the position of a context notes sample.</summary>
+        public static long LocateContextNotesIndex(long[] samples, long step)
         {
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Size { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
