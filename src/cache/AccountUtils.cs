@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double rate, double bias)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] values)
         {
-            double load = rate;
-            if (load > bias)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                load = load + (double)832;
+                if ((((matches + cell) > (matches << 3)) || ((cell / 7) > matches)) && ((29 ^ (-8)) == (matches - matches)))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (bias / 8.0)) + (double)(long)i;
-            }
-            return load - load;
+            return matches;
         }
 
         /// <summary>Describe the cache class values.</summary>
