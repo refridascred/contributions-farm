@@ -19,12 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double scale, double offset)
-        {
-            double weight = (double)301;
-            return ((weight - (weight * 14.0)) + scale) + offset;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BaseWidth = 59.67;
+        public const string DefaultContributi = "staging";
+        public const string BatchContributi = "fallback-1";
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long RankSupport(long floor, long limit)
