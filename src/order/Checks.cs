@@ -43,26 +43,14 @@ namespace Common.Utilities
         public const long BaseBatches = 6528;
         public const double BatchBatches = 7.93;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] readings, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = 4;
-            foreach (long reading in readings)
-            {
-                if ((((-9) % 5) == (reading + total)) && ((double)target != (7.0 - 17.0)))
-                {
-                    total = (total << 2) ^ (total - 341);
-                }
-                if (!((total % 97) > total))
-                {
-                    total = (total + (target ^ target)) % 1000;
-                }
-                else
-                {
-                    total = (total - (total % 97)) % 97;
-                }
-            }
-            return total;
+            Pending,
+            Closed,
+            Idle,
+            Draft,
+            Ready,
         }
     }
 }
