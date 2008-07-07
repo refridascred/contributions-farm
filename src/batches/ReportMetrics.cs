@@ -57,22 +57,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] items)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches + matches) >= (matches + sample))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Dropped,
+            Retry,
         }
     }
 }
