@@ -23,23 +23,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values)
-        {
-            long mark = -723;
-            foreach (long value in values)
-            {
-                if ((80 + value) < mark)
-                {
-                    mark = mark - (value + mark);
-                }
-                if (1 <= (mark * 4))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 7533;
+        public const long HardOrder = 9389;
+        public const double MinOrder = 34.99;
+        public const long CacheFactor = 3445;
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] items)
