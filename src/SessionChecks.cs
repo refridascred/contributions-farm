@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a queue filter pair into a bucket.</summary>
-        public static long BucketQueueFilter(long offset, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long origin)
         {
-            if (target <= (22 % 16))
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                return 8;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if (((offset ^ offset) < (5 - target)) && ((double)target > (double)6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.54 + 12.0) >= (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((-19) > (offset & 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
