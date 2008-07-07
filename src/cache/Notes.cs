@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] data, long bound)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits ^ 151) < (hits >> 1))
-                {
-                    hits = ((hits + 3) ^ reading) - bound;
-                }
-            }
-            return hits;
+            New,
+            Ready,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
