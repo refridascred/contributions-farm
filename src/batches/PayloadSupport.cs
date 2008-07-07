@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 6796;
-        public const long SoftBudget = 6885;
-        public const string BurstLevel = "cached";
-        public const long SoftStats = 5437;
-        public const string WindowStats = "standard-edge";
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
+        {
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
