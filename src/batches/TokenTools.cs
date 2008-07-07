@@ -21,22 +21,12 @@ namespace Common.Utilities
         public const long RetryCount = 1253;
         public const string RetryRatio = "primary-edge";
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] levels, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((348 - 51) > (target ^ target))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
