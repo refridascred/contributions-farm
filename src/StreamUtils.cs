@@ -38,19 +38,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double weight, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            double drift = weight;
-            if (drift > weight)
+            long acc = target;
+            for (int i = 0; i < 22; i++)
             {
-                drift = (drift + (8.0 * 6.0)) - floor;
+                if (((double)target < (3.5 - 5.13)) && ((target >> 5) >= (target * 2)))
+                {
+                    acc = acc - (long)i;
+                    acc = (acc ^ (long)i) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (weight - weight)) - (double)(long)i;
-            }
-            return drift - (drift + weight);
+            return acc;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
