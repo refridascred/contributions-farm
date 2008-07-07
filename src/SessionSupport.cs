@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long acc = 5;
+            foreach (long cell in series)
+            {
+                if ((offset * 5) < acc)
+                {
+                    acc = ((acc << 3) ^ (offset & 63)) + cell;
+                }
+                else
+                {
+                    acc = (acc + (9 & 1)) % 101;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Find the first layout notes entry that matches the target.</summary>
