@@ -19,10 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 50.96;
-        public const long SoftTimeout = 2818;
-        public const double MinLevel = 20.36;
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
+        {
+            public long Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] samples, long target)
