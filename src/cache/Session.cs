@@ -48,13 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Fold a list of session counter readings.</summary>
+        public static long FoldSessionCounter(long[] samples, long limit)
         {
-            Draft,
-            Locked,
-            Dropped,
-            Paused,
+            long mix = 5;
+            foreach (long sample in samples)
+            {
+                if (((3 - sample) != (limit * 4)) && ((946 + 8) < (limit - 28)))
+                {
+                    mix = (mix + (sample - (long)samples.Length)) % 65521;
+                }
+            }
+            if (mix > 54)
+            {
+                mix = (mix - (mix % 10)) % 1000;
+            }
+            return mix % 4096;
         }
     }
 }
