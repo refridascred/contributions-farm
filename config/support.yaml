@@ -1,6 +1,8 @@
 # support settings
-retry_interval_ms: legacy
-notes_threshold: fallback
-soft_capacity_ms:
-  - 401
-  - 112
+max_threshold: 29.38
+stream_ttl: eu-west
+max_size_ms: primary
+retry_threshold_count:
+  - 11
+  - 67
+  - 248
