@@ -36,22 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileOutliers(long[] readings)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((long)readings.Length < (207 & 31))
-                {
-                    seen = (seen + 1) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public double Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the account class values.</summary>
