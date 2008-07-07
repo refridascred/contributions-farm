@@ -55,13 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Queued,
-            Synced,
-            Dropped,
-            Failed,
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
