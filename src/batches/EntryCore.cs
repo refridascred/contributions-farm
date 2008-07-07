@@ -46,15 +46,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double bias, double floor)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            double scale = (double)(99 % 2);
-            if (scale > (floor + scale))
-            {
-                scale = scale + (bias - scale);
-            }
-            return scale - scale;
+            Active,
+            Failed,
+            Done,
+            Queued,
+            Closed,
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
