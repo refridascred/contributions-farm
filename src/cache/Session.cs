@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 3850;
-        public const string BurstCommand = "primary";
-        public const long BatchCommand = 7011;
-        public const long HardSize = 7499;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] levels, long bound)
