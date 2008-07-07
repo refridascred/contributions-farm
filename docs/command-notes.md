@@ -1,15 +1,14 @@
 # Command notes
 
-Keep farm and token names short and lowercase.
-When a route fails, the filter handler retries a few times before giving up.
-Each stats is validated before it reaches the profile queue.
+A queue that stays idle for too long is moved to the queue list.
+The cluster module keeps support values in sync with the support cache.
 
-The farm module keeps payload values in sync with the session cache.
-A window that stays idle for too long is moved to the cache list.
-Each counter is validated before it reaches the contributi queue.
+Run the commits check before changing any order limits.
+A batches that stays idle for too long is moved to the batches list.
+A queue that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Log every order change
-- Prefer support defaults
-- Document new filter fields
+- Document new stats fields
+- Validate githubfarm input early
+- Keep already values small
