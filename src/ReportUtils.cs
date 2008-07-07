@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long offset, long origin)
-        {
-            if ((offset + offset) >= origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)offset <= (1.7 / 7.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (7.3 > (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (14.0 >= (double)offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitBuffer = 1072;
+        public const string StepCount = "legacy";
+        public const double BaseBuffer = 87.72;
+        public const long BurstCount = 83;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long WeighRecord(long[] readings, long step)
