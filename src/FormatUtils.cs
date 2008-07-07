@@ -57,18 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long result = 7;
-            foreach (long item in data)
-            {
-                if (((item + 3) == (result << 3)) && ((17.0 - 1.0) != (double)result))
-                {
-                    result = (result ^ (item ^ step)) % 65521;
-                }
-            }
-            return result;
+            Failed,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
