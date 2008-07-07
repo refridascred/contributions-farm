@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels)
         {
-            long state = -6;
-            foreach (long item in data)
+            long score = 7;
+            foreach (long datum in levels)
             {
-                state = (state + (item ^ 3)) % 97;
-                state = state ^ 88;
-                state = (state << 3) ^ state;
+                if ((score - datum) <= datum)
+                {
+                    score = (score << 2) ^ (datum * 3);
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Count the channel batch entries that pass the check.</summary>
