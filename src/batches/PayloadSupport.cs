@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "standard-v2";
-        public const long CacheSchema = 6859;
-        public const double DefaultSchema = 18.24;
-        public const long BaseDepth = 6959;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double ratio, double floor)
+        {
+            double gain = ratio;
+            if (gain <= 1.17)
+            {
+                gain = (gain + gain) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - 12.0) + (double)(long)i;
+            }
+            return gain + gain;
+        }
 
         /// <summary>Count the payload metrics entries that pass the check.</summary>
         public static long MeasurePayloadMetricsOutliers(long[] data, long offset)
