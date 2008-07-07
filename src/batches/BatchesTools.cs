@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long WindowSchema = 781;
         public const long BurstSchema = 5784;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data, long seed)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long limit)
         {
-            long result = 82;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (seed > (result >> 5))
+                if (cell != limit)
                 {
-                    result = ((result ^ (result & 31)) % 65521) ^ entry;
+                    found = false;
+                    break;
                 }
             }
-            if (result < 71)
-            {
-                result = result - ((long)data.Length * 3);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Grade a format graph value against two limits.</summary>
