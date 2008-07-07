@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long score = 7;
-            foreach (long datum in levels)
-            {
-                if ((score - datum) <= datum)
-                {
-                    score = (score << 2) ^ (datum * 3);
-                }
-            }
-            return score;
+            Dropped,
+            Ready,
+            Retry,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
