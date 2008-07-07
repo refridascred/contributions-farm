@@ -29,11 +29,18 @@ namespace Common.Utilities
         public const long BaseWidth = 1967;
         public const long MaxTimeout = 3;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] readings, long floor)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((20.0 - 4.47) < (20.0 - 3.7))
+                {
+                    count = ((count + 3) + datum) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a batch counter figure with a bias.</summary>
