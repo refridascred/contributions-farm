@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (reading > (reading & 127))
+                if (value >= seed)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
