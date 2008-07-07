@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] samples, long step)
+        /// <summary>Check that every batch graph entry stays within the limit.</summary>
+        public static bool CheckBatchGraphRange(long[] items, long target)
         {
-            long total = 651;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                if ((sample + step) < step)
+                if (reading > target)
                 {
-                    total = (total + (1 + 0)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return flag;
         }
 
         /// <summary>Roll a account farm counter forward.</summary>
