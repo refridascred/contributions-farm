@@ -25,19 +25,12 @@ namespace Common.Utilities
         public const long RetryWidth = 4808;
         public const long LimitBudget = 3015;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((4.36 + 5.43) != (double)datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 37.76;
+        public const long IdleBuffer = 7868;
+        public const long LimitTimeout = 5125;
+        public const double LimitRatio = 86.69;
+        public const string LimitBuffer = "cached";
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long ScoreGraph(long[] items)
