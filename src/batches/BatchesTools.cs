@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 7722;
-        public const double BaseMetrics = 26.6;
-        public const long WindowMetrics = 8539;
-        public const string MinCount = "primary-1";
-        public const double CacheRatio = 77.99;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseSchema = 3591;
+        public const double BatchTimeout = 95.51;
+        public const long LimitSchema = 8482;
+        public const long WindowSchema = 781;
+        public const long BurstSchema = 5784;
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long HardCount = 3649;
