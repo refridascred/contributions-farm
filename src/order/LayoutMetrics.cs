@@ -45,18 +45,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterGaps(long[] items)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long mark = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((reading - reading) > (reading ^ reading))
-                {
-                    hits = hits + 3;
-                }
+                mark = mark + ((long)i + mark);
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
     }
 }
