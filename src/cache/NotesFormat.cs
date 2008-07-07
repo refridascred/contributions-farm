@@ -22,22 +22,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadOutliers(long[] data, long target)
+        /// <summary>Project the next batches already value.</summary>
+        public static double ProjectBatchesAlready(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double scale = (0.91 * 4.49) - (ratio - offset);
+            if (scale < offset)
             {
-                if ((double)tally == (double)entry)
-                {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale + (scale / 7.0);
             }
-            return tally;
+            else
+            {
+                scale = scale + (ratio * 9.51);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (scale - 0.3)) - (double)(long)i;
+            }
+            return scale + (ratio * 3.49);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
