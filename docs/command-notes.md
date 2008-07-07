@@ -1,12 +1,15 @@
 # Command notes
 
-Keep filter and editor names short and lowercase.
-Run the order check before changing any queue limits.
-Use buffer settings to tune how often editor data is refreshed.
+Keep farm and token names short and lowercase.
+When a route fails, the filter handler retries a few times before giving up.
+Each stats is validated before it reaches the profile queue.
+
+The farm module keeps payload values in sync with the session cache.
+A window that stays idle for too long is moved to the cache list.
+Each counter is validated before it reaches the contributi queue.
 
 ## Guidelines
 
-- Document new window fields
-- Validate stream input early
-- Review counter limits each release
 - Log every order change
+- Prefer support defaults
+- Document new filter fields
