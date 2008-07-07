@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Retry,
-            Done,
-            Queued,
+            Locked,
+            Pending,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Derive the next report account value from a seed.</summary>
