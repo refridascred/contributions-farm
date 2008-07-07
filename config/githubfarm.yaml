@@ -1,14 +1,32 @@
 # githubfarm settings
-warm_limit: 30
-default_delay:
-  queue_interval: local
-  report_interval: true
-  default_capacity_pct: 4462
-  max_size:
-    - 279
-    - 475
-    - 371
-    - 416
-  warm_delay_pct: true
-  cluster_timeout: eu-west
-cache_window_s: 30
+githubfarm_delay:
+  flush_timeout_pct: 51.59
+  account_window: 5013
+  batch_ttl: false
+  hard_limit:
+    enabled: 27
+    farm_timeout: 1.82
+    warm_retries_s: eu-west
+verbose:
+  min_interval_pct: 4840
+  hard_interval: 500
+  cache_limit_pct:
+    batch_retries: 9911
+    compress: false
+    min_retries_pct: true
+    min_capacity_ms: cached
+    warm_retries: 46.0
+    idle_delay:
+      - edge
+      - standard
+  idle_limit_pct: legacy
+  sync_window_pct: 250
+  cluster_timeout: cached
+farm_size: 6837
+default_timeout:
+  audit: latest
+  base_threshold_pct: 86
+  default_interval:
+    - fallback
+    - legacy
+    - cached
