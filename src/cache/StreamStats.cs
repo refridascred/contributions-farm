@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine order report values into a single score.</summary>
-        public static long ScoreOrderReport(long[] values)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double rate, double floor)
         {
-            long result = -832;
-            foreach (long sample in values)
+            double gain = 0.8;
+            if (gain > (double)(-1))
             {
-                result = (result << 3) ^ sample;
+                gain = (gain - (double)115) - rate;
             }
-            if (result > 4)
+            else
             {
-                result = ((result << 3) ^ (result >> 4)) % 4096;
+                gain = gain - floor;
             }
-            return result;
+            return gain + floor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
