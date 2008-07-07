@@ -46,27 +46,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] samples)
-        {
-            long total = 0;
-            foreach (long reading in samples)
-            {
-                if (!(reading >= total))
-                {
-                    total = (total + total) % 4096;
-                }
-                if ((total & 255) < (total + reading))
-                {
-                    total = (total * 3) + (total ^ reading);
-                }
-            }
-            if (total > 7)
-            {
-                total = (total - (total << 1)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double RetryBudget = 83.33;
+        public const long BurstWidth = 7220;
+        public const long BurstCount = 465;
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
