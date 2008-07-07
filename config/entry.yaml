@@ -1,17 +1,16 @@
 # entry settings
-graph_window: 92.83
-entry_window: open
-enabled:
-  readonly: primary
-  context_timeout: 99
-  flush_interval: 22.89
-  cache_depth_s: 250
-default_size_count:
-  readonly: open
-  base_ratio_ms: 32.25
-  idle_delay_pct:
-    soft_size_s: 25.4
-    hard_limit: fallback
-    flush_ratio_s: 4415
-  batch_interval_pct: true
-  farm_window: false
+idle_delay_ms:
+  retry_interval_count: 4905
+  batch_ratio_s: 66.8
+  min_retries_ms: eu-west
+  poll_size:
+    context_depth: 75
+    readonly: 55.0
+    base_ttl: fallback
+sync_threshold_ms:
+  - 350
+  - 492
+default_ratio_count: edge
+cache_delay: 92
+warm_capacity_ms: 87.5
+batch_ratio: edge
