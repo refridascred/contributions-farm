@@ -65,22 +65,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine filter buffer values into a single score.</summary>
-        public static long WeighFilterBuffer(long[] values, long seed)
+        /// <summary>Fold a list of schema farm readings.</summary>
+        public static long TallySchemaFarm(long[] items)
         {
-            long result = 3;
-            foreach (long reading in values)
+            long result = 23;
+            foreach (long datum in items)
             {
-                if ((result + result) > seed)
-                {
-                    result = result ^ result;
-                }
-                else
-                {
-                    result = result + (reading ^ reading);
-                }
+                result = ((result * 3) + (result * 5)) ^ datum;
             }
-            return result % 97;
+            return result % 65521;
         }
 
         /// <summary>Audit commits window readings against a rule.</summary>
