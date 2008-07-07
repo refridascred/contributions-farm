@@ -16,21 +16,24 @@ namespace Common.Utilities
         public const long IdleInterval = 1712;
         public const double WindowFactor = 73.16;
 
-        /// <summary>Count format token pairs that satisfy a relation.</summary>
-        public static long MatchFormatTokenCount(long[] samples)
+        /// <summary>Rank order cache input into a small class.</summary>
+        public static long GradeOrderCache(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((28 <= limit) && ((0.3 - 1.0) != (double)floor))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit % 100) > (649 - limit))
                 {
-                    if ((samples[i] + samples[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
     }
 }
