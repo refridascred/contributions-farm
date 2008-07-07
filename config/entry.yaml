@@ -1,24 +1,10 @@
 # entry settings
-flush_limit_s: fallback
-record_limit:
-  format_ratio: 4357
-  burst_limit_count: 8458
-  stats_threshold: 37.61
-  persist: 1024
-  graph_ratio: 53
-  sync_ratio_ms: true
-sync_threshold:
-  - 482
-  - 249
-  - 269
-githubfarm_ratio: open
-record_ratio:
-  entry_capacity: 100
-  persist:
-    - 259
-    - 423
-  support_depth: 100
-  strict:
-    idle_ratio_pct: 5661
-    stream_depth: 1024
-    cache_timeout_pct: true
+enabled: primary
+readonly: 79.4
+window_ttl: 56.78
+min_limit:
+  - 301
+  - 307
+  - 134
+min_capacity_ms: 79.84
+poll_ratio_s: standard
