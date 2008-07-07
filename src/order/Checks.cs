@@ -28,24 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long offset, long target)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if ((7.47 * 2.22) < (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target >> 5) > 56)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Draft,
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
