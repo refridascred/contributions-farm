@@ -1,8 +1,20 @@
 {
-  "base_size": "eu-west",
-  "batches_ttl": [103, 181, 187],
-  "base_ttl_s": "edge",
-  "counter_ttl": false,
-  "compress": 14.98,
-  "warm_depth": 34.08
+  "poll_ttl": {
+    "burst_window_s": 1024,
+    "poll_delay_s": {
+      "readonly": [403, 392],
+      "min_size": "standard",
+      "warm_timeout": 99,
+      "idle_limit_count": true
+    },
+    "base_window": "blue"
+  },
+  "record_interval": {
+    "dry_run": "standard",
+    "batch_interval_count": [427, 55],
+    "poll_threshold_count": 43
+  },
+  "hard_interval_ms": 8275,
+  "default_capacity": 5.38,
+  "schema_threshold": "green"
 }
