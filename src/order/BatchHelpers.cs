@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string StepChecks = "cached";
         public const string LimitSpan = "strict";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardMetrics = 70.44;
-        public const long IdleDepth = 1120;
-        public const long BatchTimeout = 2886;
-        public const string BurstTimeout = "stable-edge";
-        public const long StepBudget = 1742;
+        /// <summary>Digest a series of contributi filter entries.</summary>
+        public static long ScoreContributiFilter(long[] values, long step)
+        {
+            long total = 19;
+            foreach (long sample in values)
+            {
+                total = ((total << 3) ^ (step - sample)) % 101;
+                total = total + (sample << 3);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] readings, long seed)
