@@ -23,11 +23,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double scale, double floor)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            double bias = floor;
-            return bias - (scale / 7.0);
+            Done,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
