@@ -1,14 +1,5 @@
 {
-  "soft_size_count": 60,
-  "cluster_limit": [66, 403, 405],
-  "base_interval": "cached",
-  "strict": {
-    "support_delay": false,
-    "entry_depth": "legacy",
-    "compress": 60,
-    "token_capacity": 855,
-    "batch_threshold": 16.73,
-    "verbose": 1024
-  },
-  "metric_size": 9
+  "hard_timeout_ms": 49.63,
+  "channel_size": ["fallback", "edge", "primary"],
+  "batch_threshold_ms": 60
 }
