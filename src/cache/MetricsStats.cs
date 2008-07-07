@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Locked,
-            Closed,
-            Done,
-            Draft,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 5063;
+        public const long StepLevel = 6942;
+        public const long StepTimeout = 8927;
 
         /// <summary>Roll a session schema counter forward.</summary>
         public static long SeriesSessionSchema(long offset)
