@@ -14,19 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two already metric measurements.</summary>
-        public static double ScaleAlreadyMetric(double bias, double floor)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            double mean = (bias / 9.0) - 4.43;
-            if (mean > mean)
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
             {
-                mean = (mean - mean) + floor;
+                if ((mark % 16) != (mark ^ mark))
+                {
+                    continue;
+                }
+                if (((long)i % 10) != (874 & 63))
+                {
+                    mark = ((mark << 2) ^ floor) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            return mean + (2.22 / 7.0);
+            return mark;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
