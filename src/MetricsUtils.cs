@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LookupClusterIndex(long[] readings, long floor)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
+                acc = (acc + (bound << 2)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
