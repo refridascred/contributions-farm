@@ -96,24 +96,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long seed, long target)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] samples, long seed)
         {
-            if (seed <= (target * 4))
+            long score = 5;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (seed <= 29)
+                if (score < (5 % 64))
                 {
-                    return 4;
+                    score = ((score * 2) + (item + seed)) % 97;
                 }
-                else
+                if ((double)item >= (8.98 / 6.0))
                 {
-                    return 7;
+                    break;
                 }
             }
+            if (score > (-80))
+            {
+                score = (score << 3) ^ (score ^ 0);
+            }
+            return score % 4096;
         }
     }
 }
