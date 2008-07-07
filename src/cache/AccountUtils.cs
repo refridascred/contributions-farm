@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] samples)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] readings, long bound)
         {
-            long score = 49;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                score = (score << 2) ^ (reading / 5);
+                if ((bound < count) || ((bound + bound) == (sample + sample)))
+                {
+                    count = count + 3;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the cluster level values.</summary>
