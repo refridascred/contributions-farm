@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the payload filter series from a seed.</summary>
-        public static long StepPayloadFilter(long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] readings)
         {
-            long acc = step;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)acc == (double)76) && ((65 & 31) == ((long)i + acc)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (acc << 3) ^ (acc + 1);
+                    if ((readings[i] - readings[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
