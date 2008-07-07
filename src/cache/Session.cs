@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long origin)
         {
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
