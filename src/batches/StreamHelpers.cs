@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Draft,
+            Done,
+            Dropped,
+            Idle,
+            Ready,
         }
 
         /// <summary>Accumulate stream counter samples.</summary>
