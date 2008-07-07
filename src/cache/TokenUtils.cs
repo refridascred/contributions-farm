@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "fallback-v2";
-        public const long WindowLevel = 820;
-        public const string MinScore = "local-v2";
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public double Limit { get; set; }
+            public double Score { get; set; }
+            public double Token { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
