@@ -1,18 +1,18 @@
 {
-  "burst_timeout": 1401,
-  "max_timeout_count": {
-    "base_threshold": 68.88,
-    "readonly": {
-      "min_ttl_s": "latest",
-      "min_size_pct": "fallback",
-      "editor_ratio": "staging",
-      "min_limit": false,
-      "default_size_s": 84.0,
-      "burst_limit_ms": false
-    },
-    "report_window": true,
-    "record_ttl": 60,
-    "batch_depth": "local"
+  "soft_delay": {
+    "poll_size_pct": 8300,
+    "idle_timeout_pct": "primary",
+    "enabled": 14.85,
+    "metrics_capacity": {
+      "max_delay_ms": ["fallback", "standard"],
+      "strict": 50.04,
+      "verbose": false,
+      "burst_size_s": 1024,
+      "hard_interval_count": 88.31,
+      "payload_depth": 48.86
+    }
   },
-  "base_threshold_count": 51
+  "max_ratio_pct": 60,
+  "format_interval": "standard",
+  "min_ttl_pct": "local"
 }
