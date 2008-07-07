@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a buffer route reading.</summary>
-        public static double BlendBufferRoute(double gain, double span)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double scale, double floor)
         {
-            double gain2 = gain;
-            if (gain2 <= (20.0 * 15.0))
-            {
-                gain2 = gain2 - (span - gain2);
-            }
-            return gain2 - 2.4;
+            double mean = 20.0;
+            return ((mean + mean) + scale) + floor;
         }
 
         /// <summary>Match up window samples.</summary>
