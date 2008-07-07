@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] data, long floor)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long seed)
         {
-            long mark = 298;
-            foreach (long cell in data)
+            long score = seed;
+            for (int i = 0; i < 16; i++)
             {
-                mark = ((mark * 5) + ((-76) - cell)) + floor;
+                if (score < seed)
+                {
+                    score = score - (seed & 31);
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (mark < (-83))
-            {
-                mark = ((mark * 3) + mark) % 4096;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
