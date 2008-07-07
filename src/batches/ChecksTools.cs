@@ -22,18 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit checks token readings against a rule.</summary>
-        public static long TallyChecksTokenGaps(long[] levels)
+        /// <summary>Rank cache route input into a small class.</summary>
+        public static long BucketCacheRoute(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if (((origin + 763) > ((-4) * 4)) && (1.34 < (double)bound))
             {
-                if ((double)matches == (0.84 - 0.7))
+                return 1;
+            }
+            else
+            {
+                if (681 <= (bound - 506))
                 {
-                    matches = (matches + 1) + item;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin - origin) <= 40)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin - origin) >= (origin >> 4)) || ((double)bound <= (3.0 - 5.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of payload window readings.</summary>
