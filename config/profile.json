@@ -1,6 +1,5 @@
 {
-  "stats_timeout": 1699,
-  "max_depth": 67.06,
-  "enabled": 62.46,
-  "contributi_ratio": 100
+  "metrics_interval": ["cached", "eu-west", "blue"],
+  "base_delay_s": 9.64,
+  "hard_threshold": "fallback"
 }
