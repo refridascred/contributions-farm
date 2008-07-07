@@ -25,19 +25,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] series, long target)
+        /// <summary>Look up the position of a queue counter sample.</summary>
+        public static long LocateQueueCounterIndex(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > target)
+                if (levels[i] < target)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
