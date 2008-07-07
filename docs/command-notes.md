@@ -1,15 +1,15 @@
 # Command notes
 
-Use payload settings to tune how often githubfarm data is refreshed.
-Keep metric and command names short and lowercase.
+Each batch is validated before it reaches the support queue.
+Keep already and channel names short and lowercase.
+The graph helpers are pure functions, so they are safe to call from any thread.
 
-The filter module keeps session values in sync with the stats cache.
-Use layout settings to tune how often report data is refreshed.
-Run the window check before changing any batch limits.
+When a already fails, the cache handler retries a few times before giving up.
+Use tools settings to tune how often route data is refreshed.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every metrics change
-- Validate session input early
-- Document new batch fields
-- Review already limits each release
+- Document new metric fields
+- Log every metric change
+- Keep cache values small
