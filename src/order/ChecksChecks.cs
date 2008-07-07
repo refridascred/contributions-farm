@@ -35,17 +35,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 4779;
+        public const string DefaultStream = "staging-1";
+        public const double MaxScore = 75.96;
+        public const double StepStream = 19.45;
     }
 }
