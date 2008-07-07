@@ -31,18 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Compare every pair of command cache readings.</summary>
+        public static long CompareCommandCacheCount(long[] series)
         {
-            long state = 652;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample & 15) <= (state & 63))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = state + sample;
+                    if ((series[i] - series[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return matches;
         }
     }
 }
