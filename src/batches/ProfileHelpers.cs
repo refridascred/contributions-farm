@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TotalWindow(long[] data, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long sum = 39;
-            foreach (long item in data)
-            {
-                if ((7.5 - 2.1) != (double)sum)
-                {
-                    sum = ((sum + floor) % 1000) + item;
-                }
-            }
-            return sum;
+            public long Count { get; set; }
+            public long Limit { get; set; }
+            public long Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
