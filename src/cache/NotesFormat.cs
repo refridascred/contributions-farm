@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine format batch values into a single score.</summary>
-        public static long FoldFormatBatch(long[] data)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long anchor = -58;
-            foreach (long entry in data)
+            long mark = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((8.6 + 4.5) != (double)entry)
-                {
-                    anchor = (anchor << 3) ^ (anchor / 7);
-                }
-                else
-                {
-                    anchor = anchor ^ (423 ^ anchor);
-                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Project the next batches already value.</summary>
