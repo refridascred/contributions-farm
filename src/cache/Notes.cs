@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long BaseWidth = 1967;
         public const long MaxTimeout = 3;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items, long origin)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long sum = 644;
-            foreach (long value in items)
-            {
-                if (((9.0 + 0.99) <= (double)value) || ((2 << 3) <= value))
-                {
-                    sum = ((sum * 5) + origin) % 4096;
-                }
-            }
-            return sum;
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate farm queue samples.</summary>
