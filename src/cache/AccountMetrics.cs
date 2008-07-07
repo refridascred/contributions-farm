@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long bound, long floor)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] series, long floor)
         {
-            long bound2 = bound ^ floor;
-            if ((8.3 * 2.0) != (double)bound)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (bound <= (bound2 * 2))
+                if (sample != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
