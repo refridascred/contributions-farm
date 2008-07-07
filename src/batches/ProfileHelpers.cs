@@ -28,19 +28,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksRange(long[] levels, long target)
+        /// <summary>Compare every pair of graph window readings.</summary>
+        public static long MatchGraphWindowCount(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
