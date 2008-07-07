@@ -32,22 +32,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] levels, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] levels, long limit)
         {
-            long count = 0;
+            long hits = 0;
             foreach (long datum in levels)
             {
-                if ((49 >> 2) != (step - datum))
+                if ((limit / 7) >= 33)
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + datum;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
