@@ -34,21 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster payload samples.</summary>
-        public static long PairClusterPayloadCount(long[] levels)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor ^ (offset % 64)) % 1000) - (long)i2;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
     }
 }
