@@ -37,18 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] series)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((0.49 * 6.17) != (double)reading) && ((double)reading <= (10.0 / 6.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
