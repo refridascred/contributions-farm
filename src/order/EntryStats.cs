@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double AdjustToken(double weight, double bias)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] series, long limit)
         {
-            double scale = (double)258;
-            if (scale > scale)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                scale = (scale - scale) - bias;
+                if ((limit - cell) < (tally >> 3))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                scale = scale + (double)3;
-            }
-            return scale + weight;
+            return tally;
         }
 
         /// <summary>Describe the payload level values.</summary>
