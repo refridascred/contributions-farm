@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long step)
+        /// <summary>Combine support batch values into a single score.</summary>
+        public static long TallySupportBatch(long[] data)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long carry = 301;
+            foreach (long item in data)
             {
-                if (value <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = ((carry * 2) + (item / 5)) % 1000;
             }
-            return stale;
+            return carry % 65521;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
