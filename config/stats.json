@@ -1,18 +1,5 @@
 {
-  "compress": 100,
-  "entry_interval": 7411,
-  "filter_retries": {
-    "hard_size_pct": 70,
-    "order_threshold": 60,
-    "strict": 60,
-    "default_window_ms": "primary",
-    "max_delay": {
-      "cache_limit": true,
-      "command_threshold": "blue",
-      "soft_window_count": 250
-    },
-    "hard_retries": "eu-west"
-  },
-  "counter_timeout": 3,
-  "idle_window_ms": true
+  "max_retries_ms": 22,
+  "sync_depth": 62.96,
+  "retry_threshold_pct": 23
 }
