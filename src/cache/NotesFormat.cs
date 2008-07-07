@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] levels, long step)
+        /// <summary>Match up channel payload samples.</summary>
+        public static long OverlapChannelPayloadCount(long[] series)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item < step)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Project the next batches already value.</summary>
