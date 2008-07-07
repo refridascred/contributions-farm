@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Idle,
-            Synced,
-            Active,
-            Queued,
-            Locked,
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
