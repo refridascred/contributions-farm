@@ -27,25 +27,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long limit, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] items, long step)
         {
-            long next = limit ^ floor;
-            if (((floor - limit) < (3 + limit)) && ((floor - floor) > (limit + next)))
+            bool stale = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit - limit) >= (75 * 3))
+                if (item > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
