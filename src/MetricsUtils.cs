@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] readings, long origin)
+        /// <summary>Locate a format cache reading by value.</summary>
+        public static long LocateFormatCacheIndex(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] <= origin)
+                if (data[i] <= offset)
                 {
                     return (long)i;
                 }
