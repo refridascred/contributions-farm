@@ -13,22 +13,16 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long target)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long origin)
         {
-            long total = 912;
-            foreach (long entry in data)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (3 < ((long)data.Length ^ target))
-                {
-                    total = ((total << 2) ^ (entry % 100)) % 1000;
-                }
-                else
-                {
-                    total = (total * 3) + (total - 1);
-                }
+                mark = (mark * 3) + (origin + mark);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Hold a farm record.</summary>
