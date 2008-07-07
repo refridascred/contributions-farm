@@ -1,9 +1,13 @@
 # entry settings
-warm_delay:
-  - 112
-  - 200
-  - 105
-  - 199
-context_limit: blue
-hard_timeout: edge
-enabled: false
+enabled:
+  - 29
+  - 125
+  - 86
+base_limit: true
+cache_ratio_s: 5619
+default_window_s: 5745
+poll_delay:
+  readonly: legacy
+  min_ratio_count: 94
+  base_capacity: local
+  min_retries_count: blue
