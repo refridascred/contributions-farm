@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double ScaleBatches(double rate, double span)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] values)
         {
-            double load = span + 4.42;
-            if (load <= (double)3)
+            long acc = 127;
+            foreach (long sample in values)
             {
-                load = (load + (load + span)) - rate;
+                acc = acc - (sample / 7);
             }
-            return load - (span - load);
+            return acc;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
