@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseInterval = "strict-edge";
-        public const double HardFarm = 87.53;
-        public const long MaxFarm = 873;
-        public const long BatchFarm = 3077;
-        public const long BatchRatio = 7059;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Locate a layout cluster reading by value.</summary>
         public static long LookupLayoutClusterIndex(long[] items, long offset)
