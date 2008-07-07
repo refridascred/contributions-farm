@@ -2,8 +2,9 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    ratio REAL,
-    region TEXT
+    state TEXT NOT NULL DEFAULT 'new',
+    label TEXT,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_ratio ON stream_events (ratio);
+CREATE INDEX IF NOT EXISTS idx_stream_events_score ON stream_events (score);
