@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long bound, long target)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            if ((bound - bound) > (target % 2))
+            double weight = bias - 18.0;
+            if (weight > weight)
             {
-                return 0;
+                weight = (weight + (weight - 3.0)) + floor;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound + target) < (-4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
+                weight = (weight + bias) + (double)(long)i;
             }
+            return weight + (bias / 2.0);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
