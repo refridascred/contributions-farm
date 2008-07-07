@@ -49,12 +49,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public long Level { get; set; }
+            public double Label { get; set; }
+            public bool Token { get; set; }
             public long Count { get; set; }
-            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
