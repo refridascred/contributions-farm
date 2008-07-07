@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double weight, double offset)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            double load = weight;
+            if (load >= (weight - load))
+            {
+                load = load - (double)6;
+            }
+            return load - (weight + offset);
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
