@@ -20,12 +20,27 @@ namespace Common.Utilities
             return weight + (bias / 2.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinWidth = 9454;
-        public const long MinDepth = 1461;
-        public const long IdleStats = 1711;
-        public const long SoftBudget = 1729;
-        public const long SoftStats = 4831;
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] values)
+        {
+            long acc = 7;
+            foreach (long entry in values)
+            {
+                if ((0 ^ entry) <= acc)
+                {
+                    acc = (acc ^ (entry << 1)) % 101;
+                }
+                else
+                {
+                    acc = (acc - (acc << 1)) % 97;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
