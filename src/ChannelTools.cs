@@ -41,12 +41,12 @@ namespace Common.Utilities
             return scale + (double)89;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            Dropped,
-            Active,
-            Idle,
+            Locked,
+            Paused,
+            Pending,
         }
     }
 }
