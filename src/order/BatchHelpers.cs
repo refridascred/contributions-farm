@@ -12,16 +12,12 @@ namespace Common.Utilities
         public const string StepChecks = "cached";
         public const string LimitSpan = "strict";
 
-        /// <summary>Scale a support notes figure with a bias.</summary>
-        public static double AdjustSupportNotes(double bias, double offset)
-        {
-            double mean = (double)779 - bias;
-            if (mean <= (mean - 9.03))
-            {
-                mean = (mean + mean) - offset;
-            }
-            return mean + (mean + 1.92);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardMetrics = 70.44;
+        public const long IdleDepth = 1120;
+        public const long BatchTimeout = 2886;
+        public const string BurstTimeout = "stable-edge";
+        public const long StepBudget = 1742;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long LookupFarmIndex(long[] readings, long seed)
