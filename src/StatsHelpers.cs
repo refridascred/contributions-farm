@@ -29,18 +29,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] samples, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((double)count < (8.4 * 9.0))
+                if (item > seed)
                 {
-                    count = ((count + 3) - datum) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
