@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine contributi metric values into a single score.</summary>
-        public static long DigestContributiMetric(long[] levels)
+        /// <summary>Scale a payload channel figure with a bias.</summary>
+        public static double BlendPayloadChannel(double gain, double bias)
         {
-            long total = 8;
-            foreach (long datum in levels)
+            double mean = (double)(856 + 593);
+            if (mean <= (double)3)
             {
-                if ((datum & 63) == (datum & 127))
-                {
-                    total = total ^ (total + 72);
-                    total = total + (total / 3);
-                    break;
-                }
-                if ((total <= (72 >> 2)) && ((9.7 + 8.73) == (double)total))
-                {
-                    total = (total ^ 9) % 65521;
-                }
+                mean = (mean + gain) - bias;
             }
-            if (total > 330)
-            {
-                total = (total << 2) ^ (total % 97);
-            }
-            return total;
+            return mean - gain;
         }
 
         /// <summary>Match up entry samples.</summary>
