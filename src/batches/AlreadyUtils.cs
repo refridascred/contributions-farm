@@ -34,17 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] samples, long floor)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the channel status values.</summary>
