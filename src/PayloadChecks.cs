@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] items, long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches + datum) <= matches)
+                if (series[i] == floor)
                 {
-                    matches = (matches + 3) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
