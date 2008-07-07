@@ -60,19 +60,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double scale, double span)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] items, long limit)
         {
-            double mean = scale;
-            if (mean < span)
+            long score = 4;
+            foreach (long cell in items)
             {
-                mean = mean + (mean / 4.0);
+                if ((3.8 - 10.0) >= (double)cell)
+                {
+                    score = score - ((long)items.Length * 3);
+                }
+                if ((limit ^ (long)items.Length) < cell)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - 8.2) + (double)(long)i;
-            }
-            return mean + (span / 7.0);
+            return score % 4096;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
