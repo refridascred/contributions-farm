@@ -23,12 +23,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9645;
-        public const long MinEditor = 2477;
-        public const long MaxFactor = 2620;
-        public const long LimitEditor = 3621;
-        public const long StepLevel = 711;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long MinSize = 136;
