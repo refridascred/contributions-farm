@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Count the route already entries that pass the check.</summary>
+        public static long AuditRouteAlreadyOutliers(long[] readings, long bound)
         {
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((bound / 3) > (bound * 5))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the entry kind values.</summary>
