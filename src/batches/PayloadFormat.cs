@@ -15,11 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((((seen + seen) > datum) && (datum <= (seen & 7))) || ((152 ^ 89) != (datum - seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the queue layout entries that pass the check.</summary>
