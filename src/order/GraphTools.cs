@@ -31,10 +31,13 @@ namespace Common.Utilities
         public const long CachePayload = 3686;
         public const long RetryScore = 9470;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchTimeout = 4932;
-        public const string IdleSchema = "local-v2";
-        public const long DefaultSchema = 6096;
-        public const long MinSchema = 9285;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
