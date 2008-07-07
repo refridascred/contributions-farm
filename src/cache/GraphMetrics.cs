@@ -40,13 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            Ready,
-            Idle,
-            Queued,
-            New,
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate window samples.</summary>
