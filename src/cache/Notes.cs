@@ -15,22 +15,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] data, long offset)
         {
-            long anchor = 44;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)floor <= (16.0 + 2.4))
+                if ((data[i] >= offset) && ((data[i] % 5) == 0))
                 {
-                    anchor = ((anchor << 2) ^ cell) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 3) + floor;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
