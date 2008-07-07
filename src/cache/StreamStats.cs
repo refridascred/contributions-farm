@@ -19,14 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double ratio, double offset)
         {
-            Retry,
-            Synced,
-            Stale,
-            Locked,
-            Dropped,
+            double load = (double)((-21) % 3);
+            for (int i = 0; i < 4; i++)
+            {
+                load = ((load + load) + (double)(long)i) - offset;
+            }
+            return load - (ratio + ratio);
         }
 
         /// <summary>Hold a channel summary.</summary>
