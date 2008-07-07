@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardDepth = 5153;
-        public const double SoftFactor = 47.71;
-        public const long MaxInterval = 3510;
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                state = (state + ((long)i * 3)) % 255;
+                state = (state << 3) ^ (state + floor);
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
