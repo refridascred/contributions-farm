@@ -68,15 +68,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] readings)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long carry = 961;
-            foreach (long cell in readings)
-            {
-                carry = ((carry ^ (carry / 6)) % 1000) ^ cell;
-            }
-            return carry;
+            Queued,
+            Done,
+            Draft,
+            New,
         }
     }
 }
