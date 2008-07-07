@@ -1,14 +1,17 @@
 # support settings
-retry_capacity_ms: fallback
-cache_limit:
-  - 371
-  - 287
-  - 194
-graph_size: 78.54
-sync_window: 3.07
-soft_retries_s: primary
-session_timeout:
-  - eu-west
+hard_ratio: stable
+githubfarm_delay: open
+strict:
   - open
-  - edge
-  - green
+  - open
+  - local
+  - local
+batch_size_ms:
+  warm_depth_pct: false
+  channel_interval: stable
+  notes_ttl: 77.97
+  readonly:
+    - 400
+    - 137
+cache_retries_pct: 55.86
+order_interval: 4158
