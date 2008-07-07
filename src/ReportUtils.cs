@@ -51,11 +51,20 @@ namespace Common.Utilities
         public const long StepLevel = 3084;
         public const double BurstBudget = 1.76;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 4789;
-        public const long LimitFactor = 2909;
-        public const string BurstEntry = "cached-edge";
-        public const double MaxEntry = 45.92;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] values, long offset)
+        {
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many notes format samples are out of range.</summary>
         public static long TallyNotesFormatGaps(long[] series, long limit)
