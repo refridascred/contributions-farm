@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine record buffer values into a single score.</summary>
-        public static long WeighRecordBuffer(long[] values)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] samples, long limit)
         {
-            long carry = 479;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in samples)
             {
-                carry = (carry ^ (carry ^ carry)) ^ datum;
+                if (sample < limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry % 65521;
+            return ready;
         }
 
         /// <summary>Hold a schema record.</summary>
