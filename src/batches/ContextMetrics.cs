@@ -40,22 +40,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm stats readings against a rule.</summary>
-        public static long CountFarmStatsGaps(long[] samples)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((seen - seen) >= entry)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the session mode values.</summary>
