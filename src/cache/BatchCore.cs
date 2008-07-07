@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] items)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((hits & 1) < (hits & 3))
-                {
-                    hits = (hits + 2) - sample;
-                }
-            }
-            return hits;
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Adjust a tools reading.</summary>
