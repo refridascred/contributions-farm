@@ -32,19 +32,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] items, long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long offset, long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if ((46 / 4) >= (floor * 5))
             {
-                if (entry < offset)
+                return 0;
+            }
+            else
+            {
+                if ((offset + floor) > (offset & 127))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
