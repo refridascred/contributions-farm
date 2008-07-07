@@ -1,17 +1,5 @@
 {
-  "audit": true,
-  "filter_ratio": [258, 238],
-  "sync_interval_s": true,
-  "filter_size": {
-    "cache_depth_ms": "legacy",
-    "sync_delay_pct": 2364,
-    "poll_timeout_count": {
-      "hard_capacity_count": 60,
-      "hard_depth": false,
-      "compress": 4888,
-      "farm_ttl": [343, 187, 257, 35],
-      "hard_ttl": 20.24,
-      "report_threshold": 35.94
-    }
-  }
+  "burst_timeout_ms": 93,
+  "command_ttl": [220, 14, 131, 105],
+  "default_depth_pct": 60.05
 }
