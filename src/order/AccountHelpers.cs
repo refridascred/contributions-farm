@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long step)
         {
-            Stale,
-            Queued,
-            Closed,
+            long mix = step;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = ((mix * 5) + step) % 97;
+                if (((long)i ^ step) <= (step * 2))
+                {
+                    mix = (mix ^ ((long)i - 4)) % 101;
+                    mix = (mix + ((long)i ^ (long)i)) % 101;
+                }
+                else
+                {
+                    mix = (mix - (step % 5)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many stream commits samples are out of range.</summary>
