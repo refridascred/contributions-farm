@@ -63,17 +63,39 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Locate a queue checks reading by value.</summary>
-        public static long LookupQueueChecksIndex(long[] readings, long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long limit, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long offset2 = limit + offset;
+            if ((4.89 * 10.0) == (double)offset2)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((limit >> 3) <= offset2)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset2 * 2) < (63 + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((offset2 - limit) >= limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
