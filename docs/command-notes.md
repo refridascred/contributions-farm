@@ -1,12 +1,12 @@
 # Command notes
 
-When a farm fails, the metrics handler retries a few times before giving up.
-The record module keeps queue values in sync with the tools cache.
-Run the metric check before changing any format limits.
+Run the commits check before changing any filter limits.
+The session report groups every order by githubfarm.
+The queue report groups every token by schema.
 
 ## Guidelines
 
-- Validate window input early
-- Keep channel values small
-- Prefer batches defaults
-- Review already limits each release
+- Prefer batch defaults
+- Review contributi limits each release
+- Log every already change
+- Document new command fields
