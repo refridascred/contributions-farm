@@ -1,6 +1,8 @@
 {
-  "verbose": ["stable", "primary", "local", "open"],
-  "readonly": 500,
-  "max_timeout_pct": 6.88,
-  "entry_interval": 60
+  "burst_delay_s": 49,
+  "cache_retries": 30,
+  "hard_timeout_count": "latest",
+  "contributi_interval": 100,
+  "dry_run": 19.75,
+  "cache_threshold": 100
 }
