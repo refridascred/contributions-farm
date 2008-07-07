@@ -1,6 +1,6 @@
 {
-  "hard_interval": [320, 382, 408],
-  "idle_timeout_count": "cached",
-  "enabled": 71.56,
-  "batch_delay_s": true
+  "hard_interval_s": "local",
+  "graph_timeout": 97.63,
+  "already_interval": "staging",
+  "stream_threshold": false
 }
