@@ -51,31 +51,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi cache input into a small class.</summary>
-        public static long ClassifyContributiCache(long bound, long target)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long offset)
         {
-            if ((bound - bound) <= bound)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound <= (double)target)
+                if (entry < offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((target + target) > bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
