@@ -32,23 +32,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            double weight = 6.01;
-            if (weight >= (double)(-66))
-            {
-                weight = weight - (bias - bias);
-            }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (double)4;
+            New,
+            Dropped,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Blend two cluster farm measurements.</summary>
