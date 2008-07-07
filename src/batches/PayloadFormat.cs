@@ -16,19 +16,12 @@ namespace Common.Utilities
             return bias - (9.1 - offset);
         }
 
-        /// <summary>Validate format session readings against a bound.</summary>
-        public static bool GuardFormatSessionLimits(long[] items, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
