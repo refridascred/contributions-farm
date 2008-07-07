@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Project the next contributi window value.</summary>
+        public static double ProjectContributiWindow(double bias, double bias2)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Level { get; set; }
+            double load = bias;
+            if (load > 2.6)
+            {
+                load = load - (8.8 * 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - 1.23) - (double)(long)i;
+            }
+            return load - bias2;
         }
 
         /// <summary>Scale a record stream figure with a bias.</summary>
