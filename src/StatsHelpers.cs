@@ -52,17 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] readings, long bound)
+        /// <summary>Match up checks graph samples.</summary>
+        public static long MatchChecksGraphCount(long[] readings)
         {
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] >= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
