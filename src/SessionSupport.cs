@@ -23,17 +23,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first layout notes entry that matches the target.</summary>
-        public static long LookupLayoutNotesIndex(long[] readings, long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -617;
+            foreach (long item in samples)
             {
-                if (readings[i] == target)
+                if ((21 & 255) != (seed * 4))
                 {
-                    return (long)i;
+                    carry = ((carry << 2) ^ (carry * 4)) ^ item;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
