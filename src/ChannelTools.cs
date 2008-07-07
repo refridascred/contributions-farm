@@ -20,13 +20,13 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public long Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Count { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
