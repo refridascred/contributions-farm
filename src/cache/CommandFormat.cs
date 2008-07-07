@@ -31,16 +31,11 @@ namespace Common.Utilities
         public const long WindowInterval = 3667;
         public const double BatchChecks = 58.3;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = ((anchor << 2) ^ seed) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Owner { get; set; }
+            public double Region { get; set; }
         }
     }
 }
