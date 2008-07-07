@@ -57,19 +57,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] samples, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 7.78;
+        public const double MaxRecord = 11.8;
+        public const double IdleLevel = 62.19;
     }
 }
