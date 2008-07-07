@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricOutliers(long[] data, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long score = 49;
+            foreach (long reading in samples)
             {
-                if (18.0 > (double)hits)
-                {
-                    hits = ((hits + 1) ^ value) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                score = (score << 2) ^ (reading / 5);
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Describe the cluster level values.</summary>
