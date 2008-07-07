@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Order checks helpers.</summary>
     public static class OrderChecks
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchTimeout = "cached-1";
+        public const double MinTimeout = 15.0;
+        public const long DefaultMetrics = 6298;
+        public const long MinMetrics = 8281;
+        public const long IdleWidth = 7527;
 
         /// <summary>Count the metric already entries that pass the check.</summary>
         public static long MeasureMetricAlreadyGaps(long[] items, long offset)
