@@ -22,13 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double ratio, double span)
         {
-            Ready,
-            Failed,
-            New,
-            Paused,
+            double ratio2 = span - ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 + (ratio / 3.0)) + (double)(long)i;
+            }
+            return ratio2 - (ratio * 2.4);
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
