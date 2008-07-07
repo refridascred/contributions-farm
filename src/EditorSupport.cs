@@ -33,30 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor - (anchor % 97)) % 101;
-                if (anchor < (target - target))
-                {
-                    anchor = (anchor - target) % 255;
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 255;
-                }
-                if (((anchor - (long)i) <= (target % 60)) || (anchor < (target * 2)))
-                {
-                    anchor = (anchor * 3) + (target & 7);
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardInterval = "staging-1";
+        public const long MinDepth = 4410;
+        public const string BurstBatches = "alpha-1";
+        public const long MinFactor = 9784;
 
         /// <summary>Grade a stream value against two limits.</summary>
         public static long BucketStream(long floor, long bound)
