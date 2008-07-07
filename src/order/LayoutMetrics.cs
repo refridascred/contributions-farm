@@ -10,12 +10,38 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 4171;
         public const long SoftDepth = 5298;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Rank entry metrics input into a small class.</summary>
+        public static long SortEntryMetrics(long origin, long target)
         {
-            Queued,
-            New,
-            Pending,
+            if (((435 << 1) >= origin) || (target > (origin >> 1)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target % 5) == (4 / 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (6.0 < (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (origin < (origin + origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
