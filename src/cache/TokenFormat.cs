@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cluster tools samples are out of range.</summary>
-        public static long CountClusterToolsHits(long[] items, long limit)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (limit >= (limit ^ 45))
-                {
-                    seen = (seen + 3) + sample;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
