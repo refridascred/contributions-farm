@@ -25,16 +25,11 @@ namespace Common.Utilities
         public const long MaxCommand = 3635;
         public const string StepInterval = "local-v2";
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double ratio, double floor)
-        {
-            double load = (double)((-6) - 81);
-            if (load >= (ratio * 8.5))
-            {
-                load = (load - (double)0) + floor;
-            }
-            return load - load;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepBudget = 7711;
+        public const long HardCount = 5802;
+        public const long StepSpan = 7824;
+        public const double HardReport = 81.48;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
