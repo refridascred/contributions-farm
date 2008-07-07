@@ -33,10 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowRatio = 5205;
-        public const string BatchMetric = "strict";
-        public const string IdleSpan = "local-1";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BurstOrder = 8549;
