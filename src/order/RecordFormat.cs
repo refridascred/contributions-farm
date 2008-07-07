@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a payload channel figure with a bias.</summary>
-        public static double BlendPayloadChannel(double gain, double bias)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            double mean = (double)(856 + 593);
-            if (mean <= (double)3)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                mean = (mean + gain) - bias;
+                sum = (sum ^ (origin * 5)) % 97;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return mean - gain;
+            return sum;
         }
 
         /// <summary>Match up entry samples.</summary>
