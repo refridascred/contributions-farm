@@ -46,12 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] data, long seed)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
