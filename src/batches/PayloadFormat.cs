@@ -24,22 +24,17 @@ namespace Common.Utilities
         public const string BatchSize = "staging-edge";
         public const long HardInterval = 7263;
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] data, long seed)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4 ^ matches) > (seed << 1))
+                if (series[i] == floor)
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
