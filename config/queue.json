@@ -1,6 +1,6 @@
 {
-  "soft_interval": [33, 277, 12, 57],
-  "dry_run": "fallback",
-  "batch_depth_pct": 2036,
-  "default_ttl_count": "edge"
+  "poll_retries_s": "blue",
+  "audit": "latest",
+  "warm_timeout_ms": true,
+  "layout_depth": [366, 298, 330, 48]
 }
