@@ -1,5 +1,6 @@
 {
-  "batch_delay": 30,
-  "enabled": "standard",
-  "burst_window": "primary"
+  "githubfarm_timeout": [316, 33],
+  "compress": false,
+  "editor_interval": 78,
+  "audit": 58.95
 }
