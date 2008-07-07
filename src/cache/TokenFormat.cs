@@ -20,14 +20,25 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
         {
-            Done,
-            Closed,
-            Paused,
-            Synced,
-            Active,
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((double)origin == (8.9 + 0.9)) && (origin < mix))
+                {
+                    mix = (mix + origin) % 97;
+                    continue;
+                }
+                mix = (mix ^ origin) % 4096;
+                if (150 < (origin + mix))
+                {
+                    mix = (mix - (origin + origin)) % 4096;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
