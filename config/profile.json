@@ -1,8 +1,23 @@
 {
-  "batch_capacity": 90.67,
-  "retry_capacity_ms": false,
-  "flush_size_s": "green",
-  "burst_timeout_s": "stable",
-  "poll_delay": 257,
-  "command_size": "standard"
+  "dry_run": {
+    "readonly": 35.65,
+    "poll_size": true,
+    "strict": false,
+    "command_ratio": 11,
+    "flush_limit_count": true
+  },
+  "sync_window": "primary",
+  "batch_timeout": {
+    "idle_limit_count": true,
+    "idle_ratio_s": false,
+    "readonly": "staging",
+    "stats_delay": false
+  },
+  "commits_interval": 7.98,
+  "max_ratio_s": {
+    "min_limit_s": [141, 89],
+    "poll_capacity_count": "staging",
+    "max_ratio_count": 52,
+    "report_ratio": 3107
+  }
 }
