@@ -72,14 +72,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            Synced,
-            Closed,
-            Stale,
             Queued,
-            Ready,
+            Idle,
+            Pending,
         }
     }
 }
