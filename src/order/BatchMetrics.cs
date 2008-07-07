@@ -32,31 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long floor, long step)
+        /// <summary>Accumulate schema buffer samples.</summary>
+        public static long ScoreSchemaBuffer(long[] readings, long limit)
         {
-            if ((floor >> 3) < step)
+            long mix = 82;
+            foreach (long sample in readings)
             {
-                return 5;
+                mix = (((mix * 5) + ((long)readings.Length ^ limit)) % 101) - sample;
             }
-            else
-            {
-                if ((step - step) <= ((-641) * 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(61 < (step ^ step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a batch header.</summary>
