@@ -39,17 +39,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first order stream entry that matches the target.</summary>
-        public static long LookupOrderStreamIndex(long[] levels, long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] < step)
+                if (!(total >= (7 % 7)))
                 {
-                    return (long)i;
+                    total = ((total << 3) ^ step) % 97;
                 }
+                long matches = total * 5;
+                if ((step / 4) <= matches)
+                {
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the layout class values.</summary>
