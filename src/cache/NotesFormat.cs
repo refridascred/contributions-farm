@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up channel payload samples.</summary>
-        public static long OverlapChannelPayloadCount(long[] series)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = span;
+            if (drift <= 2.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - (span / 6.0)) - bias;
             }
-            return seen;
+            else
+            {
+                drift = drift + span;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (span - span);
         }
 
         /// <summary>Describe the support status values.</summary>
