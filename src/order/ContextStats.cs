@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Validate counter metric readings against a bound.</summary>
+        public static bool ValidateCounterMetricBounds(long[] levels, long origin)
         {
-            Dropped,
-            Ready,
-            Retry,
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
