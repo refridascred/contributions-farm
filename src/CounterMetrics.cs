@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            Ready,
-            Draft,
-            Queued,
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the tools mode values.</summary>
