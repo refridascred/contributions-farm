@@ -16,17 +16,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] data, long origin)
+        /// <summary>Validate queue counter readings against a bound.</summary>
+        public static bool VerifyQueueCounterBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (data[i] == origin)
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
