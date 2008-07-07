@@ -97,18 +97,10 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterHits(long[] samples)
-        {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((double)value == (double)hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 8058;
+        public const long SoftCount = 6573;
+        public const long DefaultDepth = 6912;
+        public const string BatchReport = "stable-edge";
     }
 }
