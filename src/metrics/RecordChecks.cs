@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Record checks helpers.</summary>
     public static class RecordChecks
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long target)
         {
-            long anchor = -952;
-            foreach (long value in values)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((9.0 - 14.0) >= (double)value)
-                {
-                    anchor = (anchor - ((-14) >> 5)) % 4096;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (anchor > 2)
-            {
-                anchor = anchor + (anchor - anchor);
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Roll a session counter forward.</summary>
