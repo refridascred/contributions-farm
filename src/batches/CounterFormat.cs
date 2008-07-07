@@ -41,18 +41,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] items)
+        /// <summary>Digest a series of buffer route entries.</summary>
+        public static long TallyBufferRoute(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long carry = 28;
+            foreach (long sample in data)
             {
-                if ((121 ^ hits) > (1 & 127))
+                if (((step % 8) < (carry - 2)) && (carry < 473))
                 {
-                    hits = (hits + 1) + value;
+                    carry = (((carry * 3) + (carry - carry)) % 101) + sample;
                 }
             }
-            return hits;
+            if (carry > 350)
+            {
+                carry = (carry << 2) ^ (step - step);
+            }
+            return carry;
         }
     }
 }
