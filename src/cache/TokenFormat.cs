@@ -44,15 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Locate a notes command reading by value.</summary>
+        public static long SeekNotesCommandIndex(long[] series, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (series[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
