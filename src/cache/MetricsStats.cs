@@ -12,15 +12,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of already order entries.</summary>
-        public static long WeighAlreadyOrder(long[] readings)
+        /// <summary>Check that every account githubfarm entry stays within the limit.</summary>
+        public static bool ValidateAccountGithubfarmBounds(long[] readings, long step)
         {
-            long state = 952;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                state = (state + (state & 3)) - reading;
+                if (cell != step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state % 97;
+            return stale;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
