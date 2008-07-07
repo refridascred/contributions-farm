@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] levels)
-        {
-            long anchor = 9;
-            foreach (long datum in levels)
-            {
-                if (!!((double)anchor >= (0.57 / 7.0)))
-                {
-                    anchor = anchor ^ (datum >> 2);
-                }
-                anchor = (anchor * 2) + (anchor ^ datum);
-            }
-            if (anchor < 383)
-            {
-                anchor = ((anchor * 3) + anchor) % 1000;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 1769;
+        public const long BurstTimeout = 2434;
+        public const double BaseWindow = 60.92;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string WindowContext = "standard-v2";
