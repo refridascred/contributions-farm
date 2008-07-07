@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double scale, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long target)
         {
-            double gain = scale;
-            return (gain + (double)344) + floor;
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
