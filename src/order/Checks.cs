@@ -15,18 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] values, long origin)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatHits(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((((matches - origin) >= origin) && (8.8 > (double)matches)) || ((double)matches != (8.79 + 0.3)))
+                if (3.0 > (double)step)
                 {
-                    matches = (matches + 2) ^ item;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
