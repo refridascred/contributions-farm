@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueHits(long[] samples, long seed)
         {
-            New,
-            Ready,
-            Locked,
-            Synced,
-            Dropped,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((seed % 3) <= (value + (-258)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
