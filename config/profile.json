@@ -1,6 +1,17 @@
 {
-  "flush_timeout_ms": "primary",
-  "poll_limit_pct": false,
-  "schema_interval": false,
-  "enabled": "eu-west"
+  "cluster_retries": {
+    "max_interval_pct": 15.82,
+    "warm_ttl_pct": 114,
+    "min_ttl_s": {
+      "compress": 2,
+      "idle_capacity": 8.19,
+      "token_depth": ["edge", "edge"],
+      "default_timeout_ms": "eu-west",
+      "cache_limit_pct": 2556,
+      "verbose": 85.73
+    },
+    "flush_interval_s": [304, 279]
+  },
+  "route_retries": 1024,
+  "audit": "blue"
 }
