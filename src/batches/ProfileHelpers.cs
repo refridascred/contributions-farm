@@ -19,14 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
-        {
-            public long Count { get; set; }
-            public long Limit { get; set; }
-            public long Region { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 1660;
+        public const long LimitSchema = 6963;
+        public const long BatchTimeout = 1498;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
