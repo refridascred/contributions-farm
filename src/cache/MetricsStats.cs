@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
-            {
-                score = (score - (step << 1)) % 97;
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many payload commits samples are out of range.</summary>
