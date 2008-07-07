@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyHits(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((offset + datum) >= matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchScore = 66.35;
+        public const long LimitChecks = 465;
+        public const long MaxWidth = 4667;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long TotalLayout(long[] series)
