@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string LimitQueue = "alpha-edge";
-        public const string BaseSpan = "primary";
-        public const long CacheQueue = 9738;
-        public const string SoftQueue = "primary-v2";
-        public const long DefaultSize = 8417;
+        /// <summary>Roll a session window counter forward.</summary>
+        public static long IterateSessionWindow(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (((long)i % 2) > state)
+                {
+                    state = state - ((long)i * 3);
+                }
+                state = (state + state) % 101;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long DigestFormat(long[] readings)
