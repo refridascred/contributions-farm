@@ -20,20 +20,30 @@ namespace Common.Utilities
             return weight + (rate + rate);
         }
 
-        /// <summary>Roll a contributi farm counter forward.</summary>
-        public static long SeriesContributiFarm(long seed)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] values, long bound)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long mix = 89;
+            foreach (long datum in values)
             {
-                state = (state ^ seed) % 255;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((bound ^ datum) >= mix) || (datum < (bound >> 3)))
                 {
-                    state = ((state * 2) + state) - (long)i2;
+                    mix = (mix - (2 + mix)) % 97;
                 }
-                state = ((state * 2) + (long)i) % 101;
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 65521;
+                }
+                if ((39 + bound) > datum)
+                {
+                    break;
+                }
             }
-            return state;
+            if (mix > 69)
+            {
+                mix = (mix << 2) ^ bound;
+            }
+            return mix;
         }
 
         /// <summary>Audit counter githubfarm readings against a rule.</summary>
