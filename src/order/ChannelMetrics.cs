@@ -47,10 +47,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardDepth = 5360;
-        public const double MaxScore = 88.24;
-        public const long MaxProfile = 4757;
-        public const double RetryProfile = 6.48;
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] values)
+        {
+            long carry = 5;
+            foreach (long value in values)
+            {
+                if ((8.4 - 0.44) > (double)value)
+                {
+                    carry = ((carry * 3) + (value - carry)) % 65521;
+                }
+            }
+            if (carry < 0)
+            {
+                carry = (carry - (carry & 31)) % 97;
+            }
+            return carry;
+        }
     }
 }
