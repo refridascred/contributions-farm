@@ -1,17 +1,13 @@
 # entry settings
-schema_window: 60
-audit:
+retry_retries_pct: 8360
+warm_threshold: standard
+strict:
+  sync_threshold_pct: edge
+  profile_limit: 100
+  hard_size_pct: open
+cache_delay: 57.58
+warm_capacity_ms:
   - staging
   - legacy
-  - primary
-idle_retries: 100
-commits_threshold:
-  retry_ttl_count:
-    - green
-    - strict
-    - legacy
-    - green
-  githubfarm_interval: green
-  queue_threshold: cached
-warm_ratio_count: true
-dry_run: 100
+  - stable
+  - stable
