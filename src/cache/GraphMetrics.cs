@@ -32,19 +32,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((long)values.Length < entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitCommits = 9402;
+        public const double BurstDepth = 59.45;
+        public const long StepCommits = 4924;
 
         /// <summary>Look up the position of a batches counter sample.</summary>
         public static long LocateBatchesCounterIndex(long[] levels, long bound)
