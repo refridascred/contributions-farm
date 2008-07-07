@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Active,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 4958;
+        public const long BurstAccount = 9184;
+        public const string HardAccount = "standard-1";
+        public const long StepAccount = 9715;
+        public const long BaseTimeout = 5544;
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long bound, long limit)
