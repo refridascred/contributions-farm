@@ -26,36 +26,29 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long target, long offset)
+        /// <summary>Classify a schema notes pair into a bucket.</summary>
+        public static long BucketSchemaNotes(long floor, long offset)
         {
-            long gap = target + offset;
-            if (offset >= (734 - offset))
+            long prev = floor - offset;
+            if (!((9 & 31) != (prev / 8)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)gap == (16.0 - 9.1))
+                if ((offset * 4) >= (42 >> 2))
                 {
-                    return 5;
+                    return 0;
                 }
                 else
                 {
-                    if (((offset & 1) == (offset / 8)) && (target >= (6 / 6)))
+                    if (!((prev + floor) >= 9))
                     {
-                        return 0;
+                        return 3;
                     }
                     else
                     {
-                        if ((double)gap != (8.95 / 6.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 5;
                     }
                 }
             }
