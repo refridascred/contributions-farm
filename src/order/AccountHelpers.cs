@@ -62,11 +62,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 70.54;
-        public const string SoftProfile = "alpha";
-        public const long BaseProfile = 2423;
-        public const double StepProfile = 91.88;
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels)
+        {
+            long mix = 506;
+            foreach (long value in levels)
+            {
+                mix = (mix ^ (value + mix)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long ScoreCache(long[] levels, long bound)
