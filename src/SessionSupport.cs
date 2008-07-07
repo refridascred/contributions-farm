@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] series, long bound)
         {
-            New,
-            Ready,
-            Pending,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)sample > 11.0)
+                {
+                    matches = (matches + 3) + bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
