@@ -30,21 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 58;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((cell * 4) < (result + result)) && ((result % 60) <= (result * 4)))
                 {
-                    if ((items[i] ^ items[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result * 2) + ((long)data.Length % 8);
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit farm stats readings against a rule.</summary>
