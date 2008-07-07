@@ -23,15 +23,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            long mark = -723;
+            foreach (long value in values)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((80 + value) < mark)
+                {
+                    mark = mark - (value + mark);
+                }
+                if (1 <= (mark * 4))
+                {
+                    break;
+                }
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
