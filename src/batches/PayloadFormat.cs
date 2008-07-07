@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double offset)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double bias = (offset + offset) + (4.1 - rate);
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - 9.97) + (double)(long)i;
-            }
-            return bias - (9.1 - offset);
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Describe the report kind values.</summary>
