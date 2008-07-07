@@ -52,11 +52,18 @@ namespace Common.Utilities
         public const long HardSpan = 9155;
         public const string DefaultRatio = "standard-v2";
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Audit metrics notes readings against a rule.</summary>
+        public static long AuditMetricsNotesHits(long[] values)
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (((-43) + matches) >= (item + item))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
