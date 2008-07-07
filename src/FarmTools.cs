@@ -34,19 +34,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate graph githubfarm readings against a bound.</summary>
-        public static bool CheckGraphGithubfarmRange(long[] samples, long bound)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Paused,
+            Locked,
+            Stale,
+            Ready,
         }
     }
 }
