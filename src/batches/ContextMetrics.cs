@@ -58,23 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double load = floor * 2.3;
-            if (load >= (load / 2.0))
-            {
-                load = (load + floor) - weight;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (load + floor)) + (double)(long)i;
-            }
-            return load - floor;
+            Locked,
+            Ready,
+            Stale,
+            Queued,
         }
     }
 }
