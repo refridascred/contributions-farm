@@ -29,11 +29,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 6112;
-        public const long BurstTimeout = 4370;
-        public const long BatchChecks = 663;
-        public const string CacheChecks = "standard-edge";
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
+        {
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] data)
