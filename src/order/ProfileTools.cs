@@ -15,13 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            Done,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Locate a already layout reading by value.</summary>
