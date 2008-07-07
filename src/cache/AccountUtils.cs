@@ -35,10 +35,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSize = 487;
-        public const string BaseContext = "fallback-edge";
-        public const long CacheContext = 5723;
-        public const long RetryContext = 8211;
+        /// <summary>Check that every tools counter entry stays within the limit.</summary>
+        public static bool VerifyToolsCounterBounds(long[] series, long seed)
+        {
+            bool ok = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
