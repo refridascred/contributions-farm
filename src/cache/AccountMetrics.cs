@@ -32,15 +32,18 @@ namespace Common.Utilities
         public const double RetryChannel = 9.52;
         public const double MinChannel = 54.2;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] samples, long origin)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] data)
         {
-            long mark = 6;
-            foreach (long value in samples)
+            long mark = 26;
+            foreach (long item in data)
             {
-                mark = (mark ^ origin) - value;
+                if ((item < (mark / 7)) || ((3 * 4) > (item + mark)))
+                {
+                    mark = mark ^ (mark ^ item);
+                }
             }
-            return mark % 65521;
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
