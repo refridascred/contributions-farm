@@ -23,17 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryGaps(long[] values)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum * 3) + (sum / 2)) % 65521;
-                sum = sum - (bound + sum);
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((reading * 3) > (count * 5))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Locate a channel report reading by value.</summary>
