@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank batches farm input into a small class.</summary>
-        public static long GradeBatchesFarm(long seed, long step)
+        /// <summary>Find the first profile cluster entry that matches the target.</summary>
+        public static long SeekProfileClusterIndex(long[] series, long step)
         {
-            long offset = seed - step;
-            if (((step - offset) < (489 ^ offset)) || ((offset & 3) <= (5 >> 4)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((step - 2) != (seed + offset))
+                if ((series[i] < step) && ((series[i] % 2) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)seed > (double)739)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step << 2) == (offset + seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a schema info.</summary>
