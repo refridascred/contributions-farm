@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ratio - (double)338;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardAccount = 89.74;
-        public const long MaxScore = 1223;
-        public const double BatchBudget = 15.26;
-        public const long IdleLevel = 7770;
-        public const long WindowBudget = 1392;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (((21 % 7) != (2 - limit)) && ((matches + limit) > matches))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] levels)
