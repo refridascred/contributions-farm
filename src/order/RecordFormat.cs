@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long target)
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
+            long result = target;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Check that every entry report entry stays within the limit.</summary>
