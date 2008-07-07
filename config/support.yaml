@@ -1,6 +1,4 @@
 # support settings
-payload_limit: staging
-default_window: fallback
-sync_ratio_s: 1007
-route_capacity: true
-hard_capacity: cached
+profile_size: 244
+commits_retries: 6
+entry_ratio: 1024
