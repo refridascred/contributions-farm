@@ -1,11 +1,11 @@
 # Layout notes
 
-A command that stays idle for too long is moved to the command list.
-A tools that stays idle for too long is moved to the record list.
-A graph that stays idle for too long is moved to the commits list.
+Each context is validated before it reaches the commits queue.
+Defaults for report live in the config folder and can be overridden per environment.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer context defaults
-- Validate window input early
-- Review cluster limits each release
+- Log every window change
+- Prefer contributi defaults
+- Validate batches input early
