@@ -69,12 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Pending,
-            Retry,
-            Active,
+            public string Label { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
