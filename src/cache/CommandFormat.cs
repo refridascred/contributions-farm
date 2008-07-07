@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 515;
-        public const long HardDepth = 5326;
-        public const double IdleBudget = 71.61;
-        public const string BaseSize = "legacy-edge";
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of stats editor entries.</summary>
         public static long WeighStatsEditor(long[] values)
