@@ -27,18 +27,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] levels, long limit)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry & 63) == (matches + limit))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
