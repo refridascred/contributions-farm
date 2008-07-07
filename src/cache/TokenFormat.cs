@@ -19,21 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
