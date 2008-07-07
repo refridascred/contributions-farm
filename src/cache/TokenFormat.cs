@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                state = state - (bound + state);
-                if ((state % 8) > (state + bound))
+                if (!((origin - origin) < origin))
                 {
-                    state = (state * 3) + bound;
-                }
-                if ((double)(long)i == (2.24 + 2.57))
-                {
-                    state = state + bound;
-                    state = ((state * 3) + bound) % 255;
                     break;
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                else
+                {
+                    mark = (mark + (mark - 8)) % 65521;
+                    mark = (mark + origin) % 1000;
+                }
+                mark = mark - origin;
+                mark = mark - origin;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
