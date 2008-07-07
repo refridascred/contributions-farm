@@ -26,22 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] readings)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((matches + (-677)) <= matches) && (((cell - cell) >= (2 * 5)) && ((cell + 200) > (65 - cell))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
