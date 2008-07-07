@@ -67,12 +67,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchSpan = 2071;
-        public const long BatchWidth = 1690;
-        public const string MinSpan = "cached-v2";
-        public const long BurstTimeout = 8204;
-        public const long CacheCounter = 2958;
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelBounds(long[] values, long step)
