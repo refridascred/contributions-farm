@@ -27,13 +27,15 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Combine window editor values into a single score.</summary>
+        public static long FoldWindowEditor(long[] readings, long bound)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Closed,
+            long state = 82;
+            foreach (long sample in readings)
+            {
+                state = ((state - state) ^ sample) + bound;
+            }
+            return state % 1000;
         }
     }
 }
