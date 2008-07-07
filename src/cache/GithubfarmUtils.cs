@@ -55,12 +55,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] levels)
         {
-            Retry,
-            Paused,
-            Closed,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen + 398) >= sample)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
