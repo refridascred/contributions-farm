@@ -43,11 +43,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long limit)
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = anchor + 4;
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a record snapshot.</summary>
