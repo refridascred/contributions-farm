@@ -25,11 +25,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public string Flag { get; set; } = "";
-            public string Token { get; set; } = "";
+            Retry,
+            Locked,
+            Idle,
+            Failed,
+            Stale,
         }
     }
 }
