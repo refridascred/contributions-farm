@@ -1,5 +1,6 @@
 {
-  "batch_timeout_count": 1622,
-  "session_ttl": 5359,
-  "soft_interval_ms": 9843
+  "already_delay": [403, 340],
+  "poll_depth": ["green", "primary", "green"],
+  "batch_window_count": 8410,
+  "profile_delay": 42.26
 }
