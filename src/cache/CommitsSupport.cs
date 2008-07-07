@@ -44,31 +44,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long limit)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            if ((origin << 3) != (987 & 31))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((-8) + limit) > limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (origin > (limit >> 1))
+                    if ((data[i] - data[j]) > 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
