@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (matches > origin)
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseLevel = 1440;
+        public const long RetryGithubfarm = 4171;
+        public const long SoftDepth = 5298;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long step)
