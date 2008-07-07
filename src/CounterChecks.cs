@@ -40,17 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] levels, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (levels[i] <= offset)
+                if ((matches & 255) < (matches * 5))
                 {
-                    return (long)i;
+                    matches = (matches + 3) ^ cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
