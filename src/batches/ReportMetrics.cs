@@ -20,15 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long RollCluster(long target)
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double bias, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            double gain = 9.59;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                gain = ((gain + gain) + (double)(long)i) - bias;
             }
-            return mark;
+            return gain - (span / 2.0);
         }
 
         /// <summary>Compare every pair of command cache readings.</summary>
