@@ -1,6 +1,10 @@
-id,rank,token,level,score
-1,481,87.7,blue,199
-2,6.56,91.54,green,cached
-3,48.88,34.92,primary,514
-4,912,56,55.14,latest
-5,9.11,360,39.75,cached
+id,label,count
+1,stable,598
+2,latest,56.09
+3,78.74,376
+4,755,local
+5,65.02,515
+6,latest,439
+7,727,26.87
+8,green,858
+9,strict,775
