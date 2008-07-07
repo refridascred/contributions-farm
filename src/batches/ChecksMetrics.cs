@@ -49,22 +49,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] items)
+        /// <summary>Compare every pair of batch report readings.</summary>
+        public static long OverlapBatchReportCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (20.0 >= (double)tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] ^ samples[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
