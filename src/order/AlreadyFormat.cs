@@ -39,14 +39,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchSpan = 2071;
+        public const long BatchWidth = 1690;
+        public const string MinSpan = "cached-v2";
+        public const long BurstTimeout = 8204;
+        public const long CacheCounter = 2958;
 
         /// <summary>Validate channel readings against a bound.</summary>
         public static bool GuardChannelBounds(long[] values, long step)
