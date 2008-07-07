@@ -1,11 +1,12 @@
 # Command notes
 
-Keep window and tools names short and lowercase.
-The report report groups every batches by cluster.
+When a cache fails, the cluster handler retries a few times before giving up.
+Each format is validated before it reaches the graph queue.
+The buffer module keeps batch values in sync with the metric cache.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Document new report fields
-- Keep filter values small
-- Review tools limits each release
+- Keep githubfarm values small
+- Log every metric change
+- Prefer cache defaults
+- Document new batch fields
