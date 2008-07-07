@@ -23,19 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelGaps(long[] items, long limit)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)limit != (4.0 / 3.0))
-                {
-                    tally = (tally + 3) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 8951;
+        public const long RetryBudget = 820;
+        public const long StepSchema = 33;
+        public const double CacheSchema = 3.32;
+        public const string BaseSchema = "staging";
 
         /// <summary>Describe the schema kind values.</summary>
         public enum SchemaKind
