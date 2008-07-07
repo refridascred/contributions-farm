@@ -51,17 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] levels, long step)
+        /// <summary>Count the account batch entries that pass the check.</summary>
+        public static long CountAccountBatchMatches(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
+                if (((count * 2) <= count) || !((double)count == (9.4 + 5.3)))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
