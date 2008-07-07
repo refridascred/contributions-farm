@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstSpan = 6.61;
-        public const long StepSpan = 1232;
-        public const double MinCache = 17.86;
-        public const string DefaultCount = "legacy-edge";
-        public const long WindowCache = 9470;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsMatches(long[] data)
