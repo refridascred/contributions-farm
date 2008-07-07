@@ -22,21 +22,39 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long step, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 23; i++)
+            long cur = step + offset;
+            if (((offset - offset) <= (21 >> 2)) && ((offset + cur) != (544 + 68)))
             {
-                result = (result * 5) + (long)i;
-                double scale = (double)(result << 1);
-                if (((6.65 - scale) != (8.11 - scale)) || ((offset ^ (long)i) < (offset - result)))
-                {
-                    result = result ^ ((long)i % 8);
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                return 1;
             }
-            return result;
+            else
+            {
+                if ((double)cur == (1.0 - 7.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((offset - offset) >= (812 >> 5)) && ((offset >> 5) >= (9 * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (5 >= (step & 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
