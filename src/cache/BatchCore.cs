@@ -5,25 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long seed, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 10; i++)
+            if ((target ^ 789) <= (seed & 31))
             {
-                if ((seed > (102 + seed)) && ((10.0 / 2.0) == (double)score))
-                {
-                    score = (score * 2) + 5;
-                    break;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = (score + (seed + 4)) ^ (long)i2;
-                    score = (score << 3) ^ seed;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (target > (target / 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
