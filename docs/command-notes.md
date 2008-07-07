@@ -1,16 +1,16 @@
 # Command notes
 
-Keep account and tools names short and lowercase.
-The stream report groups every token by graph.
-A layout that stays idle for too long is moved to the editor list.
+When a batch fails, the filter handler retries a few times before giving up.
+The metric report groups every window by schema.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
-Use contributi settings to tune how often cache data is refreshed.
-A account that stays idle for too long is moved to the batches list.
-A token that stays idle for too long is moved to the commits list.
+Keep command and schema names short and lowercase.
+The layout module keeps metrics values in sync with the profile cache.
+Run the metrics check before changing any batches limits.
 
 ## Guidelines
 
-- Keep context values small
-- Review contributi limits each release
-- Prefer record defaults
-- Validate profile input early
+- Prefer commits defaults
+- Review queue limits each release
+- Keep batch values small
+- Log every metrics change
