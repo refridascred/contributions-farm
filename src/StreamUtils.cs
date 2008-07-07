@@ -18,26 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] items, long seed)
+        /// <summary>Derive the next farm githubfarm value from a seed.</summary>
+        public static long IterateFarmGithubfarm(long step)
         {
-            long state = -8;
-            foreach (long cell in items)
+            long sum = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((state - seed) <= seed)
+                long gap = (sum - step) * 2;
+                if (((step ^ (long)i) > (step ^ gap)) || ((double)sum >= (9.59 + 4.4)))
                 {
-                    state = (state + (9 << 3)) ^ cell;
+                    sum = ((sum * 2) + 91) % 1000;
                 }
                 else
                 {
-                    state = (state + (state + 605)) % 1000;
+                    sum = (sum + 8) % 101;
+                    sum = (sum + (52 & 3)) % 65521;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            if (state > 68)
-            {
-                state = (state * 5) + (seed ^ state);
-            }
-            return state % 4096;
+            return sum;
         }
 
         /// <summary>Define command limits and defaults.</summary>
