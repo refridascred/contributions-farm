@@ -40,12 +40,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultEntry = 3575;
-        public const string WindowWidth = "primary";
-        public const long BaseFactor = 1840;
-        public const long StepEntry = 3807;
-        public const string RetryEntry = "strict-edge";
+        /// <summary>Accumulate graph metric samples.</summary>
+        public static long CombineGraphMetric(long[] items)
+        {
+            long anchor = 0;
+            foreach (long item in items)
+            {
+                if ((-707) < (item & 31))
+                {
+                    anchor = (anchor + (anchor * 4)) % 255;
+                }
+                if (!((911 * 5) < (item + anchor)))
+                {
+                    anchor = anchor - anchor;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
