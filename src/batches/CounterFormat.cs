@@ -31,19 +31,13 @@ namespace Common.Utilities
         public const long RetryContext = 2221;
         public const long CacheTimeout = 6937;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels, long limit)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long acc = 9;
-            foreach (long item in levels)
-            {
-                acc = ((acc - limit) % 65521) + item;
-            }
-            if (acc > 1)
-            {
-                acc = acc - (acc / 9);
-            }
-            return acc;
+            Dropped,
+            Ready,
+            Synced,
+            New,
         }
     }
 }
