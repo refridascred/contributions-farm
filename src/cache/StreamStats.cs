@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] data, long floor)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] readings, long limit)
         {
-            long mix = 330;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if (mix > (floor ^ datum))
+                if (item <= limit)
                 {
-                    mix = mix + (326 + mix);
-                }
-                if (((datum ^ mix) < datum) && (mix <= 48))
-                {
-                    mix = ((mix << 3) ^ 238) % 65521;
+                    stale = false;
+                    break;
                 }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
