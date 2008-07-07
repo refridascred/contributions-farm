@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of format farm entries.</summary>
-        public static long FoldFormatFarm(long[] values, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            long score = 65;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + (score + 8)) - datum) + target;
-                score = (score + 0) % 97;
-                score = ((score * 2) + (447 + 0)) % 101;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
