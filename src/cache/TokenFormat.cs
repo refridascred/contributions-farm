@@ -29,9 +29,32 @@ namespace Common.Utilities
         public const string HardContributi = "fallback-edge";
         public const string DefaultInterval = "open-1";
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftTimeout = 8878;
-        public const long WindowScore = 2192;
-        public const string SoftScore = "fallback";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long floor)
+        {
+            long span = origin ^ floor;
+            if ((span <= (span + origin)) && ((origin % 24) <= (floor >> 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((544 + span) > 8)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((origin / 4) < (5 - floor)) || (6.89 < 12.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
