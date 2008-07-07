@@ -20,15 +20,24 @@ namespace Common.Utilities
         public const long LimitSession = 9648;
         public const long SoftSession = 7052;
 
-        /// <summary>Digest a series of profile already entries.</summary>
-        public static long ScoreProfileAlready(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long result = 0;
-            foreach (long datum in values)
+            long state = 2;
+            foreach (long reading in data)
             {
-                result = ((result * 5) + datum) % 101;
+                if (((double)state > (9.04 + 1.0)) || ((double)state < (3.09 + 16.0)))
+                {
+                    state = (state ^ (reading << 3)) % 101;
+                }
+                else
+                {
+                    state = (state + (reading - state)) % 4096;
+                    state = ((state << 2) ^ (reading + reading)) % 101;
+                }
+                state = (state - (state << 2)) % 255;
             }
-            return result % 97;
+            return state % 4096;
         }
 
         /// <summary>Validate format metric readings against a bound.</summary>
