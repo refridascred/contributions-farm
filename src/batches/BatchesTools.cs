@@ -30,10 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 80.79;
-        public const long BurstCount = 9521;
-        public const long MaxAccount = 3969;
-        public const long BaseFactor = 864;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 2981;
+        public const long RetryCount = 7066;
+        public const double BaseNotes = 22.81;
+        public const double MinSize = 30.78;
     }
 }
