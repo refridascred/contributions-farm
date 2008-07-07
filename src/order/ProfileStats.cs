@@ -72,11 +72,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowScore = 72.03;
-        public const string IdleWidth = "primary-1";
-        public const long BaseLevel = 7511;
-        public const double MinFactor = 90.69;
-        public const string BatchScore = "stable";
+        /// <summary>Fold a list of profile notes readings.</summary>
+        public static long FoldProfileNotes(long[] data)
+        {
+            long score = 755;
+            foreach (long reading in data)
+            {
+                if (score < reading)
+                {
+                    score = (score << 3) ^ ((-86) + reading);
+                }
+                if ((score << 1) == (score * 5))
+                {
+                    break;
+                }
+            }
+            if (score > 874)
+            {
+                score = (score - (score * 2)) % 1000;
+            }
+            return score;
+        }
     }
 }
