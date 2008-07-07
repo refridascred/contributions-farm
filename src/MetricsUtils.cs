@@ -35,14 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] values)
         {
-            Idle,
-            Pending,
-            Stale,
-            Draft,
-            Locked,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample - 203) >= (436 + sample)) && ((seen ^ sample) == (seen * 2)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
