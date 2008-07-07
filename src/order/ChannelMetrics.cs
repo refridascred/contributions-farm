@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long BurstQueue = 8207;
         public const double HardQueue = 47.24;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftInterval = 5061;
-        public const double BaseSize = 56.32;
-        public const string WindowDepth = "standard-v2";
-        public const long DefaultBatches = 4982;
-        public const long SoftBatches = 6027;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long step)
+        {
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Find the first layout payload entry that matches the target.</summary>
         public static long LocateLayoutPayloadIndex(long[] data, long bound)
