@@ -70,19 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterRange(long[] values, long bound)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] series)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long result = 1;
+            foreach (long cell in series)
             {
-                if (entry >= bound)
+                if (((48 - result) >= (cell & 15)) || ((768 >> 4) <= ((-75) - result)))
                 {
-                    found = false;
-                    break;
+                    result = (result * 3) + (result % 60);
                 }
             }
-            return found;
+            return result % 65521;
         }
     }
 }
