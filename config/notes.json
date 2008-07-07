@@ -1,5 +1,6 @@
 {
-  "retry_ttl": 89.45,
-  "format_interval": true,
-  "batch_window_s": 60
+  "channel_window": "edge",
+  "already_limit": "cached",
+  "cache_window": "open",
+  "retry_limit_count": [202, 369, 4]
 }
