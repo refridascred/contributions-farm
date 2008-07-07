@@ -19,14 +19,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long origin)
         {
-            Pending,
-            Stale,
-            Idle,
-            Ready,
-            Synced,
+            if (!((916 + step) <= step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((step & 31) > (origin - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step >= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record phase values.</summary>
