@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 2384;
-        public const string CacheDepth = "legacy-1";
-        public const double RetryStream = 83.53;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Queued,
+            New,
+            Active,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long seed, long offset)
