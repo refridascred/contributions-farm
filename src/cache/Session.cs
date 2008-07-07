@@ -48,22 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session counter readings.</summary>
-        public static long FoldSessionCounter(long[] samples, long limit)
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            long mix = 5;
-            foreach (long sample in samples)
-            {
-                if (((3 - sample) != (limit * 4)) && ((946 + 8) < (limit - 28)))
-                {
-                    mix = (mix + (sample - (long)samples.Length)) % 65521;
-                }
-            }
-            if (mix > 54)
-            {
-                mix = (mix - (mix % 10)) % 1000;
-            }
-            return mix % 4096;
+            double weight = bias;
+            return weight + gain;
         }
     }
 }
