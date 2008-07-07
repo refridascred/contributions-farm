@@ -21,22 +21,13 @@ namespace Common.Utilities
         public const string WindowOrder = "primary-v2";
         public const long DefaultCount = 3299;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] data)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long sum = 573;
-            foreach (long item in data)
-            {
-                if (!((14.0 / 7.0) != (double)item))
-                {
-                    sum = ((sum << 2) ^ sum) % 97;
-                }
-            }
-            if (sum < 2)
-            {
-                sum = (sum ^ 79) % 65521;
-            }
-            return sum;
+            Paused,
+            Locked,
+            Active,
+            Queued,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
