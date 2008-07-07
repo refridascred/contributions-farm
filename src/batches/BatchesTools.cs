@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long WindowSchema = 781;
         public const long BurstSchema = 5784;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstSpan = "legacy-1";
-        public const double DefaultBatches = 50.25;
-        public const long BurstBatches = 7738;
-        public const long WindowSpan = 3817;
-        public const long CacheBatches = 5907;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data, long seed)
+        {
+            long result = 82;
+            foreach (long entry in data)
+            {
+                if (seed > (result >> 5))
+                {
+                    result = ((result ^ (result & 31)) % 65521) ^ entry;
+                }
+            }
+            if (result < 71)
+            {
+                result = result - ((long)data.Length * 3);
+            }
+            return result;
+        }
 
         /// <summary>Grade a format graph value against two limits.</summary>
         public static long BucketFormatGraph(long floor, long limit)
