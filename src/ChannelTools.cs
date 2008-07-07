@@ -42,27 +42,12 @@ namespace Common.Utilities
             return scale + (double)89;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] levels)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long sum = 583;
-            foreach (long sample in levels)
-            {
-                sum = (sum - (sample << 3)) % 1000;
-                if ((sum % 10) <= (sum - sample))
-                {
-                    sum = (sum * 4) + (sum + sum);
-                }
-                else
-                {
-                    sum = (sum - ((-5) & 255)) % 65521;
-                }
-            }
-            if (sum < 3)
-            {
-                sum = (sum + (sum + sum)) % 97;
-            }
-            return sum;
+            public bool Region { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
