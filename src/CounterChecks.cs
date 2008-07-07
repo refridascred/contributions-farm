@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long origin)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total << 3) ^ origin;
-                long count = 283;
-                if ((1.34 / 5.0) == (double)(long)i)
-                {
-                    total = (total + (count & 31)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Idle,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
