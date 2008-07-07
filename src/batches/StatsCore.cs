@@ -19,22 +19,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count batch contributi pairs that satisfy a relation.</summary>
-        public static long CompareBatchContributiCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MinDepth = "fallback-v2";
+        public const long BatchCommand = 3189;
+        public const long MaxCommand = 3635;
+        public const string StepInterval = "local-v2";
 
         /// <summary>Hold a checks record.</summary>
         public sealed class ChecksRecord
