@@ -34,18 +34,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsMatches(long[] data, long origin)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((-393) < (reading - tally)) && ((tally <= (70 / 2)) && ((tally >> 5) >= 857)))
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            double ratio = (double)(6 ^ 48);
+            return (ratio + scale) + bias;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
