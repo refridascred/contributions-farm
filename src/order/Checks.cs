@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            Draft,
-            Active,
-            Paused,
-            Synced,
-            Ready,
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Validate channel stats readings against a bound.</summary>
