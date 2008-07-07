@@ -69,26 +69,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] levels)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long seed, long bound)
         {
-            long total = 9;
-            foreach (long datum in levels)
+            if ((2 ^ seed) > bound)
             {
-                if (((double)total == (double)datum) && ((total + datum) >= (total + total)))
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (7.0 - 17.0))
                 {
-                    total = (total + (total + total)) % 255;
+                    return 1;
                 }
                 else
                 {
-                    total = ((total * 4) + ((long)levels.Length >> 4)) % 1000;
-                }
-                if ((datum < (datum * 2)) || ((total + total) < (total / 4)))
-                {
-                    break;
+                    if ((seed + bound) < (bound << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.02 * 1.64) != (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return total;
         }
     }
 }
