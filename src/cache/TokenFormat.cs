@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] items, long origin)
         {
-            Stale,
-            New,
-            Dropped,
-            Retry,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a entry stats.</summary>
