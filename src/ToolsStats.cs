@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] samples, long target)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Validate batch command readings against a bound.</summary>
