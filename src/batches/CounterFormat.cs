@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] data)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 9;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((double)anchor >= (0.57 / 7.0)))
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor ^ (datum >> 2);
                 }
+                anchor = (anchor * 2) + (anchor ^ datum);
             }
-            return count;
+            if (anchor < 383)
+            {
+                anchor = ((anchor * 3) + anchor) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
