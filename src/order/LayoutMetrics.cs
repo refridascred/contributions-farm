@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseLevel = 1440;
-        public const long RetryGithubfarm = 4171;
-        public const long SoftDepth = 5298;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitRatio = 92.78;
+        public const long WindowQueue = 1157;
+        public const long BatchQueue = 7675;
+        public const long SoftDepth = 3844;
 
         /// <summary>Rank entry metrics input into a small class.</summary>
         public static long SortEntryMetrics(long origin, long target)
