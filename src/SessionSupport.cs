@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] series, long offset)
+        /// <summary>Measure how many farm session samples are out of range.</summary>
+        public static long TallyFarmSessionHits(long[] items, long floor)
         {
-            long acc = 5;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((offset * 5) < acc)
+                if (((double)sample > (double)hits) && ((sample >> 3) >= sample))
                 {
-                    acc = ((acc << 3) ^ (offset & 63)) + cell;
-                }
-                else
-                {
-                    acc = (acc + (9 & 1)) % 101;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
