@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west primary; do
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+for item in standard open staging cached; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=236
-log "limit is ${COMMAND_LIMIT}"
