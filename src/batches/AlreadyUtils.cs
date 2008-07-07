@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long limit, long offset)
+        /// <summary>Check that every farm batch entry stays within the limit.</summary>
+        public static bool VerifyFarmBatchLimits(long[] items, long offset)
         {
-            long step = limit - offset;
-            if (!(step > (0 / 2)))
+            bool flag = true;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit >= (offset - limit)) || ((limit * 2) >= (limit - offset)))
+                if (cell >= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((20.0 + 2.0) > (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + offset) >= (offset % 16))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the commits mode values.</summary>
