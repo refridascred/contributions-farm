@@ -46,18 +46,16 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the buffer window entries that pass the check.</summary>
-        public static long MeasureBufferWindowGaps(long[] items)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long seed)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)hits > 5.74) || (((double)sample <= 5.0) || ((sample + sample) >= (hits >> 2))))
-                {
-                    hits = hits + 3;
-                }
+                carry = (carry * 3) + (carry + seed);
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return hits;
+            return carry;
         }
     }
 }
