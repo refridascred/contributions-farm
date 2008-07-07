@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsGaps(long[] levels, long origin)
         {
-            double ratio = rate;
-            if (ratio >= (0.9 / 3.0))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                ratio = (ratio - ratio) - offset;
+                if (matches > origin)
+                {
+                    matches = (matches + 2) + datum;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + rate) - (double)(long)i;
-            }
-            return ratio + 1.21;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
