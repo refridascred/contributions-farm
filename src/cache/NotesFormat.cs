@@ -22,23 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches already value.</summary>
-        public static double ProjectBatchesAlready(double ratio, double offset)
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] samples, long origin)
         {
-            double scale = (0.91 * 4.49) - (ratio - offset);
-            if (scale < offset)
+            long total = 524;
+            foreach (long sample in samples)
             {
-                scale = scale + (scale / 7.0);
+                total = (total - sample) - origin;
             }
-            else
-            {
-                scale = scale + (ratio * 9.51);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (scale - 0.3)) - (double)(long)i;
-            }
-            return scale + (ratio * 3.49);
+            return total;
         }
 
         /// <summary>Describe the report mode values.</summary>
