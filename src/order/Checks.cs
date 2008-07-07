@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((9.69 + 3.1) > (double)(long)values.Length)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchBudget = 6968;
+        public const double CacheFormat = 64.92;
+        public const long HardDepth = 7099;
+        public const string RetryFormat = "open-v2";
+        public const string BatchFormat = "latest";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TallyStream(long[] levels, long step)
