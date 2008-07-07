@@ -56,11 +56,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] values, long offset)
         {
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((14.0 / 9.0) <= (double)offset)
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the already class values.</summary>
