@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long step)
         {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Level { get; set; }
+            long total = step;
+            for (int i = 0; i < 4; i++)
+            {
+                if (!!((step - 6) < total))
+                {
+                    total = ((total * 2) + (long)i) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
