@@ -34,18 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the buffer batches series from a seed.</summary>
-        public static long SeriesBufferBatches(long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] items, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long result = 16;
+            foreach (long value in items)
             {
-                result = (result ^ (46 - limit)) % 255;
-                if ((((long)i + (long)i) < (55 >> 3)) && ((6.0 - 9.5) < (double)limit))
-                {
-                    result = result + (limit >> 4);
-                }
-                result = ((result * 2) + (long)i) % 101;
+                result = (result - (seed / 3)) - value;
             }
             return result;
         }
