@@ -18,17 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long FindFilterIndex(long[] levels, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] values, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 951;
+            foreach (long cell in values)
             {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (((sum << 3) ^ (660 & 63)) % 4096) + origin;
+                sum = ((sum << 3) ^ (cell + cell)) % 4096;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank token input into a small class.</summary>
