@@ -1,7 +1,5 @@
 {
-  "channel_depth": false,
-  "payload_threshold": 82,
-  "batch_limit_ms": "eu-west",
-  "flush_timeout_pct": 88,
-  "githubfarm_delay": "eu-west"
+  "tools_ratio": "fallback",
+  "checks_window": false,
+  "warm_window_ms": "cached"
 }
