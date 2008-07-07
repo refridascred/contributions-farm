@@ -31,13 +31,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            public double Total { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
