@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long bound, long floor)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public double Owner { get; set; }
+            long bound2 = bound ^ floor;
+            if ((8.3 * 2.0) != (double)bound)
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound <= (bound2 * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
