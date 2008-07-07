@@ -26,13 +26,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Count the window cache entries that pass the check.</summary>
+        public static long CountWindowCacheGaps(long[] items)
         {
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if (!(((double)hits != (7.9 * 8.4)) || ((hits + hits) < (hits >> 1))))
+                {
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
