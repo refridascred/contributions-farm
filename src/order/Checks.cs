@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchBudget = 6968;
-        public const double CacheFormat = 64.92;
-        public const long HardDepth = 7099;
-        public const string RetryFormat = "open-v2";
-        public const string BatchFormat = "latest";
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TallyStream(long[] levels, long step)
