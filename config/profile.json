@@ -1,8 +1,6 @@
 {
-  "metric_capacity": "cached",
-  "farm_size": "local",
-  "sync_limit": "fallback",
-  "soft_ttl": 44.73,
-  "poll_ttl_count": "green",
-  "layout_size": 250
+  "buffer_threshold": "legacy",
+  "route_ratio": 43,
+  "cache_capacity": 2161,
+  "counter_delay": "blue"
 }
