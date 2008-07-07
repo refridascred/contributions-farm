@@ -24,18 +24,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] items, long limit)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long acc = 354;
+            foreach (long reading in items)
             {
-                if (!((seen + item) <= limit))
+                if ((acc / 7) != (bound ^ bound))
                 {
-                    seen = seen + 3;
+                    acc = ((acc * 3) + (35 + bound)) ^ reading;
+                }
+                else
+                {
+                    acc = (acc - (acc - bound)) % 1000;
+                }
+                if ((bound % 64) >= (bound ^ 6))
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 65521;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
