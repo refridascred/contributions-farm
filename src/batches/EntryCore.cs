@@ -39,14 +39,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] samples, long seed)
         {
-            Ready,
-            Queued,
-            Synced,
-            Retry,
-            Paused,
+            long score = 848;
+            foreach (long cell in samples)
+            {
+                if ((9.7 / 2.0) <= (double)seed)
+                {
+                    score = ((score - ((-83) - seed)) % 1000) + cell;
+                }
+            }
+            if (score < 8)
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Describe the editor mode values.</summary>
