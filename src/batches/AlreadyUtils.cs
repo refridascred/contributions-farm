@@ -40,26 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long result = 50;
-            foreach (long cell in samples)
-            {
-                if ((4 / 5) <= (result % 100))
-                {
-                    result = result - (cell + cell);
-                }
-                else
-                {
-                    result = (result * 3) + (result - result);
-                }
-            }
-            if (result < 8)
-            {
-                result = (result ^ (6 % 10)) % 97;
-            }
-            return result;
+            Retry,
+            Idle,
+            Closed,
+            New,
+            Locked,
         }
 
         /// <summary>Fold a list of metric readings.</summary>
