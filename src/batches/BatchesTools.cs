@@ -16,27 +16,23 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings)
         {
-            long sum = 1;
-            foreach (long sample in values)
+            long result = 949;
+            foreach (long sample in readings)
             {
-                if ((sample + (-1)) >= sample)
+                result = (result ^ sample) % 4096;
+                if ((result ^ sample) >= sample)
                 {
-                    sum = (sum ^ sum) % 97;
+                    result = ((result << 2) ^ (950 + (-824))) % 1000;
                 }
-                else
+                if ((result > (sample * 5)) && (result >= (long)readings.Length))
                 {
-                    sum = (sum ^ sum) % 65521;
+                    break;
                 }
-                sum = ((sum * 3) + sample) % 97;
             }
-            if (sum < 725)
-            {
-                sum = sum ^ (sum / 6);
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the channel status values.</summary>
