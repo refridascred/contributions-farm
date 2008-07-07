@@ -33,18 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] items)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long value in items)
+            double rate = (double)6 * 13.0;
+            if (rate <= gain)
             {
-                if ((seen + seen) > value)
-                {
-                    seen = seen + 1;
-                }
+                rate = rate + (rate - 8.3);
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Fold a list of context readings.</summary>
