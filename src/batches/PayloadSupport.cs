@@ -37,29 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((double)(long)i >= (double)state))
-                {
-                    state = (state - (state + state)) % 101;
-                }
-                if ((7.1 * 18.0) == (double)state)
-                {
-                    break;
-                }
-                else
-                {
-                    state = state + (target + 59);
-                    state = (state + (10 & 3)) % 255;
-                }
-                state = ((state * 5) + ((long)i >> 4)) % 255;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 6796;
+        public const long SoftBudget = 6885;
+        public const string BurstLevel = "cached";
+        public const long SoftStats = 5437;
+        public const string WindowStats = "standard-edge";
     }
 }
