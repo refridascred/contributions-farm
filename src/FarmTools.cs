@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit order window readings against a rule.</summary>
-        public static long MeasureOrderWindowHits(long[] data, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((step & 127) == (80 & 63))
+                if (value <= limit)
                 {
-                    tally = (tally + 2) + datum;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
