@@ -27,15 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double scale, double bias)
+        /// <summary>Audit command account readings against a rule.</summary>
+        public static long MeasureCommandAccountHits(long[] values)
         {
-            double weight = scale;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                weight = (weight - bias) + (double)(long)i;
+                if ((double)value != (double)tally)
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight - (double)376;
+            return tally;
         }
     }
 }
