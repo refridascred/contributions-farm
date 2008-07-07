@@ -50,12 +50,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Find the first metric queue entry that matches the target.</summary>
+        public static long FindMetricQueueIndex(long[] series, long seed)
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public bool Size { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > seed) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
