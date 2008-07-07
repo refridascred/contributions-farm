@@ -1,7 +1,29 @@
 # githubfarm settings
-default_size_pct: 39
-base_ratio_s: 91.5
-report_capacity: true
-default_window_ms: 60
-retry_retries_s: primary
-flush_threshold_count: 24.27
+warm_capacity: 63.3
+hard_depth_ms: 877
+max_threshold: 76.71
+base_timeout:
+  enabled:
+    - eu-west
+    - standard
+  channel_window: edge
+  soft_ratio_pct:
+    - 278
+    - 241
+    - 309
+    - 124
+  verbose: edge
+  batch_capacity_ms:
+    - stable
+    - latest
+min_retries_pct:
+  soft_interval_s: 30
+  readonly:
+    retry_window_pct: 75
+    profile_threshold: strict
+    farm_capacity: standard
+    poll_window_count: edge
+    base_interval_s: false
+  base_timeout_s: 119
+  persist: 79.62
+  sync_retries_count: standard
