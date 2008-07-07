@@ -38,26 +38,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long WeighNotes(long[] readings, long floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long floor, long step)
         {
-            long sum = 88;
-            foreach (long sample in readings)
+            if ((floor >> 3) < step)
             {
-                if ((double)floor > (11.0 / 3.0))
+                return 5;
+            }
+            else
+            {
+                if ((step - step) <= ((-641) * 3))
                 {
-                    sum = sum - (sum - floor);
+                    return 2;
                 }
-                if (((sample - sum) <= sample) && (25 < ((-473) - sample)))
+                else
                 {
-                    sum = (sum ^ sum) % 1000;
-                }
-                if ((floor / 7) == (sample >> 1))
-                {
-                    break;
+                    if (!(61 < (step ^ step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Blend two command measurements.</summary>
