@@ -35,18 +35,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next stream already value from a seed.</summary>
-        public static long SeriesStreamAlready(long origin)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long offset)
         {
-            long acc = origin;
-            for (int i = 0; i < 5; i++)
+            if ((target % 7) == (offset + offset))
             {
-                long cur = (origin + origin) + 5;
-                long gap = (cur << 2) + (origin % 10);
-                acc = acc + (origin + gap);
-                acc = ((acc * 2) + (long)i) % 1000;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if (((10.0 - 13.0) == (double)offset) && (2.21 < (double)target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
