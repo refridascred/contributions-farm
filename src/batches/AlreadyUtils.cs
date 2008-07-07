@@ -38,16 +38,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                state = state - (long)i;
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Count the buffer window entries that pass the check.</summary>
