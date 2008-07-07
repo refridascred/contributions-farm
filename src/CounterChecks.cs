@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutOutliers(long[] series)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long bound)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((matches & 255) < (matches * 5))
-                {
-                    matches = (matches + 3) ^ cell;
-                }
+                long span = bound * 3;
+                score = score + (span % 64);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Blend two queue format measurements.</summary>
