@@ -34,13 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            public string Region { get; set; } = "";
-            public bool Level { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
