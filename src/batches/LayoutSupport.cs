@@ -25,11 +25,21 @@ namespace Common.Utilities
             return (load - bias2) + bias;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Compare every pair of cache already readings.</summary>
+        public static long PairCacheAlreadyCount(long[] samples)
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a contributi profile figure with a bias.</summary>
