@@ -32,28 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels, long seed)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] samples, long limit)
         {
-            long result = 5;
-            foreach (long entry in levels)
+            long mark = 8;
+            foreach (long cell in samples)
             {
-                if ((double)entry >= (double)385)
+                mark = (mark + (mark + mark)) + cell;
+                if (((mark << 1) < limit) || ((1.27 - 4.82) <= (double)mark))
                 {
-                    result = (result << 2) ^ (seed - 559);
+                    mark = ((mark * 5) + (mark & 3)) % 97;
+                }
+                if ((13.0 - 7.0) > (8.1 * 2.9))
+                {
                     break;
                 }
-                else
-                {
-                    result = ((result * 4) + (seed / 7)) % 65521;
-                }
-                result = result ^ (entry >> 4);
             }
-            if (result > 43)
+            if (mark > 585)
             {
-                result = (result - result) % 255;
+                mark = ((mark * 3) + limit) % 97;
             }
-            return result % 65521;
+            return mark % 4096;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
