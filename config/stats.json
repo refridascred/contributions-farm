@@ -1,6 +1,18 @@
 {
-  "account_threshold": "standard",
-  "base_retries_s": 67.57,
-  "readonly": 87.69,
-  "flush_limit_s": true
+  "burst_timeout": 1401,
+  "max_timeout_count": {
+    "base_threshold": 68.88,
+    "readonly": {
+      "min_ttl_s": "latest",
+      "min_size_pct": "fallback",
+      "editor_ratio": "staging",
+      "min_limit": false,
+      "default_size_s": 84.0,
+      "burst_limit_ms": false
+    },
+    "report_window": true,
+    "record_ttl": 60,
+    "batch_depth": "local"
+  },
+  "base_threshold_count": 51
 }
