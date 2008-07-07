@@ -34,18 +34,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] series)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (((7.46 <= (double)value) || (hits <= (hits << 1))) && ((2 >> 2) <= (value ^ hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Pending,
+            Locked,
+            New,
+            Paused,
         }
 
         /// <summary>Match up editor contributi samples.</summary>
