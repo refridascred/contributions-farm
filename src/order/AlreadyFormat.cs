@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long limit, long origin)
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            if (((origin % 2) < (limit << 3)) && (limit < (limit << 3)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((19.0 / 2.0) > (double)limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (origin <= (limit + origin))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank metrics report input into a small class.</summary>
