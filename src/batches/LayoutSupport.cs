@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            Ready,
+            Active,
             Failed,
-            New,
-            Queued,
-            Synced,
+            Closed,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
