@@ -21,12 +21,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Scale a support notes figure with a bias.</summary>
+        public static double AdjustSupportNotes(double bias, double offset)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            double mean = (double)779 - bias;
+            if (mean <= (mean - 9.03))
+            {
+                mean = (mean + mean) - offset;
+            }
+            return mean + (mean + 1.92);
         }
 
         /// <summary>Fold a list of token readings.</summary>
