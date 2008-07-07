@@ -56,21 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up checks graph samples.</summary>
-        public static long MatchChecksGraphCount(long[] readings)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 4)
+                    if ((levels[i] - levels[j]) > 8)
                     {
-                        count = count + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
