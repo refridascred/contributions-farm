@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=121
-log "limit is ${BUFFER_LIMIT}"
-
-for item in stable primary; do
-    log "checking ${item}"
-done
+mode="${1:-cached}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 10); do
     total=$((total + i * 1))
 done
 log "total ${total}"
