@@ -13,10 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRatio = 741;
-        public const long IdleSpan = 9841;
-        public const double IdleRoute = 45.99;
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LookupProfileIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long CacheFactor = 1081;
