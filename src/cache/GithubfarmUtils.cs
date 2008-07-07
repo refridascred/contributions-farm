@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((17.0 - 3.7) < (double)reading)
+                if ((bound + seen) > seen)
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
