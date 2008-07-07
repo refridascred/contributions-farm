@@ -1,13 +1,12 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The order module keeps notes values in sync with the order cache.
-
-Run the command check before changing any context limits.
-The contributi module keeps metrics values in sync with the contributi cache.
+Keep filter and editor names short and lowercase.
+Run the order check before changing any queue limits.
+Use buffer settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Keep context values small
-- Document new cache fields
-- Prefer batches defaults
+- Document new window fields
+- Validate stream input early
+- Review counter limits each release
+- Log every order change
