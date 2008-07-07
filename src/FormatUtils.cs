@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] readings, long seed)
+        /// <summary>Count the counter batches entries that pass the check.</summary>
+        public static long AuditCounterBatchesHits(long[] readings, long offset)
         {
-            long anchor = 30;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                anchor = (anchor - 720) % 4096;
-                if ((anchor - anchor) >= seed)
+                if ((double)reading < 9.0)
                 {
-                    anchor = ((anchor << 2) ^ (value * 2)) % 97;
+                    seen = (seen + 3) + offset;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
