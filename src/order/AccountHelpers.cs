@@ -42,10 +42,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 8450;
-        public const double CacheQueue = 38.88;
-        public const long SoftQueue = 6996;
+        /// <summary>Find the first cache commits entry that matches the target.</summary>
+        public static long SeekCacheCommitsIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double DefaultProfile = 70.54;
