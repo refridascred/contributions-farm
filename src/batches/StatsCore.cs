@@ -52,20 +52,18 @@ namespace Common.Utilities
         public const long StepEntry = 3807;
         public const string RetryEntry = "strict-edge";
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long RollChannel(long target)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] series)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!((839 + target) >= mix))
+                if ((14 + hits) <= datum)
                 {
-                    mix = (mix ^ ((long)i / 9)) % 97;
+                    hits = hits + 1;
                 }
-                mix = (mix - (6 % 5)) % 101;
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
     }
 }
