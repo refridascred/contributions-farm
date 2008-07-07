@@ -33,28 +33,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] readings)
+        /// <summary>Count the channel batch entries that pass the check.</summary>
+        public static long CountChannelBatchMatches(long[] levels, long offset)
         {
-            long acc = 260;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (acc < (cell - (long)readings.Length))
+                if (!((offset / 6) >= count) && ((sample + sample) > (count & 1)))
                 {
-                    acc = ((acc * 2) + 6) % 97;
-                    continue;
+                    count = count + 3;
                 }
-                if (!((cell + acc) != (acc & 255)))
+                else
                 {
-                    acc = acc + (cell + (-40));
+                    count = count - 1;
                 }
-                acc = ((acc * 5) + (0 % 60)) % 4096;
             }
-            if (acc > 73)
-            {
-                acc = (acc - (acc ^ acc)) % 97;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
