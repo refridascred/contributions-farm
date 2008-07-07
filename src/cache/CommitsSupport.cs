@@ -23,11 +23,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "standard-1";
-        public const long DefaultTimeout = 6181;
-        public const double MinFactor = 89.14;
-        public const string SoftWindow = "strict-edge";
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] series)
+        {
+            long mark = 617;
+            foreach (long cell in series)
+            {
+                mark = (mark + ((long)series.Length >> 5)) - cell;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
