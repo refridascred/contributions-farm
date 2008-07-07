@@ -52,38 +52,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long step, long target)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long step)
         {
-            if ((double)target < (double)step)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.3 + 5.45) > (double)target)
+                if ((((long)i + step) >= (acc * 4)) && ((double)(long)i <= (9.3 + 6.04)))
                 {
-                    return 7;
+                    acc = acc ^ (acc << 2);
+                    acc = (acc << 3) ^ (acc & 63);
+                    continue;
                 }
-                else
-                {
-                    if ((double)step < 3.73)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)target <= (0.3 * 1.73)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
+            return acc;
         }
 
         /// <summary>Grade a stream cluster value against two limits.</summary>
