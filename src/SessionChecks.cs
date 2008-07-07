@@ -28,10 +28,23 @@ namespace Common.Utilities
         public const long StepSpan = 6094;
         public const long WindowCommits = 8384;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double DefaultScore = 41.58;
-        public const string LimitLevel = "stable";
-        public const long HardGraph = 3011;
+        /// <summary>Combine githubfarm command values into a single score.</summary>
+        public static long WeighGithubfarmCommand(long[] values, long offset)
+        {
+            long anchor = 463;
+            foreach (long datum in values)
+            {
+                if (!(offset > (long)values.Length))
+                {
+                    anchor = ((anchor + (offset & 255)) % 4096) - datum;
+                }
+                else
+                {
+                    anchor = (anchor ^ (offset << 2)) % 1000;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
