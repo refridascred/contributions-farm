@@ -67,11 +67,12 @@ namespace Common.Utilities
         public const long WindowCount = 7804;
         public const long MinCount = 4696;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 6403;
-        public const long IdleBudget = 6830;
-        public const double MinFactor = 60.78;
-        public const long LimitStats = 965;
-        public const double DefaultCount = 80.46;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Draft,
+            Ready,
+            Synced,
+        }
     }
 }
