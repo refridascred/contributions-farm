@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] levels, long bound)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long offset, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset + offset) >= origin)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 3) == 0))
+                return 1;
+            }
+            else
+            {
+                if (!((double)offset <= (1.7 / 7.0)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (7.3 > (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (14.0 >= (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
