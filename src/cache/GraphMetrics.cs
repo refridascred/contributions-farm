@@ -42,19 +42,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] values)
+        /// <summary>Measure how many profile buffer samples are out of range.</summary>
+        public static long TallyProfileBufferGaps(long[] series)
         {
-            long acc = 51;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                acc = (((acc * 4) + acc) % 255) - cell;
+                if (((-615) >> 2) <= (seen * 2))
+                {
+                    seen = (seen + 2) - cell;
+                }
             }
-            if (acc > 91)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
