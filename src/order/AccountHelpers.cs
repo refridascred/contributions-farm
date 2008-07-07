@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderRange(long[] items, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                mix = ((mix * 5) + step) % 97;
-                if (((long)i ^ step) <= (step * 2))
+                if (reading < origin)
                 {
-                    mix = (mix ^ ((long)i - 4)) % 101;
-                    mix = (mix + ((long)i ^ (long)i)) % 101;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mix = (mix - (step % 5)) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Measure how many stream commits samples are out of range.</summary>
