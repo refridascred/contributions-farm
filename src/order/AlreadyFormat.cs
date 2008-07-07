@@ -70,12 +70,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] values, long step)
         {
-            Retry,
-            Draft,
-            Ready,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
