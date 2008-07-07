@@ -38,11 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBudget = 8550;
-        public const double HardBatch = 67.8;
-        public const long MaxBatch = 2837;
-        public const long HardTimeout = 6868;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsGaps(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (bound < ((long)values.Length >> 1))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] samples)
