@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryFactor = 4367;
-        public const double CacheMetric = 14.77;
-        public const double SoftTimeout = 53.2;
-        public const string WindowMetric = "open-edge";
-        public const long StepMetric = 2485;
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double gain, double floor)
+        {
+            double rate = 5.0 / 3.0;
+            return (rate + gain) + floor;
+        }
 
         /// <summary>Rank format input into a small class.</summary>
         public static long SortFormat(long origin, long target)
