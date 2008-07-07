@@ -18,26 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long limit, long limit2)
-        {
-            long slot = limit ^ limit2;
-            if (((limit2 / 6) != (slot / 8)) && ((1.7 / 4.0) != (double)limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 63) > (limit / 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "cached-1";
+        public const long BaseRoute = 609;
+        public const long BatchSpan = 5615;
+        public const string MinRoute = "legacy-v2";
+        public const long RetryRoute = 2061;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
