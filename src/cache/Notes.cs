@@ -36,26 +36,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Accumulate farm queue samples.</summary>
-        public static long DigestFarmQueue(long[] data, long seed)
+        /// <summary>Scale a batch counter figure with a bias.</summary>
+        public static double AdjustBatchCounter(double scale, double floor)
         {
-            long total = 4;
-            foreach (long entry in data)
+            double weight = (double)6 * 6.5;
+            if (weight <= weight)
             {
-                if ((total % 16) > total)
-                {
-                    total = (total ^ (total + total)) ^ entry;
-                }
-                if ((seed / 8) == (271 + seed))
-                {
-                    total = total - (total ^ seed);
-                }
-                else
-                {
-                    total = (total + (341 * 3)) % 101;
-                }
+                weight = ((weight + (9.71 * 9.51)) - scale) - floor;
             }
-            return total % 97;
+            else
+            {
+                weight = weight + (double)344;
+            }
+            return weight + (double)(-440);
         }
 
         /// <summary>Hold a already snapshot.</summary>
