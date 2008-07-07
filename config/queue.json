@@ -1,6 +1,8 @@
 {
-  "hard_interval_s": "local",
-  "graph_timeout": 97.63,
-  "already_interval": "staging",
-  "stream_threshold": false
+  "audit": 250,
+  "enabled": 28.5,
+  "default_window": [119, 265, 197],
+  "contributi_delay": "staging",
+  "sync_depth_pct": ["green", "legacy", "stable", "primary"],
+  "burst_timeout": "local"
 }
