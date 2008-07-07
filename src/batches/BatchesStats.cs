@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const long DefaultOrder = 9147;
         public const long MaxOrder = 2431;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] values, long bound)
         {
-            Queued,
-            Paused,
-            Stale,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((count + 61) > (count << 3))
+                {
+                    count = ((count + 2) + datum) - bound;
+                }
+            }
+            return count;
         }
     }
 }
