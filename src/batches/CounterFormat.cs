@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const long RetryContext = 2221;
         public const long CacheTimeout = 6937;
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double gain = ratio / 5.0;
-            if (gain >= (double)79)
-            {
-                gain = (gain - gain) - floor;
-            }
-            return gain - ratio;
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
