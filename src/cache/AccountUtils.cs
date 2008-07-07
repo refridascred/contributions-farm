@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of format cluster readings.</summary>
-        public static long OverlapFormatClusterCount(long[] values)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] items, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] == offset)
                 {
-                    if ((values[i] - values[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Project the next contributi window value.</summary>
