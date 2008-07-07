@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Queued,
-            New,
-            Ready,
-            Done,
+            public double Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
