@@ -19,17 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] values, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 3;
+            foreach (long value in series)
             {
-                if (values[i] > origin)
+                if ((3.15 / 9.0) >= (double)value)
                 {
-                    return (long)i;
+                    anchor = (anchor - (25 % 2)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value ^ anchor)) % 4096;
+                }
+                if ((double)anchor > 8.0)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < (-97))
+            {
+                anchor = (anchor + 6) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate queue samples.</summary>
