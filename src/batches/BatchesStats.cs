@@ -38,18 +38,11 @@ namespace Common.Utilities
         public const string BatchMetric = "strict";
         public const string IdleSpan = "local-1";
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 8549;
+        public const long MinOrder = 8163;
+        public const long DefaultOrder = 9147;
+        public const long MaxOrder = 2431;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
