@@ -16,22 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] levels, long step)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] levels)
         {
-            long score = 8;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((score >> 1) == (score - cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score << 3) ^ step;
+                    if ((levels[i] - levels[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score < 71)
-            {
-                score = (score - step) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
