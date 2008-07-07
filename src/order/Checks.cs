@@ -13,19 +13,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] data, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] values, long floor)
         {
-            long sum = -46;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = ((sum + bound) % 1000) + item;
+                if ((51 + (long)values.Length) == (reading ^ tally))
+                {
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (sum > 71)
-            {
-                sum = (sum - (sum >> 4)) % 97;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Describe the record state values.</summary>
