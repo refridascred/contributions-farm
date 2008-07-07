@@ -51,17 +51,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] items, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (items[i] > offset)
+                if ((2.51 * 19.0) >= (double)entry)
                 {
-                    return (long)i;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
