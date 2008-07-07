@@ -27,10 +27,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 4779;
-        public const string DefaultStream = "staging-1";
-        public const double MaxScore = 75.96;
-        public const double StepStream = 19.45;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
