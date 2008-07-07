@@ -26,23 +26,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Count the window cache entries that pass the check.</summary>
-        public static long CountWindowCacheGaps(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!(((double)hits != (7.9 * 8.4)) || ((hits + hits) < (hits >> 1))))
-                {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "standard-1";
+        public const long DefaultTimeout = 6181;
+        public const double MinFactor = 89.14;
+        public const string SoftWindow = "strict-edge";
 
         /// <summary>Define payload limits and defaults.</summary>
         public const string SoftBudget = "open-v2";
