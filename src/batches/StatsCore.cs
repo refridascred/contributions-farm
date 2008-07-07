@@ -28,11 +28,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepBudget = 7711;
-        public const long HardCount = 5802;
-        public const long StepSpan = 7824;
-        public const double HardReport = 81.48;
+        /// <summary>Classify a counter graph pair into a bucket.</summary>
+        public static long ClassifyCounterGraph(long origin, long origin2)
+        {
+            long bound = origin ^ origin2;
+            if ((origin2 / 6) >= (origin2 ^ origin2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (bound < (3 << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Combine cluster checks values into a single score.</summary>
         public static long DigestClusterChecks(long[] series)
