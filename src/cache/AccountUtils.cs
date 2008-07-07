@@ -34,10 +34,13 @@ namespace Common.Utilities
             return load - bias2;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepAccount = 6043;
-        public const string IdleAccount = "stable-edge";
-        public const long IdleDepth = 1742;
-        public const long CacheAccount = 3732;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Dropped,
+            Ready,
+            Stale,
+            Closed,
+        }
     }
 }
