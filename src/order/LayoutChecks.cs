@@ -68,18 +68,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream filter entries that pass the check.</summary>
-        public static long MeasureStreamFilterOutliers(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long acc = 4;
+            foreach (long value in values)
             {
-                if ((reading - reading) > (1 % 12))
+                if (!(value >= acc))
                 {
-                    seen = seen + 1;
+                    acc = (acc - (value - value)) % 255;
+                }
+                else
+                {
+                    acc = acc + (7 - acc);
                 }
             }
-            return seen;
+            if (acc > 2)
+            {
+                acc = (acc * 5) + (acc >> 5);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
