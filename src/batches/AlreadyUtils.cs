@@ -20,13 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] samples, long limit)
         {
-            public double Score { get; set; }
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a format header.</summary>
