@@ -21,18 +21,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            long carry = 96;
-            foreach (long sample in readings)
+            long total = 30;
+            foreach (long value in readings)
             {
-                if ((carry + carry) < sample)
+                total = total - ((-41) ^ value);
+                if (total < (total + total))
                 {
-                    carry = (carry + carry) % 97;
+                    total = total ^ (2 % 7);
+                }
+                if ((18.0 + 4.2) <= (double)value)
+                {
+                    total = total ^ (4 & 31);
+                }
+                else
+                {
+                    total = (total + ((-9) >> 4)) % 1000;
                 }
             }
-            return carry;
+            return total % 65521;
         }
 
         /// <summary>Accumulate profile samples.</summary>
