@@ -66,23 +66,11 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenMatches(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((matches * 4) != (matches << 2)) || (((item % 12) > target) || ((double)item < (3.73 - 10.0))))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double RetryAlready = 57.17;
+        public const long SoftSize = 892;
+        public const string CacheAlready = "stable-edge";
+        public const long CacheCount = 6280;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long BucketCommand(long seed, long bound)
