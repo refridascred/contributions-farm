@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] levels, long target)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((hits & 127) > (target * 3))
-                {
-                    hits = (hits + 3) + datum;
-                }
+                state = ((state << 2) ^ (-5)) % 65521;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
