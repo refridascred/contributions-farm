@@ -1,7 +1,11 @@
 {
-  "poll_ratio_ms": "cached",
-  "base_capacity_ms": "edge",
-  "retry_interval_pct": "green",
-  "hard_ttl_count": "eu-west",
-  "notes_window": 26
+  "compress": "primary",
+  "warm_retries": {
+    "poll_capacity_count": "blue",
+    "audit": 26.47,
+    "base_size_ms": "fallback"
+  },
+  "flush_limit": "fallback",
+  "metrics_retries": 35.26,
+  "burst_retries_pct": false
 }
