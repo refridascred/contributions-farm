@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a format cache reading by value.</summary>
-        public static long LocateFormatCacheIndex(long[] data, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 515;
+            foreach (long datum in series)
             {
-                if (data[i] <= offset)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 3) ^ carry) % 101) ^ datum;
+                carry = (carry + (carry * 3)) % 101;
             }
-            return -1;
+            if (carry < 92)
+            {
+                carry = (carry << 2) ^ (carry << 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
