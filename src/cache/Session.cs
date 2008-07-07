@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public string Count { get; set; } = "";
-            public bool Region { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 3850;
+        public const string BurstCommand = "primary";
+        public const long BatchCommand = 7011;
+        public const long HardSize = 7499;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long TotalContext(long[] levels, long bound)
