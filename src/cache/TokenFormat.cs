@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            Pending,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
