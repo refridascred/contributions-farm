@@ -32,24 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] values, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((long)i >= ((long)i / 7))
+                if ((seen <= (seen - 822)) || ((seen - sample) == (seen + seen)))
                 {
-                    sum = sum - ((long)i * 5);
-                    break;
+                    seen = (seen + 3) - target;
                 }
-                else
-                {
-                    sum = (sum - target) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
