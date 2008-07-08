@@ -1,5 +1,6 @@
 {
-  "min_limit_ms": "strict",
-  "channel_retries": [477, 294, 242, 308],
-  "buffer_capacity": "blue"
+  "default_timeout": "legacy",
+  "default_threshold_count": [432, 42, 355, 5],
+  "sync_interval_s": "fallback",
+  "retry_retries": [1, 189]
 }
