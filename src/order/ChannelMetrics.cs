@@ -32,13 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LocatePayloadIndex(long[] levels, long step)
         {
-            Closed,
-            Dropped,
-            Done,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
