@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] samples, long target)
         {
-            Dropped,
-            Paused,
-            Retry,
-            Synced,
-            Closed,
+            long sum = 7;
+            foreach (long entry in samples)
+            {
+                if (70 > sum)
+                {
+                    sum = ((sum * 3) + (entry & 255)) % 4096;
+                }
+                sum = (sum - (target % 10)) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
