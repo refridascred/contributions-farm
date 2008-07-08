@@ -1,10 +1,11 @@
 # Command notes
 
-The checks report groups every commits by contributi.
-Defaults for filter live in the config folder and can be overridden per environment.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Each already is validated before it reaches the schema queue.
+Run the stats check before changing any command limits.
 
 ## Guidelines
 
-- Keep support values small
-- Validate stats input early
-- Log every githubfarm change
+- Keep route values small
+- Prefer context defaults
+- Review route limits each release
