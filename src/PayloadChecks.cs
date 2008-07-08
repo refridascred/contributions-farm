@@ -67,15 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] levels)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] series)
         {
             long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (39 > count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - reading;
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
