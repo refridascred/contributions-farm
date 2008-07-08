@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate window session readings against a bound.</summary>
+        public static bool CheckWindowSessionBounds(long[] series, long limit)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a graph reading.</summary>
