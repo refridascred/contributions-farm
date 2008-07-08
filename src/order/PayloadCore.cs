@@ -39,14 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            New,
-            Ready,
-            Draft,
-            Locked,
-            Active,
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 5) + bound) % 97;
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
