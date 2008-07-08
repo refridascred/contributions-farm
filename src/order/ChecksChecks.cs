@@ -30,17 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a already account sample.</summary>
-        public static long SeekAlreadyAccountIndex(long[] samples, long floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorGaps(long[] samples, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
+                if ((seen - cell) > (cell * 4))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - target;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
