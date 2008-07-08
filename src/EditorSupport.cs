@@ -42,23 +42,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((count - seed) > count) && ((seed + count) == (80 + (-656))))
-                {
-                    count = (count + 1) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 3095;
+        public const long MaxLayout = 5299;
+        public const long SoftRatio = 7533;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryMatches(long[] values, long floor)
