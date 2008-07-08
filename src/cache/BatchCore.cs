@@ -13,13 +13,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long seed)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches phase values.</summary>
