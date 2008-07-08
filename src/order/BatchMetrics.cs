@@ -31,16 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema buffer samples.</summary>
-        public static long ScoreSchemaBuffer(long[] readings, long limit)
-        {
-            long mix = 82;
-            foreach (long sample in readings)
-            {
-                mix = (((mix * 5) + ((long)readings.Length ^ limit)) % 101) - sample;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double DefaultDepth = 36.92;
+        public const string RetryWidth = "latest";
+        public const double BurstGithubfarm = 41.39;
+        public const string WindowGithubfarm = "fallback-1";
+        public const long SoftGithubfarm = 4822;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BurstFactor = 2723;
