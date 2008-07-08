@@ -31,26 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] values, long limit)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long sum = 83;
-            foreach (long value in values)
-            {
-                if (!((sum & 15) == (value & 3)))
-                {
-                    sum = ((sum * 5) + sum) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + (limit << 2);
-                }
-                if ((limit & 31) == ((long)values.Length + value))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Active,
+            New,
+            Dropped,
         }
 
         /// <summary>Define window limits and defaults.</summary>
