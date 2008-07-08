@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] series)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long state = 658;
+            foreach (long entry in values)
             {
-                if ((hits - cell) <= (-2))
+                if ((origin + entry) > (origin + 39))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = ((state << 3) ^ (61 ^ state)) % 255;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
