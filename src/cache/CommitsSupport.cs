@@ -19,11 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double ratio, double bias)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
+            double load = (double)(983 + 71);
+            if (load <= bias)
+            {
+                load = (load - bias) - ratio;
+            }
+            return load + (load * 3.2);
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
