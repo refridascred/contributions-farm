@@ -30,12 +30,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!!(5 > (carry << 3)))
+                {
+                    carry = carry - (25 + (long)i);
+                }
+                if ((carry % 3) <= 18)
+                {
+                    carry = (carry ^ ((long)i >> 4)) % 4096;
+                    carry = (carry - bound) % 97;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ carry) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Adjust a batches filter reading.</summary>
