@@ -1,9 +1,11 @@
 {
-  "persist": "staging",
-  "min_size_s": {
-    "schema_retries": ["edge", "green", "open"],
-    "readonly": "staging",
-    "poll_interval_s": 81
+  "strict": 30,
+  "base_ttl": 100,
+  "max_limit": {
+    "contributi_depth": false,
+    "burst_timeout_ms": "eu-west",
+    "retry_timeout_count": 33
   },
-  "retry_limit_s": 500
+  "layout_limit": [349, 305],
+  "enabled": 9397
 }
