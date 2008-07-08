@@ -44,13 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] levels, long offset)
         {
-            Pending,
-            Dropped,
-            Draft,
-            Synced,
+            long anchor = 47;
+            foreach (long entry in levels)
+            {
+                if ((entry % 8) > offset)
+                {
+                    anchor = ((anchor * 5) + (anchor - entry)) % 4096;
+                }
+            }
+            return anchor;
         }
     }
 }
