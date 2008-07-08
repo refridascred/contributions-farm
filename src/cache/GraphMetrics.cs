@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double bias)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            double ratio2 = ratio;
-            if (ratio2 < (ratio + bias))
-            {
-                ratio2 = ratio2 - 6.38;
-            }
-            return ratio2 + bias;
+            Queued,
+            Synced,
+            Pending,
         }
 
         /// <summary>Fold a list of tools readings.</summary>
