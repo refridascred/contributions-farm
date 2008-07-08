@@ -24,13 +24,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series)
         {
-            public string Mode { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Score { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits % 7) >= ((long)series.Length + entry))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
