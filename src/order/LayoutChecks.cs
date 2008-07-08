@@ -28,15 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] samples)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long carry = 7;
-            foreach (long value in samples)
-            {
-                carry = (carry + value) % 1000;
-            }
-            return carry;
+            Locked,
+            Pending,
+            Idle,
         }
 
         /// <summary>Describe the support mode values.</summary>
