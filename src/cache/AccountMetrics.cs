@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] items)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long sum = 9;
+            foreach (long entry in readings)
             {
-                if (tally > (tally ^ cell))
+                if ((sum / 2) == (sum + sum))
                 {
-                    tally = tally + 1;
+                    sum = ((sum ^ (sum & 15)) % 255) - entry;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum ^ sum;
+                }
+                if ((long)readings.Length <= sum)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum < 874)
+            {
+                sum = sum + sum;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
