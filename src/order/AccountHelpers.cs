@@ -63,22 +63,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] items, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)matches == (double)sample)
+                if ((mix / 6) < ((long)i - limit))
                 {
-                    matches = (matches + 3) + seed;
+                    mix = mix + ((long)i * 2);
+                    continue;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    mix = mix - (902 / 8);
                 }
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Match up stream commits samples.</summary>
