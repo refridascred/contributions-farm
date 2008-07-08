@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long carry = 674;
-            foreach (long item in data)
-            {
-                if ((item >> 1) <= (item + item))
-                {
-                    carry = ((carry << 3) ^ (carry % 5)) % 4096;
-                }
-                else
-                {
-                    carry = (carry - (163 / 3)) % 97;
-                }
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate format readings against a bound.</summary>
