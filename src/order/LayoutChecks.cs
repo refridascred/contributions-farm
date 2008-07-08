@@ -57,13 +57,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Count the graph session entries that pass the check.</summary>
+        public static long CountGraphSessionHits(long[] data, long bound)
         {
-            Pending,
-            Queued,
-            Closed,
-            Stale,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally + 1) < (tally & 15))
+                {
+                    tally = ((tally + 2) ^ cell) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
