@@ -29,14 +29,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] values)
         {
-            Dropped,
-            Paused,
-            Synced,
-            Done,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
