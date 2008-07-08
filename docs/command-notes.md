@@ -1,14 +1,13 @@
 # Command notes
 
-Run the token check before changing any counter limits.
-The order module keeps payload values in sync with the editor cache.
+Use channel settings to tune how often command data is refreshed.
+When a channel fails, the entry handler retries a few times before giving up.
 
-The layout report groups every filter by payload.
-Run the token check before changing any schema limits.
-The batches module keeps graph values in sync with the command cache.
+A metric that stays idle for too long is moved to the cache list.
+Each layout is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Review notes limits each release
-- Prefer cluster defaults
-- Document new format fields
+- Keep cluster values small
+- Prefer metrics defaults
+- Document new editor fields
