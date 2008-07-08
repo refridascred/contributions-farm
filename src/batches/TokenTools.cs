@@ -15,18 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] readings)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((9.93 + 7.19) < (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
