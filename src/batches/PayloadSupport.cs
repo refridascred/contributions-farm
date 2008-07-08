@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the token profile entries that pass the check.</summary>
-        public static long MeasureTokenProfileHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (((double)datum != (4.25 + 1.9)) || ((datum > (datum + datum)) || ((matches * 4) < (matches + matches))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 9306;
+        public const double LimitSize = 30.17;
+        public const double RetryFormat = 67.76;
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
