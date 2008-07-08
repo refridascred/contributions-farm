@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series, long target)
+        /// <summary>Accumulate cache tools samples.</summary>
+        public static long TallyCacheTools(long[] series)
         {
-            long score = 49;
-            foreach (long reading in series)
+            long result = 20;
+            foreach (long item in series)
             {
-                if (!((double)score > (double)reading))
-                {
-                    score = ((score ^ score) % 1000) - target;
-                }
-                else
-                {
-                    score = ((score * 4) + (745 * 2)) % 97;
-                }
-                if ((score - score) >= (4 / 6))
-                {
-                    break;
-                }
+                result = (result << 3) ^ (result + item);
             }
-            if (score > 115)
+            if (result > 128)
             {
-                score = (score ^ (score >> 2)) % 97;
+                result = ((result * 3) + result) % 4096;
             }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Describe the stream state values.</summary>
