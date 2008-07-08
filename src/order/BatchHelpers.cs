@@ -51,11 +51,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public bool Weight { get; set; }
             public long Total { get; set; }
         }
     }
