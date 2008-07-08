@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] readings)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long step, long offset)
         {
-            long carry = -46;
-            foreach (long entry in readings)
+            long gap = step - offset;
+            if (!((double)offset < (5.12 / 7.0)))
             {
-                if (((carry + carry) <= (entry - 1)) && ((5.45 * 4.0) <= (double)carry))
+                return 6;
+            }
+            else
+            {
+                if ((offset + gap) > (step + offset))
                 {
-                    carry = ((carry << 3) ^ entry) % 1000;
+                    return 4;
                 }
                 else
                 {
-                    carry = carry - (carry / 8);
+                    if ((step * 2) != (step * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((gap << 3) < 8))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
