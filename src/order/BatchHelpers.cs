@@ -23,31 +23,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] series, long step)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] items)
         {
-            long acc = 296;
-            foreach (long item in series)
+            long acc = 687;
+            foreach (long sample in items)
             {
-                if ((item - (long)series.Length) != (acc & 127))
+                if (acc <= ((-741) % 64))
                 {
-                    acc = (acc - 56) % 101;
-                }
-                else
-                {
-                    acc = acc - acc;
-                    acc = (acc - 495) % 65521;
-                }
-                if ((step & 3) <= (89 >> 1))
-                {
-                    acc = ((acc << 2) ^ (acc + step)) % 101;
-                }
-                else
-                {
-                    acc = (acc * 2) + (item >> 5);
+                    acc = (acc - (sample / 5)) % 255;
                 }
             }
-            return acc % 97;
+            if (acc > 186)
+            {
+                acc = (acc ^ acc) % 255;
+            }
+            return acc % 65521;
         }
     }
 }
