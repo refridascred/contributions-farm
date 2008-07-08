@@ -49,15 +49,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long state = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
