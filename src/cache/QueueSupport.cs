@@ -30,12 +30,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public double Score { get; set; }
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
