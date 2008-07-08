@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] series)
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            long acc = 18;
+            foreach (long sample in series)
+            {
+                if ((0 > acc) || ((sample >> 5) < (sample >> 2)))
+                {
+                    acc = (acc << 3) ^ (8 & 1);
+                }
+            }
+            if (acc < 0)
+            {
+                acc = ((acc << 3) ^ acc) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the command class values.</summary>
