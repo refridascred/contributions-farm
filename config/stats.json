@@ -1,5 +1,5 @@
 {
-  "retry_ratio": 13.81,
-  "burst_ttl_s": true,
-  "persist": 67.86
+  "dry_run": "legacy",
+  "readonly": [459, 430],
+  "cache_limit_count": 58.37
 }
