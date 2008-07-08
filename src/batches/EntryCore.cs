@@ -46,22 +46,19 @@ namespace Common.Utilities
         public const string HardScore = "fallback-v2";
         public const double HardWidth = 46.37;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long total = 689;
+            foreach (long entry in levels)
             {
-                if ((matches / 2) <= reading)
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (((total << 3) ^ (6 - origin)) % 101) ^ entry;
             }
-            return matches;
+            if (total < (-80))
+            {
+                total = total - (total & 7);
+            }
+            return total % 97;
         }
     }
 }
