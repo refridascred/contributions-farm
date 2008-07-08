@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every commits metric entry stays within the limit.</summary>
+        public static bool CheckCommitsMetricLimits(long[] data, long target)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
