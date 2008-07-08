@@ -71,31 +71,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long step, long step2)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] values, long origin)
         {
-            if (step < (step >> 4))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((472 << 2) < (step % 5))
+                if ((((entry - entry) != (entry + seen)) && ((double)origin == (4.54 / 2.0))) && ((17.0 - 20.0) < (double)origin))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= step2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
