@@ -15,18 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((count <= (value * 4)) && !((value >> 3) > (count + value)))
+                if (cell < floor)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the filter phase values.</summary>
