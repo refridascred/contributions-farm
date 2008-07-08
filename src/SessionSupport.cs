@@ -20,38 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long bound, long step)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] items, long seed)
         {
-            if ((bound & 255) >= (bound >> 1))
+            long sum = 183;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.0 + 9.0) < (double)step)
+                if ((double)seed < (double)sum)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - step) >= (bound % 12))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(240 >= (bound * 2)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = (((sum << 2) ^ (seed >> 1)) % 97) ^ sample;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
