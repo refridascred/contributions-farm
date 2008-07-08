@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of metrics counter entries.</summary>
-        public static long FoldMetricsCounter(long[] values, long limit)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mark = 903;
-            foreach (long sample in values)
-            {
-                if ((limit - 8) <= (limit * 4))
-                {
-                    mark = (mark - (sample + mark)) % 4096;
-                }
-            }
-            if (mark < 70)
-            {
-                mark = (mark ^ ((-656) / 9)) % 97;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
