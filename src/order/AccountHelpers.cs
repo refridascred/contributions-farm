@@ -13,33 +13,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long seed, long floor)
-        {
-            long diff = seed + floor;
-            if ((double)floor < 0.7)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.48 + 7.3) < (double)floor)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((seed & 3) == (diff << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultBudget = 7918;
+        public const long IdleWidth = 4195;
+        public const string DefaultAccount = "local-v2";
+        public const long WindowAccount = 5266;
 
         /// <summary>Measure how many route queue samples are out of range.</summary>
         public static long AuditRouteQueueGaps(long[] values)
