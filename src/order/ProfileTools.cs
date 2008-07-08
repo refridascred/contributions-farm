@@ -51,12 +51,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Grade a command graph value against two limits.</summary>
+        public static long SortCommandGraph(long target, long step)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            if ((double)target == (6.0 * 6.7))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step > 11.0)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
