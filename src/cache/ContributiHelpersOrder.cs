@@ -35,22 +35,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the commits metrics entries that pass the check.</summary>
-        public static long MeasureCommitsMetricsHits(long[] readings)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                if ((double)tally != (2.04 + 12.0))
+                if (datum >= limit)
                 {
-                    tally = (tally + 3) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
