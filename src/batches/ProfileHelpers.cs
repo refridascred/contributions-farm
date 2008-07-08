@@ -34,33 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long offset, long offset2)
-        {
-            long bound = offset - offset2;
-            if ((double)offset > (14.0 / 3.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset2 + offset2) <= (77 >> 5)) && (offset2 > (125 / 3)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound * 5) == (offset & 255))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "cached";
+        public const double StepDepth = 49.51;
+        public const long SoftCount = 7301;
+        public const long MinBatches = 6518;
 
         /// <summary>Count the account schema entries that pass the check.</summary>
         public static long TallyAccountSchemaMatches(long[] series)
