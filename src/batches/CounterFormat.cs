@@ -43,11 +43,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Look up the position of a farm cluster sample.</summary>
+        public static long SeekFarmClusterIndex(long[] readings, long offset)
         {
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
