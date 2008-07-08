@@ -67,11 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] levels)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (39 > count)
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
     }
 }
