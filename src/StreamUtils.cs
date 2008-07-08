@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every payload command entry stays within the limit.</summary>
-        public static bool ValidatePayloadCommandRange(long[] series, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long score = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                score = (score ^ target) % 101;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Project the next record value.</summary>
