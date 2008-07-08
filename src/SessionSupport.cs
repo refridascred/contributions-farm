@@ -25,15 +25,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double scale, double offset)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double weight, double span)
         {
-            double ratio = offset;
-            for (int i = 0; i < 6; i++)
+            double scale = weight;
+            if (scale > 7.0)
             {
-                ratio = ((ratio - (double)399) + (double)(long)i) + scale;
+                scale = scale - weight;
             }
-            return ratio - (double)4;
+            else
+            {
+                scale = scale - (span - 5.0);
+            }
+            return scale - (double)56;
         }
     }
 }
