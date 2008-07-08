@@ -57,18 +57,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the graph session entries that pass the check.</summary>
-        public static long CountGraphSessionHits(long[] data, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((tally + 1) < (tally & 15))
-                {
-                    tally = ((tally + 2) ^ cell) - bound;
-                }
-            }
-            return tally;
+            Locked,
+            Done,
+            Pending,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
