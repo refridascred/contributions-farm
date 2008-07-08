@@ -34,18 +34,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] data, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long origin, long origin2)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            if ((5.7 / 5.0) < (double)origin2)
             {
-                if (seen > 18)
+                return 1;
+            }
+            else
+            {
+                if (!(528 > origin2))
                 {
-                    seen = ((seen + 2) + cell) + step;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + origin2) >= (origin2 + 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
