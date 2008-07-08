@@ -37,21 +37,13 @@ namespace Common.Utilities
         public const double StepNotes = 98.95;
         public const long DefaultScore = 9601;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
