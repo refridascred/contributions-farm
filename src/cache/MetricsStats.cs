@@ -20,12 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Count the token schema entries that pass the check.</summary>
+        public static long TallyTokenSchemaGaps(long[] levels)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((6.19 * 9.0) > (double)tally)
+                {
+                    tally = (tally + 2) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
