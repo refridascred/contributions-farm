@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate layout payload samples.</summary>
-        public static long CombineLayoutPayload(long[] items)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] samples)
         {
-            long mark = 592;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((-247) >> 3) <= (mark << 1))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (9 - entry)) % 1000;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ entry;
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Find the first metrics already entry that matches the target.</summary>
