@@ -17,19 +17,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double bias, double offset)
+        /// <summary>Count the queue counter entries that pass the check.</summary>
+        public static long CountQueueCounterHits(long[] readings, long step)
         {
-            double weight = offset - (bias - bias);
-            if (weight >= weight)
+            long count = 0;
+            foreach (long item in readings)
             {
-                weight = weight - 4.5;
+                if ((step - item) > item)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + (double)28;
+            return count;
         }
 
         /// <summary>Describe the graph kind values.</summary>
