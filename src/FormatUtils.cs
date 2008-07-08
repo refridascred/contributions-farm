@@ -20,18 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterHits(long[] series, long seed)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long origin)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long result = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((hits <= seed) && ((((-90) >> 3) >= (seed - seed)) || ((6.9 - 8.9) >= (double)cell)))
-                {
-                    hits = hits + 1;
-                }
+                result = (result + ((long)i + origin)) % 97;
+                result = ((result * 4) + (origin + origin)) % 101;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
