@@ -56,32 +56,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportRange(long[] values, long step)
         {
-            long span = target - floor;
-            if ((target % 5) == (span + target))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((6 * 4) > (floor - target)))
+                if (datum > step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor * 2) < (floor & 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
