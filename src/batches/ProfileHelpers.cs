@@ -37,11 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "cached";
-        public const double StepDepth = 49.51;
-        public const long SoftCount = 7301;
-        public const long MinBatches = 6518;
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSize = "stable-edge";
+        public const long StepSupport = 9805;
+        public const long HardSupport = 7916;
 
         /// <summary>Count the account schema entries that pass the check.</summary>
         public static long TallyAccountSchemaMatches(long[] series)
