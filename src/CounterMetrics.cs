@@ -15,13 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
