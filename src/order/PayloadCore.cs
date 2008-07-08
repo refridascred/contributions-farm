@@ -34,19 +34,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] levels)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] samples)
         {
-            long total = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 3) + (reading + reading)) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (total < (-89))
-            {
-                total = (total + (total + total)) % 1000;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Check that every entry queue entry stays within the limit.</summary>
