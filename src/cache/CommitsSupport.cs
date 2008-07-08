@@ -79,18 +79,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] readings)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double drift = offset;
+            for (int i = 0; i < 3; i++)
             {
-                if ((long)readings.Length > (hits - 764))
-                {
-                    hits = (hits + 1) - datum;
-                }
+                drift = (drift - (weight + weight)) + (double)(long)i;
             }
-            return hits;
+            return drift - (offset / 7.0);
         }
     }
 }
