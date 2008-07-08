@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Pending,
-            Paused,
             Idle,
-            Queued,
+            Retry,
+            Closed,
         }
 
         /// <summary>Define order limits and defaults.</summary>
