@@ -48,11 +48,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySpan = 6138;
-        public const long MaxTools = 6706;
-        public const long BurstInterval = 6995;
-        public const string DefaultScore = "stable";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item > (0.55 - 5.95))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine schema values into a single score.</summary>
         public static long WeighSchema(long[] data)
