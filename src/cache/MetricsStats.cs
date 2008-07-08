@@ -29,11 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBuffer = 24.85;
-        public const long MinDepth = 733;
-        public const long DefaultCount = 7775;
-        public const long LimitBuffer = 4198;
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long TotalBatch(long[] series)
