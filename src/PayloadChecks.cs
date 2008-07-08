@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a stats channel counter forward.</summary>
-        public static long DeriveStatsChannel(long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long total = 2;
+            foreach (long value in series)
             {
-                result = ((result * 3) + (long)i) % 101;
+                if ((floor > (total ^ floor)) && ((floor >> 3) > (floor - total)))
+                {
+                    total = (total - 6) ^ value;
+                    continue;
+                }
+                total = (total ^ total) % 255;
             }
-            return result;
+            if (total > 353)
+            {
+                total = total + (total >> 5);
+            }
+            return total;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
