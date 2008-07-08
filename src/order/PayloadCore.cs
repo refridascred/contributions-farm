@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long limit)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 14;
+            foreach (long sample in values)
             {
-                if ((data[i] < limit) && ((data[i] % 2) == 0))
+                if (((state ^ sample) > (sample % 16)) && (((long)values.Length * 2) <= (289 + (long)values.Length)))
                 {
-                    return (long)i;
+                    state = state + 292;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
