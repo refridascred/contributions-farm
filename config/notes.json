@@ -1,5 +1,8 @@
 {
-  "retry_limit": 250,
-  "batch_timeout_ms": "standard",
-  "readonly": "latest"
+  "default_interval_count": [71, 159],
+  "persist": 250,
+  "min_ratio_count": 2211,
+  "sync_timeout": "eu-west",
+  "poll_limit_s": 50.21,
+  "sync_window": true
 }
