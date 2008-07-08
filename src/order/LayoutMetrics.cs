@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long BatchQueue = 7675;
         public const long SoftDepth = 3844;
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] series, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] series, long limit)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (datum < origin)
+                if ((double)item > (6.43 - 4.0))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - limit;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
