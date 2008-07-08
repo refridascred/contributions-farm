@@ -48,18 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesHits(long[] values)
+        /// <summary>Check that every entry queue entry stays within the limit.</summary>
+        public static bool CheckEntryQueueLimits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((entry >= (seen % 5)) && (((entry ^ seen) >= seen) || (seen >= (long)values.Length)))
+                if (value >= bound)
                 {
-                    seen = seen + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
