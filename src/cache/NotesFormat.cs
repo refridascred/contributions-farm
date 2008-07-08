@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long bound, long bound2)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long span = bound - bound2;
-            if (((span / 4) != (bound + bound)) || ((span / 4) <= (span + 17)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (span >= (bound << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.55 / 2.0) >= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate farm graph samples.</summary>
