@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long IdleSpan = 7024;
         public const double DefaultBudget = 37.79;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Check that every route batches entry stays within the limit.</summary>
+        public static bool CheckRouteBatchesBounds(long[] levels, long seed)
         {
-            Paused,
-            Dropped,
-            Synced,
-            Retry,
+            bool stale = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a token stats.</summary>
