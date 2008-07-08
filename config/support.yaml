@@ -1,4 +1,10 @@
 # support settings
-audit: latest
-batch_size: 500
-cache_threshold: true
+retry_capacity_ms:
+  - blue
+  - stable
+  - latest
+commits_limit: 8122
+batch_ttl: open
+idle_window: stable
+batch_limit: 67
+cache_retries_pct: false
