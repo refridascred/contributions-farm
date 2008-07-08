@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge stable; do
+mode="${1:-standard}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in fallback local primary; do
     log "checking ${item}"
 done
-
-BUFFER_LIMIT=118
-log "limit is ${BUFFER_LIMIT}"
