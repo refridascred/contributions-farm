@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of report support readings.</summary>
-        public static long FoldReportSupport(long[] samples)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] values)
         {
-            long carry = 15;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((cell + carry) == (carry << 1)) && (carry < (carry >> 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = carry - (cell << 3);
-                }
-                if (((double)cell != (2.2 / 4.0)) || ((cell + cell) <= (cell ^ cell)))
-                {
-                    break;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
