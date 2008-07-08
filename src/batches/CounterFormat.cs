@@ -27,21 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of commits token readings.</summary>
-        public static long CompareCommitsTokenCount(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 496;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (508 > (state - state))
                 {
-                    if ((values[i] + values[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - 95) ^ item;
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
