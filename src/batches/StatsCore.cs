@@ -35,15 +35,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsGaps(long[] data, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] data, long limit)
         {
             long hits = 0;
-            foreach (long cell in data)
+            foreach (long datum in data)
             {
-                if (((hits << 1) >= (hits + 13)) || ((920 / 7) > (hits + offset)))
+                if ((limit + hits) > (datum + datum))
                 {
-                    hits = (hits + 2) + cell;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
