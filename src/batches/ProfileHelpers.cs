@@ -59,17 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] items, long offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > offset) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the tools state values.</summary>
