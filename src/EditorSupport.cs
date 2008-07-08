@@ -33,18 +33,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long carry = 6;
+            foreach (long item in items)
             {
-                if ((long)levels.Length <= (datum / 8))
+                if ((carry / 6) != (carry << 2))
                 {
-                    seen = seen + 1;
+                    carry = carry + (carry + (long)items.Length);
+                }
+                if (((24 - carry) >= item) && ((carry ^ carry) >= 513))
+                {
+                    carry = carry ^ (carry + item);
+                }
+                if (((365 + carry) >= carry) && ((double)item != (2.7 - 4.29)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (carry < (-566))
+            {
+                carry = (carry - (291 - (-7))) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
