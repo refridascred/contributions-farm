@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of context stream readings.</summary>
-        public static long WeighContextStream(long[] values, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            long mix = -1;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((8.9 - 7.0) > (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - (offset & 7);
+                    if ((series[i] - series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > 35)
-            {
-                mix = (mix ^ offset) % 97;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Accumulate context samples.</summary>
