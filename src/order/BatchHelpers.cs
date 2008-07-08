@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long floor)
+        /// <summary>Audit cluster cache readings against a rule.</summary>
+        public static long CountClusterCacheGaps(long[] items, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if (((-73) + step) >= step)
+                {
+                    matches = (matches + 3) ^ reading;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
