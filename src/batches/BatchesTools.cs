@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Classify a buffer support pair into a bucket.</summary>
+        public static long BucketBufferSupport(long offset, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (9 < (origin >> 4))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (!((offset + offset) < (offset >> 5)))
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
