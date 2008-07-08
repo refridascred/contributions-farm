@@ -16,18 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] items, long target)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((((long)items.Length + reading) > (target + target)) && ((double)seen >= (16.0 - 8.35)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
