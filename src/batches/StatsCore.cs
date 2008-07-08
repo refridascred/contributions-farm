@@ -75,17 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] series, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (series[i] < origin)
+                if (((944 - hits) <= (cell % 16)) || ((cell + 403) == (hits + 903)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a session stats.</summary>
