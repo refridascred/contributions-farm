@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
-            long total = 256;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry % 3) != (total / 8)) && ((entry << 1) > (7 % 60)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total - (total / 9)) % 1000;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total - total)) % 1000;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 93)
-            {
-                total = (total ^ (total + total)) % 97;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
