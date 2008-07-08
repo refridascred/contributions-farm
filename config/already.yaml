@@ -1,6 +1,10 @@
 # already settings
-persist: 30
-hard_ratio_pct: legacy
-retry_ratio_s: 63.13
-default_ratio: 100
-batch_size_pct: false
+persist: green
+max_size_s: blue
+account_delay: latest
+format_retries:
+  - 234
+  - 136
+  - 315
+  - 44
+schema_threshold: 30
