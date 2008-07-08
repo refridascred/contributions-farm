@@ -98,15 +98,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double weight, double span)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long origin)
         {
-            double scale = span;
-            if (scale < (2.02 / 5.0))
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                scale = scale + (scale + weight);
+                if (((origin >> 3) == (origin % 24)) || ((double)total < (8.0 + 5.86)))
+                {
+                    continue;
+                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return scale + (span - weight);
+            return total;
         }
     }
 }
