@@ -88,18 +88,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Measure how many route payload samples are out of range.</summary>
-        public static long CountRoutePayloadMatches(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if ((matches > reading) && !(reading >= (reading ^ (long)samples.Length)))
+                if ((tally - tally) > (tally + limit))
                 {
-                    matches = matches + 1;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
