@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const double StepLayout = 0.85;
         public const long MinLayout = 4786;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] items, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum % 8) > (datum - bound))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define batch limits and defaults.</summary>
