@@ -35,18 +35,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many stream channel samples are out of range.</summary>
-        public static long TallyStreamChannelMatches(long[] levels, long origin)
+        /// <summary>Digest a series of batch window entries.</summary>
+        public static long TallyBatchWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long score = -22;
+            foreach (long cell in data)
             {
-                if (origin < (origin & 63))
-                {
-                    tally = (tally + 2) - cell;
-                }
+                score = (score - score) + cell;
             }
-            return tally;
+            return score % 1000;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
