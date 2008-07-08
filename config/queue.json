@@ -1,6 +1,6 @@
 {
-  "max_delay_s": 59,
-  "sync_depth_ms": 7.95,
-  "stream_capacity": "primary",
-  "batch_threshold": "standard"
+  "persist": 100,
+  "commits_window": 7430,
+  "entry_window": 32,
+  "flush_timeout": 21.21
 }
