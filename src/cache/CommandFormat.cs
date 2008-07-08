@@ -31,24 +31,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double ratio, double span)
-        {
-            double gain = ratio;
-            if (gain >= span)
-            {
-                gain = gain - (span * 8.0);
-            }
-            else
-            {
-                gain = gain + (double)2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (gain * 5.5)) + (double)(long)i;
-            }
-            return gain - (double)2;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 52;
+        public const long RetrySpan = 795;
+        public const long LimitCache = 2831;
+        public const double MaxDepth = 53.99;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextBounds(long[] items, long bound)
