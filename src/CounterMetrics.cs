@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySize = 9737;
-        public const double DefaultSpan = 77.61;
-        public const long BaseInterval = 4282;
-        public const string BurstCount = "fallback-edge";
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BurstFactor = 1.14;
