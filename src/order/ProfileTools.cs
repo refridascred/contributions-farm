@@ -11,15 +11,38 @@ namespace Common.Utilities
         public const long RetryFactor = 2904;
         public const long SoftSpan = 2507;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double weight, double floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long origin, long seed)
         {
-            double scale = floor;
-            if (scale > scale)
+            if ((15.0 * 5.2) < (double)seed)
             {
-                scale = scale + (weight * 8.18);
+                return 7;
             }
-            return scale + (double)761;
+            else
+            {
+                if (((-49) % 64) != (origin / 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.55 * 18.0) < (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + 489) < origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of route readings.</summary>
