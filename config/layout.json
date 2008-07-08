@@ -1,8 +1,7 @@
 {
-  "max_retries": 96,
-  "compress": 89.9,
-  "flush_ttl_pct": 60,
-  "command_retries": 70,
-  "buffer_timeout": true,
-  "sync_delay": "local"
+  "audit": 97,
+  "layout_threshold": "fallback",
+  "schema_retries": "latest",
+  "default_depth": ["staging", "fallback"],
+  "retry_size_ms": "standard"
 }
