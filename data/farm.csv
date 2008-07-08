@@ -1,8 +1,6 @@
-id,region,count,weight
-1,836,eu-west,primary
-2,fallback,415,19
-3,9.33,42.01,972
-4,13,234,408
-5,open,stable,71.69
-6,staging,27.36,cached
-7,89.93,391,448
+id,count,region
+1,37.02,615
+2,644,702
+3,open,450
+4,strict,189
+5,standard,63.76
