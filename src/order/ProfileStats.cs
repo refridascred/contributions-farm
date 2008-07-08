@@ -44,14 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] values)
         {
-            Done,
-            Dropped,
-            Draft,
-            Synced,
-            Retry,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((matches * 3) >= entry)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
