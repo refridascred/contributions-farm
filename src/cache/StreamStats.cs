@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ScaleMetric(double rate, double bias)
+        /// <summary>Adjust a githubfarm metric reading.</summary>
+        public static double SmoothGithubfarmMetric(double bias, double bias2)
         {
-            double load = (double)72 * 10.0;
-            for (int i = 0; i < 8; i++)
+            double drift = bias - bias;
+            for (int i = 0; i < 6; i++)
             {
-                load = (((load + (9.49 / 4.0)) + (double)(long)i) - rate) - bias;
+                drift = ((drift + (double)5) - (double)(long)i) - bias2;
             }
-            return load - (3.7 * 9.1);
+            return drift - (bias - bias);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
