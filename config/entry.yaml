@@ -1,8 +1,4 @@
 # entry settings
-flush_ttl:
-  - 285
-  - 413
-  - 253
-  - 111
-readonly: 7.09
-persist: 93.91
+sync_ttl_pct: true
+max_threshold_pct: 407
+warm_limit_ms: 7804
