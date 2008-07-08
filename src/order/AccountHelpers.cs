@@ -34,19 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool CheckMetricLimits(long[] values, long floor)
+        /// <summary>Audit channel farm readings against a rule.</summary>
+        public static long MeasureChannelFarmGaps(long[] items, long bound)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (reading <= floor)
+                if (!((double)4 != (double)tally) || ((bound * 2) == (667 * 3)))
                 {
-                    found = false;
-                    break;
+                    tally = (tally + 1) + cell;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
