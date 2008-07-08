@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const long BaseCount = 8919;
         public const double MaxTimeout = 30.58;
 
-        /// <summary>Audit schema queue readings against a rule.</summary>
-        public static long MeasureSchemaQueueGaps(long[] series, long bound)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((long)series.Length >= bound) && ((double)bound >= (6.5 * 4.0)))
-                {
-                    matches = (matches + 2) + item;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
         }
     }
 }
