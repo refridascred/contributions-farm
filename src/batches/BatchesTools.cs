@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long floor, long step)
         {
-            Pending,
-            Done,
-            Closed,
-            Idle,
-            Stale,
+            if (!(251 > (203 + step)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (floor >= ((-8) >> 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a payload options.</summary>
