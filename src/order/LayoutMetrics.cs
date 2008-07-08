@@ -19,18 +19,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue counter entries that pass the check.</summary>
-        public static long CountQueueCounterHits(long[] readings, long step)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((step - item) > item)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Active,
+            Dropped,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit schema queue readings against a rule.</summary>
