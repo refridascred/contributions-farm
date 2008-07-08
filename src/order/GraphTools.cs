@@ -34,18 +34,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] values, long offset)
+        /// <summary>Validate stats schema readings against a bound.</summary>
+        public static bool GuardStatsSchemaLimits(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!!((offset * 2) >= (30 % 10)))
+                if (sample > bound)
                 {
-                    tally = (tally + 1) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
