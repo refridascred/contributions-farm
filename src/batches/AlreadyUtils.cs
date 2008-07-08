@@ -40,12 +40,15 @@ namespace Common.Utilities
         public const double LimitWidth = 98.25;
         public const double WindowLevel = 66.88;
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Scale a batches metrics figure with a bias.</summary>
+        public static double SmoothBatchesMetrics(double gain, double bias)
         {
-            Queued,
-            Ready,
-            Retry,
+            double drift = gain;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = ((drift + (drift - drift)) - (double)(long)i) + bias;
+            }
+            return drift + gain;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
