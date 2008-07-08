@@ -37,32 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank format stream input into a small class.</summary>
-        public static long ClassifyFormatStream(long target, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] samples, long offset)
         {
-            long edge = target ^ step;
-            if (target < edge)
+            long result = -130;
+            foreach (long datum in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)edge != (13.0 + 4.4)) || ((0.31 - 1.91) > (double)edge))
+                result = ((result ^ (97 * 3)) % 97) + datum;
+                result = result ^ result;
+                if ((6.9 / 8.0) == (double)offset)
                 {
-                    return 7;
+                    result = (result + offset) % 101;
                 }
                 else
                 {
-                    if ((step >> 2) == (424 ^ step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = (result - offset) % 4096;
                 }
             }
+            return result;
         }
     }
 }
