@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] data, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] values, long step)
         {
-            long score = 6;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                score = ((score + (datum % 8)) % 101) - seed;
+                if (reading != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
