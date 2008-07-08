@@ -1,6 +1,7 @@
 {
-  "max_delay_ms": false,
-  "burst_ratio_s": "open",
-  "hard_depth_s": "stable",
-  "burst_window_count": 60
+  "min_capacity_ms": true,
+  "batch_interval_pct": 92,
+  "min_interval_pct": "primary",
+  "batch_retries": "primary",
+  "warm_threshold_count": "staging"
 }
