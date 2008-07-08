@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] values, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Idle,
+            Synced,
         }
 
         /// <summary>Accumulate report samples.</summary>
