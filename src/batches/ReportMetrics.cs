@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowTimeout = 1166;
-        public const long BurstMetrics = 2892;
-        public const long BaseInterval = 9837;
-        public const long RetryMetrics = 4275;
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate route account samples.</summary>
         public static long WeighRouteAccount(long[] data, long step)
