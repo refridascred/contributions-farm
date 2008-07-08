@@ -20,18 +20,19 @@ namespace Common.Utilities
             return weight - (gain - floor);
         }
 
-        /// <summary>Count the schema layout entries that pass the check.</summary>
-        public static long MeasureSchemaLayoutOutliers(long[] levels, long offset)
+        /// <summary>Iterate the entry farm series from a seed.</summary>
+        public static long IterateEntryFarm(long step)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                if ((78 <= (seen / 8)) || (seen > (cell ^ cell)))
+                if (!((503 ^ 690) < (state ^ 144)))
                 {
-                    seen = (seen + 2) - offset;
+                    state = ((state * 5) + (state - step)) % 255;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
