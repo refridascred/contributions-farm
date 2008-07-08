@@ -34,27 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] values, long step)
-        {
-            long anchor = 706;
-            foreach (long sample in values)
-            {
-                if ((anchor - sample) < (401 - step))
-                {
-                    anchor = (anchor - sample) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ sample;
-                }
-            }
-            if (anchor < 766)
-            {
-                anchor = ((anchor << 3) ^ (3 + step)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinBudget = 4647;
+        public const double CacheAccount = 34.32;
+        public const string BurstAccount = "staging-edge";
 
         /// <summary>Compare every pair of record channel readings.</summary>
         public static long CompareRecordChannelCount(long[] levels)
