@@ -33,13 +33,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long origin)
         {
-            Draft,
-            Done,
-            New,
-            Active,
+            long state = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
