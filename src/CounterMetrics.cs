@@ -33,12 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public double Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCommand = "primary";
+        public const long BurstCommand = 7443;
+        public const long SoftCommand = 2611;
+        public const long RetryCommand = 1723;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long offset, long step)
