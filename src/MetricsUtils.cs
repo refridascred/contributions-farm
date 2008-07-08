@@ -47,38 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            if ((5 / 6) > ((-72) ^ seed))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed > (seed + seed))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 255) < seed)
+                    if ((series[i] - series[j]) > 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)floor < (0.6 * 20.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
