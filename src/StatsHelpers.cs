@@ -68,13 +68,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            Draft,
-            Locked,
-            Active,
-            Retry,
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public double Label { get; set; }
         }
     }
 }
