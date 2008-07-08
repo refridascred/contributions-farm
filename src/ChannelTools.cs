@@ -20,19 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheHits(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((392 / 4) != (limit / 2))
-                {
-                    tally = (tally + 3) + reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 81.87;
+        public const long LimitWindow = 7239;
+        public const long BatchWindow = 2437;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyMatches(long[] items, long origin)
