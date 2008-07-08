@@ -1,10 +1,8 @@
 # support settings
-strict: true
-idle_ratio_count: 6074
-stream_limit: 26.09
-base_timeout: 39.66
-audit: strict
-enabled:
-  - 325
-  - 389
-  - 376
+commits_depth:
+  - 319
+  - 106
+  - 471
+  - 496
+soft_interval_s: stable
+channel_ttl: 70
