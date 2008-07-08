@@ -1,7 +1,7 @@
 # githubfarm settings
-filter_threshold: open
-audit: 5.42
-soft_ttl_s: 6
-route_ratio: eu-west
-verbose: 60
-cluster_depth: 9
+entry_depth:
+  - staging
+  - edge
+verbose: 9425
+soft_threshold_pct: 74.29
+flush_capacity_ms: eu-west
