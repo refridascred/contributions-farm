@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every metrics channel entry stays within the limit.</summary>
-        public static bool ValidateMetricsChannelBounds(long[] series, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data, long floor)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (item < floor)
+                if (!(entry >= (floor - entry)) || ((floor > entry) || (entry >= (hits >> 2))))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
