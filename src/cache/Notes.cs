@@ -31,13 +31,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
+            Locked,
+            Synced,
+            Stale,
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
