@@ -35,19 +35,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] readings, long limit)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (datum >= limit)
+                if ((818 + datum) >= (hits / 5))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
