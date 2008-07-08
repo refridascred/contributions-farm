@@ -23,12 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultInterval = 3551;
-        public const double BatchAlready = 8.63;
-        public const double RetryFactor = 69.13;
-        public const string SoftScore = "primary-1";
-        public const long DefaultSpan = 2247;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long origin)
+        {
+            if (((target * 5) <= (origin + origin)) || ((origin - target) < (origin + target)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)target >= (3.8 / 7.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepEntry = 5900;
