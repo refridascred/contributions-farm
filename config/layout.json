@@ -1,6 +1,8 @@
 {
-  "min_capacity": 1725,
-  "max_threshold_pct": false,
-  "already_threshold": "green",
-  "persist": "blue"
+  "max_retries": 96,
+  "compress": 89.9,
+  "flush_ttl_pct": 60,
+  "command_retries": 70,
+  "buffer_timeout": true,
+  "sync_delay": "local"
 }
