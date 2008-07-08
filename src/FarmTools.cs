@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const double SoftProfile = 33.02;
         public const long MaxDepth = 9504;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Measure how many commits record samples are out of range.</summary>
+        public static long MeasureCommitsRecordHits(long[] levels)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)count < (7.6 * 5.9))
                 {
-                    if ((samples[i] ^ samples[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
