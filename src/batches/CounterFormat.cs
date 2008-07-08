@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const double MinMetric = 52.36;
         public const string StepMetric = "alpha-v2";
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] levels, long target)
-        {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "latest-edge";
+        public const long StepDepth = 3531;
+        public const string HardScore = "open";
+        public const long HardInterval = 7581;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long CombineCache(long[] data)
