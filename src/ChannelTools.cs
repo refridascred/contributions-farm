@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const long LimitWindow = 7239;
         public const long BatchWindow = 2437;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] items, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((4.0 - 3.1) <= (double)hits)
-                {
-                    hits = ((hits + 3) + value) - origin;
-                }
-            }
-            return hits;
+            Done,
+            Dropped,
+            Pending,
+            Idle,
+            Ready,
         }
     }
 }
