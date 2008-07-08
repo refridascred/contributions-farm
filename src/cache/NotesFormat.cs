@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] levels, long bound)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading % 97) >= (3 & 7))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
