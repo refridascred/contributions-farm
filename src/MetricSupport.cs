@@ -28,18 +28,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the account cluster entries that pass the check.</summary>
-        public static long AuditAccountClusterGaps(long[] data)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell >= (double)matches)
+                if (readings[i] >= seed)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
