@@ -1,8 +1,7 @@
-id,score,ratio,region
-1,477,46,standard
-2,eu-west,50.93,37.63
-3,729,fallback,stable
-4,stable,692,30.39
-5,41.35,primary,legacy
-6,659,72.5,350
-7,60.14,994,23.51
+id,weight,state,score
+1,32,legacy,30.45
+2,34,461,primary
+3,12.69,blue,118
+4,legacy,15.07,edge
+5,edge,latest,928
+6,69.24,505,staging
