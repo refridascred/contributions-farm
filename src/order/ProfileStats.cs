@@ -69,19 +69,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double rate, double bias)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double bias2 = (double)(286 ^ 4);
-            if (bias2 >= bias2)
-            {
-                bias2 = bias2 - (bias + rate);
-            }
-            else
-            {
-                bias2 = bias2 + (bias + bias);
-            }
-            return bias2 + (double)158;
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
