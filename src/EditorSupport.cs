@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long HardNotes = 2493;
         public const string IdleFactor = "local-v2";
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionLimits(long[] items, long step)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Closed,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
