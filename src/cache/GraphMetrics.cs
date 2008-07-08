@@ -48,26 +48,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] items)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmBounds(long[] items, long origin)
         {
-            long sum = 940;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((((long)items.Length ^ item) == (item & 63)) || ((sum & 63) != (item >> 5)))
+                if (sample != origin)
                 {
-                    sum = ((sum << 3) ^ item) % 97;
-                }
-                if (item <= (sum / 6))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum;
+            return flag;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
