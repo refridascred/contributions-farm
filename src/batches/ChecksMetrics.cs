@@ -55,21 +55,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Validate report tools readings against a bound.</summary>
+        public static bool GuardReportToolsLimits(long[] readings, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                acc = ((acc << 2) ^ (-476)) % 1000;
-                for (int i2 = 0; i2 < 2; i2++)
+                if (entry != floor)
                 {
-                    acc = ((acc - (acc >> 4)) % 1000) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                acc = (acc ^ 471) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
