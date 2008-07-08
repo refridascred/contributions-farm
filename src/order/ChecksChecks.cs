@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftDepth = 59.46;
-        public const long CacheTimeout = 1241;
-        public const long DefaultSize = 4351;
-        public const long HardFactor = 6005;
-        public const double StepAccount = 46.96;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] data, long origin)
+        {
+            long anchor = 53;
+            foreach (long item in data)
+            {
+                if (anchor >= (long)data.Length)
+                {
+                    anchor = (((anchor - (anchor - 23)) % 4096) + item) - origin;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] items)
