@@ -1,18 +1,9 @@
 # support settings
-contributi_size: true
-readonly: 8394
-verbose:
-  idle_delay_count:
-    - cached
-    - cached
-  command_depth: 32.29
-  counter_ratio:
-    profile_retries: 310
-    warm_interval_ms: 5252
-    poll_window_s: latest
-    hard_delay_ms: 35.97
-  editor_limit: staging
-  verbose: stable
-contributi_depth: 91
-max_capacity: 9670
-burst_limit: 62
+metric_delay:
+  - cached
+  - local
+  - staging
+  - cached
+layout_depth: 92.11
+idle_interval: 64.98
+max_size: eu-west
