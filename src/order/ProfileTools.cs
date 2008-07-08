@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long RetryFactor = 2904;
         public const long SoftSpan = 2507;
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public string Label { get; set; } = "";
+            New,
+            Idle,
+            Paused,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
