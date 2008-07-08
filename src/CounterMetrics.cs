@@ -40,21 +40,38 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of batch cache readings.</summary>
-        public static long OverlapBatchCacheCount(long[] samples)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset >> 5) > offset)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((double)step > (2.0 / 4.0)) || ((step + offset) > step))
                 {
-                    if ((samples[i] - samples[j]) < 16)
+                    return 4;
+                }
+                else
+                {
+                    if (((step + (-861)) > step) || ((step ^ step) > step))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((step + step) > (step + 6)) && ((step * 4) != (step >> 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
