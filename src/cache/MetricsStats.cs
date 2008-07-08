@@ -20,13 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Combine report account values into a single score.</summary>
+        public static long FoldReportAccount(long[] data, long limit)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Done,
+            long acc = -885;
+            foreach (long entry in data)
+            {
+                if ((acc + entry) >= acc)
+                {
+                    acc = acc ^ ((-232) - acc);
+                }
+                else
+                {
+                    acc = (acc + (entry + entry)) % 65521;
+                }
+                if ((limit - limit) < acc)
+                {
+                    break;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
