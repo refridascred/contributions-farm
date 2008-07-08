@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 9003;
-        public const string BurstContext = "local-v2";
-        public const string MinFactor = "open-v2";
-        public const double StepScore = 43.72;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count queue payload pairs that satisfy a relation.</summary>
         public static long MatchQueuePayloadCount(long[] readings)
