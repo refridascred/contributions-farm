@@ -1,11 +1,6 @@
 {
-  "strict": 30,
-  "base_ttl": 100,
-  "max_limit": {
-    "contributi_depth": false,
-    "burst_timeout_ms": "eu-west",
-    "retry_timeout_count": 33
-  },
-  "layout_limit": [349, 305],
-  "enabled": 9397
+  "enabled": 9,
+  "batch_threshold": 30,
+  "max_depth": 55.11,
+  "default_ratio_count": [52, 192, 495, 284]
 }
