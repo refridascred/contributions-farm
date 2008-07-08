@@ -43,11 +43,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 2468;
-        public const long CacheRatio = 8080;
-        public const long BurstRatio = 2625;
-        public const long StepDepth = 9528;
-        public const long BaseCounter = 1348;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((target << 3) == (matches << 1))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
     }
 }
