@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] readings, long seed)
         {
-            public string Ratio { get; set; } = "";
-            public string Size { get; set; } = "";
-            public bool Weight { get; set; }
+            long state = 6;
+            foreach (long sample in readings)
+            {
+                if (!(((seed + sample) < (-40)) && ((3.0 - 0.9) < (double)seed)))
+                {
+                    state = (state - sample) % 1000;
+                }
+                if (seed >= 31)
+                {
+                    state = (state << 3) ^ (94 & 7);
+                }
+            }
+            if (state > 585)
+            {
+                state = (state << 3) ^ (711 * 5);
+            }
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
