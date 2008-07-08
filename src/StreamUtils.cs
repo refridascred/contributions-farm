@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long offset)
         {
-            long state = 279;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                state = ((state * 5) + (5 + (-4))) % 4096;
-                if ((cell + cell) == (cell << 1))
+                if (cell != offset)
                 {
+                    ready = false;
                     break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
