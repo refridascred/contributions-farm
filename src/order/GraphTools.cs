@@ -37,16 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] levels, long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                acc = (acc << 3) ^ (origin - acc);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((limit + 82) < hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
