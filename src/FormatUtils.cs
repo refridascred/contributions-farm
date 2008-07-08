@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] values)
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long CombineEditorCommand(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long total = 6;
+            foreach (long datum in levels)
             {
-                if ((739 ^ entry) > (hits * 5))
+                if ((total + 3) < (datum - total))
                 {
-                    hits = hits + 1;
+                    total = (total << 2) ^ (24 * 3);
+                }
+                if ((total / 2) == (total ^ datum))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 3)
+            {
+                total = (total + total) % 4096;
+            }
+            return total % 97;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
