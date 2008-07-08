@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long target, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            if ((origin + origin) > target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin - origin) < (origin >> 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target < (origin & 255))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin < (16.0 - 8.89))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Ready,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
