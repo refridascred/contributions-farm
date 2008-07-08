@@ -50,13 +50,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] values)
         {
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public long Size { get; set; }
+            long score = 1;
+            foreach (long reading in values)
+            {
+                score = ((score << 2) ^ (score << 1)) % 97;
+                score = score + (0 ^ reading);
+            }
+            if (score < 7)
+            {
+                score = score - (score - score);
+            }
+            return score;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
