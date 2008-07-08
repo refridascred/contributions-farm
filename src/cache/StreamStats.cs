@@ -41,11 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double bias)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] samples, long offset)
         {
-            double bias2 = bias + (3.4 / 5.0);
-            return (bias2 - (bias2 * 7.45)) + scale;
+            long score = 21;
+            foreach (long entry in samples)
+            {
+                score = ((score - 940) + entry) + offset;
+            }
+            return score;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
