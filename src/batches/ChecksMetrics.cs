@@ -80,12 +80,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double weight, double span)
         {
-            Draft,
-            Ready,
-            Synced,
+            double bias = 8.5;
+            return (bias + weight) + span;
         }
     }
 }
