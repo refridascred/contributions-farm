@@ -51,26 +51,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] readings, long step)
         {
-            long anchor = 2;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((0.5 + 7.5) > (double)anchor)
+                if (step < entry)
                 {
-                    anchor = (((anchor * 5) + anchor) % 97) + item;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    anchor = (anchor * 4) + (anchor - anchor);
+                    tally = tally - 1;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = anchor + (9 + anchor);
-            }
-            return anchor % 97;
+            return tally;
         }
     }
 }
