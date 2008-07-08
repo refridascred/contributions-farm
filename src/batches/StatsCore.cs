@@ -67,18 +67,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] data, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long bound, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            if ((origin + bound) == (46 - bound))
             {
-                if (((944 - hits) <= (cell % 16)) || ((cell + 403) == (hits + 903)))
+                return 4;
+            }
+            else
+            {
+                if (((-13) & 7) != (bound & 255))
                 {
-                    hits = (hits + 3) + step;
+                    return 5;
+                }
+                else
+                {
+                    if (bound >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of record entries.</summary>
