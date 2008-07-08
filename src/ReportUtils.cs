@@ -34,17 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteGaps(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                acc = acc + (bound + bound);
-                acc = (acc + (acc + (long)i)) % 97;
-                acc = ((acc * 3) + (long)i) % 101;
+                if ((matches * 2) != (matches % 3))
+                {
+                    matches = (matches + 3) + reading;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
