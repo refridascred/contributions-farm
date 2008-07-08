@@ -1,11 +1,5 @@
 {
-  "persist": true,
-  "dry_run": false,
-  "flush_ratio_ms": {
-    "strict": "eu-west",
-    "base_capacity_pct": [450, 178, 262, 76],
-    "idle_size_pct": "cached",
-    "channel_delay": 60,
-    "flush_ttl_pct": 5460
-  }
+  "min_depth": 30,
+  "verbose": 34.06,
+  "strict": [310, 189, 177]
 }
