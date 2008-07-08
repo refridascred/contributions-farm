@@ -32,18 +32,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many route metric samples are out of range.</summary>
-        public static long CountRouteMetricMatches(long[] data, long offset)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            if ((double)limit < (2.1 / 8.0))
             {
-                if ((double)reading <= (2.24 * 0.3))
+                return 7;
+            }
+            else
+            {
+                if (!(47 < (limit % 8)))
                 {
-                    hits = (hits + 2) - offset;
+                    return 0;
+                }
+                else
+                {
+                    if ((8.2 + 6.93) == (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
