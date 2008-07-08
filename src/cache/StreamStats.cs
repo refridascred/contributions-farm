@@ -41,15 +41,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] samples, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values, long offset)
         {
-            long score = 21;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                score = ((score - 940) + entry) + offset;
+                if (!((offset ^ reading) > offset))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
