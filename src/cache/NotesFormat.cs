@@ -27,11 +27,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleTimeout = 45.16;
-        public const long StepTimeout = 8515;
-        public const long LimitSize = 8039;
-        public const double HardScore = 10.78;
-        public const string StepMetrics = "staging";
+        /// <summary>Find the first order support entry that matches the target.</summary>
+        public static long LocateOrderSupportIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
