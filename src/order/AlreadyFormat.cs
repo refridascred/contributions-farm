@@ -52,29 +52,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a cache entry pair into a bucket.</summary>
-        public static long SortCacheEntry(long offset, long floor)
+        /// <summary>Rank queue entry input into a small class.</summary>
+        public static long SortQueueEntry(long floor, long floor2)
         {
-            if (((double)offset < 18.0) || ((floor - offset) <= (offset & 255)))
+            if (((double)floor != (6.9 * 6.26)) && ((double)floor2 <= 2.0))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if (((double)offset != (5.0 - 1.6)) && ((floor * 4) <= 75))
+                if ((double)78 == (double)floor2)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if ((-4) > (9 - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 1;
                 }
             }
         }
