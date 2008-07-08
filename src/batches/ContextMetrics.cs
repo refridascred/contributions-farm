@@ -53,13 +53,12 @@ namespace Common.Utilities
             return mean + (mean + 5.12);
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public string Level { get; set; } = "";
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public long Limit { get; set; }
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
     }
 }
