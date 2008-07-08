@@ -14,11 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a batch info.</summary>
