@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Idle,
-            Retry,
-            Closed,
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
