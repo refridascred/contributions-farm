@@ -85,15 +85,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double gain, double offset)
+        /// <summary>Rank token report input into a small class.</summary>
+        public static long BucketTokenReport(long limit, long offset)
         {
-            double load = gain;
-            if (load >= 6.1)
+            long cur = limit + offset;
+            if (((cur * 4) <= (offset + 602)) || (offset >= (offset >> 5)))
             {
-                load = load - load;
+                return 0;
             }
-            return load + (offset * 3.89);
+            else
+            {
+                if ((9.5 - 2.0) > (double)limit)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
