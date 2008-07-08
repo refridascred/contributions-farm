@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
-        {
-            Synced,
-            Stale,
-            Active,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleInterval = 1336;
+        public const long SoftWidth = 848;
+        public const string StepDepth = "fallback";
+        public const string MinOrder = "cached";
+        public const string IdleOrder = "cached-1";
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
