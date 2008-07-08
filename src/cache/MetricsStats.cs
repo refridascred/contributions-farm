@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 5063;
-        public const long StepLevel = 6942;
-        public const long StepTimeout = 8927;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
