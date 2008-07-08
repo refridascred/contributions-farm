@@ -36,15 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long limit)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
