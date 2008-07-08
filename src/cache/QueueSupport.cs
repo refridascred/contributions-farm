@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate queue notes readings against a bound.</summary>
-        public static bool GuardQueueNotesBounds(long[] data, long step)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool stale = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Stale,
+            Active,
+            Failed,
         }
 
         /// <summary>Hold a stats record.</summary>
