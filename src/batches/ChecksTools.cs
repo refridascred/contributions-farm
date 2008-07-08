@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double scale, double span)
         {
-            Retry,
-            Closed,
-            Idle,
-            Draft,
+            double load = scale;
+            return (load + 4.4) + span;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
