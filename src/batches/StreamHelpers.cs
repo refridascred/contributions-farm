@@ -67,22 +67,32 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextHits(long[] levels)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long span = target - floor;
+            if ((target % 5) == (span + target))
             {
-                if (item <= 404)
+                return 8;
+            }
+            else
+            {
+                if (!((6 * 4) > (floor - target)))
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((floor * 2) < (floor & 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
     }
 }
