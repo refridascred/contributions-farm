@@ -1,6 +1,5 @@
 {
-  "batch_interval_count": 74,
-  "format_size": 3879,
-  "hard_interval_count": 94.77,
-  "dry_run": true
+  "sync_window_count": [72, 180, 429],
+  "sync_delay_ms": 46,
+  "idle_retries_count": ["local", "legacy", "local"]
 }
