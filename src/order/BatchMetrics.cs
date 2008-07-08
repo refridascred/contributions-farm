@@ -61,18 +61,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] series, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long total = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (seen >= step)
+                if ((1.0 * 1.11) >= (9.24 - 2.4))
                 {
-                    seen = (seen + 3) ^ reading;
+                    total = ((total * 3) + (floor + floor)) % 97;
                 }
+                else
+                {
+                    total = ((total << 2) ^ 48) % 97;
+                }
+                total = (total ^ ((long)i & 15)) % 97;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
     }
 }
