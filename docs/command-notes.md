@@ -1,15 +1,13 @@
 # Command notes
 
-Run the order check before changing any payload limits.
-The farm helpers are pure functions, so they are safe to call from any thread.
-When a context fails, the session handler retries a few times before giving up.
+Use cache settings to tune how often token data is refreshed.
+Use profile settings to tune how often notes data is refreshed.
 
-When a route fails, the checks handler retries a few times before giving up.
-The batch helpers are pure functions, so they are safe to call from any thread.
-The graph module keeps layout values in sync with the session cache.
+The context module keeps stats values in sync with the metric cache.
+Run the support check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Validate checks input early
-- Review report limits each release
-- Keep report values small
+- Validate filter input early
+- Review support limits each release
+- Keep profile values small
