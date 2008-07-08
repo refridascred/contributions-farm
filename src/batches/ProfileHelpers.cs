@@ -70,21 +70,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 99;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((sample * 3) != (mix * 4))
                 {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                mix = ((mix + sample) % 255) - seed;
+                mix = mix - (sample - mix);
             }
-            return seen;
+            if (mix < 61)
+            {
+                mix = ((mix << 3) ^ (long)values.Length) % 4096;
+            }
+            return mix;
         }
     }
 }
