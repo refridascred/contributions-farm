@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
