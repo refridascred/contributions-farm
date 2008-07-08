@@ -30,22 +30,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] data)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mark = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((item / 9) > seen) || ((double)item >= (1.0 * 0.7)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
     }
 }
