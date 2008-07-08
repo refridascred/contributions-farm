@@ -43,21 +43,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Fold a list of checks editor readings.</summary>
+        public static long DigestChecksEditor(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 96;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (((state + ((-2) >> 4)) % 65521) + sample) - step;
             }
-            return matches;
+            if (state < 90)
+            {
+                state = (state ^ 0) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
