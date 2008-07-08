@@ -1,25 +1,7 @@
 # entry settings
-persist: 60
-tools_limit: false
-cache_ratio:
-  - 98
-  - 183
-hard_delay_count: 3388
-base_capacity_s:
-  buffer_delay: eu-west
-  buffer_capacity:
-    - 191
-    - 448
-    - 343
-  max_retries: true
-  support_window:
-    window_threshold:
-      - 384
-      - 204
-      - 174
-    window_capacity: 3053
-    burst_limit: true
-    flush_timeout: true
-    burst_timeout_pct: 30
-  min_ttl_count: standard
-  persist: eu-west
+batch_threshold:
+  - fallback
+  - eu-west
+  - open
+retry_depth: fallback
+idle_ttl_count: open
