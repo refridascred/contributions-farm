@@ -24,30 +24,15 @@ namespace Common.Utilities
         public const double DefaultInterval = 50.49;
         public const long BatchChannel = 713;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long anchor = 751;
-            foreach (long cell in levels)
+            long carry = 7;
+            foreach (long value in samples)
             {
-                for (int i = 0; i < 4; i++)
-                {
-                    anchor = anchor + ((long)i % 3);
-                }
-                if (cell <= (anchor ^ 27))
-                {
-                    anchor = ((anchor << 3) ^ (cell >> 2)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ cell) % 97;
-                }
+                carry = (carry + value) % 1000;
             }
-            if (anchor < 90)
-            {
-                anchor = (anchor ^ (anchor * 3)) % 4096;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the support mode values.</summary>
