@@ -23,14 +23,18 @@ namespace Common.Utilities
         public const long LimitWindow = 7239;
         public const long BatchWindow = 2437;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksOutliers(long[] items)
         {
-            Done,
-            Dropped,
-            Pending,
-            Idle,
-            Ready,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (!((tally ^ (long)items.Length) == (value / 7)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
