@@ -20,21 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] items)
+        /// <summary>Roll a window entry counter forward.</summary>
+        public static long StepWindowEntry(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Describe the graph mode values.</summary>
