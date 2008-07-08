@@ -21,10 +21,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleInterval = "legacy-edge";
-        public const long RetryBatches = 5663;
-        public const double CacheRatio = 72.76;
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
+        {
+            public bool Level { get; set; }
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutLimits(long[] readings, long floor)
