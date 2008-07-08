@@ -10,22 +10,14 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-1";
         public const double BaseWidth = 59.92;
 
-        /// <summary>Combine token cache values into a single score.</summary>
-        public static long TallyTokenCache(long[] data, long target)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long result = 1;
-            foreach (long value in data)
-            {
-                if ((value < (value / 2)) || ((double)target <= 2.9))
-                {
-                    result = (result + (result >> 5)) % 4096;
-                }
-            }
-            if (result > 6)
-            {
-                result = (result << 3) ^ (target - target);
-            }
-            return result % 1000;
+            Closed,
+            Failed,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Accumulate command samples.</summary>
