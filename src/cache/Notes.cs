@@ -33,12 +33,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double scale, double bias)
-        {
-            double bias2 = bias;
-            return (bias2 + (bias2 + 9.0)) + scale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string CacheSupport = "latest";
+        public const string BaseFactor = "cached-1";
+        public const string WindowSize = "legacy-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double SoftContext = 25.5;
