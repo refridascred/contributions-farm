@@ -1,19 +1,11 @@
 {
-  "compress": 500,
-  "batch_retries_s": 56,
-  "payload_depth": {
-    "cache_interval": {
-      "entry_capacity": [352, 177],
-      "burst_threshold": ["fallback", "green"],
-      "dry_run": [460, 383, 60, 284],
-      "audit": ["local", "blue", "stable", "staging"],
-      "warm_threshold": ["open", "standard", "staging", "blue"],
-      "cache_timeout": 55.37
-    },
-    "enabled": false,
-    "min_capacity_pct": false,
-    "burst_delay": false
+  "poll_timeout_pct": {
+    "soft_depth": 100,
+    "soft_threshold_count": 2336,
+    "base_capacity_s": "edge",
+    "metric_depth": false,
+    "default_delay_count": true
   },
-  "flush_interval_ms": "strict",
-  "token_retries": [57, 232]
+  "soft_retries": "open",
+  "readonly": false
 }
