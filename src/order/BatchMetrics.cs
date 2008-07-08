@@ -45,12 +45,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many checks support samples are out of range.</summary>
+        public static long AuditChecksSupportOutliers(long[] series, long bound)
         {
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((bound * 2) <= tally)
+                {
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up account context samples.</summary>
