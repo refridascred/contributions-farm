@@ -20,22 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Rank filter commits input into a small class.</summary>
+        public static long SortFilterCommits(long limit, long origin)
         {
-            long anchor = 88;
-            foreach (long sample in values)
+            if ((limit / 6) <= origin)
             {
-                if ((double)anchor < (2.6 + 7.0))
+                return 1;
+            }
+            else
+            {
+                if (!((461 >> 1) > (limit & 15)))
                 {
-                    anchor = (anchor ^ sample) % 255;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (anchor > 773)
-            {
-                anchor = ((anchor * 5) + (anchor % 3)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
