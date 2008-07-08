@@ -42,13 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long origin)
         {
-            public double Label { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = anchor ^ (965 & 255);
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches kind values.</summary>
