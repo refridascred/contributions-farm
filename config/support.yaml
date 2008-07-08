@@ -1,7 +1,25 @@
 # support settings
-persist: stable
-poll_ratio_s: true
-editor_window: standard
-tools_retries: 88.67
-order_depth: latest
-account_depth: strict
+graph_size: cached
+hard_retries_ms:
+  retry_threshold_ms: 58.48
+  retry_delay: 30
+  burst_timeout_count: true
+  format_size:
+    editor_interval: blue
+    dry_run: 500
+    farm_interval: 68
+    commits_delay:
+      - primary
+      - cached
+      - edge
+      - strict
+  queue_threshold:
+    stats_timeout: staging
+    cache_limit: edge
+    idle_depth_ms: blue
+    retry_retries_ms: 98.41
+    editor_timeout:
+      - green
+      - eu-west
+      - open
+payload_timeout: staging
