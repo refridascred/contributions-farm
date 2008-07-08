@@ -1,16 +1,26 @@
 # githubfarm settings
-poll_depth:
-  burst_window: 2762
-  base_ratio_pct: latest
-  route_timeout: 3766
-profile_size: local
-default_retries_s: strict
-record_interval:
-  - 494
-  - 248
-  - 482
-burst_delay_s:
-  - 330
-  - 400
-  - 227
-hard_delay_count: 23
+soft_limit_ms: false
+verbose: 4420
+max_depth: 418
+support_size: 86
+channel_ratio: 11
+batch_delay_s:
+  max_delay_s: cached
+  enabled: 76.93
+  idle_timeout_pct:
+    hard_ttl: 49.38
+    flush_ttl_s: 17
+    poll_depth_ms: standard
+    retry_retries_ms: open
+    soft_size: 32
+  flush_window:
+    soft_depth_count:
+      - 270
+      - 454
+      - 114
+    sync_window_ms: strict
+    retry_retries_count: legacy
+    route_threshold: 50.83
+    cache_interval: 5278
+    strict: true
+  default_depth_ms: 34
