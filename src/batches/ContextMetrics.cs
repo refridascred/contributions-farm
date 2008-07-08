@@ -48,19 +48,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] levels, long limit)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Pending,
+            Closed,
+            Synced,
+            Ready,
         }
     }
 }
