@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] series)
+        /// <summary>Count token graph pairs that satisfy a relation.</summary>
+        public static long OverlapTokenGraphCount(long[] values)
         {
-            long mark = 931;
-            foreach (long sample in series)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > (210 * 5))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                if ((sample < (sample * 4)) && (sample < (sample - mark)))
-                {
-                    mark = ((mark << 3) ^ sample) % 65521;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Adjust a entry reading.</summary>
