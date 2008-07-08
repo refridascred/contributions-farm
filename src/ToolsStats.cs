@@ -36,22 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] series, long origin)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)origin > (4.88 + 1.41)))
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine entry values into a single score.</summary>
