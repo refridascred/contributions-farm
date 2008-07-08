@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Fold a list of context stream readings.</summary>
+        public static long WeighContextStream(long[] values, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 21; i++)
+            long mix = -1;
+            foreach (long sample in values)
             {
-                acc = ((acc * 2) + (seed - (long)i)) % 101;
-                if ((acc ^ 421) < seed)
+                if ((8.9 - 7.0) > (double)sample)
                 {
-                    acc = (acc * 2) + 542;
+                    mix = mix - (offset & 7);
                 }
-                else
-                {
-                    acc = (acc - seed) % 4096;
-                }
-                if ((22 + acc) >= (acc % 8))
-                {
-                    acc = ((acc * 4) + (seed + (-7))) % 101;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            if (mix > 35)
+            {
+                mix = (mix ^ offset) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate context samples.</summary>
