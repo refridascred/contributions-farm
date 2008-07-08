@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "latest";
-        public const string CacheBudget = "stable-edge";
-        public const long HardSchema = 8032;
-        public const long SoftLevel = 4027;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a format payload value against two limits.</summary>
         public static long BucketFormatPayload(long limit, long limit2)
