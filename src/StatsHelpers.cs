@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-1";
         public const double BaseWidth = 59.92;
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Derive the next stream command value from a seed.</summary>
+        public static long DeriveStreamCommand(long step)
         {
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 9; i++)
+            {
+                long offset = (step + step) % 64;
+                anchor = ((anchor * 3) + (offset - anchor)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a layout reading.</summary>
