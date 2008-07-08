@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double LimitGraph = 65.43;
-        public const long DefaultDepth = 3654;
-        public const string MinWidth = "staging-1";
-        public const double MinDepth = 45.04;
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const string BaseBudget = "open-v2";
