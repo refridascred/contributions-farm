@@ -10,21 +10,22 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-1";
         public const double BaseWidth = 59.92;
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Combine token cache values into a single score.</summary>
+        public static long TallyTokenCache(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 1;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value < (value / 2)) || ((double)target <= 2.9))
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result + (result >> 5)) % 4096;
                 }
             }
-            return seen;
+            if (result > 6)
+            {
+                result = (result << 3) ^ (target - target);
+            }
+            return result % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
