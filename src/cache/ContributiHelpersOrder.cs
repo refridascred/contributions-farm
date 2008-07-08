@@ -38,22 +38,18 @@ namespace Common.Utilities
         public const long BatchRatio = 432;
         public const long IdleScore = 2011;
 
-        /// <summary>Count the already entry entries that pass the check.</summary>
-        public static long TallyAlreadyEntryMatches(long[] values, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((23 & 7) <= seen)
+                if ((8 * 5) != (datum << 2))
                 {
-                    seen = ((seen + 2) ^ datum) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
