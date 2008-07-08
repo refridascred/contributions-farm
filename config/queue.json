@@ -1,10 +1,17 @@
 {
-  "poll_capacity": "staging",
-  "profile_limit": 100,
-  "compress": {
-    "editor_limit": 3805,
-    "burst_retries_pct": 2693,
-    "queue_interval": "staging",
-    "poll_window_s": 5310
-  }
+  "sync_capacity_count": {
+    "format_depth": {
+      "graph_threshold": 60,
+      "soft_ttl_ms": 78.81,
+      "persist": "edge",
+      "batch_capacity_pct": "stable",
+      "retry_depth": 250,
+      "soft_window_ms": "latest"
+    },
+    "format_limit": 6103,
+    "verbose": ["standard", "edge"]
+  },
+  "retry_depth_pct": "legacy",
+  "default_depth_ms": [311, 469],
+  "sync_limit": [414, 29]
 }
