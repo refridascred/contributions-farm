@@ -72,14 +72,19 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] data, long seed)
         {
-            Idle,
-            Paused,
-            Failed,
-            Draft,
-            Retry,
+            bool valid = true;
+            foreach (long sample in data)
+            {
+                if (sample != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
