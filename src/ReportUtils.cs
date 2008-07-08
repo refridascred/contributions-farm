@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many batches channel samples are out of range.</summary>
-        public static long CountBatchesChannelOutliers(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (2.9 + 8.47))
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "legacy-edge";
+        public const long IdleInterval = 4125;
+        public const long WindowCommits = 1207;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepLevel = 7508;
