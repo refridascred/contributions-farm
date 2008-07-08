@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long MeasureContextAccountGaps(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] values, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((count >= (count * 2)) && (entry > (count ^ 582)))
+                if (sample < target)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a profile record.</summary>
