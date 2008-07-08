@@ -39,23 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double scale, double bias)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] series)
         {
-            double load = bias;
-            if (load > (double)(-1))
+            long result = 425;
+            foreach (long datum in series)
             {
-                load = (load - (bias - 1.66)) - scale;
+                result = result ^ result;
+                if ((11.0 + 3.89) >= (double)result)
+                {
+                    result = (result * 2) + (datum % 3);
+                    break;
+                }
+                if (!(((-6) + datum) < (result + result)))
+                {
+                    result = ((result * 3) + (1 + datum)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (datum + result)) % 1000;
+                }
             }
-            else
+            if (result < 7)
             {
-                load = load - (double)5;
+                result = (result + result) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - bias;
+            return result;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
