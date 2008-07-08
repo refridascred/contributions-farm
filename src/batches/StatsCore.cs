@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const string RetryCount = "legacy";
         public const long BaseEditor = 9946;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] data, long limit)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] data, long step)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (cell <= limit)
+                if ((double)sample <= (7.5 * 7.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) - step;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
