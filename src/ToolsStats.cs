@@ -42,19 +42,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine notes route values into a single score.</summary>
-        public static long CombineNotesRoute(long[] levels, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatRange(long[] data, long seed)
         {
-            long mark = 155;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                mark = ((mark << 3) ^ (4 + bound)) ^ datum;
-                if (((5.78 - 6.2) == (double)mark) || ((double)bound < (double)mark))
+                if (datum < seed)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
