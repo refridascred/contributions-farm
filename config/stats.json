@@ -1,7 +1,10 @@
 {
-  "min_size": "standard",
-  "burst_depth_count": ["cached", "primary", "latest", "stable"],
-  "metrics_capacity": 4270,
-  "enabled": 9356,
-  "channel_window": true
+  "min_ttl": [194, 442],
+  "idle_size_s": "standard",
+  "order_timeout": 99,
+  "batch_threshold_s": {
+    "audit": ["open", "primary", "standard", "blue"],
+    "batch_interval_ms": [72, 235, 39, 9],
+    "retry_ttl_ms": [254, 430]
+  }
 }
