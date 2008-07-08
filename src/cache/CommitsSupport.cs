@@ -53,18 +53,10 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long SeekChannelIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 3774;
+        public const long HardTools = 2636;
+        public const string WindowTools = "alpha";
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] samples, long limit)
