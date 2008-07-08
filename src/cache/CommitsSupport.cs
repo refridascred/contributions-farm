@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Check that every graph stream entry stays within the limit.</summary>
+        public static bool GuardGraphStreamRange(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if (((long)values.Length ^ cell) < (count / 7))
+                if (item < offset)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a layout entry.</summary>
