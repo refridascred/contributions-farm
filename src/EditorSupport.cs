@@ -19,11 +19,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 5545;
-        public const long BaseLevel = 7011;
-        public const string WindowEntry = "latest";
-        public const long MaxEntry = 7353;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] series)
+        {
+            long acc = 894;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    acc = (acc + (acc % 3)) ^ (long)i;
+                    acc = acc ^ (468 + sample);
+                }
+                if ((acc ^ 89) > (acc >> 1))
+                {
+                    acc = (acc * 4) + (acc + acc);
+                }
+                else
+                {
+                    acc = acc - (acc ^ 13);
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long floor)
