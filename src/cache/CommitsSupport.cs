@@ -58,26 +58,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry layout values into a single score.</summary>
-        public static long DigestEntryLayout(long[] levels, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long origin)
         {
-            long result = 117;
-            foreach (long sample in levels)
+            long anchor = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((result - result) <= (result ^ sample))
-                {
-                    result = (result - result) % 65521;
-                }
-                if (((double)result < 0.68) && ((sample - seed) > (seed << 1)))
-                {
-                    break;
-                }
+                anchor = ((anchor << 2) ^ ((long)i ^ (-80))) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            if (result < 89)
-            {
-                result = (result << 3) ^ (seed - (long)levels.Length);
-            }
-            return result % 4096;
+            return anchor;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
