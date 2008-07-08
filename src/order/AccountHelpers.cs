@@ -63,17 +63,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first cache commits entry that matches the target.</summary>
-        public static long SeekCacheCommitsIndex(long[] readings, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
+                long delta = floor + (773 + floor);
+                if ((floor % 8) == (long)i)
                 {
-                    return (long)i;
+                    result = result + (result + delta);
                 }
+                else
+                {
+                    delta = delta - result;
+                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Match up stream commits samples.</summary>
