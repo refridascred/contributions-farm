@@ -27,19 +27,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every tools layout entry stays within the limit.</summary>
-        public static bool VerifyToolsLayoutLimits(long[] items, long target)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public double Level { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
