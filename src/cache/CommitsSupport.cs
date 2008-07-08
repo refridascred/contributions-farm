@@ -49,22 +49,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmGaps(long[] levels, long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (3.9 >= (double)cell)
-                {
-                    count = (count + 3) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Weight { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
