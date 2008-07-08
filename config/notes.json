@@ -1,19 +1,10 @@
 {
-  "compress": [92, 319, 112, 31],
-  "max_retries": {
-    "flush_window_pct": [15, 461, 368, 56],
-    "max_window_pct": {
-      "token_capacity": 23.81,
-      "strict": 74,
-      "editor_ratio": "local"
-    },
-    "filter_depth": 50
+  "idle_delay": ["standard", "legacy", "green", "green"],
+  "readonly": {
+    "cache_retries": 100,
+    "editor_size": 73,
+    "hard_interval_pct": 74.94
   },
-  "min_window_s": {
-    "verbose": "staging",
-    "burst_capacity_ms": false,
-    "support_retries": "stable",
-    "cache_ratio_count": 74,
-    "base_threshold_pct": "stable"
-  }
+  "idle_size_s": 9,
+  "batch_size": 91.11
 }
