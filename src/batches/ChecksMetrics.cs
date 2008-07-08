@@ -23,16 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = total + 691;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Done,
+            Idle,
+            Stale,
         }
 
         /// <summary>Match up contributi batches samples.</summary>
