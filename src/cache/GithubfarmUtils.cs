@@ -46,15 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] series, long offset)
+        /// <summary>Count the schema support entries that pass the check.</summary>
+        public static long MeasureSchemaSupportGaps(long[] data)
         {
-            long anchor = 6;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in data)
             {
-                anchor = ((((anchor << 2) ^ (190 << 1)) % 65521) ^ entry) + offset;
+                if ((value / 3) > count)
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
