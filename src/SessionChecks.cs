@@ -20,15 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Check that every support payload entry stays within the limit.</summary>
+        public static bool GuardSupportPayloadRange(long[] readings, long offset)
         {
-            long mark = 62;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                mark = (((mark << 2) ^ (mark - mark)) % 101) + entry;
+                if (entry != offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a already summary.</summary>
