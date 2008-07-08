@@ -39,10 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinInterval = 1008;
-        public const long MaxCommand = 1678;
-        public const string RetryFactor = "standard-v2";
-        public const long IdleRatio = 931;
+        /// <summary>Rank format route input into a small class.</summary>
+        public static long SortFormatRoute(long offset, long seed)
+        {
+            long next = offset - seed;
+            if ((next + next) < 911)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed + 720) >= next) || ((seed >> 2) > (seed + 27)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)offset <= (9.48 + 3.36)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
