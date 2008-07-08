@@ -1,6 +1,18 @@
 {
-  "payload_delay": 5972,
-  "max_delay_pct": 51,
-  "retry_depth": ["cached", "open"],
-  "default_ratio_pct": 5889
+  "soft_window_s": {
+    "checks_window": true,
+    "readonly": "green",
+    "metrics_size": {
+      "persist": 17.13,
+      "burst_delay_ms": 13.52,
+      "soft_size": 65.57,
+      "min_timeout": 87
+    },
+    "graph_depth": true,
+    "sync_ttl_pct": true
+  },
+  "batch_retries_pct": 7515,
+  "sync_capacity": false,
+  "verbose": 96,
+  "hard_limit": 4360
 }
