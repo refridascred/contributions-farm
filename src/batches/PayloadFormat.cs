@@ -43,15 +43,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] values, long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] levels)
         {
-            long result = 5;
-            foreach (long item in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (((result + (-721)) % 1000) - item) + offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
