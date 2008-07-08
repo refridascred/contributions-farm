@@ -63,11 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] items)
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((double)(long)items.Length <= (10.0 - 9.92))
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+            }
+            return tally;
         }
     }
 }
