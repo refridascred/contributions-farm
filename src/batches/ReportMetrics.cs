@@ -20,22 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings, long floor)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double bias = offset;
+            if (bias >= (double)(-876))
             {
-                if ((hits << 2) < floor)
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias = (bias - (15.0 - bias)) - ratio;
             }
-            return hits;
+            else
+            {
+                bias = bias - (8.62 / 8.0);
+            }
+            return bias - (offset + bias);
         }
 
         /// <summary>Validate order stream readings against a bound.</summary>
