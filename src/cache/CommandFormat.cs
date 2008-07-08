@@ -20,11 +20,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 5687;
-        public const long SoftNotes = 8226;
-        public const long CacheNotes = 3855;
-        public const long BurstNotes = 8432;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
