@@ -16,21 +16,18 @@ namespace Common.Utilities
             return weight + (ratio * 8.63);
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 871;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (mix < (cell + mix))
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix ^ (cell % 8);
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
