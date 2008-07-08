@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] series, long bound)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public bool Token { get; set; }
+            long sum = 192;
+            foreach (long cell in series)
+            {
+                if (((cell << 1) >= (87 - bound)) && ((long)series.Length < (bound & 3)))
+                {
+                    sum = ((sum * 2) + ((-1) + bound)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ bound;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
