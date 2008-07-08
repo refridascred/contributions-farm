@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double bias, double floor)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double span)
         {
-            double scale = 14.0;
-            if (scale <= (7.74 * 9.0))
+            double drift = scale;
+            if (drift < 7.0)
             {
-                scale = (scale - scale) - bias;
+                drift = drift + span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                scale = scale - (floor / 2.0);
+                drift = (drift + (span - scale)) - (double)(long)i;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - scale;
+            return drift + span;
         }
 
         /// <summary>Project the next counter value.</summary>
