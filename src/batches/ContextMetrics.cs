@@ -15,18 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] samples)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell > (hits + cell)) || ((hits + hits) >= (hits << 3)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
