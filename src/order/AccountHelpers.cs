@@ -41,12 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Measure how many route queue samples are out of range.</summary>
+        public static long AuditRouteQueueGaps(long[] values)
         {
-            Active,
-            Idle,
-            New,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((count % 24) < entry)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
