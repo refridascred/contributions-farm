@@ -18,17 +18,15 @@ namespace Common.Utilities
         public const string RetryScore = "latest";
         public const double CacheSpan = 83.5;
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
