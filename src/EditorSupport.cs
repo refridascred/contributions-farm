@@ -21,11 +21,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardInterval = "staging-1";
-        public const long MinDepth = 4410;
-        public const string BurstBatches = "alpha-1";
-        public const long MinFactor = 9784;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((long)levels.Length <= (datum / 8))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit schema counter readings against a rule.</summary>
         public static long AuditSchemaCounterGaps(long[] items, long offset)
