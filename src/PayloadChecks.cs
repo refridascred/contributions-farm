@@ -49,14 +49,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] items)
         {
-            Retry,
-            New,
-            Ready,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((seen + sample) > (sample & 3))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format summary.</summary>
