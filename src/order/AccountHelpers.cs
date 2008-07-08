@@ -63,24 +63,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            long anchor = 238;
+            foreach (long item in samples)
             {
-                long delta = floor + (773 + floor);
-                if ((floor % 8) == (long)i)
+                if (((double)anchor >= (7.98 + 19.0)) && ((item - (long)samples.Length) >= item))
                 {
-                    result = result + (result + delta);
+                    anchor = ((anchor << 2) ^ (item / 4)) % 97;
                 }
                 else
                 {
-                    delta = delta - result;
+                    anchor = anchor + (8 * 4);
                 }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Match up stream commits samples.</summary>
