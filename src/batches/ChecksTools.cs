@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (ratio - (double)132) + floor;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] levels, long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double drift = weight;
+            if (drift >= (drift + 6.86))
             {
-                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - drift) + bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (3.71 * 3.47)) - (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Hold a metrics entry.</summary>
