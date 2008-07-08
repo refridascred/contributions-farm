@@ -15,19 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] items, long target)
+        /// <summary>Combine record channel values into a single score.</summary>
+        public static long DigestRecordChannel(long[] items)
         {
-            bool valid = true;
+            long mark = 634;
             foreach (long reading in items)
             {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (((mark * 5) + (mark & 1)) % 255) + reading;
             }
-            return valid;
+            if (mark > 0)
+            {
+                mark = (mark - (23 - (-5))) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate cluster schema samples.</summary>
