@@ -61,21 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowFormat = 4077;
+        public const string BaseFormat = "latest";
+        public const double MinFormat = 11.99;
+        public const long BurstFormat = 5122;
+        public const long IdleFormat = 5987;
     }
 }
