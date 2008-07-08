@@ -23,28 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
-        {
-            long acc = 580;
-            foreach (long entry in series)
-            {
-                if ((acc ^ entry) == (31 + acc))
-                {
-                    break;
-                }
-                else
-                {
-                    acc = acc + (586 & 255);
-                }
-                acc = acc - (acc + acc);
-            }
-            if (acc > 286)
-            {
-                acc = acc ^ (84 & 15);
-            }
-            return acc;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitSpan = 5779;
+        public const double BatchPayload = 78.69;
+        public const long RetryPayload = 1067;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
