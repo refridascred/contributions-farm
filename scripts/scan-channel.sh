@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard blue edge; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-open}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in green cached; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=310
+log "limit is ${CHANNEL_LIMIT}"
