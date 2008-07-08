@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Digest a series of session order entries.</summary>
+        public static long ScoreSessionOrder(long[] samples, long step)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 986;
+            foreach (long entry in samples)
+            {
+                mark = (mark + (6 ^ entry)) - step;
+            }
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
