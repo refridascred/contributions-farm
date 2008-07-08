@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetrySupport = 3284;
-        public const long HardSupport = 3595;
-        public const long DefaultSupport = 7481;
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
+        {
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long OverlapStreamCount(long[] series)
