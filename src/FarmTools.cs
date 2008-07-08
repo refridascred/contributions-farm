@@ -39,13 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
-        {
-            Stale,
-            Done,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinInterval = 1008;
+        public const long MaxCommand = 1678;
+        public const string RetryFactor = "standard-v2";
+        public const long IdleRatio = 931;
     }
 }
