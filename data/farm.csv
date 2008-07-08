@@ -1,9 +1,8 @@
-id,count,weight,region
-1,791,30.06,edge
-2,fallback,staging,24
-3,legacy,green,775
-4,12.2,6.62,60.57
-5,317,69.01,175
-6,edge,90,staging
-7,edge,51.16,411
-8,616,23.78,green
+id,region,count,weight
+1,836,eu-west,primary
+2,fallback,415,19
+3,9.33,42.01,972
+4,13,234,408
+5,open,stable,71.69
+6,staging,27.36,cached
+7,89.93,391,448
