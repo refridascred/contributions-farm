@@ -37,24 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command stats pair into a bucket.</summary>
-        public static long SortCommandStats(long bound, long target)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            if ((bound & 63) < (target << 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target ^ target) == (target % 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            New,
+            Stale,
+            Dropped,
+            Draft,
+            Synced,
         }
 
         /// <summary>Scale a batches metrics figure with a bias.</summary>
