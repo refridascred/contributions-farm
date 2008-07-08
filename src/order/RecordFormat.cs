@@ -40,32 +40,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long origin, long limit)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long offset = origin - limit;
-            if ((offset % 64) < limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (offset < (546 + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.0 + 9.0) >= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
