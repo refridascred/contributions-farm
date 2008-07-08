@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const double MinTimeout = 51.98;
         public const long DefaultRatio = 2996;
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] levels, long seed)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Queued,
+            Idle,
+            Dropped,
+            Paused,
         }
     }
 }
