@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
