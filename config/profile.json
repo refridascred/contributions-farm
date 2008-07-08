@@ -1,12 +1,7 @@
 {
-  "filter_depth": 9404,
-  "dry_run": 250,
-  "soft_depth": "local",
-  "compress": {
-    "readonly": "strict",
-    "max_ratio_s": "stable",
-    "hard_delay": true,
-    "warm_ratio_count": 53.58
-  },
-  "min_ttl": ["primary", "primary", "stable", "fallback"]
+  "max_interval": 30,
+  "account_window": 45.56,
+  "soft_ratio_pct": 28.23,
+  "batch_timeout": 45.16,
+  "entry_retries": 61.73
 }
