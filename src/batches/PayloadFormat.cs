@@ -13,12 +13,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long offset2)
         {
-            Failed,
-            Pending,
-            Active,
+            long next = offset + offset2;
+            if ((offset2 * 3) <= 18)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset2 * 3) > 293)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((next % 100) < 54)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command entry.</summary>
