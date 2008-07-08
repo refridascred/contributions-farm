@@ -43,13 +43,18 @@ namespace Common.Utilities
         public const double BurstDepth = 59.45;
         public const long StepCommits = 4924;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Accumulate stream metric samples.</summary>
+        public static long CombineStreamMetric(long[] values)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long score = 544;
+            foreach (long entry in values)
+            {
+                if ((6.84 / 6.0) > (double)entry)
+                {
+                    score = (score - (entry / 4)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
