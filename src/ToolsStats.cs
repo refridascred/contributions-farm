@@ -50,13 +50,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
+            Draft,
+            Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
