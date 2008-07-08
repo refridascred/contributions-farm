@@ -19,22 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel checks readings.</summary>
-        public static long FoldChannelChecks(long[] levels, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] samples)
         {
-            long carry = -7;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((carry + sample) > carry)
+                if (((datum + seen) == (datum ^ seen)) && !((double)datum <= 9.0))
                 {
-                    break;
+                    seen = seen + 1;
                 }
-                if (target >= (carry << 3))
+                else
                 {
-                    carry = carry + carry;
+                    seen = seen - 1;
                 }
             }
-            return carry % 4096;
+            return seen;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
