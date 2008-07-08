@@ -33,21 +33,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) > 5)
+                    if ((items[i] + items[j]) < 11)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate stream metric samples.</summary>
