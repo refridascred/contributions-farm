@@ -31,16 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor graph counter forward.</summary>
-        public static long RollEditorGraph(long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                anchor = (anchor ^ (long)i) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((limit << 3) <= ((long)readings.Length << 3))
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a layout header.</summary>
