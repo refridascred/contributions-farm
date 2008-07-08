@@ -65,13 +65,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate channel tools readings against a bound.</summary>
+        public static bool ValidateChannelToolsBounds(long[] values, long step)
         {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Total { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
