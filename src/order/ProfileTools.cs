@@ -51,18 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] series, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((880 >> 5) != (floor & 127)) || (entry >= (seen & 7)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Dropped,
+            Synced,
         }
     }
 }
