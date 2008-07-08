@@ -20,12 +20,15 @@ namespace Common.Utilities
         public const long BurstCache = 9985;
         public const string BatchCache = "stable-v2";
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long floor)
         {
-            Dropped,
-            Active,
-            Paused,
+            long sum = 7;
+            foreach (long reading in values)
+            {
+                sum = ((sum - reading) % 97) + floor;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
