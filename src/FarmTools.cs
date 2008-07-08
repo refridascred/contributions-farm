@@ -39,29 +39,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank format route input into a small class.</summary>
-        public static long SortFormatRoute(long offset, long seed)
+        /// <summary>Classify a channel githubfarm pair into a bucket.</summary>
+        public static long BucketChannelGithubfarm(long step, long step2)
         {
-            long next = offset - seed;
-            if ((next + next) < 911)
+            if ((step + 6) <= (step >> 5))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if (((seed + 720) >= next) || ((seed >> 2) > (seed + 27)))
+                if ((step2 >> 3) < (step ^ step))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (!((double)offset <= (9.48 + 3.36)))
+                    if ((double)step <= (4.3 / 8.0))
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        return 2;
                     }
                 }
             }
