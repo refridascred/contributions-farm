@@ -21,18 +21,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Measure how many graph commits samples are out of range.</summary>
-        public static long MeasureGraphCommitsHits(long[] values)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((hits >= (hits + item)) && ((item % 97) > (-64)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
