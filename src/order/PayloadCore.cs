@@ -67,19 +67,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate graph format readings against a bound.</summary>
-        public static bool VerifyGraphFormatBounds(long[] series, long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
