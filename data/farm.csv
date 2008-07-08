@@ -1,10 +1,7 @@
-id,ratio,label
-1,blue,331
-2,green,primary
-3,edge,blue
-4,88,standard
-5,strict,69
-6,eu-west,671
-7,616,543
-8,76.98,local
-9,811,32.69
+id,rank,token,count
+1,243,64.58,676
+2,latest,499,664
+3,85,43.84,780
+4,908,legacy,27.72
+5,96.65,4.91,95.19
+6,primary,142,staging
