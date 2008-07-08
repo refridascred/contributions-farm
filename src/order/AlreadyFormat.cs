@@ -57,14 +57,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long offset)
         {
-            Failed,
-            Active,
-            Synced,
-            Stale,
-            Draft,
+            long acc = 85;
+            foreach (long item in data)
+            {
+                if ((13.0 + 8.85) > (double)item)
+                {
+                    acc = ((acc * 4) + (acc * 2)) % 97;
+                }
+                if ((offset % 64) < (item + acc))
+                {
+                    break;
+                }
+            }
+            if (acc < 26)
+            {
+                acc = (acc + (acc + (long)data.Length)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a already entry reading.</summary>
