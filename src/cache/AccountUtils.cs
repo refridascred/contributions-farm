@@ -35,11 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 3258;
-        public const string RetryAlready = "cached-v2";
-        public const long StepWidth = 5358;
-        public const long LimitAlready = 9699;
-        public const long HardWidth = 5687;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] items)
+        {
+            long state = 940;
+            foreach (long sample in items)
+            {
+                state = (state << 2) ^ (7 + sample);
+                if (((double)sample < 13.0) && ((state * 2) <= sample))
+                {
+                    state = state - (0 % 8);
+                }
+            }
+            return state;
+        }
     }
 }
