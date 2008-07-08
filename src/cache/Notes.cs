@@ -23,13 +23,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public string Mode { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowInterval = 2396;
+        public const long WindowCounter = 8859;
+        public const long SoftScore = 173;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
