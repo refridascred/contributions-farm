@@ -1,7 +1,17 @@
 {
-  "hard_delay_pct": 9333,
-  "batch_retries_s": 70,
-  "max_size_ms": ["strict", "legacy", "latest"],
-  "idle_ttl_ms": 63,
-  "token_ttl": 8613
+  "batch_timeout_pct": [493, 10],
+  "persist": "stable",
+  "idle_ratio_pct": {
+    "audit": 73.43,
+    "flush_capacity": {
+      "poll_depth": 90,
+      "default_threshold_pct": 32.61,
+      "audit": "strict",
+      "account_timeout": 37.41,
+      "token_retries": "legacy"
+    },
+    "session_capacity": 81,
+    "context_ttl": true
+  },
+  "soft_ttl_ms": "staging"
 }
