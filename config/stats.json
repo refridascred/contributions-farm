@@ -1,5 +1,7 @@
 {
-  "warm_depth": 3,
-  "max_retries": "open",
-  "tools_ttl": false
+  "min_size": "standard",
+  "burst_depth_count": ["cached", "primary", "latest", "stable"],
+  "metrics_capacity": 4270,
+  "enabled": 9356,
+  "channel_window": true
 }
