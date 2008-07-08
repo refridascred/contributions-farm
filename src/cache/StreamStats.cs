@@ -52,26 +52,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((bound + acc) <= (3 << 1)) && (281 < ((long)i / 9)))
-                {
-                    acc = (acc ^ (bound % 100)) % 97;
-                    acc = (acc + 278) % 255;
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 5) + bound;
-                    acc = (acc + 124) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 1000;
-            }
-            return acc;
+            Done,
+            Queued,
+            Ready,
+            New,
         }
     }
 }
