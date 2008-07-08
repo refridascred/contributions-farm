@@ -42,16 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double ratio, double span)
         {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
+            double mean = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                anchor = anchor ^ (965 & 255);
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                mean = (mean + span) - (double)(long)i;
             }
-            return anchor;
+            return mean + (mean + 5.12);
         }
 
         /// <summary>Define context limits and defaults.</summary>
