@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const long RetryBatches = 5663;
         public const double CacheRatio = 72.76;
 
-        /// <summary>Fold a list of batches graph readings.</summary>
-        public static long WeighBatchesGraph(long[] samples)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            long mark = -3;
-            foreach (long sample in samples)
+            double weight = (double)(645 / 3);
+            if (weight >= weight)
             {
-                mark = mark + (sample << 3);
-                if (((mark >> 4) <= (68 + 60)) && ((mark - 485) <= (mark & 3)))
-                {
-                    mark = (mark - (sample & 127)) % 255;
-                }
+                weight = (weight - 8.0) + bias;
             }
-            return mark;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + (weight + gain)) + (double)(long)i;
+            }
+            return weight + (double)5;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
