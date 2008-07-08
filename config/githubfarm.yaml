@@ -1,5 +1,4 @@
 # githubfarm settings
-cache_threshold_pct: local
-poll_ttl_s: green
-readonly: true
-batch_delay_count: false
+batch_interval_count: strict
+warm_retries_s: true
+poll_size_count: true
