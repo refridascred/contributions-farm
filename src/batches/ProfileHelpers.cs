@@ -37,10 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSize = "stable-edge";
-        public const long StepSupport = 9805;
-        public const long HardSupport = 7916;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] levels, long limit)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (5.6 < (double)value)
+                {
+                    hits = (hits + 2) - limit;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the account schema entries that pass the check.</summary>
         public static long TallyAccountSchemaMatches(long[] series)
