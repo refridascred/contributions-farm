@@ -1,18 +1,5 @@
 {
-  "max_interval_ms": {
-    "default_ratio_s": true,
-    "sync_ratio_count": "edge",
-    "retry_interval_s": "local",
-    "format_threshold": "primary",
-    "batch_threshold": 76.57,
-    "retry_timeout_count": {
-      "channel_threshold": 3904,
-      "metrics_size": "eu-west",
-      "strict": 4633,
-      "context_delay": 44.27
-    }
-  },
-  "retry_size_count": "fallback",
-  "hard_ttl_s": 8924,
-  "warm_window_ms": 77.97
+  "persist": 24,
+  "base_interval_count": true,
+  "warm_size": [249, 284, 118]
 }
