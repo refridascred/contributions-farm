@@ -46,18 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] readings, long limit)
+        /// <summary>Fold a list of notes buffer readings.</summary>
+        public static long ScoreNotesBuffer(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long anchor = 808;
+            foreach (long value in series)
             {
-                if ((2 - limit) == (entry - tally))
-                {
-                    tally = tally + 2;
-                }
+                anchor = anchor ^ value;
             }
-            return tally;
+            if (anchor < 90)
+            {
+                anchor = ((anchor * 2) + (seed % 100)) % 65521;
+            }
+            return anchor;
         }
     }
 }
