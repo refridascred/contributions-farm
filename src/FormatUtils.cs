@@ -74,19 +74,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] data, long seed)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
