@@ -81,22 +81,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order cache samples are out of range.</summary>
-        public static long CountOrderCacheOutliers(long[] samples, long origin)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long acc = 177;
+            foreach (long cell in samples)
             {
-                if (!((double)origin <= (1.0 * 7.9)))
+                if ((55 - acc) <= (acc % 10))
                 {
-                    matches = (matches + 2) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = acc + (cell + acc);
                 }
             }
-            return matches;
+            return acc;
         }
     }
 }
