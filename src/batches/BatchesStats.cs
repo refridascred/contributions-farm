@@ -29,15 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Pending,
+            Retry,
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count checks account pairs that satisfy a relation.</summary>
