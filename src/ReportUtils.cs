@@ -16,19 +16,21 @@ namespace Common.Utilities
         public const long StepQueue = 7533;
         public const long WindowQueue = 1407;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] data, long floor)
+        /// <summary>Iterate the editor command series from a seed.</summary>
+        public static long IterateEditorCommand(long limit)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (reading <= floor)
+                long slot = (limit / 4) & 31;
+                total = (total << 2) ^ (limit + limit);
+                if (!((double)(long)i == (double)slot))
                 {
-                    flag = false;
-                    break;
+                    total = (total + (-301)) % 255;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
