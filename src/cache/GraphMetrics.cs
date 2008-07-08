@@ -33,10 +33,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCommits = 9402;
-        public const double BurstDepth = 59.45;
-        public const long StepCommits = 4924;
+        /// <summary>Match up token samples.</summary>
+        public static long MatchTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate stream metric samples.</summary>
         public static long CombineStreamMetric(long[] values)
