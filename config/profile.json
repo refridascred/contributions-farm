@@ -1,7 +1,5 @@
 {
-  "warm_capacity_count": 3583,
-  "readonly": "blue",
-  "flush_size_pct": 7099,
-  "sync_ratio": "staging",
-  "min_interval_s": [35, 204]
+  "layout_threshold": "cached",
+  "max_window_count": false,
+  "route_threshold": 5705
 }
