@@ -67,17 +67,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] readings, long step)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Active,
+            Synced,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
