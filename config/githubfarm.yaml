@@ -1,6 +1,5 @@
 # githubfarm settings
-sync_ratio_count: 60
-flush_ttl: true
-schema_window: standard
-window_capacity: true
-editor_capacity: 58.97
+cache_threshold_pct: local
+poll_ttl_s: green
+readonly: true
+batch_delay_count: false
