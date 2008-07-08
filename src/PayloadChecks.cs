@@ -54,22 +54,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] items)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long offset, long step)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            if (((5 / 4) == (step % 8)) && ((double)offset > 5.0))
             {
-                if ((seen + sample) > (sample & 3))
+                return 5;
+            }
+            else
+            {
+                if (!((offset >> 3) < (offset % 16)))
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((step * 5) >= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((74 + offset) >= (offset + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
