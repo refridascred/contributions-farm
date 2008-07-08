@@ -33,18 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionHits(long[] levels, long step)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((step + tally) == (step % 10))
-                {
-                    tally = (tally + 3) + value;
-                }
-            }
-            return tally;
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a profile entry.</summary>
