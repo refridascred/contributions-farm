@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of payload farm entries.</summary>
-        public static long TotalPayloadFarm(long[] readings, long origin)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteGaps(long[] series)
         {
-            long state = 956;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                state = state ^ (origin - origin);
-                if ((origin - datum) <= state)
+                if ((reading ^ reading) == (seen & 3))
                 {
-                    state = (state + ((long)readings.Length ^ origin)) % 101;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return state % 97;
+            return seen;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
