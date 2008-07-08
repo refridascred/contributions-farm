@@ -44,11 +44,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 5996;
-        public const string CacheDepth = "latest-1";
-        public const long BatchRoute = 994;
-        public const long BurstRoute = 6778;
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
+        {
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Match up account context samples.</summary>
         public static long CompareAccountContextCount(long[] series)
