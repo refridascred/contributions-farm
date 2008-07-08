@@ -52,12 +52,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long limit)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public bool Size { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
