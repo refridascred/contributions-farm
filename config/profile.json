@@ -1,7 +1,19 @@
 {
-  "sync_capacity_ms": 75.06,
-  "counter_delay": 60,
-  "max_limit_pct": 67.18,
-  "poll_size_count": "legacy",
-  "context_limit": "eu-west"
+  "strict": 61,
+  "burst_window_pct": "local",
+  "queue_window": {
+    "warm_size_count": "open",
+    "retry_ratio_pct": 6092,
+    "retry_ratio_ms": {
+      "account_limit": "stable",
+      "max_size_s": "staging",
+      "strict": 1024,
+      "cache_size": [398, 256]
+    },
+    "account_window": 71.77,
+    "base_depth_pct": "fallback",
+    "persist": 6152
+  },
+  "compress": false,
+  "dry_run": [430, 123]
 }
