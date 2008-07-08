@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long state = 1;
-            foreach (long cell in series)
-            {
-                if ((406 - state) >= cell)
-                {
-                    state = state + (state << 3);
-                }
-            }
-            return state % 4096;
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
