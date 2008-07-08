@@ -1,11 +1,10 @@
 # Command notes
 
-Run the tools check before changing any order limits.
-A githubfarm that stays idle for too long is moved to the channel list.
+Use githubfarm settings to tune how often commits data is refreshed.
+Use metric settings to tune how often graph data is refreshed.
 
 ## Guidelines
 
-- Review layout limits each release
-- Document new notes fields
-- Keep entry values small
-- Prefer token defaults
+- Document new profile fields
+- Prefer counter defaults
+- Log every command change
