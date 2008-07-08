@@ -39,17 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long carry = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry << 2) ^ floor) % 97;
-                carry = carry - (carry % 8);
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            New,
+            Ready,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
