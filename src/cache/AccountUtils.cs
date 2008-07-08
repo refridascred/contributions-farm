@@ -23,21 +23,17 @@ namespace Common.Utilities
             return gain + (gain - gain);
         }
 
-        /// <summary>Match up checks metrics samples.</summary>
-        public static long MatchChecksMetricsCount(long[] items)
+        /// <summary>Locate a format counter reading by value.</summary>
+        public static long LookupFormatCounterIndex(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
