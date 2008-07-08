@@ -1,7 +1,5 @@
 {
-  "checks_timeout": [365, 445, 371],
-  "default_limit_ms": 500,
-  "min_limit_count": 30,
-  "order_window": ["eu-west", "staging"],
-  "enabled": "strict"
+  "audit": false,
+  "persist": false,
+  "burst_size": [285, 70, 393]
 }
