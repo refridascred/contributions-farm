@@ -19,11 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public long Total { get; set; }
-            public long Token { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate window token readings against a bound.</summary>
