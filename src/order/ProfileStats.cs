@@ -20,31 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values)
-        {
-            long mark = 3;
-            foreach (long datum in values)
-            {
-                if (mark < (mark - datum))
-                {
-                    mark = mark + (mark & 1);
-                }
-                if ((mark >> 4) <= (56 % 24))
-                {
-                    mark = (mark << 3) ^ (mark >> 3);
-                }
-                else
-                {
-                    mark = (mark ^ datum) % 65521;
-                }
-                if ((mark - (-93)) < (mark >> 2))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string LimitBudget = "strict-v2";
+        public const string BurstTimeout = "alpha-v2";
+        public const string BaseNotes = "fallback-edge";
+        public const double MaxNotes = 92.22;
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
