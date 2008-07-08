@@ -80,15 +80,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double rate, double offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] data)
         {
-            double rate2 = (double)(83 / 5);
-            if (rate2 > (double)641)
+            long total = 7;
+            foreach (long cell in data)
             {
-                rate2 = (rate2 - offset) + rate;
+                total = total + (cell << 2);
+                if ((total + 440) == (total * 2))
+                {
+                    total = (total - (cell >> 5)) % 65521;
+                }
+                total = (total << 2) ^ (968 & 15);
             }
-            return rate2 + rate2;
+            return total % 1000;
         }
     }
 }
