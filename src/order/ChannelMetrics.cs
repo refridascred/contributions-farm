@@ -26,15 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] items, long origin)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
