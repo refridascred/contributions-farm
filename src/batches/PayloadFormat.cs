@@ -36,22 +36,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels, long offset)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long bound, long origin)
         {
-            long score = 872;
-            foreach (long cell in levels)
+            if (!(bound < (bound % 16)))
             {
-                if (((offset >> 5) >= cell) || ((offset - cell) < ((long)levels.Length & 7)))
+                return 3;
+            }
+            else
+            {
+                if ((origin * 2) > 5)
                 {
-                    score = score + cell;
+                    return 0;
                 }
                 else
                 {
-                    score = (score - 6) % 4096;
+                    if (3 > (origin + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Hold a profile summary.</summary>
