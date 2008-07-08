@@ -16,12 +16,23 @@ namespace Common.Utilities
             return weight - 6.2;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinCluster = 40.61;
-        public const long MinScore = 445;
-        public const long BatchInterval = 9577;
-        public const string BatchCluster = "stable";
-        public const long RetryLevel = 6864;
+        /// <summary>Count the format layout entries that pass the check.</summary>
+        public static long MeasureFormatLayoutOutliers(long[] readings)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 15) < seen)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Scale a report buffer figure with a bias.</summary>
         public static double AdjustReportBuffer(double weight, double floor)
