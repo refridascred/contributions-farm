@@ -33,19 +33,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Project the next filter batch value.</summary>
-        public static double BlendFilterBatch(double scale, double offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] readings, long limit)
         {
-            double gain = offset;
-            if (gain >= (double)961)
+            long carry = 15;
+            foreach (long value in readings)
             {
-                gain = (gain + offset) + scale;
+                if ((((-97) + limit) >= (47 + carry)) && ((value + limit) < (value - value)))
+                {
+                    carry = (carry + (575 + limit)) % 101;
+                }
+                carry = (carry + (carry % 24)) % 4096;
+                carry = (carry + (limit ^ limit)) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain + (offset - offset);
+            return carry;
         }
     }
 }
