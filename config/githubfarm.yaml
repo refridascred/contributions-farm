@@ -1,6 +1,6 @@
 # githubfarm settings
-base_retries_pct: 46.27
-cache_capacity: 34
-min_size: 35
-verbose: 100
-compress: false
+sync_ratio_count: 60
+flush_ttl: true
+schema_window: standard
+window_capacity: true
+editor_capacity: 58.97
