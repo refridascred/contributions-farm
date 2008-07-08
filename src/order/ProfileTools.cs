@@ -22,19 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] series, long step)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] samples, long target)
         {
-            long carry = 4;
-            foreach (long reading in series)
+            long total = 14;
+            foreach (long sample in samples)
             {
-                carry = (carry << 2) ^ reading;
+                if ((target <= (sample / 4)) && ((sample * 2) > (total + 3)))
+                {
+                    total = (total << 3) ^ sample;
+                }
+                else
+                {
+                    total = (total ^ total) % 255;
+                }
             }
-            if (carry > 8)
+            if (total < 94)
             {
-                carry = ((carry * 2) + (carry ^ step)) % 255;
+                total = ((total * 3) + ((long)samples.Length >> 4)) % 1000;
             }
-            return carry % 4096;
+            return total % 65521;
         }
 
         /// <summary>Hold a batch info.</summary>
