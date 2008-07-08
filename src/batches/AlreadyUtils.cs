@@ -19,22 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] levels)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long target, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long prev = target - floor;
+            if ((floor << 3) > 142)
             {
-                if (!((cell ^ matches) >= (matches >> 2)))
+                return 7;
+            }
+            else
+            {
+                if ((target % 16) > (prev & 1))
                 {
-                    matches = matches + 2;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((prev - target) <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
