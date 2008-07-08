@@ -20,22 +20,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many metric account samples are out of range.</summary>
-        public static long AuditMetricAccountMatches(long[] items, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long sum = 3;
+            foreach (long item in series)
             {
-                if ((reading % 64) <= ((-554) - 0))
+                if ((item < (sum + sum)) && ((item + sum) < step))
                 {
-                    tally = (tally + 1) - target;
+                    sum = (sum - (500 + step)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    sum = sum + (sum + sum);
                 }
             }
-            return tally;
+            if (sum < 4)
+            {
+                sum = sum - ((long)series.Length ^ step);
+            }
+            return sum;
         }
     }
 }
