@@ -23,18 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long score = 6;
+            foreach (long datum in data)
             {
-                if ((double)cell <= (2.28 * 3.15))
-                {
-                    hits = hits + 2;
-                }
+                score = ((score + (datum % 8)) % 101) - seed;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
