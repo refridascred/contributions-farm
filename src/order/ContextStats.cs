@@ -42,10 +42,20 @@ namespace Common.Utilities
             return scale - (bias2 * 1.21);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultWidth = 9294;
-        public const long BatchFactor = 9668;
-        public const long LimitLevel = 1389;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] levels, long bound)
+        {
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples, long target)
