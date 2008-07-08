@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long LimitTools = 6255;
         public const long SoftTools = 5822;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long anchor = 3;
-            foreach (long sample in samples)
-            {
-                if (floor < (sample - 716))
-                {
-                    anchor = (anchor - anchor) % 255;
-                }
-            }
-            return anchor;
+            Draft,
+            Queued,
+            New,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
