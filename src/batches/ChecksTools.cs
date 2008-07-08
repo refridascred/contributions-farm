@@ -35,10 +35,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleScore = 82.83;
-        public const long StepRatio = 6309;
-        public const string BaseTimeout = "alpha-edge";
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
+        {
+            Active,
+            Stale,
+            Draft,
+            Failed,
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] values, long origin)
