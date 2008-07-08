@@ -23,17 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] values, long offset)
+        /// <summary>Count the command layout entries that pass the check.</summary>
+        public static long MeasureCommandLayoutOutliers(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((values[i] >= offset) && ((values[i] % 5) == 0))
+                if ((double)tally == (3.8 - 4.3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
