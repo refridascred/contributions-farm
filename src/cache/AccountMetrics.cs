@@ -77,18 +77,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextGaps(long[] series)
+        /// <summary>Measure how many route payload samples are out of range.</summary>
+        public static long CountRoutePayloadMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((833 - sample) == (seen % 97))
+                if ((matches > reading) && !(reading >= (reading ^ (long)samples.Length)))
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
