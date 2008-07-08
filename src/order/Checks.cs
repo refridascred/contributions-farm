@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleLayout = "standard";
-        public const string BurstSpan = "cached-edge";
-        public const string LimitLayout = "staging-1";
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] readings)
+        {
+            long carry = -46;
+            foreach (long entry in readings)
+            {
+                if (((carry + carry) <= (entry - 1)) && ((5.45 * 4.0) <= (double)carry))
+                {
+                    carry = ((carry << 3) ^ entry) % 1000;
+                }
+                else
+                {
+                    carry = carry - (carry / 8);
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] data, long bound)
