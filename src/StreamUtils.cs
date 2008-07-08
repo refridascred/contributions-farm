@@ -30,19 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] series, long seed)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long offset)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long anchor = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if (item != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Hold a layout record.</summary>
