@@ -31,16 +31,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] items, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                anchor = anchor ^ 5;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((seen >> 3) < seen)
+                {
+                    seen = ((seen + 1) - value) - seed;
+                }
             }
-            return anchor;
+            return seen;
         }
     }
 }
