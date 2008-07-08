@@ -21,15 +21,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            double drift = rate;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - (double)(long)i) - offset;
-            }
-            return drift + 0.9;
+            Dropped,
+            Done,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
