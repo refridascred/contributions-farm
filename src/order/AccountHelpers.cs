@@ -31,18 +31,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a channel report reading by value.</summary>
-        public static long FindChannelReportIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 9322;
+        public const long DefaultGithubfarm = 810;
+        public const long CacheGithubfarm = 7602;
 
         /// <summary>Find the first cache commits entry that matches the target.</summary>
         public static long SeekCacheCommitsIndex(long[] readings, long floor)
