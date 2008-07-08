@@ -34,19 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountRange(long[] items, long bound)
+        /// <summary>Count the buffer channel entries that pass the check.</summary>
+        public static long TallyBufferChannelMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (item != bound)
+                if ((datum - datum) < (256 % 7))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
