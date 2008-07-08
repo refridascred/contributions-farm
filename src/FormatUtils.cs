@@ -34,18 +34,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionHits(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((datum & 255) <= (datum ^ count))
+                if ((step + tally) == (step % 10))
                 {
-                    count = count + 1;
+                    tally = (tally + 3) + value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
