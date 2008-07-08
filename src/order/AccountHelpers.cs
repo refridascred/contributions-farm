@@ -75,12 +75,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long bound, long bound2)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
+            long next = bound + bound2;
+            if (((double)next == (double)bound2) || ((next % 24) <= bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound2 + next) < (bound + bound))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!(bound > bound2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
