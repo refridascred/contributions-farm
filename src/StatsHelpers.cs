@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            Paused,
-            Active,
-            Failed,
-            Synced,
+            long result = 4;
+            foreach (long reading in data)
+            {
+                result = (result ^ (0 + (long)data.Length)) - reading;
+            }
+            return result % 4096;
         }
 
         /// <summary>Match up session samples.</summary>
