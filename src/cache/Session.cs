@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the graph githubfarm series from a seed.</summary>
-        public static long RollGraphGithubfarm(long floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] data, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long datum in data)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                if (datum != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
