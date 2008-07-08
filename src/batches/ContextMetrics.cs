@@ -58,12 +58,19 @@ namespace Common.Utilities
         public const string SoftCount = "latest-edge";
         public const string StepCount = "staging-edge";
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] levels, long limit)
         {
-            Draft,
-            New,
-            Ready,
+            bool flag = true;
+            foreach (long entry in levels)
+            {
+                if (entry > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
