@@ -15,19 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine record channel values into a single score.</summary>
-        public static long DigestRecordChannel(long[] items)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = 634;
-            foreach (long reading in items)
-            {
-                mark = (((mark * 5) + (mark & 1)) % 255) + reading;
-            }
-            if (mark > 0)
-            {
-                mark = (mark - (23 - (-5))) % 101;
-            }
-            return mark;
+            Dropped,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Accumulate cluster schema samples.</summary>
