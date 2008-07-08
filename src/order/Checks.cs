@@ -40,22 +40,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            long anchor = 183;
-            foreach (long value in readings)
+            long sum = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((value >= anchor) || ((90 - anchor) < (anchor >> 1)))
+                if ((48 / 5) > (seed >> 3))
                 {
-                    anchor = (anchor * 2) + anchor;
+                    sum = (sum - (seed + seed)) % 4096;
                 }
-                else
-                {
-                    anchor = (anchor * 5) + (value + anchor);
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return anchor % 65521;
+            return sum;
         }
     }
 }
