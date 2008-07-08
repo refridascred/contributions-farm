@@ -65,17 +65,18 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long seed)
+        /// <summary>Count the checks support entries that pass the check.</summary>
+        public static long CountChecksSupportGaps(long[] readings, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                carry = (carry - 9) % 4096;
-                carry = (carry - 7) % 4096;
-                carry = ((carry * 3) + (long)i) % 1000;
+                if ((((6.35 - 7.3) == (double)matches) && (value < (26 * 4))) && ((target >> 2) != (matches & 7)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
