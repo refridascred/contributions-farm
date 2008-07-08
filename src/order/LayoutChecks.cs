@@ -84,13 +84,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] values, long floor)
         {
-            Retry,
-            Stale,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((value ^ floor) >= (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
