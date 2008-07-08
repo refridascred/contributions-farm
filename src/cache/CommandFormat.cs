@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const long LimitCache = 2831;
         public const double MaxDepth = 53.99;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitQueue = 4248;
-        public const long BurstTimeout = 6916;
-        public const long CacheQueue = 2651;
-        public const long BaseWidth = 8114;
-        public const double BaseQueue = 75.1;
+        /// <summary>Blend two payload batches measurements.</summary>
+        public static double AdjustPayloadBatches(double rate, double floor)
+        {
+            double load = (double)214;
+            if (load <= (load + rate))
+            {
+                load = load - (load - floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (rate / 3.0)) - (double)(long)i;
+            }
+            return load - (load + 14.0);
+        }
     }
 }
