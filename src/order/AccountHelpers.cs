@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultBudget = 7918;
-        public const long IdleWidth = 4195;
-        public const string DefaultAccount = "local-v2";
-        public const long WindowAccount = 5266;
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
+        {
+            public double Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterLimits(long[] readings, long origin)
