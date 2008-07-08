@@ -67,20 +67,19 @@ namespace Common.Utilities
         public const long DefaultCluster = 2243;
         public const long DefaultFactor = 6926;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] series, long step)
         {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                anchor = (anchor + (target * 4)) % 101;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (sample < step)
                 {
-                    anchor = ((anchor + anchor) % 1000) ^ (long)i2;
+                    valid = false;
+                    break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Hold a payload stats.</summary>
