@@ -34,22 +34,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueGaps(long[] data)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum > (242 + matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count checks account pairs that satisfy a relation.</summary>
