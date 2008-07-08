@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelLimits(long[] series, long step)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (sample <= step)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Hold a batches header.</summary>
