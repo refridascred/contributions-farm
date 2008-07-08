@@ -33,13 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Roll a buffer notes counter forward.</summary>
+        public static long StepBufferNotes(long origin)
         {
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry << 2) ^ ((long)i + origin);
+                if (!((3 ^ origin) != (carry / 4)))
+                {
+                    carry = (carry - (carry - (long)i)) % 1000;
+                }
+                if ((double)origin == (9.3 / 6.0))
+                {
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Count the already entry entries that pass the check.</summary>
