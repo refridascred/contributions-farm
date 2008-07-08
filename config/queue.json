@@ -1,11 +1,11 @@
 {
-  "warm_interval_s": "strict",
-  "strict": {
-    "warm_capacity_count": 77,
-    "session_capacity": 8028,
-    "burst_interval": true
-  },
-  "default_delay_count": false,
-  "cache_delay_s": true,
-  "base_limit": true
+  "max_interval_count": 59.34,
+  "warm_timeout_s": 2746,
+  "stream_delay": 9414,
+  "channel_threshold": {
+    "command_timeout": "strict",
+    "record_interval": 30,
+    "burst_timeout_count": "edge",
+    "idle_interval_s": "latest"
+  }
 }
