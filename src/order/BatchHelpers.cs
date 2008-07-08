@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const string IdleFormat = "latest-edge";
         public const long BatchBudget = 2554;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleCommand = 4583;
+        public const long CacheCommand = 3684;
+        public const string RetryDepth = "open";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TotalEntry(long[] items)
