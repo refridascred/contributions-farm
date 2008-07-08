@@ -26,21 +26,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
