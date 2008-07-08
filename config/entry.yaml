@@ -1,9 +1,13 @@
 # entry settings
-retry_ratio_s:
-  - 157
-  - 129
-max_retries_s: 66.75
-min_ttl_ms: open
-already_ttl: true
-idle_delay: 30
-poll_retries_ms: false
+max_timeout_count: cached
+sync_interval: 10.63
+default_window: edge
+account_timeout:
+  - 304
+  - 280
+  - 291
+filter_ttl:
+  - latest
+  - primary
+  - staging
+report_delay: 30
