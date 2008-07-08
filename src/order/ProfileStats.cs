@@ -46,11 +46,13 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitBuffer = 1429;
-        public const long IdleInterval = 4442;
-        public const long HardSpan = 9155;
-        public const string DefaultRatio = "standard-v2";
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public bool Size { get; set; }
+            public bool Count { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Audit metrics notes readings against a rule.</summary>
         public static long AuditMetricsNotesHits(long[] values)
