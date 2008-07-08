@@ -57,13 +57,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            long state = seed;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
