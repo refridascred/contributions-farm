@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitRatio = 92.78;
-        public const long WindowQueue = 1157;
-        public const long BatchQueue = 7675;
-        public const long SoftDepth = 3844;
+        /// <summary>Audit session counter readings against a rule.</summary>
+        public static long MeasureSessionCounterGaps(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((16.0 / 6.0) != (double)count))
+                {
+                    count = ((count + 1) ^ value) + step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long CountWindowHits(long[] series, long limit)
