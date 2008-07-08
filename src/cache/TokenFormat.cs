@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Validate window token readings against a bound.</summary>
+        public static bool ValidateWindowTokenLimits(long[] items, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (entry != step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
     }
 }
