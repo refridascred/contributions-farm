@@ -34,18 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the buffer channel entries that pass the check.</summary>
-        public static long TallyBufferChannelMatches(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum - datum) < (256 % 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Stamp { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
