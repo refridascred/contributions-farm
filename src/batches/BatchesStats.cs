@@ -15,18 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] data, long limit)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (limit > (hits + limit))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Draft,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
