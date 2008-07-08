@@ -21,20 +21,25 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long limit, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 22; i++)
+            long bound = limit + offset;
+            if ((limit + offset) < (bound & 127))
             {
-                if ((long)i <= 565)
-                {
-                    mark = (mark ^ (49 & 3)) % 101;
-                    mark = (mark + (step - mark)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((double)bound >= (9.9 + 7.5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
