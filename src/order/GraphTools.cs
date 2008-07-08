@@ -15,12 +15,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinScore = "legacy-1";
-        public const double WindowRoute = 59.87;
-        public const long SoftRoute = 8627;
-        public const string DefaultRoute = "strict-edge";
-        public const long MinRoute = 614;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long target, long target2)
+        {
+            if ((target < (target + target2)) && (target2 < (target % 10)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (double)2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitLevel = 8226;
