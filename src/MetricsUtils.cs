@@ -30,12 +30,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
+            Queued,
             Stale,
-            New,
-            Dropped,
+            Failed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
