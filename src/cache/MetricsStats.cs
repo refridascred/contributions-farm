@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] samples, long seed)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Synced,
+            New,
         }
 
         /// <summary>Digest a series of route entries.</summary>
