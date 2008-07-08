@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (((acc << 2) ^ (acc - offset)) % 101) ^ (long)i2;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Audit batch support readings against a rule.</summary>
