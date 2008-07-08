@@ -99,13 +99,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings, long step)
         {
-            Queued,
-            Done,
-            Draft,
-            New,
+            long mark = 625;
+            foreach (long sample in readings)
+            {
+                if (sample >= (sample % 12))
+                {
+                    mark = mark - (sample >> 1);
+                }
+                else
+                {
+                    mark = (mark << 2) ^ (step + step);
+                }
+                if (((-2) >= (mark + step)) && ((step >> 4) < step))
+                {
+                    break;
+                }
+            }
+            return mark % 4096;
         }
     }
 }
