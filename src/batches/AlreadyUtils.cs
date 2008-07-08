@@ -37,22 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] readings, long target)
         {
-            long state = 51;
-            foreach (long cell in values)
+            long result = 8;
+            foreach (long item in readings)
             {
-                if ((713 <= state) || ((cell ^ cell) <= (cell >> 2)))
+                if (!((result - target) == (0 << 1)))
                 {
-                    state = (state << 3) ^ state;
-                }
-                else
-                {
-                    state = (state - cell) % 65521;
+                    result = (result - (666 % 100)) - item;
                 }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the support mode values.</summary>
