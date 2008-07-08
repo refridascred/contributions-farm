@@ -25,13 +25,16 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Roll a checks record counter forward.</summary>
+        public static long IterateChecksRecord(long target)
         {
-            Draft,
-            Retry,
-            Failed,
-            Queued,
+            long acc = target;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc + (target + acc);
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Validate stats schema readings against a bound.</summary>
