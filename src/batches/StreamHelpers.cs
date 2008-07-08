@@ -54,13 +54,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Validate payload farm readings against a bound.</summary>
+        public static bool ValidatePayloadFarmRange(long[] data, long offset)
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
