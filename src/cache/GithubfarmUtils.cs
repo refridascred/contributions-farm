@@ -51,17 +51,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] data, long limit)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if ((data[i] > limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mix = mix + 966;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
     }
 }
