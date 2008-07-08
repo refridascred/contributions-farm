@@ -23,24 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a cache session value against two limits.</summary>
-        public static long GradeCacheSession(long limit, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            if ((seed < (seed + limit)) && ((4.0 + 1.1) == (double)seed))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.95 * 9.0) >= (double)limit)
+                if (40 >= (57 - entry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
