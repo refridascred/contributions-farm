@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultEntry = "fallback";
+        public const string BaseEntry = "fallback";
+        public const long HardInterval = 4049;
+        public const double WindowBudget = 63.16;
+        public const double BurstEntry = 29.87;
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double ratio, double bias)
