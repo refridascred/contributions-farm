@@ -31,24 +31,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long origin)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long IterateEditor(long bound)
         {
-            if (bound < (bound % 100))
+            long acc = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                acc = acc + (bound + bound);
+                acc = (acc + (acc + (long)i)) % 97;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin >> 5) != (570 * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
