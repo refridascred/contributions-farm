@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Done,
-            Closed,
-            Idle,
-            Locked,
-            Retry,
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
