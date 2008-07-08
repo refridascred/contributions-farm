@@ -34,18 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry stats readings against a rule.</summary>
-        public static long CountEntryStatsGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((double)hits < (double)datum)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 3258;
+        public const string RetryAlready = "cached-v2";
+        public const long StepWidth = 5358;
+        public const long LimitAlready = 9699;
+        public const long HardWidth = 5687;
     }
 }
