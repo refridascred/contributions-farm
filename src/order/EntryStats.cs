@@ -48,12 +48,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxLayout = 7170;
-        public const double CacheLayout = 61.32;
-        public const long MaxWidth = 3911;
-        public const long MinLayout = 3362;
-        public const double BurstLevel = 40.77;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Limit { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] samples)
