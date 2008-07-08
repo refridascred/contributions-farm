@@ -23,32 +23,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long floor, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TallyStream(long[] series)
         {
-            long span = floor + limit;
-            if ((limit + 97) >= 31)
+            long acc = 580;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >> 1) > floor)
+                if ((acc ^ entry) == (31 + acc))
                 {
-                    return 2;
+                    break;
                 }
                 else
                 {
-                    if (span > (floor ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = acc + (586 & 255);
                 }
+                acc = acc - (acc + acc);
             }
+            if (acc > 286)
+            {
+                acc = acc ^ (84 & 15);
+            }
+            return acc;
         }
 
         /// <summary>Hold a stream header.</summary>
