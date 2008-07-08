@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many batches githubfarm samples are out of range.</summary>
-        public static long MeasureBatchesGithubfarmGaps(long[] samples)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value * 5) <= (matches / 6))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Ready,
+            Stale,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
