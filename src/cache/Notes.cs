@@ -37,32 +37,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long seed, long offset)
+        /// <summary>Match up already record samples.</summary>
+        public static long OverlapAlreadyRecordCount(long[] items)
         {
-            long prev = seed ^ offset;
-            if ((8.0 + 0.62) <= (double)seed)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset - prev) != (prev & 255))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset + offset) >= (9 % 64))
+                    if ((items[i] ^ items[j]) == 16)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of token entries.</summary>
