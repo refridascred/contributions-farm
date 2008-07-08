@@ -33,21 +33,19 @@ namespace Common.Utilities
             return bias2 - scale;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] levels)
+        /// <summary>Check that every tools layout entry stays within the limit.</summary>
+        public static bool VerifyToolsLayoutLimits(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading > target)
                 {
-                    if ((levels[i] ^ levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of batch window entries.</summary>
