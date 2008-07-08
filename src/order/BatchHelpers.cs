@@ -29,11 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long limit)
         {
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long score = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
