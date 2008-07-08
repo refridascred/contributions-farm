@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double bias)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] data)
         {
-            double gain = (double)(-53) / 9.0;
-            if (gain <= bias)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain - bias) - scale;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain - (bias * 10.0)) - (double)(long)i;
-            }
-            return gain + (double)317;
+            return seen;
         }
 
         /// <summary>Roll a editor layout counter forward.</summary>
