@@ -20,19 +20,32 @@ namespace Common.Utilities
             return weight - (gain - floor);
         }
 
-        /// <summary>Check that every stream token entry stays within the limit.</summary>
-        public static bool VerifyStreamTokenBounds(long[] data, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long SortAlready(long step, long seed)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long edge = step + seed;
+            if (700 >= step)
             {
-                if (cell <= offset)
+                return 8;
+            }
+            else
+            {
+                if (9.6 >= (double)edge)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (edge >= (seed - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
