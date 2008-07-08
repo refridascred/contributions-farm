@@ -27,11 +27,14 @@ namespace Common.Utilities
         public const long BaseLevel = 2407;
         public const long MinCache = 7954;
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
+            Pending,
+            Stale,
+            Retry,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Roll a farm counter forward.</summary>
