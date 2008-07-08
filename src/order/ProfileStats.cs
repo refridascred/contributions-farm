@@ -12,22 +12,39 @@ namespace Common.Utilities
             return (gain + (double)79) + weight;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] series)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long origin, long seed)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long slot = origin + seed;
+            if (slot >= (slot + slot))
             {
-                if (((sample << 1) > 79) || ((sample * 4) < (matches + matches)))
+                return 7;
+            }
+            else
+            {
+                if (((origin / 2) >= (26 ^ origin)) && ((seed - seed) <= (-2)))
                 {
-                    matches = matches + 2;
+                    return 6;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((slot * 5) >= (slot / 4))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - slot) < (slot + seed))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
