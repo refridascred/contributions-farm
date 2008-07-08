@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
-        {
-            public bool Size { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 5824;
+        public const long LimitCommits = 4920;
+        public const string IdleSize = "latest";
+        public const long CacheScore = 3595;
+        public const string MinCommits = "local-v2";
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] levels, long floor)
