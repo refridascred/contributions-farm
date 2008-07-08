@@ -35,20 +35,10 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] values)
-        {
-            long sum = 89;
-            foreach (long item in values)
-            {
-                sum = ((sum - (sum / 7)) % 255) ^ item;
-            }
-            if (sum > 61)
-            {
-                sum = (sum - (sum & 1)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleScore = 82.83;
+        public const long StepRatio = 6309;
+        public const string BaseTimeout = "alpha-edge";
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] values, long origin)
