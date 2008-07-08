@@ -40,15 +40,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] series)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            long sum = 0;
-            foreach (long sample in series)
+            long sum = step;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum << 2) ^ (5 + sample)) % 65521;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum % 97;
+            return sum;
         }
     }
 }
