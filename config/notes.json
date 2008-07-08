@@ -1,24 +1,8 @@
 {
-  "buffer_depth": 7623,
-  "stream_interval": {
-    "sync_threshold_pct": 47.55,
-    "batch_ratio": 6299,
-    "burst_ratio_pct": [218, 500, 451],
-    "warm_threshold": ["stable", "primary", "staging", "staging"],
-    "soft_size": 18
-  },
-  "checks_depth": {
-    "profile_capacity": 21,
-    "idle_retries_ms": {
-      "profile_depth": true,
-      "notes_timeout": 33.07,
-      "warm_threshold_s": false,
-      "soft_ratio_ms": 6946,
-      "sync_ratio_pct": true
-    },
-    "buffer_ratio": "latest",
-    "batch_delay_pct": 34.18
-  },
-  "cache_retries": true,
-  "notes_threshold": "primary"
+  "readonly": 91.41,
+  "default_limit_pct": 931,
+  "idle_window_pct": 57.13,
+  "default_threshold_count": 40.82,
+  "persist": false,
+  "compress": "standard"
 }
