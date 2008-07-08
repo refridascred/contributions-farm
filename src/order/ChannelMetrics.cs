@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
+            Paused,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Rank already input into a small class.</summary>
