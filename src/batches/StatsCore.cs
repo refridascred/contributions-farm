@@ -45,20 +45,10 @@ namespace Common.Utilities
         public const string MinWidth = "staging-1";
         public const double MinDepth = 45.04;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long seed)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseBudget = "open-v2";
+        public const long RetrySize = 5146;
+        public const long MaxScore = 2224;
 
         /// <summary>Match up schema samples.</summary>
         public static long CompareSchemaCount(long[] values)
