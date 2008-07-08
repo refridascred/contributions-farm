@@ -1,5 +1,12 @@
 {
-  "sync_window_count": [72, 180, 429],
-  "sync_delay_ms": 46,
-  "idle_retries_count": ["local", "legacy", "local"]
+  "warm_ratio_ms": "stable",
+  "min_capacity_count": false,
+  "min_depth_ms": {
+    "poll_window": 83,
+    "poll_limit_count": true,
+    "poll_capacity_pct": ["standard", "blue", "standard"],
+    "context_ttl": true,
+    "flush_size_s": 64.67,
+    "batch_retries": ["cached", "green", "blue"]
+  }
 }
