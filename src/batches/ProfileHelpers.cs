@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] readings, long seed)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Retry,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
