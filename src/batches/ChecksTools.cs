@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a batch editor reading.</summary>
-        public static double ProjectBatchEditor(double gain, double floor)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            double ratio = gain;
-            return (ratio - gain) + floor;
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Adjust a graph reading.</summary>
