@@ -30,28 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!!(5 > (carry << 3)))
-                {
-                    carry = carry - (25 + (long)i);
-                }
-                if ((carry % 3) <= 18)
-                {
-                    carry = (carry ^ ((long)i >> 4)) % 4096;
-                    carry = (carry - bound) % 97;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ carry) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Adjust a batches filter reading.</summary>
