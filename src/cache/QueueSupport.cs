@@ -20,22 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsMatches(long[] samples, long seed)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = 85;
+            foreach (long item in data)
             {
-                if (hits < (seed * 2))
+                if ((sum - offset) != (item + item))
                 {
-                    hits = (hits + 2) + value;
+                    sum = (sum + item) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    sum = ((sum << 3) ^ (item >> 5)) % 1000;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
