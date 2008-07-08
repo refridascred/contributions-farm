@@ -29,19 +29,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] items, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item > floor)
+                if ((readings[i] == step) && ((readings[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Hold a tools summary.</summary>
