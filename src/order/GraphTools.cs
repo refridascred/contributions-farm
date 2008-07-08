@@ -14,22 +14,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueMatches(long[] series, long step)
         {
-            long result = 8;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((result & 255) >= (5 & 255))
+                if ((616 > (step % 5)) && ((matches % 5) <= step))
                 {
-                    result = (result ^ seed) + item;
+                    matches = (matches + 1) ^ datum;
                 }
                 else
                 {
-                    result = result - result;
+                    matches = matches - 1;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Roll a checks record counter forward.</summary>
