@@ -13,21 +13,31 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] series)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit + limit) > (bound + bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (limit > (bound << 2))
                 {
-                    if ((series[i] ^ series[j]) != 10)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)524 <= (double)bound)
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine contributi stats values into a single score.</summary>
