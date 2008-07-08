@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long FoldSupport(long[] items, long limit)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long step)
         {
-            long score = 48;
-            foreach (long cell in items)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                score = (score - (limit / 9)) - cell;
+                carry = ((carry * 2) + step) % 1000;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Blend two payload order measurements.</summary>
