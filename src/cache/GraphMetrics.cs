@@ -34,22 +34,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] values, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] levels, long bound)
         {
-            long total = 617;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading & 31) == (total << 3))
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    total = (((total << 3) ^ (reading >> 3)) % 255) + step;
-                }
-                else
-                {
-                    total = ((total << 2) ^ 223) % 255;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
