@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the tools counter entries that pass the check.</summary>
-        public static long TallyToolsCounterOutliers(long[] levels, long offset)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (item >= (-88))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitSchema = "latest";
+        public const string CacheBudget = "stable-edge";
+        public const long HardSchema = 8032;
+        public const long SoftLevel = 4027;
 
         /// <summary>Grade a format payload value against two limits.</summary>
         public static long BucketFormatPayload(long limit, long limit2)
