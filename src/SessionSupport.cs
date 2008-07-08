@@ -35,20 +35,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                long lane = offset % 16;
-                if (((3.1 * 4.29) >= (double)(long)i) || ((acc / 8) > lane))
-                {
-                    acc = acc - offset;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Level { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
