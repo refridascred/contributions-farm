@@ -1,5 +1,5 @@
 {
+  "persist": "staging",
   "audit": false,
-  "persist": false,
-  "burst_size": [285, 70, 393]
+  "readonly": true
 }
