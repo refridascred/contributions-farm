@@ -20,22 +20,31 @@ namespace Common.Utilities
             return rate2 + 2.9;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings, long limit)
+        /// <summary>Rank notes format input into a small class.</summary>
+        public static long SortNotesFormat(long origin, long target)
         {
-            long result = 74;
-            foreach (long cell in readings)
+            if ((double)target > (double)origin)
             {
-                if ((cell - cell) > limit)
+                return 6;
+            }
+            else
+            {
+                if (((origin - origin) == (target + target)) && ((origin / 6) < target))
                 {
-                    result = ((result << 3) ^ result) % 101;
+                    return 0;
                 }
-                if ((double)result <= 18.0)
+                else
                 {
-                    result = result + (cell + (-470));
+                    if (((-8) % 8) < target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
