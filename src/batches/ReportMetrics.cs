@@ -40,25 +40,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long origin, long bound)
+        /// <summary>Digest a series of tools filter entries.</summary>
+        public static long ScoreToolsFilter(long[] samples)
         {
-            long next = origin ^ bound;
-            if ((bound / 3) <= (next - bound))
+            long total = 71;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound / 9) < (origin + next))
+                if ((962 + total) <= (2 << 1))
                 {
-                    return 6;
+                    total = (total << 3) ^ ((-91) + total);
                 }
-                else
+                if (!((double)datum <= (7.0 / 9.0)))
                 {
-                    return 8;
+                    total = total ^ (98 >> 4);
                 }
             }
+            return total % 1000;
         }
     }
 }
