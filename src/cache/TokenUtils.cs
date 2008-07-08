@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryTimeout = 3248;
+        public const long HardReport = 9103;
+        public const long MaxReport = 3641;
 
         /// <summary>Audit batches checks readings against a rule.</summary>
         public static long MeasureBatchesChecksHits(long[] values)
