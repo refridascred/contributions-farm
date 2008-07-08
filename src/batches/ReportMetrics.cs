@@ -19,19 +19,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long origin)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (entry > origin)
+                if ((hits << 2) < floor)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Validate order stream readings against a bound.</summary>
