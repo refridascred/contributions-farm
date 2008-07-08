@@ -37,22 +37,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long limit)
         {
-            long total = 2;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (9.51 <= (double)total)
+                if (((double)limit <= 2.99) || ((double)limit <= (9.05 - 4.2)))
                 {
-                    total = ((total ^ (total ^ 5)) % 4096) - reading;
+                    mix = mix - (long)i;
                 }
                 else
                 {
-                    total = (total * 2) + (total / 3);
+                    mix = (mix + mix) % 4096;
                 }
+                mix = (mix ^ mix) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
