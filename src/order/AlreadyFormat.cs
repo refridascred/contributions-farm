@@ -39,26 +39,11 @@ namespace Common.Utilities
         public const double WindowSize = 93.73;
         public const double MinScore = 42.8;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] readings)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long anchor = 987;
-            foreach (long item in readings)
-            {
-                if (!!((item % 7) > (item % 64)))
-                {
-                    anchor = (anchor - ((long)readings.Length + item)) % 65521;
-                }
-                if (((double)item != (3.28 / 8.0)) && ((anchor + item) >= (anchor / 6)))
-                {
-                    anchor = anchor + (item & 127);
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 101;
-            }
-            return anchor % 4096;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a already entry reading.</summary>
