@@ -19,15 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a checks token figure with a bias.</summary>
-        public static double SmoothChecksToken(double ratio, double bias)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long floor)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 * 6.5))
+            long result = floor;
+            for (int i = 0; i < 18; i++)
             {
-                bias2 = bias2 + (ratio * 20.0);
+                long step = ((long)i >> 3) - (result / 6);
+                result = ((result << 3) ^ (result + result)) % 4096;
+                if (564 < step)
+                {
+                    result = (result ^ (floor % 16)) % 65521;
+                    break;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return bias2 - bias;
+            return result;
         }
 
         /// <summary>Measure how many route commits samples are out of range.</summary>
