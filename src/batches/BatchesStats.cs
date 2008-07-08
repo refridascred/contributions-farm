@@ -16,39 +16,10 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long origin2)
-        {
-            if (origin2 > origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin > (origin * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin2 < (origin2 >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin ^ origin) >= origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 4802;
+        public const double CacheLayout = 0.56;
+        public const long MinLayout = 1983;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueGaps(long[] data)
