@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long seed, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] series)
         {
-            if (!((seed * 2) <= step))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)step > (2.3 / 3.0)) && (seed >= (45 / 9)))
+                if ((hits ^ hits) != (hits % 12))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step <= (seed >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed > (step >> 5)) || ((seed - step) < 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
