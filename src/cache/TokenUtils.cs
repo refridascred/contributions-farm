@@ -18,13 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long step)
         {
-            Locked,
-            Stale,
-            New,
-            Failed,
+            long diff = floor ^ step;
+            if (((floor * 5) <= (floor + step)) || ((step - step) < floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)step > (double)diff)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!(step >= diff))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)step <= (3.62 + 6.8)) && ((1.5 * 12.0) > (double)floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
