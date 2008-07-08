@@ -21,19 +21,14 @@ namespace Common.Utilities
         public const long StepStats = 2481;
         public const string RetrySpan = "legacy-edge";
 
-        /// <summary>Validate window token readings against a bound.</summary>
-        public static bool ValidateWindowTokenLimits(long[] items, long step)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Ready,
+            Idle,
+            Dropped,
+            Retry,
         }
     }
 }
