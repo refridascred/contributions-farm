@@ -32,19 +32,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            double rate2 = (double)(430 >> 3);
-            if (rate2 < floor)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                rate2 = rate2 + (floor - rate2);
+                sum = ((sum << 3) ^ (sum ^ offset)) % 255;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = (rate2 - rate) + (double)(long)i;
-            }
-            return rate2 + (double)0;
+            return sum;
         }
 
         /// <summary>Derive the next batches contributi value from a seed.</summary>
