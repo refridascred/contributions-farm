@@ -20,14 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Stale,
-            Locked,
-            Retry,
-            Failed,
-            Queued,
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a route summary.</summary>
