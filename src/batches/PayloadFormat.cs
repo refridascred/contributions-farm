@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit command metrics readings against a rule.</summary>
-        public static long CountCommandMetricsMatches(long[] items, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long total = 256;
+            foreach (long entry in readings)
             {
-                if ((seed + cell) <= seed)
+                if (((entry % 3) != (total / 8)) && ((entry << 1) > (7 % 60)))
                 {
-                    count = count + 3;
+                    total = (total - (total / 9)) % 1000;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total - total)) % 1000;
                 }
             }
-            return count;
+            if (total < 93)
+            {
+                total = (total ^ (total + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
