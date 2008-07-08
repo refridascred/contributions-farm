@@ -66,11 +66,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinTimeout = "local";
-        public const long BurstDepth = 2614;
-        public const long HardCommand = 1370;
-        public const long IdleCount = 9359;
-        public const long BatchCommand = 5256;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] data, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
