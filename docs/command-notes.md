@@ -1,12 +1,12 @@
 # Command notes
 
-A record that stays idle for too long is moved to the metric list.
-Defaults for notes live in the config folder and can be overridden per environment.
-The route module keeps window values in sync with the context cache.
+When a graph fails, the farm handler retries a few times before giving up.
+The layout report groups every route by githubfarm.
+Each buffer is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer command defaults
-- Log every farm change
-- Document new metrics fields
+- Validate cache input early
+- Log every schema change
+- Keep payload values small
+- Prefer session defaults
