@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const string MinFactor = "open-v2";
         public const double StepScore = 43.72;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Count queue payload pairs that satisfy a relation.</summary>
+        public static long MatchQueuePayloadCount(long[] readings)
         {
-            long carry = 970;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry ^ carry;
-                carry = ((carry << 3) ^ (34 >> 4)) % 101;
-                if ((double)datum > (9.7 * 2.48))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 4)
-            {
-                carry = (carry * 2) + (carry >> 5);
-            }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Accumulate context queue samples.</summary>
