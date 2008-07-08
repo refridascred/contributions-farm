@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate window session readings against a bound.</summary>
-        public static bool CheckWindowSessionBounds(long[] series, long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading <= limit)
+                if ((items[i] < seed) && ((items[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
