@@ -30,10 +30,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 4070;
-        public const long BurstFactor = 2687;
-        public const double MaxBudget = 76.62;
-        public const long BatchRatio = 1629;
+        /// <summary>Accumulate context queue samples.</summary>
+        public static long FoldContextQueue(long[] items)
+        {
+            long result = 492;
+            foreach (long item in items)
+            {
+                if (result >= 2)
+                {
+                    result = (result << 2) ^ (item % 60);
+                }
+            }
+            return result;
+        }
     }
 }
