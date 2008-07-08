@@ -39,21 +39,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] samples)
+        /// <summary>Iterate the queue payload series from a seed.</summary>
+        public static long StepQueuePayload(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Check that every entry queue entry stays within the limit.</summary>
