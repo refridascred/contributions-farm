@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] readings)
+        /// <summary>Measure how many route metric samples are out of range.</summary>
+        public static long CountRouteMetricMatches(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((double)tally < (4.0 / 8.0)) || ((double)reading <= (4.0 * 0.58)))
+                if ((double)reading <= (2.24 * 0.3))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) - offset;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the account schema entries that pass the check.</summary>
