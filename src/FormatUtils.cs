@@ -41,13 +41,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            double ratio = (double)(300 + 24);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ((ratio - (rate + rate)) + (double)(long)i) + span;
+            }
+            return ratio - 9.28;
         }
 
         /// <summary>Describe the window level values.</summary>
