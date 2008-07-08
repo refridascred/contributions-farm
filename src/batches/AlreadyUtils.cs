@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long SeriesCache(long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                acc = (acc ^ acc) % 1000;
-                acc = (acc * 3) + (limit / 3);
-                acc = ((acc * 2) + (long)i) % 97;
+                long delta = 62;
+                if (((double)offset <= (3.0 + 1.72)) || (mix < delta))
+                {
+                    delta = ((delta * 2) + (605 ^ offset)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Combine record values into a single score.</summary>
