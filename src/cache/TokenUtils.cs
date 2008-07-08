@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "primary-edge";
+        public const double DefaultCount = 83.96;
+        public const long BurstBatch = 2425;
+        public const double DefaultBatch = 57.62;
+        public const long WindowBatch = 7242;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryTimeout = 3248;
