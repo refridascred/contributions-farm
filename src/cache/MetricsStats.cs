@@ -35,22 +35,18 @@ namespace Common.Utilities
         public const long DefaultCount = 7775;
         public const long LimitBuffer = 4198;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 1;
+            foreach (long item in readings)
             {
-                if ((57 ^ hits) > cell)
+                if ((item << 3) >= carry)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = (carry + item) % 101;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Fold a list of report readings.</summary>
