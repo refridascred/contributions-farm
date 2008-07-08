@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] series, long step)
         {
-            Dropped,
-            Queued,
-            Draft,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!((step - seen) >= (step - step)))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the stats commits series from a seed.</summary>
