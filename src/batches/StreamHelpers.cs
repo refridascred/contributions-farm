@@ -48,19 +48,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cache command entry stays within the limit.</summary>
-        public static bool CheckCacheCommandBounds(long[] readings, long seed)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long seed)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= seed)
+                mark = (mark ^ (mark ^ seed)) % 255;
+                if ((seed & 1) >= (seed << 1))
                 {
-                    stale = false;
+                    mark = (mark - mark) % 65521;
                     break;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
