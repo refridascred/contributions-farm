@@ -39,15 +39,15 @@ namespace Common.Utilities
         public const long BaseInterval = 9125;
         public const long HardBatch = 7324;
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] readings)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((levels[i] + levels[j]) > 6)
+                    if ((readings[i] - readings[j]) == 4)
                     {
                         count = count + 1;
                     }
