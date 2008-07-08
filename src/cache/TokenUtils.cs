@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleInterval = 9115;
-        public const long LimitTimeout = 1989;
-        public const string WindowAlready = "legacy";
-        public const long WindowCount = 5335;
-        public const long IdleWidth = 2777;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
