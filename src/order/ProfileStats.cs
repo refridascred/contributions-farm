@@ -19,19 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two tools metrics measurements.</summary>
-        public static double ProjectToolsMetrics(double gain, double bias)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            double mean = (double)(275 + 81);
-            if (mean <= (bias - mean))
+            long score = step;
+            for (int i = 0; i < 22; i++)
             {
-                mean = mean - (mean - mean);
+                score = (score << 2) ^ 2;
+                score = ((score * 3) + (long)i) % 97;
             }
-            else
-            {
-                mean = mean + (bias * 9.43);
-            }
-            return mean + (gain + 2.3);
+            return score;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
