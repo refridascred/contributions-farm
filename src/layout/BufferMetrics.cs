@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Buffer metrics helpers.</summary>
     public static class BufferMetrics
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = acc - (0 / 7);
-                acc = (acc - (93 + 10)) % 97;
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 11.43;
+        public const long HardLevel = 2250;
+        public const long WindowLevel = 9804;
+        public const long BurstLevel = 170;
+        public const string MaxOrder = "strict-edge";
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] data)
