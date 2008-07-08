@@ -1,21 +1,8 @@
 {
-  "soft_ttl": "stable",
-  "soft_ttl_s": {
-    "warm_timeout": 55.32,
-    "tools_limit": false,
-    "flush_threshold": {
-      "route_delay": 11.38,
-      "command_ratio": 60.32,
-      "hard_ttl_s": true
-    },
-    "profile_capacity": ["standard", "fallback", "edge", "green"],
-    "command_depth": 42
-  },
-  "idle_capacity": 97,
-  "burst_interval": {
-    "audit": ["green", "stable", "local"],
-    "burst_capacity": "local",
-    "max_window": 9859,
-    "retry_ratio": true
-  }
+  "poll_size_s": "primary",
+  "soft_threshold_count": "cached",
+  "persist": true,
+  "context_depth": 80.84,
+  "min_depth_ms": 87.58,
+  "burst_delay": 8040
 }
