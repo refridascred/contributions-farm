@@ -48,18 +48,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long target)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long sum = target;
+            for (int i = 0; i < 18; i++)
             {
-                if ((((value - value) <= (hits % 60)) && ((double)value >= (4.4 / 7.0))) || (hits <= (value - hits)))
-                {
-                    hits = hits + 3;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
