@@ -16,13 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long step)
         {
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Total { get; set; } = "";
-            public long Size { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the account cluster entries that pass the check.</summary>
