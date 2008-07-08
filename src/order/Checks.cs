@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long target)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = target;
-            for (int i = 0; i < 16; i++)
-            {
-                long edge = (long)i;
-                if (!(((double)target <= (9.4 / 6.0)) || (target >= (target + edge))))
-                {
-                    edge = ((edge << 2) ^ state) % 4096;
-                    state = ((state * 2) + ((-4) & 63)) % 101;
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define support limits and defaults.</summary>
