@@ -33,12 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            Queued,
-            Stale,
-            Failed,
+            long acc = 788;
+            foreach (long entry in data)
+            {
+                if ((((long)data.Length >> 1) < 717) || ((double)entry < (6.29 + 7.5)))
+                {
+                    acc = ((acc << 2) ^ (entry * 3)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc ^ acc);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a window header.</summary>
