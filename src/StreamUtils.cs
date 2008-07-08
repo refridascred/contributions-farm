@@ -72,14 +72,11 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Done,
-            Ready,
-            Active,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinCount = 4704;
+        public const long RetryRecord = 8002;
+        public const long BaseSpan = 3684;
+        public const long HardRecord = 7127;
+        public const long CacheRecord = 5625;
     }
 }
