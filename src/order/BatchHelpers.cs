@@ -57,22 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] readings, long step)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long total = 5;
+            foreach (long item in levels)
             {
-                if (step < entry)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total + (total - 199)) + item) + target;
             }
-            return tally;
+            return total;
         }
     }
 }
