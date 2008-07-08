@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long seed, long offset)
-        {
-            long slot = seed + offset;
-            if (10.0 > (double)slot)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(4 <= seed))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((6.0 - 7.3) > (double)offset) || ((offset ^ offset) <= offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed + offset) < seed) || (16.0 >= (double)slot))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 8684;
+        public const double BatchDepth = 52.34;
+        public const string IdleStats = "strict-v2";
+        public const long CacheLevel = 1673;
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
