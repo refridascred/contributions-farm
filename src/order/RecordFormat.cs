@@ -33,19 +33,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] data, long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long FindClusterIndex(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != origin)
+                if ((values[i] <= limit) && ((values[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the payload mode values.</summary>
