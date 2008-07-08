@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the commits tools entries that pass the check.</summary>
-        public static long TallyCommitsToolsOutliers(long[] data, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long bound, long offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long delta = bound + offset;
+            if (delta >= (bound ^ offset))
             {
-                if ((3 - seen) == (reading - 4))
+                return 8;
+            }
+            else
+            {
+                if ((bound ^ delta) >= (delta + 722))
                 {
-                    seen = (seen + 2) - bound;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((bound + offset) >= (937 - (-591)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Locate a command reading by value.</summary>
