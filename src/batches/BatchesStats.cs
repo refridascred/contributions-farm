@@ -15,12 +15,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long bound)
         {
-            Retry,
-            Active,
-            Draft,
+            long acc = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (bound < (811 - 430))
+                {
+                    acc = ((acc << 2) ^ (acc * 4)) % 101;
+                }
+                acc = (acc + (1 * 5)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
