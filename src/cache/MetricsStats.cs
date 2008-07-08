@@ -28,18 +28,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] values)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((matches < ((-489) - entry)) || ((entry - entry) != (matches + matches))) || ((double)entry >= (4.18 - 2.68)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
