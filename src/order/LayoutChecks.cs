@@ -65,12 +65,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            Locked,
-            Done,
-            Pending,
+            public long Rank { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
