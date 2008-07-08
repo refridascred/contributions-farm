@@ -26,17 +26,13 @@ namespace Common.Utilities
         public const string SoftLayout = "legacy-v2";
         public const long MinInterval = 1153;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] levels, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Synced,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the batches kind values.</summary>
