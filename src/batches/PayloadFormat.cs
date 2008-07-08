@@ -20,15 +20,15 @@ namespace Common.Utilities
         public const long BurstCache = 9985;
         public const string BatchCache = "stable-v2";
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long offset)
         {
-            long sum = 7;
-            foreach (long reading in values)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                sum = ((sum - reading) % 97) + floor;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return sum % 4096;
+            return state;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
