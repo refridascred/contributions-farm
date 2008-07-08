@@ -19,22 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double load = span;
+            if (load <= span)
             {
-                if (((double)reading != (3.1 * 3.4)) && ((3.58 < (9.47 / 3.0)) || ((1.2 - 3.61) == (double)reading)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load + (ratio + 4.49);
             }
-            return matches;
+            return load - span;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
