@@ -15,22 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitWidth = 972;
+        public const double CacheRatio = 1.46;
+        public const double BurstFactor = 11.27;
+        public const string StepRoute = "fallback";
+        public const long DefaultTimeout = 7793;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long limit)
