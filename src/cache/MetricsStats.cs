@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Derive the next format context value from a seed.</summary>
+        public static long DeriveFormatContext(long limit)
         {
-            Queued,
-            Synced,
-            New,
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = (result * 2) + (limit + 96);
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of route entries.</summary>
