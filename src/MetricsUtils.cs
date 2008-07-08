@@ -27,24 +27,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long floor, long bound)
+        /// <summary>Iterate the channel tools series from a seed.</summary>
+        public static long StepChannelTools(long origin)
         {
-            if ((bound * 4) < bound)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
+                total = ((total * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((bound ^ bound) <= (bound / 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
