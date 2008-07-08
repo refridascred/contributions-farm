@@ -41,22 +41,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] series, long seed)
+        /// <summary>Derive the next batch token value from a seed.</summary>
+        public static long DeriveBatchToken(long step)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((seen - value) > value)
-                {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry + (step - carry)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Grade a command graph value against two limits.</summary>
