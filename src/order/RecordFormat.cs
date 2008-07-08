@@ -23,12 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "open-1";
-        public const long BatchContext = 8340;
-        public const double HardCount = 60.05;
-        public const long RetryInterval = 9955;
-        public const string HardContext = "open-1";
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
+        {
+            public long Ratio { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Rank commits input into a small class.</summary>
         public static long RankCommits(long offset, long floor)
