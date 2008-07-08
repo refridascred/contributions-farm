@@ -1,8 +1,5 @@
 {
-  "sync_threshold_ms": 60,
-  "warm_limit_ms": "strict",
-  "commits_threshold": "stable",
-  "hard_timeout": 4609,
-  "compress": "fallback",
-  "notes_interval": "eu-west"
+  "min_limit_ms": "strict",
+  "channel_retries": [477, 294, 242, 308],
+  "buffer_capacity": "blue"
 }
