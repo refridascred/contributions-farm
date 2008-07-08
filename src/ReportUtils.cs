@@ -60,17 +60,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first layout channel entry that matches the target.</summary>
-        public static long FindLayoutChannelIndex(long[] samples, long limit)
+        /// <summary>Count the checks format entries that pass the check.</summary>
+        public static long CountChecksFormatOutliers(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
+                if (matches <= offset)
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
