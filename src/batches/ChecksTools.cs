@@ -38,17 +38,32 @@ namespace Common.Utilities
         public const string MinCluster = "open-v2";
         public const double HardCount = 18.88;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] values, long origin)
+        /// <summary>Classify a farm schema pair into a bucket.</summary>
+        public static long ClassifyFarmSchema(long limit, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long delta = limit + origin;
+            if ((915 % 60) <= (origin ^ 3))
             {
-                if (values[i] >= origin)
+                return 8;
+            }
+            else
+            {
+                if (((origin << 1) <= limit) || ((delta + 153) == (delta * 5)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (limit < (origin % 10))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
