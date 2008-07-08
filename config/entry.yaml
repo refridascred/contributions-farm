@@ -1,20 +1,28 @@
 # entry settings
-cache_retries_ms: eu-west
-batch_retries_count:
-  soft_timeout_s: 250
-  format_retries: false
-  cache_window: false
-  idle_depth: eu-west
-  token_retries: 63.46
-  cache_interval: 85.97
-sync_threshold: 3924
-poll_delay:
-  - 338
-  - 372
-  - 308
-poll_threshold_s:
-  - 78
-  - 415
-  - 49
-  - 244
-warm_interval_count: 60
+audit:
+  cache_retries_pct:
+    default_interval_pct: 23.12
+    min_delay: 47.74
+    batch_threshold: 6296
+    sync_interval_count: 1024
+    base_capacity:
+      - 432
+      - 165
+      - 430
+      - 115
+    warm_ttl_pct: stable
+  idle_delay:
+    - 171
+    - 329
+    - 231
+    - 148
+  burst_limit: blue
+  soft_size_count:
+    hard_threshold_s: 55.5
+    persist: legacy
+    audit: edge
+    dry_run: 1024
+    poll_ttl_pct: strict
+    sync_retries_ms: 8460
+idle_interval_s: 250
+metric_depth: green
