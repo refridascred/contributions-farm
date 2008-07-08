@@ -30,25 +30,18 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long limit, long offset)
+        /// <summary>Measure how many route commits samples are out of range.</summary>
+        public static long CountRouteCommitsHits(long[] items, long limit)
         {
-            long bound = limit + offset;
-            if ((limit + offset) < (bound & 127))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= (9.9 + 7.5))
+                if ((limit >= (limit % 2)) && ((matches <= (matches << 3)) || ((double)limit == (double)20)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 2) + cell;
                 }
             }
+            return matches;
         }
     }
 }
