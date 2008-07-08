@@ -78,15 +78,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine command token values into a single score.</summary>
-        public static long DigestCommandToken(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long anchor = 809;
-            foreach (long sample in data)
-            {
-                anchor = (anchor * 3) + (sample - sample);
-            }
-            return anchor;
+            public long Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
