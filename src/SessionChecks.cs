@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next record value.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Check that every route schema entry stays within the limit.</summary>
+        public static bool VerifyRouteSchemaLimits(long[] levels, long limit)
         {
-            double rate = (double)(9 + 2);
-            if (rate > rate)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                rate = ((rate - (double)4) + weight) + floor;
+                if (cell < limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return rate + (1.63 * 11.0);
+            return ok;
         }
 
         /// <summary>Accumulate stream samples.</summary>
