@@ -22,32 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long offset2)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long next = offset + offset2;
-            if ((offset2 * 3) <= 18)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset2 * 3) > 293)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((next % 100) < 54)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Closed,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a command entry.</summary>
