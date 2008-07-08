@@ -16,22 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cluster command readings against a rule.</summary>
-        public static long MeasureClusterCommandGaps(long[] items, long offset)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((value - 6) < (count * 5))
-                {
-                    count = (count + 2) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
