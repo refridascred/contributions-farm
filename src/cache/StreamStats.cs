@@ -33,25 +33,18 @@ namespace Common.Utilities
         public const long CacheRatio = 7435;
         public const double RetryFactor = 57.93;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long seed2)
+        /// <summary>Fold a list of checks cluster readings.</summary>
+        public static long TotalChecksCluster(long[] values)
         {
-            long prev = seed ^ seed2;
-            if (((0 % 97) < seed) || ((seed2 & 1) > (seed2 + 0)))
+            long anchor = 7;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed2 <= (double)prev) || ((seed ^ prev) != (prev - seed2)))
+                if ((68 + reading) < anchor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    anchor = (anchor - anchor) % 1000;
                 }
             }
+            return anchor;
         }
     }
 }
