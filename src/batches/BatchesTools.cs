@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit support record readings against a rule.</summary>
-        public static long TallySupportRecordGaps(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if (((matches + 718) == (matches + cell)) && (((-4) - matches) < matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Draft,
+            Locked,
+            Idle,
+            New,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
