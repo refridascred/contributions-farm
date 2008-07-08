@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Derive the next format context value from a seed.</summary>
-        public static long DeriveFormatContext(long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result * 2) + (limit + 96);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public bool Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
