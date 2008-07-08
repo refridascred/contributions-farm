@@ -1,4 +1,4 @@
 # githubfarm settings
-min_limit_count: 55
-persist: 16.0
-flush_capacity_pct: green
+enabled: primary
+retry_window_s: false
+hard_limit_pct: 46.45
