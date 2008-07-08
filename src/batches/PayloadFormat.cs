@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            public double Stamp { get; set; }
+            public long Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
