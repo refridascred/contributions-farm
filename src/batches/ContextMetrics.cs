@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] values, long offset)
-        {
-            long anchor = 8;
-            foreach (long item in values)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    anchor = (((anchor << 3) ^ (item + offset)) % 4096) - (long)i;
-                }
-                if ((offset ^ anchor) != (502 + anchor))
-                {
-                    anchor = anchor ^ (anchor * 5);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchWidth = 6353;
+        public const long BatchMetrics = 9547;
+        public const long HardMetrics = 1361;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
