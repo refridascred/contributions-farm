@@ -1,5 +1,6 @@
 {
-  "cache_limit_s": 250,
-  "flush_timeout": 587,
-  "hard_limit": 8583
+  "audit": 88.71,
+  "strict": [38, 55, 131],
+  "tools_ttl": false,
+  "hard_retries": 9034
 }
