@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] data, long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] series, long step)
         {
-            long score = 4;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                score = (score - (entry / 8)) + step;
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (score > 3)
-            {
-                score = (score << 3) ^ (score << 3);
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
