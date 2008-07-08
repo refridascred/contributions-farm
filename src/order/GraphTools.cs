@@ -23,10 +23,19 @@ namespace Common.Utilities
         public const string BatchCluster = "stable";
         public const long RetryLevel = 6864;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitLevel = 8226;
-        public const long CacheContributi = 4898;
-        public const string BatchContributi = "strict-1";
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] readings, long bound)
+        {
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((bound + bound) >= (67 + bound))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long origin)
