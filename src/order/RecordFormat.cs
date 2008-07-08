@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] items, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Synced,
+            Idle,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
