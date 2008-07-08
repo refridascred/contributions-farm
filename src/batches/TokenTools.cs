@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            Failed,
-            Retry,
-            Paused,
-            Closed,
-            Draft,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading ^ reading) >= 391)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the farm level values.</summary>
