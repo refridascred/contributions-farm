@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double gain, double floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            double weight = floor * 8.0;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight + (floor * 7.0)) + (double)(long)i) + gain;
-            }
-            return weight - 6.2;
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the format layout entries that pass the check.</summary>
