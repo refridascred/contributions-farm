@@ -34,10 +34,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinBudget = 4647;
-        public const double CacheAccount = 34.32;
-        public const string BurstAccount = "staging-edge";
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
+        {
+            Draft,
+            Retry,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] values, long offset)
