@@ -20,19 +20,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] items, long seed)
-        {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((tally % 24) < tally))
-                {
-                    tally = ((tally + 3) ^ sample) - seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 5687;
+        public const long SoftNotes = 8226;
+        public const long CacheNotes = 3855;
+        public const long BurstNotes = 8432;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
