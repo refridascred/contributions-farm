@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of buffer record readings.</summary>
-        public static long ScoreBufferRecord(long[] readings, long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] readings, long offset)
         {
-            long total = 32;
+            bool ok = true;
             foreach (long value in readings)
             {
-                if ((value & 15) <= (step - step))
+                if (value > offset)
                 {
-                    total = (total * 4) + (total * 3);
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 3)
-            {
-                total = ((total * 4) + (13 << 2)) % 255;
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Accumulate commits cluster samples.</summary>
