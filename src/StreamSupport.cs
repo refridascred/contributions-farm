@@ -27,18 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] readings, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (((hits + cell) >= (target - hits)) || ((0 % 12) <= cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the graph class values.</summary>
