@@ -31,12 +31,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two layout measurements.</summary>
