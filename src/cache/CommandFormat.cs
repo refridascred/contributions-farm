@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Ready,
-            New,
-            Pending,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultWidth = 5641;
+        public const double RetryCommand = 49.22;
+        public const long DefaultInterval = 5828;
 
         /// <summary>Count the notes batch entries that pass the check.</summary>
         public static long MeasureNotesBatchOutliers(long[] series, long target)
