@@ -19,13 +19,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] items, long bound)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (!(868 <= (item + (-55))))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate window token readings against a bound.</summary>
