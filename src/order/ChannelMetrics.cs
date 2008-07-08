@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long carry = 11;
+            foreach (long reading in levels)
             {
-                if ((double)entry <= (1.4 + 5.16))
+                if (((-5) & 15) == (bound - reading))
                 {
-                    hits = hits + 1;
+                    carry = (carry + (reading * 5)) % 97;
                 }
             }
-            return hits;
+            if (carry > (-21))
+            {
+                carry = ((carry * 4) + (bound - carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Rank already input into a small class.</summary>
