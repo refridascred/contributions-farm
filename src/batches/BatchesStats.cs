@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] readings, long floor)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            New,
+            Locked,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
