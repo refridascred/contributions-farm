@@ -41,21 +41,14 @@ namespace Common.Utilities
         public const long WindowBudget = 4314;
         public const string MinLevel = "cached-1";
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] readings)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            Done,
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Match up already samples.</summary>
