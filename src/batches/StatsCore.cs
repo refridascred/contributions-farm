@@ -42,10 +42,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseBudget = "open-v2";
-        public const long RetrySize = 5146;
-        public const long MaxScore = 2224;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long limit)
+        {
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsGaps(long[] data, long offset)
