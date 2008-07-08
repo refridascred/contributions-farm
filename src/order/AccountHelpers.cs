@@ -63,22 +63,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] items, long seed)
         {
-            long anchor = 238;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((double)anchor >= (7.98 + 19.0)) && ((item - (long)samples.Length) >= item))
+                if ((double)matches == (double)sample)
                 {
-                    anchor = ((anchor << 2) ^ (item / 4)) % 97;
+                    matches = (matches + 3) + seed;
                 }
                 else
                 {
-                    anchor = anchor + (8 * 4);
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Match up stream commits samples.</summary>
