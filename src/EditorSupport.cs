@@ -33,25 +33,18 @@ namespace Common.Utilities
         public const string BurstBatches = "alpha-1";
         public const long MinFactor = 9784;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Audit schema counter readings against a rule.</summary>
+        public static long AuditSchemaCounterGaps(long[] items, long offset)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((total - bound) > (4 + 374))
+                if (offset > (hits - hits))
                 {
-                    total = total - (total << 3);
-                    total = (total + (long)i) % 101;
-                    break;
+                    hits = (hits + 3) - entry;
                 }
-                else
-                {
-                    total = total + (long)i;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
