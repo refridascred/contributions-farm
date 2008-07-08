@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            public bool Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine account values into a single score.</summary>
