@@ -33,18 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] data)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading / 6) <= count)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
