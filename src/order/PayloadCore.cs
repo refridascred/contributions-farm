@@ -34,18 +34,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit counter editor readings against a rule.</summary>
-        public static long AuditCounterEditorHits(long[] series, long offset)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long total = 0;
+            foreach (long reading in levels)
             {
-                if (((9.8 / 9.0) <= (double)datum) && !(21 <= (count >> 2)))
-                {
-                    count = (count + 2) + offset;
-                }
+                total = ((total * 3) + (reading + reading)) % 4096;
             }
-            return count;
+            if (total < (-89))
+            {
+                total = (total + (total + total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Check that every entry queue entry stays within the limit.</summary>
