@@ -1,5 +1,7 @@
 {
-  "verbose": 68,
-  "idle_delay": true,
-  "sync_window": false
+  "account_timeout": "fallback",
+  "filter_timeout": 1024,
+  "audit": true,
+  "strict": 500,
+  "max_capacity_ms": 5506
 }
