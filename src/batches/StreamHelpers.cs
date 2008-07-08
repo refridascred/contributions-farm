@@ -58,14 +58,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
-        {
-            public bool Limit { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowAccount = 47.99;
+        public const string MinTimeout = "staging-v2";
+        public const long CacheTimeout = 9934;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long DigestMetric(long[] levels, long bound)
