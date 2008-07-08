@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] data, long step)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double mean = bias * 3.2;
+            return (mean + (5.82 / 3.0)) + span;
         }
 
         /// <summary>Match up window graph samples.</summary>
