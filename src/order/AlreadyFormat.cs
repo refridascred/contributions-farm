@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] samples)
+        /// <summary>Fold a list of buffer record readings.</summary>
+        public static long ScoreBufferRecord(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = 32;
+            foreach (long value in readings)
             {
-                if (cell <= (matches - matches))
+                if ((value & 15) <= (step - step))
                 {
-                    matches = matches + 1;
+                    total = (total * 4) + (total * 3);
                 }
             }
-            return matches;
+            if (total > 3)
+            {
+                total = ((total * 4) + (13 << 2)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of report entries.</summary>
