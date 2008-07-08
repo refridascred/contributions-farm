@@ -22,11 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowScore = "cached-1";
-        public const long CacheDepth = 9696;
-        public const long DefaultWindow = 7715;
-        public const long IdleWindow = 4721;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Failed,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] readings)
