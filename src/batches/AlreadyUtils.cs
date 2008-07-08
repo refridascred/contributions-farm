@@ -51,15 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double ratio, double floor)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            double load = floor;
-            if (load < load)
-            {
-                load = (load + (load - load)) + ratio;
-            }
-            return load - (double)290;
+            Queued,
+            Ready,
+            Retry,
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
