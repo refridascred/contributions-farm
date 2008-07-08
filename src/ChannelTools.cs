@@ -35,18 +35,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksOutliers(long[] items)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long origin, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            if (((bound + 0) < (origin % 24)) || ((bound ^ origin) != (253 << 2)))
             {
-                if (!((tally ^ (long)items.Length) == (value / 7)))
+                return 3;
+            }
+            else
+            {
+                if (bound < (origin & 3))
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
     }
 }
