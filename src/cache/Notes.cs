@@ -29,18 +29,12 @@ namespace Common.Utilities
         public const long BaseWidth = 1967;
         public const long MaxTimeout = 3;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] items, long bound)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (datum < bound)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine account counter values into a single score.</summary>
