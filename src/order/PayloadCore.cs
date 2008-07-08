@@ -39,13 +39,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
