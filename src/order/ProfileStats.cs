@@ -26,12 +26,12 @@ namespace Common.Utilities
         public const string BaseNotes = "fallback-edge";
         public const double MaxNotes = 92.22;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public bool Size { get; set; }
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Project the next filter batch value.</summary>
