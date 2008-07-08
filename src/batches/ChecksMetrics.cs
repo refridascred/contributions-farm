@@ -73,19 +73,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache context measurements.</summary>
-        public static double ScaleCacheContext(double scale, double bias)
-        {
-            double scale2 = scale;
-            if (scale2 <= bias)
-            {
-                scale2 = scale2 - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 - (scale2 * 10.0)) - (double)(long)i;
-            }
-            return scale2 + (double)1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheTimeout = 4528;
+        public const string BurstSchema = "latest";
+        public const long HardDepth = 7434;
     }
 }
