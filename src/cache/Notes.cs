@@ -55,17 +55,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first metric queue entry that matches the target.</summary>
-        public static long FindMetricQueueIndex(long[] series, long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 77;
+            foreach (long item in data)
             {
-                if ((series[i] > seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (item + sum)) % 65521;
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
