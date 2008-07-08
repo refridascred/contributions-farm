@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double ProjectCache(double ratio, double span)
+        /// <summary>Count route already pairs that satisfy a relation.</summary>
+        public static long PairRouteAlreadyCount(long[] items)
         {
-            double scale = (double)(7 + (-9));
-            if (scale < scale)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = scale - (ratio / 7.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale - (ratio - ratio);
-            }
-            return scale - span;
+            return seen;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
