@@ -45,21 +45,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] data)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmGaps(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (3.9 >= (double)cell)
                 {
-                    if ((data[i] - data[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 3) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
