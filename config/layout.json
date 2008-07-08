@@ -1,15 +1,6 @@
 {
-  "warm_depth": 3340,
-  "report_interval": {
-    "schema_ratio": "latest",
-    "verbose": 91.63,
-    "warm_interval_count": ["local", "staging", "cached"],
-    "dry_run": "blue",
-    "payload_ratio": 12.26,
-    "warm_capacity": 2678
-  },
-  "strict": true,
-  "max_retries_count": false,
-  "idle_depth_pct": "cached",
-  "flush_interval_ms": 1024
+  "contributi_window": 15,
+  "verbose": 1024,
+  "batch_capacity_count": 8617,
+  "audit": "legacy"
 }
