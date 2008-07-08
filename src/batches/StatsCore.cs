@@ -89,13 +89,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 49.03;
+        public const long CacheDepth = 456;
+        public const long CacheTimeout = 8459;
+        public const long StepBudget = 2617;
+        public const string BurstSpan = "open-1";
     }
 }
