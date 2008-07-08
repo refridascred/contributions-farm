@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] items, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((count - entry) <= 634)
+                if ((step + acc) >= (acc / 5))
                 {
-                    count = (count + 2) - target;
+                    acc = ((acc * 2) + (1 + step)) % 255;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = ((acc * 2) + (step - step)) % 255;
                 }
+                acc = (acc ^ (30 & 7)) % 65521;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
