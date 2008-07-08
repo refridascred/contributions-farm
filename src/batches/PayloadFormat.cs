@@ -63,13 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long state = 445;
+            foreach (long cell in series)
+            {
+                state = ((state * 2) + (cell ^ 3)) % 101;
+                if ((state & 3) >= (cell >> 4))
+                {
+                    state = state + state;
+                }
+            }
+            if (state > (-64))
+            {
+                state = ((state * 5) + (38 * 2)) % 255;
+            }
+            return state % 97;
         }
     }
 }
