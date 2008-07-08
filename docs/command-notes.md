@@ -1,15 +1,11 @@
 # Command notes
 
-Each token is validated before it reaches the support queue.
-When a batches fails, the support handler retries a few times before giving up.
-The stream report groups every support by farm.
-
-A contributi that stays idle for too long is moved to the filter list.
-The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep checks and entry names short and lowercase.
+Each already is validated before it reaches the entry queue.
 
 ## Guidelines
 
-- Document new graph fields
-- Keep route values small
-- Review queue limits each release
-- Validate window input early
+- Validate profile input early
+- Document new farm fields
+- Review command limits each release
+- Log every command change
