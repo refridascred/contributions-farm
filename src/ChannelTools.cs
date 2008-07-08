@@ -20,19 +20,21 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] readings, long bound)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] ^ items[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Adjust a counter filter reading.</summary>
