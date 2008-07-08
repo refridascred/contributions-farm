@@ -20,19 +20,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] data, long floor)
+        /// <summary>Rank farm token input into a small class.</summary>
+        public static long ClassifyFarmToken(long target, long step)
         {
-            bool stale = true;
-            foreach (long item in data)
+            if (((step * 4) != (target ^ step)) && ((step - step) >= (target + target)))
             {
-                if (item <= floor)
+                return 4;
+            }
+            else
+            {
+                if ((10.0 + 4.13) < (double)step)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((45 >> 1) == (target + target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
