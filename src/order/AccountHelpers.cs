@@ -76,19 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] values, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((origin >> 3) == (origin % 24)) || ((double)total < (8.0 + 5.86)))
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return -1;
         }
     }
 }
