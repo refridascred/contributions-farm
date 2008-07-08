@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepRatio = "strict";
-        public const long LimitCluster = 6706;
-        public const string HardCluster = "latest-1";
+        /// <summary>Validate filter context readings against a bound.</summary>
+        public static bool VerifyFilterContextBounds(long[] series, long target)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
