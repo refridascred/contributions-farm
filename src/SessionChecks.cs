@@ -45,15 +45,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] series)
         {
-            long result = target;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((datum + datum) < datum)
+                {
+                    hits = hits + 2;
+                }
             }
-            return result;
+            return hits;
         }
     }
 }
