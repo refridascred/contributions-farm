@@ -35,19 +35,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every route graph entry stays within the limit.</summary>
-        public static bool CheckRouteGraphRange(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell != limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BatchBudget = "fallback-edge";
+        public const string StepGithubfarm = "latest-1";
+        public const long RetryGithubfarm = 9186;
+        public const double BatchGithubfarm = 86.27;
     }
 }
