@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] levels, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (5.6 < (double)value)
+                if (((double)tally < (4.0 / 8.0)) || ((double)reading <= (4.0 * 0.58)))
                 {
-                    hits = (hits + 2) - limit;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the account schema entries that pass the check.</summary>
