@@ -27,17 +27,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LookupToolsIndex(long[] data, long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (2.82 - bias2) + (bias2 / 4.0);
+            if (scale >= (scale - 0.72))
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                scale = scale - (16.0 + scale);
             }
-            return -1;
+            else
+            {
+                scale = scale + bias;
+            }
+            return scale - (bias2 * 1.21);
         }
 
         /// <summary>Combine editor payload values into a single score.</summary>
