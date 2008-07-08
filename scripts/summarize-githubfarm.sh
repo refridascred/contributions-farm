@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback legacy strict; do
-    log "checking ${item}"
-done
+GITHUBFARM_LIMIT=35
+log "limit is ${GITHUBFARM_LIMIT}"
 
-mode="${1:-blue}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    fallback)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
