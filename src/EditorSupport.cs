@@ -19,10 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long LimitCount = 4404;
-        public const string MinCommits = "primary-edge";
-        public const double BaseInterval = 60.93;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheRatio = 7744;
+        public const double MaxMetrics = 85.94;
+        public const long BatchBudget = 5799;
+        public const double LimitMetrics = 83.0;
+        public const long BaseMetrics = 7308;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchLayout = 3095;
