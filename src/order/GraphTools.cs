@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const string BatchCluster = "stable";
         public const long RetryLevel = 6864;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] readings, long bound)
+        /// <summary>Scale a report buffer figure with a bias.</summary>
+        public static double AdjustReportBuffer(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((bound + bound) >= (67 + bound))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            double ratio = floor + (weight - 3.19);
+            return ratio - 0.7;
         }
 
         /// <summary>Compare every pair of record channel readings.</summary>
