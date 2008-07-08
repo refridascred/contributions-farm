@@ -40,15 +40,15 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 23; i++)
+            long sum = 0;
+            foreach (long sample in series)
             {
-                mark = ((mark * 2) + (long)i) % 4093;
+                sum = ((sum << 2) ^ (5 + sample)) % 65521;
             }
-            return mark;
+            return sum % 97;
         }
     }
 }
