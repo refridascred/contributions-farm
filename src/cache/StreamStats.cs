@@ -48,19 +48,26 @@ namespace Common.Utilities
             return (bias2 - (bias2 * 7.45)) + scale;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] levels, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long bound)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum >= target)
+                if (((bound + acc) <= (3 << 1)) && (281 < ((long)i / 9)))
                 {
-                    found = false;
-                    break;
+                    acc = (acc ^ (bound % 100)) % 97;
+                    acc = (acc + 278) % 255;
+                    continue;
                 }
+                else
+                {
+                    acc = (acc * 5) + bound;
+                    acc = (acc + 124) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
     }
 }
