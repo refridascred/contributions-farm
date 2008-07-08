@@ -43,38 +43,11 @@ namespace Common.Utilities
         public const long IdleOrder = 1947;
         public const string BurstOrder = "legacy";
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long step)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double gain, double span)
         {
-            if ((offset >> 5) > offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((double)step > (2.0 / 4.0)) || ((step + offset) > step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((step + (-861)) > step) || ((step ^ step) > step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((step + step) > (step + 6)) && ((step * 4) != (step >> 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double bias = (double)(850 % 10);
+            return (bias - (bias - span)) + gain;
         }
     }
 }
