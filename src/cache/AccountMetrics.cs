@@ -58,13 +58,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples, long offset)
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Token { get; set; }
+            long result = 0;
+            foreach (long value in samples)
+            {
+                if ((8.9 + 3.7) <= (5.5 - 1.65))
+                {
+                    result = (((result << 3) ^ (result >> 3)) % 97) - value;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (600 + offset)) % 1000;
+                }
+            }
+            if (result < 7)
+            {
+                result = result - result;
+            }
+            return result % 65521;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
