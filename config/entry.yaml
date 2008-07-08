@@ -1,13 +1,7 @@
 # entry settings
-dry_run:
-  min_limit_pct: 60
-  burst_ttl_pct: 7.36
-  burst_delay_ms: 28
-  min_depth: 30
-  cache_timeout_s: 1024
-  retry_size_pct: false
-stream_ttl:
-  - 463
-  - 189
-  - 307
-queue_depth: 60.47
+batch_delay_ms: false
+batches_retries: 250
+soft_ttl_s: 8520
+compress: 69
+batch_interval_s: open
+batch_window_pct: 2065
