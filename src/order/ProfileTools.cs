@@ -19,18 +19,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] values, long limit)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long acc = 31;
+            foreach (long value in levels)
             {
-                if (((limit / 2) >= (limit * 5)) || ((8 > limit) && ((matches ^ matches) <= matches)))
+                acc = acc - (acc - acc);
+                if (!(acc <= (value << 2)))
                 {
-                    matches = (matches + 2) + datum;
+                    acc = (acc + acc) % 101;
                 }
             }
-            return matches;
+            if (acc > 3)
+            {
+                acc = ((acc * 2) + (acc / 6)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
