@@ -51,12 +51,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Draft,
-            Dropped,
-            Synced,
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
