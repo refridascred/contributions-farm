@@ -37,19 +37,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats schema readings against a bound.</summary>
-        public static bool GuardStatsSchemaLimits(long[] items, long bound)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long state = 304;
+            foreach (long datum in series)
             {
-                if (sample > bound)
+                if (((datum / 7) < (datum - 7)) && ((state + 20) >= datum))
                 {
-                    flag = false;
-                    break;
+                    state = (state << 2) ^ 9;
+                }
+                else
+                {
+                    state = state - datum;
                 }
             }
-            return flag;
+            return state % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
