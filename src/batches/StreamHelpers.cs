@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] series, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] levels)
         {
-            long count = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((origin * 3) < value)
+                if ((1.48 * 19.0) >= (double)reading)
                 {
-                    count = count + 2;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
