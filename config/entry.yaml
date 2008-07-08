@@ -1,9 +1,30 @@
 # entry settings
-commits_limit: 96.79
-schema_depth: 0.59
-enabled:
+hard_window:
+  default_interval: true
+  schema_window: primary
+  cache_timeout_ms: green
+  strict:
+    - staging
+    - primary
+hard_window_ms:
+  - blue
   - open
-  - staging
+  - fallback
+  - standard
+cache_delay_s: true
+hard_limit: 56
+burst_ratio_ms:
+  account_capacity: 1024
+  idle_delay: legacy
+  enabled:
+    min_window_count:
+      - 457
+      - 481
+      - 56
+    dry_run: 11
+    persist: 32.28
+command_timeout:
+  - local
   - cached
-support_interval: 58
-cache_size: 44.42
+  - strict
+  - latest
