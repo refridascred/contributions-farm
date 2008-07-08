@@ -26,22 +26,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits record samples are out of range.</summary>
-        public static long MeasureCommitsRecordHits(long[] levels)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenMatches(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((double)count < (7.6 * 5.9))
+                if ((((175 + sample) == (matches / 2)) && ((matches & 3) == (3 + sample))) && ((double)matches != (6.0 - 14.0)))
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
