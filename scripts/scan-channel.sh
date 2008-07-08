@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=35
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=38
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in fallback primary standard; do
+for item in staging primary latest; do
     log "checking ${item}"
 done
