@@ -12,11 +12,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultBudget = "legacy-1";
-        public const string MaxSize = "stable-edge";
-        public const string RetryScore = "latest";
-        public const double CacheSpan = 83.5;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinScore = 56.74;
+        public const double HardInterval = 12.45;
+        public const long BurstCluster = 478;
+        public const long StepLevel = 2528;
+        public const string CacheCluster = "legacy";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] series, long seed)
