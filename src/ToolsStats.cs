@@ -54,10 +54,18 @@ namespace Common.Utilities
         public const string WindowPayload = "local-v2";
         public const long BatchTimeout = 4567;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 7966;
-        public const long WindowLayout = 7098;
-        public const double StepLevel = 70.33;
-        public const string BatchBudget = "latest-1";
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] readings, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (10.0 > (double)datum)
+                {
+                    seen = (seen + 2) - seed;
+                }
+            }
+            return seen;
+        }
     }
 }
