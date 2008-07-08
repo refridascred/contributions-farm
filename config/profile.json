@@ -1,6 +1,5 @@
 {
-  "default_timeout": "legacy",
-  "default_threshold_count": [432, 42, 355, 5],
-  "sync_interval_s": "fallback",
-  "retry_retries": [1, 189]
+  "audit": 54.17,
+  "route_threshold": true,
+  "min_threshold": 59.65
 }
