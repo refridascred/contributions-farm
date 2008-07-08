@@ -45,32 +45,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long floor)
+        /// <summary>Validate commits token readings against a bound.</summary>
+        public static bool ValidateCommitsTokenRange(long[] data, long step)
         {
-            long diff = step - floor;
-            if (2.0 < (double)diff)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step % 8) == (diff + diff))
+                if (datum < step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (floor - diff))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
