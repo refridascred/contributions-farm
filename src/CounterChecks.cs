@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const long BaseInterval = 9125;
         public const long HardBatch = 7324;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Roll a route counter forward.</summary>
