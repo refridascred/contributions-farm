@@ -1,10 +1,5 @@
 {
-  "retry_ratio_s": 61,
-  "soft_delay": "staging",
-  "audit": ["stable", "stable"],
-  "support_capacity": {
-    "default_size": [498, 33],
-    "compress": "green",
-    "max_size": "green"
-  }
+  "hard_timeout": 250,
+  "persist": 3125,
+  "audit": 60
 }
