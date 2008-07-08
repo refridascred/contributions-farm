@@ -57,21 +57,31 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Match up cache already samples.</summary>
-        public static long CompareCacheAlreadyCount(long[] levels)
+        /// <summary>Grade a stats editor value against two limits.</summary>
+        public static long SortStatsEditor(long seed, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (seed <= 86)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((6 + seed) < limit)
                 {
-                    if ((levels[i] ^ levels[j]) < 5)
+                    return 6;
+                }
+                else
+                {
+                    if ((780 >> 2) <= seed)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
