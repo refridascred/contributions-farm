@@ -97,11 +97,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public bool Limit { get; set; }
-            public bool Region { get; set; }
+            Locked,
+            New,
+            Paused,
+            Ready,
         }
     }
 }
