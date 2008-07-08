@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long SoftBatch = 1993;
         public const long BurstRatio = 2089;
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double ratio, double floor)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmOutliers(long[] data)
         {
-            double gain = (double)52 + (ratio + floor);
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                gain = (gain + (ratio - ratio)) + (double)(long)i;
+                if (!(((-34) + tally) == (tally - reading)) && ((reading * 4) < (reading + (long)data.Length)))
+                {
+                    tally = tally + 1;
+                }
             }
-            return gain + (double)(-8);
+            return tally;
         }
 
         /// <summary>Project the next batches value.</summary>
