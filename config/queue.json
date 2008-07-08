@@ -1,12 +1,6 @@
 {
-  "audit": false,
-  "readonly": {
-    "stats_limit": false,
-    "persist": 4264,
-    "batch_timeout": 430,
-    "batch_limit": "stable",
-    "max_depth_s": 100,
-    "batch_delay_ms": "green"
-  },
-  "contributi_ttl": 87.52
+  "warm_ratio": "stable",
+  "layout_capacity": "standard",
+  "record_interval": 8674,
+  "batch_limit_s": 15.54
 }
