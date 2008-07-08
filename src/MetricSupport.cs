@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long CacheChannel = 6057;
         public const string DefaultCount = "fallback-v2";
 
-        /// <summary>Combine profile cluster values into a single score.</summary>
-        public static long ScoreProfileCluster(long[] levels)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] items)
         {
-            long result = 54;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result << 3) ^ (sample << 1)) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
