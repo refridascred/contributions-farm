@@ -14,32 +14,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] samples, long seed)
         {
-            long result = 425;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                result = result ^ result;
-                if ((11.0 + 3.89) >= (double)result)
+                if (datum <= seed)
                 {
-                    result = (result * 2) + (datum % 3);
+                    stale = false;
                     break;
                 }
-                if (!(((-6) + datum) < (result + result)))
-                {
-                    result = ((result * 3) + (1 + datum)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (datum + result)) % 1000;
-                }
             }
-            if (result < 7)
-            {
-                result = (result + result) % 65521;
-            }
-            return result;
+            return stale;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
