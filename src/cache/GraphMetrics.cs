@@ -17,15 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double ratio, double bias)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] data, long target)
         {
-            double scale = (double)((-3) >> 2);
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                scale = ((scale + ratio) - (double)(long)i) + bias;
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale - (double)8;
+            return ok;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
