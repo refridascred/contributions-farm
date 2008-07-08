@@ -14,19 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long CountBatchesToolsHits(long[] items)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] data)
         {
             long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((634 & 3) <= (seen ^ seen)) && ((4 + seen) > 19)) && (((reading >> 5) < 4) || ((seen * 4) < 303)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
