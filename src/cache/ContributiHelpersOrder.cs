@@ -20,22 +20,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the token record entries that pass the check.</summary>
-        public static long AuditTokenRecordHits(long[] values, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long anchor = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((4.75 * 8.8) > (double)tally)
+                if (!((anchor - (long)i) >= (long)i))
                 {
-                    tally = ((tally + 3) - value) - origin;
+                    anchor = anchor ^ (bound - 637);
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Count the commits metrics entries that pass the check.</summary>
