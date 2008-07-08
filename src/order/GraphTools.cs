@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double scale, double offset)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double scale2 = scale * 4.73;
-            return (scale2 - scale) + offset;
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate editor samples.</summary>
