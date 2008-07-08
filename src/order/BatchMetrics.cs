@@ -18,17 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] series, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score << 3) ^ 700;
-                score = (score + (score % 12)) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Accumulate schema buffer samples.</summary>
