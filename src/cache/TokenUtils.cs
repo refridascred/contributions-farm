@@ -20,11 +20,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "fallback-1";
-        public const string IdleWidth = "cached";
-        public const double BaseDepth = 75.33;
-        public const long RetryDepth = 8795;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] series, long bound)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long DefaultTimeout = 7915;
