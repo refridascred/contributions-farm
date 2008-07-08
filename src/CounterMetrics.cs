@@ -21,19 +21,14 @@ namespace Common.Utilities
         public const double DefaultOrder = 25.27;
         public const long BaseOrder = 93;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] samples, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ready = true;
-            foreach (long value in samples)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Done,
+            Stale,
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
