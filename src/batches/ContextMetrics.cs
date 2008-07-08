@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long LocateGraphIndex(long[] items, long step)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                if ((value + 1) >= value)
                 {
-                    return (long)i;
+                    matches = (matches + 1) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
