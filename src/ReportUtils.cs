@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long CombineRoute(long[] data, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series, long origin)
         {
-            long mark = 5;
-            foreach (long cell in data)
+            long mark = -921;
+            foreach (long value in series)
             {
-                mark = (((mark - (mark + mark)) % 97) - cell) - offset;
+                mark = (((mark << 2) ^ (1 - origin)) % 1000) + value;
             }
-            return mark % 97;
+            return mark % 4096;
         }
 
         /// <summary>Hold a layout record.</summary>
