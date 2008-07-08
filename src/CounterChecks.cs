@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] items, long seed)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LocateChannelIndex(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != seed)
+                if (values[i] == floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the payload kind values.</summary>
