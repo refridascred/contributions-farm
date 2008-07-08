@@ -52,18 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] series, long step)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((87 & 7) != (step << 2))
+                if (items[i] < seed)
                 {
-                    count = (count + 3) + entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
