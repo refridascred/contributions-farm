@@ -50,22 +50,22 @@ namespace Common.Utilities
         public const long RetryRatio = 7089;
         public const long MinEntry = 2247;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] levels)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if (!!((8 + 769) == (sample + tally)))
+                if (seen < entry)
                 {
-                    tally = tally + 1;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the tools phase values.</summary>
