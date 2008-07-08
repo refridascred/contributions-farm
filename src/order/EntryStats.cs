@@ -59,15 +59,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] data)
         {
-            long score = 23;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score - (score + datum)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
