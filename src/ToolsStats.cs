@@ -36,19 +36,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] items, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (cell > bound)
+                if (!((double)origin > (4.88 + 1.41)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Count the checks route entries that pass the check.</summary>
