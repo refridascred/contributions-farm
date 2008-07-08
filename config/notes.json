@@ -1,7 +1,18 @@
 {
-  "min_capacity_ms": true,
-  "batch_interval_pct": 92,
-  "min_interval_pct": "primary",
-  "batch_retries": "primary",
-  "warm_threshold_count": "staging"
+  "session_interval": "primary",
+  "batches_interval": 33.07,
+  "cache_ratio": {
+    "compress": 44.32,
+    "max_timeout_ms": "legacy",
+    "warm_ratio": true
+  },
+  "compress": "edge",
+  "cluster_retries": {
+    "sync_window_s": ["blue", "green", "legacy", "strict"],
+    "notes_size": ["edge", "green", "eu-west", "blue"],
+    "default_capacity": "legacy",
+    "warm_interval": "cached",
+    "persist": 88,
+    "notes_limit": 30
+  }
 }
