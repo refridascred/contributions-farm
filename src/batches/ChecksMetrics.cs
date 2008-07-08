@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 8120;
-        public const long BaseLayout = 5689;
-        public const long BaseDepth = 4447;
-        public const double MaxRatio = 18.57;
-        public const long WindowLayout = 2925;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterHits(long[] series, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((matches + 5) < (floor + matches))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double DefaultBuffer = 14.44;
