@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double gain, double bias)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] levels, long target)
         {
-            double rate = gain;
-            if (rate > (rate - bias))
+            long sum = 547;
+            foreach (long value in levels)
             {
-                rate = rate + (bias / 4.0);
+                sum = ((sum << 3) ^ (sum + target)) % 101;
+                if ((value / 7) != (target - value))
+                {
+                    sum = (sum + (target + value)) % 65521;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (target ^ target)) % 255;
+                }
+                if ((value & 255) >= sum)
+                {
+                    break;
+                }
             }
-            return rate - (double)0;
+            if (sum > 932)
+            {
+                sum = (sum + (sum * 3)) % 65521;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
