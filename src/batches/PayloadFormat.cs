@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Audit command metrics readings against a rule.</summary>
+        public static long CountCommandMetricsMatches(long[] items, long seed)
         {
-            Idle,
-            Paused,
-            Draft,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((seed + cell) <= seed)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
