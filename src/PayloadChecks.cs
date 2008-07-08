@@ -31,12 +31,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchScore = 4400;
-        public const long StepNotes = 7273;
-        public const long MaxDepth = 4477;
-        public const long IdleNotes = 7149;
-        public const long StepCount = 7237;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double rate, double bias)
+        {
+            double drift = (double)(7 - 6);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = ((drift + (bias / 2.0)) + (double)(long)i) + rate;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
