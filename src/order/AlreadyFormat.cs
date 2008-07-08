@@ -43,18 +43,32 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long step, long step2)
         {
-            long carry = 869;
-            foreach (long reading in levels)
+            long gap = step ^ step2;
+            if (!((step + gap) <= (step >> 5)))
             {
-                if ((carry < (carry << 3)) && ((reading * 4) < (carry << 1)))
+                return 4;
+            }
+            else
+            {
+                if (step2 <= (step + 86))
                 {
-                    carry = ((carry << 2) ^ (44 + carry)) % 101;
+                    return 3;
+                }
+                else
+                {
+                    if ((8 + step) > step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Accumulate order samples.</summary>
