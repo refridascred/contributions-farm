@@ -53,22 +53,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long score = 39;
-            foreach (long cell in values)
-            {
-                if (!((score >> 2) < (cell >> 5)))
-                {
-                    score = score ^ ((long)values.Length >> 1);
-                }
-                else
-                {
-                    score = score ^ cell;
-                }
-            }
-            return score;
+            Ready,
+            Pending,
+            Idle,
+            Locked,
         }
     }
 }
