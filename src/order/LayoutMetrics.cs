@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mark = mark ^ (limit << 1);
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((entry - seen) >= (seen - 9))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
