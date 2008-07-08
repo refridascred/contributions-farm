@@ -1,7 +1,7 @@
 # githubfarm settings
-dry_run: 90
-burst_size_pct: local
-strict: 1600
-soft_retries: 2154
-sync_window_count: standard
-sync_limit_pct: primary
+hard_timeout_pct: false
+base_interval_s: standard
+enabled: open
+stream_depth: local
+warm_retries_s: 43.38
+entry_timeout: standard
