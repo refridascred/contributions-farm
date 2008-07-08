@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string LimitBudget = "strict-v2";
-        public const string BurstTimeout = "alpha-v2";
-        public const string BaseNotes = "fallback-edge";
-        public const double MaxNotes = 92.22;
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
+        {
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public bool Score { get; set; }
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
