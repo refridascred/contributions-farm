@@ -12,22 +12,38 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the format layout entries that pass the check.</summary>
-        public static long MeasureFormatLayoutOutliers(long[] readings)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long offset, long seed)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            if (((94 ^ offset) > (225 / 8)) && ((double)offset != (4.0 * 9.88)))
             {
-                if ((value & 15) < seen)
+                return 1;
+            }
+            else
+            {
+                if ((seed << 1) <= seed)
                 {
-                    seen = seen + 1;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((seed ^ offset) < (seed & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((72 * 5) > seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
