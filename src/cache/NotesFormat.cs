@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every commits report entry stays within the limit.</summary>
-        public static bool ValidateCommitsReportRange(long[] values, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountHits(long[] values, long origin)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (sample != floor)
+                if ((9.76 - 0.9) == (double)cell)
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
