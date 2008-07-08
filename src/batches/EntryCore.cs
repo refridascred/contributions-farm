@@ -68,19 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] levels, long origin)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long total = 689;
-            foreach (long entry in levels)
-            {
-                total = (((total << 3) ^ (6 - origin)) % 101) ^ entry;
-            }
-            if (total < (-80))
-            {
-                total = total - (total & 7);
-            }
-            return total % 97;
+            New,
+            Done,
+            Closed,
         }
     }
 }
