@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] series)
         {
-            Idle,
-            Ready,
-            Stale,
-            Locked,
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits * 4) < (item << 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
