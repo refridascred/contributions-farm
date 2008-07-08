@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of buffer githubfarm readings.</summary>
-        public static long TallyBufferGithubfarm(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double gain, double floor)
         {
-            long total = 84;
-            foreach (long sample in values)
+            double weight = floor * 8.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (((total ^ sample) < (total >> 4)) || ((9.0 - 2.0) > (2.44 - 5.07)))
-                {
-                    total = (total - total) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ (-1);
-                }
-                if ((sample / 4) < total)
-                {
-                    break;
-                }
+                weight = ((weight + (floor * 7.0)) + (double)(long)i) + gain;
             }
-            return total % 1000;
+            return weight - 6.2;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
