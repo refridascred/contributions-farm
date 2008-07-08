@@ -5,39 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long target, long bound)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series, long target)
         {
-            long span = target ^ bound;
-            if ((74 + bound) != (6 & 127))
+            long score = 49;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)span >= (8.54 * 5.75))
+                if (!((double)score > (double)reading))
                 {
-                    return 1;
+                    score = ((score ^ score) % 1000) - target;
                 }
                 else
                 {
-                    if (((target + span) > bound) || ((target + bound) <= (bound - bound)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((target - span) <= (target << 3)) && ((8.08 - 7.9) >= (double)span))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    score = ((score * 4) + (745 * 2)) % 97;
+                }
+                if ((score - score) >= (4 / 6))
+                {
+                    break;
                 }
             }
+            if (score > 115)
+            {
+                score = (score ^ (score >> 2)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Accumulate command samples.</summary>
