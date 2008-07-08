@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double MaxCount = 79.87;
+        public const long CacheRatio = 9037;
+        public const long BurstSize = 8235;
+        public const long CacheFilter = 4360;
+        public const long BatchFilter = 6161;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
