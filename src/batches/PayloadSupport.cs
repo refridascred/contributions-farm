@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 9306;
-        public const double LimitSize = 30.17;
-        public const double RetryFormat = 67.76;
+        /// <summary>Count the contributi filter entries that pass the check.</summary>
+        public static long AuditContributiFilterMatches(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading >= (count + offset)) && !(reading < (count + reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a checks token figure with a bias.</summary>
         public static double SmoothChecksToken(double ratio, double bias)
