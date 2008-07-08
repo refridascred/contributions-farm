@@ -1,6 +1,8 @@
 {
-  "persist": 100,
-  "commits_window": 7430,
-  "entry_window": 32,
-  "flush_timeout": 21.21
+  "counter_interval": [281, 35, 128],
+  "hard_retries_ms": "primary",
+  "hard_ttl_pct": true,
+  "enabled": ["stable", "edge", "staging"],
+  "warm_ttl_s": 17.65,
+  "soft_ttl_ms": 77
 }
