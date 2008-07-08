@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] series, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] items, long seed)
         {
-            long sum = 192;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((cell << 1) >= (87 - bound)) && ((long)series.Length < (bound & 3)))
+                if (items[i] == seed)
                 {
-                    sum = ((sum * 2) + ((-1) + bound)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ bound;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
