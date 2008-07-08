@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ScaleBuffer(double weight, double span)
+        /// <summary>Accumulate farm graph samples.</summary>
+        public static long CombineFarmGraph(long[] levels)
         {
-            double weight2 = 18.0 - span;
-            return (weight2 - span) + weight;
+            long result = 546;
+            foreach (long sample in levels)
+            {
+                result = (((result * 5) + (761 << 3)) % 1000) ^ sample;
+            }
+            if (result > 97)
+            {
+                result = (result - result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
