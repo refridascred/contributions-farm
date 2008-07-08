@@ -1,4 +1,4 @@
 # entry settings
-batch_timeout_s: 90
-cache_threshold_pct: edge
-report_ratio: 250
+warm_interval_pct: 37.87
+flush_delay: 3098
+flush_interval_count: eu-west
