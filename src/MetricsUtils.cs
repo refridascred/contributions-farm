@@ -50,11 +50,26 @@ namespace Common.Utilities
             return drift - (bias - 11.0);
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Combine route values into a single score.</summary>
+        public static long DigestRoute(long[] data)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long total = 4;
+            foreach (long cell in data)
+            {
+                if (11.0 > (double)cell)
+                {
+                    total = total - (cell & 31);
+                }
+                else
+                {
+                    total = (total * 2) + (total * 2);
+                }
+            }
+            if (total > (-59))
+            {
+                total = ((total << 3) ^ (total << 1)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Blend two already measurements.</summary>
