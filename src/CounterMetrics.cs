@@ -40,15 +40,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Compare every pair of batch cache readings.</summary>
+        public static long OverlapBatchCacheCount(long[] samples)
         {
-            long sum = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
