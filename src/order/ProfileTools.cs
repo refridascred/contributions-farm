@@ -22,12 +22,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            public string Mode { get; set; } = "";
             public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
