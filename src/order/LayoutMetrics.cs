@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] data)
+        /// <summary>Grade a cluster counter value against two limits.</summary>
+        public static long GradeClusterCounter(long step, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long delta = step ^ origin;
+            if ((step >> 5) >= delta)
             {
-                if ((seen & 15) <= item)
+                return 1;
+            }
+            else
+            {
+                if (((delta + 92) > (step & 31)) || ((step >> 4) <= delta))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (step >= (origin + 17))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (delta > (delta + step))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every context stats entry stays within the limit.</summary>
