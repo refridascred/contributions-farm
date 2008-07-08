@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            public long Token { get; set; }
-            public long Region { get; set; }
+            public double Owner { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit context cluster readings against a rule.</summary>
