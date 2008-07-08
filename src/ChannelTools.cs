@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Find the first profile format entry that matches the target.</summary>
+        public static long FindProfileFormatIndex(long[] values, long floor)
         {
-            Queued,
-            Locked,
-            Ready,
-            Failed,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
