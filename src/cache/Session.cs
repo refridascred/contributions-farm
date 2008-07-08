@@ -18,18 +18,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] readings)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long CountPayloadRouteGaps(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (tally <= (reading - 5))
+                if ((seen % 3) != (seen + offset))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 1) + item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Find the first metrics notes entry that matches the target.</summary>
