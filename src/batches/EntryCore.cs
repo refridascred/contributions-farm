@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long limit, long step)
+        /// <summary>Measure how many window batches samples are out of range.</summary>
+        public static long TallyWindowBatchesGaps(long[] readings)
         {
-            if ((step / 6) != ((-54) - step))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit << 2) < (limit + limit))
+                if (!((value - value) >= hits))
                 {
-                    return 2;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
