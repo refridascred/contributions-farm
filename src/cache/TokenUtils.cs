@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "primary-edge";
-        public const double DefaultCount = 83.96;
-        public const long BurstBatch = 2425;
-        public const double DefaultBatch = 57.62;
-        public const long WindowBatch = 7242;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 43.37;
+        public const long SoftSchema = 1882;
+        public const long IdleSchema = 812;
+        public const string BatchSpan = "latest-edge";
+        public const long HardBudget = 9308;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
