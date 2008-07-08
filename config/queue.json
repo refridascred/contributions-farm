@@ -1,7 +1,13 @@
 {
-  "schema_limit": 500,
-  "account_ratio": "cached",
-  "default_ratio": 74.72,
-  "idle_window_s": [50, 461],
-  "dry_run": true
+  "strict": 651,
+  "compress": {
+    "audit": 95.43,
+    "sync_interval_s": "green",
+    "burst_ttl_pct": 60.77,
+    "flush_ratio_ms": 3027,
+    "compress": "legacy"
+  },
+  "enabled": "standard",
+  "cluster_ratio": ["fallback", "blue"],
+  "batch_retries_count": 45.62
 }
