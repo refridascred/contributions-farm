@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double ratio, double bias)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double weight, double offset)
         {
-            double load = (double)(983 + 71);
-            if (load <= bias)
+            double mean = (weight * 1.0) - (weight * 20.0);
+            if (mean < (weight / 7.0))
             {
-                load = (load - bias) - ratio;
+                mean = mean + 3.0;
             }
-            return load + (load * 3.2);
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + (weight * 6.3)) - (double)(long)i;
+            }
+            return mean + (mean + offset);
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
