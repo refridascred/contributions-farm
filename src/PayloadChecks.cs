@@ -30,19 +30,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double gain, double floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] readings, long target)
         {
-            double weight = gain;
-            if (weight > (floor - floor))
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                weight = weight + gain;
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - gain;
+            return valid;
         }
 
         /// <summary>Roll a context counter forward.</summary>
