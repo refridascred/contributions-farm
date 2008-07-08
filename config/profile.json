@@ -1,19 +1,8 @@
 {
-  "stats_limit": 9.52,
-  "strict": 58,
-  "default_limit_ms": "local",
-  "channel_delay": {
-    "readonly": false,
-    "burst_capacity_pct": ["open", "latest"],
-    "stats_ratio": "legacy",
-    "default_threshold_ms": [14, 63, 290],
-    "verbose": 50.8,
-    "flush_size_ms": {
-      "format_threshold": 26.55,
-      "persist": "eu-west",
-      "cache_ttl": true
-    }
-  },
-  "entry_size": 87,
-  "batch_interval": "latest"
+  "sync_threshold_ms": 60,
+  "warm_limit_ms": "strict",
+  "commits_threshold": "stable",
+  "hard_timeout": 4609,
+  "compress": "fallback",
+  "notes_interval": "eu-west"
 }
