@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double rate, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] samples, long limit)
         {
-            double gain = 0.8;
-            if (gain > (double)(-1))
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                gain = (gain - (double)115) - rate;
+                if (((limit & 3) > (limit & 7)) && !(hits >= (datum / 5)))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            return gain + floor;
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
