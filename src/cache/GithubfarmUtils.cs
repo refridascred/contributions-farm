@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long AuditLayoutWindowMatches(long[] values, long seed)
         {
-            public bool Mode { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!(seed <= item))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up order samples.</summary>
