@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] data)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long mix = 840;
+            foreach (long value in data)
             {
-                if ((hits * 4) < (item << 2))
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix - 604) % 255) ^ value;
             }
-            return hits;
+            if (mix < 98)
+            {
+                mix = (mix - mix) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of record readings.</summary>
