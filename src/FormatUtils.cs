@@ -20,38 +20,22 @@ namespace Common.Utilities
             return rate2 + (rate * 9.2);
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long target, long bound)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] samples)
         {
-            if ((bound / 4) <= (bound >> 3))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (target < (21 >> 5))
+                if ((double)cell <= 6.37)
                 {
-                    return 5;
+                    count = count + 2;
                 }
                 else
                 {
-                    if ((bound & 255) > (target - bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(bound > (109 - 978)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
