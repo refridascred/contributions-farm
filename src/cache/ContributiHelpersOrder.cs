@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 8980;
-        public const string CacheFactor = "fallback-1";
-        public const long IdleSpan = 7024;
-        public const double DefaultBudget = 37.79;
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double gain, double bias)
+        {
+            double rate = gain;
+            if (rate > (rate - bias))
+            {
+                rate = rate + (bias / 4.0);
+            }
+            return rate - (double)0;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long StepGraph = 7622;
