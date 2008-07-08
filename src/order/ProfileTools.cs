@@ -75,10 +75,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 1367;
-        public const long SoftScore = 4597;
-        public const string MaxSize = "open-edge";
-        public const string LimitInterval = "standard";
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((2.0 - 2.0) < (double)hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
