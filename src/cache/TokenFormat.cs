@@ -14,19 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (!(868 <= (item + (-55))))
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 76.54;
+        public const double RetryStats = 23.01;
+        public const string BatchStats = "fallback-1";
+        public const long StepStats = 2481;
+        public const string RetrySpan = "legacy-edge";
 
         /// <summary>Validate window token readings against a bound.</summary>
         public static bool ValidateWindowTokenLimits(long[] items, long step)
