@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamHits(long[] samples, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((item + 77) > (hits / 5))
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            Stale,
+            Pending,
+            Synced,
+            Idle,
         }
 
         /// <summary>Match up editor samples.</summary>
