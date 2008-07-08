@@ -29,12 +29,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit token counter readings against a rule.</summary>
+        public static long MeasureTokenCounterOutliers(long[] levels, long offset)
         {
-            Draft,
-            Queued,
-            New,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum - (long)levels.Length) <= matches)
+                {
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
