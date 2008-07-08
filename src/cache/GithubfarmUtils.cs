@@ -35,16 +35,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = mix + 966;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 7041;
+        public const string DefaultQueue = "local-edge";
+        public const string LimitBudget = "latest-v2";
+        public const string LimitQueue = "primary";
     }
 }
