@@ -23,10 +23,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowInterval = 2396;
-        public const long WindowCounter = 8859;
-        public const long SoftScore = 173;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)sample >= (3.7 * 12.0))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
