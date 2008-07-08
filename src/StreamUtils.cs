@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long origin, long origin2)
+        /// <summary>Check that every payload command entry stays within the limit.</summary>
+        public static bool ValidatePayloadCommandRange(long[] series, long bound)
         {
-            long offset = origin - origin2;
-            if ((offset < origin2) && ((origin2 - origin) > (origin2 % 60)))
+            bool ok = true;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (offset >= (origin / 7))
+                if (value >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((19 / 4) <= (45 + offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
