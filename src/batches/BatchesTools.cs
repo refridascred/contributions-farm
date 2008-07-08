@@ -34,9 +34,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "staging-1";
-        public const double SoftAlready = 34.05;
-        public const double MinAlready = 78.28;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] readings)
+        {
+            long score = 5;
+            foreach (long item in readings)
+            {
+                if (3.0 > (double)score)
+                {
+                    score = (score << 3) ^ item;
+                }
+            }
+            return score % 1000;
+        }
     }
 }
