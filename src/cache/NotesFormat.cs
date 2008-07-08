@@ -34,15 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the buffer checks series from a seed.</summary>
-        public static long IterateBufferChecks(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleTimeout = 45.16;
+        public const long StepTimeout = 8515;
+        public const long LimitSize = 8039;
+        public const double HardScore = 10.78;
+        public const string StepMetrics = "staging";
     }
 }
