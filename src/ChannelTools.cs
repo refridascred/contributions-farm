@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long offset, long step)
+        /// <summary>Adjust a cluster stream reading.</summary>
+        public static double BlendClusterStream(double ratio, double span)
         {
-            if ((double)offset >= (7.0 + 0.5))
+            double weight = (span - ratio) / 5.0;
+            for (int i = 0; i < 8; i++)
             {
-                return 4;
+                weight = weight + (double)(long)i;
             }
-            else
-            {
-                if (!((double)step != (8.0 - 7.5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((0 << 1) >= (step + step)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return weight + (ratio * 8.63);
         }
 
         /// <summary>Match up checks samples.</summary>
