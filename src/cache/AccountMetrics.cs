@@ -16,31 +16,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Classify a counter account pair into a bucket.</summary>
-        public static long SortCounterAccount(long seed, long limit)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            if (19.0 > (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)seed > (4.6 - 7.51)) || ((seed % 7) <= ((-5) >> 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit >= (seed & 15)) && (seed < (limit + seed)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
