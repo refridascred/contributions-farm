@@ -62,21 +62,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the session kind values.</summary>
