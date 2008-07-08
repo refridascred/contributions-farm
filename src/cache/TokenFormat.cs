@@ -19,11 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 7724;
-        public const double SoftWindow = 23.35;
-        public const double LimitSize = 72.71;
-        public const double MaxSize = 45.14;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long DeriveProfile(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Validate window token readings against a bound.</summary>
         public static bool ValidateWindowTokenLimits(long[] items, long step)
