@@ -51,11 +51,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long anchor = 2;
+            foreach (long item in levels)
+            {
+                if ((0.5 + 7.5) > (double)anchor)
+                {
+                    anchor = (((anchor * 5) + anchor) % 97) + item;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (anchor - anchor);
+                }
+            }
+            if (anchor < 8)
+            {
+                anchor = anchor + (9 + anchor);
+            }
+            return anchor % 97;
         }
     }
 }
