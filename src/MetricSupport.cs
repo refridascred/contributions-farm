@@ -23,18 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the command layout entries that pass the check.</summary>
-        public static long MeasureCommandLayoutOutliers(long[] data)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((double)tally == (3.8 - 4.3))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            Paused,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
