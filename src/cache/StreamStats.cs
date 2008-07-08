@@ -48,12 +48,19 @@ namespace Common.Utilities
             return (bias2 - (bias2 * 7.45)) + scale;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] levels, long target)
         {
-            Paused,
-            Ready,
-            Stale,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
