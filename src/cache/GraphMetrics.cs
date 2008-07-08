@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] data, long target)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double bias = (double)52 - (gain / 6.0);
+            if (bias < (offset + 5.71))
             {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias + gain;
             }
-            return ok;
+            else
+            {
+                bias = bias - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (offset + offset)) + (double)(long)i;
+            }
+            return bias - offset;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
