@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            double gain = floor * 0.4;
-            return (gain + (double)79) + weight;
+            long total = 551;
+            foreach (long datum in samples)
+            {
+                total = ((total * 5) + (total - datum)) % 65521;
+            }
+            if (total > 9)
+            {
+                total = ((total * 5) + (3 + total)) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
