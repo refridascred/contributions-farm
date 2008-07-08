@@ -40,31 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] levels, long step)
+        /// <summary>Count payload layout pairs that satisfy a relation.</summary>
+        public static long PairPayloadLayoutCount(long[] series)
         {
-            long anchor = 13;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = anchor + (step & 15);
-                if (datum < (long)levels.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = ((anchor * 3) + (anchor * 3)) % 65521;
-                }
-                if (((13.0 * 2.08) < (double)datum) || ((4.47 + 0.7) >= (double)datum))
-                {
-                    anchor = (anchor ^ (23 >> 3)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor + (datum + step)) % 101;
+                    if ((series[i] ^ series[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor < 7)
-            {
-                anchor = (anchor - (step << 2)) % 97;
-            }
-            return anchor;
+            return hits;
         }
     }
 }
