@@ -1,11 +1,5 @@
 {
-  "poll_timeout_pct": {
-    "soft_depth": 100,
-    "soft_threshold_count": 2336,
-    "base_capacity_s": "edge",
-    "metric_depth": false,
-    "default_delay_count": true
-  },
-  "soft_retries": "open",
-  "readonly": false
+  "retry_limit": 250,
+  "batch_timeout_ms": "standard",
+  "readonly": "latest"
 }
