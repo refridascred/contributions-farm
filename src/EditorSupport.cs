@@ -33,32 +33,25 @@ namespace Common.Utilities
         public const string BurstBatches = "alpha-1";
         public const long MinFactor = 9784;
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long floor, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long bound)
         {
-            long gap = floor - bound;
-            if ((gap / 2) < (bound ^ bound))
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)bound == (double)floor)
+                if ((total - bound) > (4 + 374))
                 {
-                    return 0;
+                    total = total - (total << 3);
+                    total = (total + (long)i) % 101;
+                    break;
                 }
                 else
                 {
-                    if ((double)bound < 8.27)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = total + (long)i;
                 }
+                total = ((total * 4) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
