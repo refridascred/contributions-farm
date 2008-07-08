@@ -60,10 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleWidth = 6384;
-        public const long CacheCounter = 2663;
-        public const long WindowDepth = 6462;
-        public const string MinCounter = "legacy";
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] items, long seed)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if (856 <= hits)
+                {
+                    hits = ((hits + 2) ^ reading) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
