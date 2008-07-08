@@ -1,21 +1,6 @@
 {
-  "enabled": 9467,
-  "idle_threshold": {
-    "default_threshold_pct": 39.21,
-    "githubfarm_retries": [251, 329, 360],
-    "retry_window_s": "staging"
-  },
-  "flush_delay": 6,
-  "already_window": 91,
-  "base_window_count": {
-    "contributi_window": 5317,
-    "readonly": 14,
-    "audit": 69.44,
-    "githubfarm_delay": "legacy"
-  },
-  "sync_ttl_s": {
-    "soft_interval": 1,
-    "base_threshold_ms": "cached",
-    "dry_run": true
-  }
+  "enabled": 30,
+  "session_limit": 5242,
+  "persist": 0.84,
+  "burst_limit_s": "strict"
 }
