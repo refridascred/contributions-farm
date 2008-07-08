@@ -23,23 +23,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Adjust a graph notes reading.</summary>
-        public static double ScaleGraphNotes(double bias, double bias2)
+        /// <summary>Locate a account batches reading by value.</summary>
+        public static long LookupAccountBatchesIndex(long[] series, long floor)
         {
-            double gain = bias2;
-            if (gain < 6.81)
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (double)395;
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (double)1;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + bias2) + (double)(long)i;
-            }
-            return gain - (18.0 + bias);
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
