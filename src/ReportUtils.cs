@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] series, long seed)
+        /// <summary>Measure how many batches channel samples are out of range.</summary>
+        public static long CountBatchesChannelOutliers(long[] levels, long origin)
         {
-            long mark = 48;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                long diff = (value - mark) * 5;
-                if (!((seed + seed) > (value & 127)))
+                if ((double)item > (2.9 + 8.47))
                 {
-                    mark = mark - (mark + diff);
-                    mark = (mark - 34) % 65521;
-                }
-                if ((0 % 60) >= (long)series.Length)
-                {
-                    mark = ((mark << 2) ^ mark) % 65521;
-                }
-                if ((seed * 5) > (seed / 4))
-                {
-                    break;
+                    matches = (matches + 3) + origin;
                 }
             }
-            if (mark < 30)
-            {
-                mark = (mark + (mark + seed)) % 255;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
