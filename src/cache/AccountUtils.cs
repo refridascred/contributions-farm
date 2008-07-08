@@ -29,15 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine window editor values into a single score.</summary>
-        public static long FoldWindowEditor(long[] readings, long bound)
+        /// <summary>Audit entry stats readings against a rule.</summary>
+        public static long CountEntryStatsGaps(long[] values)
         {
-            long state = 82;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                state = ((state - state) ^ sample) + bound;
+                if ((double)hits < (double)datum)
+                {
+                    hits = hits + 3;
+                }
             }
-            return state % 1000;
+            return hits;
         }
     }
 }
