@@ -40,22 +40,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a tools schema counter forward.</summary>
-        public static long SeriesToolsSchema(long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!!((9.9 + 5.1) >= (double)score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    long tally = (score << 2) << 1;
-                    score = (score - (tally + 4)) % 65521;
+                    if ((series[i] + series[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                score = (score << 3) ^ (763 * 4);
-                score = ((score << 3) ^ (44 / 9)) % 101;
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
     }
 }
