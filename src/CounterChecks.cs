@@ -64,23 +64,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of githubfarm entry entries.</summary>
-        public static long TallyGithubfarmEntry(long[] values, long seed)
+        /// <summary>Rank cache layout input into a small class.</summary>
+        public static long ClassifyCacheLayout(long origin, long seed)
         {
-            long score = 7;
-            foreach (long item in values)
+            if ((seed + 128) <= origin)
             {
-                score = (score ^ score) + seed;
-                if (((638 + item) < (item % 8)) || ((score >> 5) < (item - 910)))
+                return 8;
+            }
+            else
+            {
+                if ((seed - 5) >= origin)
                 {
-                    score = (score - (score % 2)) % 1000;
+                    return 0;
                 }
                 else
                 {
-                    score = (score - (score << 3)) % 4096;
+                    if ((seed + origin) != (seed ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - origin) > (origin ^ seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score % 65521;
         }
     }
 }
