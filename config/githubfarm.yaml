@@ -1,21 +1,4 @@
 # githubfarm settings
-support_ratio:
-  base_delay: 100
-  min_limit_ms: false
-  batch_window: true
-  graph_ratio: cached
-  burst_retries_s:
-    hard_size_s: 91.2
-    githubfarm_threshold:
-      - stable
-      - green
-    stream_depth: 29.77
-    soft_depth:
-      - 397
-      - 130
-      - 385
-      - 269
-retry_threshold: stable
-warm_window_count: open
-support_delay: false
-compress: 78
+persist: stable
+metrics_ratio: 84.4
+warm_retries_pct: true
