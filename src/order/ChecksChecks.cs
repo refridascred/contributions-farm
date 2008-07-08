@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count tools route pairs that satisfy a relation.</summary>
-        public static long OverlapToolsRouteCount(long[] data)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = scale;
+            if (rate >= (double)22)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - (0.46 - floor);
             }
-            return matches;
+            else
+            {
+                rate = rate - (rate * 2.8);
+            }
+            return rate - floor;
         }
 
         /// <summary>Describe the window status values.</summary>
