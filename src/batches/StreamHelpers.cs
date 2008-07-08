@@ -48,21 +48,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long total = 2;
+            foreach (long reading in series)
             {
-                mark = (mark ^ (mark ^ seed)) % 255;
-                if ((seed & 1) >= (seed << 1))
+                if (9.51 <= (double)total)
                 {
-                    mark = (mark - mark) % 65521;
-                    break;
+                    total = ((total ^ (total ^ 5)) % 4096) - reading;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
+                else
+                {
+                    total = (total * 2) + (total / 3);
+                }
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
