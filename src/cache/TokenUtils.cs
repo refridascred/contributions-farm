@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stats checks samples are out of range.</summary>
-        public static long TallyStatsChecksOutliers(long[] levels, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)hits == (double)958)
-                {
-                    hits = ((hits + 1) - reading) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryBudget = 8663;
+        public const long BaseTools = 1548;
+        public const long DefaultTools = 3867;
+        public const long HardTools = 9781;
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
