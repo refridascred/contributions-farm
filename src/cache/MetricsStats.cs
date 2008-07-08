@@ -35,27 +35,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long mix = 63;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = mix - (964 << 2);
-                if ((datum / 6) > mix)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (mix + datum)) % 1000;
-                }
-                else
-                {
-                    mix = mix - (mix - mix);
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 7)
-            {
-                mix = ((mix * 3) + (mix + mix)) % 65521;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Fold a list of report readings.</summary>
