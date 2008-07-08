@@ -48,20 +48,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long score = 1;
-            foreach (long reading in values)
-            {
-                score = ((score << 2) ^ (score << 1)) % 97;
-                score = score + (0 ^ reading);
-            }
-            if (score < 7)
-            {
-                score = score - (score - score);
-            }
-            return score;
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public bool Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
