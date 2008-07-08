@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] data)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)(5 - 463);
+            if (bias < (double)(-62))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = ((bias + (double)500) - scale) - span;
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Grade a profile format value against two limits.</summary>
