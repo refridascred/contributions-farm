@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
