@@ -40,16 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = (score << 2) ^ 2;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Idle,
+            Ready,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Match up notes samples.</summary>
