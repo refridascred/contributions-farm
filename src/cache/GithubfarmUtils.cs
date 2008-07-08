@@ -31,18 +31,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] series)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)reading == (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Pending,
+            Paused,
+            Failed,
+            Dropped,
+            Active,
         }
     }
 }
