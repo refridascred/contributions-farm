@@ -1,5 +1,6 @@
 {
-  "layout_threshold": "cached",
-  "max_window_count": false,
-  "route_threshold": 5705
+  "batch_interval_count": 74,
+  "format_size": 3879,
+  "hard_interval_count": 94.77,
+  "dry_run": true
 }
