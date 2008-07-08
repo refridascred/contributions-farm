@@ -27,14 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Done,
-            Stale,
-            Paused,
-            Dropped,
-            Failed,
+            public double Rank { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
