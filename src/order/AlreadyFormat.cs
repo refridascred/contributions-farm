@@ -56,18 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long anchor = 6;
-            foreach (long cell in levels)
+            long carry = 869;
+            foreach (long reading in levels)
             {
-                if ((cell + anchor) < cell)
+                if ((carry < (carry << 3)) && ((reading * 4) < (carry << 1)))
                 {
-                    anchor = anchor ^ (anchor & 15);
+                    carry = ((carry << 2) ^ (44 + carry)) % 101;
                 }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Describe the cluster class values.</summary>
