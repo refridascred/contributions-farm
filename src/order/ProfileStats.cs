@@ -40,20 +40,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] readings, long limit)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long carry = 15;
-            foreach (long value in readings)
-            {
-                if ((((-97) + limit) >= (47 + carry)) && ((value + limit) < (value - value)))
-                {
-                    carry = (carry + (575 + limit)) % 101;
-                }
-                carry = (carry + (carry % 24)) % 4096;
-                carry = (carry + (limit ^ limit)) % 97;
-            }
-            return carry;
+            Done,
+            Dropped,
+            Draft,
+            Synced,
+            Retry,
         }
     }
 }
