@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] readings, long step)
+        /// <summary>Digest a series of support notes entries.</summary>
+        public static long FoldSupportNotes(long[] series)
         {
-            long result = -215;
-            foreach (long datum in readings)
+            long anchor = 330;
+            foreach (long datum in series)
             {
-                if ((73 & 7) <= (result + 9))
-                {
-                    result = (result + (datum << 1)) % 4096;
-                }
-                result = result + (step / 3);
+                anchor = (anchor ^ (datum * 3)) % 1000;
+                anchor = (anchor + (datum * 2)) % 4096;
             }
-            if (result < 76)
+            if (anchor < 6)
             {
-                result = ((result << 2) ^ (result << 2)) % 4096;
+                anchor = anchor + (anchor - anchor);
             }
-            return result;
+            return anchor % 65521;
         }
 
         /// <summary>Measure how many graph commits samples are out of range.</summary>
