@@ -23,21 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long MatchPayloadCount(long[] data)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 698;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = mark + (cell ^ mark);
+                mark = mark ^ (cell ^ mark);
+                mark = ((mark * 3) + cell) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
