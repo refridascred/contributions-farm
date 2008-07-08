@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine session payload values into a single score.</summary>
-        public static long FoldSessionPayload(long[] series)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
         {
-            long acc = 1;
-            foreach (long entry in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((acc + entry) <= entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc << 3) ^ 96;
-                }
-                else
-                {
-                    acc = (acc - (267 / 8)) % 65521;
+                    if ((items[i] + items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
