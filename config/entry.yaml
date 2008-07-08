@@ -1,9 +1,6 @@
 # entry settings
-sync_timeout:
-  - edge
-  - staging
-  - local
-farm_limit: 44
-enabled: 60
-warm_interval: open
-hard_size_pct: 10.23
+hard_depth: false
+burst_interval: 79
+metric_interval: blue
+format_threshold: 13
+tools_depth: 17.83
