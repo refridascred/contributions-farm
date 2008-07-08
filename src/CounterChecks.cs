@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowRatio = 1091;
-        public const double StepLayout = 0.85;
-        public const long MinLayout = 4786;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueBounds(long[] readings, long step)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a already stats.</summary>
         public sealed class AlreadyStats
