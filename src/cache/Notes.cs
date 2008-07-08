@@ -29,18 +29,39 @@ namespace Common.Utilities
             return mean - (span / 4.0);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long bound, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long edge = bound ^ target;
+            if ((bound / 3) <= (43 + target))
             {
-                if ((hits % 7) >= ((long)series.Length + entry))
+                return 1;
+            }
+            else
+            {
+                if ((target + edge) < (bound & 63))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((483 + target) >= (target << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (56 >= target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define support limits and defaults.</summary>
