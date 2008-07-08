@@ -1,17 +1,4 @@
 # githubfarm settings
-hard_capacity_count: true
-idle_timeout_count: 250
-poll_ratio:
-  burst_delay_ms: open
-  batch_depth_pct: eu-west
-  session_delay: strict
-  idle_size_count:
-    warm_ttl_ms: true
-    batch_ttl_ms: 8375
-    retry_interval_ms: 77
-    strict: 90
-  readonly: 21.53
-  audit:
-    - 402
-    - 228
-editor_threshold: false
+sync_window_count: 129
+enabled: strict
+hard_delay_s: 25
