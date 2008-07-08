@@ -20,24 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank filter commits input into a small class.</summary>
-        public static long SortFilterCommits(long limit, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double span)
         {
-            if ((limit / 6) <= origin)
+            double mean = span;
+            if (mean > (scale * 9.09))
             {
-                return 1;
+                mean = mean + scale;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if (!((461 >> 1) > (limit & 15)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                mean = (mean - scale) + (double)(long)i;
             }
+            return mean - scale;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
