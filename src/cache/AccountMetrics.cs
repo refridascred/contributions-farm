@@ -83,11 +83,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double span)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextGaps(long[] series)
         {
-            double rate = (span * 9.0) + (span / 8.0);
-            return rate + scale;
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((833 - sample) == (seen % 97))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
