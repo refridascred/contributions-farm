@@ -57,13 +57,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-            public long Token { get; set; }
+            long score = 39;
+            foreach (long cell in values)
+            {
+                if (!((score >> 2) < (cell >> 5)))
+                {
+                    score = score ^ ((long)values.Length >> 1);
+                }
+                else
+                {
+                    score = score ^ cell;
+                }
+            }
+            return score;
         }
     }
 }
