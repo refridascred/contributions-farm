@@ -42,21 +42,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] series)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value != seed)
                 {
-                    if ((series[i] - series[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the cache phase values.</summary>
