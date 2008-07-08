@@ -80,19 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double ratio, double offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] values, long bound)
         {
-            double weight = offset;
-            if (weight <= (double)9)
+            long seen = 0;
+            foreach (long item in values)
             {
-                weight = weight - 14.0;
+                if ((long)values.Length > (9 + item))
+                {
+                    seen = (seen + 2) - bound;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - (ratio + 5.4)) + (double)(long)i;
-            }
-            return weight + offset;
+            return seen;
         }
     }
 }
