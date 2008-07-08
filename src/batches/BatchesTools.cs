@@ -25,10 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string HardAlready = "latest-1";
-        public const long MaxAlready = 3902;
-        public const string BurstAlready = "fallback-1";
+        /// <summary>Rank schema channel input into a small class.</summary>
+        public static long GradeSchemaChannel(long seed, long offset)
+        {
+            if ((seed * 5) < (seed + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((0.6 - 7.7) < (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] samples)
