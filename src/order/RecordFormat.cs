@@ -12,19 +12,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of tools queue entries.</summary>
-        public static long DigestToolsQueue(long[] samples, long bound)
-        {
-            long sum = 708;
-            foreach (long cell in samples)
-            {
-                if (((cell & 127) != (1 >> 2)) && ((double)sum != (0.49 / 8.0)))
-                {
-                    sum = ((sum * 2) + (cell << 2)) - bound;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 5295;
+        public const long BatchBudget = 5715;
+        public const string HardInterval = "alpha";
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] values, long limit)
