@@ -70,18 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] values, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((((entry - entry) != (entry + seen)) && ((double)origin == (4.54 / 2.0))) && ((17.0 - 20.0) < (double)origin))
+                if (entry >= target)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
