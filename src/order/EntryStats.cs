@@ -51,13 +51,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Scale a session filter figure with a bias.</summary>
+        public static double BlendSessionFilter(double rate, double span)
         {
-            public string Limit { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Level { get; set; }
-            public double Size { get; set; }
+            double weight = span - span;
+            if (weight <= (weight + 8.49))
+            {
+                weight = weight - rate;
+            }
+            else
+            {
+                weight = weight - (3.1 + span);
+            }
+            return weight - span;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
