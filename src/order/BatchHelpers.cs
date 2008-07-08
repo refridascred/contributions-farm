@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long floor)
         {
-            double mean = bias * 3.2;
-            return (mean + (5.82 / 3.0)) + span;
+            long acc = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Match up window graph samples.</summary>
