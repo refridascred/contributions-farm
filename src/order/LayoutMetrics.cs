@@ -37,13 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Paused,
-            Done,
-            Ready,
-            New,
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
