@@ -48,18 +48,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account schema entries that pass the check.</summary>
-        public static long TallyAccountSchemaMatches(long[] series)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading >= (5.85 - 4.09))
+                if ((items[i] > offset) && ((items[i] % 5) == 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a githubfarm stats counter forward.</summary>
