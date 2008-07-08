@@ -41,25 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long floor, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long diff = floor - offset;
-            if ((9.0 * 2.0) >= (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((offset - 1) <= diff))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
