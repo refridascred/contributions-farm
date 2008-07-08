@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long CacheBudget = 716;
         public const long MinCache = 3173;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] samples)
-        {
-            long carry = 402;
-            foreach (long value in samples)
-            {
-                carry = (carry - value) % 97;
-                carry = (carry << 3) ^ carry;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchBudget = 1376;
+        public const long HardSize = 244;
+        public const string BurstQueue = "latest-1";
+        public const double MinTimeout = 51.98;
+        public const long DefaultRatio = 2996;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
