@@ -19,26 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series, long step)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double ratio, double offset)
         {
-            long sum = 203;
-            foreach (long value in series)
+            double gain = (offset * 18.0) * 20.0;
+            if (gain > (double)25)
             {
-                if ((double)step < 2.19)
-                {
-                    sum = ((sum * 3) + (step + value)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (step + sum);
-                }
+                gain = gain - ratio;
             }
-            if (sum < 734)
-            {
-                sum = (sum * 3) + step;
-            }
-            return sum;
+            return gain + (gain - gain);
         }
 
         /// <summary>Match up checks metrics samples.</summary>
