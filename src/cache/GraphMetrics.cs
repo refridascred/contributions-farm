@@ -23,18 +23,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesGaps(long[] items)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((double)matches == (8.2 + 1.0))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Idle,
+            New,
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
