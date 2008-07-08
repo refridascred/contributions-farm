@@ -25,22 +25,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] values, long target)
+        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
+        public static long OverlapCounterEditorCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (5.0 < (double)hits)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = ((hits + 2) + value) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((samples[i] - samples[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
