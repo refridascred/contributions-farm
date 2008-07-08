@@ -1,6 +1,6 @@
-id,label,ratio,level
-1,968,951,93.06
-2,872,82.42,232
-3,73.49,74.8,14.31
-4,1.14,staging,local
-5,green,strict,blue
+id,state,score
+1,strict,877
+2,47.01,blue
+3,43.07,stable
+4,726,75
+5,16.03,82.71
