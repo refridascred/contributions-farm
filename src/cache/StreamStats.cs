@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamHits(long[] values, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long target, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long span = target ^ bound;
+            if ((74 + bound) != (6 & 127))
             {
-                if (((4.96 + 4.4) >= (double)matches) || (((-2) << 2) < (value + matches)))
+                return 2;
+            }
+            else
+            {
+                if ((double)span >= (8.54 * 5.75))
                 {
-                    matches = (matches + 1) - origin;
+                    return 1;
+                }
+                else
+                {
+                    if (((target + span) > bound) || ((target + bound) <= (bound - bound)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((target - span) <= (target << 3)) && ((8.08 - 7.9) >= (double)span))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
