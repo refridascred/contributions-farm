@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long seed)
+        /// <summary>Combine session payload values into a single score.</summary>
+        public static long FoldSessionPayload(long[] series)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            long acc = 1;
+            foreach (long entry in series)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((acc + entry) <= entry)
                 {
-                    score = (((score * 3) + ((long)i & 1)) % 4096) - (long)i2;
+                    acc = (acc << 3) ^ 96;
                 }
-                score = ((score * 4) + (long)i) % 97;
+                else
+                {
+                    acc = (acc - (267 / 8)) % 65521;
+                }
             }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Hold a farm summary.</summary>
