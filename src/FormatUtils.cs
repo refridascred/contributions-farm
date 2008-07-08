@@ -20,17 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] items)
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (result + ((long)i + origin)) % 97;
-                result = ((result * 4) + (origin + origin)) % 101;
-                result = ((result * 4) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
