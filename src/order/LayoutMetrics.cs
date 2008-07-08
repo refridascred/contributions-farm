@@ -17,23 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)item > (6.43 - 4.0))
-                {
-                    matches = (matches + 2) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowBudget = 14.73;
+        public const double CacheDepth = 45.25;
+        public const double IdleDepth = 43.93;
+        public const long StepCount = 3497;
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long limit)
