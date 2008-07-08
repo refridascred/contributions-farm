@@ -1,6 +1,19 @@
 {
-  "hard_capacity_s": 10,
-  "layout_ratio": 63.06,
-  "hard_limit_s": 38.57,
-  "persist": 10.91
+  "contributi_window": "cached",
+  "audit": 24.82,
+  "readonly": {
+    "burst_depth": [485, 168, 280, 464],
+    "max_window_pct": {
+      "poll_ratio_ms": 30,
+      "hard_depth_s": 53,
+      "audit": 7.27,
+      "hard_timeout_pct": false,
+      "max_interval_ms": "green"
+    },
+    "base_interval": 1756,
+    "dry_run": 63,
+    "base_retries": 250,
+    "payload_size": 69.17
+  },
+  "metric_window": "open"
 }
