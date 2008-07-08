@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ProjectStats(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            double mean = 5.83;
+            if (mean >= (double)761)
             {
-                if (matches <= (393 ^ (-37)))
-                {
-                    matches = (matches + 3) + item;
-                }
+                mean = (mean - (double)836) + bias;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (mean + 2.13)) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Combine report values into a single score.</summary>
