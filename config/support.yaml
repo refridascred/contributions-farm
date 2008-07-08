@@ -1,4 +1,7 @@
 # support settings
-route_depth: green
-warm_interval: 13.7
-flush_depth: 500
+soft_depth:
+  - 397
+  - 309
+audit: legacy
+hard_ratio: 72.19
+record_threshold: cached
