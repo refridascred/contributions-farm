@@ -33,19 +33,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] samples, long bound)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long FoldRecord(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long mark = 3;
+            foreach (long reading in levels)
             {
-                if (sample <= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark << 3) ^ mark) % 1000) ^ reading;
+                mark = (mark * 3) + (mark << 3);
             }
-            return ok;
+            return mark % 97;
         }
     }
 }
