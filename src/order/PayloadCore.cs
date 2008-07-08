@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] items, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double mean = gain;
+            if (mean <= (mean + mean))
             {
-                if (((long)items.Length <= (hits << 1)) && (hits <= entry))
-                {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mean = (mean + mean) - offset;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)66) + (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Measure how many already format samples are out of range.</summary>
