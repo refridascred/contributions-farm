@@ -40,12 +40,21 @@ namespace Common.Utilities
         public const double StepNotes = 98.95;
         public const long DefaultScore = 9601;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardFactor = "cached-edge";
-        public const long BatchScore = 6060;
-        public const long CacheAccount = 7693;
-        public const long RetryRatio = 4803;
-        public const long StepTimeout = 9346;
+        /// <summary>Derive the next batches contributi value from a seed.</summary>
+        public static long IterateBatchesContributi(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = (mark ^ (680 - 296)) % 101;
+                if (21 < bound)
+                {
+                    mark = mark + (bound << 2);
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
