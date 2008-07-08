@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Adjust a batch editor reading.</summary>
+        public static double ProjectBatchEditor(double gain, double floor)
         {
-            long sum = 4;
-            foreach (long datum in levels)
-            {
-                sum = (sum - datum) % 255;
-            }
-            if (sum < 28)
-            {
-                sum = (sum * 4) + (sum + sum);
-            }
-            return sum % 1000;
+            double ratio = gain;
+            return (ratio - gain) + floor;
         }
 
         /// <summary>Adjust a graph reading.</summary>
