@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleSize = 4921;
-        public const double MinToken = 15.11;
-        public const long CacheToken = 42;
-        public const long IdleToken = 9493;
-        public const double DefaultSize = 8.26;
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] readings, long limit)
+        {
+            long sum = 976;
+            foreach (long cell in readings)
+            {
+                if (cell > (cell + limit))
+                {
+                    sum = sum + ((long)readings.Length << 1);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Describe the batch state values.</summary>
         public enum BatchState
