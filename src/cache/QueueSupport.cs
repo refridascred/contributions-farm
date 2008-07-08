@@ -41,19 +41,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenBounds(long[] series, long seed)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long step, long seed)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long bound = step ^ seed;
+            if (seed < step)
             {
-                if (reading != seed)
+                return 3;
+            }
+            else
+            {
+                if (((double)seed == (double)(-1)) || (step >= (bound - 8)))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + bound) == (step * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((2.0 * 5.8) <= (double)step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ok;
         }
     }
 }
