@@ -23,25 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor layout counter forward.</summary>
-        public static long StepEditorLayout(long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                if (!((double)score >= (9.8 + 5.57)))
+                if (item > bound)
                 {
-                    long edge = seed;
-                    score = (score - edge) % 101;
+                    found = false;
+                    break;
                 }
-                score = (score * 3) + (seed ^ seed);
-                if ((score + seed) <= (723 + score))
-                {
-                    score = (score * 2) + (60 % 100);
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Digest a series of session layout entries.</summary>
