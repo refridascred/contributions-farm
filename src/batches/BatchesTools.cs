@@ -23,16 +23,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
-            {
-                result = result - ((long)i + result);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public long Level { get; set; }
+            public long Region { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit contributi metrics readings against a rule.</summary>
