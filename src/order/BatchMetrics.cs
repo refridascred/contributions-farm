@@ -44,10 +44,22 @@ namespace Common.Utilities
         public const long BatchRoute = 994;
         public const long BurstRoute = 6778;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleDepth = 407;
-        public const double MaxQueue = 87.38;
-        public const string BaseRatio = "latest-v2";
+        /// <summary>Match up account context samples.</summary>
+        public static long CompareAccountContextCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long floor)
