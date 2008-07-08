@@ -24,12 +24,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Locate a metric queue reading by value.</summary>
-        public static long FindMetricQueueIndex(long[] readings, long step)
+        /// <summary>Look up the position of a already account sample.</summary>
+        public static long SeekAlreadyAccountIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > step)
+                if ((samples[i] > floor) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
