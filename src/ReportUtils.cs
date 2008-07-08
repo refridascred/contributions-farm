@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardInterval = 5037;
+        public const long SoftRatio = 317;
+        public const double WindowCommits = 35.17;
+        public const long CacheTimeout = 9589;
+        public const double HardCommits = 27.78;
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] data, long offset)
