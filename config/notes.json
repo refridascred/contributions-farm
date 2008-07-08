@@ -1,13 +1,13 @@
 {
-  "idle_ttl_ms": {
-    "verbose": 95.62,
-    "flush_capacity_ms": "fallback",
-    "format_size": "eu-west",
-    "hard_threshold": 21.92,
-    "stream_interval": "eu-west",
-    "stream_depth": 60
+  "counter_interval": {
+    "base_size_count": {
+      "min_ratio_ms": 60,
+      "burst_depth_pct": 60.92,
+      "sync_depth_count": 85.25
+    },
+    "warm_window_ms": [469, 344, 492, 320],
+    "support_window": 55
   },
-  "enabled": "eu-west",
-  "poll_delay_pct": "local",
-  "retry_capacity_pct": [464, 406, 44, 183]
+  "audit": 21.33,
+  "token_depth": "edge"
 }
