@@ -20,24 +20,25 @@ namespace Common.Utilities
             return rate2 + 2.9;
         }
 
-        /// <summary>Rank notes format input into a small class.</summary>
-        public static long SortNotesFormat(long origin, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long floor)
         {
-            if ((double)target > (double)origin)
+            long slot = target + floor;
+            if ((352 % 12) <= (target + slot))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((origin - origin) == (target + target)) && ((origin / 6) < target))
+                if ((double)slot != (double)floor)
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    if (((-8) % 8) < target)
+                    if ((slot >> 5) < (target - floor))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
