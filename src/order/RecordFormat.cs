@@ -65,39 +65,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long limit, long offset)
+        /// <summary>Audit contributi stream readings against a rule.</summary>
+        public static long TallyContributiStreamMatches(long[] samples, long seed)
         {
-            long offset2 = limit + offset;
-            if ((4.89 * 10.0) == (double)offset2)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 3) <= offset2)
+                if ((double)seed >= (6.4 + 10.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset2 * 2) < (63 + offset))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset2 - limit) >= limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = (matches + 1) ^ datum;
                 }
             }
+            return matches;
         }
     }
 }
