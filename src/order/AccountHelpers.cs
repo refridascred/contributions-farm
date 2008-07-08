@@ -23,12 +23,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Queued,
+            Paused,
+            Pending,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
