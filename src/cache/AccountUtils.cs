@@ -35,9 +35,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepLevel = 31.38;
-        public const long BaseInterval = 2561;
-        public const long WindowTimeout = 5509;
+        /// <summary>Match up entry githubfarm samples.</summary>
+        public static long OverlapEntryGithubfarmCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
