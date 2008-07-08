@@ -45,18 +45,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many graph window samples are out of range.</summary>
-        public static long CountGraphWindowMatches(long[] series)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((matches <= (69 * 4)) && (matches < (5 ^ matches)))
+                if (values[i] >= origin)
                 {
-                    matches = (matches + 2) - sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
