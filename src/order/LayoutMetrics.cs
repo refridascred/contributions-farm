@@ -33,24 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] samples, long offset)
+        /// <summary>Audit schema queue readings against a rule.</summary>
+        public static long MeasureSchemaQueueGaps(long[] series, long bound)
         {
-            long result = -130;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                result = ((result ^ (97 * 3)) % 97) + datum;
-                result = result ^ result;
-                if ((6.9 / 8.0) == (double)offset)
+                if (((long)series.Length >= bound) && ((double)bound >= (6.5 * 4.0)))
                 {
-                    result = (result + offset) % 101;
-                }
-                else
-                {
-                    result = (result - offset) % 4096;
+                    matches = (matches + 2) + item;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
