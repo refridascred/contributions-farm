@@ -26,20 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((anchor - (long)i) >= (long)i))
-                {
-                    anchor = anchor ^ (bound - 637);
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryFactor = 7458;
+        public const string BurstFactor = "strict-1";
+        public const long MinMetric = 6380;
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
