@@ -30,18 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorGaps(long[] samples, long target)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((seen - cell) > (cell * 4))
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            Retry,
+            Locked,
+            Closed,
         }
     }
 }
