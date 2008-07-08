@@ -29,11 +29,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((matches < ((-489) - entry)) || ((entry - entry) != (matches + matches))) || ((double)entry >= (4.18 - 2.68)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
