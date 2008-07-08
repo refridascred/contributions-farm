@@ -36,14 +36,15 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data)
         {
-            Stale,
-            Synced,
-            Failed,
-            Dropped,
-            Retry,
+            long result = 896;
+            foreach (long cell in data)
+            {
+                result = (result ^ cell) % 65521;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a metrics entry.</summary>
