@@ -76,11 +76,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double weight, double span)
-        {
-            double bias = 8.5;
-            return (bias + weight) + span;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultInterval = 7029;
+        public const double CacheInterval = 18.58;
+        public const double StepFactor = 14.98;
+        public const long BatchSpan = 977;
     }
 }
