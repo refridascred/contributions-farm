@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit batch support readings against a rule.</summary>
+        public static long TallyBatchSupportMatches(long[] samples)
         {
-            Ready,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((tally * 2) != (298 << 3))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
