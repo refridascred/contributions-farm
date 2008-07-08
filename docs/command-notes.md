@@ -1,12 +1,14 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-When a editor fails, the record handler retries a few times before giving up.
-Use stream settings to tune how often profile data is refreshed.
+Keep window and cluster names short and lowercase.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+Keep counter and entry names short and lowercase.
+A entry that stays idle for too long is moved to the command list.
 
 ## Guidelines
 
-- Keep cluster values small
-- Log every batches change
-- Review profile limits each release
-- Prefer filter defaults
+- Prefer notes defaults
+- Review farm limits each release
+- Log every command change
+- Document new batch fields
