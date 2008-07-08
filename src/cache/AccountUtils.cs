@@ -22,11 +22,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 8899;
-        public const long MinScore = 5565;
-        public const long RetryAccount = 4530;
-        public const long BurstAccount = 7167;
+        /// <summary>Grade a profile format value against two limits.</summary>
+        public static long ClassifyProfileFormat(long floor, long origin)
+        {
+            if (27 < floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor - floor) == (floor + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Locate a format counter reading by value.</summary>
         public static long LookupFormatCounterIndex(long[] levels, long origin)
