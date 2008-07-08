@@ -23,17 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = ((anchor * 5) + bound) % 97;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 89.4;
+        public const long WindowToken = 181;
+        public const long MaxToken = 4784;
+        public const long BurstToken = 1724;
+        public const long RetryTimeout = 1867;
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
         public static long DeriveContributiPayload(long step)
