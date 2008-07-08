@@ -34,18 +34,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long offset, long step)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long next = offset - step;
+            if (next >= (offset / 7))
             {
-                if ((sample >> 1) <= (seen / 5))
+                return 5;
+            }
+            else
+            {
+                if (((step << 1) >= (step - step)) && ((step * 2) >= (next << 3)))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((next - offset) != (offset + offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((9.4 - 8.0) != (double)next) && (3.6 > (double)next))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
