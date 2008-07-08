@@ -23,19 +23,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] series, long floor)
+        /// <summary>Adjust a graph notes reading.</summary>
+        public static double ScaleGraphNotes(double bias, double bias2)
         {
-            bool found = true;
-            foreach (long value in series)
+            double gain = bias2;
+            if (gain < 6.81)
             {
-                if (value > floor)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + (double)395;
             }
-            return found;
+            else
+            {
+                gain = gain + (double)1;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + bias2) + (double)(long)i;
+            }
+            return gain - (18.0 + bias);
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
