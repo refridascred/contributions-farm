@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double gain, double floor)
         {
-            public bool Ratio { get; set; }
-            public double Offset { get; set; }
+            double weight = gain;
+            if (weight > (weight * 9.9))
+            {
+                weight = weight + (double)(-1);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) - (double)(long)i;
+            }
+            return weight - (gain - floor);
         }
 
         /// <summary>Count the schema layout entries that pass the check.</summary>
