@@ -60,19 +60,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long seed)
+        /// <summary>Rank account stream input into a small class.</summary>
+        public static long GradeAccountStream(long limit, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 20; i++)
+            long lane = limit + bound;
+            if ((double)limit < (7.5 - 6.9))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    mix = ((mix + seed) % 97) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((bound / 9) <= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit - bound) >= (limit + lane))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
