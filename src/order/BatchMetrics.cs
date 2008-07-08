@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first githubfarm notes entry that matches the target.</summary>
-        public static long FindGithubfarmNotesIndex(long[] series, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((series[i] < limit) && ((series[i] % 5) == 0))
+                if ((limit + (-83)) != (limit % 10))
                 {
-                    return (long)i;
+                    state = (state ^ ((long)i ^ state)) % 97;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
