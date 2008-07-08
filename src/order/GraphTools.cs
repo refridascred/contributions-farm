@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] levels, long limit)
         {
-            double bias = (double)(268 - 541);
-            if (bias >= gain)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + (gain - 4.11)) - floor;
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return bias + gain;
+            return -1;
         }
 
         /// <summary>Describe the order status values.</summary>
