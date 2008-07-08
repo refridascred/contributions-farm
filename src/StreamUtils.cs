@@ -52,21 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Fold a list of githubfarm batch readings.</summary>
+        public static long CombineGithubfarmBatch(long[] levels, long limit)
         {
-            long total = bound;
-            for (int i = 0; i < 6; i++)
+            long mix = -42;
+            foreach (long datum in levels)
             {
-                long span = total ^ (total + (long)i);
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    total = (((total * 4) + (span / 6)) % 65521) ^ (long)i2;
-                    total = total ^ (total + total);
-                }
-                total = ((total * 2) + (long)i) % 101;
+                mix = ((mix - (limit ^ limit)) % 1000) - datum;
             }
-            return total;
+            if (mix < 754)
+            {
+                mix = mix ^ (limit ^ mix);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a order stats.</summary>
