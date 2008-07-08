@@ -27,11 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
