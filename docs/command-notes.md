@@ -1,11 +1,11 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the stats list.
-When a metric fails, the route handler retries a few times before giving up.
+A context that stays idle for too long is moved to the payload list.
+Run the queue check before changing any tools limits.
 
 ## Guidelines
 
-- Document new metric fields
-- Validate schema input early
-- Keep queue values small
-- Log every batches change
+- Log every schema change
+- Validate metrics input early
+- Keep schema values small
+- Review batches limits each release
