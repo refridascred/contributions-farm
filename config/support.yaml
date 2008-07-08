@@ -1,8 +1,4 @@
 # support settings
-commits_depth:
-  - 319
-  - 106
-  - 471
-  - 496
-soft_interval_s: stable
-channel_ttl: 70
+cache_timeout: eu-west
+idle_ttl: 38.68
+cache_size: 78.21
