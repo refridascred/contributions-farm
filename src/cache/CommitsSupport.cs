@@ -20,19 +20,25 @@ namespace Common.Utilities
             return gain + (double)317;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] series, long origin)
+        /// <summary>Roll a editor layout counter forward.</summary>
+        public static long StepEditorLayout(long seed)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > origin)
+                if (!((double)score >= (9.8 + 5.57)))
                 {
-                    valid = false;
-                    break;
+                    long edge = seed;
+                    score = (score - edge) % 101;
                 }
+                score = (score * 3) + (seed ^ seed);
+                if ((score + seed) <= (723 + score))
+                {
+                    score = (score * 2) + (60 % 100);
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return valid;
+            return score;
         }
 
         /// <summary>Match up window samples.</summary>
