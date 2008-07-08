@@ -41,21 +41,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 43;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = (sum * 3) + ((-19) - cell);
+                sum = (sum - cell) % 101;
+                if (((1.9 - 6.03) <= (double)cell) || ((20 - cell) > (cell / 2)))
                 {
-                    if ((levels[i] - levels[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (48 * 2)) % 97;
                 }
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Hold a metric options.</summary>
