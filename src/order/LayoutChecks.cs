@@ -71,10 +71,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstBudget = "open-v2";
-        public const long StepBudget = 9392;
-        public const long BatchSpan = 3243;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long step, long step2)
+        {
+            if (step < (step >> 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((472 << 2) < (step % 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (step >= step2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
