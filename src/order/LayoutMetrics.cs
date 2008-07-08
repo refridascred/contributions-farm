@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] values, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] data)
         {
-            long state = 658;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((origin + entry) > (origin + 39))
+                if ((seen & 15) <= item)
                 {
-                    state = ((state << 3) ^ (61 ^ state)) % 255;
+                    seen = seen + 1;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Check that every context stats entry stays within the limit.</summary>
