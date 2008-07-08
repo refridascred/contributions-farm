@@ -45,20 +45,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] series)
+        /// <summary>Digest a series of session layout entries.</summary>
+        public static long WeighSessionLayout(long[] readings, long origin)
         {
-            long sum = 43;
-            foreach (long cell in series)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                sum = (sum * 3) + ((-19) - cell);
-                sum = (sum - cell) % 101;
-                if (((1.9 - 6.03) <= (double)cell) || ((20 - cell) > (cell / 2)))
+                if ((374 > entry) || ((origin / 2) <= entry))
                 {
-                    sum = (sum - (48 * 2)) % 97;
+                    score = (score << 2) ^ (entry % 7);
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 4096;
                 }
             }
-            return sum % 1000;
+            return score % 97;
         }
 
         /// <summary>Hold a metric options.</summary>
