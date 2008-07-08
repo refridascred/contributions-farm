@@ -1,5 +1,7 @@
 # githubfarm settings
-channel_timeout: 6738
-soft_capacity_count: staging
-sync_capacity: 71.73
-cache_size: false
+cache_threshold: fallback
+burst_delay_count: 500
+metrics_threshold:
+  - 419
+  - 391
+min_timeout: fallback
