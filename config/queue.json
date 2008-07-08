@@ -1,17 +1,8 @@
 {
-  "sync_capacity_count": {
-    "format_depth": {
-      "graph_threshold": 60,
-      "soft_ttl_ms": 78.81,
-      "persist": "edge",
-      "batch_capacity_pct": "stable",
-      "retry_depth": 250,
-      "soft_window_ms": "latest"
-    },
-    "format_limit": 6103,
-    "verbose": ["standard", "edge"]
-  },
-  "retry_depth_pct": "legacy",
-  "default_depth_ms": [311, 469],
-  "sync_limit": [414, 29]
+  "sync_ratio_pct": 30,
+  "layout_capacity": 48.11,
+  "batch_limit_s": 5449,
+  "compress": true,
+  "account_depth": 53.37,
+  "strict": 1.97
 }
