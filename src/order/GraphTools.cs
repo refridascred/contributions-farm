@@ -37,15 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] levels, long limit)
+        /// <summary>Compare every pair of record channel readings.</summary>
+        public static long CompareRecordChannelCount(long[] levels)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + 82) < hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + sample;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
