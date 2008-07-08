@@ -1,8 +1,5 @@
 {
-  "poll_size_s": "primary",
-  "soft_threshold_count": "cached",
-  "persist": true,
-  "context_depth": 80.84,
-  "min_depth_ms": 87.58,
-  "burst_delay": 8040
+  "buffer_delay": 5673,
+  "format_limit": 54,
+  "burst_threshold_ms": 37.58
 }
