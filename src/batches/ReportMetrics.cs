@@ -31,10 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxScore = 1064;
-        public const string DefaultSpan = "staging";
-        public const long BaseLevel = 5384;
-        public const long DefaultChecks = 7970;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public double Level { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
