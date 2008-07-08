@@ -48,24 +48,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Match up cache already samples.</summary>
+        public static long CompareCacheAlreadyCount(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(floor > ((long)i << 2)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = (state + (long)i) % 1000;
+                    if ((levels[i] ^ levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    state = (state + (79 % 2)) % 65521;
-                }
-                state = (state * 4) + 1;
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
