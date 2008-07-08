@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            Failed,
+            Closed,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
