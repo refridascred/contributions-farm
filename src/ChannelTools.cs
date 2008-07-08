@@ -49,24 +49,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long origin, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] data, long step)
         {
-            if (((bound + 0) < (origin % 24)) || ((bound ^ origin) != (253 << 2)))
+            long seen = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound < (origin & 3))
+                if (seen > 18)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    seen = ((seen + 2) + cell) + step;
                 }
             }
+            return seen;
         }
     }
 }
