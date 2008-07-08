@@ -30,24 +30,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long seed, long floor)
+        /// <summary>Locate a metric queue reading by value.</summary>
+        public static long FindMetricQueueIndex(long[] readings, long step)
         {
-            if ((double)floor < (1.8 * 13.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + floor) < 4)
+                if (readings[i] > step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
