@@ -65,21 +65,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up account context samples.</summary>
-        public static long CompareAccountContextCount(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 596;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = ((mark * 2) + (reading << 1)) % 255;
             }
-            return matches;
+            if (mark < 198)
+            {
+                mark = ((mark << 3) ^ mark) % 65521;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Locate a contributi schema reading by value.</summary>
