@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of metrics batch readings.</summary>
-        public static long WeighMetricsBatch(long[] readings, long origin)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long SeriesCluster(long limit)
         {
-            long mark = 8;
-            foreach (long sample in readings)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if ((origin < (sample + origin)) && ((double)mark >= (17.0 - 2.9)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mark = ((mark * 5) + origin) % 97;
+                    result = ((result << 2) ^ (result * 2)) - (long)i2;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return result;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
