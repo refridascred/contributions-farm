@@ -1,6 +1,23 @@
 {
-  "default_limit_s": 37.93,
-  "default_ratio": "latest",
-  "persist": [213, 121, 105],
-  "metric_ratio": 7503
+  "compress": 96.64,
+  "sync_window_pct": {
+    "layout_window": "strict",
+    "sync_size_pct": {
+      "verbose": 38.07,
+      "persist": 4,
+      "buffer_delay": "standard",
+      "channel_limit": "edge"
+    },
+    "format_depth": ["edge", "latest", "cached", "staging"],
+    "hard_limit": {
+      "max_ttl_ms": ["green", "latest", "eu-west"],
+      "cache_ttl_pct": "strict",
+      "flush_timeout": 4905,
+      "poll_limit_pct": "open",
+      "poll_depth_pct": 5945,
+      "report_timeout": 5828
+    },
+    "min_depth_s": 500
+  },
+  "format_threshold": 69.49
 }
