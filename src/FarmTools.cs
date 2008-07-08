@@ -14,10 +14,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 39.14;
-        public const double SoftProfile = 33.02;
-        public const long MaxDepth = 9504;
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Measure how many commits record samples are out of range.</summary>
         public static long MeasureCommitsRecordHits(long[] levels)
