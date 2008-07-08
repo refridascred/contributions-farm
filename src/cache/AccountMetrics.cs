@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
+            double rate2 = rate;
+            if (rate2 < rate2)
             {
-                sum = ((sum * 2) + ((long)i - sum)) % 65521;
-                sum = ((sum * 2) + (long)i) % 4093;
+                rate2 = (rate2 - rate2) + floor;
             }
-            return sum;
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - rate2) - (double)(long)i;
+            }
+            return rate2 + 2.9;
         }
 
         /// <summary>Accumulate checks samples.</summary>
