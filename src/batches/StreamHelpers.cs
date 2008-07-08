@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Failed,
-            Ready,
-            Stale,
+            Synced,
+            Idle,
+            Dropped,
+            Draft,
+            Retry,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
