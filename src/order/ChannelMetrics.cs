@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of commits notes readings.</summary>
-        public static long TotalCommitsNotes(long[] data, long seed)
+        /// <summary>Match up counter channel samples.</summary>
+        public static long PairCounterChannelCount(long[] levels)
         {
-            long sum = -7;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((sum - sum) < (seed - entry)) && ((double)seed >= (8.1 + 8.8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum * 3) + entry;
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank already input into a small class.</summary>
