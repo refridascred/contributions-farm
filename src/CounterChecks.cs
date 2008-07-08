@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] items)
         {
-            Active,
-            Pending,
-            Locked,
+            long state = 3;
+            foreach (long reading in items)
+            {
+                if ((reading - (long)items.Length) > (reading * 4))
+                {
+                    state = (state + (reading + reading)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define report limits and defaults.</summary>
