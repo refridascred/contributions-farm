@@ -47,13 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
-        {
-            Locked,
-            Dropped,
-            Queued,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCount = 4102;
+        public const string HardCluster = "cached-v2";
+        public const long DefaultCluster = 2243;
+        public const long DefaultFactor = 6926;
 
         /// <summary>Project the next filter value.</summary>
         public static double ScaleFilter(double rate, double span)
