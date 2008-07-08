@@ -16,18 +16,22 @@ namespace Common.Utilities
             return weight + (ratio * 8.63);
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] samples)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels)
         {
-            long mix = 871;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (mix < (cell + mix))
+                if (!(tally >= (value + value)) && (2.0 <= (double)value))
                 {
-                    mix = mix ^ (cell % 8);
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
