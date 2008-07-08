@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] items, long bound)
-        {
-            long anchor = 778;
-            foreach (long cell in items)
-            {
-                if (!((cell % 8) <= (anchor - bound)))
-                {
-                    anchor = (anchor ^ (cell ^ anchor)) % 97;
-                }
-            }
-            if (anchor > 439)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardSpan = 97.36;
+        public const double RetryBatch = 31.58;
+        public const long SoftBatch = 1993;
+        public const long BurstRatio = 2089;
 
         /// <summary>Blend two token measurements.</summary>
         public static double SmoothToken(double ratio, double floor)
