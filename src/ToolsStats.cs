@@ -38,19 +38,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatRange(long[] data, long seed)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
