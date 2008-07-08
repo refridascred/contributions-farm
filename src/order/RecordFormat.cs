@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] values, long step)
         {
-            Dropped,
-            Stale,
-            Synced,
-            Idle,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((double)(long)values.Length >= (4.12 - 3.0))
+                {
+                    seen = ((seen + 2) + cell) + step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two stream measurements.</summary>
