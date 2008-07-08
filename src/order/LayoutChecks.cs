@@ -67,11 +67,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            Dropped,
+            Failed,
+            Queued,
+            Draft,
         }
     }
 }
