@@ -19,22 +19,16 @@ namespace Common.Utilities
         public const long CacheBudget = 8372;
         public const long DefaultSupport = 426;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] readings)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((8 >= (count / 7)) || ((count & 63) != (value << 3)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state ^ ((long)i + floor)) % 1000;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a buffer info.</summary>
