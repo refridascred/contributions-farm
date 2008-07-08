@@ -35,19 +35,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many entry filter samples are out of range.</summary>
-        public static long AuditEntryFilterOutliers(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if (value < (hits % 8))
-                {
-                    hits = (hits + 1) - offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 7589;
+        public const long BatchSupport = 2514;
+        public const double MaxTimeout = 70.52;
+        public const long WindowSupport = 3720;
+        public const long HardSupport = 6898;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string LimitScore = "primary";
