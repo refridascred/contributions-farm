@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=35
+log "limit is ${CHANNEL_LIMIT}"
 
-for item in edge eu-west green; do
+for item in fallback primary standard; do
     log "checking ${item}"
 done
