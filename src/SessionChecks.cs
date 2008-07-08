@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 9986;
-        public const long BatchInterval = 7557;
-        public const long BatchChecks = 8828;
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] items)
