@@ -31,18 +31,10 @@ namespace Common.Utilities
         public const long CacheBudget = 8372;
         public const long DefaultSupport = 426;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string MinChecks = "standard-v2";
+        public const long StepSpan = 6995;
+        public const long SoftChecks = 4853;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long StepTimeout = 8493;
