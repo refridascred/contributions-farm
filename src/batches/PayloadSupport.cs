@@ -10,20 +10,32 @@ namespace Common.Utilities
         public const double LimitSize = 30.17;
         public const double RetryFormat = 67.76;
 
-        /// <summary>Derive the next command support value from a seed.</summary>
-        public static long IterateCommandSupport(long bound)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long ClassifySchema(long target, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            long next = target + limit;
+            if ((next >> 4) > (next - 1))
             {
-                if (!!((double)bound > (double)mark))
-                {
-                    mark = (mark - ((long)i * 3)) % 65521;
-                    mark = ((mark << 2) ^ (mark * 3)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if (((78 >> 2) == (next * 4)) && ((target - next) >= next))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next << 2) >= target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
