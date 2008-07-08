@@ -35,19 +35,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] items)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long seed)
         {
-            long state = 940;
-            foreach (long sample in items)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                state = (state << 2) ^ (7 + sample);
-                if (((double)sample < 13.0) && ((state * 2) <= sample))
-                {
-                    state = state - (0 % 8);
-                }
+                mix = (mix ^ (mix - (long)i)) % 1000;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
     }
 }
