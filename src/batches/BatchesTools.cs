@@ -23,12 +23,16 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            public long Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long result = step;
+            for (int i = 0; i < 16; i++)
+            {
+                result = result - ((long)i + result);
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Audit contributi metrics readings against a rule.</summary>
