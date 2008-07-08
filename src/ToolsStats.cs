@@ -26,17 +26,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] values, long floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a channel entry.</summary>
