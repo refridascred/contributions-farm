@@ -12,9 +12,9 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=232
-log "limit is ${COMMAND_LIMIT}"
-
-for item in green strict; do
+for item in open legacy blue green; do
     log "checking ${item}"
 done
+
+COMMAND_LIMIT=413
+log "limit is ${COMMAND_LIMIT}"
