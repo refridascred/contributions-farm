@@ -1,7 +1,15 @@
 {
-  "burst_depth_ms": 21.46,
-  "graph_delay": "local",
-  "support_limit": [449, 400],
-  "metric_limit": 250,
-  "base_interval_count": true
+  "warm_depth": 3340,
+  "report_interval": {
+    "schema_ratio": "latest",
+    "verbose": 91.63,
+    "warm_interval_count": ["local", "staging", "cached"],
+    "dry_run": "blue",
+    "payload_ratio": 12.26,
+    "warm_capacity": 2678
+  },
+  "strict": true,
+  "max_retries_count": false,
+  "idle_depth_pct": "cached",
+  "flush_interval_ms": 1024
 }
