@@ -22,11 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepLevel = 7508;
-        public const long LimitBudget = 1798;
-        public const long StepQueue = 7533;
-        public const long WindowQueue = 1407;
+        /// <summary>Accumulate route samples.</summary>
+        public static long CombineRoute(long[] data, long offset)
+        {
+            long mark = 5;
+            foreach (long cell in data)
+            {
+                mark = (((mark - (mark + mark)) % 97) - cell) - offset;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
