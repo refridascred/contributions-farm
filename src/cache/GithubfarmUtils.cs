@@ -51,11 +51,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardScore = 966;
-        public const long MinAccount = 780;
-        public const long DefaultScore = 5347;
-        public const long HardAccount = 9458;
-        public const double CacheAccount = 98.52;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
