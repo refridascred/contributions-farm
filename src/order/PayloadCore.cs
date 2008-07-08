@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] items, long seed)
         {
-            if ((double)floor > (8.8 + 9.6))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (bound > (bound - 5))
+                if (((long)items.Length <= (hits << 1)) && (hits <= entry))
                 {
-                    return 8;
+                    hits = (hits + 2) - seed;
                 }
                 else
                 {
-                    if ((452 - floor) != (floor + 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (2.1 + 11.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
