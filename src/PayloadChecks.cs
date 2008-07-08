@@ -31,11 +31,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 3073;
-        public const long DefaultCommits = 6354;
-        public const string WindowSize = "stable-v2";
-        public const long HardCommits = 4173;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchScore = 4400;
+        public const long StepNotes = 7273;
+        public const long MaxDepth = 4477;
+        public const long IdleNotes = 7149;
+        public const long StepCount = 7237;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] data, long bound)
