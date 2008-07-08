@@ -46,18 +46,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long state = 747;
-            foreach (long entry in readings)
-            {
-                if (((state - entry) <= (entry ^ state)) || (((long)readings.Length % 12) != (8 % 12)))
-                {
-                    state = (state + state) % 255;
-                }
-            }
-            return state;
+            Queued,
+            Failed,
+            Done,
+            Stale,
+            Active,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
