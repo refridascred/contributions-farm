@@ -53,9 +53,13 @@ namespace Common.Utilities
             return mean + (mean + 5.12);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "alpha";
-        public const long BaseInterval = 6885;
-        public const long DefaultContext = 2125;
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
+        {
+            public string Level { get; set; } = "";
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
