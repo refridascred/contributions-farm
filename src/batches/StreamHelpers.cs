@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterMatches(long[] readings, long origin)
+        /// <summary>Roll a farm report counter forward.</summary>
+        public static long SeriesFarmReport(long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((2.0 - 6.56) < (double)entry)
+                result = ((result << 3) ^ (seed << 2)) % 97;
+                if (!(((result - (long)i) != ((long)i % 16)) || ((result - result) > result)))
                 {
-                    count = (count + 3) - origin;
+                    result = ((result * 4) + result) % 65521;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
