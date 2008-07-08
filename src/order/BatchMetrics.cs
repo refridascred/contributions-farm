@@ -30,11 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] data)
         {
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample >> 1) <= (seen / 5))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of tools schema readings.</summary>
