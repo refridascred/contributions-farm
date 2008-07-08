@@ -60,16 +60,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long origin)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] values, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 2) ^ ((long)i ^ (-80))) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (values[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
