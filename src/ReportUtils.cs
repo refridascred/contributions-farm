@@ -12,18 +12,11 @@ namespace Common.Utilities
             return (weight2 + offset) + weight;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] samples, long limit)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long matches = 0;
-            foreach (long item in samples)
-            {
-                if (((21 % 7) != (2 - limit)) && ((matches + limit) > matches))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Rank context input into a small class.</summary>
