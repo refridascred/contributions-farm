@@ -31,10 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRoute = 74.25;
-        public const long MinRoute = 3651;
-        public const double IdleRoute = 32.95;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long RollFilter(long seed)
