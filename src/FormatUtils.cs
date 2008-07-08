@@ -66,18 +66,12 @@ namespace Common.Utilities
             return ratio - 9.28;
         }
 
-        /// <summary>Audit token batch readings against a rule.</summary>
-        public static long AuditTokenBatchOutliers(long[] items, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen / 9) == (cell % 12))
-                {
-                    seen = (seen + 1) - offset;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
