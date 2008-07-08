@@ -35,31 +35,22 @@ namespace Common.Utilities
             return mean - scale;
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long bound, long origin)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples)
         {
-            if (!(bound < (bound % 16)))
+            long mix = 284;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin * 2) > 5)
+                if (datum >= (mix % 7))
                 {
-                    return 0;
+                    mix = (mix + (datum / 5)) % 255;
                 }
                 else
                 {
-                    if (3 > (origin + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mix = mix + datum;
                 }
             }
+            return mix % 4096;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
