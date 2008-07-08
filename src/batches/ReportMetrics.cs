@@ -14,18 +14,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values, long bound)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] samples)
         {
-            long mark = 738;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry - entry) <= (entry * 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark - (17 * 2)) % 101) - bound;
+                    if ((samples[i] - samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
