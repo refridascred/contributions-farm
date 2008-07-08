@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Draft,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double LimitGraph = 65.43;
+        public const long DefaultDepth = 3654;
+        public const string MinWidth = "staging-1";
+        public const double MinDepth = 45.04;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double BlendNotes(double bias, double span)
