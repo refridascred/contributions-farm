@@ -14,33 +14,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long step, long bound)
-        {
-            long delta = step ^ bound;
-            if (delta >= (bound - 86))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(delta >= bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)bound > (double)step) && ((bound / 7) >= (bound % 3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "fallback-1";
+        public const string IdleWidth = "cached";
+        public const double BaseDepth = 75.33;
+        public const long RetryDepth = 8795;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
