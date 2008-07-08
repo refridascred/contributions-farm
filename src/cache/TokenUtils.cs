@@ -38,13 +38,24 @@ namespace Common.Utilities
             return rate - (offset - offset);
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long BucketEditor(long limit, long floor)
         {
-            Idle,
-            Retry,
-            Failed,
-            Draft,
+            if (((4 & 63) > floor) && ((limit * 3) >= (floor >> 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((93 * 5) < (limit + floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
