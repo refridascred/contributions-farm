@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double weight, double bias)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] data, long origin)
         {
-            double drift = weight;
-            if (drift >= (drift + 6.86))
+            bool ok = true;
+            foreach (long item in data)
             {
-                drift = (drift - drift) + bias;
+                if (item != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - (3.71 * 3.47)) - (double)(long)i;
-            }
-            return drift + drift;
+            return ok;
         }
 
         /// <summary>Define format limits and defaults.</summary>
