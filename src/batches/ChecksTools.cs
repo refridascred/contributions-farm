@@ -47,32 +47,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels)
         {
-            long offset2 = offset + origin;
-            if ((offset < (offset2 >> 5)) && (offset < (offset + origin)))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((0.41 * 8.6) != (double)origin)
+                if ((cell * 3) != (count & 7))
                 {
-                    return 7;
+                    count = count + 3;
                 }
                 else
                 {
-                    if ((offset2 >> 2) > offset2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
