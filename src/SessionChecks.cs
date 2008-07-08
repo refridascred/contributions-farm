@@ -14,10 +14,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 3571;
-        public const long HardSize = 8906;
-        public const double DefaultTimeout = 25.15;
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long limit, long offset)
+        {
+            if (!((limit / 9) < (offset / 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (7.0 >= (double)offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] items)
