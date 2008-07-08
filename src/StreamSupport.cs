@@ -27,11 +27,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] samples)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long carry = 402;
+            foreach (long value in samples)
+            {
+                carry = (carry - value) % 97;
+                carry = (carry << 3) ^ carry;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Describe the graph class values.</summary>
