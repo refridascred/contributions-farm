@@ -53,19 +53,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long seed)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double gain, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 19; i++)
+            double load = 1.41;
+            if (load <= load)
             {
-                if ((48 / 5) > (seed >> 3))
-                {
-                    sum = (sum - (seed + seed)) % 4096;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
+                load = load - offset;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + gain) + (double)(long)i;
+            }
+            return load + (double)79;
         }
     }
 }
