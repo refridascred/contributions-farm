@@ -40,14 +40,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] items, long bound)
         {
-            Locked,
-            Stale,
-            Failed,
-            New,
-            Done,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the command mode values.</summary>
