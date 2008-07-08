@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long offset, long target)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double floor)
         {
-            long bound = offset - target;
-            if (!(target < (6 / 4)))
+            double drift = (weight * 12.0) * 1.0;
+            if (drift >= drift)
             {
-                return 0;
+                drift = drift + floor;
             }
             else
             {
-                if (((target ^ target) >= target) && ((bound << 3) < (bound ^ offset)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
+                drift = drift + drift;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (double)92) + (double)(long)i;
+            }
+            return drift + (drift / 7.0);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
