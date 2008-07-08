@@ -1,7 +1,6 @@
 {
-  "readonly": "legacy",
-  "flush_interval": 250,
-  "burst_timeout_s": "stable",
-  "max_size_pct": 91.88,
-  "format_ratio": [263, 482, 142, 269]
+  "verbose": 46.04,
+  "farm_retries": 44.56,
+  "counter_delay": "green",
+  "warm_depth": false
 }
