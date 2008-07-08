@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ProjectContributi(double gain, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] readings, long floor)
         {
-            double load = (double)((-385) << 1);
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                load = (load - (double)(long)i) + span;
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return load - gain;
+            return valid;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
