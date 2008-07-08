@@ -46,10 +46,31 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 535;
-        public const double IdleSize = 93.29;
-        public const long BaseWidth = 9952;
-        public const double MaxMetric = 68.41;
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long origin, long bound)
+        {
+            if ((bound * 5) <= (bound - origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin % 7) < (9 << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((2.56 - 7.0) >= (double)bound) || ((678 - 662) < (origin + 245)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
