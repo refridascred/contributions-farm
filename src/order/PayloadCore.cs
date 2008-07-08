@@ -50,19 +50,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] data, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] levels, long seed)
         {
-            long carry = 92;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                carry = ((carry - (carry + carry)) % 1000) + value;
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            if (carry > 68)
-            {
-                carry = (carry - (seed << 2)) % 1000;
-            }
-            return carry;
+            return found;
         }
     }
 }
