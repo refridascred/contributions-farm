@@ -43,19 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] levels, long floor)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Failed,
+            Locked,
+            Queued,
+            Retry,
         }
     }
 }
