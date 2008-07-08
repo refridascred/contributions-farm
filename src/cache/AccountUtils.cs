@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next stats payload value from a seed.</summary>
-        public static long RollStatsPayload(long origin)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total - (41 + (long)i)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
