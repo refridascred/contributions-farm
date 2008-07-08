@@ -46,38 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long target, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] readings, long limit)
         {
-            if (((target >> 5) < (target + origin)) && ((0 + origin) > (origin / 6)))
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + target) >= (origin + origin))
+                if ((2 - limit) == (entry - tally))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((7.95 * 6.4) == (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin / 6) < (target ^ origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
     }
 }
