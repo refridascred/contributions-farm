@@ -55,11 +55,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string IdleCache = "fallback-v2";
-        public const long BatchFactor = 495;
-        public const long BaseDepth = 1197;
-        public const double RetryCache = 65.25;
-        public const long WindowRatio = 4419;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
