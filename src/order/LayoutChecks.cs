@@ -72,19 +72,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] samples, long target)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                result = (result - (bound - 708)) % 97;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Describe the token level values.</summary>
