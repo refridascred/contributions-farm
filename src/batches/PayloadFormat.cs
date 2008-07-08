@@ -28,19 +28,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate account filter readings against a bound.</summary>
-        public static bool VerifyAccountFilterBounds(long[] samples, long offset)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = anchor ^ 5;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
     }
 }
