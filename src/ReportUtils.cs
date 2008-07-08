@@ -65,18 +65,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((double)sample == (1.0 - 16.0))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Total { get; set; }
         }
     }
 }
