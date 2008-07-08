@@ -72,12 +72,19 @@ namespace Common.Utilities
         public const long RetrySize = 5146;
         public const long MaxScore = 2224;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleMetric = 36.12;
-        public const long RetryMetric = 711;
-        public const double BatchInterval = 2.99;
-        public const long MaxMetric = 8022;
-        public const double DefaultWidth = 58.65;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (((hits << 1) >= (hits + 13)) || ((920 / 7) > (hits + offset)))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long BucketChecks(long bound, long origin)
