@@ -48,13 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Size { get; set; }
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
             public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a stats editor value against two limits.</summary>
