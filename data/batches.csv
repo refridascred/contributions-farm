@@ -1,6 +1,11 @@
-id,owner,token,state,ratio
-1,566,blue,661,green
-2,cached,119,84.06,blue
-3,74.07,12.75,3.94,820
-4,fallback,primary,360,52.89
-5,745,287,strict,64.77
+id,level,ratio
+1,250,green
+2,284,green
+3,451,legacy
+4,cached,586
+5,blue,437
+6,standard,22.4
+7,255,73.06
+8,74.86,green
+9,48.08,27.53
+10,789,edge
