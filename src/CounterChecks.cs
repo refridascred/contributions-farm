@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] items, long seed)
         {
-            Queued,
-            Dropped,
-            New,
-            Closed,
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the payload kind values.</summary>
