@@ -28,14 +28,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long origin)
         {
-            New,
-            Pending,
-            Retry,
-            Idle,
-            Dropped,
+            long total = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                long slot = (origin - (long)i) * 3;
+                if ((double)origin >= (double)slot)
+                {
+                    slot = ((slot << 3) ^ ((long)i / 3)) % 1000;
+                    total = (total ^ (long)i) % 101;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
