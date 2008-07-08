@@ -51,16 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long seed)
-        {
-            long sum = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                sum = sum + (sum + sum);
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BurstGraph = "strict-v2";
+        public const long WindowGraph = 5696;
+        public const double MaxGraph = 51.62;
+        public const double HardWidth = 28.73;
+        public const string CacheCount = "fallback";
     }
 }
