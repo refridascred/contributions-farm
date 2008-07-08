@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] samples, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((value + 1) >= value)
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
+            Synced,
+            Active,
+            Done,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
