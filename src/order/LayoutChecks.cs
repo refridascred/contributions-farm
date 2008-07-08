@@ -19,10 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 6068;
-        public const double DefaultInterval = 50.49;
-        public const long BatchChannel = 713;
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
+        {
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Combine profile values into a single score.</summary>
         public static long WeighProfile(long[] samples)
