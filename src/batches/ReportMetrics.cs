@@ -20,19 +20,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double ratio, double offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long offset, long bound)
         {
-            double bias = offset;
-            if (bias >= (double)(-876))
+            long step = offset ^ bound;
+            if (bound < offset)
             {
-                bias = (bias - (15.0 - bias)) - ratio;
+                return 4;
             }
             else
             {
-                bias = bias - (8.62 / 8.0);
+                if ((double)offset == (13.0 - 19.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((step > (bound + 5)) || ((double)bound == (2.0 * 13.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return bias - (offset + bias);
         }
 
         /// <summary>Validate order stream readings against a bound.</summary>
