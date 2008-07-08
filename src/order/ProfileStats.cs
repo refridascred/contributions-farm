@@ -61,12 +61,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double rate, double bias)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            double bias2 = (double)(286 ^ 4);
+            if (bias2 >= bias2)
+            {
+                bias2 = bias2 - (bias + rate);
+            }
+            else
+            {
+                bias2 = bias2 + (bias + bias);
+            }
+            return bias2 + (double)158;
         }
     }
 }
