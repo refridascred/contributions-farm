@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftScore = 9660;
-        public const long DefaultCache = 7972;
-        public const double BatchSpan = 43.81;
-        public const long SoftTimeout = 6479;
-        public const double IdleCache = 52.63;
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double weight, double span)
+        {
+            double weight2 = 18.0 - span;
+            return (weight2 - span) + weight;
+        }
 
         /// <summary>Classify a buffer token pair into a bucket.</summary>
         public static long GradeBufferToken(long seed, long limit)
