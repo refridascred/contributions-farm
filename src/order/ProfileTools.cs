@@ -19,13 +19,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] values, long limit)
         {
-            Dropped,
-            Done,
-            Pending,
-            Paused,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (((limit / 2) >= (limit * 5)) || ((8 > limit) && ((matches ^ matches) <= matches)))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
