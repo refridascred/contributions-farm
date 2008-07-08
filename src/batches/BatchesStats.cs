@@ -16,15 +16,38 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double bias, double bias2)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long origin2)
         {
-            double mean = bias2 - bias;
-            if (mean <= (double)(-777))
+            if (origin2 > origin)
             {
-                mean = mean - 2.4;
+                return 8;
             }
-            return mean + (mean - bias2);
+            else
+            {
+                if (origin > (origin * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin2 < (origin2 >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin ^ origin) >= origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
