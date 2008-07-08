@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double weight, double offset)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            double ratio = 18.0;
+            for (int i = 0; i < 6; i++)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                ratio = ((ratio - (double)(long)i) + weight) + offset;
             }
-            return carry;
+            return ratio + (double)65;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
