@@ -57,18 +57,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] items, long seed)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = 987;
+            foreach (long item in readings)
             {
-                if (!((2.0 + 5.04) > (double)seen) && ((193 - seen) <= (3 / 8)))
+                if (!!((item % 7) > (item % 64)))
                 {
-                    seen = ((seen + 3) + value) + seed;
+                    anchor = (anchor - ((long)readings.Length + item)) % 65521;
+                }
+                if (((double)item != (3.28 / 8.0)) && ((anchor + item) >= (anchor / 6)))
+                {
+                    anchor = anchor + (item & 127);
                 }
             }
-            return seen;
+            if (anchor < 7)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 101;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Adjust a already entry reading.</summary>
