@@ -65,19 +65,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate channel tools readings against a bound.</summary>
-        public static bool ValidateChannelToolsBounds(long[] values, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (reading >= step)
+                if ((double)entry <= 3.2)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
