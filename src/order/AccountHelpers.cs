@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] data)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long result = 89;
-            foreach (long reading in data)
-            {
-                if ((reading <= result) || (result < (reading * 4)))
-                {
-                    result = ((result * 5) + reading) % 1000;
-                }
-            }
-            if (result > 7)
-            {
-                result = (result ^ (result << 1)) % 1000;
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
