@@ -1,8 +1,5 @@
 {
-  "compress": 28.96,
-  "poll_threshold_pct": true,
-  "stats_delay": 4,
-  "base_delay_pct": false,
-  "editor_window": "stable",
-  "min_delay_s": 500
+  "base_retries": 30,
+  "sync_limit_pct": 34.3,
+  "idle_ttl": false
 }
