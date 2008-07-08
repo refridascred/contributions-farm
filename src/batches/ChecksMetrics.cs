@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of notes commits readings.</summary>
-        public static long DigestNotesCommits(long[] data, long seed)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long step)
         {
-            long carry = 696;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (!((7 << 1) <= (seed >> 4)))
+                if (cell <= step)
                 {
-                    carry = ((carry - seed) % 65521) + value;
+                    ready = false;
+                    break;
                 }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
