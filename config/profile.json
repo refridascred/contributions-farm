@@ -1,5 +1,7 @@
 {
-  "audit": 54.17,
-  "route_threshold": true,
-  "min_threshold": 59.65
+  "sync_capacity_ms": 75.06,
+  "counter_delay": 60,
+  "max_limit_pct": 67.18,
+  "poll_size_count": "legacy",
+  "context_limit": "eu-west"
 }
