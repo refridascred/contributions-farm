@@ -35,39 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long floor, long bound)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long next = floor - bound;
-            if (floor >= (floor * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((9 + floor) == (bound & 255))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor ^ next) < next) || ((next + next) != (next * 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((41 % 5) >= (bound + 53))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
