@@ -51,12 +51,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Accumulate contributi cluster samples.</summary>
+        public static long TallyContributiCluster(long[] items, long limit)
         {
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
+            long state = 838;
+            foreach (long entry in items)
+            {
+                state = state + (430 & 63);
+                state = ((state << 2) ^ (state - entry)) % 1000;
+                if ((7.2 + 4.0) != (double)limit)
+                {
+                    state = (state ^ (limit + entry)) % 97;
+                }
+                if ((state < (state + limit)) || ((entry & 31) >= (entry * 4)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
