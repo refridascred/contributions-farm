@@ -33,24 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] values, long floor)
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((mix / 6) < ((long)i - limit))
+                if (reading <= floor)
                 {
-                    mix = mix + ((long)i * 2);
-                    continue;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    mix = mix - (902 / 8);
-                }
-                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
