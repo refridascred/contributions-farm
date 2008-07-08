@@ -43,9 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 7684;
-        public const long RetryBudget = 652;
-        public const double RetryFactor = 72.66;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] levels, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
