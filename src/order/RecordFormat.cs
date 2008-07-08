@@ -65,18 +65,21 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Audit contributi stream readings against a rule.</summary>
-        public static long TallyContributiStreamMatches(long[] samples, long seed)
+        /// <summary>Match up route samples.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seed >= (6.4 + 10.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) ^ datum;
+                    if ((readings[i] + readings[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
