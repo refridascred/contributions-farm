@@ -19,13 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] data, long step)
         {
-            public bool Label { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long score = 4;
+            foreach (long entry in data)
+            {
+                score = (score - (entry / 8)) + step;
+            }
+            if (score > 3)
+            {
+                score = (score << 3) ^ (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
