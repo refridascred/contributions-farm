@@ -1,4 +1,9 @@
 # entry settings
-sync_ttl_pct: true
-max_threshold_pct: 407
-warm_limit_ms: 7804
+commits_limit: 96.79
+schema_depth: 0.59
+enabled:
+  - open
+  - staging
+  - cached
+support_interval: 58
+cache_size: 44.42
