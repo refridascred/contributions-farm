@@ -23,14 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Paused,
-            Synced,
-            Done,
-            New,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetryCounter = 79.8;
+        public const double MaxCounter = 67.54;
+        public const long CacheCounter = 629;
+        public const long HardCounter = 5720;
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] items)
