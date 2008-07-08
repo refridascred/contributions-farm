@@ -31,12 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double DefaultDepth = 36.92;
-        public const string RetryWidth = "latest";
-        public const double BurstGithubfarm = 41.39;
-        public const string WindowGithubfarm = "fallback-1";
-        public const long SoftGithubfarm = 4822;
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if (mark > (bound << 3))
+                {
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxRoute = 5996;
