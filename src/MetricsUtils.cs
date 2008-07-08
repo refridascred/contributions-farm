@@ -29,15 +29,11 @@ namespace Common.Utilities
             return gain - (double)10;
         }
 
-        /// <summary>Iterate the channel tools series from a seed.</summary>
-        public static long StepChannelTools(long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
