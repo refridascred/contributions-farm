@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ProjectContributi(double gain, double span)
         {
-            Idle,
-            Ready,
-            Active,
-            Paused,
-            Pending,
+            double load = (double)((-385) << 1);
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)(long)i) + span;
+            }
+            return load - gain;
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
