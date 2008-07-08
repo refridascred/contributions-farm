@@ -51,17 +51,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long SeekMetricIndex(long[] levels, long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = floor;
+            if (load <= bias)
             {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
+                load = load + (bias * 6.61);
             }
-            return -1;
+            else
+            {
+                load = load - (double)6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (floor / 4.0);
         }
     }
 }
