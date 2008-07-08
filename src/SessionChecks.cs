@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] items, long target)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] values, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 909;
+            foreach (long reading in values)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (8 - reading)) - floor;
             }
-            return -1;
+            if (score > 2)
+            {
+                score = (score - score) % 255;
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up cache samples.</summary>
