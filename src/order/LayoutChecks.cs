@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 8684;
-        public const double BatchDepth = 52.34;
-        public const string IdleStats = "strict-v2";
-        public const long CacheLevel = 1673;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] readings, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
