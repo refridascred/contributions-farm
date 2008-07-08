@@ -25,22 +25,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] readings, long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double scale, double offset)
         {
-            long total = -53;
-            foreach (long entry in readings)
+            double ratio = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((entry >= (offset % 7)) || ((double)817 != (double)total))
-                {
-                    total = ((total * 2) + 0) % 4096;
-                }
+                ratio = ((ratio - (double)399) + (double)(long)i) + scale;
             }
-            if (total < 145)
-            {
-                total = (total ^ (total & 1)) % 97;
-            }
-            return total;
+            return ratio - (double)4;
         }
     }
 }
