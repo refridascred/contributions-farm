@@ -72,13 +72,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            Pending,
+            Draft,
             Closed,
-            Queued,
-            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many route payload samples are out of range.</summary>
