@@ -93,10 +93,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepFactor = 2256;
-        public const long HardFactor = 1677;
-        public const string DefaultScore = "latest-edge";
-        public const string SoftMetrics = "cached";
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double weight, double span)
+        {
+            double scale = span;
+            if (scale < (2.02 / 5.0))
+            {
+                scale = scale + (scale + weight);
+            }
+            return scale + (span - weight);
+        }
     }
 }
