@@ -56,14 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Retry,
-            Pending,
-            Active,
-            Synced,
-            Ready,
+            public double Region { get; set; }
+            public long Total { get; set; }
         }
     }
 }
