@@ -62,19 +62,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] items, long limit)
+        /// <summary>Classify a commits checks pair into a bucket.</summary>
+        public static long RankCommitsChecks(long origin, long step)
         {
-            bool stale = true;
-            foreach (long reading in items)
+            long slot = origin + step;
+            if ((slot & 7) <= step)
             {
-                if (reading <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)slot != (8.29 + 10.0))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
     }
 }
