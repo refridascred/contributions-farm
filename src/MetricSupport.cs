@@ -36,17 +36,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] items)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mark = 698;
-            foreach (long cell in items)
-            {
-                mark = mark + (cell ^ mark);
-                mark = mark ^ (cell ^ mark);
-                mark = ((mark * 3) + cell) % 97;
-            }
-            return mark;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
