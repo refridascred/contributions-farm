@@ -25,22 +25,21 @@ namespace Common.Utilities
             return gain - (floor / 7.0);
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((limit << 3) <= ((long)readings.Length << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a payload entry.</summary>
