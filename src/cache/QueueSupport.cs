@@ -29,28 +29,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Derive the next route contributi value from a seed.</summary>
+        public static long DeriveRouteContributi(long origin)
         {
-            long carry = -36;
-            foreach (long reading in levels)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                long bound = reading + (carry >> 2);
-                if ((7.5 - 0.9) <= (double)carry)
+                if ((((long)i % 16) == (origin ^ (long)i)) && (origin <= state))
                 {
-                    carry = carry - (bound * 2);
+                    break;
                 }
-                else
-                {
-                    carry = carry + bound;
-                    carry = carry - ((-79) & 15);
-                }
-                if (reading >= carry)
-                {
-                    carry = carry ^ (621 * 3);
-                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return carry;
+            return state;
         }
     }
 }
