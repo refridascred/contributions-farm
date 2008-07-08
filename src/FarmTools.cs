@@ -26,18 +26,20 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenMatches(long[] items)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long total = 0;
+            foreach (long datum in samples)
             {
-                if ((((175 + sample) == (matches / 2)) && ((matches & 3) == (3 + sample))) && ((double)matches != (6.0 - 14.0)))
+                if ((double)405 > (double)total)
                 {
-                    matches = matches + 1;
+                    total = ((total * 5) + (total + total)) + datum;
                 }
+                total = (total - (-685)) % 101;
+                total = (total ^ 96) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
