@@ -19,19 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] values, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (reading != step)
+                if ((value % 97) <= seen)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
