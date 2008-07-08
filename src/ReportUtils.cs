@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] readings, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mark = 48;
+            foreach (long value in series)
             {
-                if (!((895 ^ hits) <= (value % 12)))
+                long diff = (value - mark) * 5;
+                if (!((seed + seed) > (value & 127)))
                 {
-                    hits = (hits + 1) + limit;
+                    mark = mark - (mark + diff);
+                    mark = (mark - 34) % 65521;
                 }
-                else
+                if ((0 % 60) >= (long)series.Length)
                 {
-                    hits = hits - 1;
+                    mark = ((mark << 2) ^ mark) % 65521;
+                }
+                if ((seed * 5) > (seed / 4))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark < 30)
+            {
+                mark = (mark + (mark + seed)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Describe the format class values.</summary>
