@@ -1,11 +1,12 @@
 {
-  "max_interval_count": 59.34,
-  "warm_timeout_s": 2746,
-  "stream_delay": 9414,
-  "channel_threshold": {
-    "command_timeout": "strict",
-    "record_interval": 30,
-    "burst_timeout_count": "edge",
-    "idle_interval_s": "latest"
-  }
+  "audit": false,
+  "readonly": {
+    "stats_limit": false,
+    "persist": 4264,
+    "batch_timeout": 430,
+    "batch_limit": "stable",
+    "max_depth_s": 100,
+    "batch_delay_ms": "green"
+  },
+  "contributi_ttl": 87.52
 }
