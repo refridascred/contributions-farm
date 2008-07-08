@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] items, long bound)
+        /// <summary>Validate graph order readings against a bound.</summary>
+        public static bool ValidateGraphOrderBounds(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (((-6) & 7) == (datum + seen))
+                if (item > step)
                 {
-                    seen = (seen + 2) - bound;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
