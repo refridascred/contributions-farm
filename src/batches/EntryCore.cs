@@ -64,15 +64,22 @@ namespace Common.Utilities
         public const string HardScore = "fallback-v2";
         public const double HardWidth = 46.37;
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if ((matches / 2) <= reading)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
