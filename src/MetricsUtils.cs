@@ -33,22 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Fold a list of githubfarm support readings.</summary>
+        public static long ScoreGithubfarmSupport(long[] data)
         {
-            long acc = 788;
-            foreach (long entry in data)
+            long total = 2;
+            foreach (long item in data)
             {
-                if ((((long)data.Length >> 1) < 717) || ((double)entry < (6.29 + 7.5)))
+                if ((item ^ item) >= item)
                 {
-                    acc = ((acc << 2) ^ (entry * 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 4) + (acc ^ acc);
+                    total = total + (item * 5);
                 }
             }
-            return acc;
+            if (total > 384)
+            {
+                total = (total * 5) + (total & 63);
+            }
+            return total % 1000;
         }
 
         /// <summary>Accumulate contributi cluster samples.</summary>
