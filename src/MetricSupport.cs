@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
-        {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "local-1";
+        public const string BatchDepth = "latest-v2";
+        public const long IdleChannel = 7797;
+        public const long CacheChannel = 6057;
+        public const string DefaultCount = "fallback-v2";
 
         /// <summary>Combine profile cluster values into a single score.</summary>
         public static long ScoreProfileCluster(long[] levels)
