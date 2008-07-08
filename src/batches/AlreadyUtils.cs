@@ -51,13 +51,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a filter profile value against two limits.</summary>
+        public static long RankFilterProfile(long offset, long limit)
         {
-            Dropped,
-            Idle,
-            Failed,
-            Draft,
+            if (((offset / 4) <= (offset - limit)) && (offset > limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((offset ^ limit) >= (limit << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
