@@ -29,30 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] items, long origin)
         {
-            long total = 1;
-            foreach (long item in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!!(seed >= 402))
+                if (items[i] <= origin)
                 {
-                    total = ((total * 3) + (seed + total)) % 101;
-                }
-                if ((seed < (75 >> 2)) || (seed < total))
-                {
-                    total = (total << 2) ^ (item - item);
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total ^ 8)) % 4096;
-                }
-                if ((seed << 1) <= (seed + 4))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
