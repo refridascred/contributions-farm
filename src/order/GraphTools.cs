@@ -16,38 +16,22 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long offset, long seed)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] data)
         {
-            if (((94 ^ offset) > (225 / 8)) && ((double)offset != (4.0 * 9.88)))
+            long total = 567;
+            foreach (long entry in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed << 1) <= seed)
+                if ((entry << 3) >= entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed ^ offset) < (seed & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((72 * 5) > seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total << 3) ^ (4 / 5)) % 65521;
                 }
             }
+            if (total < 837)
+            {
+                total = (total * 5) + (long)data.Length;
+            }
+            return total;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
