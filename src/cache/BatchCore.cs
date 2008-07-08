@@ -13,15 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] data, long floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the batches phase values.</summary>
