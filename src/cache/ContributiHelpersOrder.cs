@@ -24,10 +24,11 @@ namespace Common.Utilities
             return drift + (drift / 7.0);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryFactor = 7458;
-        public const string BurstFactor = "strict-1";
-        public const long MinMetric = 6380;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstCount = 4635;
+        public const string IdleFilter = "staging";
+        public const long BurstFilter = 8463;
+        public const string RetryFilter = "staging-1";
 
         /// <summary>Describe the window phase values.</summary>
         public enum WindowPhase
