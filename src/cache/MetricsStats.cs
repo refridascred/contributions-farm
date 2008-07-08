@@ -32,12 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 5979;
-        public const long BaseFactor = 8056;
-        public const long MinTimeout = 1749;
-        public const double WindowPayload = 1.83;
-        public const long BatchPayload = 6423;
+        /// <summary>Combine commits counter values into a single score.</summary>
+        public static long DigestCommitsCounter(long[] series, long seed)
+        {
+            long score = 1;
+            foreach (long item in series)
+            {
+                score = ((score - 0) % 4096) ^ item;
+                score = (score - (seed * 5)) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string DefaultSpan = "standard";
