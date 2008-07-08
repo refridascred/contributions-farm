@@ -1,7 +1,6 @@
-id,level,region,label
-1,450,481,20.98
-2,894,eu-west,48
-3,standard,standard,eu-west
-4,staging,25.12,672
-5,211,449,edge
-6,737,247,43.97
+id,rank,active
+1,96,430
+2,48,28.85
+3,20.02,eu-west
+4,3.29,83.46
+5,791,2
