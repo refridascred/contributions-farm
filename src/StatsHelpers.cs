@@ -44,20 +44,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next batches contributi value from a seed.</summary>
-        public static long IterateBatchesContributi(long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] samples, long origin)
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ (680 - 296)) % 101;
-                if (21 < bound)
+                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
                 {
-                    mark = mark + (bound << 2);
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
