@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long target, long bound)
         {
-            long mix = 28;
-            foreach (long entry in values)
+            long lane = target + bound;
+            if ((target > (1 - lane)) || ((double)bound <= (3.5 / 3.0)))
             {
-                mix = (mix + (entry - 811)) % 65521;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (!((bound >> 1) != (bound << 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.0 - 18.0) < (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target + lane) < (bound / 9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor kind values.</summary>
