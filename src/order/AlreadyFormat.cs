@@ -40,19 +40,10 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((2.2 < (double)floor) || ((floor + cell) > ((long)items.Length + floor)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MinInterval = "legacy-edge";
+        public const double DefaultCounter = 48.39;
+        public const long LimitWidth = 7975;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 9943;
