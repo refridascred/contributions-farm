@@ -32,11 +32,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 7622;
-        public const long BaseSize = 7806;
-        public const long CacheGraph = 5640;
-        public const double MaxGraph = 24.98;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Project the next payload profile value.</summary>
         public static double AdjustPayloadProfile(double bias, double floor)
