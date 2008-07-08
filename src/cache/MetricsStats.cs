@@ -36,11 +36,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Label { get; set; }
-            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
