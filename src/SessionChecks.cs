@@ -52,21 +52,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Count queue route pairs that satisfy a relation.</summary>
+        public static long CompareQueueRouteCount(long[] series)
         {
-            long seen = 0;
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 19)
+                    if ((series[i] ^ series[j]) > 7)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
