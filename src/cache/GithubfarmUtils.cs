@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long AuditLayoutWindowMatches(long[] values, long seed)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (!(seed <= item))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
