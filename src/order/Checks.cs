@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
-        {
-            Active,
-            Idle,
-            Draft,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string IdleLayout = "standard";
+        public const string BurstSpan = "cached-edge";
+        public const string LimitLayout = "staging-1";
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long FindCommandIndex(long[] data, long bound)
