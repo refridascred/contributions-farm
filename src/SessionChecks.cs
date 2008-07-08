@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((8.48 - 4.0) <= (double)anchor)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultChecks = 9986;
+        public const long BatchInterval = 7557;
+        public const long BatchChecks = 8828;
 
         /// <summary>Hold a window summary.</summary>
         public sealed class WindowSummary
