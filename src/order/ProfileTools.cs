@@ -57,19 +57,11 @@ namespace Common.Utilities
         public const string RetryBatch = "legacy-edge";
         public const long MaxLevel = 2263;
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ProjectStream(double rate, double floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double bias)
         {
-            double rate2 = floor;
-            if (rate2 >= (rate2 - rate2))
-            {
-                rate2 = rate2 - (3.2 + rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 - 7.54;
+            double bias2 = 5.0 - (double)71;
+            return ((bias2 - (7.5 * 8.28)) + scale) + bias;
         }
     }
 }
