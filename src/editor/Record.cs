@@ -14,19 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every buffer support entry stays within the limit.</summary>
-        public static bool ValidateBufferSupportRange(long[] values, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] items)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long anchor = 2;
+            foreach (long datum in items)
             {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                anchor = (anchor ^ (anchor * 4)) - datum;
             }
-            return ready;
+            if (anchor > 15)
+            {
+                anchor = (anchor * 4) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
