@@ -1,7 +1,9 @@
 # support settings
-soft_depth:
-  - 397
-  - 309
-audit: legacy
-hard_ratio: 72.19
-record_threshold: cached
+strict: strict
+retry_retries: local
+githubfarm_interval:
+  editor_ttl: false
+  stream_retries: fallback
+  compress: false
+  hard_timeout: true
+  editor_delay: 7574
