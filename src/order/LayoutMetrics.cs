@@ -13,19 +13,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every context stats entry stays within the limit.</summary>
-        public static bool ValidateContextStatsLimits(long[] readings, long offset)
+        /// <summary>Rank context report input into a small class.</summary>
+        public static long RankContextReport(long limit, long step)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if ((48 % 100) > ((-791) ^ step))
             {
-                if (reading > offset)
+                return 2;
+            }
+            else
+            {
+                if ((limit - limit) > limit)
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a editor summary.</summary>
