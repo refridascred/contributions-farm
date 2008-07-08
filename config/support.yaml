@@ -1,25 +1,10 @@
 # support settings
-poll_ttl_pct:
-  enabled: primary
-  batch_capacity:
-    - 319
-    - 4
-    - 3
-    - 265
-  verbose: false
-  min_capacity_s: 5.13
-  idle_ttl_ms:
-    - open
-    - staging
-    - latest
-    - legacy
-  queue_ratio: 30
-filter_timeout: 577
-retry_delay: open
-stream_size:
-  - strict
+record_retries: 646
+base_delay_s:
+  - legacy
+  - latest
   - blue
-  - local
-  - edge
-readonly: 100
-poll_threshold_pct: 9434
+  - open
+warm_interval:
+  - open
+  - blue
