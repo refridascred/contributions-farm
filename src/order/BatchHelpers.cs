@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "strict-v2";
-        public const string MinInterval = "primary";
-        public const long HardCache = 7117;
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up window graph samples.</summary>
         public static long PairWindowGraphCount(long[] series)
