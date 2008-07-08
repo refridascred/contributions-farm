@@ -19,17 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long FindNotesIndex(long[] readings, long seed)
+        /// <summary>Grade a account stream value against two limits.</summary>
+        public static long RankAccountStream(long seed, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound = seed - limit;
+            if ((double)limit > (6.0 / 6.0))
             {
-                if (readings[i] < seed)
+                return 7;
+            }
+            else
+            {
+                if (3 < (seed ^ seed))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (!(300 >= (bound - bound)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound != (2.0 * 5.9))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
