@@ -56,22 +56,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Check that every schema account entry stays within the limit.</summary>
+        public static bool ValidateSchemaAccountLimits(long[] samples, long target)
         {
-            long mix = 71;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (mix <= (mix ^ 318))
+                if (reading != target)
                 {
-                    mix = (mix - (mix % 10)) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            if (mix < 25)
-            {
-                mix = ((mix * 2) + (34 + 41)) % 65521;
-            }
-            return mix % 65521;
+            return ready;
         }
 
         /// <summary>Count the account schema entries that pass the check.</summary>
