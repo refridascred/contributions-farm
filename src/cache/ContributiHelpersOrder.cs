@@ -22,13 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            Paused,
+            Dropped,
+            Synced,
+            Retry,
         }
 
         /// <summary>Hold a token stats.</summary>
