@@ -1,11 +1,6 @@
 {
-  "retry_interval_ms": ["staging", "latest"],
-  "stats_window": "legacy",
-  "audit": true,
-  "sync_retries_count": {
-    "schema_retries": ["strict", "strict"],
-    "sync_capacity_ms": 63,
-    "entry_capacity": ["blue", "strict", "staging", "blue"]
-  },
-  "entry_depth": ["primary", "fallback", "legacy"]
+  "account_interval": true,
+  "min_size_pct": "stable",
+  "warm_limit_s": ["eu-west", "latest", "fallback"],
+  "farm_timeout": 28
 }
