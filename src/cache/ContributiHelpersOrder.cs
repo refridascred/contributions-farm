@@ -32,14 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the already entry entries that pass the check.</summary>
+        public static long TallyAlreadyEntryMatches(long[] values, long target)
         {
-            Pending,
-            New,
-            Idle,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((23 & 7) <= seen)
+                {
+                    seen = ((seen + 2) ^ datum) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
