@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Derive the next cluster layout value from a seed.</summary>
+        public static long DeriveClusterLayout(long floor)
         {
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
+            long result = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                result = (result * 3) + (result ^ floor);
+                if ((5.2 * 9.62) == (double)result)
+                {
+                    result = (result * 4) + (result + floor);
+                }
+                else
+                {
+                    result = (result + (floor + (long)i)) % 65521;
+                }
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
