@@ -1,10 +1,12 @@
 # support settings
-contributi_delay:
-  - cached
+readonly:
+  - 278
+  - 217
+  - 459
+  - 173
+warm_timeout: 94.76
+flush_window_pct:
   - local
-  - latest
-base_limit_s:
-  compress: edge
-  max_depth_ms: eu-west
-  verbose: standard
-audit: 28
+  - staging
+  - legacy
+  - fallback
