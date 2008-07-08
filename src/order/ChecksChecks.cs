@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long offset, long step)
+        /// <summary>Rank format command input into a small class.</summary>
+        public static long BucketFormatCommand(long bound, long offset)
         {
-            if (offset < step)
+            if (!((bound - offset) == (offset >> 4)))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((step + offset) >= (step << 1))
+                if (((double)offset > (2.8 * 1.17)) || ((bound - 2) == (871 << 3)))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)bound > (8.2 / 8.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
