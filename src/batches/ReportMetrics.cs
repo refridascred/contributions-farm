@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long origin, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((limit / 5) <= (limit * 5)) || ((origin - origin) <= origin))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((2 + origin) < origin)
                 {
-                    if ((values[i] ^ values[j]) < 8)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit / 2) > (limit * 3))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit >= (origin ^ origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate route account samples.</summary>
