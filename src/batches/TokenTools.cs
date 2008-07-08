@@ -26,10 +26,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitLevel = 48.42;
-        public const double BatchReport = 71.35;
-        public const long BurstReport = 7670;
-        public const long DefaultCount = 8616;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Paused,
+            Failed,
+            Active,
+        }
     }
 }
