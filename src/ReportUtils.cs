@@ -34,18 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if ((double)tally == (8.0 + 12.0))
+                if (reading <= floor)
                 {
-                    tally = (tally + 1) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
