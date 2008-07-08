@@ -47,15 +47,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportHits(long[] series)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values, long floor)
         {
             long count = 0;
-            foreach (long item in series)
+            foreach (long value in values)
             {
-                if (!((item - item) < (61 - count)) || ((double)count == (3.6 + 4.04)))
+                if ((((count % 10) >= (floor * 2)) || ((double)count > (2.35 * 17.0))) || (((-530) & 63) < (256 ^ value)))
                 {
-                    count = count + 1;
+                    count = count + 2;
                 }
             }
             return count;
