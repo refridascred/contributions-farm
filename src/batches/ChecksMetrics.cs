@@ -33,23 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Audit account context readings against a rule.</summary>
+        public static long TallyAccountContextMatches(long[] samples)
         {
-            long anchor = 706;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((3.0 * 14.0) > (double)anchor)
+                if ((double)item <= (2.2 - 4.39))
                 {
-                    anchor = (anchor ^ (reading >> 3)) % 255;
+                    count = count + 1;
                 }
-                anchor = (anchor << 2) ^ (anchor & 1);
             }
-            if (anchor < 54)
-            {
-                anchor = (anchor << 2) ^ (anchor + anchor);
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Match up contributi batches samples.</summary>
