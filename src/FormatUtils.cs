@@ -16,15 +16,38 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Roll a window entry counter forward.</summary>
-        public static long StepWindowEntry(long limit)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long target, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 20; i++)
+            if ((bound / 4) <= (bound >> 3))
             {
-                state = ((state * 5) + (long)i) % 65521;
+                return 7;
             }
-            return state;
+            else
+            {
+                if (target < (21 >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound & 255) > (target - bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!(bound > (109 - 978)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the graph mode values.</summary>
