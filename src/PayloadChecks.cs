@@ -37,16 +37,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Adjust a batches filter reading.</summary>
-        public static double ProjectBatchesFilter(double weight, double span)
-        {
-            double ratio = weight * 20.0;
-            if (ratio <= (ratio - 3.5))
-            {
-                ratio = (ratio + (double)41) - span;
-            }
-            return ratio + 6.91;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepInterval = 9198;
+        public const long MinRatio = 8200;
+        public const long BurstCommand = 8997;
+        public const long WindowCount = 4628;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] data, long bound)
