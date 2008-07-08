@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] samples, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ScaleMetric(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            double load = (double)72 * 10.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (((limit & 3) > (limit & 7)) && !(hits >= (datum / 5)))
-                {
-                    hits = hits + 1;
-                }
+                load = (((load + (9.49 / 4.0)) + (double)(long)i) - rate) - bias;
             }
-            return hits;
+            return load - (3.7 * 9.1);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
