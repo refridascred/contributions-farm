@@ -15,11 +15,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenGaps(long[] data, long step)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((-2) - tally) < step)
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route summary.</summary>
