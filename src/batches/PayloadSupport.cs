@@ -41,17 +41,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue counter sample.</summary>
-        public static long LocateQueueCounterIndex(long[] levels, long target)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] < target)
+                if ((double)(long)i == (1.2 * 4.63))
                 {
-                    return (long)i;
+                    score = (score - (floor >> 1)) % 97;
                 }
+                if ((double)(long)i >= (8.2 + 2.65))
+                {
+                    score = score ^ floor;
+                }
+                if ((floor + floor) < (score & 31))
+                {
+                    score = (score - (score - score)) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
