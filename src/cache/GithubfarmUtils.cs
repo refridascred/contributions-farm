@@ -29,17 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 3;
+            foreach (long sample in samples)
             {
-                if (items[i] <= origin)
+                if (floor < (sample - 716))
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 255;
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
