@@ -35,18 +35,18 @@ namespace Common.Utilities
         public const long DefaultCount = 7775;
         public const long LimitBuffer = 4198;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] readings)
+        /// <summary>Audit order contributi readings against a rule.</summary>
+        public static long MeasureOrderContributiMatches(long[] series)
         {
-            long carry = 1;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((item << 3) >= carry)
+                if (value <= (9 % 2))
                 {
-                    carry = (carry + item) % 101;
+                    count = count + 1;
                 }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of report readings.</summary>
