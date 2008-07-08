@@ -12,20 +12,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] series)
+        /// <summary>Audit batches tools readings against a rule.</summary>
+        public static long CountBatchesToolsHits(long[] items)
         {
-            long score = 3;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                score = score + (entry / 3);
-                if ((score % 8) > (entry % 97))
+                if ((((634 & 3) <= (seen ^ seen)) && ((4 + seen) > 19)) && (((reading >> 5) < 4) || ((seen * 4) < 303)))
                 {
-                    score = ((score << 3) ^ (-19)) % 97;
+                    seen = seen + 2;
                 }
-                score = ((score << 3) ^ entry) % 4096;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
