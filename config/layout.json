@@ -1,7 +1,6 @@
 {
-  "audit": 97,
-  "layout_threshold": "fallback",
-  "schema_retries": "latest",
-  "default_depth": ["staging", "fallback"],
-  "retry_size_ms": "standard"
+  "cache_interval": 13,
+  "enabled": "primary",
+  "flush_retries": true,
+  "sync_retries_s": false
 }
