@@ -97,11 +97,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            public bool Limit { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
