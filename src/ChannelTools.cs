@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Find the first profile format entry that matches the target.</summary>
-        public static long FindProfileFormatIndex(long[] values, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long offset, long offset2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset + offset) >= (offset - offset2))
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((9 * 3) == (offset2 >> 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (17.0 < (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
