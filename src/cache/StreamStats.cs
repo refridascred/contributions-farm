@@ -31,10 +31,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BaseWindow = "latest-edge";
-        public const long CacheRatio = 7435;
-        public const double RetryFactor = 57.93;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Failed,
+            Synced,
+            Active,
+            New,
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long floor)
