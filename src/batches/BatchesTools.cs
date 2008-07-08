@@ -42,12 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] values, long limit)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long carry = 352;
+            foreach (long reading in values)
+            {
+                carry = ((carry - limit) % 65521) + reading;
+                if ((carry - limit) >= carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
