@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine report account values into a single score.</summary>
-        public static long FoldReportAccount(long[] data, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long acc = -885;
-            foreach (long entry in data)
-            {
-                if ((acc + entry) >= acc)
-                {
-                    acc = acc ^ ((-232) - acc);
-                }
-                else
-                {
-                    acc = (acc + (entry + entry)) % 65521;
-                }
-                if ((limit - limit) < acc)
-                {
-                    break;
-                }
-            }
-            return acc % 97;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
