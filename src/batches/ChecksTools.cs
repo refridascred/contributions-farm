@@ -12,38 +12,17 @@ namespace Common.Utilities
             return (ratio - (double)132) + floor;
         }
 
-        /// <summary>Rank cache route input into a small class.</summary>
-        public static long BucketCacheRoute(long origin, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] levels, long offset)
         {
-            if (((origin + 763) > ((-4) * 4)) && (1.34 < (double)bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (681 <= (bound - 506))
+                if ((levels[i] >= offset) && ((levels[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin) <= 40)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin - origin) >= (origin >> 4)) || ((double)bound <= (3.0 - 5.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metrics entry.</summary>
