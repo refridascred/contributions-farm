@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] levels)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long sum = 61;
-            foreach (long cell in levels)
-            {
-                if (!(sum > (cell + sum)))
-                {
-                    sum = (sum * 3) + sum;
-                }
-            }
-            if (sum < 55)
-            {
-                sum = (sum * 4) + (sum + sum);
-            }
-            return sum;
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
