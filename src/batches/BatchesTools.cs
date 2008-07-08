@@ -32,17 +32,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first stream counter entry that matches the target.</summary>
-        public static long LookupStreamCounterIndex(long[] levels, long limit)
+        /// <summary>Measure how many record commits samples are out of range.</summary>
+        public static long AuditRecordCommitsHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if (levels[i] == limit)
+                if (((-92) + seen) > reading)
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
