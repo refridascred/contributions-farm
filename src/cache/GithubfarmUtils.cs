@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double gain, double span)
         {
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Level { get; set; }
+            double weight = (double)8 - span;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight + span)) + (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Hold a payload header.</summary>
