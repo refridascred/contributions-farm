@@ -19,15 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double AdjustStream(double rate, double floor)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] readings, long seed)
         {
-            double gain = rate;
-            if (gain <= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                gain = gain - (rate * 6.8);
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (floor / 7.0);
+            return -1;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
