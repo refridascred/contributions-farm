@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable local; do
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in blue standard open; do
     log "checking ${item}"
 done
 
-mode="${1:-open}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=271
+COMMAND_LIMIT=436
 log "limit is ${COMMAND_LIMIT}"
