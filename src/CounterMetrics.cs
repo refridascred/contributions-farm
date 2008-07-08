@@ -36,18 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long SeriesLayout(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = (result ^ (result + target)) % 101;
-                result = (result ^ (target + 315)) % 101;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 2874;
+        public const long HardOrder = 2119;
+        public const long IdleBudget = 8780;
+        public const long IdleOrder = 1947;
+        public const string BurstOrder = "legacy";
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long offset, long step)
