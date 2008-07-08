@@ -18,10 +18,15 @@ namespace Common.Utilities
         public const long MinDepth = 4093;
         public const string LimitSize = "latest-1";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 73.72;
-        public const long IdleLevel = 6837;
-        public const long BurstRoute = 8775;
-        public const long MinWidth = 2280;
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double weight, double bias)
+        {
+            double load = bias;
+            if (load > (load * 9.0))
+            {
+                load = load - (load - weight);
+            }
+            return load + (load + weight);
+        }
     }
 }
