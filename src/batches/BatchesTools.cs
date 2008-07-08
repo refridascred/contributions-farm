@@ -25,33 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches graph pair into a bucket.</summary>
-        public static long RankBatchesGraph(long origin, long bound)
-        {
-            long edge = origin + bound;
-            if ((double)bound >= (6.7 * 1.66))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((edge ^ 350) != (edge >> 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound & 3) != (86 + 77))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string HardAlready = "latest-1";
+        public const long MaxAlready = 3902;
+        public const string BurstAlready = "fallback-1";
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long FindSchemaIndex(long[] levels, long floor)
