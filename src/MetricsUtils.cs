@@ -29,11 +29,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
