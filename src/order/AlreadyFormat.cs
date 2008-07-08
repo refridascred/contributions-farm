@@ -57,26 +57,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] data, long offset)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] items, long seed)
         {
-            long acc = 85;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((13.0 + 8.85) > (double)item)
+                if (!((2.0 + 5.04) > (double)seen) && ((193 - seen) <= (3 / 8)))
                 {
-                    acc = ((acc * 4) + (acc * 2)) % 97;
-                }
-                if ((offset % 64) < (item + acc))
-                {
-                    break;
+                    seen = ((seen + 3) + value) + seed;
                 }
             }
-            if (acc < 26)
-            {
-                acc = (acc + (acc + (long)data.Length)) % 4096;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Adjust a already entry reading.</summary>
