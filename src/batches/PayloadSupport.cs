@@ -19,17 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a account batches reading by value.</summary>
-        public static long LookupAccountBatchesIndex(long[] series, long floor)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 2;
+            foreach (long cell in data)
             {
-                if (series[i] == floor)
+                if ((cell + score) != (score + cell))
                 {
-                    return (long)i;
+                    score = ((score << 3) ^ (cell << 1)) % 255;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
