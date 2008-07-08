@@ -40,12 +40,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseDepth = 8239;
-        public const long DefaultLevel = 4611;
-        public const long LimitFarm = 7402;
-        public const double WindowSize = 93.73;
-        public const double MinScore = 42.8;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((2.2 < (double)floor) || ((floor + cell) > ((long)items.Length + floor)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitCounter = 9943;
