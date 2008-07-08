@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long floor)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 7;
+            foreach (long datum in samples)
             {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + datum) % 255;
+                anchor = anchor + datum;
+                anchor = anchor - (datum * 4);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Match up cache samples.</summary>
