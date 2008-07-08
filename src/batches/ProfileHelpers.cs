@@ -19,22 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] values, long offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= tally)
+                if (series[i] < step)
                 {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
