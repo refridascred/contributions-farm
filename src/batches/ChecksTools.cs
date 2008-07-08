@@ -55,19 +55,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterRange(long[] items, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if (reading != floor)
+                if ((cell / 6) < matches)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
