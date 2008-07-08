@@ -67,10 +67,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 40.05;
-        public const long MinStream = 8320;
-        public const long IdleFactor = 4311;
-        public const long RetryStream = 4547;
+        /// <summary>Adjust a already entry reading.</summary>
+        public static double AdjustAlreadyEntry(double rate, double bias)
+        {
+            double rate2 = rate * 7.0;
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = ((rate2 + rate) - (double)(long)i) - bias;
+            }
+            return rate2 - (rate * 2.11);
+        }
     }
 }
