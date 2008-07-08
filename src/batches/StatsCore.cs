@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinDepth = 1822;
-        public const long DefaultChecks = 5820;
-        public const long IdleChecks = 4130;
-        public const double MaxChecks = 64.39;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long floor, long step)
+        {
+            if (10 <= (floor >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((step + step) < (floor + step)) && ((4.0 * 8.0) < (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step >> 4) > 99)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step <= 60)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the order status values.</summary>
         public enum OrderStatus
