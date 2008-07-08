@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double MaxCount = 79.87;
-        public const long CacheRatio = 9037;
-        public const long BurstSize = 8235;
-        public const long CacheFilter = 4360;
-        public const long BatchFilter = 6161;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Stale,
+            Dropped,
+            Done,
+            Paused,
+        }
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
