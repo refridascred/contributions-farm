@@ -62,13 +62,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Ready,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BaseWindow = "latest-edge";
+        public const long CacheRatio = 7435;
+        public const double RetryFactor = 57.93;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
