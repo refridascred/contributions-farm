@@ -23,11 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftInterval = 5681;
-        public const long StepBuffer = 4437;
-        public const long WindowInterval = 5374;
-        public const long DefaultBuffer = 3166;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 4433;
+        public const double StepCount = 8.3;
+        public const long MinNotes = 8410;
+        public const string IdleNotes = "fallback-1";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardScore = 966;
