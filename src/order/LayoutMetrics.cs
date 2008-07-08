@@ -37,13 +37,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Rank format stream input into a small class.</summary>
+        public static long ClassifyFormatStream(long target, long step)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            long edge = target ^ step;
+            if (target < edge)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)edge != (13.0 + 4.4)) || ((0.31 - 1.91) > (double)edge))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step >> 2) == (424 ^ step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
