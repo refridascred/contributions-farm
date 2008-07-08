@@ -19,18 +19,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] data)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            long mix = 8;
-            foreach (long reading in data)
+            double rate2 = (double)(430 >> 3);
+            if (rate2 < floor)
             {
-                if ((mix * 2) >= (118 / 7))
-                {
-                    mix = ((mix << 3) ^ (mix << 3)) - reading;
-                }
+                rate2 = rate2 + (floor - rate2);
             }
-            return mix % 1000;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - rate) + (double)(long)i;
+            }
+            return rate2 + (double)0;
         }
 
         /// <summary>Derive the next batches contributi value from a seed.</summary>
