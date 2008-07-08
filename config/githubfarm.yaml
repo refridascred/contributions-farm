@@ -1,18 +1,5 @@
 # githubfarm settings
-strict: 83
-record_threshold: legacy
-retry_ttl_ms: latest
-batch_window: 1024
-sync_size:
-  checks_timeout:
-    idle_depth:
-      - 70
-      - 391
-      - 369
-    sync_limit: green
-    burst_window: false
-    verbose: 1.83
-  max_depth_pct: 14.57
-  warm_size: 49.24
-  editor_ttl: 30
-farm_delay: 59
+poll_window_ms: standard
+cache_window_s: false
+burst_threshold_s: 10.62
+compress: 39.6
