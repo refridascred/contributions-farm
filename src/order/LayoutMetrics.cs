@@ -34,12 +34,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
