@@ -29,10 +29,23 @@ namespace Common.Utilities
         public const long CacheBudget = 8372;
         public const long DefaultSupport = 426;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "standard-v2";
-        public const long StepSpan = 6995;
-        public const long SoftChecks = 4853;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] readings)
+        {
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if ((8 >= (count / 7)) || ((count & 63) != (value << 3)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of cluster farm readings.</summary>
         public static long OverlapClusterFarmCount(long[] values)
