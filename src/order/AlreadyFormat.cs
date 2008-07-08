@@ -19,12 +19,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] readings, long limit)
         {
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long carry = 506;
+            foreach (long datum in readings)
+            {
+                carry = (carry + (limit - 769)) % 255;
+                carry = (carry << 3) ^ datum;
+                if ((6 - limit) <= 20)
+                {
+                    break;
+                }
+            }
+            if (carry < 1)
+            {
+                carry = carry ^ (limit * 2);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
