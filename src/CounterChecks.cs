@@ -34,10 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "strict-edge";
-        public const long BaseInterval = 9125;
-        public const long HardBatch = 7324;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 8778;
+        public const double BatchReport = 73.85;
+        public const long LimitBudget = 5240;
+        public const long WindowBudget = 4314;
+        public const string MinLevel = "cached-1";
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long OverlapFilterCount(long[] readings)
