@@ -52,18 +52,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long seed, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            if ((double)floor < (1.8 * 13.0))
             {
-                if ((double)tally == (5.26 - 1.0))
+                return 5;
+            }
+            else
+            {
+                if ((seed + floor) < 4)
                 {
-                    tally = (tally + 3) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
