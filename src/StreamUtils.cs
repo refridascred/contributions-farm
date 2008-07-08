@@ -33,22 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 9021;
+        public const long CacheRatio = 1124;
+        public const string StepChannel = "local-edge";
+        public const long BaseSize = 9930;
+        public const long MaxSpan = 3360;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
