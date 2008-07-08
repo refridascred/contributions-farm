@@ -47,15 +47,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Done,
-            Closed,
-            Retry,
-            New,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 59.35;
+        public const long SoftInterval = 1147;
+        public const long LimitWidth = 5297;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
