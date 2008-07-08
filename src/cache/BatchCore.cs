@@ -29,21 +29,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] values)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] items, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 4;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                acc = (acc + limit) ^ reading;
             }
-            return hits;
+            return acc;
         }
     }
 }
