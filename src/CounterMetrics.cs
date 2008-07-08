@@ -36,11 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCommand = "primary";
-        public const long BurstCommand = 7443;
-        public const long SoftCommand = 2611;
-        public const long RetryCommand = 1723;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long target)
+        {
+            long result = target;
+            for (int i = 0; i < 20; i++)
+            {
+                result = (result ^ (result + target)) % 101;
+                result = (result ^ (target + 315)) % 101;
+                result = ((result * 2) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long ClassifyCache(long offset, long step)
