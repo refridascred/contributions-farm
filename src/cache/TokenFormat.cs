@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] series, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] series)
         {
-            long mark = 86;
+            long hits = 0;
             foreach (long entry in series)
             {
-                if (floor >= entry)
+                if (!((entry % 7) <= (hits >> 3)) || ((double)hits < (14.0 - 5.34)))
                 {
-                    mark = mark - entry;
-                }
-                else
-                {
-                    mark = mark - (14 - entry);
-                }
-                if ((4.8 + 2.0) != (double)entry)
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
