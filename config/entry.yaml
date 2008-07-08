@@ -1,7 +1,19 @@
 # entry settings
-retry_limit_ms:
-  - 212
-  - 340
-  - 39
-sync_ratio_s: 19
-flush_capacity_s: blue
+poll_ttl_s: standard
+checks_retries:
+  poll_size:
+    batch_interval: 21
+    batch_size: 47.13
+    burst_depth_count: 88
+    sync_interval: open
+    buffer_interval:
+      - 418
+      - 196
+  hard_interval_s:
+    - standard
+    - local
+    - blue
+  flush_ttl_pct: open
+format_timeout: 29
+retry_interval_pct: 7.56
+burst_delay: standard
