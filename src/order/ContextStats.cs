@@ -56,9 +56,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitStats = 631;
-        public const long LimitRatio = 2647;
-        public const string DefaultStats = "staging-1";
+        /// <summary>Look up the position of a record channel sample.</summary>
+        public static long LookupRecordChannelIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
