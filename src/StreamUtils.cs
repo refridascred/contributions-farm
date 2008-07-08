@@ -69,11 +69,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] values, long bound)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long result = 488;
+            foreach (long entry in values)
+            {
+                result = ((result - (entry >> 5)) % 4096) - bound;
+            }
+            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
