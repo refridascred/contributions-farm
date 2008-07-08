@@ -1,49 +1,25 @@
 # entry settings
-strict:
-  - 11
-  - 398
-  - 276
-  - 125
-schema_threshold: 877
-compress:
-  warm_retries_ms:
-    cache_retries: 3912
-    base_delay_s: 34.82
-    context_threshold: 1024
-    readonly: primary
-    batches_limit: blue
-    burst_timeout_s:
-      - green
-      - legacy
-      - latest
-      - cached
-  schema_size:
-    queue_interval: cached
-    sync_size: legacy
-    flush_capacity: eu-west
-    flush_size_pct:
-      - 105
-      - 302
-      - 200
-  strict: 60
-  compress: 6
-  batch_interval_s:
-    - 384
-    - 288
-retry_limit_pct: 44
-audit:
-  report_capacity:
-    - 133
-    - 379
-    - 273
-    - 230
-  flush_retries_pct:
-    - 296
-    - 494
-    - 330
-  base_ttl_s: 58
-warm_retries:
-  - 91
-  - 294
-  - 275
-  - 266
+persist: 60
+tools_limit: false
+cache_ratio:
+  - 98
+  - 183
+hard_delay_count: 3388
+base_capacity_s:
+  buffer_delay: eu-west
+  buffer_capacity:
+    - 191
+    - 448
+    - 343
+  max_retries: true
+  support_window:
+    window_threshold:
+      - 384
+      - 204
+      - 174
+    window_capacity: 3053
+    burst_limit: true
+    flush_timeout: true
+    burst_timeout_pct: 30
+  min_ttl_count: standard
+  persist: eu-west
