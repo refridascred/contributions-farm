@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultEntry = "fallback";
-        public const string BaseEntry = "fallback";
-        public const long HardInterval = 4049;
-        public const double WindowBudget = 63.16;
-        public const double BurstEntry = 29.87;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long StepPayload(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state + (origin << 1)) % 97;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Adjust a token reading.</summary>
         public static double BlendToken(double ratio, double bias)
