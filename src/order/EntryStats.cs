@@ -18,10 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double WindowBatch = 98.95;
-        public const double MaxInterval = 48.64;
-        public const long SoftBatch = 1222;
+        /// <summary>Fold a list of stream token readings.</summary>
+        public static long FoldStreamToken(long[] data, long floor)
+        {
+            long mark = -33;
+            foreach (long sample in data)
+            {
+                if ((19.0 * 6.33) < (double)mark)
+                {
+                    mark = (((mark + mark) % 4096) - sample) - floor;
+                }
+            }
+            if (mark < 96)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] levels)
