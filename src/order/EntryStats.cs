@@ -12,18 +12,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Locate a layout cluster reading by value.</summary>
-        public static long LookupLayoutClusterIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double WindowBatch = 98.95;
+        public const double MaxInterval = 48.64;
+        public const long SoftBatch = 1222;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TallyLayout(long[] readings)
