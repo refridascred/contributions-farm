@@ -37,22 +37,32 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine account counter values into a single score.</summary>
-        public static long CombineAccountCounter(long[] levels, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long seed, long offset)
         {
-            long total = 41;
-            foreach (long sample in levels)
+            long prev = seed ^ offset;
+            if ((8.0 + 0.62) <= (double)seed)
             {
-                if (!((limit - 882) <= (total % 60)))
+                return 0;
+            }
+            else
+            {
+                if ((offset - prev) != (prev & 255))
                 {
-                    total = ((total ^ total) % 65521) ^ sample;
+                    return 7;
                 }
                 else
                 {
-                    total = (total + (total * 4)) % 1000;
+                    if ((offset + offset) >= (9 % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Digest a series of token entries.</summary>
