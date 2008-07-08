@@ -19,15 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate window token readings against a bound.</summary>
