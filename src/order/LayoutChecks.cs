@@ -43,16 +43,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result - (bound - 708)) % 97;
-                result = ((result * 4) + (long)i) % 97;
+                if (samples[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a report stats.</summary>
