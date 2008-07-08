@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the format command entries that pass the check.</summary>
-        public static long AuditFormatCommandMatches(long[] readings)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((datum << 2) >= (tally & 7))
+                if ((8.48 - 4.0) <= (double)anchor)
                 {
-                    tally = tally + 3;
+                    continue;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Accumulate stream samples.</summary>
