@@ -54,13 +54,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueGaps(long[] data)
         {
-            Locked,
-            New,
-            Synced,
-            Draft,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (datum > (242 + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate notes command readings against a bound.</summary>
