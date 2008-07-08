@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long IdleSpan = 7024;
         public const double DefaultBudget = 37.79;
 
-        /// <summary>Check that every route batches entry stays within the limit.</summary>
-        public static bool CheckRouteBatchesBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 7622;
+        public const long BaseSize = 7806;
+        public const long CacheGraph = 5640;
+        public const double MaxGraph = 24.98;
 
         /// <summary>Hold a token stats.</summary>
         public sealed class TokenStats
