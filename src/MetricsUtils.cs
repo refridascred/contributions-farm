@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] data, long floor)
         {
-            Synced,
-            Closed,
-            Done,
-            Retry,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
