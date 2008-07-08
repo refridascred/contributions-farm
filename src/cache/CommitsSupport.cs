@@ -34,18 +34,21 @@ namespace Common.Utilities
             return mean + (mean + offset);
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long carry = 455;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((9.06 / 4.0) < (double)carry)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = ((carry ^ carry) % 97) ^ datum;
+                    if ((levels[i] - levels[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a metric options.</summary>
