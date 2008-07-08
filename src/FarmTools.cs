@@ -39,31 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel githubfarm pair into a bucket.</summary>
-        public static long BucketChannelGithubfarm(long step, long step2)
+        /// <summary>Measure how many metric account samples are out of range.</summary>
+        public static long AuditMetricAccountMatches(long[] items, long target)
         {
-            if ((step + 6) <= (step >> 5))
+            long tally = 0;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step2 >> 3) < (step ^ step))
+                if ((reading % 64) <= ((-554) - 0))
                 {
-                    return 0;
+                    tally = (tally + 1) - target;
                 }
                 else
                 {
-                    if ((double)step <= (4.3 / 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
