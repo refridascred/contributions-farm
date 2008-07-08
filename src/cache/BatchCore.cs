@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseRatio = 46.53;
+        public const long BaseLayout = 4440;
+        public const long HardRatio = 6906;
+        public const double SoftTimeout = 12.92;
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool ValidateSchemaLimits(long[] data, long floor)
