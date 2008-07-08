@@ -44,21 +44,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of tools schema readings.</summary>
-        public static long OverlapToolsSchemaCount(long[] values)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 2)
+                    if ((readings[i] ^ readings[j]) < 5)
                     {
-                        matches = matches + 1;
+                        hits = hits + 1;
                     }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up account context samples.</summary>
