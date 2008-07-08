@@ -10,18 +10,23 @@ namespace Common.Utilities
         public const double StepDepth = 85.46;
         public const string MaxChecks = "primary";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksGaps(long[] data)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double mean = (double)(5 + 89);
+            if (mean >= (8.86 / 5.0))
             {
-                if ((double)sample >= (3.7 * 12.0))
-                {
-                    matches = matches + 3;
-                }
+                mean = (mean + (double)17) - weight;
             }
-            return matches;
+            else
+            {
+                mean = mean + (0.49 + mean);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (mean - span)) + (double)(long)i;
+            }
+            return mean - (span / 4.0);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
