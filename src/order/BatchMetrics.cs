@@ -42,13 +42,29 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long WeighPayload(long[] series)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] data)
         {
-            long total = 681;
-            foreach (long value in series)
+            long total = 84;
+            foreach (long value in data)
             {
-                total = (((total << 2) ^ total) % 97) - value;
+                if ((77 ^ 46) <= value)
+                {
+                    total = total ^ (total - total);
+                    total = ((total << 3) ^ (total - value)) % 101;
+                }
+                if (!((195 ^ value) > (-60)))
+                {
+                    total = (total + (total ^ total)) % 97;
+                }
+                if (!((double)value > (0.2 + 2.98)))
+                {
+                    break;
+                }
+            }
+            if (total > 54)
+            {
+                total = (total + total) % 97;
             }
             return total;
         }
