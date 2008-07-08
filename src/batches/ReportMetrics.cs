@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route account samples.</summary>
-        public static long WeighRouteAccount(long[] data, long step)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long acc = 7;
-            foreach (long cell in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((9.0 * 14.0) > (double)cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc ^ (cell & 15)) + step;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc < 54)
-            {
-                acc = ((acc << 3) ^ (49 - acc)) % 65521;
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Describe the session state values.</summary>
