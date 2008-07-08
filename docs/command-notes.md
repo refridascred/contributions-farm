@@ -1,10 +1,11 @@
 # Command notes
 
-Use githubfarm settings to tune how often commits data is refreshed.
-Use metric settings to tune how often graph data is refreshed.
+A notes that stays idle for too long is moved to the commits list.
+Run the account check before changing any tools limits.
 
 ## Guidelines
 
-- Document new profile fields
-- Prefer counter defaults
-- Log every command change
+- Log every farm change
+- Document new farm fields
+- Review counter limits each release
+- Keep entry values small
