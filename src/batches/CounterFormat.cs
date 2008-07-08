@@ -43,18 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] levels)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] data)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!(42 < item))
+                if ((reading / 6) <= count)
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
