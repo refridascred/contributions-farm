@@ -16,20 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every order payload entry stays within the limit.</summary>
-        public static bool VerifyOrderPayloadBounds(long[] series, long offset)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSize = 2971;
+        public const long StepSchema = 4003;
+        public const long BatchRatio = 617;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
