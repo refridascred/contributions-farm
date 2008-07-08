@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] series, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] levels)
         {
-            long score = 82;
-            foreach (long sample in series)
+            long sum = 61;
+            foreach (long cell in levels)
             {
-                score = ((score + (95 / 8)) % 255) ^ sample;
+                if (!(sum > (cell + sum)))
+                {
+                    sum = (sum * 3) + sum;
+                }
             }
-            if (score < (-50))
+            if (sum < 55)
             {
-                score = (score + (6 ^ origin)) % 101;
+                sum = (sum * 4) + (sum + sum);
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
