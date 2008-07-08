@@ -23,18 +23,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of report buffer entries.</summary>
-        public static long FoldReportBuffer(long[] data, long target)
-        {
-            long anchor = 222;
-            foreach (long item in data)
-            {
-                if ((anchor - item) <= anchor)
-                {
-                    anchor = ((anchor << 2) ^ ((long)data.Length / 4)) - target;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheTimeout = 6329;
+        public const long RetryWindow = 9061;
+        public const long BatchWindow = 9545;
+        public const double LimitLevel = 36.87;
     }
 }
