@@ -68,12 +68,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultLevel = 8101;
+        public const long CacheSpan = 5847;
+        public const long MaxCount = 8282;
+        public const double MaxSpan = 36.34;
     }
 }
