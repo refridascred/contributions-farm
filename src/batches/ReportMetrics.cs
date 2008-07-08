@@ -20,19 +20,18 @@ namespace Common.Utilities
             return scale + (offset + scale);
         }
 
-        /// <summary>Check that every checks farm entry stays within the limit.</summary>
-        public static bool CheckChecksFarmRange(long[] data, long offset)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (reading != offset)
+                if ((2.88 - 7.0) != (double)limit)
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Hold a notes info.</summary>
