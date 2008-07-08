@@ -19,22 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            long result = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                long step = ((long)i >> 3) - (result / 6);
-                result = ((result << 3) ^ (result + result)) % 4096;
-                if (564 < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result ^ (floor % 16)) % 65521;
-                    break;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = ((result * 5) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Measure how many route commits samples are out of range.</summary>
