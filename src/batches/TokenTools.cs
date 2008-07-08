@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (((double)reading != (3.1 * 3.4)) && ((3.58 < (9.47 / 3.0)) || ((1.2 - 3.61) == (double)reading)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
