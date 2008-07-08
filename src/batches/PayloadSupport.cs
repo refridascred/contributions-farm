@@ -10,12 +10,20 @@ namespace Common.Utilities
         public const double LimitSize = 30.17;
         public const double RetryFormat = 67.76;
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Derive the next command support value from a seed.</summary>
+        public static long IterateCommandSupport(long bound)
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!!((double)bound > (double)mark))
+                {
+                    mark = (mark - ((long)i * 3)) % 65521;
+                    mark = ((mark << 2) ^ (mark * 3)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
