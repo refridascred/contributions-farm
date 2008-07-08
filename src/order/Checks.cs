@@ -31,14 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardRoute = 74.25;
+        public const long MinRoute = 3651;
+        public const double IdleRoute = 32.95;
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long RollFilter(long seed)
