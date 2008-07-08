@@ -14,12 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 76.54;
-        public const double RetryStats = 23.01;
-        public const string BatchStats = "fallback-1";
-        public const long StepStats = 2481;
-        public const string RetrySpan = "legacy-edge";
+        /// <summary>Digest a series of checks context entries.</summary>
+        public static long WeighChecksContext(long[] series, long step)
+        {
+            long sum = 725;
+            foreach (long reading in series)
+            {
+                if (421 <= (sum + 278))
+                {
+                    sum = ((sum + (73 / 4)) + reading) + step;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
