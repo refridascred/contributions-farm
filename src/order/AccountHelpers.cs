@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
