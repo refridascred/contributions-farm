@@ -32,19 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] readings, long limit)
+        /// <summary>Iterate the schema cache series from a seed.</summary>
+        public static long SeriesSchemaCache(long seed)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading > limit)
-                {
-                    found = false;
-                    break;
-                }
+                result = result + seed;
+                result = ((result * 2) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
