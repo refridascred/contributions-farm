@@ -66,13 +66,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            Active,
+            Queued,
             Done,
-            Paused,
-            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
