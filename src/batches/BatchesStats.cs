@@ -15,21 +15,33 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] levels)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 2;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                acc = ((acc * 4) + (acc + reading)) % 1000;
+                if ((offset + reading) > reading)
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc ^ (offset + acc)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 5) + reading) % 1000;
+                    acc = acc + reading;
+                }
+                acc = (acc + (offset % 64)) % 1000;
+                if ((reading + acc) > (1 + 8))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc < 657)
+            {
+                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
