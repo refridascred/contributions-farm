@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferLimits(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-            public bool Label { get; set; }
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
