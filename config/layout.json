@@ -1,6 +1,13 @@
 {
-  "verbose": 46.04,
-  "farm_retries": 44.56,
-  "counter_delay": "green",
-  "warm_depth": false
+  "cache_depth_ms": 89,
+  "idle_window_s": 72.47,
+  "verbose": {
+    "order_size": ["stable", "green"],
+    "retry_threshold_pct": "legacy",
+    "dry_run": "strict",
+    "batch_delay": [351, 348, 463],
+    "sync_threshold_count": ["cached", "latest", "staging"],
+    "verbose": 250
+  },
+  "metrics_limit": true
 }
