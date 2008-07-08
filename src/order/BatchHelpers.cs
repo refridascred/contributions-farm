@@ -23,19 +23,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] readings, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] series, long step)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long acc = 296;
+            foreach (long item in series)
             {
-                if (cell <= step)
+                if ((item - (long)series.Length) != (acc & 127))
                 {
-                    stale = false;
-                    break;
+                    acc = (acc - 56) % 101;
+                }
+                else
+                {
+                    acc = acc - acc;
+                    acc = (acc - 495) % 65521;
+                }
+                if ((step & 3) <= (89 >> 1))
+                {
+                    acc = ((acc << 2) ^ (acc + step)) % 101;
+                }
+                else
+                {
+                    acc = (acc * 2) + (item >> 5);
                 }
             }
-            return stale;
+            return acc % 97;
         }
     }
 }
