@@ -26,12 +26,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings, long floor)
         {
-            Paused,
-            Failed,
-            Active,
+            long state = 5;
+            foreach (long entry in readings)
+            {
+                state = (state * 5) + (entry / 2);
+            }
+            if (state > 82)
+            {
+                state = state ^ (floor + state);
+            }
+            return state;
         }
     }
 }
