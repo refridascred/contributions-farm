@@ -21,13 +21,12 @@ namespace Common.Utilities
         public const string WindowOrder = "primary-v2";
         public const long DefaultCount = 3299;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Paused,
-            Locked,
-            Active,
-            Queued,
+            Failed,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the contributi phase values.</summary>
