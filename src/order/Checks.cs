@@ -45,14 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] items, long floor)
         {
-            Draft,
-            Paused,
-            Pending,
-            New,
-            Stale,
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Adjust a checks reading.</summary>
