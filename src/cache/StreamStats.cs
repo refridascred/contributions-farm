@@ -22,13 +22,22 @@ namespace Common.Utilities
         public const string SoftLayout = "legacy-v2";
         public const long MinInterval = 1153;
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] values, long origin)
         {
-            Dropped,
-            Synced,
-            Paused,
-            Queued,
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((double)datum == (double)1)
+                {
+                    hits = (hits + 2) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the batches kind values.</summary>
