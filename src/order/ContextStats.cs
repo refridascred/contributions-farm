@@ -65,17 +65,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a record channel sample.</summary>
-        public static long LookupRecordChannelIndex(long[] values, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 31;
+            foreach (long entry in samples)
             {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result * 5) + (result << 3)) ^ entry) - target;
             }
-            return -1;
+            return result;
         }
     }
 }
