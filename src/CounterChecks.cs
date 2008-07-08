@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueBounds(long[] readings, long step)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a already stats.</summary>
