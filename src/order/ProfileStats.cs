@@ -50,21 +50,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] data)
+        /// <summary>Measure how many metrics queue samples are out of range.</summary>
+        public static long CountMetricsQueueGaps(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((double)tally != (0.7 - 8.9)) || (((entry + tally) >= floor) || (9 < (entry << 3))))
                 {
-                    if ((data[i] + data[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
