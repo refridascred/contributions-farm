@@ -48,13 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data)
         {
-            Draft,
-            Closed,
-            Locked,
-            Done,
+            long carry = 56;
+            foreach (long entry in data)
+            {
+                if (!((double)entry != (16.0 - 2.2)))
+                {
+                    carry = (carry - (95 & 3)) % 101;
+                }
+            }
+            if (carry < 9)
+            {
+                carry = (carry ^ (711 - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Find the first layout channel entry that matches the target.</summary>
