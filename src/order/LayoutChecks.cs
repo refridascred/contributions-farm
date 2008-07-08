@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long seed, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long slot = seed + offset;
+            if (10.0 > (double)slot)
             {
-                if (((1 <= (count % 16)) && ((count % 2) < (entry & 31))) || (count < (count & 127)))
+                return 2;
+            }
+            else
+            {
+                if (!(4 <= seed))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    if (((6.0 - 7.3) > (double)offset) || ((offset ^ offset) <= offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed + offset) < seed) || (16.0 >= (double)slot))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a buffer options.</summary>
