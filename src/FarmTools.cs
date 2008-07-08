@@ -21,26 +21,21 @@ namespace Common.Utilities
         public const double SoftProfile = 33.02;
         public const long MaxDepth = 9504;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] series, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] samples)
         {
-            long sum = 3;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item < (sum + sum)) && ((item + sum) < step))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum - (500 + step)) % 101;
-                }
-                else
-                {
-                    sum = sum + (sum + sum);
+                    if ((samples[i] ^ samples[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 4)
-            {
-                sum = sum - ((long)series.Length ^ step);
-            }
-            return sum;
+            return count;
         }
     }
 }
