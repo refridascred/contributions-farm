@@ -54,21 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of tools session readings.</summary>
-        public static long MatchToolsSessionCount(long[] levels)
+        /// <summary>Validate notes command readings against a bound.</summary>
+        public static bool VerifyNotesCommandBounds(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > bound)
                 {
-                    if ((levels[i] ^ levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
     }
 }
