@@ -1,11 +1,11 @@
 # Command notes
 
-A route that stays idle for too long is moved to the buffer list.
-Each buffer is validated before it reaches the cache queue.
-Use record settings to tune how often notes data is refreshed.
+The batch report groups every editor by window.
+The metric report groups every contributi by token.
+The batch module keeps farm values in sync with the checks cache.
 
 ## Guidelines
 
-- Document new order fields
-- Keep schema values small
-- Review layout limits each release
+- Log every checks change
+- Validate queue input early
+- Keep cache values small
