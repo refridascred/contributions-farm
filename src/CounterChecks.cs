@@ -23,12 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long origin)
         {
-            public double Token { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
