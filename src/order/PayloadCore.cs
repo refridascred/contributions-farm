@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long bound, long floor)
         {
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long delta = bound - floor;
+            if (((double)floor == (double)bound) && ((floor - (-8)) > (delta >> 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(floor <= (delta << 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
