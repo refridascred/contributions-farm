@@ -5,27 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] samples)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long bound, long bound2)
         {
-            long mix = 730;
-            foreach (long entry in samples)
+            long span = bound - bound2;
+            if (((span / 4) != (bound + bound)) || ((span / 4) <= (span + 17)))
             {
-                if ((entry << 1) > (mix - 9))
+                return 7;
+            }
+            else
+            {
+                if (span >= (bound << 1))
                 {
-                    mix = (mix << 3) ^ (entry >> 1);
-                    mix = (mix - (mix << 2)) % 4096;
+                    return 0;
                 }
-                if ((mix + mix) > mix)
+                else
                 {
-                    mix = ((mix << 2) ^ (15 + entry)) % 97;
+                    if ((8.55 / 2.0) >= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (mix > 765)
-            {
-                mix = (mix << 3) ^ (mix / 9);
-            }
-            return mix;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
