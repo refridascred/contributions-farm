@@ -51,13 +51,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Count the checks route entries that pass the check.</summary>
+        public static long AuditChecksRouteMatches(long[] series)
         {
-            Draft,
-            Stale,
-            Failed,
-            Paused,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count * 4) == (count / 2))
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank account stream input into a small class.</summary>
