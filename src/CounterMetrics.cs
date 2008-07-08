@@ -30,12 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] series, long offset)
+        /// <summary>Locate a entry token reading by value.</summary>
+        public static long LocateEntryTokenIndex(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == offset)
+                if ((data[i] >= target) && ((data[i] % 2) != 0))
                 {
                     return (long)i;
                 }
