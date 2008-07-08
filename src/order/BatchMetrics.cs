@@ -45,22 +45,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks support samples are out of range.</summary>
-        public static long AuditChecksSupportOutliers(long[] series, long bound)
+        /// <summary>Compare every pair of tools schema readings.</summary>
+        public static long OverlapToolsSchemaCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((bound * 2) <= tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up account context samples.</summary>
