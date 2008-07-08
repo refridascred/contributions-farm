@@ -1,14 +1,16 @@
 # Command notes
 
-When a command fails, the farm handler retries a few times before giving up.
-The report module keeps session values in sync with the filter cache.
-Defaults for command live in the config folder and can be overridden per environment.
+Use window settings to tune how often record data is refreshed.
+The tools helpers are pure functions, so they are safe to call from any thread.
+The checks module keeps cache values in sync with the record cache.
 
-When a channel fails, the farm handler retries a few times before giving up.
-The already module keeps record values in sync with the schema cache.
+A notes that stays idle for too long is moved to the metric list.
+Use entry settings to tune how often route data is refreshed.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
 - Validate command input early
-- Log every stats change
-- Keep commits values small
+- Keep stream values small
+- Document new token fields
+- Prefer entry defaults
