@@ -1,11 +1,14 @@
 # Command notes
 
-The queue module keeps filter values in sync with the already cache.
-A filter that stays idle for too long is moved to the window list.
+A channel that stays idle for too long is moved to the stats list.
+Keep cache and channel names short and lowercase.
+
+Use batch settings to tune how often account data is refreshed.
+Use account settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate order input early
-- Review batches limits each release
-- Document new context fields
+- Keep route values small
+- Document new token fields
+- Review account limits each release
+- Log every order change
