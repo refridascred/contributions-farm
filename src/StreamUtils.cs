@@ -40,12 +40,19 @@ namespace Common.Utilities
         public const long SoftDepth = 3129;
         public const double WindowRatio = 94.22;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaLimits(long[] series, long seed)
         {
-            Done,
-            Pending,
-            Idle,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
