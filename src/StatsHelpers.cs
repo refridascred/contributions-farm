@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
+            Draft,
+            Idle,
+            Active,
+            Paused,
         }
 
         /// <summary>Audit batches tools readings against a rule.</summary>
