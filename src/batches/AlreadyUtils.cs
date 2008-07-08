@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long SeriesCache(long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                long delta = 62;
-                if (((double)offset <= (3.0 + 1.72)) || (mix < delta))
+                if ((double)offset > (16.0 / 4.0))
                 {
-                    delta = ((delta * 2) + (605 ^ offset)) % 65521;
+                    tally = (tally + 3) + datum;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Combine record values into a single score.</summary>
