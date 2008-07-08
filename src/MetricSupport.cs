@@ -25,12 +25,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Done,
-            Queued,
-            Ready,
+            Idle,
+            Active,
+            Failed,
+            Paused,
         }
     }
 }
