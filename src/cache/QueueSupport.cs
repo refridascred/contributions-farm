@@ -24,17 +24,22 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long target)
+        /// <summary>Fold a list of channel checks readings.</summary>
+        public static long FoldChannelChecks(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = -7;
+            foreach (long sample in levels)
             {
-                if (items[i] >= target)
+                if ((carry + sample) > carry)
                 {
-                    return (long)i;
+                    break;
+                }
+                if (target >= (carry << 3))
+                {
+                    carry = carry + carry;
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
