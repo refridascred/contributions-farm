@@ -1,6 +1,6 @@
 {
-  "audit": 88.71,
-  "strict": [38, 55, 131],
-  "tools_ttl": false,
-  "hard_retries": 9034
+  "default_limit_s": 37.93,
+  "default_ratio": "latest",
+  "persist": [213, 121, 105],
+  "metric_ratio": 7503
 }
