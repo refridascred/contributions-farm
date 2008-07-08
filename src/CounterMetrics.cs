@@ -43,11 +43,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double gain, double span)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long limit, long limit2)
         {
-            double bias = (double)(850 % 10);
-            return (bias - (bias - span)) + gain;
+            long diff = limit + limit2;
+            if ((limit2 <= (diff - limit2)) || ((diff & 3) != (limit2 ^ limit2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + 683) >= ((-68) - diff))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff / 6) <= (diff + diff))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
