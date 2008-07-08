@@ -16,22 +16,14 @@ namespace Common.Utilities
             return bias + gain;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long total = 567;
-            foreach (long entry in data)
-            {
-                if ((entry << 3) >= entry)
-                {
-                    total = ((total << 3) ^ (4 / 5)) % 65521;
-                }
-            }
-            if (total < 837)
-            {
-                total = (total * 5) + (long)data.Length;
-            }
-            return total;
+            New,
+            Dropped,
+            Closed,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
