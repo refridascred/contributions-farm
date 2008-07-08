@@ -65,39 +65,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long floor)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long delta = target - floor;
-            if (delta > (target % 60))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((((-3) ^ floor) > (floor / 7)) || ((double)delta < 7.0))
+                if ((double)sample == (1.0 - 16.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.07 * 19.0) < (double)delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (38 >= (floor >> 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
