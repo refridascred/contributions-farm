@@ -40,22 +40,14 @@ namespace Common.Utilities
         public const long RetryRatio = 7089;
         public const long MinEntry = 2247;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteHits(long[] levels)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (seen < entry)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            New,
+            Pending,
+            Failed,
         }
 
         /// <summary>Describe the tools phase values.</summary>
