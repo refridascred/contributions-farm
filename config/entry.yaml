@@ -1,52 +1,26 @@
 # entry settings
-default_ttl_s: 16.61
-counter_limit: 30
-support_window: latest
-sync_ttl:
-  soft_ratio_s:
-    - green
+entry_interval: 72.1
+cluster_ttl: 91
+idle_ttl_s:
+  idle_depth_count: 60.76
+  account_delay:
+    sync_window_pct: 93
+    base_threshold: 77.45
+    context_ttl: 2567
+    poll_threshold_pct: 60
+  burst_ratio_ms: 1024
+soft_interval: 3944
+enabled: 30
+hard_size_count:
+  notes_ttl: strict
+  flush_timeout_count: 7673
+  idle_retries_ms: legacy
+  cache_retries:
+    - staging
     - legacy
     - standard
-  enabled: 1378
-  verbose: false
-  base_retries_s:
-    profile_ttl: 96
-    batch_size:
-      - primary
-      - green
-      - blue
-    poll_timeout: 60
-  flush_ttl: 2259
-  warm_delay_s:
-    channel_window: 6170
-    layout_retries:
-      - fallback
-      - cached
-      - cached
-    soft_delay_count:
-      - cached
-      - latest
-layout_ratio:
-  flush_window:
-    - blue
-    - green
-    - blue
-  max_timeout_ms:
-    - blue
-    - legacy
-    - eu-west
-    - green
-  max_ttl_count: green
-  cache_limit:
-    min_retries_pct: 43.89
-    readonly: true
-    command_window: true
-    audit: 5459
-    min_ttl_pct: 9.35
-    warm_depth_s: true
-  enabled:
-    - 89
-    - 137
-    - 207
-    - 305
-  route_delay: 100
+    - latest
+  flush_ratio_pct:
+    - 145
+    - 215
+    - 38
