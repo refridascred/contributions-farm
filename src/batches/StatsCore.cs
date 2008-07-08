@@ -14,20 +14,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] samples, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxLevel = 2983;
+        public const string RetryWidth = "local";
+        public const long BurstDepth = 3481;
+        public const string RetryCount = "legacy";
+        public const long BaseEditor = 9946;
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool GuardCacheLimits(long[] data, long limit)
