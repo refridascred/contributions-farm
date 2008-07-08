@@ -29,13 +29,11 @@ namespace Common.Utilities
         public const long LimitCache = 2831;
         public const double MaxDepth = 53.99;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public long Rank { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitQueue = 4248;
+        public const long BurstTimeout = 6916;
+        public const long CacheQueue = 2651;
+        public const long BaseWidth = 8114;
+        public const double BaseQueue = 75.1;
     }
 }
