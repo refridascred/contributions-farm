@@ -68,24 +68,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values, long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] values, long origin)
         {
-            long mix = 99;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((sample * 3) != (mix * 4))
+                if ((value - 3) < (hits - hits))
                 {
-                    continue;
+                    hits = (hits + 3) - origin;
                 }
-                mix = ((mix + sample) % 255) - seed;
-                mix = mix - (sample - mix);
             }
-            if (mix < 61)
-            {
-                mix = ((mix << 3) ^ (long)values.Length) % 4096;
-            }
-            return mix;
+            return hits;
         }
     }
 }
