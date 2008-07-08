@@ -32,18 +32,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a tools metric reading by value.</summary>
-        public static long SeekToolsMetricIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 77;
+        public const string LimitDepth = "local-1";
+        public const string BurstBatch = "staging-1";
+        public const string StepBatch = "standard-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long LimitSize = 3334;
