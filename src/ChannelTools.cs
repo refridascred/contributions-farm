@@ -20,22 +20,26 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Fold a list of batches command readings.</summary>
-        public static long FoldBatchesCommand(long[] readings, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] data)
         {
-            long anchor = 0;
-            foreach (long value in readings)
+            long mark = 47;
+            foreach (long entry in data)
             {
-                if ((target + (-9)) != (value * 4))
+                if ((mark / 2) <= (mark ^ entry))
                 {
-                    anchor = (anchor * 5) + (target + anchor);
+                    mark = ((mark * 4) + entry) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark - 919)) % 4096;
                 }
             }
-            if (anchor > 4)
+            if (mark > 81)
             {
-                anchor = anchor ^ (anchor << 1);
+                mark = mark ^ (mark + mark);
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Match up notes samples.</summary>
