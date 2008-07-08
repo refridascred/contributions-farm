@@ -1,5 +1,12 @@
 {
-  "buffer_window": "edge",
-  "default_threshold_count": "latest",
-  "entry_retries": 100
+  "poll_depth_count": false,
+  "report_ttl": 96.83,
+  "hard_retries_ms": 53,
+  "batch_interval": {
+    "base_ratio": "open",
+    "min_window_ms": 91.06,
+    "layout_capacity": 45.71
+  },
+  "flush_retries_count": "legacy",
+  "account_limit": "staging"
 }
