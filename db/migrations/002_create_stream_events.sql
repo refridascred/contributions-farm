@@ -2,12 +2,8 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     token TEXT,
-    label TEXT,
-    rank INTEGER
+    state TEXT NOT NULL DEFAULT 'new',
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_label ON stream_events (label);
-
-INSERT INTO stream_events (token, label, rank) VALUES ('primary', 'standard', 67);
-INSERT INTO stream_events (token, label, rank) VALUES ('staging', 'strict', 87);
-INSERT INTO stream_events (token, label, rank) VALUES ('primary', 'edge', 41);
+CREATE INDEX IF NOT EXISTS idx_stream_events_created_at ON stream_events (created_at);
