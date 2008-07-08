@@ -48,38 +48,17 @@ namespace Common.Utilities
             return ratio + 6.91;
         }
 
-        /// <summary>Rank contributi cluster input into a small class.</summary>
-        public static long RankContributiCluster(long bound, long limit)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LocateWindowIndex(long[] data, long bound)
         {
-            if ((double)bound != (5.0 * 1.82))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit <= (limit * 5)) && ((double)limit != (4.9 * 3.9)))
+                if (data[i] >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((limit + bound) > (limit - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (18.0 >= (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the report mode values.</summary>
