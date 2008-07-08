@@ -16,31 +16,21 @@ namespace Common.Utilities
             return ratio + (double)65;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long offset, long floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] levels)
         {
-            if ((offset - offset) > (offset - 160))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset + 88) < floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor % 24) < (floor % 2))
+                    if ((levels[i] - levels[j]) > 11)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
