@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - seen) >= (seen - 9))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double rate = (double)((-9) + 0);
+            return ((rate - (double)60) + gain) + offset;
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
