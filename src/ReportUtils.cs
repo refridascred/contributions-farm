@@ -28,14 +28,13 @@ namespace Common.Utilities
         public const long StepQueue = 7533;
         public const long WindowQueue = 1407;
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Synced,
-            Pending,
-            New,
-            Active,
-            Ready,
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
