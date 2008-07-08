@@ -1,5 +1,5 @@
 {
-  "base_retries": 30,
-  "sync_limit_pct": 34.3,
-  "idle_ttl": false
+  "payload_timeout": true,
+  "contributi_capacity": "standard",
+  "already_window": "latest"
 }
