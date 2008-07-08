@@ -99,26 +99,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] readings, long step)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long mark = 625;
-            foreach (long sample in readings)
-            {
-                if (sample >= (sample % 12))
-                {
-                    mark = mark - (sample >> 1);
-                }
-                else
-                {
-                    mark = (mark << 2) ^ (step + step);
-                }
-                if (((-2) >= (mark + step)) && ((step >> 4) < step))
-                {
-                    break;
-                }
-            }
-            return mark % 4096;
+            Retry,
+            Pending,
+            Active,
+            Synced,
+            Ready,
         }
     }
 }
