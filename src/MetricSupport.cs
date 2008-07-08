@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((step + acc) >= (acc / 5))
-                {
-                    acc = ((acc * 2) + (1 + step)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (step - step)) % 255;
-                }
-                acc = (acc ^ (30 & 7)) % 65521;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine profile cluster values into a single score.</summary>
