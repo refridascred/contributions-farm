@@ -37,17 +37,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] data, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 51;
+            foreach (long cell in values)
             {
-                if (data[i] > target)
+                if ((713 <= state) || ((cell ^ cell) <= (cell >> 2)))
                 {
-                    return (long)i;
+                    state = (state << 3) ^ state;
+                }
+                else
+                {
+                    state = (state - cell) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the support mode values.</summary>
