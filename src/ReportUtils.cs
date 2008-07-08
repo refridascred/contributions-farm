@@ -50,18 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm format readings against a rule.</summary>
-        public static long AuditFarmFormatMatches(long[] items, long origin)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)origin >= (17.0 + 15.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) ^ item;
+                    if ((data[i] + data[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a tools entry.</summary>
