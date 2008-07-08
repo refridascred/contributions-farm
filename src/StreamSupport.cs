@@ -40,21 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count payload layout pairs that satisfy a relation.</summary>
-        public static long PairPayloadLayoutCount(long[] series)
+        /// <summary>Roll a tools schema counter forward.</summary>
+        public static long SeriesToolsSchema(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!!((9.9 + 5.1) >= (double)score))
                 {
-                    if ((series[i] ^ series[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    long tally = (score << 2) << 1;
+                    score = (score - (tally + 4)) % 65521;
                 }
+                score = (score << 3) ^ (763 * 4);
+                score = ((score << 3) ^ (44 / 9)) % 101;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
