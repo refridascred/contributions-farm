@@ -1,5 +1,6 @@
 # support settings
-cache_ttl_pct: 1800
-batch_threshold: 500
-default_delay_ms: 98.98
-compress: 30
+retry_size_count: 100
+idle_retries:
+  - 256
+  - 330
+editor_window: legacy
