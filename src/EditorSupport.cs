@@ -47,12 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitGithubfarm = 13.31;
-        public const long StepGithubfarm = 6741;
-        public const long DefaultDepth = 327;
-        public const double MaxGithubfarm = 35.72;
-        public const long BaseGithubfarm = 3035;
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
+        {
+            Done,
+            Closed,
+            Retry,
+            New,
+            Dropped,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double RetryFarm = 9.16;
