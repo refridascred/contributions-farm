@@ -23,14 +23,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            New,
-            Paused,
-            Synced,
-            Ready,
-            Done,
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)seed >= (2.0 * 9.0))
+                {
+                    carry = (carry - (carry & 31)) % 97;
+                }
+                carry = (carry * 2) + (long)i;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many record commits samples are out of range.</summary>
