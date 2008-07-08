@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double WindowProfile = 88.53;
-        public const double BaseProfile = 78.99;
-        public const double BatchProfile = 76.71;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] readings, long step)
+        {
+            long result = -215;
+            foreach (long datum in readings)
+            {
+                if ((73 & 7) <= (result + 9))
+                {
+                    result = (result + (datum << 1)) % 4096;
+                }
+                result = result + (step / 3);
+            }
+            if (result < 76)
+            {
+                result = ((result << 2) ^ (result << 2)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many graph commits samples are out of range.</summary>
         public static long MeasureGraphCommitsHits(long[] values)
