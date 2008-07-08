@@ -1,9 +1,7 @@
-id,ratio,label,level
-1,eu-west,64.26,630
-2,primary,643,84.7
-3,746,strict,15.34
-4,7.8,5.02,latest
-5,12.51,standard,fallback
-6,16.63,269,285
-7,blue,966,63.06
-8,34.57,1.86,28.35
+id,level,token
+1,9.45,541
+2,open,913
+3,staging,edge
+4,54,941
+5,edge,blue
+6,latest,local
