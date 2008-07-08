@@ -1,13 +1,25 @@
 # support settings
-flush_depth_ms:
-  - 280
-  - 440
-  - 57
-burst_ttl_ms: fallback
-cache_ratio_pct:
-  audit: 33.32
-  cache_depth_count:
-    - 277
-    - 440
-  verbose: true
-  retry_capacity: 1024
+poll_ttl_pct:
+  enabled: primary
+  batch_capacity:
+    - 319
+    - 4
+    - 3
+    - 265
+  verbose: false
+  min_capacity_s: 5.13
+  idle_ttl_ms:
+    - open
+    - staging
+    - latest
+    - legacy
+  queue_ratio: 30
+filter_timeout: 577
+retry_delay: open
+stream_size:
+  - strict
+  - blue
+  - local
+  - edge
+readonly: 100
+poll_threshold_pct: 9434
