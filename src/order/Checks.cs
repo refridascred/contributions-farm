@@ -32,16 +32,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state ^ ((long)i + floor)) % 1000;
-                state = ((state * 4) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
