@@ -39,12 +39,12 @@ namespace Common.Utilities
         public const double WindowSize = 93.73;
         public const double MinScore = 42.8;
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
-        {
-            public string Level { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 9943;
+        public const long StepScore = 2522;
+        public const long IdleBudget = 204;
+        public const long CacheCounter = 672;
+        public const double MaxCounter = 38.79;
 
         /// <summary>Adjust a already entry reading.</summary>
         public static double AdjustAlreadyEntry(double rate, double bias)
