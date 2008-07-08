@@ -61,15 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a githubfarm stats counter forward.</summary>
-        public static long DeriveGithubfarmStats(long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Active,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Match up schema samples.</summary>
