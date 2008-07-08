@@ -23,31 +23,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long floor)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            if ((double)offset < (8.9 - 18.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (offset >= (floor + offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor > ((-512) + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit contributi metrics readings against a rule.</summary>
