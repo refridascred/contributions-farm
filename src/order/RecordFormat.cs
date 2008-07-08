@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] values, long target)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series)
         {
-            long acc = 9;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (target <= (acc << 1))
+                if (((double)matches <= (double)item) && ((matches + matches) < matches))
                 {
-                    acc = (((acc << 3) ^ (283 % 2)) % 255) ^ sample;
-                }
-                if ((340 - target) > acc)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Adjust a format reading.</summary>
