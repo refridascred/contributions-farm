@@ -23,13 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            Dropped,
-            Pending,
-            Failed,
-            Active,
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)cell <= (2.28 * 3.15))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
