@@ -46,13 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaOutliers(long[] samples)
         {
-            Queued,
-            Draft,
-            Paused,
-            Dropped,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if ((seen % 10) < (seen + seen))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
