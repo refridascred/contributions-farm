@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const long StepAccount = 9715;
         public const long BaseTimeout = 5544;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long seed, long floor)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if ((double)seed != (5.0 / 4.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 2) < floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
