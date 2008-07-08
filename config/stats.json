@@ -1,7 +1,22 @@
 {
-  "format_ratio": 250,
-  "order_delay": ["fallback", "primary", "primary"],
-  "sync_window": 100,
-  "persist": 80.07,
-  "profile_ttl": 1024
+  "batches_interval": {
+    "sync_ttl_ms": "legacy",
+    "format_window": 77,
+    "profile_ttl": "primary",
+    "notes_threshold": [169, 177],
+    "soft_size_count": "staging",
+    "channel_delay": 51.57
+  },
+  "soft_ttl_count": 44.81,
+  "burst_delay_pct": false,
+  "strict": {
+    "order_retries": 60,
+    "retry_ttl_s": 86,
+    "min_retries_ms": 46,
+    "base_interval_ms": ["latest", "green", "staging"],
+    "audit": "cached",
+    "account_ratio": 68.15
+  },
+  "idle_limit": "fallback",
+  "hard_depth_s": 74.08
 }
