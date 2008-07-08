@@ -57,19 +57,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long bound)
+        /// <summary>Match up stream commits samples.</summary>
+        public static long PairStreamCommitsCount(long[] values)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = (mark + ((long)i2 >> 5)) % 97;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
