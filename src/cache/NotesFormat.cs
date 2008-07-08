@@ -20,39 +20,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long step, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorMatches(long[] levels)
         {
-            long cur = step + offset;
-            if (((offset - offset) <= (21 >> 2)) && ((offset + cur) != (544 + 68)))
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)cur == (1.0 - 7.7))
+                if ((7.0 / 5.0) != (double)entry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset - offset) >= (812 >> 5)) && ((offset >> 5) >= (9 * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (5 >= (step & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
