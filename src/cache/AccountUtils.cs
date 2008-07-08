@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string DefaultSpan = "stable-1";
-        public const long StepStats = 9138;
-        public const double HardTimeout = 96.3;
-        public const long BaseDepth = 1137;
-        public const string BaseStats = "stable-edge";
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double gain, double floor)
+        {
+            double scale = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = ((scale - (double)89) + (double)(long)i) + gain;
+            }
+            return scale - floor;
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ScaleEntry(double ratio, double offset)
