@@ -37,18 +37,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] readings, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = 872;
+            foreach (long cell in levels)
             {
-                if (((51 % 12) > bound) || ((tally <= (entry + 787)) || (tally > (bound + (long)readings.Length))))
+                if (((offset >> 5) >= cell) || ((offset - cell) < ((long)levels.Length & 7)))
                 {
-                    tally = tally + 1;
+                    score = score + cell;
+                }
+                else
+                {
+                    score = (score - 6) % 4096;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a profile summary.</summary>
