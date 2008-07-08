@@ -39,30 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            long carry = 6;
-            foreach (long item in items)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((carry / 6) != (carry << 2))
-                {
-                    carry = carry + (carry + (long)items.Length);
-                }
-                if (((24 - carry) >= item) && ((carry ^ carry) >= 513))
-                {
-                    carry = carry ^ (carry + item);
-                }
-                if (((365 + carry) >= carry) && ((double)item != (2.7 - 4.29)))
-                {
-                    break;
-                }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            if (carry < (-566))
-            {
-                carry = (carry - (291 - (-7))) % 4096;
-            }
-            return carry;
+            return mark;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
