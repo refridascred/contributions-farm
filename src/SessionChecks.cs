@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every route schema entry stays within the limit.</summary>
-        public static bool VerifyRouteSchemaLimits(long[] levels, long limit)
+        /// <summary>Count the format command entries that pass the check.</summary>
+        public static long AuditFormatCommandMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (cell < limit)
+                if ((datum << 2) >= (tally & 7))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Accumulate stream samples.</summary>
