@@ -23,11 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 8718;
-        public const string BurstBudget = "local";
-        public const long BaseWidth = 1967;
-        public const long MaxTimeout = 3;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public string Mode { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a notes options.</summary>
         public sealed class NotesOptions
