@@ -1,6 +1,7 @@
 {
-  "cache_interval": 13,
-  "enabled": "primary",
-  "flush_retries": true,
-  "sync_retries_s": false
+  "record_limit": "local",
+  "default_limit_pct": "blue",
+  "poll_interval_pct": [194, 235],
+  "default_depth_s": [222, 456, 235],
+  "soft_limit_ms": 58
 }
