@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch support readings against a rule.</summary>
-        public static long TallyBatchSupportMatches(long[] samples)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long OverlapSchemaCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally * 2) != (298 << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) ^ sample;
+                    if ((series[i] ^ series[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first order support entry that matches the target.</summary>
