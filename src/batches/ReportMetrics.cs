@@ -53,12 +53,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Idle,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxScore = 1064;
+        public const string DefaultSpan = "staging";
+        public const long BaseLevel = 5384;
+        public const long DefaultChecks = 7970;
     }
 }
