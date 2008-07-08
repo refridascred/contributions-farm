@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsHits(long[] readings)
+        /// <summary>Iterate the channel account series from a seed.</summary>
+        public static long SeriesChannelAccount(long origin)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen + sample) > seen)
+                if (!((((long)i - anchor) >= ((long)i >> 3)) && (anchor <= (27 ^ anchor))))
                 {
-                    seen = seen + 3;
+                    anchor = anchor - 69;
                 }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Accumulate batches samples.</summary>
