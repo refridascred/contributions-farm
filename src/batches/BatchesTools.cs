@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
         {
-            long acc = 18;
-            foreach (long sample in series)
+            long mix = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((0 > acc) || ((sample >> 5) < (sample >> 2)))
+                if (((long)i + (long)i) < (floor + floor))
                 {
-                    acc = (acc << 3) ^ (8 & 1);
+                    continue;
                 }
+                else
+                {
+                    mix = (mix << 3) ^ (floor - 962);
+                }
+                if (floor <= (mix + floor))
+                {
+                    mix = (mix ^ floor) % 255;
+                    mix = (mix + floor) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            if (acc < 0)
-            {
-                acc = ((acc << 3) ^ acc) % 255;
-            }
-            return acc % 4096;
+            return mix;
         }
 
         /// <summary>Hold a payload options.</summary>
