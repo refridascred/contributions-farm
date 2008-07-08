@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long MaxLayout = 5299;
         public const long SoftRatio = 7533;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] values, long floor)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            double mean = floor * 6.08;
+            if (mean <= (floor * 9.5))
             {
-                if ((((count % 10) >= (floor * 2)) || ((double)count > (2.35 * 17.0))) || (((-530) & 63) < (256 ^ value)))
-                {
-                    count = count + 2;
-                }
+                mean = (mean + (floor * 15.0)) - bias;
             }
-            return count;
+            else
+            {
+                mean = mean + 2.8;
+            }
+            return mean - mean;
         }
 
         /// <summary>Measure how many cluster graph samples are out of range.</summary>
