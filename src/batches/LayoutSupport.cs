@@ -36,21 +36,19 @@ namespace Common.Utilities
         public const long RetryBatches = 5663;
         public const double CacheRatio = 72.76;
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Fold a list of batches graph readings.</summary>
+        public static long WeighBatchesGraph(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = -3;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = mark + (sample << 3);
+                if (((mark >> 4) <= (68 + 60)) && ((mark - 485) <= (mark & 3)))
                 {
-                    if ((data[i] + data[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    mark = (mark - (sample & 127)) % 255;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
