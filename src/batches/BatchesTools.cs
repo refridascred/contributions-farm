@@ -31,22 +31,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] samples)
+        /// <summary>Find the first stream counter entry that matches the target.</summary>
+        public static long LookupStreamCounterIndex(long[] levels, long limit)
         {
-            long mark = 51;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample << 1) >= (17 ^ sample))
+                if (levels[i] == limit)
                 {
-                    mark = (mark ^ (mark << 2)) % 4096;
+                    return (long)i;
                 }
             }
-            if (mark > 3)
-            {
-                mark = (mark - ((long)samples.Length * 2)) % 4096;
-            }
-            return mark;
+            return -1;
         }
     }
 }
