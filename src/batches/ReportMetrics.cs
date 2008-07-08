@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double rate, double offset)
-        {
-            double scale = (double)(-7) / 4.0;
-            if (scale < (rate / 5.0))
-            {
-                scale = scale - (scale - scale);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (offset + scale);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowTimeout = 1166;
+        public const long BurstMetrics = 2892;
+        public const long BaseInterval = 9837;
+        public const long RetryMetrics = 4275;
 
         /// <summary>Accumulate route account samples.</summary>
         public static long WeighRouteAccount(long[] data, long step)
