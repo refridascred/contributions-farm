@@ -31,32 +31,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long offset, long floor)
+        /// <summary>Roll a editor graph counter forward.</summary>
+        public static long RollEditorGraph(long target)
         {
-            long gap = offset ^ floor;
-            if ((gap - floor) <= 162)
+            long anchor = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 1;
+                anchor = (anchor ^ (long)i) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((-3) + floor) == (4 % 100))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (8.92 < (double)offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a layout header.</summary>
