@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
+            Locked,
+            Dropped,
             Queued,
-            Pending,
-            Closed,
         }
 
         /// <summary>Project the next filter value.</summary>
