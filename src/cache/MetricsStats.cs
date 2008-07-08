@@ -20,22 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the token schema entries that pass the check.</summary>
-        public static long TallyTokenSchemaGaps(long[] levels)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long PairLayoutCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.19 * 9.0) > (double)tally)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 2) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up report samples.</summary>
