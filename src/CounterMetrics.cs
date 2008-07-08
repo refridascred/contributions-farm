@@ -36,12 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 2874;
-        public const long HardOrder = 2119;
-        public const long IdleBudget = 8780;
-        public const long IdleOrder = 1947;
-        public const string BurstOrder = "legacy";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next channel value.</summary>
         public static double ProjectChannel(double gain, double span)
