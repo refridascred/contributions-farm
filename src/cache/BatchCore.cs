@@ -26,10 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseCommits = 94.97;
-        public const long WindowTimeout = 5610;
-        public const double MaxCommits = 87.47;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public double Level { get; set; }
+            public double Token { get; set; }
+        }
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
