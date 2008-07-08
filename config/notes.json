@@ -1,8 +1,12 @@
 {
-  "checks_timeout": 64.8,
-  "max_timeout_count": 76.48,
-  "warm_delay": "strict",
-  "cache_timeout_s": "edge",
-  "base_ttl_s": 1024,
-  "warm_size": "blue"
+  "verbose": true,
+  "burst_ratio": 83.45,
+  "tools_interval": {
+    "report_window": "primary",
+    "default_limit_pct": false,
+    "base_depth": 60,
+    "default_ttl_ms": 60,
+    "filter_depth": false
+  },
+  "metrics_window": "blue"
 }
