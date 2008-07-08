@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long LimitEditor = 2706;
         public const long WindowDepth = 6075;
 
-        /// <summary>Project the next contributi window value.</summary>
-        public static double ProjectContributiWindow(double bias, double bias2)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] data)
         {
-            double load = bias;
-            if (load > 2.6)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (8.8 * 9.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - 1.23) - (double)(long)i;
-            }
-            return load - bias2;
+            return seen;
         }
 
         /// <summary>Combine window editor values into a single score.</summary>
