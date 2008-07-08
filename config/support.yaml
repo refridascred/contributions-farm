@@ -1,12 +1,8 @@
 # support settings
-flush_depth_s: 2555
-verbose: local
-max_timeout_pct:
-  - 407
-  - 120
-  - 461
-support_ratio:
-  - 313
-  - 163
-checks_depth: edge
-soft_interval: fallback
+cache_ttl: 38.25
+hard_retries_ms:
+  default_limit_ms: strict
+  buffer_threshold: 4404
+  flush_size: 8216
+schema_limit: 500
+readonly: 70.26
