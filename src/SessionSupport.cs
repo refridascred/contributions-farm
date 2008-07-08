@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long MatchBatchesCount(long[] levels)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 62;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total ^ datum) + seed;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a session info.</summary>
