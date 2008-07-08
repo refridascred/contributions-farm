@@ -49,12 +49,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long origin)
         {
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = (anchor - ((long)i / 7)) % 1000;
+                anchor = anchor - (origin << 2);
+                anchor = ((anchor * 3) + (origin / 7)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
