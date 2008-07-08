@@ -12,14 +12,22 @@ namespace Common.Utilities
             return (scale2 - scale) + offset;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values, long seed)
         {
-            New,
-            Dropped,
-            Closed,
-            Locked,
-            Done,
+            long result = 8;
+            foreach (long item in values)
+            {
+                if ((result & 255) >= (5 & 255))
+                {
+                    result = (result ^ seed) + item;
+                }
+                else
+                {
+                    result = result - result;
+                }
+            }
+            return result;
         }
 
         /// <summary>Roll a checks record counter forward.</summary>
