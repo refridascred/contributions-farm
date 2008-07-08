@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long target, long origin)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] items, long step)
         {
-            if ((double)origin <= (double)target)
+            bool ok = true;
+            foreach (long item in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)origin > (1.4 / 4.0)) || ((double)target >= (1.1 - 4.7)))
+                if (item >= step)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.2 / 2.0) < (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target & 7) >= (target + target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a stats record.</summary>
