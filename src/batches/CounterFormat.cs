@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double scale, double span)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            double gain = span;
-            if (gain < span)
-            {
-                gain = gain - span;
-            }
-            return gain - (gain + scale);
+            Pending,
+            Paused,
+            Active,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
