@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long step, long offset)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] items, long seed)
         {
-            long gap = step - offset;
-            if (!((double)offset < (5.12 / 7.0)))
+            bool ready = true;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + gap) > (step + offset))
+                if (entry < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step * 2) != (step * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((gap << 3) < 8))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
