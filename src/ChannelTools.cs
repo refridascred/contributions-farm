@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long offset, long offset2)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long offset, long step)
         {
-            if ((offset + offset) >= (offset - offset2))
+            if ((double)offset >= (7.0 + 0.5))
             {
                 return 4;
             }
             else
             {
-                if ((9 * 3) == (offset2 >> 3))
+                if (!((double)step != (8.0 - 7.5)))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (17.0 < (double)offset)
+                    if (!((0 << 1) >= (step + step)))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        return 1;
+                        return 2;
                     }
                 }
             }
