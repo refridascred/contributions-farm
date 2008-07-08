@@ -20,23 +20,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a graph queue reading.</summary>
-        public static double SmoothGraphQueue(double ratio, double bias)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            double load = ratio;
-            if (load > (ratio + bias))
-            {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + 5.2) + (double)(long)i;
-            }
-            return load - (ratio - ratio);
+            Locked,
+            Failed,
+            Idle,
+            Active,
+            Queued,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
