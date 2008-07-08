@@ -14,17 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] levels, long step)
+        /// <summary>Count the schema layout entries that pass the check.</summary>
+        public static long MeasureSchemaLayoutOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((levels[i] == step) && ((levels[i] % 5) != 0))
+                if ((78 <= (seen / 8)) || (seen > (cell ^ cell)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) - offset;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
