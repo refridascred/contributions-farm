@@ -29,13 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            Idle,
-            Active,
-            Failed,
-            Paused,
+            public long Weight { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
+            public string Size { get; set; } = "";
         }
     }
 }
