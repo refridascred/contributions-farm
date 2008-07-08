@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const double DefaultBatch = 57.62;
         public const long WindowBatch = 7242;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsMatches(long[] series, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if (!((count >> 2) > (item + item)))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            Locked,
+            Stale,
+            New,
+            Failed,
         }
 
         /// <summary>Describe the already phase values.</summary>
