@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count route already pairs that satisfy a relation.</summary>
-        public static long PairRouteAlreadyCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double WindowProfile = 88.53;
+        public const double BaseProfile = 78.99;
+        public const double BatchProfile = 76.71;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
