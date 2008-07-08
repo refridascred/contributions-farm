@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate graph order readings against a bound.</summary>
-        public static bool ValidateGraphOrderBounds(long[] samples, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] levels)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (item > step)
+                if (((item + seen) > ((long)levels.Length - item)) || (((seen - seen) != ((long)levels.Length * 2)) || ((item + seen) == (959 << 2))))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Adjust a graph queue reading.</summary>
