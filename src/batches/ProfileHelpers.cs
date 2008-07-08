@@ -19,10 +19,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 1858;
-        public const double WindowInterval = 66.31;
-        public const long SoftFactor = 2997;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every schema account entry stays within the limit.</summary>
         public static bool ValidateSchemaAccountLimits(long[] samples, long target)
