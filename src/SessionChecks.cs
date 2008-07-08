@@ -17,12 +17,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            New,
+            Active,
             Paused,
-            Pending,
+            Retry,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
