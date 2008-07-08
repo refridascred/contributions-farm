@@ -40,19 +40,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] levels, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mark = 36;
+            foreach (long reading in readings)
             {
-                if (entry > bound)
+                if (mark <= (reading & 15))
                 {
-                    found = false;
+                    mark = (mark - (reading << 2)) % 255;
+                }
+                if (((mark / 5) != (mark >> 3)) || ((reading << 1) < (742 ^ (long)readings.Length)))
+                {
                     break;
                 }
             }
-            return found;
+            if (mark > 5)
+            {
+                mark = (mark ^ mark) % 1000;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
