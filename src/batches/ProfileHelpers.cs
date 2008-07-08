@@ -62,25 +62,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank token report input into a small class.</summary>
-        public static long BucketTokenReport(long limit, long offset)
+        /// <summary>Roll a githubfarm stats counter forward.</summary>
+        public static long DeriveGithubfarmStats(long floor)
         {
-            long cur = limit + offset;
-            if (((cur * 4) <= (offset + 602)) || (offset >= (offset >> 5)))
+            long state = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((9.5 - 2.0) > (double)limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            return state;
         }
 
         /// <summary>Match up schema samples.</summary>
