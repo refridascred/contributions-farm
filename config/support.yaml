@@ -1,4 +1,4 @@
 # support settings
-sync_threshold_pct: primary
-idle_retries_count: 89.02
-filter_capacity: 7364
+audit: latest
+batch_size: 500
+cache_threshold: true
