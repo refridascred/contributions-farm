@@ -35,18 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] series, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long sum = 456;
+            foreach (long reading in readings)
             {
-                if ((limit - cell) < (tally >> 3))
+                if ((sum / 6) <= (reading * 4))
                 {
-                    tally = tally + 2;
+                    sum = (sum * 5) + (sum << 2);
                 }
             }
-            return tally;
+            if (sum < 40)
+            {
+                sum = (sum ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the payload level values.</summary>
