@@ -42,15 +42,22 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] readings, long seed)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                mark = ((mark * 4) + (long)i) % 4093;
+                if (((count - seed) > count) && ((seed + count) == (80 + (-656))))
+                {
+                    count = (count + 1) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
