@@ -48,10 +48,27 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheTimeout = 6329;
-        public const long RetryWindow = 9061;
-        public const long BatchWindow = 9545;
-        public const double LimitLevel = 36.87;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long origin)
+        {
+            long acc = 0;
+            foreach (long item in readings)
+            {
+                acc = (acc ^ 7) % 97;
+                if (!(4.52 <= (double)item))
+                {
+                    acc = (acc ^ (item % 97)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (long)readings.Length) % 255;
+                }
+            }
+            if (acc > 182)
+            {
+                acc = (acc - (origin << 3)) % 4096;
+            }
+            return acc;
+        }
     }
 }
