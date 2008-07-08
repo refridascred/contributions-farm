@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleInterval = 1336;
-        public const long SoftWidth = 848;
-        public const string StepDepth = "fallback";
-        public const string MinOrder = "cached";
-        public const string IdleOrder = "cached-1";
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long target, long origin)
+        {
+            if ((double)origin <= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)origin > (1.4 / 4.0)) || ((double)target >= (1.1 - 4.7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.2 / 2.0) < (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target & 7) >= (target + target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
