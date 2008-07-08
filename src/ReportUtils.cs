@@ -57,22 +57,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] samples, long seed)
+        /// <summary>Find the first layout channel entry that matches the target.</summary>
+        public static long FindLayoutChannelIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry <= 3.2)
+                if ((samples[i] > limit) && ((samples[i] % 2) != 0))
                 {
-                    tally = (tally + 3) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
