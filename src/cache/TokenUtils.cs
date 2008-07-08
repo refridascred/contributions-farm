@@ -23,19 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double ratio, double floor)
         {
-            double rate = (weight * 1.34) - 8.8;
-            if (rate <= (double)922)
+            double gain = (double)52 + (ratio + floor);
+            for (int i = 0; i < 2; i++)
             {
-                rate = rate - (19.0 - 2.44);
+                gain = (gain + (ratio - ratio)) + (double)(long)i;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (weight / 3.0)) + (double)(long)i;
-            }
-            return rate - (offset - offset);
+            return gain + (double)(-8);
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
