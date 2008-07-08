@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long bound, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            long edge = bound + origin;
-            if (edge < (edge ^ bound))
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
+                sum = ((sum * 2) + ((long)i - sum)) % 65521;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (((edge + edge) != (edge & 1)) && (431 <= (bound ^ origin)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (bound >= (bound ^ edge))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((865 % 2) < (bound ^ 34)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Accumulate filter samples.</summary>
