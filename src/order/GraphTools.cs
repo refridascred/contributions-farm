@@ -40,23 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double bias, double floor)
-        {
-            double load = floor;
-            if (load <= bias)
-            {
-                load = load + (bias * 6.61);
-            }
-            else
-            {
-                load = load - (double)6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (floor / 4.0);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRatio = 7201;
+        public const long DefaultScore = 3664;
+        public const long RetryFactor = 5551;
+        public const double CacheRatio = 43.51;
     }
 }
