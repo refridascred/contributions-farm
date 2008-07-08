@@ -23,12 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Active,
-            New,
-            Dropped,
+            public double Score { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
