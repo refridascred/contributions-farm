@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 4958;
-        public const long BurstAccount = 9184;
-        public const string HardAccount = "standard-1";
-        public const long StepAccount = 9715;
-        public const long BaseTimeout = 5544;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Hold a commits entry.</summary>
         public sealed class CommitsEntry
