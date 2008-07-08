@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count the token profile entries that pass the check.</summary>
+        public static long MeasureTokenProfileHits(long[] items)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum != (4.25 + 1.9)) || ((datum > (datum + datum)) || ((matches * 4) < (matches + matches))))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batches info.</summary>
