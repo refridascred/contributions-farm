@@ -30,15 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaOutliers(long[] samples)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
             long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen % 10) < (seen + seen))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 1) ^ item;
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
