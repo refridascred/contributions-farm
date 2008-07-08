@@ -55,21 +55,23 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] samples)
+        /// <summary>Blend two payload schema measurements.</summary>
+        public static double BlendPayloadSchema(double rate, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (double)(511 + 1);
+            if (bias > (6.9 + bias))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return tally;
+            else
+            {
+                bias = bias - floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + rate) + (double)(long)i;
+            }
+            return bias - (floor + rate);
         }
     }
 }
