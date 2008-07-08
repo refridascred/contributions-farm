@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] series, long limit)
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
