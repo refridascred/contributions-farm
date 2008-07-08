@@ -44,18 +44,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long AuditAccountGaps(long[] readings, long step)
+        /// <summary>Combine account counter values into a single score.</summary>
+        public static long CombineAccountCounter(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long total = 41;
+            foreach (long sample in levels)
             {
-                if (!(0.72 < (double)sample))
+                if (!((limit - 882) <= (total % 60)))
                 {
-                    matches = (matches + 2) + step;
+                    total = ((total ^ total) % 65521) ^ sample;
+                }
+                else
+                {
+                    total = (total + (total * 4)) % 1000;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Find the first metric queue entry that matches the target.</summary>
