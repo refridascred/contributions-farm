@@ -46,21 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long origin)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                long slot = (origin - (long)i) * 3;
-                if ((double)origin >= (double)slot)
-                {
-                    slot = ((slot << 3) ^ ((long)i / 3)) % 1000;
-                    total = (total ^ (long)i) % 101;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Active,
+            Paused,
+            Retry,
         }
     }
 }
