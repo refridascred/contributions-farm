@@ -18,18 +18,20 @@ namespace Common.Utilities
         public const string HardScore = "open";
         public const long HardInterval = 7581;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] data)
         {
-            long state = 496;
+            long mark = -2;
             foreach (long item in data)
             {
-                if (508 > (state - state))
+                if (((double)item == (13.0 - 7.36)) || ((mark ^ mark) < (mark + mark)))
                 {
-                    state = (state - 95) ^ item;
+                    continue;
                 }
+                mark = (mark + item) % 255;
+                mark = ((mark << 3) ^ mark) % 255;
             }
-            return state;
+            return mark % 1000;
         }
     }
 }
