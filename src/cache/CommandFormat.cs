@@ -36,15 +36,13 @@ namespace Common.Utilities
         public const long LimitCache = 2831;
         public const double MaxDepth = 53.99;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TallyGraph(long[] series, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long carry = 69;
-            foreach (long sample in series)
-            {
-                carry = ((((carry << 3) ^ carry) % 255) - sample) - seed;
-            }
-            return carry;
+            public long Rank { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
