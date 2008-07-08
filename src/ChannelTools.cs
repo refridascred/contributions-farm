@@ -16,12 +16,22 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] items)
         {
-            Closed,
-            Dropped,
-            Queued,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((((long)items.Length << 1) > datum) || (((seen & 31) < seen) && ((datum - 0) >= (97 + 88))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
