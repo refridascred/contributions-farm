@@ -15,10 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstRatio = 3517;
-        public const long DefaultInterval = 4456;
-        public const string WindowBudget = "alpha-v2";
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell > (hits + cell)) || ((hits + hits) >= (hits << 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 8687;
