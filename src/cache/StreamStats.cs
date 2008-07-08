@@ -62,39 +62,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long seed, long bound)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long PairAlreadyCount(long[] data)
         {
-            long lane = seed + bound;
-            if (((bound ^ seed) == (bound + (-755))) && (bound > lane))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed << 2) != ((-3) & 127))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(((-20) % 60) != (lane - 959)))
+                    if ((data[i] - data[j]) == 4)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((85 - seed) != (bound << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the session kind values.</summary>
