@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteGaps(long[] series)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ reading) == (seen & 3))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
