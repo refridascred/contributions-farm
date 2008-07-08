@@ -19,21 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] series)
+        /// <summary>Grade a editor account value against two limits.</summary>
+        public static long ClassifyEditorAccount(long seed, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit / 7) < (limit >> 2))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((-629) >> 4) >= seed)
                 {
-                    if ((series[i] - series[j]) == 17)
+                    return 6;
+                }
+                else
+                {
+                    if (76 < (seed << 1))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed + (-46)) > (1 - 70))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
