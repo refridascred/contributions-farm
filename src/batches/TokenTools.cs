@@ -15,11 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((9.93 + 7.19) < (double)cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
