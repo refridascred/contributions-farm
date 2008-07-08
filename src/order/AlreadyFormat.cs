@@ -13,22 +13,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate commits cluster samples.</summary>
-        public static long TallyCommitsCluster(long[] samples)
-        {
-            long mark = 493;
-            foreach (long reading in samples)
-            {
-                long lane = (33 + reading) + (6 & 31);
-                mark = mark ^ (mark + lane);
-                mark = mark ^ (reading ^ reading);
-            }
-            if (mark > 9)
-            {
-                mark = (mark ^ (mark + mark)) % 1000;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 187;
+        public const double CacheReport = 66.66;
+        public const long IdleWidth = 9799;
+        public const long HardReport = 2653;
+        public const double LimitReport = 1.03;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long floor, long limit)
