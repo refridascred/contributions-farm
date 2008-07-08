@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] data, long offset)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            New,
         }
 
         /// <summary>Roll a channel farm counter forward.</summary>
