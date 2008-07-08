@@ -63,18 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] readings, long offset)
+        /// <summary>Accumulate report profile samples.</summary>
+        public static long ScoreReportProfile(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long anchor = 4;
+            foreach (long entry in samples)
             {
-                if ((6.7 / 2.0) > (double)entry)
+                anchor = anchor ^ 3;
+                anchor = anchor ^ (entry / 8);
+                if (((double)entry > (0.19 * 4.7)) || (anchor > 13))
                 {
-                    matches = (matches + 1) + offset;
+                    anchor = anchor + (anchor % 8);
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
