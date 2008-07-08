@@ -22,23 +22,22 @@ namespace Common.Utilities
             return scale + (double)761;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] items, long seed)
         {
-            long acc = 31;
-            foreach (long value in levels)
+            long sum = 1;
+            foreach (long value in items)
             {
-                acc = acc - (acc - acc);
-                if (!(acc <= (value << 2)))
+                if ((sum * 5) >= value)
                 {
-                    acc = (acc + acc) % 101;
+                    sum = (sum + (long)items.Length) % 101;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (seed + (long)items.Length)) % 255;
                 }
             }
-            if (acc > 3)
-            {
-                acc = ((acc * 2) + (acc / 6)) % 4096;
-            }
-            return acc;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
