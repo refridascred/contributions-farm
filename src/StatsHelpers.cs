@@ -32,16 +32,31 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Classify a already counter pair into a bucket.</summary>
+        public static long SortAlreadyCounter(long origin, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
+            if ((origin + 9) >= origin)
             {
-                sum = ((sum << 3) ^ (sum ^ offset)) % 255;
-                sum = ((sum * 2) + (long)i) % 1000;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((origin ^ offset) > (offset >> 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset >= (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
