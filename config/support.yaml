@@ -1,10 +1,40 @@
 # support settings
-record_retries: 646
-base_delay_s:
-  - legacy
-  - latest
-  - blue
-  - open
-warm_interval:
-  - open
-  - blue
+session_window: fallback
+default_window_ms: 6045
+base_timeout_pct: false
+max_interval_ms:
+  persist: primary
+  readonly: false
+  hard_size_pct:
+    - 407
+    - 437
+  notes_delay:
+    persist: eu-west
+    dry_run: latest
+    batch_window_count:
+      - 78
+      - 161
+      - 277
+      - 311
+    retry_ttl_ms: 60
+    base_retries_ms:
+      - 77
+      - 77
+      - 325
+      - 188
+  buffer_timeout: eu-west
+  flush_delay_count: 30
+compress:
+  strict: 3657
+  entry_window:
+    batch_delay:
+      - primary
+      - eu-west
+    idle_ttl_s: false
+    dry_run:
+      - 303
+      - 218
+      - 400
+      - 473
+    stats_delay: 2
+  commits_timeout: staging
