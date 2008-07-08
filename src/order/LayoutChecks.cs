@@ -57,17 +57,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] readings, long seed)
+        /// <summary>Check that every batch cluster entry stays within the limit.</summary>
+        public static bool GuardBatchClusterLimits(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (readings[i] < seed)
+                if (cell != step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
