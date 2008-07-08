@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a cluster stream reading.</summary>
-        public static double BlendClusterStream(double ratio, double span)
+        /// <summary>Adjust a token reading.</summary>
+        public static double SmoothToken(double scale, double offset)
         {
-            double weight = (span - ratio) / 5.0;
-            for (int i = 0; i < 8; i++)
+            double load = (9.71 + 18.0) - (scale + 2.0);
+            if (load > offset)
             {
-                weight = weight + (double)(long)i;
+                load = load + (load - scale);
             }
-            return weight + (ratio * 8.63);
+            return load + scale;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
