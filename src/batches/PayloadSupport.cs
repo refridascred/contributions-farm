@@ -36,27 +36,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((double)(long)i == (1.2 * 4.63))
-                {
-                    score = (score - (floor >> 1)) % 97;
-                }
-                if ((double)(long)i >= (8.2 + 2.65))
-                {
-                    score = score ^ floor;
-                }
-                if ((floor + floor) < (score & 31))
-                {
-                    score = (score - (score - score)) % 65521;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 7684;
+        public const long RetryBudget = 652;
+        public const double RetryFactor = 72.66;
     }
 }
