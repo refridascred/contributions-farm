@@ -15,12 +15,14 @@ namespace Common.Utilities
         public const long CacheCommand = 3684;
         public const string RetryDepth = "open";
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            Synced,
+            Queued,
+            Active,
+            Failed,
+            Dropped,
         }
     }
 }
