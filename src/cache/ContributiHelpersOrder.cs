@@ -32,12 +32,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public double Rank { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Project the next payload profile value.</summary>
