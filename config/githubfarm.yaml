@@ -1,4 +1,5 @@
 # githubfarm settings
-flush_limit: eu-west
-hard_ttl: false
-compress: fallback
+channel_timeout: 6738
+soft_capacity_count: staging
+sync_capacity: 71.73
+cache_size: false
