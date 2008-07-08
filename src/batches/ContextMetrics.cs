@@ -35,13 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
             public long Size { get; set; }
-            public long Weight { get; set; }
+            public bool Level { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
