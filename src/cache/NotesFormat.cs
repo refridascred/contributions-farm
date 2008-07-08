@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Done,
-            Failed,
-            New,
-            Synced,
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
