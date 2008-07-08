@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Audit account stats readings against a rule.</summary>
-        public static long CountAccountStatsHits(long[] data, long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if (target >= (reading + 0))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit batches checks readings against a rule.</summary>
