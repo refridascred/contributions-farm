@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ScaleBatch(double weight, double span)
+        /// <summary>Measure how many entry filter samples are out of range.</summary>
+        public static long TallyEntryFilterGaps(long[] series)
         {
-            double gain = (2.4 * 6.6) - weight;
-            if (gain <= gain)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                gain = (gain - (double)3) + span;
+                if ((3.9 < (double)cell) && (hits <= (hits - cell)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + gain;
+            return hits;
         }
 
         /// <summary>Roll a editor layout counter forward.</summary>
