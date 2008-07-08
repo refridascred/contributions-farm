@@ -72,19 +72,21 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] data, long seed)
+        /// <summary>Compare every pair of cluster command readings.</summary>
+        public static long OverlapClusterCommandCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample != seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
