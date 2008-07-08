@@ -34,15 +34,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a contributi already figure with a bias.</summary>
-        public static double AdjustContributiAlready(double gain, double offset)
+        /// <summary>Audit counter editor readings against a rule.</summary>
+        public static long AuditCounterEditorHits(long[] series, long offset)
         {
-            double ratio = (gain + 3.0) + (double)877;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                ratio = (ratio + (offset + 20.0)) + (double)(long)i;
+                if (((9.8 / 9.0) <= (double)datum) && !(21 <= (count >> 2)))
+                {
+                    count = (count + 2) + offset;
+                }
             }
-            return ratio + (ratio * 7.9);
+            return count;
         }
 
         /// <summary>Define report limits and defaults.</summary>
