@@ -31,24 +31,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] values)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long sum = 4;
-            foreach (long entry in values)
-            {
-                long next = entry;
-                sum = (sum + (next >> 3)) % 97;
-                if (entry >= (sum & 15))
-                {
-                    sum = (sum << 2) ^ sum;
-                }
-            }
-            if (sum < 6)
-            {
-                sum = ((sum * 2) + (sum % 64)) % 65521;
-            }
-            return sum;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
