@@ -82,20 +82,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Locate a contributi schema reading by value.</summary>
+        public static long LocateContributiSchemaIndex(long[] data, long step)
         {
-            long total = 7;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = total + (cell << 2);
-                if ((total + 440) == (total * 2))
+                if (data[i] <= step)
                 {
-                    total = (total - (cell >> 5)) % 65521;
+                    return (long)i;
                 }
-                total = (total << 2) ^ (968 & 15);
             }
-            return total % 1000;
+            return -1;
         }
     }
 }
