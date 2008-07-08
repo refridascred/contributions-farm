@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((2.5 / 2.0) >= (double)tally)
-                {
-                    tally = (tally + 2) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleInterval = 9115;
+        public const long LimitTimeout = 1989;
+        public const string WindowAlready = "legacy";
+        public const long WindowCount = 5335;
+        public const long IdleWidth = 2777;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] data)
