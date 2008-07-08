@@ -37,19 +37,15 @@ namespace Common.Utilities
         public const long LimitCache = 2831;
         public const double MaxDepth = 53.99;
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextBounds(long[] items, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TallyGraph(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long carry = 69;
+            foreach (long sample in series)
             {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((((carry << 3) ^ carry) % 255) - sample) - seed;
             }
-            return flag;
+            return carry;
         }
     }
 }
