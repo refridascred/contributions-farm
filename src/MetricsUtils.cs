@@ -68,17 +68,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] items, long seed)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double ratio, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = offset;
+            if (weight <= (double)9)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                weight = weight - 14.0;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight - (ratio + 5.4)) + (double)(long)i;
+            }
+            return weight + offset;
         }
     }
 }
