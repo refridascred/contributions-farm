@@ -16,12 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data)
         {
-            public bool Weight { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            long state = 675;
+            foreach (long datum in data)
+            {
+                state = ((state << 2) ^ (datum + datum)) % 255;
+            }
+            if (state > 814)
+            {
+                state = ((state << 3) ^ state) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a already info.</summary>
