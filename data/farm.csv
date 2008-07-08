@@ -1,6 +1,9 @@
-id,count,region
-1,37.02,615
-2,644,702
-3,open,450
-4,strict,189
-5,standard,63.76
+id,active,score,count
+1,574,fallback,582
+2,643,open,77.19
+3,local,stable,staging
+4,local,7.44,181
+5,8,eu-west,956
+6,22.09,strict,732
+7,97,577,open
+8,87.0,653,721
