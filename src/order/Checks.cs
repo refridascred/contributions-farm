@@ -15,18 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatHits(long[] data, long step)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (3.0 > (double)step)
+                if (entry > offset)
                 {
-                    tally = (tally + 2) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
