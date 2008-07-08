@@ -19,13 +19,12 @@ namespace Common.Utilities
         public const double MaxRatio = 18.57;
         public const long WindowLayout = 2925;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Done,
-            Idle,
-            Stale,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double DefaultBuffer = 14.44;
+        public const string MinBuffer = "open";
+        public const long BaseWidth = 3159;
+        public const long HardCount = 8633;
+        public const double RetryBuffer = 28.38;
 
         /// <summary>Match up contributi batches samples.</summary>
         public static long OverlapContributiBatchesCount(long[] levels)
