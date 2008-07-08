@@ -1,5 +1,18 @@
 {
-  "min_depth": 30,
-  "verbose": 34.06,
-  "strict": [310, 189, 177]
+  "base_delay": "cached",
+  "readonly": 6912,
+  "poll_window_count": {
+    "default_ratio": 1831,
+    "burst_retries": {
+      "strict": false,
+      "base_threshold_pct": "blue",
+      "warm_window_ms": 36.13
+    },
+    "max_interval_pct": {
+      "graph_retries": 17.52,
+      "enabled": 53,
+      "profile_ttl": 52.65,
+      "readonly": 3460
+    }
+  }
 }
