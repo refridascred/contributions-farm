@@ -65,23 +65,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double bias, double bias2)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] values)
         {
-            double drift = (bias2 + bias) + (double)1;
-            if (drift < bias)
+            long count = 0;
+            foreach (long item in values)
             {
-                drift = drift + (double)7;
+                if ((count - count) < (item * 4))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + (double)(-26);
+            return count;
         }
     }
 }
