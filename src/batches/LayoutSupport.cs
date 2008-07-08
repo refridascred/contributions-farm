@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const long RetryBatches = 5663;
         public const double CacheRatio = 72.76;
 
-        /// <summary>Scale a graph buffer figure with a bias.</summary>
-        public static double AdjustGraphBuffer(double ratio, double span)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long floor)
         {
-            double drift = span - (double)754;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                drift = ((drift - (double)8) + (double)(long)i) + ratio;
+                if (value != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + (19.0 + 11.0);
+            return ok;
         }
 
         /// <summary>Define route limits and defaults.</summary>
