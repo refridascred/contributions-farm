@@ -16,14 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] levels, long offset)
         {
-            Closed,
-            Synced,
-            Active,
-            Queued,
-            Dropped,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a graph record.</summary>
