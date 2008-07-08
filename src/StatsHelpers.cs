@@ -46,16 +46,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = (acc - acc) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Draft,
+            Locked,
+            Active,
+            Retry,
         }
     }
 }
