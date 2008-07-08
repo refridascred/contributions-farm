@@ -35,18 +35,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorMatches(long[] levels)
+        /// <summary>Iterate the buffer checks series from a seed.</summary>
+        public static long IterateBufferChecks(long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((7.0 / 5.0) != (double)entry)
-                {
-                    hits = hits + 1;
-                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
     }
 }
