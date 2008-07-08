@@ -20,19 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] levels, long target)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading < target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
