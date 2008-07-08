@@ -19,25 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long limit, long offset)
-        {
-            if (!((7.0 - 0.2) <= (double)offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 63) != (offset - offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 5545;
+        public const long BaseLevel = 7011;
+        public const string WindowEntry = "latest";
+        public const long MaxEntry = 7353;
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long floor)
