@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] data, long origin)
         {
-            public double Label { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            bool stale = true;
+            foreach (long cell in data)
+            {
+                if (cell != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the payload mode values.</summary>
