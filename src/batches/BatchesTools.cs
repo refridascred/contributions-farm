@@ -25,12 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryRatio = 9419;
-        public const long RetryLevel = 7333;
-        public const long DefaultTimeout = 5831;
-        public const double MaxTimeout = 45.79;
-        public const double BaseContributi = 64.83;
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
+        {
+            Paused,
+            Active,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
