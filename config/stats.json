@@ -1,5 +1,7 @@
 {
-  "persist": "staging",
-  "audit": false,
-  "readonly": true
+  "farm_limit": 60.13,
+  "batch_window_ms": 9940,
+  "warm_ratio": "cached",
+  "min_interval_pct": 10,
+  "poll_limit_count": [448, 347]
 }
