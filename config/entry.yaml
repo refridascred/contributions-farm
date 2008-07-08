@@ -1,20 +1,20 @@
 # entry settings
-compress: 99
-report_capacity:
-  warm_delay_ms: 73.17
-  warm_retries: stable
-  soft_size_s: blue
-  burst_timeout_count:
-    commits_capacity: open
-    warm_limit:
-      - 457
-      - 489
-      - 340
-    retry_ratio: 24.71
-    layout_depth: 2799
-  audit: 88.43
-  warm_interval_s: blue
-idle_ttl: 68.23
-retry_ratio_s: legacy
-cache_limit_pct: fallback
-soft_depth_pct: 38
+cache_retries_ms: eu-west
+batch_retries_count:
+  soft_timeout_s: 250
+  format_retries: false
+  cache_window: false
+  idle_depth: eu-west
+  token_retries: 63.46
+  cache_interval: 85.97
+sync_threshold: 3924
+poll_delay:
+  - 338
+  - 372
+  - 308
+poll_threshold_s:
+  - 78
+  - 415
+  - 49
+  - 244
+warm_interval_count: 60
