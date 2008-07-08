@@ -20,19 +20,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] series, long bound)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define session limits and defaults.</summary>
