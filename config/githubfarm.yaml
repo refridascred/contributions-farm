@@ -1,7 +1,4 @@
 # githubfarm settings
-hard_timeout_pct: false
-base_interval_s: standard
-enabled: open
-stream_depth: local
-warm_retries_s: 43.38
-entry_timeout: standard
+min_limit_count: 55
+persist: 16.0
+flush_capacity_pct: green
