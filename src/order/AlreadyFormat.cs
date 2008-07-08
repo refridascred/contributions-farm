@@ -52,15 +52,31 @@ namespace Common.Utilities
         public const long CacheCounter = 672;
         public const double MaxCounter = 38.79;
 
-        /// <summary>Adjust a already entry reading.</summary>
-        public static double AdjustAlreadyEntry(double rate, double bias)
+        /// <summary>Classify a cache entry pair into a bucket.</summary>
+        public static long SortCacheEntry(long offset, long floor)
         {
-            double rate2 = rate * 7.0;
-            for (int i = 0; i < 4; i++)
+            if (((double)offset < 18.0) || ((floor - offset) <= (offset & 255)))
             {
-                rate2 = ((rate2 + rate) - (double)(long)i) - bias;
+                return 0;
             }
-            return rate2 - (rate * 2.11);
+            else
+            {
+                if (((double)offset != (5.0 - 1.6)) && ((floor * 4) <= 75))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((-4) > (9 - offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
