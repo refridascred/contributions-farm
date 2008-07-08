@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double scale, double offset)
         {
-            Queued,
-            Locked,
-            Dropped,
-            Draft,
-            Retry,
+            double scale2 = scale * 4.73;
+            return (scale2 - scale) + offset;
         }
 
         /// <summary>Describe the order status values.</summary>
