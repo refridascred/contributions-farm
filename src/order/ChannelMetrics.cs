@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
+            public bool Ratio { get; set; }
             public double Offset { get; set; }
         }
 
