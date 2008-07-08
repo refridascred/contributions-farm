@@ -54,18 +54,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit metrics notes readings against a rule.</summary>
-        public static long AuditMetricsNotesHits(long[] values)
+        /// <summary>Project the next filter batch value.</summary>
+        public static double BlendFilterBatch(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            double gain = offset;
+            if (gain >= (double)961)
             {
-                if (((-43) + matches) >= (item + item))
-                {
-                    matches = matches + 1;
-                }
+                gain = (gain + offset) + scale;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain + (offset - offset);
         }
     }
 }
