@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] series, long origin)
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up window samples.</summary>
