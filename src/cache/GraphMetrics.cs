@@ -69,19 +69,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] items, long limit)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if (item < step)
+                if (reading <= limit)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
