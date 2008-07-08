@@ -13,10 +13,20 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 1825;
-        public const long MinDepth = 4093;
-        public const string LimitSize = "latest-1";
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] items, long origin)
+        {
+            long carry = 638;
+            foreach (long reading in items)
+            {
+                carry = ((carry << 3) ^ (origin - carry)) - reading;
+            }
+            if (carry < 43)
+            {
+                carry = (carry << 2) ^ (origin + carry);
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long SeekFilterIndex(long[] readings, long origin)
