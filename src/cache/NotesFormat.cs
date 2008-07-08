@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every commits report entry stays within the limit.</summary>
+        public static bool ValidateCommitsReportRange(long[] values, long floor)
         {
-            Pending,
-            New,
-            Locked,
-            Idle,
-            Done,
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate farm graph samples.</summary>
