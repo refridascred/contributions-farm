@@ -78,38 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long bound, long bound2)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double offset)
         {
-            if (bound >= (bound2 << 3))
+            double ratio = offset + offset;
+            if (ratio <= (6.0 * 0.2))
             {
-                return 2;
+                ratio = ratio - (6.0 * 4.5);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (bound2 >= (bound + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound & 31) >= (bound >> 1)) || ((20.0 * 1.8) >= (double)bound2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound ^ bound) > bound2)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                ratio = (ratio - 7.05) + (double)(long)i;
             }
+            return ratio + (ratio + rate);
         }
     }
 }
