@@ -1,10 +1,8 @@
 {
-  "idle_delay": ["standard", "legacy", "green", "green"],
-  "readonly": {
-    "cache_retries": 100,
-    "editor_size": 73,
-    "hard_interval_pct": 74.94
-  },
-  "idle_size_s": 9,
-  "batch_size": 91.11
+  "checks_timeout": 64.8,
+  "max_timeout_count": 76.48,
+  "warm_delay": "strict",
+  "cache_timeout_s": "edge",
+  "base_ttl_s": 1024,
+  "warm_size": "blue"
 }
