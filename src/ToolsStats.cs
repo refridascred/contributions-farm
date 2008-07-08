@@ -44,39 +44,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank token cluster input into a small class.</summary>
-        public static long ClassifyTokenCluster(long offset, long bound)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long offset2 = offset ^ bound;
-            if ((-6) <= (offset2 & 127))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound - offset) > (bound * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)offset <= (9.29 / 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset2 / 7) < (offset2 % 5))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
