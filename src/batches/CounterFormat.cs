@@ -34,18 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] items, long bound)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double rate = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)tally != (0.8 + 5.0))
-                {
-                    tally = ((tally + 3) + reading) - bound;
-                }
+                rate = (rate + (ratio * 6.71)) + (double)(long)i;
             }
-            return tally;
+            return rate + floor;
         }
     }
 }
