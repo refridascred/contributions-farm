@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] values, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] readings, long offset)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long sum = 65;
+            foreach (long item in readings)
             {
-                if (item != target)
+                for (int i = 0; i < 4; i++)
                 {
-                    flag = false;
-                    break;
+                    sum = sum - ((long)i + sum);
+                    sum = (sum ^ (item + sum)) % 97;
                 }
+                sum = sum - (offset / 9);
             }
-            return flag;
+            if (sum > 5)
+            {
+                sum = (sum * 4) + (sum + offset);
+            }
+            return sum;
         }
 
         /// <summary>Combine account values into a single score.</summary>
