@@ -5,21 +5,28 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 70;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((sample + sample) == (result * 3)))
                 {
-                    if ((readings[i] + readings[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result << 3) ^ ((long)samples.Length + result);
+                    result = (result + (result / 7)) % 65521;
+                }
+                result = (result * 3) + sample;
+                if ((sample & 15) > (sample ^ sample))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result < 78)
+            {
+                result = (result << 2) ^ (result % 24);
+            }
+            return result % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
