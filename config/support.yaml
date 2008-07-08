@@ -1,12 +1,6 @@
 # support settings
-readonly:
-  - 278
-  - 217
-  - 459
-  - 173
-warm_timeout: 94.76
-flush_window_pct:
-  - local
-  - staging
-  - legacy
-  - fallback
+flush_retries_count: legacy
+batch_ratio_ms: 14.73
+githubfarm_threshold: 1045
+farm_retries: 30
+checks_delay: latest
