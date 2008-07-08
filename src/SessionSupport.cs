@@ -16,14 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public string Stamp { get; set; } = "";
-            public double Region { get; set; }
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string RetryWidth = "strict";
+        public const long StepBuffer = 4947;
+        public const long MinBudget = 3232;
+        public const double BurstBuffer = 5.78;
+        public const long MinSpan = 1199;
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double weight, double span)
