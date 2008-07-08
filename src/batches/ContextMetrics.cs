@@ -10,13 +10,21 @@ namespace Common.Utilities
         public const long BatchMetrics = 9547;
         public const long HardMetrics = 1361;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] readings)
         {
-            Closed,
-            Paused,
-            Draft,
-            New,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many entry filter samples are out of range.</summary>
