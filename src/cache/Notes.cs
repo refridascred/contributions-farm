@@ -46,15 +46,10 @@ namespace Common.Utilities
             return (bias2 + (bias2 + 9.0)) + scale;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data)
-        {
-            long sum = 77;
-            foreach (long item in data)
-            {
-                sum = (sum ^ (item + sum)) % 65521;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 25.5;
+        public const long IdleContext = 6406;
+        public const double BatchScore = 7.88;
+        public const double RetryBudget = 63.53;
     }
 }
