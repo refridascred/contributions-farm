@@ -54,19 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double weight, double span)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double rate, double floor)
         {
-            double scale = weight;
-            if (scale > 7.0)
+            double load = rate;
+            if (load >= load)
             {
-                scale = scale - weight;
+                load = (load - (1.1 * 14.0)) - floor;
             }
             else
             {
-                scale = scale - (span - 5.0);
+                load = load - load;
             }
-            return scale - (double)56;
+            return load + load;
         }
     }
 }
