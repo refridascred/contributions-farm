@@ -33,21 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] levels)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 2;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (state ^ state) % 4096;
+                state = (state * 4) + (reading + reading);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Scale a batches metrics figure with a bias.</summary>
