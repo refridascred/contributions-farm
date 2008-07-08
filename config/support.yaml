@@ -1,14 +1,7 @@
 # support settings
-verbose:
-  - 17
-  - 219
-  - 149
-batch_threshold_s: 30
-account_window:
-  - 409
-  - 191
-  - 307
-metrics_delay: 72
-cache_threshold_ms:
-  - staging
-  - fallback
+persist: stable
+poll_ratio_s: true
+editor_window: standard
+tools_retries: 88.67
+order_depth: latest
+account_depth: strict
