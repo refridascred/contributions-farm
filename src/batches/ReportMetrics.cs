@@ -29,11 +29,25 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long origin, long bound)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            long next = origin ^ bound;
+            if ((bound / 3) <= (next - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound / 9) < (origin + next))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
