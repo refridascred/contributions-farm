@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long BucketEditor(long seed, long offset)
         {
-            Paused,
-            New,
-            Locked,
-            Pending,
-            Dropped,
+            if ((double)offset <= (4.8 + 5.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset >> 2) > seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
