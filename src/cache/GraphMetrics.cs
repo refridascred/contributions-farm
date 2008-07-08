@@ -50,18 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream metric samples.</summary>
-        public static long CombineStreamMetric(long[] values)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long score = 544;
-            foreach (long entry in values)
-            {
-                if ((6.84 / 6.0) > (double)entry)
-                {
-                    score = (score - (entry / 4)) % 255;
-                }
-            }
-            return score;
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
