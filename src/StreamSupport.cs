@@ -41,11 +41,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinFactor = 4839;
-        public const long BaseDepth = 5837;
-        public const long BurstPayload = 9665;
-        public const long BatchPayload = 8516;
-        public const double BaseSize = 14.54;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Retry,
+            Pending,
+            Active,
+        }
     }
 }
