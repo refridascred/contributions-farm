@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 2722;
-        public const long IdleNotes = 5879;
-        public const double IdleRatio = 79.26;
-        public const long HardNotes = 2493;
-        public const string IdleFactor = "local-v2";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelGaps(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((1 & 255) <= (count + offset)) && ((185 ^ 9) <= (datum & 63)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
