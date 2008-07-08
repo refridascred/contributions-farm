@@ -36,18 +36,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total + (total ^ total)) % 65521;
-                total = (total ^ (total >> 5)) % 97;
-                total = ((total * 2) + total) % 1000;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
+            Pending,
+            Synced,
+            Paused,
+            Idle,
         }
     }
 }
