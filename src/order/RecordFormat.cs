@@ -53,18 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate payload queue samples.</summary>
-        public static long DigestPayloadQueue(long[] series)
-        {
-            long mix = 928;
-            foreach (long item in series)
-            {
-                if ((mix / 5) != (mix >> 4))
-                {
-                    mix = ((mix - (18 + mix)) % 4096) - item;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinTimeout = 4732;
+        public const double BaseCluster = 24.42;
+        public const long BurstCluster = 1291;
+        public const long StepLevel = 1524;
+        public const string CacheCluster = "open-edge";
     }
 }
