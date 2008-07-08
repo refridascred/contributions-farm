@@ -54,21 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count queue route pairs that satisfy a relation.</summary>
-        public static long CompareQueueRouteCount(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= step)
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
