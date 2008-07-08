@@ -30,19 +30,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] data)
         {
-            long state = 5;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                state = (state * 5) + (entry / 2);
+                if ((double)cell <= 2.0)
+                {
+                    seen = seen + 1;
+                }
             }
-            if (state > 82)
-            {
-                state = state ^ (floor + state);
-            }
-            return state;
+            return seen;
         }
     }
 }
