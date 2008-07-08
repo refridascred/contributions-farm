@@ -19,23 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long FoldRecord(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] items)
         {
-            long anchor = 651;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((double)cell >= (0.45 - 8.7))
+                if (matches <= (393 ^ (-37)))
                 {
-                    continue;
+                    matches = (matches + 3) + item;
                 }
-                else
-                {
-                    anchor = (anchor + (cell + anchor)) % 4096;
-                }
-                anchor = (anchor << 3) ^ anchor;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Combine report values into a single score.</summary>
