@@ -53,32 +53,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long limit, long limit2)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long gap = limit + limit2;
-            if ((gap >> 3) != (gap + gap))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((617 + gap) >= (limit2 % 12))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((gap <= (limit2 / 5)) || ((5 / 4) >= (gap + limit)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
