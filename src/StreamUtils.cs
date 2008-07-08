@@ -102,11 +102,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinCount = 4704;
-        public const long RetryRecord = 8002;
-        public const long BaseSpan = 3684;
-        public const long HardRecord = 7127;
-        public const long CacheRecord = 5625;
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
+        {
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
