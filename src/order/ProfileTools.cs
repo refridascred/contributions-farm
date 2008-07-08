@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            Pending,
-            Active,
-            Locked,
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = ((acc * 2) + (seed - (long)i)) % 101;
+                if ((acc ^ 421) < seed)
+                {
+                    acc = (acc * 2) + 542;
+                }
+                else
+                {
+                    acc = (acc - seed) % 4096;
+                }
+                if ((22 + acc) >= (acc % 8))
+                {
+                    acc = ((acc * 4) + (seed + (-7))) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate context samples.</summary>
