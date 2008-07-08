@@ -39,10 +39,17 @@ namespace Common.Utilities
         public const long CacheContributi = 4898;
         public const string BatchContributi = "strict-1";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 9868;
-        public const long IdleFilter = 9964;
-        public const double BurstScore = 49.72;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = (acc << 3) ^ (origin - acc);
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] levels, long offset)
