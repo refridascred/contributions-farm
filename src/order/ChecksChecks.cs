@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public long Total { get; set; }
+            public bool Mode { get; set; }
             public bool Limit { get; set; }
-            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Adjust a schema reading.</summary>
