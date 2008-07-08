@@ -35,14 +35,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Match up contributi batches samples.</summary>
+        public static long OverlapContributiBatchesCount(long[] levels)
         {
-            Queued,
-            Failed,
-            Done,
-            Stale,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
