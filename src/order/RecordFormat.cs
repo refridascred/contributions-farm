@@ -14,17 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long bound)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double AdjustStream(double rate, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = rate;
+            if (gain <= floor)
             {
-                if ((values[i] < bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain - (rate * 6.8);
             }
-            return -1;
+            return gain - (floor / 7.0);
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
