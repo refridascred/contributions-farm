@@ -48,27 +48,21 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long origin)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long acc = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ 7) % 97;
-                if (!(4.52 <= (double)item))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (acc ^ (item % 97)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (long)readings.Length) % 255;
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 182)
-            {
-                acc = (acc - (origin << 3)) % 4096;
-            }
-            return acc;
+            return hits;
         }
     }
 }
