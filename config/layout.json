@@ -1,5 +1,6 @@
 {
-  "account_ttl": 7193,
-  "session_limit": 253,
-  "compress": 1779
+  "min_capacity": 1725,
+  "max_threshold_pct": false,
+  "already_threshold": "green",
+  "persist": "blue"
 }
