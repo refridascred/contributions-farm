@@ -50,31 +50,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long bound, long origin)
+        /// <summary>Match up editor order samples.</summary>
+        public static long MatchEditorOrderCount(long[] readings)
         {
-            if ((origin + bound) == (46 - bound))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-13) & 7) != (bound & 255))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (bound >= origin)
+                    if ((readings[i] ^ readings[j]) != 16)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Digest a series of record entries.</summary>
