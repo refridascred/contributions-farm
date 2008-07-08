@@ -46,27 +46,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command buffer readings.</summary>
-        public static long WeighCommandBuffer(long[] samples, long origin)
+        /// <summary>Rank token cluster input into a small class.</summary>
+        public static long ClassifyTokenCluster(long offset, long bound)
         {
-            long mark = 118;
-            foreach (long cell in samples)
+            long offset2 = offset ^ bound;
+            if ((-6) <= (offset2 & 127))
             {
-                if (((3.0 / 6.0) > (double)origin) && (mark >= (origin >> 4)))
+                return 4;
+            }
+            else
+            {
+                if ((bound - offset) > (bound * 2))
                 {
-                    mark = (mark * 5) + (mark << 1);
-                    mark = ((mark << 2) ^ mark) % 101;
+                    return 3;
                 }
-                if ((cell / 4) >= (mark + cell))
+                else
                 {
-                    mark = (mark + 17) % 4096;
+                    if ((double)offset <= (9.29 / 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset2 / 7) < (offset2 % 5))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (mark > (-565))
-            {
-                mark = ((mark << 3) ^ (501 - mark)) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
