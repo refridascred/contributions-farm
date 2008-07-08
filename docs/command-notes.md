@@ -1,11 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-When a filter fails, the buffer handler retries a few times before giving up.
+Keep layout and githubfarm names short and lowercase.
+Each cache is validated before it reaches the batch queue.
+The profile report groups every metric by metrics.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Validate buffer input early
-- Keep queue values small
-- Document new stats fields
+- Validate metric input early
+- Review record limits each release
+- Prefer already defaults
