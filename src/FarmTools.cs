@@ -17,20 +17,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] values, long bound)
         {
-            long total = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)405 > (double)total)
+                if (values[i] > bound)
                 {
-                    total = ((total * 5) + (total + total)) + datum;
+                    return (long)i;
                 }
-                total = (total - (-685)) % 101;
-                total = (total ^ 96) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
