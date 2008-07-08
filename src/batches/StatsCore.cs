@@ -91,21 +91,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Measure how many order cache samples are out of range.</summary>
+        public static long CountOrderCacheOutliers(long[] samples, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)origin <= (1.0 * 7.9)))
                 {
-                    if ((values[i] - values[j]) == 13)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 2) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
