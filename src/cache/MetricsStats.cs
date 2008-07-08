@@ -32,22 +32,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 5979;
+        public const long BaseFactor = 8056;
+        public const long MinTimeout = 1749;
+        public const double WindowPayload = 1.83;
+        public const long BatchPayload = 6423;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string DefaultSpan = "standard";
