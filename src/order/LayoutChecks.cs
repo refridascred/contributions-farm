@@ -65,12 +65,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
