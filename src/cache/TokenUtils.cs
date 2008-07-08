@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] series)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long anchor = 29;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor ^ anchor) % 4096) ^ datum;
+            }
+            if (anchor > 188)
+            {
+                anchor = anchor ^ (anchor + anchor);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
