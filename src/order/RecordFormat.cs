@@ -19,39 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a account stream value against two limits.</summary>
-        public static long RankAccountStream(long seed, long limit)
+        /// <summary>Digest a series of tools queue entries.</summary>
+        public static long DigestToolsQueue(long[] samples, long bound)
         {
-            long bound = seed - limit;
-            if ((double)limit > (6.0 / 6.0))
+            long sum = 708;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (3 < (seed ^ seed))
+                if (((cell & 127) != (1 >> 2)) && ((double)sum != (0.49 / 8.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!(300 >= (bound - bound)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound != (2.0 * 5.9))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    sum = ((sum * 2) + (cell << 2)) - bound;
                 }
             }
+            return sum;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
