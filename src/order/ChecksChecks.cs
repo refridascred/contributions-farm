@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            Active,
-            Ready,
+            Draft,
+            Dropped,
             Stale,
-            Closed,
-            Retry,
+            Failed,
+            New,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
