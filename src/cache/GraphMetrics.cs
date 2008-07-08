@@ -23,19 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] readings, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesGaps(long[] items)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (reading < step)
+                if ((double)matches == (8.2 + 1.0))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 1) + reading;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
