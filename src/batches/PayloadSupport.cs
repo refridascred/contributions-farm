@@ -18,18 +18,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] readings, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (offset < (tally >> 3))
-                {
-                    tally = (tally + 3) + cell;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
