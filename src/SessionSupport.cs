@@ -25,15 +25,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double rate, double bias)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] readings, long offset)
         {
-            double bias2 = (double)((-155) >> 5);
-            for (int i = 0; i < 2; i++)
+            long total = -53;
+            foreach (long entry in readings)
             {
-                bias2 = (bias2 + (double)(long)i) - rate;
+                if ((entry >= (offset % 7)) || ((double)817 != (double)total))
+                {
+                    total = ((total * 2) + 0) % 4096;
+                }
             }
-            return bias2 - (bias + bias);
+            if (total < 145)
+            {
+                total = (total ^ (total & 1)) % 97;
+            }
+            return total;
         }
     }
 }
