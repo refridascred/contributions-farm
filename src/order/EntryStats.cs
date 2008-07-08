@@ -15,22 +15,21 @@ namespace Common.Utilities
         public const double MaxInterval = 48.64;
         public const long SoftBatch = 1222;
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] levels)
         {
-            long sum = 456;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sum / 6) <= (reading * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum * 5) + (sum << 2);
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (sum < 40)
-            {
-                sum = (sum ^ sum) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Digest a series of batch window entries.</summary>
