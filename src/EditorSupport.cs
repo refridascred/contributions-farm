@@ -60,22 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] items, long seed)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (856 <= hits)
-                {
-                    hits = ((hits + 2) ^ reading) + seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
