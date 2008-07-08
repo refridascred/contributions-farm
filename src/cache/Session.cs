@@ -42,11 +42,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double gain, double bias)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels)
         {
-            double weight = bias;
-            return weight + gain;
+            long acc = 39;
+            foreach (long entry in levels)
+            {
+                acc = (acc ^ entry) % 255;
+            }
+            return acc % 1000;
         }
     }
 }
