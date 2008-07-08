@@ -39,22 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 1858;
+        public const double WindowInterval = 66.31;
+        public const long SoftFactor = 2997;
 
         /// <summary>Check that every schema account entry stays within the limit.</summary>
         public static bool ValidateSchemaAccountLimits(long[] samples, long target)
