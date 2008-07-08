@@ -22,11 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftSize = 95.07;
-        public const long RetryCount = 7886;
-        public const long DefaultSpan = 5422;
-        public const long SoftChecks = 1927;
+        /// <summary>Iterate the graph githubfarm series from a seed.</summary>
+        public static long RollGraphGithubfarm(long floor)
+        {
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] readings)
