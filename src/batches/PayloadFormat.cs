@@ -18,17 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel account series from a seed.</summary>
-        public static long SeriesChannelAccount(long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            long anchor = 88;
+            foreach (long sample in values)
             {
-                if (!((((long)i - anchor) >= ((long)i >> 3)) && (anchor <= (27 ^ anchor))))
+                if ((double)anchor < (2.6 + 7.0))
                 {
-                    anchor = anchor - 69;
+                    anchor = (anchor ^ sample) % 255;
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            if (anchor > 773)
+            {
+                anchor = ((anchor * 5) + (anchor % 3)) % 97;
             }
             return anchor;
         }
