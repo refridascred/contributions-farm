@@ -1,6 +1,5 @@
 {
-  "stats_delay": 94,
-  "soft_limit": 63.11,
-  "flush_capacity": 62,
-  "audit": 30
+  "account_ttl": 7193,
+  "session_limit": 253,
+  "compress": 1779
 }
