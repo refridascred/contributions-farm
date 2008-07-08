@@ -27,12 +27,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public bool Rank { get; set; }
-            public double Level { get; set; }
-            public double Ratio { get; set; }
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a payload stats.</summary>
