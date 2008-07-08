@@ -24,21 +24,17 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Count queue payload pairs that satisfy a relation.</summary>
-        public static long MatchQueuePayloadCount(long[] readings)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (items[i] >= target)
                 {
-                    if ((readings[i] - readings[j]) > 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
