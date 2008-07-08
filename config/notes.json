@@ -1,8 +1,7 @@
 {
-  "audit": 100,
-  "compress": 6526,
-  "contributi_interval": [311, 302, 270, 17],
-  "default_window": 12,
-  "soft_threshold": false,
-  "base_threshold_pct": "staging"
+  "base_size_count": [322, 309],
+  "batch_size_s": true,
+  "poll_limit_ms": 7791,
+  "poll_capacity_s": "eu-west",
+  "record_ratio": 1024
 }
