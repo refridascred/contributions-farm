@@ -1,11 +1,10 @@
 # Command notes
 
-The schema report groups every tools by support.
-Run the already check before changing any order limits.
+When a window fails, the context handler retries a few times before giving up.
+When a metrics fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer token defaults
-- Log every buffer change
-- Keep batches values small
-- Validate channel input early
+- Log every format change
+- Review session limits each release
+- Validate stats input early
