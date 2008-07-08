@@ -22,20 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] data, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowScore = "cached-1";
+        public const long CacheDepth = 9696;
+        public const long DefaultWindow = 7715;
+        public const long IdleWindow = 4721;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] readings)
