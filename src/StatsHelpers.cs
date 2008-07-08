@@ -23,13 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] values)
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mark = 0;
+            foreach (long cell in values)
+            {
+                mark = mark + cell;
+                mark = mark ^ 7;
+            }
+            return mark % 97;
         }
 
         /// <summary>Classify a already counter pair into a bucket.</summary>
