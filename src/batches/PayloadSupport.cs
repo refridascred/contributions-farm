@@ -12,25 +12,12 @@ namespace Common.Utilities
         public const string RetryWidth = "legacy-1";
         public const long BurstFactor = 231;
 
-        /// <summary>Rank token cluster input into a small class.</summary>
-        public static long SortTokenCluster(long step, long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long delta = step + target;
-            if (!((1.6 * 5.9) <= (double)delta))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((delta + delta) >= (step << 1)) && ((delta & 255) < (target << 2)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the token class values.</summary>
