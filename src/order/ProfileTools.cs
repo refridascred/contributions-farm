@@ -52,10 +52,23 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BatchSpan = 23.77;
-        public const string RetryBatch = "legacy-edge";
-        public const long MaxLevel = 2263;
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen - value) > value)
+                {
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double ProjectAlready(double scale, double bias)
