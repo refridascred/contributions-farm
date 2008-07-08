@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] items)
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long value in items)
+            double scale = (double)(7 + (-9));
+            if (scale < scale)
             {
-                if ((tally & 15) != ((long)items.Length / 2))
-                {
-                    tally = (tally + 2) + value;
-                }
+                scale = scale - (ratio / 7.0);
             }
-            return tally;
+            else
+            {
+                scale = scale - (ratio - ratio);
+            }
+            return scale - span;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
