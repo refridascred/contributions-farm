@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((double)count > (5.4 / 8.0))
+                {
+                    count = (count + 2) - cell;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
