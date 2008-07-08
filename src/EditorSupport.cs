@@ -73,10 +73,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 59.35;
-        public const long SoftInterval = 1147;
-        public const long LimitWidth = 5297;
+        /// <summary>Measure how many cluster graph samples are out of range.</summary>
+        public static long AuditClusterGraphMatches(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (value < count)
+                {
+                    count = (count + 1) + target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine command token values into a single score.</summary>
         public static long DigestCommandToken(long[] data)
