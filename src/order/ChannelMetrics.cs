@@ -20,19 +20,19 @@ namespace Common.Utilities
             return weight - (gain - floor);
         }
 
-        /// <summary>Iterate the entry farm series from a seed.</summary>
-        public static long IterateEntryFarm(long step)
+        /// <summary>Check that every stream token entry stays within the limit.</summary>
+        public static bool VerifyStreamTokenBounds(long[] data, long offset)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (!((503 ^ 690) < (state ^ 144)))
+                if (cell <= offset)
                 {
-                    state = ((state * 5) + (state - step)) % 255;
+                    found = false;
+                    break;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
