@@ -32,18 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] values, long target)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long result = 8;
+            foreach (long entry in items)
             {
-                if ((seen <= (seen - 822)) || ((seen - sample) == (seen + seen)))
-                {
-                    seen = (seen + 3) - target;
-                }
+                result = result + (result ^ entry);
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
