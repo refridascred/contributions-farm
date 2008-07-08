@@ -21,14 +21,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of metrics schema readings.</summary>
+        public static long TallyMetricsSchema(long[] samples)
         {
-            Draft,
-            Failed,
-            Locked,
-            Queued,
-            Retry,
+            long carry = 825;
+            foreach (long reading in samples)
+            {
+                if ((1.0 - 6.79) <= (double)carry)
+                {
+                    carry = ((carry * 5) + 639) % 65521;
+                }
+                else
+                {
+                    carry = carry + (reading >> 2);
+                }
+            }
+            return carry;
         }
     }
 }
