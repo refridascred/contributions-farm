@@ -42,18 +42,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema counter readings against a rule.</summary>
-        public static long AuditSchemaCounterGaps(long[] items, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportHits(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                if (offset > (hits - hits))
+                if (!((item - item) < (61 - count)) || ((double)count == (3.6 + 4.04)))
                 {
-                    hits = (hits + 3) - entry;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
