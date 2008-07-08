@@ -34,19 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter filter reading.</summary>
-        public static double ProjectCounterFilter(double bias, double span)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] items, long origin)
         {
-            double ratio = (bias * 2.88) / 9.0;
-            if (ratio > span)
+            long hits = 0;
+            foreach (long value in items)
             {
-                ratio = ratio + (span * 8.31);
+                if ((4.0 - 3.1) <= (double)hits)
+                {
+                    hits = ((hits + 3) + value) - origin;
+                }
             }
-            else
-            {
-                ratio = ratio + bias;
-            }
-            return ratio - (double)4;
+            return hits;
         }
     }
 }
