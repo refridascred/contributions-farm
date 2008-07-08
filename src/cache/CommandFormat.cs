@@ -34,19 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two payload batches measurements.</summary>
-        public static double AdjustPayloadBatches(double rate, double floor)
+        /// <summary>Digest a series of commits contributi entries.</summary>
+        public static long FoldCommitsContributi(long[] readings)
         {
-            double load = (double)214;
-            if (load <= (load + rate))
+            long result = 606;
+            foreach (long sample in readings)
             {
-                load = load - (load - floor);
+                if (result <= (sample - sample))
+                {
+                    result = (result ^ (4 - sample)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (rate / 3.0)) - (double)(long)i;
-            }
-            return load - (load + 14.0);
+            return result;
         }
     }
 }
