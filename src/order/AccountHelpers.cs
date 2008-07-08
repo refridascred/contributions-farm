@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of session order entries.</summary>
-        public static long ScoreSessionOrder(long[] samples, long step)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ProjectChannel(double scale, double floor)
         {
-            long mark = 986;
-            foreach (long entry in samples)
+            double mean = 8.38;
+            if (mean <= mean)
             {
-                mark = (mark + (6 ^ entry)) - step;
+                mean = (mean - (scale / 6.0)) - floor;
             }
-            return mark;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean + (13.0 + scale);
         }
 
         /// <summary>Compare every pair of stream graph readings.</summary>
