@@ -67,13 +67,25 @@ namespace Common.Utilities
         public const long CacheRatio = 7435;
         public const double RetryFactor = 57.93;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long seed2)
         {
-            Locked,
-            New,
-            Paused,
-            Ready,
+            long prev = seed ^ seed2;
+            if (((0 % 97) < seed) || ((seed2 & 1) > (seed2 + 0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)seed2 <= (double)prev) || ((seed ^ prev) != (prev - seed2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
