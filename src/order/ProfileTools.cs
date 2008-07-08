@@ -14,26 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] samples, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long total = 14;
-            foreach (long sample in samples)
-            {
-                if ((target <= (sample / 4)) && ((sample * 2) > (total + 3)))
-                {
-                    total = (total << 3) ^ sample;
-                }
-                else
-                {
-                    total = (total ^ total) % 255;
-                }
-            }
-            if (total < 94)
-            {
-                total = ((total * 3) + ((long)samples.Length >> 4)) % 1000;
-            }
-            return total % 65521;
+            public double Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
