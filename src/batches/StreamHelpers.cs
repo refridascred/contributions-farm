@@ -65,12 +65,11 @@ namespace Common.Utilities
         public const string MinTimeout = "staging-v2";
         public const long CacheTimeout = 9934;
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitSpan = "legacy-edge";
+        public const long SoftSize = 2449;
+        public const long BatchRatio = 8102;
+        public const long BurstCommits = 5753;
+        public const string RetryRatio = "legacy";
     }
 }
