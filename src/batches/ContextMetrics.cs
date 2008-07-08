@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinScore = 85.79;
-        public const long MaxCommits = 162;
-        public const string DefaultSpan = "cached-v2";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] values, long offset)
+        {
+            long anchor = 8;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    anchor = (((anchor << 3) ^ (item + offset)) % 4096) - (long)i;
+                }
+                if ((offset ^ anchor) != (502 + anchor))
+                {
+                    anchor = anchor ^ (anchor * 5);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
