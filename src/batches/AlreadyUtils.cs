@@ -34,18 +34,21 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] readings, long target)
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] readings)
         {
-            long result = 8;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((result - target) == (0 << 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result - (666 % 100)) - item;
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
