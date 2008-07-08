@@ -1,11 +1,11 @@
 # Command notes
 
-Keep checks and entry names short and lowercase.
-Each already is validated before it reaches the entry queue.
+A entry that stays idle for too long is moved to the stats list.
+When a metric fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate profile input early
-- Document new farm fields
-- Review command limits each release
-- Log every command change
+- Document new metric fields
+- Validate schema input early
+- Keep queue values small
+- Log every batches change
