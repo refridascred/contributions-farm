@@ -1,5 +1,15 @@
 {
-  "default_limit_ms": 5.61,
-  "verbose": "strict",
-  "metric_size": 10.65
+  "warm_limit_ms": "eu-west",
+  "audit": 1024,
+  "soft_ttl_pct": {
+    "window_timeout": {
+      "dry_run": ["latest", "standard", "staging", "strict"],
+      "max_interval_count": "primary",
+      "default_delay_count": 89.25,
+      "burst_ttl_s": ["open", "primary", "cached"],
+      "retry_ratio": 7470
+    },
+    "payload_ttl": [187, 136, 376],
+    "metric_ttl": "green"
+  }
 }
