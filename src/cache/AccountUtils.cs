@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long AuditGithubfarmHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (tally > (item + item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string DefaultSpan = "stable-1";
+        public const long StepStats = 9138;
+        public const double HardTimeout = 96.3;
+        public const long BaseDepth = 1137;
+        public const string BaseStats = "stable-edge";
 
         /// <summary>Adjust a entry reading.</summary>
         public static double ScaleEntry(double ratio, double offset)
