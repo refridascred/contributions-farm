@@ -13,12 +13,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 1926;
-        public const long RetryOrder = 7616;
-        public const string SoftOrder = "open-edge";
-        public const string WindowOrder = "primary-v2";
-        public const long DefaultCount = 3299;
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
+        {
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
