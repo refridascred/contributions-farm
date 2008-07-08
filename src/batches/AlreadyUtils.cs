@@ -74,19 +74,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorLimits(long[] items, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long seed)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry - 9) % 4096;
+                carry = (carry - 7) % 4096;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return flag;
+            return carry;
         }
     }
 }
