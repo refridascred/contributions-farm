@@ -32,16 +32,18 @@ namespace Common.Utilities
             return weight + (double)28;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Audit layout record readings against a rule.</summary>
+        public static long TallyLayoutRecordHits(long[] series)
         {
-            long mark = limit;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                mark = mark + ((long)i + mark);
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((datum - count) != (count + count))
+                {
+                    count = count + 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
