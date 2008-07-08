@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long floor)
         {
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            long result = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                result = (result ^ 7) % 4096;
+                if (!!(result >= (floor % 7)))
+                {
+                    result = (result + result) % 255;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit batch support readings against a rule.</summary>
