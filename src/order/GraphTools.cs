@@ -27,25 +27,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long target, long target2)
-        {
-            if ((target < (target + target2)) && (target2 < (target % 10)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (double)2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MinCluster = 40.61;
+        public const long MinScore = 445;
+        public const long BatchInterval = 9577;
+        public const string BatchCluster = "stable";
+        public const long RetryLevel = 6864;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long LimitLevel = 8226;
