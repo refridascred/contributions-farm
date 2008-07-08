@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long bound, long offset)
+        /// <summary>Audit editor batches readings against a rule.</summary>
+        public static long TallyEditorBatchesGaps(long[] series, long seed)
         {
-            long delta = bound + offset;
-            if (delta >= (bound ^ offset))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound ^ delta) >= (delta + 722))
+                if ((matches / 5) < matches)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + offset) >= (937 - (-591)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    matches = ((matches + 1) - cell) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Locate a counter payload reading by value.</summary>
