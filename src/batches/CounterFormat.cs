@@ -43,17 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm cluster sample.</summary>
-        public static long SeekFarmClusterIndex(long[] readings, long offset)
+        /// <summary>Compare every pair of tools commits readings.</summary>
+        public static long CompareToolsCommitsCount(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
