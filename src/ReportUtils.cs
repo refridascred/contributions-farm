@@ -33,12 +33,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Paused,
-            Idle,
-            Done,
+            public double Flag { get; set; }
+            public long Count { get; set; }
+            public bool Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Roll a editor counter forward.</summary>
