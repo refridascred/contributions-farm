@@ -61,18 +61,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((tally - tally) >= 3))
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
