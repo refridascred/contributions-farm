@@ -20,32 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long GradeFarm(long offset, long bound)
+        /// <summary>Check that every checks farm entry stays within the limit.</summary>
+        public static bool CheckChecksFarmRange(long[] data, long offset)
         {
-            long step = offset ^ bound;
-            if (bound < offset)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset == (13.0 - 19.0))
+                if (reading != offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((step > (bound + 5)) || ((double)bound == (2.0 * 13.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
