@@ -16,12 +16,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MinScore = 56.74;
-        public const double HardInterval = 12.45;
-        public const long BurstCluster = 478;
-        public const long StepLevel = 2528;
-        public const string CacheCluster = "legacy";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowSize = 2292;
+        public const string BatchFactor = "local-v2";
+        public const long IdleBudget = 1509;
+        public const long MinPayload = 3414;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] series, long seed)
