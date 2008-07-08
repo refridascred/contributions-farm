@@ -18,14 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] values)
         {
-            Pending,
-            Draft,
-            Active,
-            Paused,
-            New,
+            long state = 486;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    state = (((state << 3) ^ (value + value)) % 1000) + (long)i;
+                    state = state + state;
+                }
+                if ((state << 2) < state)
+                {
+                    state = (state << 2) ^ (value + 29);
+                }
+                else
+                {
+                    state = ((state * 4) + (value & 31)) % 101;
+                }
+                if ((state & 15) <= 411)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the notes level values.</summary>
