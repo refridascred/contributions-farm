@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
+mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    local)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,5 @@ while [ "${count}" -lt 3 ]; do
 done
 log "ran ${count} rounds"
 
-for item in strict green edge; do
-    log "checking ${item}"
-done
+RECORD_LIMIT=263
+log "limit is ${RECORD_LIMIT}"
