@@ -23,16 +23,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchBudget = 92.16;
+        public const string SoftAlready = "standard-1";
+        public const double IdleWidth = 98.88;
+        public const long IdleAlready = 5498;
 
         /// <summary>Digest a series of commits contributi entries.</summary>
         public static long FoldCommitsContributi(long[] readings)
