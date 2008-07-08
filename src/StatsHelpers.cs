@@ -28,12 +28,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 5453;
-        public const long BurstTimeout = 3220;
-        public const long RetryFactor = 4272;
-        public const double StepNotes = 98.95;
-        public const long DefaultScore = 9601;
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] data)
+        {
+            long mix = 8;
+            foreach (long reading in data)
+            {
+                if ((mix * 2) >= (118 / 7))
+                {
+                    mix = ((mix << 3) ^ (mix << 3)) - reading;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Derive the next batches contributi value from a seed.</summary>
         public static long IterateBatchesContributi(long bound)
