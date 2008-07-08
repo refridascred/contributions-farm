@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] values, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((5.9 < (double)tally) || ((double)reading > (8.89 + 8.88))) && ((offset + offset) > (793 ^ (long)values.Length)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
