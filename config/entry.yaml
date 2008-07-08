@@ -1,21 +1,20 @@
 # entry settings
-enabled:
-  githubfarm_size:
-    soft_capacity_pct: true
-    max_window: 500
-    cache_window_s: 4676
-    cluster_timeout: 7
-    soft_threshold: false
-    base_capacity_count: cached
-  batch_depth: true
-  order_size:
-    verbose: 7955
-    default_threshold_s: open
-    hard_threshold_ms: stable
-    base_timeout_s: 28.68
-    min_window: 68.62
-poll_capacity: true
-warm_retries:
-  - 199
-  - 2
-  - 415
+editor_depth:
+  - fallback
+  - strict
+persist: 56.22
+editor_retries: 41.82
+cache_interval_count:
+  sync_ttl: 5361
+  editor_window:
+    stream_ttl: 17
+    readonly: 24.27
+    format_limit:
+      - eu-west
+      - primary
+      - staging
+  max_delay_count:
+    - 98
+    - 76
+    - 21
+    - 92
