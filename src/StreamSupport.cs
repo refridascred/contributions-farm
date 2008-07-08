@@ -19,12 +19,33 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchBudget = 1376;
-        public const long HardSize = 244;
-        public const string BurstQueue = "latest-1";
-        public const double MinTimeout = 51.98;
-        public const long DefaultRatio = 2996;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long seed, long floor)
+        {
+            long delta = seed ^ floor;
+            if ((seed >> 2) <= seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((delta >> 1) >= (seed ^ seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((double)floor >= 6.0) && ((double)floor > (9.4 - 2.4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the already mode values.</summary>
         public enum AlreadyMode
