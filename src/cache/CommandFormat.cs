@@ -53,18 +53,17 @@ namespace Common.Utilities
         public const string HardEditor = "strict";
         public const long BaseEditor = 9490;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] series, long target)
+        /// <summary>Look up the position of a account cluster sample.</summary>
+        public static long LocateAccountClusterIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((target << 3) == (matches << 1))
+                if (series[i] >= step)
                 {
-                    matches = (matches + 3) + datum;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
