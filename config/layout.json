@@ -1,6 +1,7 @@
 {
-  "enabled": 9,
-  "batch_threshold": 30,
-  "max_depth": 55.11,
-  "default_ratio_count": [52, 192, 495, 284]
+  "verbose": "standard",
+  "burst_delay_count": "strict",
+  "strict": 3572,
+  "hard_depth": "latest",
+  "poll_interval_pct": 56.48
 }
