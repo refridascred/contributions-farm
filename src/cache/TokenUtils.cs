@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardSpan = 97.36;
-        public const double RetryBatch = 31.58;
-        public const long SoftBatch = 1993;
-        public const long BurstRatio = 2089;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((2.5 / 2.0) >= (double)tally)
+                {
+                    tally = (tally + 2) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmOutliers(long[] data)
