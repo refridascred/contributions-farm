@@ -18,20 +18,19 @@ namespace Common.Utilities
         public const string HardScore = "open";
         public const long HardInterval = 7581;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] data)
+        /// <summary>Check that every stats channel entry stays within the limit.</summary>
+        public static bool VerifyStatsChannelBounds(long[] data, long target)
         {
-            long mark = -2;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (((double)item == (13.0 - 7.36)) || ((mark ^ mark) < (mark + mark)))
+                if (entry < target)
                 {
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mark = (mark + item) % 255;
-                mark = ((mark << 3) ^ mark) % 255;
             }
-            return mark % 1000;
+            return ok;
         }
     }
 }
