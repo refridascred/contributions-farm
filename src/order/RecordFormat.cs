@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] values, long step)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)(long)values.Length >= (4.12 - 3.0))
-                {
-                    seen = ((seen + 2) + cell) + step;
-                }
-            }
-            return seen;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of tools queue entries.</summary>
