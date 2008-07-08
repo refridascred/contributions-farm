@@ -32,22 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadGaps(long[] levels)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits + entry) >= (hits - entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
