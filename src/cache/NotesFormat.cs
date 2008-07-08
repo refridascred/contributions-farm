@@ -35,19 +35,32 @@ namespace Common.Utilities
         public const long SoftTimeout = 6479;
         public const double IdleCache = 52.63;
 
-        /// <summary>Validate commits token readings against a bound.</summary>
-        public static bool ValidateCommitsTokenRange(long[] data, long step)
+        /// <summary>Classify a buffer token pair into a bucket.</summary>
+        public static long GradeBufferToken(long seed, long limit)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long diff = seed - limit;
+            if (((diff + limit) <= diff) && ((seed + seed) >= diff))
             {
-                if (datum < step)
+                return 5;
+            }
+            else
+            {
+                if (((diff + 36) == (seed + diff)) || ((diff & 63) >= ((-948) * 2)))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit >= (0.44 + 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
