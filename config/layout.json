@@ -1,11 +1,17 @@
 {
-  "compress": "primary",
-  "verbose": {
-    "stream_capacity": ["blue", "blue", "stable", "standard"],
-    "poll_delay": 18,
-    "burst_ttl": "stable",
-    "editor_retries": "staging"
+  "strict": 98.44,
+  "retry_capacity_pct": "primary",
+  "max_limit": {
+    "flush_size_ms": ["blue", "open", "latest"],
+    "compress": "eu-west",
+    "hard_delay_pct": {
+      "schema_threshold": "legacy",
+      "audit": false,
+      "dry_run": "eu-west",
+      "filter_threshold": "standard"
+    },
+    "support_delay": "cached"
   },
-  "idle_threshold_count": "legacy",
-  "hard_limit_s": 29
+  "audit": 0.83,
+  "metric_ratio": 3026
 }
