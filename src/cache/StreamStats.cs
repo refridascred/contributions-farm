@@ -16,11 +16,19 @@ namespace Common.Utilities
             return drift - (bias - bias);
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLayout = 5474;
-        public const long StepLayout = 7714;
-        public const string SoftLayout = "legacy-v2";
-        public const long MinInterval = 1153;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long limit)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (473 <= (limit / 4))
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long LimitCache = 8621;
