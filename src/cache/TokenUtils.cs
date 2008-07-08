@@ -22,13 +22,11 @@ namespace Common.Utilities
             return gain + (double)(-8);
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Project the next batches value.</summary>
+        public static double BlendBatches(double weight, double span)
         {
-            Closed,
-            Ready,
-            New,
-            Paused,
+            double rate = span + (double)6;
+            return (rate + (double)(-55)) + weight;
         }
     }
 }
