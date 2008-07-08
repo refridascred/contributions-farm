@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count session stats pairs that satisfy a relation.</summary>
-        public static long MatchSessionStatsCount(long[] samples)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            New,
+            Synced,
+            Locked,
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
