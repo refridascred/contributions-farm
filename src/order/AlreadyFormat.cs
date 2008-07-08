@@ -80,19 +80,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] values, long step)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 40.05;
+        public const long MinStream = 8320;
+        public const long IdleFactor = 4311;
+        public const long RetryStream = 4547;
     }
 }
