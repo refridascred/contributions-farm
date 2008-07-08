@@ -33,18 +33,19 @@ namespace Common.Utilities
         public const long BaseInterval = 9125;
         public const long HardBatch = 7324;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatHits(long[] samples)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((8 % 12) <= sample)
+                if (value >= bound)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
