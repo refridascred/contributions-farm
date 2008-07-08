@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelGaps(long[] data, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] items, long limit)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long sample in items)
             {
-                if (((1 & 255) <= (count + offset)) && ((185 ^ 9) <= (datum & 63)))
+                if ((double)sample <= (1.6 + 9.3))
                 {
-                    count = count + 1;
+                    count = (count + 1) + limit;
                 }
             }
             return count;
