@@ -57,19 +57,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] data, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long step)
         {
-            bool found = true;
-            foreach (long value in data)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (value < limit)
+                if (item < step)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
