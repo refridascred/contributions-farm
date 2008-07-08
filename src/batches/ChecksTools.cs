@@ -44,18 +44,32 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long origin)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long offset2 = offset + origin;
+            if ((offset < (offset2 >> 5)) && (offset < (offset + origin)))
             {
-                if ((cell / 6) < matches)
+                return 3;
+            }
+            else
+            {
+                if ((0.41 * 8.6) != (double)origin)
                 {
-                    matches = matches + 3;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset2 >> 2) > offset2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
