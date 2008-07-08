@@ -1,17 +1,11 @@
 {
-  "already_capacity": [460, 313, 262],
-  "batch_retries": {
-    "persist": "fallback",
-    "verbose": [144, 288],
-    "compress": "cached",
-    "soft_delay_count": "strict",
-    "warm_capacity": 75
+  "compress": "primary",
+  "verbose": {
+    "stream_capacity": ["blue", "blue", "stable", "standard"],
+    "poll_delay": 18,
+    "burst_ttl": "stable",
+    "editor_retries": "staging"
   },
-  "session_timeout": 250,
-  "stream_interval": ["primary", "cached", "eu-west"],
-  "flush_ttl_ms": {
-    "flush_limit": 0.37,
-    "max_capacity": "primary",
-    "batch_size": 81.81
-  }
+  "idle_threshold_count": "legacy",
+  "hard_limit_s": 29
 }
