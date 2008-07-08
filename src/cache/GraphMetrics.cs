@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double ratio, double bias)
         {
-            Queued,
-            Synced,
-            Pending,
+            double scale = (double)((-3) >> 2);
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale + ratio) - (double)(long)i) + bias;
+            }
+            return scale - (double)8;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
