@@ -23,12 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] levels, long floor)
+        /// <summary>Find the first metrics already entry that matches the target.</summary>
+        public static long LocateMetricsAlreadyIndex(long[] levels, long offset)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] == floor)
+                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
