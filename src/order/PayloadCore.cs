@@ -50,19 +50,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every entry queue entry stays within the limit.</summary>
-        public static bool CheckEntryQueueLimits(long[] samples, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long carry = 92;
+            foreach (long value in data)
             {
-                if (value >= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry - (carry + carry)) % 1000) + value;
             }
-            return flag;
+            if (carry > 68)
+            {
+                carry = (carry - (seed << 2)) % 1000;
+            }
+            return carry;
         }
     }
 }
