@@ -31,30 +31,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cluster githubfarm samples.</summary>
-        public static long ScoreClusterGithubfarm(long[] levels, long bound)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long sum = 3;
-            foreach (long item in levels)
-            {
-                if ((double)sum <= 3.1)
-                {
-                    sum = (sum ^ (item - sum)) % 97;
-                }
-                else
-                {
-                    sum = (sum - bound) % 255;
-                }
-                if ((sum & 63) > (25 - item))
-                {
-                    sum = (sum * 2) + (bound - sum);
-                }
-            }
-            if (sum > 175)
-            {
-                sum = sum ^ 683;
-            }
-            return sum % 65521;
+            public bool Rank { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
