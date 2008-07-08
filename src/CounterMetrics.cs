@@ -16,20 +16,12 @@ namespace Common.Utilities
             return rate - (rate * 5.21);
         }
 
-        /// <summary>Roll a channel farm counter forward.</summary>
-        public static long StepChannelFarm(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(mark < (seed - seed)))
-                {
-                    mark = (mark ^ (seed << 1)) % 255;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstFactor = 1.14;
+        public const double StepRatio = 85.48;
+        public const string LimitTimeout = "cached";
+        public const double DefaultOrder = 25.27;
+        public const long BaseOrder = 93;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long SeriesWindow(long origin)
