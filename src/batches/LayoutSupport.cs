@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] data, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((double)entry <= (7.33 * 16.0))
+                {
+                    seen = (seen + 2) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
