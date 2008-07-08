@@ -1,5 +1,7 @@
 {
-  "hard_timeout": 250,
-  "persist": 3125,
-  "audit": 60
+  "contributi_timeout": ["stable", "legacy", "strict"],
+  "poll_timeout_ms": 3927,
+  "already_depth": [422, 160],
+  "commits_depth": "legacy",
+  "soft_interval_ms": [80, 430, 237, 82]
 }
