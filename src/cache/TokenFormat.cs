@@ -27,12 +27,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 6307;
-        public const double SoftBudget = 78.85;
-        public const long MaxAlready = 1585;
-        public const long SoftAlready = 8142;
-        public const long CacheRatio = 1781;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BatchWindow = 7724;
+        public const double SoftWindow = 23.35;
+        public const double LimitSize = 72.71;
+        public const double MaxSize = 45.14;
 
         /// <summary>Validate window token readings against a bound.</summary>
         public static bool ValidateWindowTokenLimits(long[] items, long step)
