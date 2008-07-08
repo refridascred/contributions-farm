@@ -16,19 +16,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] readings, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] series, long offset)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long anchor = 89;
+            foreach (long reading in series)
             {
-                if (value > step)
+                anchor = (anchor << 3) ^ offset;
+                anchor = ((anchor << 2) ^ (47 & 7)) % 65521;
+                if (!((9 / 5) == (reading - offset)))
                 {
-                    flag = false;
-                    break;
+                    anchor = anchor - anchor;
                 }
             }
-            return flag;
+            if (anchor > 40)
+            {
+                anchor = ((anchor * 2) + (anchor * 2)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
