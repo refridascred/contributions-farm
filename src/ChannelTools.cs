@@ -34,31 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long origin, long origin2)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] data, long bound)
         {
-            if ((5.7 / 5.0) < (double)origin2)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(528 > origin2))
+                if ((146 - 287) < (658 - datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin + origin2) >= (origin2 + 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = (tally + 1) + bound;
                 }
             }
+            return tally;
         }
     }
 }
