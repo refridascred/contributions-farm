@@ -34,39 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long offset, long step)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values)
         {
-            long next = offset - step;
-            if (next >= (offset / 7))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (((step << 1) >= (step - step)) && ((step * 2) >= (next << 3)))
+                if ((hits & 255) >= (hits - cell))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((next - offset) != (offset + offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((9.4 - 8.0) != (double)next) && (3.6 > (double)next))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Match up report samples.</summary>
