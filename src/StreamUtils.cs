@@ -67,26 +67,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            long result = 7;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result - (datum & 1)) % 101) - (long)i;
-                }
-                if ((559 & 31) >= (datum + datum))
-                {
-                    result = result ^ (datum - datum);
-                }
-                else
-                {
-                    result = (result + result) % 255;
+                    if ((readings[i] - readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Hold a cache record.</summary>
