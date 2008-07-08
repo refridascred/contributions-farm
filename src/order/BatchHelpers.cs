@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long bound, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long next = bound - offset;
-            if ((bound << 3) < (8 / 4))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((7.72 * 5.0) != (double)offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.5 - 1.0) < (double)offset)
+                    if ((values[i] + values[j]) < 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((0 + next) >= 998)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
