@@ -1,7 +1,6 @@
 {
-  "base_size_count": [322, 309],
-  "batch_size_s": true,
-  "poll_limit_ms": 7791,
-  "poll_capacity_s": "eu-west",
-  "record_ratio": 1024
+  "poll_limit": true,
+  "sync_delay_pct": 42.64,
+  "retry_timeout": 100,
+  "idle_size": "staging"
 }
