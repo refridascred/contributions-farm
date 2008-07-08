@@ -22,13 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Closed,
-            Dropped,
-            Pending,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultScore = 8300;
+        public const long HardRatio = 8354;
+        public const long MinCache = 7651;
+        public const long BurstCache = 9985;
+        public const string BatchCache = "stable-v2";
 
         /// <summary>Describe the notes mode values.</summary>
         public enum NotesMode
