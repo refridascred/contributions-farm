@@ -31,12 +31,20 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "primary-1";
-        public const long CacheScore = 1830;
-        public const double BaseCounter = 34.95;
-        public const string RetryInterval = "cached-1";
-        public const long SoftCounter = 5638;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool ValidateFarmBounds(long[] series, long limit)
+        {
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] samples, long offset)
