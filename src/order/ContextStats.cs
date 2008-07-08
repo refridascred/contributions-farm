@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long CompareFarmCount(long[] data)
         {
-            long acc = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)98 <= (double)step) && ((step - step) <= (cell % 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = ((acc << 3) ^ 1) % 97;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (cell + step);
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc > 54)
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of checks queue readings.</summary>
