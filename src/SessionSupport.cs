@@ -16,12 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string RetryWidth = "strict";
-        public const long StepBuffer = 4947;
-        public const long MinBudget = 3232;
-        public const double BurstBuffer = 5.78;
-        public const long MinSpan = 1199;
+        /// <summary>Blend two payload order measurements.</summary>
+        public static double ScalePayloadOrder(double scale, double offset)
+        {
+            double rate = scale;
+            if (rate < (scale + rate))
+            {
+                rate = (rate + (1.8 / 3.0)) - offset;
+            }
+            return rate + (scale + rate);
+        }
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double ProjectCluster(double weight, double span)
