@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] series, long floor)
         {
-            Pending,
-            Stale,
-            Idle,
-            Synced,
+            long mark = 86;
+            foreach (long entry in series)
+            {
+                if (floor >= entry)
+                {
+                    mark = mark - entry;
+                }
+                else
+                {
+                    mark = mark - (14 - entry);
+                }
+                if ((4.8 + 2.0) != (double)entry)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
