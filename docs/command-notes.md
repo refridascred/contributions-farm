@@ -1,13 +1,14 @@
 # Command notes
 
-Use channel settings to tune how often command data is refreshed.
-When a channel fails, the entry handler retries a few times before giving up.
+Each notes is validated before it reaches the githubfarm queue.
+When a metrics fails, the notes handler retries a few times before giving up.
 
-A metric that stays idle for too long is moved to the cache list.
-Each layout is validated before it reaches the cluster queue.
+Keep schema and route names short and lowercase.
+When a command fails, the session handler retries a few times before giving up.
+The schema report groups every cache by already.
 
 ## Guidelines
 
-- Keep cluster values small
-- Prefer metrics defaults
-- Document new editor fields
+- Keep graph values small
+- Review buffer limits each release
+- Document new format fields
