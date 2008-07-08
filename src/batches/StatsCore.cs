@@ -39,15 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double AdjustSession(double weight, double offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double scale, double bias)
         {
-            double drift = (double)900 + (weight / 6.0);
-            if (drift >= (10.0 / 7.0))
+            double load = bias;
+            if (load > (double)(-1))
             {
-                drift = drift + 2.5;
+                load = (load - (bias - 1.66)) - scale;
             }
-            return drift + (weight + offset);
+            else
+            {
+                load = load - (double)5;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
