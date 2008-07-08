@@ -40,21 +40,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] samples)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a graph options.</summary>
