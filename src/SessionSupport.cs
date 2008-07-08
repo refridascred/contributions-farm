@@ -22,14 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            New,
-            Paused,
-            Idle,
-            Queued,
-            Failed,
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next profile value.</summary>
