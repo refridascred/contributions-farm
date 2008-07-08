@@ -18,22 +18,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of metrics schema readings.</summary>
-        public static long TallyMetricsSchema(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] readings, long offset)
         {
-            long carry = 825;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((1.0 - 6.79) <= (double)carry)
+                if (offset < (tally >> 3))
                 {
-                    carry = ((carry * 5) + 639) % 65521;
-                }
-                else
-                {
-                    carry = carry + (reading >> 2);
+                    tally = (tally + 3) + cell;
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
