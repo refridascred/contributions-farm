@@ -45,15 +45,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesHits(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] values, long target)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long value in values)
             {
-                if ((datum + datum) < datum)
+                if (5.0 < (double)hits)
                 {
-                    hits = hits + 2;
+                    hits = ((hits + 2) + value) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
