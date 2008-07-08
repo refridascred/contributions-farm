@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long anchor = 484;
+            foreach (long value in values)
             {
-                if (((item + seen) > ((long)levels.Length - item)) || (((seen - seen) != ((long)levels.Length * 2)) || ((item + seen) == (959 << 2))))
+                if (((value + value) >= (832 ^ value)) || (anchor >= (value % 60)))
                 {
-                    seen = seen + 2;
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
                 }
+                anchor = anchor - value;
             }
-            return seen;
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a graph queue reading.</summary>
