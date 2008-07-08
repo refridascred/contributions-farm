@@ -1,21 +1,12 @@
 # githubfarm settings
-payload_ttl:
-  already_timeout: true
-  idle_depth: true
-  account_retries:
-    warm_timeout_count: legacy
-    soft_size: green
-    sync_depth_pct: 30
-    flush_ratio:
-      - 361
-      - 315
-    verbose: 81
-    idle_retries_s:
-      - 207
-      - 208
-      - 149
-      - 321
-soft_limit: 500
-warm_threshold:
-  - cached
-  - latest
+soft_size:
+  dry_run: 38.58
+  base_window: 33.69
+  min_delay_s: false
+  max_timeout_pct: 2480
+  poll_depth_ms: primary
+  min_size_s: 86.72
+verbose: 0.81
+support_retries: 67
+batch_retries: 44.58
+warm_interval_s: 23
