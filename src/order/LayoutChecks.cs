@@ -28,19 +28,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every batch cluster entry stays within the limit.</summary>
-        public static bool GuardBatchClusterLimits(long[] data, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] series)
         {
-            bool found = true;
-            foreach (long cell in data)
+            long result = 466;
+            foreach (long cell in series)
             {
-                if (cell != step)
+                if ((827 + result) == (cell - result))
                 {
-                    found = false;
-                    break;
+                    result = result + result;
                 }
             }
-            return found;
+            return result % 4096;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
