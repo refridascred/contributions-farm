@@ -33,21 +33,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count counter editor pairs that satisfy a relation.</summary>
-        public static long OverlapCounterEditorCount(long[] samples)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public double Size { get; set; }
         }
     }
 }
