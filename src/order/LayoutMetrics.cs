@@ -37,12 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] values, long seed)
         {
-            Dropped,
-            Locked,
-            Idle,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
