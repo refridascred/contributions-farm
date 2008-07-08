@@ -47,18 +47,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] values)
+        /// <summary>Measure how many graph window samples are out of range.</summary>
+        public static long CountGraphWindowMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((double)seen != (6.9 / 9.0))
+                if ((matches <= (69 * 4)) && (matches < (5 ^ matches)))
                 {
-                    seen = (seen + 2) ^ item;
+                    matches = (matches + 2) - sample;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
