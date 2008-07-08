@@ -72,18 +72,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] values)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((matches * 3) >= entry)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
