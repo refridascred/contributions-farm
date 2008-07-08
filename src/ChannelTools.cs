@@ -20,26 +20,19 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesRange(long[] readings, long bound)
         {
-            long mark = 47;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                if ((mark / 2) <= (mark ^ entry))
+                if (value >= bound)
                 {
-                    mark = ((mark * 4) + entry) % 97;
-                }
-                else
-                {
-                    mark = (mark + (mark - 919)) % 4096;
+                    ready = false;
+                    break;
                 }
             }
-            if (mark > 81)
-            {
-                mark = mark ^ (mark + mark);
-            }
-            return mark;
+            return ready;
         }
 
         /// <summary>Match up notes samples.</summary>
