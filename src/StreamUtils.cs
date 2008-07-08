@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] items)
+        /// <summary>Accumulate layout payload samples.</summary>
+        public static long CombineLayoutPayload(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mark = 592;
+            foreach (long entry in items)
             {
-                if ((double)count > (5.4 / 8.0))
+                if (((-247) >> 3) <= (mark << 1))
                 {
-                    count = (count + 2) - cell;
+                    mark = ((mark << 3) ^ (9 - entry)) % 1000;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ entry;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
