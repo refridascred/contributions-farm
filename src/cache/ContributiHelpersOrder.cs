@@ -32,12 +32,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] samples, long step)
         {
-            Synced,
-            Failed,
-            Stale,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next payload profile value.</summary>
