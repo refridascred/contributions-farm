@@ -19,14 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Pending,
-            Queued,
-            Dropped,
-            Paused,
-            Locked,
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
