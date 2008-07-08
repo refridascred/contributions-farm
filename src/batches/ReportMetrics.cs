@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long RankChannel(long origin, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if (((limit / 5) <= (limit * 5)) || ((origin - origin) <= origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((2 + origin) < origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit / 2) > (limit * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit >= (origin ^ origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Score { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
