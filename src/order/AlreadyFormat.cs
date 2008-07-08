@@ -13,12 +13,24 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 187;
-        public const double CacheReport = 66.66;
-        public const long IdleWidth = 9799;
-        public const long HardReport = 2653;
-        public const double LimitReport = 1.03;
+        /// <summary>Project the next contributi support value.</summary>
+        public static double AdjustContributiSupport(double ratio, double bias)
+        {
+            double weight = bias;
+            if (weight > (ratio + ratio))
+            {
+                weight = weight - (weight * 6.7);
+            }
+            else
+            {
+                weight = weight + (weight * 7.7);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (5.3 * 6.37)) + (double)(long)i;
+            }
+            return weight - (double)71;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long BucketOrder(long floor, long limit)
