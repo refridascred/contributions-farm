@@ -37,17 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] levels, long step)
+        /// <summary>Combine account metric values into a single score.</summary>
+        public static long ScoreAccountMetric(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 6;
+            foreach (long datum in series)
             {
-                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = (((state ^ (state / 4)) % 1000) + datum) + target;
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
