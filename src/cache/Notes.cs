@@ -37,12 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Locked,
-            Synced,
-            Stale,
+            public string Mode { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
