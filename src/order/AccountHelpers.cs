@@ -13,28 +13,29 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long limit, long bound)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long seed, long floor)
         {
-            if ((limit + limit) > (bound + bound))
+            long diff = seed + floor;
+            if ((double)floor < 0.7)
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (limit > (bound << 2))
+                if ((2.48 + 7.3) < (double)floor)
                 {
                     return 0;
                 }
                 else
                 {
-                    if ((double)524 <= (double)bound)
+                    if (!((seed & 3) == (diff << 1)))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        return 4;
                     }
                 }
             }
