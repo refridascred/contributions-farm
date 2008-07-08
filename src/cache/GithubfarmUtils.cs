@@ -36,14 +36,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] series, long offset)
         {
-            Pending,
-            Paused,
-            Failed,
-            Dropped,
-            Active,
+            long anchor = 6;
+            foreach (long entry in series)
+            {
+                anchor = ((((anchor << 2) ^ (190 << 1)) % 65521) ^ entry) + offset;
+            }
+            return anchor;
         }
     }
 }
