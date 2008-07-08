@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferLimits(long[] values, long origin)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell != origin)
+                if (readings[i] < step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Measure how many route metric samples are out of range.</summary>
