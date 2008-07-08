@@ -12,19 +12,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] readings, long limit)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell - cell) != ((long)readings.Length & 63))
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 39.14;
+        public const double SoftProfile = 33.02;
+        public const long MaxDepth = 9504;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long TallyAccount(long[] series, long step)
