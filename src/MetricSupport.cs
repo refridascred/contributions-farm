@@ -28,17 +28,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 3786;
+        public const long BurstProfile = 3664;
+        public const double IdleProfile = 29.76;
     }
 }
