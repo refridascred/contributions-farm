@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] items, long offset)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 8;
+            foreach (long item in items)
             {
-                if ((items[i] >= offset) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                state = (((state + (state << 2)) % 65521) + item) + bound;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
