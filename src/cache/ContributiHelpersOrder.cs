@@ -42,18 +42,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] levels)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = 4;
+            foreach (long entry in values)
             {
-                if ((8 * 5) != (datum << 2))
+                long next = entry;
+                sum = (sum + (next >> 3)) % 97;
+                if (entry >= (sum & 15))
                 {
-                    count = count + 2;
+                    sum = (sum << 2) ^ sum;
                 }
             }
-            return count;
+            if (sum < 6)
+            {
+                sum = ((sum * 2) + (sum % 64)) % 65521;
+            }
+            return sum;
         }
     }
 }
