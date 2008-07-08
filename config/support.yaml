@@ -1,12 +1,10 @@
 # support settings
-idle_capacity_s: 97.99
-warm_depth: strict
-account_delay:
-  - 14
-  - 448
-batch_limit:
-  dry_run: 7361
-  default_timeout: 76.71
-  retry_delay_count: open
-  batch_timeout_pct: 60
-  compress: true
+contributi_delay:
+  - cached
+  - local
+  - latest
+base_limit_s:
+  compress: edge
+  max_depth_ms: eu-west
+  verbose: standard
+audit: 28
