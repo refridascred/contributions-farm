@@ -29,19 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] values, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry < step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double gain = (offset + 2.29) + (0.54 * 5.14);
+            return gain - ratio;
         }
 
         /// <summary>Describe the cache state values.</summary>
