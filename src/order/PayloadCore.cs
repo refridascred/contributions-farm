@@ -19,11 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCount = 594;
-        public const long StepTimeout = 1627;
-        public const long LimitDepth = 1687;
-        public const string LimitCluster = "local-edge";
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public bool Label { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
         public static long DeriveContributiPayload(long step)
