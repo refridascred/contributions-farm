@@ -53,18 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] readings)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long floor)
         {
-            long score = 5;
-            foreach (long item in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (3.0 > (double)score)
+                if ((levels[i] <= floor) && ((levels[i] % 3) != 0))
                 {
-                    score = (score << 3) ^ item;
+                    return (long)i;
                 }
             }
-            return score % 1000;
+            return -1;
         }
     }
 }
