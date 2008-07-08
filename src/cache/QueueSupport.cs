@@ -33,13 +33,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long bound, long step)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public string Rank { get; set; } = "";
+            if (step >= bound)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((87 * 5) < ((-467) + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step & 3) >= 408) && ((step >> 5) < step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
