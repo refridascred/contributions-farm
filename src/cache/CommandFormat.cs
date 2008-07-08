@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] readings, long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] readings, long bound)
         {
-            long score = 734;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((7.0 + 8.36) == (double)score)
+                if ((double)hits != (5.9 + 6.4))
                 {
-                    score = ((score * 5) + seed) % 65521;
+                    hits = ((hits + 1) + cell) + bound;
                 }
-                if (!((seed + sample) >= score))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a checks header.</summary>
