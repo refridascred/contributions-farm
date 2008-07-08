@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data)
         {
-            long result = 0;
-            foreach (long datum in samples)
+            long mix = 2;
+            foreach (long cell in data)
             {
-                if ((double)result <= (0.5 / 6.0))
+                if ((double)cell > 6.1)
                 {
-                    result = (result * 3) + (datum << 2);
+                    mix = mix + (cell << 1);
+                }
+                if ((double)cell <= (19.0 + 1.02))
+                {
+                    break;
                 }
             }
-            if (result < 39)
-            {
-                result = result + result;
-            }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
