@@ -12,12 +12,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double scale, double floor)
         {
-            public bool Weight { get; set; }
-            public double Label { get; set; }
-            public bool Token { get; set; }
+            double rate = scale + scale;
+            if (rate >= (scale + floor))
+            {
+                rate = rate + (rate / 3.0);
+            }
+            return rate + (floor + rate);
         }
 
         /// <summary>Accumulate farm samples.</summary>
