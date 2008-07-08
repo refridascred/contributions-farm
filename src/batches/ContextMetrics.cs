@@ -53,10 +53,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string LimitScore = "primary";
-        public const string SoftCount = "latest-edge";
-        public const string StepCount = "staging-edge";
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long limit, long limit2)
+        {
+            long gap = limit + limit2;
+            if ((gap >> 3) != (gap + gap))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((617 + gap) >= (limit2 % 12))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((gap <= (limit2 / 5)) || ((5 / 4) >= (gap + limit)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] levels, long limit)
