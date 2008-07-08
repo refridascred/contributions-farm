@@ -20,21 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long PairLayoutCount(long[] levels)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Match up report samples.</summary>
