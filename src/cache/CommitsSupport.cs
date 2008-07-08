@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double weight, double offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double mean = (weight * 1.0) - (weight * 20.0);
-            if (mean < (weight / 7.0))
-            {
-                mean = mean + 3.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + (weight * 6.3)) - (double)(long)i;
-            }
-            return mean + (mean + offset);
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up window samples.</summary>
