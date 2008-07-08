@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] levels, long target)
+        /// <summary>Blend two notes command measurements.</summary>
+        public static double AdjustNotesCommand(double ratio, double floor)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            double gain = (double)651 * 4.7;
+            if (gain > (gain - ratio))
             {
-                if (entry > target)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - (double)250) - floor;
             }
-            return valid;
+            return gain + (gain + gain);
         }
 
         /// <summary>Roll a window entry counter forward.</summary>
