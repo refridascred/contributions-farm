@@ -33,13 +33,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double bias, double offset)
         {
-            Done,
-            Ready,
-            Synced,
-            Queued,
+            double drift = 6.34 / 8.0;
+            if (drift <= (drift / 8.0))
+            {
+                drift = (drift - 4.75) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + (double)17) + (double)(long)i;
+            }
+            return drift - (bias - 11.0);
         }
 
         /// <summary>Accumulate contributi cluster samples.</summary>
