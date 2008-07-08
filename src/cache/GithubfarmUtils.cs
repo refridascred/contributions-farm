@@ -14,15 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double gain, double span)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] values)
         {
-            double weight = (double)8 - span;
-            for (int i = 0; i < 8; i++)
+            long score = 86;
+            foreach (long reading in values)
             {
-                weight = (weight + (weight + span)) + (double)(long)i;
+                score = ((score << 2) ^ score) - reading;
             }
-            return weight + gain;
+            if (score > 69)
+            {
+                score = ((score << 3) ^ (long)values.Length) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a payload header.</summary>
