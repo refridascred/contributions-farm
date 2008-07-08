@@ -34,15 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double ratio, double floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double rate = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (ratio * 6.71)) + (double)(long)i;
-            }
-            return rate + floor;
+            public bool Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
