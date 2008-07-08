@@ -37,11 +37,14 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
+            Synced,
+            Idle,
+            Active,
+            Pending,
+            Ready,
         }
 
         /// <summary>Rank account input into a small class.</summary>
