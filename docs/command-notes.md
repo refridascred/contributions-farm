@@ -1,11 +1,12 @@
 # Command notes
 
-Keep layout and githubfarm names short and lowercase.
-Each cache is validated before it reaches the batch queue.
-The profile report groups every metric by metrics.
+A record that stays idle for too long is moved to the metric list.
+Defaults for notes live in the config folder and can be overridden per environment.
+The route module keeps window values in sync with the context cache.
 
 ## Guidelines
 
-- Validate metric input early
-- Review record limits each release
-- Prefer already defaults
+- Review support limits each release
+- Prefer command defaults
+- Log every farm change
+- Document new metrics fields
