@@ -67,24 +67,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue entry input into a small class.</summary>
-        public static long SortQueueEntry(long floor, long floor2)
-        {
-            if (((double)floor != (6.9 * 6.26)) && ((double)floor2 <= 2.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)78 == (double)floor2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheCluster = 4775;
+        public const long BaseCluster = 6855;
+        public const long RetrySize = 3228;
+        public const long HardCluster = 4047;
+        public const long BatchCluster = 9286;
     }
 }
