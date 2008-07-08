@@ -19,16 +19,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long origin)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] series, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = (total ^ origin) % 255;
-                total = ((total * 3) + (long)i) % 65521;
+                if ((double)bound >= (1.1 * 7.59))
+                {
+                    seen = (seen + 2) ^ entry;
+                }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
