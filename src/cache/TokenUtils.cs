@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long target, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long floor)
         {
-            long lane = target + bound;
-            if ((target > (1 - lane)) || ((double)bound <= (3.5 / 3.0)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((bound >> 1) != (bound << 2)))
+                if (series[i] == floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.0 - 18.0) < (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target + lane) < (bound / 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the editor kind values.</summary>
