@@ -58,16 +58,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the order support series from a seed.</summary>
-        public static long DeriveOrderSupport(long offset)
+        /// <summary>Project the next cluster batches value.</summary>
+        public static double AdjustClusterBatches(double bias, double offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 17; i++)
+            double scale = offset;
+            for (int i = 0; i < 9; i++)
             {
-                mix = (mix + (mix / 5)) % 101;
-                mix = ((mix * 4) + (long)i) % 65521;
+                scale = ((scale - offset) - (double)(long)i) + bias;
             }
-            return mix;
+            return scale - 5.01;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
