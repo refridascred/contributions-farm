@@ -38,9 +38,17 @@ namespace Common.Utilities
         public const string MinCluster = "open-v2";
         public const double HardCount = 18.88;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 82.43;
-        public const string BatchSupport = "legacy-edge";
-        public const long BaseSupport = 9756;
+        /// <summary>Look up the position of a already record sample.</summary>
+        public static long SeekAlreadyRecordIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
