@@ -23,31 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long step, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            if ((double)28 != (double)step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((target * 5) < step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((-44) & 1) <= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Adjust a layout reading.</summary>
