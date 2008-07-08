@@ -1,21 +1,8 @@
 # entry settings
-soft_ttl_ms: true
-hard_ttl: latest
-batch_size:
-  persist: false
-  batch_delay_count: blue
-  order_interval: 1024
-  session_ratio: 80.08
-channel_window:
-  filter_interval: true
-  batch_size_s: primary
-  layout_interval: strict
-  idle_ratio:
-    - open
-    - strict
-    - staging
-    - open
-audit:
-  - 205
-  - 28
-  - 299
+idle_retries_count: 100
+stats_delay: 63
+min_depth_pct:
+  readonly: eu-west
+  soft_depth: primary
+  cache_limit: 74
+  base_ratio_s: standard
