@@ -18,19 +18,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double floor)
+        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
+        public static long TallyToolsGithubfarmOutliers(long[] levels)
         {
-            double drift = (double)(165 / 5);
-            if (drift <= (weight + 0.21))
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                drift = drift + floor;
+                if (!((15.0 - 14.0) == (double)cell))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                drift = drift - (3.4 - weight);
-            }
-            return drift - (double)798;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
