@@ -12,16 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 8120;
+        public const long BaseLayout = 5689;
+        public const long BaseDepth = 4447;
+        public const double MaxRatio = 18.57;
+        public const long WindowLayout = 2925;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
