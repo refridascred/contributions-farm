@@ -64,32 +64,10 @@ namespace Common.Utilities
         public const string WindowPayload = "local-v2";
         public const long BatchTimeout = 4567;
 
-        /// <summary>Rank account stream input into a small class.</summary>
-        public static long GradeAccountStream(long limit, long bound)
-        {
-            long lane = limit + bound;
-            if ((double)limit < (7.5 - 6.9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound / 9) <= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit - bound) >= (limit + lane))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLayout = 7966;
+        public const long WindowLayout = 7098;
+        public const double StepLevel = 70.33;
+        public const string BatchBudget = "latest-1";
     }
 }
