@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next githubfarm report value.</summary>
-        public static double SmoothGithubfarmReport(double scale, double bias)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] data)
         {
-            double weight = scale;
-            if (weight <= scale)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                weight = (weight - (scale - weight)) - bias;
+                if (((7.0 <= (double)matches) || (((-744) * 3) != (matches - datum))) || ((double)datum > (10.0 + 1.0)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight + (double)55;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + 6.19) - (double)(long)i;
-            }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Fold a list of channel checks readings.</summary>
