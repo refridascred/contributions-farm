@@ -66,18 +66,18 @@ namespace Common.Utilities
             return ratio - 9.28;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels, long floor)
+        /// <summary>Audit token batch readings against a rule.</summary>
+        public static long AuditTokenBatchOutliers(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((17.0 - 0.99) >= (double)matches)
+                if ((seen / 9) == (cell % 12))
                 {
-                    matches = ((matches + 3) ^ reading) + floor;
+                    seen = (seen + 1) - offset;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
