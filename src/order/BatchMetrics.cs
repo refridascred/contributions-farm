@@ -42,31 +42,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] data)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            long total = 84;
-            foreach (long value in data)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((77 ^ 46) <= value)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total ^ (total - total);
-                    total = ((total << 3) ^ (total - value)) % 101;
-                }
-                if (!((195 ^ value) > (-60)))
-                {
-                    total = (total + (total ^ total)) % 97;
-                }
-                if (!((double)value > (0.2 + 2.98)))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (total > 54)
-            {
-                total = (total + total) % 97;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Fold a list of window readings.</summary>
