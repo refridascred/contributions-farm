@@ -26,17 +26,19 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] levels, long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
+                if (sample <= bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
