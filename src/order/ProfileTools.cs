@@ -49,18 +49,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandGaps(long[] series)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long target, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            if (((target >> 5) < (target + origin)) && ((0 + origin) > (origin / 6)))
             {
-                if ((count + value) < (61 ^ value))
+                return 4;
+            }
+            else
+            {
+                if ((target + target) >= (origin + origin))
                 {
-                    count = count + 2;
+                    return 2;
+                }
+                else
+                {
+                    if ((7.95 * 6.4) == (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin / 6) < (target ^ origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
