@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double gain, double floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long AuditGithubfarmHits(long[] series)
         {
-            double drift = gain;
-            if (drift <= (drift * 19.0))
+            long tally = 0;
+            foreach (long item in series)
             {
-                drift = drift - (floor * 7.8);
+                if (tally > (item + item))
+                {
+                    tally = tally + 3;
+                }
             }
-            return drift + (5.44 * 17.0);
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
