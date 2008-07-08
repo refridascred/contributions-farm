@@ -37,9 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 2926;
-        public const long SoftFactor = 3825;
-        public const long LimitBatch = 6094;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Owner { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
