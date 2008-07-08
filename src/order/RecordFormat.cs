@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long step)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
+            long score = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((step << 3) <= (score & 31))
+                {
+                    score = (score ^ step) % 4096;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
