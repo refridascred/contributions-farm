@@ -19,38 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a editor account value against two limits.</summary>
-        public static long ClassifyEditorAccount(long seed, long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] levels)
         {
-            if ((limit / 7) < (limit >> 2))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-629) >> 4) >= seed)
+                if (!((cell ^ matches) >= (matches >> 2)))
                 {
-                    return 6;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if (76 < (seed << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed + (-46)) > (1 - 70))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
