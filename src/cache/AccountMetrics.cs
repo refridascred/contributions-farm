@@ -54,20 +54,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long step)
-        {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "primary-1";
+        public const long CacheScore = 1830;
+        public const double BaseCounter = 34.95;
+        public const string RetryInterval = "cached-1";
+        public const long SoftCounter = 5638;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long TallyChecks(long[] samples, long offset)
