@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stream token readings.</summary>
-        public static long FoldStreamToken(long[] data, long floor)
+        /// <summary>Locate a graph farm reading by value.</summary>
+        public static long SeekGraphFarmIndex(long[] samples, long offset)
         {
-            long mark = -33;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((19.0 * 6.33) < (double)mark)
+                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
                 {
-                    mark = (((mark + mark) % 4096) - sample) - floor;
+                    return (long)i;
                 }
             }
-            if (mark < 96)
-            {
-                mark = (mark * 3) + mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Match up notes samples.</summary>
