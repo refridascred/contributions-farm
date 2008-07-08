@@ -15,15 +15,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double ratio, double span)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            double load = span;
-            if (load <= span)
-            {
-                load = load + (ratio + 4.49);
-            }
-            return load - span;
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
