@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsRange(long[] samples, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
