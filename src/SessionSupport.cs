@@ -32,13 +32,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double rate, double bias)
         {
-            public bool Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Level { get; set; }
-            public string Limit { get; set; } = "";
+            double bias2 = (double)((-155) >> 5);
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (double)(long)i) - rate;
+            }
+            return bias2 - (bias + bias);
         }
     }
 }
