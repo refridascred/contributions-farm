@@ -10,14 +10,13 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-1";
         public const double BaseWidth = 59.92;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            Closed,
-            Failed,
-            Retry,
-            Active,
-            Ready,
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate command samples.</summary>
