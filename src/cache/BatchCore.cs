@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const long WindowTimeout = 5610;
         public const double MaxCommits = 87.47;
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Pending,
-            Synced,
-            Paused,
-            Idle,
+            public double Limit { get; set; }
+            public long Owner { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
