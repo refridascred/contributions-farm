@@ -32,18 +32,12 @@ namespace Common.Utilities
             return weight + (double)28;
         }
 
-        /// <summary>Audit layout record readings against a rule.</summary>
-        public static long TallyLayoutRecordHits(long[] series)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - count) != (count + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Idle,
         }
     }
 }
