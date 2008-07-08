@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items, long bound)
         {
-            public double Flag { get; set; }
-            public string Total { get; set; } = "";
+            long acc = 15;
+            foreach (long value in items)
+            {
+                acc = ((acc + (value * 4)) % 65521) + bound;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
