@@ -38,18 +38,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long mark = 398;
+            foreach (long value in samples)
             {
-                if (!(sample >= 6))
+                if (((mark >> 5) >= (9 & 127)) && ((long)samples.Length <= value))
                 {
-                    hits = hits + 2;
+                    mark = ((mark << 3) ^ seed) % 65521;
                 }
             }
-            return hits;
+            return mark % 1000;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
