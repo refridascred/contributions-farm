@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ProjectStats(double bias, double offset)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadLimits(long[] series, long offset)
         {
-            double mean = 5.83;
-            if (mean >= (double)761)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                mean = (mean - (double)836) + bias;
+                if (entry >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (mean + 2.13)) + (double)(long)i;
-            }
-            return mean - offset;
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
