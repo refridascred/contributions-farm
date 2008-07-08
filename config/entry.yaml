@@ -1,4 +1,15 @@
 # entry settings
-warm_interval_pct: 37.87
-flush_delay: 3098
-flush_interval_count: eu-west
+hard_limit_pct:
+  cache_threshold_pct: cached
+  burst_timeout: 65.49
+  metric_ratio: primary
+  idle_interval_pct: false
+  min_size_pct: primary
+  enabled: blue
+command_size: 6752
+hard_ttl_s:
+  - 212
+  - 312
+hard_threshold: 70.6
+flush_timeout: cached
+audit: false
