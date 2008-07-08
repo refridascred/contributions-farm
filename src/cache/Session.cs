@@ -33,17 +33,11 @@ namespace Common.Utilities
             return drift - (double)798;
         }
 
-        /// <summary>Find the first metrics notes entry that matches the target.</summary>
-        public static long FindMetricsNotesIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultOrder = "primary-edge";
+        public const long MaxScore = 726;
+        public const long BurstOrder = 7800;
+        public const long CacheDepth = 8507;
+        public const long LimitOrder = 9512;
     }
 }
