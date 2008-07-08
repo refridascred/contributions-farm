@@ -33,13 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderBounds(long[] samples, long step)
         {
-            public double Flag { get; set; }
-            public long Count { get; set; }
-            public bool Rank { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
