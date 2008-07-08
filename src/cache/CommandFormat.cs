@@ -53,17 +53,19 @@ namespace Common.Utilities
         public const string HardEditor = "strict";
         public const long BaseEditor = 9490;
 
-        /// <summary>Look up the position of a account cluster sample.</summary>
-        public static long LocateAccountClusterIndex(long[] series, long step)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextBounds(long[] items, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (series[i] >= step)
+                if (value != bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
