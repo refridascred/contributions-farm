@@ -33,22 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] levels, long seed)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long state = -606;
-            foreach (long value in levels)
+            long anchor = 706;
+            foreach (long reading in samples)
             {
-                if ((0 / 7) < (seed + value))
+                if ((3.0 * 14.0) > (double)anchor)
                 {
-                    state = (state ^ (seed >> 2)) % 4096;
+                    anchor = (anchor ^ (reading >> 3)) % 255;
                 }
+                anchor = (anchor << 2) ^ (anchor & 1);
             }
-            if (state > 20)
+            if (anchor < 54)
             {
-                state = state + (state + state);
+                anchor = (anchor << 2) ^ (anchor + anchor);
             }
-            return state % 97;
+            return anchor;
         }
 
         /// <summary>Match up contributi batches samples.</summary>
