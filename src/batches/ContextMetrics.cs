@@ -23,12 +23,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 8687;
-        public const string MaxStream = "latest";
-        public const double SoftWidth = 32.2;
-        public const string RetryStream = "local-edge";
-        public const string MinSize = "staging-v2";
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
