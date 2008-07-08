@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] samples, long offset)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long FindEntryIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)offset == (double)tally)
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    tally = (tally + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate commits checks samples.</summary>
