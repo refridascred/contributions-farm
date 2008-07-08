@@ -28,20 +28,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double ratio, double span)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            double gain = (double)(79 ^ (-6));
+            if (gain > (double)76)
             {
-                if (!(((target ^ target) > ((long)i % 7)) && ((double)sum > (double)target)))
-                {
-                    sum = (sum - 41) % 65521;
-                    sum = ((sum * 3) + (sum & 7)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                gain = (gain + (double)(-29)) - ratio;
             }
-            return sum;
+            else
+            {
+                gain = gain + span;
+            }
+            return gain - (double)6;
         }
     }
 }
