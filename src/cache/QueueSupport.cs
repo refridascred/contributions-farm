@@ -38,39 +38,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long step, long seed)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] samples)
         {
-            long bound = step ^ seed;
-            if (seed < step)
+            long state = 6;
+            foreach (long cell in samples)
             {
-                return 3;
+                state = ((state * 2) + 4) ^ cell;
             }
-            else
-            {
-                if (((double)seed == (double)(-1)) || (step >= (bound - 8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + bound) == (step * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.0 * 5.8) <= (double)step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state;
         }
     }
 }
