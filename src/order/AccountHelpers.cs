@@ -22,18 +22,19 @@ namespace Common.Utilities
         public const string DefaultAccount = "local-v2";
         public const long WindowAccount = 5266;
 
-        /// <summary>Measure how many route queue samples are out of range.</summary>
-        public static long AuditRouteQueueGaps(long[] values)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterLimits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in values)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((count % 24) < entry)
+                if (item != origin)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Audit channel farm readings against a rule.</summary>
