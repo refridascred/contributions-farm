@@ -10,17 +10,31 @@ namespace Common.Utilities
         public const string MaxFactor = "legacy-1";
         public const double BaseWidth = 59.92;
 
-        /// <summary>Derive the next stream command value from a seed.</summary>
-        public static long DeriveStreamCommand(long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long step, long target)
         {
-            long anchor = step;
-            for (int i = 0; i < 9; i++)
+            if ((double)28 != (double)step)
             {
-                long offset = (step + step) % 64;
-                anchor = ((anchor * 3) + (offset - anchor)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((target * 5) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-44) & 1) <= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a layout reading.</summary>
