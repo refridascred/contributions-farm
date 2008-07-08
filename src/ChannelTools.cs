@@ -18,25 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank farm contributi input into a small class.</summary>
-        public static long SortFarmContributi(long floor, long step)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long span = floor ^ step;
-            if ((double)step == (14.0 * 7.7))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor + span) > (floor + step))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
