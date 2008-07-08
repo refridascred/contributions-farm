@@ -47,21 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of cluster farm readings.</summary>
-        public static long OverlapClusterFarmCount(long[] values)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Combine report values into a single score.</summary>
