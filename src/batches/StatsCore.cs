@@ -45,19 +45,19 @@ namespace Common.Utilities
         public const string MinWidth = "staging-1";
         public const double MinDepth = 45.04;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double bias, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long seed)
         {
-            double ratio = (double)0 * 2.0;
-            if (ratio < (4.0 / 4.0))
+            bool flag = true;
+            foreach (long item in levels)
             {
-                ratio = (ratio + (span - ratio)) - bias;
+                if (item < seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio * 9.0);
-            }
-            return ratio - (double)30;
+            return flag;
         }
 
         /// <summary>Match up schema samples.</summary>
