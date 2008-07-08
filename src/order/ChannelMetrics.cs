@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double gain, double floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] items)
         {
-            double weight = gain;
-            if (weight > (weight * 9.9))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                weight = weight + (double)(-1);
+                if ((double)entry <= (1.4 + 5.16))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) - (double)(long)i;
-            }
-            return weight - (gain - floor);
+            return hits;
         }
 
         /// <summary>Rank already input into a small class.</summary>
