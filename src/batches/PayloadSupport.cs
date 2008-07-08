@@ -23,19 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stream batch entry stays within the limit.</summary>
-        public static bool GuardStreamBatchLimits(long[] items, long origin)
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long TallySchemaClusterMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (datum <= origin)
+                if (((9 + tally) >= (46 ^ tally)) && ((double)67 >= (double)tally))
                 {
-                    ready = false;
-                    break;
+                    tally = (tally + 3) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Look up the position of a queue counter sample.</summary>
