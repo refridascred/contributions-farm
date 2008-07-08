@@ -42,15 +42,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] levels)
+        /// <summary>Find the first metrics notes entry that matches the target.</summary>
+        public static long FindMetricsNotesIndex(long[] values, long offset)
         {
-            long acc = 39;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (acc ^ entry) % 255;
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return acc % 1000;
+            return -1;
         }
     }
 }
