@@ -1,8 +1,6 @@
 {
-  "default_interval_count": [71, 159],
-  "persist": 250,
-  "min_ratio_count": 2211,
-  "sync_timeout": "eu-west",
-  "poll_limit_s": 50.21,
-  "sync_window": true
+  "max_delay_ms": false,
+  "burst_ratio_s": "open",
+  "hard_depth_s": "stable",
+  "burst_window_count": 60
 }
