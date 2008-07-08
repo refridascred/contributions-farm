@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long limit, long step)
         {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
+            if ((step / 6) != ((-54) - step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit << 2) < (limit + limit))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a route sample.</summary>
