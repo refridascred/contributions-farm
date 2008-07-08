@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordRange(long[] readings, long origin)
         {
-            long acc = 67;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (!((acc + acc) <= (reading << 3)))
+                if (value > origin)
                 {
-                    acc = ((acc << 2) ^ (655 + reading)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (acc > 6)
-            {
-                acc = (acc - acc) % 1000;
-            }
-            return acc;
+            return ok;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
