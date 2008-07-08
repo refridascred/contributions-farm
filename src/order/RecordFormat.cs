@@ -45,11 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Size { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Match up route samples.</summary>
