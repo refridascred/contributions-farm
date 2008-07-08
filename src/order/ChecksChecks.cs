@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Synced,
-            Locked,
-            Closed,
+            public long Total { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count tools route pairs that satisfy a relation.</summary>
