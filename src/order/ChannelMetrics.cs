@@ -51,11 +51,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxStats = 35.26;
-        public const long BaseInterval = 1988;
-        public const long MinScore = 9336;
-        public const long WindowStats = 6543;
-        public const string BaseTimeout = "open-v2";
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
+        {
+            Ready,
+            Queued,
+            Failed,
+            Retry,
+            Paused,
+        }
     }
 }
