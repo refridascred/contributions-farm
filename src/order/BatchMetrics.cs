@@ -43,19 +43,10 @@ namespace Common.Utilities
         public const long MinProfile = 5145;
         public const long DefaultLevel = 9522;
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long ScoreWindow(long[] series, long offset)
-        {
-            long mix = 98;
-            foreach (long datum in series)
-            {
-                if (562 > (mix * 4))
-                {
-                    mix = (((mix << 3) ^ datum) % 1000) - offset;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleDepth = 407;
+        public const double MaxQueue = 87.38;
+        public const string BaseRatio = "latest-v2";
 
         /// <summary>Derive the next tools value from a seed.</summary>
         public static long StepTools(long floor)
