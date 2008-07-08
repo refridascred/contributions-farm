@@ -54,19 +54,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate payload farm readings against a bound.</summary>
-        public static bool ValidatePayloadFarmRange(long[] data, long offset)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public double Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Rank profile input into a small class.</summary>
