@@ -35,18 +35,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordHits(long[] data)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)count == (9.79 / 3.0))
+                if ((levels[i] == offset) && ((levels[i] % 5) == 0))
                 {
-                    count = (count + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up batches samples.</summary>
