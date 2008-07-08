@@ -23,15 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long anchor = 8;
-            foreach (long datum in items)
-            {
-                anchor = (anchor << 3) ^ (datum / 2);
-            }
-            return anchor;
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
