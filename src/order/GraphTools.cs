@@ -39,14 +39,10 @@ namespace Common.Utilities
         public const long CacheContributi = 4898;
         public const string BatchContributi = "strict-1";
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 9868;
+        public const long IdleFilter = 9964;
+        public const double BurstScore = 49.72;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long SeekMetricIndex(long[] levels, long offset)
