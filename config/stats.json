@@ -1,25 +1,7 @@
 {
-  "sync_retries": ["fallback", "local", "legacy"],
-  "queue_ttl": ["stable", "stable"],
-  "default_threshold_count": {
-    "burst_interval": "eu-west",
-    "verbose": {
-      "min_threshold_count": ["strict", "stable"],
-      "readonly": false,
-      "route_capacity": ["primary", "staging", "fallback", "primary"],
-      "min_interval_ms": 250,
-      "burst_ratio": "strict"
-    },
-    "readonly": [24, 123, 121, 38],
-    "max_limit_count": "eu-west",
-    "batch_window": {
-      "flush_ttl": 30,
-      "retry_capacity_ms": 81.44,
-      "default_delay_ms": 98
-    },
-    "layout_threshold": 13
-  },
-  "sync_interval": "eu-west",
-  "dry_run": 94.87,
-  "retry_ttl": 81
+  "format_ratio": 250,
+  "order_delay": ["fallback", "primary", "primary"],
+  "sync_window": 100,
+  "persist": 80.07,
+  "profile_ttl": 1024
 }
