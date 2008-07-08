@@ -33,12 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 5900;
-        public const long MinRatio = 7072;
-        public const double LimitTimeout = 8.05;
-        public const long RetryRatio = 7089;
-        public const long MinEntry = 2247;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ProjectGraph(double scale, double floor)
+        {
+            double drift = (double)544 - (double)61;
+            if (drift >= (double)83)
+            {
+                drift = (drift - drift) - scale;
+            }
+            else
+            {
+                drift = drift + (double)74;
+            }
+            return drift + floor;
+        }
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
