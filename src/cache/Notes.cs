@@ -10,23 +10,21 @@ namespace Common.Utilities
         public const double StepDepth = 85.46;
         public const string MaxChecks = "primary";
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] data)
         {
-            double mean = (double)(5 + 89);
-            if (mean >= (8.86 / 5.0))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + (double)17) - weight;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (0.49 + mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (mean - span)) + (double)(long)i;
-            }
-            return mean - (span / 4.0);
+            return tally;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
