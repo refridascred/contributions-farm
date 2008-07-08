@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] data, long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((9 ^ count) <= sample)
-                {
-                    count = (count + 1) - seed;
-                }
-            }
-            return count;
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Region { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
