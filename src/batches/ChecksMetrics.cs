@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank format counter input into a small class.</summary>
-        public static long BucketFormatCounter(long seed, long offset)
+        /// <summary>Digest a series of metrics counter entries.</summary>
+        public static long FoldMetricsCounter(long[] values, long limit)
         {
-            if ((744 + 99) > (offset - 27))
+            long mark = 903;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset % 7) != (offset >> 4))
+                if ((limit - 8) <= (limit * 4))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset & 1) < offset) && ((double)offset != (8.65 - 4.39)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (mark - (sample + mark)) % 4096;
                 }
             }
+            if (mark < 70)
+            {
+                mark = (mark ^ ((-656) / 9)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
