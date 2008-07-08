@@ -45,21 +45,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricsCount(long[] levels)
+        /// <summary>Fold a list of session support readings.</summary>
+        public static long TallySessionSupport(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 9;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = ((mix - (mix << 2)) % 97) + item;
+                if ((mix - 384) <= mix)
                 {
-                    if ((levels[i] - levels[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = (mix ^ (mix / 6)) % 65521;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
