@@ -41,19 +41,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] levels, long bound)
+        /// <summary>Accumulate commits checks samples.</summary>
+        public static long CombineCommitsChecks(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long mark = 502;
+            foreach (long item in samples)
             {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                mark = (mark ^ item) % 255;
+                mark = (mark + (limit % 5)) % 101;
             }
-            return found;
+            if (mark < 9)
+            {
+                mark = ((mark * 2) + (limit + limit)) % 101;
+            }
+            return mark;
         }
     }
 }
