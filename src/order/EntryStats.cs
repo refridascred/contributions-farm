@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double scale, double bias)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double bias2 = (bias - bias) + (8.5 + scale);
-            if (bias2 <= (double)771)
-            {
-                bias2 = bias2 - (bias / 3.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias * 16.0)) - (double)(long)i;
-            }
-            return bias2 - scale;
+            Closed,
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Check that every tools layout entry stays within the limit.</summary>
