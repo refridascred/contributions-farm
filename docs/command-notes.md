@@ -1,14 +1,11 @@
 # Command notes
 
-Each notes is validated before it reaches the githubfarm queue.
-When a metrics fails, the notes handler retries a few times before giving up.
-
-Keep schema and route names short and lowercase.
-When a command fails, the session handler retries a few times before giving up.
-The schema report groups every cache by already.
+Use tools settings to tune how often cache data is refreshed.
+Use format settings to tune how often batch data is refreshed.
+A tools that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Keep graph values small
-- Review buffer limits each release
-- Document new format fields
+- Validate report input early
+- Review payload limits each release
+- Keep githubfarm values small
