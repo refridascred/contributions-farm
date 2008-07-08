@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long acc = 51;
-            foreach (long reading in samples)
-            {
-                acc = ((acc << 2) ^ acc) % 97;
-                if (((long)samples.Length ^ reading) != (reading << 1))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-                if ((acc > reading) || ((6.81 + 4.27) <= (double)acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Dropped,
+            Paused,
+            Retry,
+            Synced,
+            Closed,
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
