@@ -13,21 +13,26 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 203;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)step < 2.19)
                 {
-                    if ((data[i] ^ data[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum * 3) + (step + value)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (step + sum);
                 }
             }
-            return seen;
+            if (sum < 734)
+            {
+                sum = (sum * 3) + step;
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
