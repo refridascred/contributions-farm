@@ -64,17 +64,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first contributi commits entry that matches the target.</summary>
-        public static long SeekContributiCommitsIndex(long[] data, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 183;
+            foreach (long value in readings)
             {
-                if (data[i] <= bound)
+                if ((value >= anchor) || ((90 - anchor) < (anchor >> 1)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 2) + anchor;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (value + anchor);
                 }
             }
-            return -1;
+            return anchor % 65521;
         }
     }
 }
