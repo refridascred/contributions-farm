@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long CombineEditorCommand(long[] levels)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double rate, double floor)
         {
-            long total = 6;
-            foreach (long datum in levels)
+            double rate2 = (double)(9 << 2);
+            if (rate2 > 6.03)
             {
-                if ((total + 3) < (datum - total))
-                {
-                    total = (total << 2) ^ (24 * 3);
-                }
-                if ((total / 2) == (total ^ datum))
-                {
-                    break;
-                }
+                rate2 = (rate2 + rate2) - floor;
             }
-            if (total > 3)
+            for (int i = 0; i < 3; i++)
             {
-                total = (total + total) % 4096;
+                rate2 = (rate2 + (rate2 / 3.0)) + (double)(long)i;
             }
-            return total % 97;
+            return rate2 + (rate * 9.2);
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
