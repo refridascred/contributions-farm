@@ -14,10 +14,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseInterval = 70.96;
-        public const long LimitTools = 6255;
-        public const long SoftTools = 5822;
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the format level values.</summary>
         public enum FormatLevel
