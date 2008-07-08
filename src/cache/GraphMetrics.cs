@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] samples)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                state = (state + (origin << 1)) % 97;
-                state = ((state * 3) + (long)i) % 4093;
+                if ((tally >> 4) == (0 - 24))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
