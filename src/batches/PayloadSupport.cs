@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long TallySchemaClusterMatches(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long value in series)
             {
-                if (((9 + tally) >= (46 ^ tally)) && ((double)67 >= (double)tally))
+                if (value > floor)
                 {
-                    tally = (tally + 3) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
