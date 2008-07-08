@@ -59,15 +59,20 @@ namespace Common.Utilities
         public const long DefaultCluster = 2243;
         public const long DefaultFactor = 6926;
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double rate, double span)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            double ratio = (double)(300 + 24);
-            for (int i = 0; i < 2; i++)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ((ratio - (rate + rate)) + (double)(long)i) + span;
+                anchor = (anchor + (target * 4)) % 101;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor + anchor) % 1000) ^ (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return ratio - 9.28;
+            return anchor;
         }
 
         /// <summary>Hold a payload stats.</summary>
