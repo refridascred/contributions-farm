@@ -43,19 +43,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] levels, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] samples, long seed)
         {
-            long state = 920;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                state = ((state * 3) + datum) % 101;
+                if ((3.1 / 2.0) <= (double)hits)
+                {
+                    hits = ((hits + 3) ^ entry) + seed;
+                }
             }
-            if (state > 5)
-            {
-                state = state ^ (105 ^ step);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Rank account stream input into a small class.</summary>
