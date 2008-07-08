@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a session editor value against two limits.</summary>
-        public static long ClassifySessionEditor(long bound, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] series)
         {
-            if (!((double)bound > (8.5 - 1.3)))
+            long mark = 931;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 + 15.0) <= (double)bound)
+                if (sample > (210 * 5))
                 {
-                    return 6;
+                    continue;
                 }
-                else
+                if ((sample < (sample * 4)) && (sample < (sample - mark)))
                 {
-                    if ((bound < (seed + seed)) || (seed > (74 ^ bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = ((mark << 3) ^ sample) % 65521;
                 }
             }
+            return mark % 4096;
         }
 
         /// <summary>Adjust a entry reading.</summary>
