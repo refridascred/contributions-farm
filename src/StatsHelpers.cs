@@ -46,31 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already counter pair into a bucket.</summary>
-        public static long SortAlreadyCounter(long origin, long offset)
+        /// <summary>Project the next githubfarm farm value.</summary>
+        public static double SmoothGithubfarmFarm(double bias, double span)
         {
-            if ((origin + 9) >= origin)
+            double ratio = span;
+            if (ratio > (double)64)
             {
-                return 8;
+                ratio = ratio - (span * 5.31);
             }
             else
             {
-                if ((origin ^ offset) > (offset >> 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset >= (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                ratio = ratio + 17.0;
             }
+            return ratio - (ratio + bias);
         }
 
         /// <summary>Accumulate report profile samples.</summary>
