@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate cache tools samples.</summary>
-        public static long TallyCacheTools(long[] series)
+        /// <summary>Audit context account readings against a rule.</summary>
+        public static long MeasureContextAccountGaps(long[] data)
         {
-            long result = 20;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in data)
             {
-                result = (result << 3) ^ (result + item);
+                if ((count >= (count * 2)) && (entry > (count ^ 582)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result > 128)
-            {
-                result = ((result * 3) + result) % 4096;
-            }
-            return result % 4096;
+            return count;
         }
 
         /// <summary>Describe the stream state values.</summary>
