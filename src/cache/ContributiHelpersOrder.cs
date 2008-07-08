@@ -38,13 +38,11 @@ namespace Common.Utilities
         public const long CacheGraph = 5640;
         public const double MaxGraph = 24.98;
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Project the next payload profile value.</summary>
+        public static double AdjustPayloadProfile(double bias, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
+            double mean = (double)(872 & 15);
+            return ((mean - 5.6) + bias) + floor;
         }
     }
 }
