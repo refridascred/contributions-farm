@@ -33,12 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 1388;
-        public const double MinScore = 25.69;
-        public const double BatchBudget = 71.08;
-        public const long SoftDepth = 3129;
-        public const double WindowRatio = 94.22;
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (entry >= (entry / 7))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] series, long seed)
