@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Fold a list of notes commits readings.</summary>
+        public static long DigestNotesCommits(long[] data, long seed)
         {
-            public long Weight { get; set; }
-            public double Region { get; set; }
+            long carry = 696;
+            foreach (long value in data)
+            {
+                if (!((7 << 1) <= (seed >> 4)))
+                {
+                    carry = ((carry - seed) % 65521) + value;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
