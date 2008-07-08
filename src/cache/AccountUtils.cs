@@ -35,16 +35,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix ^ (mix - (long)i)) % 1000;
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepLevel = 31.38;
+        public const long BaseInterval = 2561;
+        public const long WindowTimeout = 5509;
     }
 }
