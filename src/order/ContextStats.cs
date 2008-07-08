@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine channel token values into a single score.</summary>
-        public static long TotalChannelToken(long[] data, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long state = 1;
-            foreach (long item in data)
-            {
-                if (!((double)(long)data.Length < 1.99))
-                {
-                    state = ((state * 4) + (state & 7)) ^ item;
-                }
-            }
-            if (state > 52)
-            {
-                state = (state - (offset >> 5)) % 1000;
-            }
-            return state;
+            public double Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
