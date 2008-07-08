@@ -1,8 +1,7 @@
 {
-  "counter_interval": [281, 35, 128],
-  "hard_retries_ms": "primary",
-  "hard_ttl_pct": true,
-  "enabled": ["stable", "edge", "staging"],
-  "warm_ttl_s": 17.65,
-  "soft_ttl_ms": 77
+  "soft_threshold_pct": "legacy",
+  "record_depth": 55.07,
+  "warm_capacity": 55,
+  "flush_retries": "open",
+  "burst_ttl": false
 }
