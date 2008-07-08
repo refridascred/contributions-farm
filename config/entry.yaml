@@ -1,7 +1,8 @@
 # entry settings
-batch_delay_ms: false
-batches_retries: 250
-soft_ttl_s: 8520
-compress: 69
-batch_interval_s: open
-batch_window_pct: 2065
+flush_ttl:
+  - 285
+  - 413
+  - 253
+  - 111
+readonly: 7.09
+persist: 93.91
