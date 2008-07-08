@@ -50,12 +50,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] items)
         {
-            New,
-            Done,
-            Closed,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry + entry) != (tally - entry))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
