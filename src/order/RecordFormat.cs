@@ -48,13 +48,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long origin, long limit)
         {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public double Mode { get; set; }
+            long offset = origin - limit;
+            if ((offset % 64) < limit)
+            {
+                return 5;
+            }
+            else
+            {
+                if (offset < (546 + origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.0 + 9.0) >= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
