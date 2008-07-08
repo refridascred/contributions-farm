@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Retry,
-            Ready,
-            New,
-            Active,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string RetryTimeout = "fallback-edge";
+        public const string LimitWidth = "local-v2";
+        public const string BaseSpan = "primary-v2";
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenGaps(long[] data, long step)
