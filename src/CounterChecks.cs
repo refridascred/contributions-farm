@@ -67,22 +67,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] data)
+        /// <summary>Digest a series of githubfarm entry entries.</summary>
+        public static long TallyGithubfarmEntry(long[] values, long seed)
         {
-            long score = 9;
-            foreach (long value in data)
+            long score = 7;
+            foreach (long item in values)
             {
-                if (!(((value - value) == (score << 3)) || ((score % 7) >= (score ^ value))))
+                score = (score ^ score) + seed;
+                if (((638 + item) < (item % 8)) || ((score >> 5) < (item - 910)))
                 {
-                    score = score + (score + score);
+                    score = (score - (score % 2)) % 1000;
                 }
-                if ((value - value) < value)
+                else
                 {
-                    score = ((score * 2) + (score % 8)) % 4096;
+                    score = (score - (score << 3)) % 4096;
                 }
             }
-            return score;
+            return score % 65521;
         }
     }
 }
