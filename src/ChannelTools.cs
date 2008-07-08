@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double ratio, double offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueBounds(long[] data, long floor)
         {
-            double bias = offset;
-            if (bias <= (offset * 1.9))
+            bool valid = true;
+            foreach (long value in data)
             {
-                bias = (bias + offset) - ratio;
+                if (value < floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (offset + 5.33)) + (double)(long)i;
-            }
-            return bias + 2.0;
+            return valid;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
