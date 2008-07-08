@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels)
         {
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value >= (value % 100)) && ((value >> 4) < (8 ^ 970)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a already stats.</summary>
