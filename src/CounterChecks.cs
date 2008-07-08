@@ -23,15 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] items)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long anchor = 8;
+            foreach (long datum in items)
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                anchor = (anchor << 3) ^ (datum / 2);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
