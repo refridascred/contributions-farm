@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Scale a context counter figure with a bias.</summary>
+        public static double BlendContextCounter(double scale, double span)
         {
-            Idle,
-            Failed,
-            New,
+            double rate = scale;
+            if (rate > (double)46)
+            {
+                rate = rate - span;
+            }
+            return rate - (rate * 5.21);
         }
 
         /// <summary>Roll a channel farm counter forward.</summary>
