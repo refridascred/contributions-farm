@@ -28,11 +28,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinLevel = 1740;
-        public const string MinEditor = "local";
-        public const string HardEditor = "strict";
-        public const long BaseEditor = 9490;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 4) + step) % 65521;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextBounds(long[] items, long bound)
