@@ -1,6 +1,6 @@
-id,rank,active
-1,96,430
-2,48,28.85
-3,20.02,eu-west
-4,3.29,83.46
-5,791,2
+id,level,count,active
+1,80.56,88.04,57.89
+2,10.38,473,primary
+3,staging,54.1,94.12
+4,230,44.88,strict
+5,cached,36,850
