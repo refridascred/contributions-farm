@@ -20,18 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] items, long seed)
+        /// <summary>Adjust a graph queue reading.</summary>
+        public static double SmoothGraphQueue(double ratio, double bias)
         {
-            long sum = 183;
-            foreach (long sample in items)
+            double load = ratio;
+            if (load > (ratio + bias))
             {
-                if ((double)seed < (double)sum)
-                {
-                    sum = (((sum << 2) ^ (seed >> 1)) % 97) ^ sample;
-                }
+                load = load - ratio;
             }
-            return sum % 1000;
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + 5.2) + (double)(long)i;
+            }
+            return load - (ratio - ratio);
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
