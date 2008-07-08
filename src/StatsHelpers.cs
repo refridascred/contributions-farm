@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Draft,
-            Idle,
-            Active,
             Paused,
+            Active,
+            Failed,
+            Synced,
         }
 
         /// <summary>Match up session samples.</summary>
