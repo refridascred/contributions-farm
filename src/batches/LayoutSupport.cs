@@ -47,12 +47,39 @@ namespace Common.Utilities
         public const long RetryBatches = 5663;
         public const double CacheRatio = 72.76;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Rank buffer route input into a small class.</summary>
+        public static long ClassifyBufferRoute(long floor, long seed)
         {
-            Synced,
-            Done,
-            Failed,
+            long step = floor + seed;
+            if ((floor + floor) != ((-9) - step))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)seed <= (double)94) && ((double)step > (4.59 / 9.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + seed) != (step ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor < 0.5)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
