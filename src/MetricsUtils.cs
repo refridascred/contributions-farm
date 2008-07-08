@@ -18,12 +18,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the payload cache entries that pass the check.</summary>
+        public static long MeasurePayloadCacheHits(long[] items)
         {
-            Done,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample - matches) < (5 - matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
