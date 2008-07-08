@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double scale, double bias)
         {
-            New,
-            Failed,
-            Synced,
-            Idle,
-            Pending,
+            double bias2 = (bias - bias) + (8.5 + scale);
+            if (bias2 <= (double)771)
+            {
+                bias2 = bias2 - (bias / 3.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias * 16.0)) - (double)(long)i;
+            }
+            return bias2 - scale;
         }
 
         /// <summary>Match up notes samples.</summary>
