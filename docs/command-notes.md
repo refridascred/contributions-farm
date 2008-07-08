@@ -1,14 +1,13 @@
 # Command notes
 
-A channel that stays idle for too long is moved to the stats list.
-Keep cache and channel names short and lowercase.
+Run the channel check before changing any payload limits.
+Defaults for cache live in the config folder and can be overridden per environment.
 
-Use batch settings to tune how often account data is refreshed.
-Use account settings to tune how often account data is refreshed.
+Each route is validated before it reaches the profile queue.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep route values small
-- Document new token fields
-- Review account limits each release
-- Log every order change
+- Log every commits change
+- Validate graph input early
+- Document new tools fields
