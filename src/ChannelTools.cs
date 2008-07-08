@@ -20,21 +20,17 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Find the first batches commits entry that matches the target.</summary>
+        public static long LookupBatchesCommitsIndex(long[] series, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (series[i] <= bound)
                 {
-                    if ((items[i] ^ items[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a counter filter reading.</summary>
