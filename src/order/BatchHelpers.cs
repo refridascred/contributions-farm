@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit cluster cache readings against a rule.</summary>
-        public static long CountClusterCacheGaps(long[] items, long step)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long next = bound - offset;
+            if ((bound << 3) < (8 / 4))
             {
-                if (((-73) + step) >= step)
+                return 0;
+            }
+            else
+            {
+                if ((7.72 * 5.0) != (double)offset)
                 {
-                    matches = (matches + 3) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((2.5 - 1.0) < (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((0 + next) >= 998)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
