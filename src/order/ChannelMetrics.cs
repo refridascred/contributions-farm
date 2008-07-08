@@ -28,22 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long carry = 5;
-            foreach (long value in values)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((8.4 - 0.44) > (double)value)
-                {
-                    carry = ((carry * 3) + (value - carry)) % 65521;
-                }
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (carry < 0)
-            {
-                carry = (carry - (carry & 31)) % 97;
-            }
-            return carry;
+            return state;
         }
     }
 }
