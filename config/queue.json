@@ -1,7 +1,11 @@
 {
-  "session_ttl": "stable",
-  "sync_delay_pct": "local",
-  "profile_delay": 63.28,
-  "schema_window": 45.83,
-  "min_delay_pct": false
+  "retry_interval_ms": ["staging", "latest"],
+  "stats_window": "legacy",
+  "audit": true,
+  "sync_retries_count": {
+    "schema_retries": ["strict", "strict"],
+    "sync_capacity_ms": 63,
+    "entry_capacity": ["blue", "strict", "staging", "blue"]
+  },
+  "entry_depth": ["primary", "fallback", "legacy"]
 }
