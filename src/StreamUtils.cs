@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long SoftDepth = 3129;
         public const double WindowRatio = 94.22;
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Draft,
-            Dropped,
-            Retry,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
