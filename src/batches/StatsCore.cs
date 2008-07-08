@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] readings)
+        /// <summary>Blend two session measurements.</summary>
+        public static double AdjustSession(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)900 + (weight / 6.0);
+            if (drift >= (10.0 / 7.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift + 2.5;
             }
-            return matches;
+            return drift + (weight + offset);
         }
 
         /// <summary>Define cache limits and defaults.</summary>
