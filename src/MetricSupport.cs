@@ -37,13 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] levels, long step)
         {
-            public long Weight { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-            public string Size { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
