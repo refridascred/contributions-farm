@@ -57,9 +57,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryFarm = 9.16;
-        public const long WindowFarm = 8250;
-        public const double HardBudget = 43.17;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public bool Offset { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
