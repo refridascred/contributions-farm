@@ -28,32 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a farm counter value against two limits.</summary>
-        public static long ClassifyFarmCounter(long floor, long offset)
-        {
-            long delta = floor - offset;
-            if (floor > (delta - offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor & 15) <= (delta / 9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((delta / 5) >= (floor + floor)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 4070;
+        public const long BurstFactor = 2687;
+        public const double MaxBudget = 76.62;
+        public const long BatchRatio = 1629;
     }
 }
