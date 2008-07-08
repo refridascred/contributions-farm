@@ -21,26 +21,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] items, long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] samples, long seed)
         {
-            long acc = 354;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((acc / 7) != (bound ^ bound))
+                if ((entry + seen) == (seen * 2))
                 {
-                    acc = ((acc * 3) + (35 + bound)) ^ reading;
+                    seen = (seen + 1) + seed;
                 }
                 else
                 {
-                    acc = (acc - (acc - bound)) % 1000;
-                }
-                if ((bound % 64) >= (bound ^ 6))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
