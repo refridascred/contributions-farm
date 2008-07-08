@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            Ready,
-            Queued,
+            Failed,
+            Retry,
             Idle,
-            Active,
         }
 
         /// <summary>Hold a schema stats.</summary>
