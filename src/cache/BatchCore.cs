@@ -28,13 +28,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Failed,
-            Done,
-            Retry,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseCommits = 94.97;
+        public const long WindowTimeout = 5610;
+        public const double MaxCommits = 87.47;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
