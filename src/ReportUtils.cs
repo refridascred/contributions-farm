@@ -34,18 +34,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] items)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((matches * 2) != (matches % 3))
+                if ((double)tally == (8.0 + 12.0))
                 {
-                    matches = (matches + 3) + reading;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the queue state values.</summary>
