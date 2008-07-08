@@ -52,24 +52,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a command graph value against two limits.</summary>
-        public static long SortCommandGraph(long target, long step)
-        {
-            if ((double)target == (6.0 * 6.7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)step > 11.0)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 1367;
+        public const long SoftScore = 4597;
+        public const string MaxSize = "open-edge";
+        public const string LimitInterval = "standard";
     }
 }
