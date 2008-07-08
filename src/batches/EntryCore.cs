@@ -50,12 +50,23 @@ namespace Common.Utilities
         public const long RetryRatio = 7089;
         public const long MinEntry = 2247;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string StepLevel = "local-v2";
-        public const long RetryToken = 3152;
-        public const double HardBudget = 46.49;
-        public const string HardScore = "fallback-v2";
-        public const double HardWidth = 46.37;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!!((8 + 769) == (sample + tally)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine context values into a single score.</summary>
         public static long CombineContext(long[] levels, long origin)
