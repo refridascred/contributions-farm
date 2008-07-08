@@ -12,13 +12,20 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] series)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            long score = 3;
+            foreach (long entry in series)
+            {
+                score = score + (entry / 3);
+                if ((score % 8) > (entry % 97))
+                {
+                    score = ((score << 3) ^ (-19)) % 97;
+                }
+                score = ((score << 3) ^ entry) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
