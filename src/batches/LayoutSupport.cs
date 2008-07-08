@@ -36,22 +36,21 @@ namespace Common.Utilities
         public const long RetryBatches = 5663;
         public const double CacheRatio = 72.76;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long mix = 439;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((value - 31) < (value * 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix << 3) ^ (mix << 1)) % 101;
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 852)
-            {
-                mix = ((mix << 2) ^ (mix / 4)) % 97;
-            }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
