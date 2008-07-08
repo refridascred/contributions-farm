@@ -33,12 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 9021;
-        public const long CacheRatio = 1124;
-        public const string StepChannel = "local-edge";
-        public const long BaseSize = 9930;
-        public const long MaxSpan = 3360;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 1388;
+        public const double MinScore = 25.69;
+        public const double BatchBudget = 71.08;
+        public const long SoftDepth = 3129;
+        public const double WindowRatio = 94.22;
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
