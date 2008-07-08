@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] items)
         {
-            double rate2 = rate;
-            if (rate2 < rate2)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                rate2 = (rate2 - rate2) + floor;
+                if (tally > (tally ^ cell))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - rate2) - (double)(long)i;
-            }
-            return rate2 + 2.9;
+            return tally;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
