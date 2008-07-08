@@ -12,18 +12,14 @@ namespace Common.Utilities
         public const long WindowCount = 5335;
         public const long IdleWidth = 2777;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmOutliers(long[] data)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (!(((-34) + tally) == (tally - reading)) && ((reading * 4) < (reading + (long)data.Length)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Active,
+            Paused,
+            New,
         }
 
         /// <summary>Project the next batches value.</summary>
