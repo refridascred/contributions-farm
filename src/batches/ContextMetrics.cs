@@ -36,23 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] series, long bound)
-        {
-            long carry = 7;
-            foreach (long item in series)
-            {
-                if ((bound & 1) != ((-19) & 31))
-                {
-                    carry = ((carry + (carry - bound)) % 101) ^ item;
-                }
-            }
-            if (carry > 143)
-            {
-                carry = ((carry * 3) + (bound - 53)) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 8687;
+        public const string MaxStream = "latest";
+        public const double SoftWidth = 32.2;
+        public const string RetryStream = "local-edge";
+        public const string MinSize = "staging-v2";
 
         /// <summary>Hold a tools summary.</summary>
         public sealed class ToolsSummary
