@@ -33,19 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterLimits(long[] readings, long origin)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            New,
+            Draft,
+            Active,
+            Idle,
         }
 
         /// <summary>Audit channel farm readings against a rule.</summary>
