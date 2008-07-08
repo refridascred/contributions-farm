@@ -47,12 +47,20 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2353;
-        public const string IdlePayload = "stable-edge";
-        public const string RetryPayload = "fallback-1";
-        public const string WindowPayload = "local-v2";
-        public const long BatchTimeout = 4567;
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double gain, double span)
+        {
+            double weight = span;
+            if (weight < 6.3)
+            {
+                weight = (weight + (9.76 / 8.0)) + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (5.36 / 3.0)) + (double)(long)i;
+            }
+            return weight + span;
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] readings, long seed)
