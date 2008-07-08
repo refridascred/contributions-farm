@@ -36,12 +36,22 @@ namespace Common.Utilities
         public const long StepSpan = 6995;
         public const long SoftChecks = 4853;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepTimeout = 8493;
-        public const long MinProfile = 2049;
-        public const long MaxProfile = 2672;
-        public const string IdleProfile = "open-1";
-        public const long MinCount = 7541;
+        /// <summary>Compare every pair of cluster farm readings.</summary>
+        public static long OverlapClusterFarmCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first contributi commits entry that matches the target.</summary>
         public static long SeekContributiCommitsIndex(long[] data, long bound)
