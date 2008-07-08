@@ -49,10 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double RetrySize = 23.35;
-        public const long BatchMetric = 5646;
-        public const string HardSize = "latest-edge";
-        public const string WindowMetric = "primary-v2";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((count + value) < (61 ^ value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
