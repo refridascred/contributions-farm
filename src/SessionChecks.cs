@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BatchInterval = 7557;
         public const long BatchChecks = 8828;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long floor)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((items[i] + items[j]) > 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
