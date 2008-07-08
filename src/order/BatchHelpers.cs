@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const string IdleFormat = "latest-edge";
         public const long BatchBudget = 2554;
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] series, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((double)step != (17.0 + 13.0)) || (hits < 120))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Describe the context level values.</summary>
