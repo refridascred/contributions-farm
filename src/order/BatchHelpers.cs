@@ -29,19 +29,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 20; i++)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)mark < (13.0 - 6.69))
-                {
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 101;
+                anchor = (anchor * 3) + anchor;
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return mark;
+            return anchor;
         }
     }
 }
