@@ -62,21 +62,22 @@ namespace Common.Utilities
         public const string MinTimeout = "staging-v2";
         public const long CacheTimeout = 9934;
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesMatches(long[] items, long bound)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                mark = (mark + (mark + (long)i)) % 65521;
-                long bound = (mark + floor) - ((long)i - floor);
-                if (((bound - floor) >= mark) && (mark < (153 ^ bound)))
+                if (!((double)cell >= (13.0 / 5.0)))
                 {
-                    mark = mark + (mark << 2);
+                    count = (count + 3) + bound;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
