@@ -46,19 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of notes buffer readings.</summary>
-        public static long ScoreNotesBuffer(long[] series, long seed)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] series, long floor)
         {
-            long anchor = 808;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                anchor = anchor ^ value;
+                if (((880 >> 5) != (floor & 127)) || (entry >= (seen & 7)))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (anchor < 90)
-            {
-                anchor = ((anchor * 2) + (seed % 100)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
