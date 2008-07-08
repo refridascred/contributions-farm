@@ -20,18 +20,12 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Find the first batches commits entry that matches the target.</summary>
-        public static long LookupBatchesCommitsIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheContributi = 7695;
+        public const long LimitContributi = 1918;
+        public const string CacheRatio = "primary";
+        public const string CacheFactor = "stable-v2";
+        public const long BatchContributi = 6321;
 
         /// <summary>Adjust a counter filter reading.</summary>
         public static double ProjectCounterFilter(double bias, double span)
