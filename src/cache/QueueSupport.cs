@@ -28,18 +28,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context queue samples.</summary>
-        public static long FoldContextQueue(long[] items)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] series, long seed)
         {
-            long result = 492;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (result >= 2)
+                if (reading != seed)
                 {
-                    result = (result << 2) ^ (item % 60);
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
     }
 }
