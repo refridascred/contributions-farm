@@ -16,12 +16,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Compare every pair of stream graph readings.</summary>
+        public static long CompareStreamGraphCount(long[] levels)
         {
-            public double Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
