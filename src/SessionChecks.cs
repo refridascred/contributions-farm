@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BatchInterval = 7557;
         public const long BatchChecks = 8828;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long floor)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
-            public long Region { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the metrics kind values.</summary>
