@@ -1,8 +1,6 @@
 # support settings
-session_limit:
-  - 493
-  - 35
-  - 101
-window_ttl: false
-readonly: 1024
-warm_retries: 85.11
+max_depth: edge
+soft_limit_count: fallback
+support_retries: blue
+min_retries_ms: 79.78
+audit: 25
