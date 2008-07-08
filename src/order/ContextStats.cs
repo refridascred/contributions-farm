@@ -38,21 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up editor contributi samples.</summary>
-        public static long MatchEditorContributiCount(long[] values)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return seen;
+            return score;
         }
     }
 }
