@@ -16,39 +16,17 @@ namespace Common.Utilities
             return gain - (gain / 2.0);
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long bound, long offset)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] data, long floor)
         {
-            long slot = bound ^ offset;
-            if ((offset & 15) <= (408 / 7))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(slot >= (slot & 1)))
+                if (data[i] >= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)slot > (8.1 + 20.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound << 1) <= slot)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of cluster readings.</summary>
