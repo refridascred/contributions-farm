@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Adjust a githubfarm metric reading.</summary>
-        public static double SmoothGithubfarmMetric(double bias, double bias2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamHits(long[] values, long origin)
         {
-            double drift = bias - bias;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                drift = ((drift + (double)5) - (double)(long)i) - bias2;
+                if (((4.96 + 4.4) >= (double)matches) || (((-2) << 2) < (value + matches)))
+                {
+                    matches = (matches + 1) - origin;
+                }
             }
-            return drift - (bias - bias);
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
