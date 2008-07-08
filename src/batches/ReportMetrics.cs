@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long SeriesCluster(long limit)
+        /// <summary>Fold a list of profile cache readings.</summary>
+        public static long WeighProfileCache(long[] series, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
+            long mix = 373;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    result = ((result << 2) ^ (result * 2)) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
+                mix = ((mix ^ sample) % 97) + seed;
             }
-            return result;
+            return mix % 1000;
         }
 
         /// <summary>Check that every checks farm entry stays within the limit.</summary>
