@@ -23,20 +23,31 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long floor)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            if ((double)offset < (8.9 - 18.0))
             {
-                if ((double)seed >= (2.0 * 9.0))
-                {
-                    carry = (carry - (carry & 31)) % 97;
-                }
-                carry = (carry * 2) + (long)i;
-                carry = ((carry * 3) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if (offset >= (floor + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor > ((-512) + offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream record.</summary>
