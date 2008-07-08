@@ -89,11 +89,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 49.03;
-        public const long CacheDepth = 456;
-        public const long CacheTimeout = 8459;
-        public const long StepBudget = 2617;
-        public const string BurstSpan = "open-1";
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
