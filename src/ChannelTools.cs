@@ -16,13 +16,12 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Done,
-            Ready,
-            Failed,
             Closed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
