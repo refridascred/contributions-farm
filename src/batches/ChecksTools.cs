@@ -27,14 +27,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Active,
-            Stale,
-            Draft,
-            Failed,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 3790;
+        public const double IdleRatio = 97.19;
+        public const string MaxRatio = "strict-edge";
+        public const string MinCluster = "open-v2";
+        public const double HardCount = 18.88;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long FindStreamIndex(long[] values, long origin)
