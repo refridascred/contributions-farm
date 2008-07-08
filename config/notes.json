@@ -1,8 +1,13 @@
 {
-  "cache_ttl_s": false,
-  "queue_window": false,
-  "poll_size_pct": 4983,
-  "base_timeout": ["open", "open", "fallback", "local"],
-  "retry_delay_count": 100,
-  "base_threshold_s": "latest"
+  "idle_ttl_ms": {
+    "verbose": 95.62,
+    "flush_capacity_ms": "fallback",
+    "format_size": "eu-west",
+    "hard_threshold": 21.92,
+    "stream_interval": "eu-west",
+    "stream_depth": 60
+  },
+  "enabled": "eu-west",
+  "poll_delay_pct": "local",
+  "retry_capacity_pct": [464, 406, 44, 183]
 }
