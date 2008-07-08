@@ -81,18 +81,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] values, long bound)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((long)values.Length > (9 + item))
-                {
-                    seen = (seen + 2) - bound;
-                }
-            }
-            return seen;
+            Ready,
+            Synced,
+            Queued,
+            Paused,
+            Locked,
         }
     }
 }
