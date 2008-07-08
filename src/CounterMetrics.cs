@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long IdleToken = 9493;
         public const double DefaultSize = 8.26;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstFactor = 1.14;
-        public const double StepRatio = 85.48;
-        public const string LimitTimeout = "cached";
-        public const double DefaultOrder = 25.27;
-        public const long BaseOrder = 93;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Stale,
+            Pending,
+            New,
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
