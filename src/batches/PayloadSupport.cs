@@ -18,12 +18,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            long mark = step;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((long)i <= 565)
+                {
+                    mark = (mark ^ (49 & 3)) % 101;
+                    mark = (mark + (step - mark)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
