@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long step)
+        /// <summary>Find the first githubfarm notes entry that matches the target.</summary>
+        public static long FindGithubfarmNotesIndex(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state * 4) + (long)i) % 1000;
+                if ((series[i] < limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
