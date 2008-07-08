@@ -34,19 +34,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every schema account entry stays within the limit.</summary>
-        public static bool ValidateSchemaAccountLimits(long[] samples, long target)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long offset, long offset2)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long bound = offset - offset2;
+            if ((double)offset > (14.0 / 3.0))
             {
-                if (reading != target)
+                return 1;
+            }
+            else
+            {
+                if (((offset2 + offset2) <= (77 >> 5)) && (offset2 > (125 / 3)))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound * 5) == (offset & 255))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the account schema entries that pass the check.</summary>
