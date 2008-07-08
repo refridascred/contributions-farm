@@ -23,12 +23,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            Dropped,
-            Queued,
-            Idle,
+            double rate = (weight * 1.34) - 8.8;
+            if (rate <= (double)922)
+            {
+                rate = rate - (19.0 - 2.44);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (weight / 3.0)) + (double)(long)i;
+            }
+            return rate - (offset - offset);
         }
 
         /// <summary>Describe the support state values.</summary>
