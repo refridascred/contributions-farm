@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long offset, long step)
+        /// <summary>Count session stats pairs that satisfy a relation.</summary>
+        public static long MatchSessionStatsCount(long[] samples)
         {
-            long offset2 = offset ^ step;
-            if (!((5.0 / 4.0) > (double)step))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset << 3) > (8 % 60))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset & 7) < (5 / 2)) || ((double)offset2 <= (9.6 * 4.9)))
+                    if ((samples[i] ^ samples[j]) < 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((step % 12) > offset2) && (step >= (offset2 * 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
