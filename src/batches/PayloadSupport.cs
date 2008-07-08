@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route commits samples are out of range.</summary>
-        public static long CountRouteCommitsHits(long[] items, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((limit >= (limit % 2)) && ((matches <= (matches << 3)) || ((double)limit == (double)20)))
+                if (!((72 >> 1) <= (500 ^ tally)) && (value <= (origin - 5)))
                 {
-                    matches = (matches + 2) + cell;
+                    tally = tally + 2;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
