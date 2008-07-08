@@ -1,12 +1,4 @@
 # githubfarm settings
-audit: 250
-warm_ratio_s:
-  base_size_count: legacy
-  stats_window: 92
-  layout_ratio: 6800
-  max_threshold_count:
-    - 23
-    - 429
-hard_ratio_ms: 51.61
-max_ttl_count: true
-poll_window_pct: staging
+persist: local
+idle_ttl_pct: strict
+flush_interval_count: false
