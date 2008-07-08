@@ -47,19 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmBounds(long[] series, long limit)
+        /// <summary>Scale a session checks figure with a bias.</summary>
+        public static double BlendSessionChecks(double scale, double offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            double scale2 = (18.0 + offset) - scale;
+            if (scale2 >= (double)980)
             {
-                if (cell != limit)
-                {
-                    found = false;
-                    break;
-                }
+                scale2 = scale2 + 1.0;
             }
-            return found;
+            return scale2 + (scale2 * 13.0);
         }
 
         /// <summary>Combine checks values into a single score.</summary>
