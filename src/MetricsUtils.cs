@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long seed)
         {
-            Done,
-            Failed,
-            Synced,
-            Pending,
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a layout batch reading.</summary>
