@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] items)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double floor)
         {
-            long state = 107;
-            foreach (long entry in items)
+            double ratio = scale;
+            if (ratio < ratio)
             {
-                if ((3.5 / 3.0) <= (double)entry)
-                {
-                    state = state - ((-9) & 1);
-                }
-                state = state + (entry << 2);
+                ratio = ratio - scale;
             }
-            if (state > 52)
+            else
             {
-                state = (state ^ (15 ^ state)) % 97;
+                ratio = ratio + (ratio * 5.0);
             }
-            return state % 1000;
+            return ratio + (8.8 + floor);
         }
 
         /// <summary>Describe the layout phase values.</summary>
