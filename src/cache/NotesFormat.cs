@@ -20,19 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate farm graph samples.</summary>
-        public static long CombineFarmGraph(long[] levels)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double weight, double offset)
         {
-            long result = 546;
-            foreach (long sample in levels)
-            {
-                result = (((result * 5) + (761 << 3)) % 1000) ^ sample;
-            }
-            if (result > 97)
-            {
-                result = (result - result) % 1000;
-            }
-            return result;
+            double load = 18.0 - weight;
+            return load - offset;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
