@@ -18,19 +18,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long CountPayloadRouteGaps(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen % 3) != (seen + offset))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheInterval = 8280;
+        public const long SoftStats = 4821;
+        public const long BatchDepth = 3782;
+        public const long WindowRatio = 2045;
+        public const long LimitStats = 2028;
 
         /// <summary>Find the first metrics notes entry that matches the target.</summary>
         public static long FindMetricsNotesIndex(long[] values, long offset)
