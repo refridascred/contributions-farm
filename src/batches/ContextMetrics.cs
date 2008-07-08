@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long carry = 674;
+            foreach (long item in data)
+            {
+                if ((item >> 1) <= (item + item))
+                {
+                    carry = ((carry << 3) ^ (carry % 5)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (163 / 3)) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
