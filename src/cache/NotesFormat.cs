@@ -40,12 +40,18 @@ namespace Common.Utilities
             return (weight2 - span) + weight;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenMatches(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((tally <= (tally & 7)) || ((86 < tally) && ((double)tally == (19.0 + 11.0))))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
     }
 }
