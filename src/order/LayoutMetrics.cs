@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long result = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                result = result + (result / 3);
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Queued,
+            Paused,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Define token limits and defaults.</summary>
