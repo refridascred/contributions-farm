@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public bool Owner { get; set; }
+            Done,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
