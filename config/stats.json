@@ -1,5 +1,15 @@
 {
-  "dry_run": "legacy",
-  "readonly": [459, 430],
-  "cache_limit_count": 58.37
+  "enabled": "standard",
+  "filter_ttl": "strict",
+  "hard_retries_count": 60.89,
+  "idle_delay": 1024,
+  "report_interval": {
+    "graph_timeout": "open",
+    "idle_interval": "primary",
+    "idle_threshold_count": 70,
+    "poll_size_ms": ["green", "strict", "primary"],
+    "enabled": true,
+    "compress": "eu-west"
+  },
+  "compress": false
 }
