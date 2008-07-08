@@ -54,22 +54,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] series, long origin)
+        /// <summary>Compare every pair of tools session readings.</summary>
+        public static long MatchToolsSessionCount(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin / 9) > cell)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((levels[i] ^ levels[j]) != 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
