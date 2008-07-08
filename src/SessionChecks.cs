@@ -20,12 +20,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCache = 6924;
-        public const double MaxInterval = 76.87;
-        public const double CacheDepth = 47.92;
-        public const long BaseLevel = 2407;
-        public const long MinCache = 7954;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] levels, long target)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
