@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] samples, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (cell < step)
+                if (value >= tally)
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
