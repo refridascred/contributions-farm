@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
+            public double Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Adjust a schema reading.</summary>
