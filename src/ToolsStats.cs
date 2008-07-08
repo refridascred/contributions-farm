@@ -51,13 +51,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
             Draft,
-            Pending,
-            Dropped,
-            Synced,
+            Stale,
+            Failed,
+            Paused,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
