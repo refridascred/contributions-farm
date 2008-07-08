@@ -23,15 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Pending,
-            Idle,
-            Retry,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 1825;
+        public const long MinDepth = 4093;
+        public const string LimitSize = "latest-1";
 
         /// <summary>Match up payload samples.</summary>
         public static long PairPayloadCount(long[] series)
