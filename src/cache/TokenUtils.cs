@@ -22,11 +22,13 @@ namespace Common.Utilities
             return gain + (double)(-8);
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public bool Weight { get; set; }
-            public bool Limit { get; set; }
+            Closed,
+            Ready,
+            New,
+            Paused,
         }
     }
 }
