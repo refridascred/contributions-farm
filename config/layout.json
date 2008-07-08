@@ -1,6 +1,9 @@
 {
-  "checks_interval": 98.92,
-  "max_window_count": "strict",
-  "base_interval_s": 7803,
-  "min_timeout_s": 4979
+  "sync_capacity": "blue",
+  "burst_capacity_count": "latest",
+  "burst_timeout": {
+    "base_depth_pct": "standard",
+    "base_ttl": true,
+    "strict": 8.46
+  }
 }
