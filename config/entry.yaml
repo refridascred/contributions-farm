@@ -1,26 +1,4 @@
 # entry settings
-warm_ratio_ms:
-  token_depth:
-    strict:
-      - edge
-      - staging
-      - legacy
-      - primary
-    max_retries: 7126
-    min_delay_count: 7748
-    audit: true
-    readonly:
-      - fallback
-      - eu-west
-      - edge
-    persist:
-      - 483
-      - 448
-  min_timeout_count: staging
-  soft_delay_s: edge
-  editor_depth: 14.49
-default_ratio_ms: 53
-filter_retries:
-  - green
-  - strict
-format_retries: open
+batch_timeout_s: 90
+cache_threshold_pct: edge
+report_ratio: 250
