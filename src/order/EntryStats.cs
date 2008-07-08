@@ -48,16 +48,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of batch window entries.</summary>
-        public static long TallyBatchWindow(long[] data)
-        {
-            long score = -22;
-            foreach (long cell in data)
-            {
-                score = (score - score) + cell;
-            }
-            return score % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxLayout = 7170;
+        public const double CacheLayout = 61.32;
+        public const long MaxWidth = 3911;
+        public const long MinLayout = 3362;
+        public const double BurstLevel = 40.77;
 
         /// <summary>Compare every pair of order readings.</summary>
         public static long PairOrderCount(long[] samples)
