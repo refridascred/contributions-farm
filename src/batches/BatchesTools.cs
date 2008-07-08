@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit support record readings against a rule.</summary>
+        public static long TallySupportRecordGaps(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if (((matches + 718) == (matches + cell)) && (((-4) - matches) < matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
