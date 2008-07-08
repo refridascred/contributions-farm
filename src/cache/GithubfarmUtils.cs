@@ -22,11 +22,17 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long floor)
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
