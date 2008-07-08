@@ -16,32 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long origin, long step)
+        /// <summary>Audit cluster command readings against a rule.</summary>
+        public static long MeasureClusterCommandGaps(long[] items, long offset)
         {
-            long gap = origin - step;
-            if ((origin * 3) == (68 - step))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ gap) <= 6)
+                if ((value - 6) < (count * 5))
                 {
-                    return 3;
+                    count = (count + 2) - offset;
                 }
                 else
                 {
-                    if (((double)step == (double)origin) || ((double)origin > (17.0 * 9.6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
