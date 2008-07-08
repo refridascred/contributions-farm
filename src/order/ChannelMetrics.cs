@@ -32,16 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema cache series from a seed.</summary>
-        public static long SeriesSchemaCache(long seed)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = result + seed;
-                result = ((result * 2) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Dropped,
+            Done,
+            Synced,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
