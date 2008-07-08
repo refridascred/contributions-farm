@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryMatches(long[] values)
+        /// <summary>Fold a list of metrics batch readings.</summary>
+        public static long WeighMetricsBatch(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mark = 8;
+            foreach (long sample in readings)
             {
-                if ((count + count) != (count + cell))
+                if ((origin < (sample + origin)) && ((double)mark >= (17.0 - 2.9)))
                 {
-                    count = count + 1;
+                    mark = ((mark * 5) + origin) % 97;
                 }
             }
-            return count;
+            return mark % 1000;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
