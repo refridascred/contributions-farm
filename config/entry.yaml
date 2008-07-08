@@ -1,37 +1,13 @@
 # entry settings
-farm_retries: false
-max_retries: 12.34
-base_size_count:
-  soft_threshold_s:
-    - blue
-    - staging
-    - open
-  burst_size_count: eu-west
-  sync_delay:
-    - blue
-    - stable
-  cluster_threshold: green
-  buffer_limit:
-    - primary
-    - staging
-    - primary
-  soft_ttl_pct:
-    readonly: true
-    burst_interval:
-      - 254
-      - 345
-      - 480
-    metric_timeout: 41.49
-    filter_retries: false
-    graph_window:
-      - 80
-      - 368
-      - 95
-min_size:
-  soft_timeout_ms:
-    - 179
-    - 159
-  idle_threshold: 9.74
-  burst_limit: latest
-dry_run: strict
-commits_interval: true
+dry_run:
+  min_limit_pct: 60
+  burst_ttl_pct: 7.36
+  burst_delay_ms: 28
+  min_depth: 30
+  cache_timeout_s: 1024
+  retry_size_pct: false
+stream_ttl:
+  - 463
+  - 189
+  - 307
+queue_depth: 60.47
