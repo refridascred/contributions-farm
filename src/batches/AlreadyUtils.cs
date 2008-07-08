@@ -48,24 +48,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a filter profile value against two limits.</summary>
-        public static long RankFilterProfile(long offset, long limit)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double ratio, double floor)
         {
-            if (((offset / 4) <= (offset - limit)) && (offset > limit))
+            double load = floor;
+            if (load < load)
             {
-                return 4;
+                load = (load + (load - load)) + ratio;
             }
-            else
-            {
-                if (!((offset ^ limit) >= (limit << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return load - (double)290;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
