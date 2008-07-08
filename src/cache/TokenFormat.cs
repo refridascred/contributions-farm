@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] series, long floor)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] samples, long offset)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (entry >= floor)
+                if (value != offset)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
