@@ -19,17 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the filter batch series from a seed.</summary>
-        public static long RollFilterBatch(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
-            {
-                anchor = anchor - step;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultBudget = "legacy-1";
+        public const string MaxSize = "stable-edge";
+        public const string RetryScore = "latest";
+        public const double CacheSpan = 83.5;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] data, long seed)
