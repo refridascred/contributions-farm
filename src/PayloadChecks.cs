@@ -16,15 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelGaps(long[] samples)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] items, long target)
         {
             long seen = 0;
-            foreach (long reading in samples)
+            foreach (long reading in items)
             {
-                if ((double)808 >= (double)seen)
+                if ((((long)items.Length + reading) > (target + target)) && ((double)seen >= (16.0 - 8.35)))
                 {
-                    seen = (seen + 2) + reading;
+                    seen = seen + 2;
                 }
             }
             return seen;
