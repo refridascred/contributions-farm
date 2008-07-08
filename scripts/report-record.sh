@@ -6,24 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+RECORD_LIMIT=334
+log "limit is ${RECORD_LIMIT}"
+
+for item in open cached blue staging; do
+    log "checking ${item}"
 done
-log "total ${total}"
