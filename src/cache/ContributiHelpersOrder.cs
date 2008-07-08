@@ -38,24 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank order cache input into a small class.</summary>
-        public static long GradeOrderCache(long floor, long limit)
+        /// <summary>Count the commits metrics entries that pass the check.</summary>
+        public static long MeasureCommitsMetricsHits(long[] readings)
         {
-            if ((28 <= limit) && ((0.3 - 1.0) != (double)floor))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit % 100) > (649 - limit))
+                if ((double)tally != (2.04 + 12.0))
                 {
-                    return 6;
+                    tally = (tally + 3) + cell;
                 }
                 else
                 {
-                    return 5;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
