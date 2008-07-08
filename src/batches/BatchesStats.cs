@@ -66,18 +66,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values, long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long limit, long origin)
         {
-            long mix = 967;
-            foreach (long item in values)
+            long lane = limit + origin;
+            if ((lane + limit) <= limit)
             {
-                if (17.0 < (double)mix)
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (double)lane)
                 {
-                    mix = ((mix << 2) ^ (floor - floor)) + item;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return mix;
         }
     }
 }
