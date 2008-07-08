@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] levels, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 107;
+            foreach (long entry in items)
             {
-                if (levels[i] >= target)
+                if ((3.5 / 3.0) <= (double)entry)
                 {
-                    return (long)i;
+                    state = state - ((-9) & 1);
                 }
+                state = state + (entry << 2);
             }
-            return -1;
+            if (state > 52)
+            {
+                state = (state ^ (15 ^ state)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the layout phase values.</summary>
