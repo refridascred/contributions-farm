@@ -28,16 +28,23 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double ratio, double span)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            double gain = ratio;
+            if (gain >= span)
             {
-                mark = ((mark * 4) + step) % 65521;
-                mark = ((mark * 3) + (long)i) % 101;
+                gain = gain - (span * 8.0);
             }
-            return mark;
+            else
+            {
+                gain = gain + (double)2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (gain * 5.5)) + (double)(long)i;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
