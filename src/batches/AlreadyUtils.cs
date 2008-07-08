@@ -37,11 +37,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleFormat = 3070;
-        public const long SoftFormat = 991;
-        public const double LimitWidth = 98.25;
-        public const double WindowLevel = 66.88;
+        /// <summary>Classify a command stats pair into a bucket.</summary>
+        public static long SortCommandStats(long bound, long target)
+        {
+            if ((bound & 63) < (target << 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target ^ target) == (target % 7))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Scale a batches metrics figure with a bias.</summary>
         public static double SmoothBatchesMetrics(double gain, double bias)
