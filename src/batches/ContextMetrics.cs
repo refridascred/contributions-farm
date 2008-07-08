@@ -54,13 +54,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Pending,
-            Closed,
-            Synced,
-            Ready,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "alpha";
+        public const long BaseInterval = 6885;
+        public const long DefaultContext = 2125;
     }
 }
