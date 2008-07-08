@@ -17,18 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] readings, long limit)
         {
-            long total = 97;
-            foreach (long entry in levels)
+            long result = 74;
+            foreach (long cell in readings)
             {
-                if ((6.1 / 4.0) <= (double)entry)
+                if ((cell - cell) > limit)
                 {
-                    total = total + (total + total);
+                    result = ((result << 3) ^ result) % 101;
+                }
+                if ((double)result <= 18.0)
+                {
+                    result = result + (cell + (-470));
                 }
             }
-            return total % 1000;
+            return result;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
