@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleSize = 4921;
+        public const double MinToken = 15.11;
+        public const long CacheToken = 42;
+        public const long IdleToken = 9493;
+        public const double DefaultSize = 8.26;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BurstFactor = 1.14;
