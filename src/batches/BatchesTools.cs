@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate filter context readings against a bound.</summary>
-        public static bool VerifyFilterContextBounds(long[] series, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Describe the command class values.</summary>
