@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double rate, double floor)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            double bias = floor;
-            return (bias - (double)605) + rate;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a session header.</summary>
