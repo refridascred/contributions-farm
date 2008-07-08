@@ -1,18 +1,10 @@
 {
-  "hard_threshold_s": 250,
-  "audit": {
-    "soft_timeout_count": "blue",
-    "soft_interval_ms": 100,
-    "max_interval": [195, 254],
-    "idle_threshold_ms": {
-      "min_window_ms": "green",
-      "retry_threshold_ms": "open",
-      "hard_capacity_count": 30,
-      "warm_limit_ms": "local"
-    },
-    "schema_delay": true,
-    "batch_window_pct": 20.01
-  },
-  "poll_retries_s": true,
-  "batches_retries": "stable"
+  "retry_ratio_s": 61,
+  "soft_delay": "staging",
+  "audit": ["stable", "stable"],
+  "support_capacity": {
+    "default_size": [498, 33],
+    "compress": "green",
+    "max_size": "green"
+  }
 }
