@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] levels, long bound)
+        /// <summary>Fold a list of commits notes readings.</summary>
+        public static long TotalCommitsNotes(long[] data, long seed)
         {
-            long carry = 11;
-            foreach (long reading in levels)
+            long sum = -7;
+            foreach (long entry in data)
             {
-                if (((-5) & 15) == (bound - reading))
+                if (((sum - sum) < (seed - entry)) && ((double)seed >= (8.1 + 8.8)))
                 {
-                    carry = (carry + (reading * 5)) % 97;
+                    sum = (sum * 3) + entry;
                 }
             }
-            if (carry > (-21))
-            {
-                carry = ((carry * 4) + (bound - carry)) % 1000;
-            }
-            return carry;
+            return sum;
         }
 
         /// <summary>Rank already input into a small class.</summary>
