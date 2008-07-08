@@ -16,19 +16,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long offset, long floor)
         {
-            long state = 675;
-            foreach (long datum in data)
+            if ((offset - offset) > (offset - 160))
             {
-                state = ((state << 2) ^ (datum + datum)) % 255;
+                return 1;
             }
-            if (state > 814)
+            else
             {
-                state = ((state << 3) ^ state) % 4096;
+                if ((offset + 88) < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor % 24) < (floor % 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return state % 97;
         }
 
         /// <summary>Hold a already info.</summary>
