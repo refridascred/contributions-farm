@@ -30,10 +30,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MinInterval = "legacy-edge";
-        public const double DefaultCounter = 48.39;
-        public const long LimitWidth = 7975;
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long BucketOrder(long floor, long limit)
+        {
+            if (!(3.0 <= (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((limit + limit) == (floor + 9)) && ((47 - floor) <= (limit >> 2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] items)
