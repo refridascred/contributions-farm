@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftTools = "fallback-edge";
-        public const long HardTools = 2004;
-        public const double RetryTools = 47.25;
-        public const double WindowTools = 61.97;
-        public const long BurstTools = 7866;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double bias, double floor)
+        {
+            double scale = 14.0;
+            if (scale <= (7.74 * 9.0))
+            {
+                scale = (scale - scale) - bias;
+            }
+            else
+            {
+                scale = scale - (floor / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - scale;
+        }
 
         /// <summary>Project the next counter value.</summary>
         public static double ScaleCounter(double scale, double span)
