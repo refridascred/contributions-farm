@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long offset, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long offset2 = offset ^ step;
+            if (!((5.0 / 4.0) > (double)step))
             {
-                if (!(entry >= (floor - entry)) || ((floor > entry) || (entry >= (hits >> 2))))
+                return 6;
+            }
+            else
+            {
+                if ((offset << 3) > (8 % 60))
                 {
-                    hits = hits + 1;
+                    return 8;
+                }
+                else
+                {
+                    if (((offset & 7) < (5 / 2)) || ((double)offset2 <= (9.6 * 4.9)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step % 12) > offset2) && (step >= (offset2 * 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
