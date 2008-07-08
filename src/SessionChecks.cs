@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const long BatchInterval = 7557;
         public const long BatchChecks = 8828;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            public double Rank { get; set; }
+            public bool Total { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the metrics kind values.</summary>
