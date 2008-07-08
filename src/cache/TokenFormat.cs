@@ -20,26 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((double)origin == (8.9 + 0.9)) && (origin < mix))
-                {
-                    mix = (mix + origin) % 97;
-                    continue;
-                }
-                mix = (mix ^ origin) % 4096;
-                if (150 < (origin + mix))
-                {
-                    mix = (mix - (origin + origin)) % 4096;
-                }
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinLevel = "standard-v2";
+        public const long BatchSize = 7869;
+        public const long WindowBatches = 3604;
+        public const long HardScore = 9570;
+        public const long BaseBatches = 5231;
 
         /// <summary>Accumulate commits checks samples.</summary>
         public static long CombineCommitsChecks(long[] samples, long limit)
