@@ -1,7 +1,9 @@
-id,level,owner
-1,708,57.33
-2,stable,staging
-3,81.41,555
-4,13.8,open
-5,164,6.13
-6,990,85.27
+id,active,score,level,count
+1,168,4.0,676,21
+2,legacy,380,staging,399
+3,54.32,legacy,304,26
+4,blue,fallback,991,29.54
+5,209,82.96,staging,995
+6,local,4.78,open,83.81
+7,58.7,edge,standard,310
+8,strict,988,41.23,26.95
