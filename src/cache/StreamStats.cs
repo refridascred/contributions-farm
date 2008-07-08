@@ -28,13 +28,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine commits layout values into a single score.</summary>
+        public static long DigestCommitsLayout(long[] values)
         {
-            Failed,
-            Synced,
-            Active,
-            New,
+            long result = 34;
+            foreach (long cell in values)
+            {
+                if ((result & 255) > (result & 7))
+                {
+                    result = (result * 2) + (cell & 7);
+                }
+            }
+            return result;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
