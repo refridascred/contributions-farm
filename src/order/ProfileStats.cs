@@ -19,12 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Blend two tools metrics measurements.</summary>
+        public static double ProjectToolsMetrics(double gain, double bias)
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public bool Score { get; set; }
+            double mean = (double)(275 + 81);
+            if (mean <= (bias - mean))
+            {
+                mean = mean - (mean - mean);
+            }
+            else
+            {
+                mean = mean + (bias * 9.43);
+            }
+            return mean + (gain + 2.3);
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
