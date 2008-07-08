@@ -10,11 +10,21 @@ namespace Common.Utilities
         public const string MinInterval = "primary";
         public const long HardCache = 7117;
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Match up window graph samples.</summary>
+        public static long PairWindowGraphCount(long[] series)
         {
-            public double Score { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
