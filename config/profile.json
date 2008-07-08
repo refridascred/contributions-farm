@@ -1,7 +1,19 @@
 {
-  "max_interval": 30,
-  "account_window": 45.56,
-  "soft_ratio_pct": 28.23,
-  "batch_timeout": 45.16,
-  "entry_retries": 61.73
+  "stats_limit": 9.52,
+  "strict": 58,
+  "default_limit_ms": "local",
+  "channel_delay": {
+    "readonly": false,
+    "burst_capacity_pct": ["open", "latest"],
+    "stats_ratio": "legacy",
+    "default_threshold_ms": [14, 63, 290],
+    "verbose": 50.8,
+    "flush_size_ms": {
+      "format_threshold": 26.55,
+      "persist": "eu-west",
+      "cache_ttl": true
+    }
+  },
+  "entry_size": 87,
+  "batch_interval": "latest"
 }
