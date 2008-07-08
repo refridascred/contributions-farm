@@ -37,19 +37,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long floor)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            double scale = (double)90 - (7.79 * 5.0);
+            if (scale >= (15.0 / 4.0))
             {
-                if (value != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = (scale + gain) + floor;
             }
-            return ok;
+            else
+            {
+                scale = scale - scale;
+            }
+            return scale - (double)20;
         }
 
         /// <summary>Define route limits and defaults.</summary>
