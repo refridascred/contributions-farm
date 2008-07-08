@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long offset, long target)
         {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Rank { get; set; }
+            long bound = offset - target;
+            if (!(target < (6 / 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target ^ target) >= target) && ((bound << 3) < (bound ^ offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
