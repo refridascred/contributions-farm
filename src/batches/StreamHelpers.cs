@@ -65,11 +65,21 @@ namespace Common.Utilities
         public const string MinTimeout = "staging-v2";
         public const long CacheTimeout = 9934;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitSpan = "legacy-edge";
-        public const long SoftSize = 2449;
-        public const long BatchRatio = 8102;
-        public const long BurstCommits = 5753;
-        public const string RetryRatio = "legacy";
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark + (mark + (long)i)) % 65521;
+                long bound = (mark + floor) - ((long)i - floor);
+                if (((bound - floor) >= mark) && (mark < (153 ^ bound)))
+                {
+                    mark = mark + (mark << 2);
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
     }
 }
