@@ -53,14 +53,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Measure how many stream channel samples are out of range.</summary>
+        public static long TallyStreamChannelMatches(long[] levels, long origin)
         {
-            Synced,
-            Queued,
-            Locked,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (origin < (origin & 63))
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
