@@ -70,19 +70,26 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] values, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long state = 606;
+            foreach (long cell in levels)
             {
-                if (datum > step)
+                if (((state ^ bound) > (cell & 1)) || ((bound >> 4) == (cell % 64)))
                 {
-                    flag = false;
-                    break;
+                    state = state + ((-78) % 12);
+                }
+                else
+                {
+                    state = (state ^ (bound * 5)) % 65521;
                 }
             }
-            return flag;
+            if (state < 40)
+            {
+                state = state - (bound ^ bound);
+            }
+            return state;
         }
     }
 }
