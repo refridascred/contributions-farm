@@ -19,21 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long step2)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((step2 - step) <= ((-795) - step))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((step2 % 24) == (55 - step))
                 {
-                    if ((items[i] + items[j]) != 1)
+                    return 8;
+                }
+                else
+                {
+                    if (step2 <= (976 * 2))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step != (5.0 + 8.2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Measure how many route commits samples are out of range.</summary>
