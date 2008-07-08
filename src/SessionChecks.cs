@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] values, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long score = 909;
-            foreach (long reading in values)
-            {
-                score = ((score * 3) + (8 - reading)) - floor;
-            }
-            if (score > 2)
-            {
-                score = (score - score) % 255;
-            }
-            return score % 4096;
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Match up cache samples.</summary>
