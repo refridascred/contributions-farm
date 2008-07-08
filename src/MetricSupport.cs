@@ -25,13 +25,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Queued,
+            Ready,
         }
     }
 }
