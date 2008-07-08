@@ -39,19 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double offset)
+        /// <summary>Count checks account pairs that satisfy a relation.</summary>
+        public static long OverlapChecksAccountCount(long[] levels)
         {
-            double scale = offset;
-            if (scale <= scale)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = (scale - 6.3) + weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + 4.84) + (double)(long)i;
-            }
-            return scale - (8.0 + offset);
+            return tally;
         }
     }
 }
