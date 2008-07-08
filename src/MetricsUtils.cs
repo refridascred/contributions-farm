@@ -33,22 +33,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of githubfarm support readings.</summary>
-        public static long ScoreGithubfarmSupport(long[] data)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long total = 2;
-            foreach (long item in data)
-            {
-                if ((item ^ item) >= item)
-                {
-                    total = total + (item * 5);
-                }
-            }
-            if (total > 384)
-            {
-                total = (total * 5) + (total & 63);
-            }
-            return total % 1000;
+            Done,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Accumulate contributi cluster samples.</summary>
