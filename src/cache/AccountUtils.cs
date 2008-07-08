@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long step)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            if ((double)step < (double)14)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((target / 7) < (step - step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step > (4.0 + 0.07)) && ((step & 255) > (step >> 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (2 < (step - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
