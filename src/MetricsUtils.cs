@@ -50,24 +50,11 @@ namespace Common.Utilities
             return drift - (bias - 11.0);
         }
 
-        /// <summary>Accumulate contributi cluster samples.</summary>
-        public static long TallyContributiCluster(long[] items, long limit)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = 838;
-            foreach (long entry in items)
-            {
-                state = state + (430 & 63);
-                state = ((state << 2) ^ (state - entry)) % 1000;
-                if ((7.2 + 4.0) != (double)limit)
-                {
-                    state = (state ^ (limit + entry)) % 97;
-                }
-                if ((state < (state + limit)) || ((entry & 31) >= (entry * 4)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two already measurements.</summary>
