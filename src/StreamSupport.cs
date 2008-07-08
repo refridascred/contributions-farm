@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] series, long origin)
         {
-            Draft,
-            Locked,
-            Closed,
+            long score = 82;
+            foreach (long sample in series)
+            {
+                score = ((score + (95 / 8)) % 255) ^ sample;
+            }
+            if (score < (-50))
+            {
+                score = (score + (6 ^ origin)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
