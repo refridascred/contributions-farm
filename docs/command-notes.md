@@ -1,13 +1,11 @@
 # Command notes
 
-Run the channel check before changing any payload limits.
-Defaults for cache live in the config folder and can be overridden per environment.
-
-Each route is validated before it reaches the profile queue.
-Defaults for route live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The filter module keeps cache values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every commits change
-- Validate graph input early
-- Document new tools fields
+- Review editor limits each release
+- Prefer schema defaults
+- Log every order change
