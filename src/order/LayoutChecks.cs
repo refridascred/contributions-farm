@@ -55,18 +55,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] values, long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((value ^ floor) >= (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Label { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
