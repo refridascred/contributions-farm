@@ -32,16 +32,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine commits counter values into a single score.</summary>
-        public static long DigestCommitsCounter(long[] series, long seed)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] readings, long floor)
         {
-            long score = 1;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score - 0) % 4096) ^ item;
-                score = (score - (seed * 5)) % 97;
+                if ((readings[i] < floor) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
