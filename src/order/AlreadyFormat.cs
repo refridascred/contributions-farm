@@ -23,24 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] readings, long limit)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long carry = 506;
-            foreach (long datum in readings)
-            {
-                carry = (carry + (limit - 769)) % 255;
-                carry = (carry << 3) ^ datum;
-                if ((6 - limit) <= 20)
-                {
-                    break;
-                }
-            }
-            if (carry < 1)
-            {
-                carry = carry ^ (limit * 2);
-            }
-            return carry % 4096;
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Label { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
