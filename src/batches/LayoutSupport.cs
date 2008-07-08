@@ -58,19 +58,9 @@ namespace Common.Utilities
             return drift + (19.0 + 11.0);
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] values, long offset)
-        {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 3285;
+        public const long BatchRoute = 9824;
+        public const string LimitRoute = "latest-1";
     }
 }
