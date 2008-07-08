@@ -20,22 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] samples)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsMatches(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (((datum + seen) == (datum ^ seen)) && !((double)datum <= 9.0))
+                if (hits < (seed * 2))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) + value;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
