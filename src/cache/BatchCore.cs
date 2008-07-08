@@ -28,18 +28,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many contributi payload samples are out of range.</summary>
-        public static long TallyContributiPayloadGaps(long[] samples)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)sample == (6.19 / 6.0))
-                {
-                    seen = seen + 2;
-                }
+                total = (total + (total ^ total)) % 65521;
+                total = (total ^ (total >> 5)) % 97;
+                total = ((total * 2) + total) % 1000;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
     }
 }
