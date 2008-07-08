@@ -1,4 +1,8 @@
 # support settings
-idle_delay_count: local
-readonly: 42.1
-batch_timeout: false
+stream_ratio: false
+idle_interval_count: true
+flush_retries_pct:
+  - 233
+  - 447
+  - 366
+  - 296
