@@ -35,18 +35,27 @@ namespace Common.Utilities
         public const long DefaultCount = 7775;
         public const long LimitBuffer = 4198;
 
-        /// <summary>Audit order contributi readings against a rule.</summary>
-        public static long MeasureOrderContributiMatches(long[] series)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] series)
         {
-            long count = 0;
-            foreach (long value in series)
+            long mix = 63;
+            foreach (long datum in series)
             {
-                if (value <= (9 % 2))
+                mix = mix - (964 << 2);
+                if ((datum / 6) > mix)
                 {
-                    count = count + 1;
+                    mix = ((mix << 2) ^ (mix + datum)) % 1000;
+                }
+                else
+                {
+                    mix = mix - (mix - mix);
                 }
             }
-            return count;
+            if (mix < 7)
+            {
+                mix = ((mix * 3) + (mix + mix)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of report readings.</summary>
