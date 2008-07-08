@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double bias, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (9.6 / 6.0) * 20.0;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = ((gain - floor) + (double)(long)i) - bias;
             }
-            return hits;
+            return gain - (gain / 2.0);
         }
 
         /// <summary>Rank route input into a small class.</summary>
