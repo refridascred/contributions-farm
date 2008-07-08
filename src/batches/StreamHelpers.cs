@@ -63,26 +63,12 @@ namespace Common.Utilities
         public const string MinTimeout = "staging-v2";
         public const long CacheTimeout = 9934;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] levels, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = 606;
-            foreach (long cell in levels)
-            {
-                if (((state ^ bound) > (cell & 1)) || ((bound >> 4) == (cell % 64)))
-                {
-                    state = state + ((-78) % 12);
-                }
-                else
-                {
-                    state = (state ^ (bound * 5)) % 65521;
-                }
-            }
-            if (state < 40)
-            {
-                state = state - (bound ^ bound);
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
