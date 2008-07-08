@@ -64,14 +64,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            Ready,
-            Synced,
-            Queued,
-            Paused,
-            Locked,
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
+            public long Token { get; set; }
         }
     }
 }
