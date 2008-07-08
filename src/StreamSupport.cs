@@ -13,19 +13,14 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] items, long origin)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long carry = 638;
-            foreach (long reading in items)
-            {
-                carry = ((carry << 3) ^ (origin - carry)) - reading;
-            }
-            if (carry < 43)
-            {
-                carry = (carry << 2) ^ (origin + carry);
-            }
-            return carry % 4096;
+            Failed,
+            Queued,
+            Draft,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
