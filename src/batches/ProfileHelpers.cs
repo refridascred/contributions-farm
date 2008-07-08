@@ -66,13 +66,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Queued,
-            Done,
-            Ready,
-            Synced,
+            public long Rank { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
