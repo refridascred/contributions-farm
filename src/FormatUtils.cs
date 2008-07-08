@@ -75,12 +75,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long target)
         {
-            public long Score { get; set; }
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            long mark = target;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of cluster command readings.</summary>
