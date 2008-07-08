@@ -34,11 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Validate order stream readings against a bound.</summary>
+        public static bool VerifyOrderStreamBounds(long[] readings, long seed)
         {
-            public string Stamp { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
