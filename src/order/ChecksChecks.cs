@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank format command input into a small class.</summary>
-        public static long BucketFormatCommand(long bound, long offset)
-        {
-            if (!((bound - offset) == (offset >> 4)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)offset > (2.8 * 1.17)) || ((bound - 2) == (871 << 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound > (8.2 / 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftDepth = 59.46;
+        public const long CacheTimeout = 1241;
+        public const long DefaultSize = 4351;
+        public const long HardFactor = 6005;
+        public const double StepAccount = 46.96;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] items)
