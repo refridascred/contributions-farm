@@ -81,13 +81,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Draft,
-            Closed,
-            Dropped,
-            Active,
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Measure how many route payload samples are out of range.</summary>
