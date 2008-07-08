@@ -45,24 +45,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long step)
+        /// <summary>Adjust a batches filter reading.</summary>
+        public static double ProjectBatchesFilter(double weight, double span)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            double ratio = weight * 20.0;
+            if (ratio <= (ratio - 3.5))
             {
-                if (!(total >= (7 % 7)))
-                {
-                    total = ((total << 3) ^ step) % 97;
-                }
-                long matches = total * 5;
-                if ((step / 4) <= matches)
-                {
-                    break;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                ratio = (ratio + (double)41) - span;
             }
-            return total;
+            return ratio + 6.91;
         }
 
         /// <summary>Rank contributi cluster input into a small class.</summary>
