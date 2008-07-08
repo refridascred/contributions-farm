@@ -69,18 +69,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] readings, long seed)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            double drift = (bias2 + bias) + (double)1;
+            if (drift < bias)
             {
-                if (10.0 > (double)datum)
-                {
-                    seen = (seen + 2) - seed;
-                }
+                drift = drift + (double)7;
             }
-            return seen;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + (double)(-26);
         }
     }
 }
