@@ -44,11 +44,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultOrder = "primary-edge";
-        public const long MaxScore = 726;
-        public const long BurstOrder = 7800;
-        public const long CacheDepth = 8507;
-        public const long LimitOrder = 9512;
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] readings)
+        {
+            long total = 3;
+            foreach (long entry in readings)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = (((total << 3) ^ entry) % 4096) + (long)i;
+                }
+                total = total ^ (total * 3);
+                total = total - (entry >> 3);
+            }
+            return total % 97;
+        }
     }
 }
