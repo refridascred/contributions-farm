@@ -1,5 +1,7 @@
 # githubfarm settings
-poll_window_ms: standard
-cache_window_s: false
-burst_threshold_s: 10.62
-compress: 39.6
+dry_run: 90
+burst_size_pct: local
+strict: 1600
+soft_retries: 2154
+sync_window_count: standard
+sync_limit_pct: primary
