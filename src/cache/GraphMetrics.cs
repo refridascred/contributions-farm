@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double ratio2 = ratio;
+            if (ratio2 < (ratio + bias))
             {
-                if (40 >= (57 - entry))
-                {
-                    seen = seen + 3;
-                }
+                ratio2 = ratio2 - 6.38;
             }
-            return seen;
+            return ratio2 + bias;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
