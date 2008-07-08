@@ -23,11 +23,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 4433;
-        public const double StepCount = 8.3;
-        public const long MinNotes = 8410;
-        public const string IdleNotes = "fallback-1";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] items)
+        {
+            long state = 4;
+            foreach (long item in items)
+            {
+                if ((state >= (item >> 5)) && ((item / 3) > (item / 4)))
+                {
+                    state = ((state << 3) ^ (5 - item)) % 65521;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardScore = 966;
