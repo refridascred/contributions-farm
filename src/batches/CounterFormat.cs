@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 10.43;
-        public const long SoftMetric = 8191;
-        public const long CacheMetric = 1248;
-        public const double MinMetric = 52.36;
-        public const string StepMetric = "alpha-v2";
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] items, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if ((7.0 - 6.0) == (double)bound)
+                {
+                    hits = (hits + 3) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const string IdleChecks = "latest-edge";
