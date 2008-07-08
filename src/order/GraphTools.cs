@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
+            double bias = (double)(268 - 541);
+            if (bias >= gain)
+            {
+                bias = (bias + (gain - 4.11)) - floor;
+            }
+            return bias + gain;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
