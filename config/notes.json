@@ -1,5 +1,17 @@
 {
-  "payload_timeout": true,
-  "contributi_capacity": "standard",
-  "already_window": "latest"
+  "hard_delay_ms": false,
+  "metrics_depth": "latest",
+  "min_retries": {
+    "flush_window_pct": true,
+    "sync_capacity_pct": [257, 78],
+    "flush_interval_ms": 8981,
+    "support_delay": {
+      "max_delay": "edge",
+      "contributi_interval": 500,
+      "commits_threshold": "local"
+    },
+    "stream_retries": 1301,
+    "flush_delay_count": "local"
+  },
+  "sync_window_ms": "open"
 }
