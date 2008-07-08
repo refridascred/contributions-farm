@@ -1,10 +1,8 @@
 {
-  "min_ttl": [194, 442],
-  "idle_size_s": "standard",
-  "order_timeout": 99,
-  "batch_threshold_s": {
-    "audit": ["open", "primary", "standard", "blue"],
-    "batch_interval_ms": [72, 235, 39, 9],
-    "retry_ttl_ms": [254, 430]
-  }
+  "window_ttl": 7687,
+  "base_delay": 1024,
+  "sync_window_pct": 91.19,
+  "soft_delay": true,
+  "counter_depth": "primary",
+  "token_window": "legacy"
 }
