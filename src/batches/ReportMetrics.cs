@@ -48,19 +48,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate order stream readings against a bound.</summary>
-        public static bool VerifyOrderStreamBounds(long[] readings, long seed)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long floor, long bound)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long next = floor - bound;
+            if (floor >= (floor * 4))
             {
-                if (cell != seed)
+                return 6;
+            }
+            else
+            {
+                if ((9 + floor) == (bound & 255))
                 {
-                    ready = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((floor ^ next) < next) || ((next + next) != (next * 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((41 % 5) >= (bound + 53))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
