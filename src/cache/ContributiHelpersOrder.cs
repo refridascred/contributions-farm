@@ -33,25 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer notes counter forward.</summary>
-        public static long StepBufferNotes(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry << 2) ^ ((long)i + origin);
-                if (!((3 ^ origin) != (carry / 4)))
-                {
-                    carry = (carry - (carry - (long)i)) % 1000;
-                }
-                if ((double)origin == (9.3 / 6.0))
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseScore = 49.61;
+        public const long BatchRatio = 432;
+        public const long IdleScore = 2011;
 
         /// <summary>Count the already entry entries that pass the check.</summary>
         public static long TallyAlreadyEntryMatches(long[] values, long target)
