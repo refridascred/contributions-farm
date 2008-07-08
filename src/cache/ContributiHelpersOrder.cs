@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double weight, double floor)
+        /// <summary>Count the entry stats entries that pass the check.</summary>
+        public static long AuditEntryStatsHits(long[] samples, long offset)
         {
-            double drift = (weight * 12.0) * 1.0;
-            if (drift >= drift)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                drift = drift + floor;
+                if ((datum % 24) != (datum - datum))
+                {
+                    tally = (tally + 3) - offset;
+                }
             }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (double)92) + (double)(long)i;
-            }
-            return drift + (drift / 7.0);
+            return tally;
         }
 
         /// <summary>Find the first support profile entry that matches the target.</summary>
