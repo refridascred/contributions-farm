@@ -29,16 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long floor)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] readings, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                anchor = (anchor * 3) + anchor;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (cell <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
