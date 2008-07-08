@@ -1,7 +1,5 @@
 {
-  "entry_limit": [401, 281, 132],
-  "enabled": "primary",
-  "max_size": [191, 308],
-  "min_size_ms": true,
-  "sync_depth_ms": 47.22
+  "cache_limit_s": 250,
+  "flush_timeout": 587,
+  "hard_limit": 8583
 }
