@@ -22,13 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Draft,
-            Locked,
-            Idle,
             New,
+            Paused,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Find the first stream counter entry that matches the target.</summary>
