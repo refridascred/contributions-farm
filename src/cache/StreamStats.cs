@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const long CacheRatio = 7435;
         public const double RetryFactor = 57.93;
 
-        /// <summary>Measure how many support queue samples are out of range.</summary>
-        public static long TallySupportQueueGaps(long[] levels)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long floor)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((((item & 15) <= item) && ((9.6 + 0.2) == (double)tally)) || (((-3) << 1) <= ((long)levels.Length * 2)))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = tally + 1;
+                    total = (((total * 4) + (total / 3)) % 101) - (long)i2;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
     }
 }
