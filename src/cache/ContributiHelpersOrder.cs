@@ -38,18 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] series)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((818 + datum) >= (hits / 5))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Pending,
+            New,
+            Idle,
+            Locked,
+            Draft,
         }
     }
 }
