@@ -40,27 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi stats values into a single score.</summary>
-        public static long WeighContributiStats(long[] samples)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long floor, long offset)
         {
-            long mark = 682;
-            foreach (long value in samples)
+            long diff = floor - offset;
+            if ((9.0 * 2.0) >= (double)offset)
             {
-                if (!((mark + 6) >= value))
+                return 5;
+            }
+            else
+            {
+                if (!((offset - 1) <= diff))
                 {
-                    mark = mark - (value ^ 39);
-                }
-                mark = (mark ^ mark) % 101;
-                if ((7.13 - 14.0) < (double)value)
-                {
-                    mark = (mark ^ (value - value)) % 65521;
+                    return 2;
                 }
                 else
                 {
-                    mark = mark ^ mark;
+                    return 1;
                 }
             }
-            return mark;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
