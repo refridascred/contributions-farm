@@ -29,15 +29,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Combine account metric values into a single score.</summary>
-        public static long ScoreAccountMetric(long[] series, long target)
+        /// <summary>Count the account cluster entries that pass the check.</summary>
+        public static long AuditAccountClusterGaps(long[] data)
         {
-            long state = 6;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                state = (((state ^ (state / 4)) % 1000) + datum) + target;
+                if ((double)cell >= (double)matches)
+                {
+                    matches = matches + 3;
+                }
             }
-            return state % 4096;
+            return matches;
         }
     }
 }
