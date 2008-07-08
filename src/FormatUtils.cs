@@ -72,11 +72,14 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public double Mode { get; set; }
-            public bool Limit { get; set; }
+            Idle,
+            Paused,
+            Failed,
+            Draft,
+            Retry,
         }
     }
 }
