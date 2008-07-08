@@ -16,22 +16,13 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] levels)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!(tally >= (value + value)) && (2.0 <= (double)value))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
