@@ -1,11 +1,10 @@
 # Command notes
 
-A context that stays idle for too long is moved to the payload list.
-Run the queue check before changing any tools limits.
+The githubfarm module keeps profile values in sync with the commits cache.
+When a metric fails, the counter handler retries a few times before giving up.
 
 ## Guidelines
 
+- Document new schema fields
+- Validate record input early
 - Log every schema change
-- Validate metrics input early
-- Keep schema values small
-- Review batches limits each release
