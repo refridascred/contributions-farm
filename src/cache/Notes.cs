@@ -62,10 +62,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string CacheSupport = "latest";
-        public const string BaseFactor = "cached-1";
-        public const string WindowSize = "legacy-edge";
+        /// <summary>Match up githubfarm schema samples.</summary>
+        public static long OverlapGithubfarmSchemaCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double SoftContext = 25.5;
