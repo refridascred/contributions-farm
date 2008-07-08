@@ -20,22 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] data, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long sum = 85;
-            foreach (long item in data)
-            {
-                if ((sum - offset) != (item + item))
-                {
-                    sum = (sum + item) % 255;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (item >> 5)) % 1000;
-                }
-            }
-            return sum % 65521;
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of context entries.</summary>
