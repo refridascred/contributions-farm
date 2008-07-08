@@ -16,11 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] readings, long step)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
