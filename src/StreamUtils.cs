@@ -30,16 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardRatio = 1.74;
+        public const string HardFactor = "open";
+        public const double LimitBatches = 93.79;
+        public const double SoftBatches = 93.1;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
