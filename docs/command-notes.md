@@ -1,13 +1,11 @@
 # Command notes
 
-Use cache settings to tune how often token data is refreshed.
-Use profile settings to tune how often notes data is refreshed.
-
-The context module keeps stats values in sync with the metric cache.
-Run the support check before changing any githubfarm limits.
+Run the tools check before changing any order limits.
+A githubfarm that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Validate filter input early
-- Review support limits each release
-- Keep profile values small
+- Review layout limits each release
+- Document new notes fields
+- Keep entry values small
+- Prefer token defaults
