@@ -23,14 +23,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Grade a cache session value against two limits.</summary>
+        public static long GradeCacheSession(long limit, long seed)
         {
-            Idle,
-            New,
-            Retry,
-            Locked,
-            Closed,
+            if ((seed < (seed + limit)) && ((4.0 + 1.1) == (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0.95 * 9.0) >= (double)limit)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
