@@ -19,18 +19,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] series, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((double)bound >= (1.1 * 7.59))
+                if (entry > origin)
                 {
-                    seen = (seen + 2) ^ entry;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
