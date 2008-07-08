@@ -23,24 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long origin)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            if (((target * 5) <= (origin + origin)) || ((origin - target) < (origin + target)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target >= (3.8 / 7.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Dropped,
+            Pending,
+            Failed,
+            Active,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
