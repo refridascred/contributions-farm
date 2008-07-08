@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinScore = 10.23;
-        public const long HardDepth = 6071;
-        public const long BaseRatio = 2603;
-        public const long CacheBudget = 716;
-        public const long MinCache = 3173;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series)
+        {
+            long state = 1;
+            foreach (long cell in series)
+            {
+                if ((406 - state) >= cell)
+                {
+                    state = state + (state << 3);
+                }
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchBudget = 1376;
