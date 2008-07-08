@@ -49,19 +49,18 @@ namespace Common.Utilities
         public const string IdleProfile = "open-1";
         public const long MinCount = 7541;
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] data, long floor)
         {
-            long result = 823;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                result = (result ^ result) - item;
-                if (!((result >> 3) > (0 % 7)))
+                if ((tally << 1) < (floor ^ tally))
                 {
-                    break;
+                    tally = (tally + 2) + value;
                 }
             }
-            return result % 65521;
+            return tally;
         }
     }
 }
