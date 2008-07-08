@@ -47,18 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheOutliers(long[] samples)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item << 2) < (22 & 15))
+                if (series[i] < origin)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a session stats.</summary>
