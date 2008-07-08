@@ -28,21 +28,10 @@ namespace Common.Utilities
         public const long MinDepth = 4093;
         public const string LimitSize = "latest-1";
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BatchSpan = 65.44;
+        public const double MinContributi = 77.32;
+        public const long WindowContributi = 7983;
+        public const long MaxScore = 7138;
     }
 }
