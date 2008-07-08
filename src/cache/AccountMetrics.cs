@@ -43,12 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] series, long step)
         {
-            public bool Total { get; set; }
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up buffer samples.</summary>
