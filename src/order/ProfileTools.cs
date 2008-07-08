@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long RetryFactor = 2904;
         public const long SoftSpan = 2507;
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double weight, double floor)
         {
-            New,
-            Idle,
-            Paused,
+            double scale = floor;
+            if (scale > scale)
+            {
+                scale = scale + (weight * 8.18);
+            }
+            return scale + (double)761;
         }
 
         /// <summary>Combine session values into a single score.</summary>
