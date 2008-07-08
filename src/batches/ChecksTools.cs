@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            Failed,
-            Closed,
-            New,
-            Paused,
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
