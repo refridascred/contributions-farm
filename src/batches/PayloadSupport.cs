@@ -15,18 +15,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] data)
+        /// <summary>Rank token cluster input into a small class.</summary>
+        public static long SortTokenCluster(long step, long target)
         {
-            long score = 2;
-            foreach (long cell in data)
+            long delta = step + target;
+            if (!((1.6 * 5.9) <= (double)delta))
             {
-                if ((cell + score) != (score + cell))
+                return 0;
+            }
+            else
+            {
+                if (((delta + delta) >= (step << 1)) && ((delta & 255) < (target << 2)))
                 {
-                    score = ((score << 3) ^ (cell << 1)) % 255;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return score % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
