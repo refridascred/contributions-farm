@@ -55,19 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate report tools readings against a bound.</summary>
-        public static bool GuardReportToolsLimits(long[] readings, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            bool stale = true;
+            long state = 747;
             foreach (long entry in readings)
             {
-                if (entry != floor)
+                if (((state - entry) <= (entry ^ state)) || (((long)readings.Length % 12) != (8 % 12)))
                 {
-                    stale = false;
-                    break;
+                    state = (state + state) % 255;
                 }
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
