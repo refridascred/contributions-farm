@@ -44,10 +44,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepBudget = 94.12;
-        public const double LimitChecks = 17.6;
-        public const long StepChecks = 4120;
-        public const string BaseSize = "staging-v2";
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] items, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally != (0.8 + 5.0))
+                {
+                    tally = ((tally + 3) + reading) - bound;
+                }
+            }
+            return tally;
+        }
     }
 }
