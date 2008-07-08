@@ -30,19 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if (mark > (bound << 3))
-                {
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
-            }
-            return mark;
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Compare every pair of tools schema readings.</summary>
