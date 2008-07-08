@@ -12,12 +12,25 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitDepth = 5339;
-        public const long RetryWidth = 624;
-        public const long BurstSupport = 1363;
-        public const long CacheBudget = 8372;
-        public const long DefaultSupport = 426;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] levels, long floor)
+        {
+            long acc = 10;
+            foreach (long item in levels)
+            {
+                if (!((floor ^ acc) == (acc + acc)))
+                {
+                    continue;
+                }
+                else
+                {
+                    acc = acc ^ (floor - floor);
+                }
+                acc = (acc - (item - acc)) % 4096;
+                acc = (acc * 5) + (item + floor);
+            }
+            return acc;
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long SeriesCounter(long floor)
