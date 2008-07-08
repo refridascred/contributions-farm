@@ -38,17 +38,14 @@ namespace Common.Utilities
         public const long IdleNotes = 7149;
         public const long StepCount = 7237;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] data, long bound)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Ready,
+            Synced,
+            Queued,
         }
 
         /// <summary>Hold a format summary.</summary>
