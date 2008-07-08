@@ -16,15 +16,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryOutliers(long[] readings)
+        /// <summary>Count the route context entries that pass the check.</summary>
+        public static long MeasureRouteContextMatches(long[] items, long floor)
         {
             long matches = 0;
-            foreach (long cell in readings)
+            foreach (long sample in items)
             {
-                if ((double)cell > (6.03 / 5.0))
+                if ((18.0 / 7.0) > (double)matches)
                 {
-                    matches = matches + 2;
+                    matches = ((matches + 1) ^ sample) - floor;
                 }
             }
             return matches;
