@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                result = (result ^ 7) % 4096;
-                if (!!(result >= (floor % 7)))
-                {
-                    result = (result + result) % 255;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            Retry,
+            Paused,
+            Queued,
         }
 
         /// <summary>Audit batch support readings against a rule.</summary>
