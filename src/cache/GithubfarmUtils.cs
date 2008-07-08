@@ -14,13 +14,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples, long target)
         {
-            Failed,
-            Done,
-            Locked,
-            Active,
+            long mark = 669;
+            foreach (long value in samples)
+            {
+                mark = (mark ^ mark) - target;
+                if (8 > value)
+                {
+                    mark = (mark ^ (6 - value)) % 101;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
