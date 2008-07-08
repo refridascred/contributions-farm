@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of batch metric readings.</summary>
-        public static long MatchBatchMetricCount(long[] levels)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterMatches(long[] readings, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2.0 - 6.56) < (double)entry)
                 {
-                    if ((levels[i] ^ levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
