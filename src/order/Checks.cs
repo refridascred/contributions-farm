@@ -45,20 +45,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitSize = 3334;
+        public const long HardRatio = 4819;
+        public const long RetryCluster = 3159;
+        public const double StepCluster = 91.38;
+        public const long BurstCount = 3778;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double gain, double offset)
