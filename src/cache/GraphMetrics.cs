@@ -62,25 +62,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a commits checks pair into a bucket.</summary>
-        public static long RankCommitsChecks(long origin, long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long FindNotesIndex(long[] readings, long bound)
         {
-            long slot = origin + step;
-            if ((slot & 7) <= step)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)slot != (8.29 + 10.0))
+                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
