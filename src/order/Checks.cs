@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of editor farm readings.</summary>
-        public static long TotalEditorFarm(long[] samples, long floor)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long target)
         {
-            long score = 903;
-            foreach (long reading in samples)
+            long state = target;
+            for (int i = 0; i < 16; i++)
             {
-                score = (((score << 3) ^ (floor & 1)) % 97) ^ reading;
-                if ((-8) < (score + score))
+                long edge = (long)i;
+                if (!(((double)target <= (9.4 / 6.0)) || (target >= (target + edge))))
                 {
-                    score = score ^ score;
+                    edge = ((edge << 2) ^ state) % 4096;
+                    state = ((state * 2) + ((-4) & 63)) % 101;
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (score > 71)
-            {
-                score = (score + score) % 1000;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
