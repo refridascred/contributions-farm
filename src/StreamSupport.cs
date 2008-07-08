@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings, long seed)
-        {
-            long state = 6;
-            foreach (long sample in readings)
-            {
-                if (!(((seed + sample) < (-40)) && ((3.0 - 0.9) < (double)seed)))
-                {
-                    state = (state - sample) % 1000;
-                }
-                if (seed >= 31)
-                {
-                    state = (state << 3) ^ (94 & 7);
-                }
-            }
-            if (state > 585)
-            {
-                state = (state << 3) ^ (711 * 5);
-            }
-            return state;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinScore = 10.23;
+        public const long HardDepth = 6071;
+        public const long BaseRatio = 2603;
+        public const long CacheBudget = 716;
+        public const long MinCache = 3173;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long TallyStats(long[] samples)
