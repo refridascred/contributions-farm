@@ -48,15 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] items, long floor)
-        {
-            long sum = 529;
-            foreach (long item in items)
-            {
-                sum = ((sum << 3) ^ (item + sum)) - floor;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double RetrySize = 23.35;
+        public const long BatchMetric = 5646;
+        public const string HardSize = "latest-edge";
+        public const string WindowMetric = "primary-v2";
     }
 }
