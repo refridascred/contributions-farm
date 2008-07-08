@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit session counter readings against a rule.</summary>
-        public static long MeasureSessionCounterGaps(long[] items, long step)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long count = 0;
-            foreach (long value in items)
+            long result = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((16.0 / 6.0) != (double)count))
-                {
-                    count = ((count + 1) ^ value) + step;
-                }
+                result = result + (result / 3);
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
