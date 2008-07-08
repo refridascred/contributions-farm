@@ -29,15 +29,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] items, long limit)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] readings, long seed)
         {
-            long acc = 4;
-            foreach (long reading in items)
+            long mark = 329;
+            foreach (long cell in readings)
             {
-                acc = (acc + limit) ^ reading;
+                if (!((cell & 15) < (seed - mark)))
+                {
+                    mark = (mark ^ 0) % 65521;
+                }
+                else
+                {
+                    mark = mark - (seed / 5);
+                }
             }
-            return acc;
+            return mark % 4096;
         }
     }
 }
