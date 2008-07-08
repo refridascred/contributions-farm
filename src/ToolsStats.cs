@@ -69,25 +69,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long offset, long seed)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long seed)
         {
-            long bound = offset - seed;
-            if (!(((-7) / 6) <= (offset << 1)))
+            long mix = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= 20.0)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 6;
+                    mix = ((mix + seed) % 97) - (long)i2;
                 }
-                else
-                {
-                    return 1;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
+            return mix;
         }
     }
 }
