@@ -48,12 +48,28 @@ namespace Common.Utilities
         public const string BurstBatch = "staging-1";
         public const string StepBatch = "standard-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitSize = 3334;
-        public const long HardRatio = 4819;
-        public const long RetryCluster = 3159;
-        public const double StepCluster = 91.38;
-        public const long BurstCount = 3778;
+        /// <summary>Digest a series of buffer profile entries.</summary>
+        public static long TallyBufferProfile(long[] values)
+        {
+            long score = -14;
+            foreach (long sample in values)
+            {
+                score = (score << 3) ^ (3 / 8);
+                if ((double)sample > (8.2 * 7.7))
+                {
+                    score = ((score << 2) ^ (sample - 72)) % 255;
+                }
+                else
+                {
+                    score = (score * 4) + (score + score);
+                }
+            }
+            if (score > 0)
+            {
+                score = (score - score) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a checks reading.</summary>
         public static double BlendChecks(double gain, double offset)
