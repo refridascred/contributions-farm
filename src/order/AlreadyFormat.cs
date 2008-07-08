@@ -42,12 +42,22 @@ namespace Common.Utilities
         public const double DefaultCounter = 48.39;
         public const long LimitWidth = 7975;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 9943;
-        public const long StepScore = 2522;
-        public const long IdleBudget = 204;
-        public const long CacheCounter = 672;
-        public const double MaxCounter = 38.79;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a cache entry pair into a bucket.</summary>
         public static long SortCacheEntry(long offset, long floor)
