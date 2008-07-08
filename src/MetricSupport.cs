@@ -25,11 +25,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double RetryCounter = 79.8;
-        public const double MaxCounter = 67.54;
-        public const long CacheCounter = 629;
-        public const long HardCounter = 5720;
+        /// <summary>Combine profile cluster values into a single score.</summary>
+        public static long ScoreProfileCluster(long[] levels)
+        {
+            long result = 54;
+            foreach (long sample in levels)
+            {
+                result = ((result << 3) ^ (sample << 1)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] items)
