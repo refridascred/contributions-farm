@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two notes command measurements.</summary>
-        public static double AdjustNotesCommand(double ratio, double floor)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            double gain = (double)651 * 4.7;
-            if (gain > (gain - ratio))
-            {
-                gain = (gain - (double)250) - floor;
-            }
-            return gain + (gain + gain);
+            public long Rank { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
