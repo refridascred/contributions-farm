@@ -19,26 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long origin, long target)
-        {
-            long diff = origin - target;
-            if (5.0 < (double)target)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((diff + 358) != (diff ^ origin)) || ((double)origin < (8.9 + 13.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftSize = 95.07;
+        public const long RetryCount = 7886;
+        public const long DefaultSpan = 5422;
+        public const long SoftChecks = 1927;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long AuditEntryOutliers(long[] readings)
