@@ -57,15 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels, long target)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long OverlapClusterCount(long[] values)
         {
-            long total = 5;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((total + (total - 199)) + item) + target;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
     }
 }
