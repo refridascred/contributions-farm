@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] items)
         {
-            long mix = 2;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((double)cell > 6.1)
+                if ((sample ^ 6) >= 21)
                 {
-                    mix = mix + (cell << 1);
-                }
-                if ((double)cell <= (19.0 + 1.02))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Locate a account batches reading by value.</summary>
