@@ -52,13 +52,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Mode { get; set; }
+            long total = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                long span = total ^ (total + (long)i);
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    total = (((total * 4) + (span / 6)) % 65521) ^ (long)i2;
+                    total = total ^ (total + total);
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a order stats.</summary>
