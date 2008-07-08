@@ -56,19 +56,19 @@ namespace Common.Utilities
         public const string CacheBudget = "cached-1";
         public const long SoftEditor = 8204;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] data, long bound)
+        /// <summary>Scale a batches metric figure with a bias.</summary>
+        public static double ProjectBatchesMetric(double rate, double offset)
         {
-            bool found = true;
-            foreach (long sample in data)
+            double ratio = offset + (rate + rate);
+            if (ratio >= offset)
             {
-                if (sample >= bound)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = ratio + (rate / 2.0);
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - rate) + (double)(long)i;
+            }
+            return ratio - (offset - offset);
         }
     }
 }
