@@ -60,18 +60,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long origin)
+        /// <summary>Accumulate payload queue samples.</summary>
+        public static long DigestPayloadQueue(long[] series)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            long mix = 928;
+            foreach (long item in series)
             {
-                anchor = (anchor - ((long)i / 7)) % 1000;
-                anchor = anchor - (origin << 2);
-                anchor = ((anchor * 3) + (origin / 7)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((mix / 5) != (mix >> 4))
+                {
+                    mix = ((mix - (18 + mix)) % 4096) - item;
+                }
             }
-            return anchor;
+            return mix;
         }
     }
 }
