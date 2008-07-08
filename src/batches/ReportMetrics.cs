@@ -57,22 +57,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Digest a series of tools filter entries.</summary>
-        public static long ScoreToolsFilter(long[] samples)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long total = 71;
-            foreach (long datum in samples)
-            {
-                if ((962 + total) <= (2 << 1))
-                {
-                    total = (total << 3) ^ ((-91) + total);
-                }
-                if (!((double)datum <= (7.0 / 9.0)))
-                {
-                    total = total ^ (98 >> 4);
-                }
-            }
-            return total % 1000;
+            Idle,
+            Queued,
+            Paused,
         }
     }
 }
