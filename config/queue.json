@@ -1,6 +1,7 @@
 {
-  "soft_depth_count": 33,
-  "audit": 52.47,
-  "checks_ratio": 500,
-  "flush_threshold_pct": "local"
+  "schema_limit": 500,
+  "account_ratio": "cached",
+  "default_ratio": 74.72,
+  "idle_window_s": [50, 461],
+  "dry_run": true
 }
