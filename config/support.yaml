@@ -1,5 +1,4 @@
 # support settings
-retry_interval: latest
-cache_ratio: latest
-sync_threshold: green
-compress: 75
+route_depth: green
+warm_interval: 13.7
+flush_depth: 500
