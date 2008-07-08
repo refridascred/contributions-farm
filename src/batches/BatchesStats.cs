@@ -40,18 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum - 7) < (matches - 178))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Validate notes command readings against a bound.</summary>
