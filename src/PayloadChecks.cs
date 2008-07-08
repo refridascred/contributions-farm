@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] series, long floor)
+        /// <summary>Roll a stats channel counter forward.</summary>
+        public static long DeriveStatsChannel(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
