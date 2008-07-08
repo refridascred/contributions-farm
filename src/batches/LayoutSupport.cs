@@ -46,31 +46,22 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long origin, long bound)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] data)
         {
-            if ((bound * 5) <= (bound - origin))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 7) < (9 << 2))
+                if ((sample << 1) == (matches * 5))
                 {
-                    return 3;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if (((2.56 - 7.0) >= (double)bound) || ((678 - 662) < (origin + 245)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
