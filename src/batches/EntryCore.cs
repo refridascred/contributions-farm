@@ -36,19 +36,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ProjectGraph(double scale, double floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            double drift = (double)544 - (double)61;
-            if (drift >= (double)83)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - drift) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (double)74;
-            }
-            return drift + floor;
+            return matches;
         }
 
         /// <summary>Describe the batches level values.</summary>
