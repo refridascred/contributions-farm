@@ -97,13 +97,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            Done,
-            Queued,
-            Ready,
-            New,
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
