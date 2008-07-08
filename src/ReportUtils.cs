@@ -23,11 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public long Flag { get; set; }
-            public double Limit { get; set; }
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Rank context input into a small class.</summary>
