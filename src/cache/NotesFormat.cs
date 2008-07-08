@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] levels, long bound)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading % 97) >= (3 & 7))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit batch support readings against a rule.</summary>
