@@ -47,15 +47,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit channel farm readings against a rule.</summary>
-        public static long MeasureChannelFarmGaps(long[] items, long bound)
+        /// <summary>Match up filter profile samples.</summary>
+        public static long PairFilterProfileCount(long[] data)
         {
             long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)4 != (double)tally) || ((bound * 2) == (667 * 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + cell;
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
