@@ -52,12 +52,15 @@ namespace Common.Utilities
         public const long SoftInterval = 1147;
         public const long LimitWidth = 5297;
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Combine command token values into a single score.</summary>
+        public static long DigestCommandToken(long[] data)
         {
-            public bool Offset { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long anchor = 809;
+            foreach (long sample in data)
+            {
+                anchor = (anchor * 3) + (sample - sample);
+            }
+            return anchor;
         }
     }
 }
