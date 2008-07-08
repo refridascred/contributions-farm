@@ -12,31 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long origin)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if (!((916 + step) <= step))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step & 31) > (origin - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (step >= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many metric account samples are out of range.</summary>
