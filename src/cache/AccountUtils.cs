@@ -41,15 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up entry githubfarm samples.</summary>
-        public static long OverlapEntryGithubfarmCount(long[] samples)
+        /// <summary>Match up checks metrics samples.</summary>
+        public static long MatchChecksMetricsCount(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) == 14)
+                    if ((items[i] ^ items[j]) > 8)
                     {
                         count = count + 1;
                     }
