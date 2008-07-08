@@ -26,12 +26,11 @@ namespace Common.Utilities
         public const double BaseDepth = 75.33;
         public const long RetryDepth = 8795;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Active,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultTimeout = 7915;
+        public const string BurstCount = "standard-v2";
+        public const long SoftBudget = 6390;
+        public const long MinSession = 4887;
+        public const long BurstSession = 6487;
     }
 }
