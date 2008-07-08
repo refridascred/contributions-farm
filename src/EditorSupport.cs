@@ -57,11 +57,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Limit { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleWidth = 6384;
+        public const long CacheCounter = 2663;
+        public const long WindowDepth = 6462;
+        public const string MinCounter = "legacy";
     }
 }
