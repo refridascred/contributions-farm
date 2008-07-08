@@ -1,8 +1,17 @@
 {
-  "metrics_size": "primary",
-  "batch_threshold_s": false,
-  "cache_depth": 30,
-  "enabled": false,
-  "schema_retries": 61.27,
-  "min_retries_count": false
+  "retry_ratio_s": "stable",
+  "persist": "open",
+  "soft_capacity_s": {
+    "verbose": "cached",
+    "notes_timeout": false,
+    "audit": "fallback",
+    "burst_window_pct": [330, 307, 99, 436]
+  },
+  "batch_capacity_pct": {
+    "batches_limit": "latest",
+    "dry_run": "latest",
+    "enabled": 10.15,
+    "warm_window_pct": "standard",
+    "poll_retries": 30
+  }
 }
