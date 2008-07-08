@@ -45,22 +45,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster schema samples.</summary>
-        public static long DigestClusterSchema(long[] levels, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] items)
         {
-            long sum = 5;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((reading ^ sum) == (reading & 3))
+                if ((double)tally == (5.26 - 1.0))
                 {
-                    sum = (sum << 2) ^ (bound + sum);
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            if (sum < 1)
-            {
-                sum = ((sum * 4) + sum) % 1000;
-            }
-            return sum % 97;
+            return tally;
         }
     }
 }
