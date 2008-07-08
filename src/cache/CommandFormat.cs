@@ -23,11 +23,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 52;
-        public const long RetrySpan = 795;
-        public const long LimitCache = 2831;
-        public const double MaxDepth = 53.99;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Blend two payload batches measurements.</summary>
         public static double AdjustPayloadBatches(double rate, double floor)
