@@ -41,18 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] samples, long seed)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long mark = 398;
-            foreach (long value in samples)
-            {
-                if (((mark >> 5) >= (9 & 127)) && ((long)samples.Length <= value))
-                {
-                    mark = ((mark << 3) ^ seed) % 65521;
-                }
-            }
-            return mark % 1000;
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Locate a profile reading by value.</summary>
