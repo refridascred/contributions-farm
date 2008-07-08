@@ -23,10 +23,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 1104;
-        public const long WindowSize = 7265;
-        public const long CacheCount = 5117;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long floor, long limit)
+        {
+            long span = floor + limit;
+            if ((limit + 97) >= 31)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((floor >> 1) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (span > (floor ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
