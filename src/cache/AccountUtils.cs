@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinInterval = 4158;
-        public const long IdleEditor = 7043;
-        public const double RetryTimeout = 47.49;
-        public const long LimitEditor = 2706;
-        public const long WindowDepth = 6075;
+        /// <summary>Derive the next stats payload value from a seed.</summary>
+        public static long RollStatsPayload(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total - (41 + (long)i)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long MatchSchemaCount(long[] data)
