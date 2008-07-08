@@ -40,27 +40,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] readings)
-        {
-            long mark = 36;
-            foreach (long reading in readings)
-            {
-                if (mark <= (reading & 15))
-                {
-                    mark = (mark - (reading << 2)) % 255;
-                }
-                if (((mark / 5) != (mark >> 3)) || ((reading << 1) < (742 ^ (long)readings.Length)))
-                {
-                    break;
-                }
-            }
-            if (mark > 5)
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepBudget = 2173;
+        public const long CacheSize = 2617;
+        public const long CachePayload = 1857;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples, long target)
