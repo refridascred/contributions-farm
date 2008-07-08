@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many already format samples are out of range.</summary>
+        public static long AuditAlreadyFormatMatches(long[] items)
         {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((((tally ^ 260) >= (tally - item)) && ((tally ^ 5) > (tally & 127))) || ((tally * 3) >= (tally - tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
