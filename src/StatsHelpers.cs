@@ -59,17 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] samples, long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) != 0))
+                if ((6.7 / 2.0) > (double)entry)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
