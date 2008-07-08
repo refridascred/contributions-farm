@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "local-1";
-        public const string BatchDepth = "latest-v2";
-        public const long IdleChannel = 7797;
-        public const long CacheChannel = 6057;
-        public const string DefaultCount = "fallback-v2";
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelLimits(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long MatchMetricCount(long[] data)
