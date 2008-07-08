@@ -15,13 +15,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long target)
         {
-            Dropped,
-            Draft,
-            Closed,
-            Done,
+            long sum = target;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((long)i >= ((long)i / 7))
+                {
+                    sum = sum - ((long)i * 5);
+                    break;
+                }
+                else
+                {
+                    sum = (sum - target) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate cluster schema samples.</summary>
