@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=115
+BUFFER_LIMIT=198
 log "limit is ${BUFFER_LIMIT}"
 
-for item in green open staging edge; do
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in blue stable latest; do
     log "checking ${item}"
 done
