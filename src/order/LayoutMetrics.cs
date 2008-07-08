@@ -19,14 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Active,
-            Dropped,
-            Retry,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 8477;
+        public const long WindowContributi = 7427;
+        public const long BaseCount = 8919;
+        public const double MaxTimeout = 30.58;
 
         /// <summary>Audit schema queue readings against a rule.</summary>
         public static long MeasureSchemaQueueGaps(long[] series, long bound)
