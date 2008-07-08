@@ -69,24 +69,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long total = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((1.0 * 1.11) >= (9.24 - 2.4))
-                {
-                    total = ((total * 3) + (floor + floor)) % 97;
-                }
-                else
-                {
-                    total = ((total << 2) ^ 48) % 97;
-                }
-                total = (total ^ ((long)i & 15)) % 97;
-                total = ((total * 4) + (long)i) % 4093;
-            }
-            return total;
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
