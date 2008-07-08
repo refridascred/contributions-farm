@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long step)
         {
-            Draft,
-            Dropped,
-            Stale,
-            Failed,
-            New,
+            if (offset < step)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + offset) >= (step << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
