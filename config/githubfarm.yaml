@@ -1,4 +1,9 @@
 # githubfarm settings
-persist: local
-idle_ttl_pct: strict
-flush_interval_count: false
+min_size_s: legacy
+poll_threshold: eu-west
+batch_threshold: primary
+account_window:
+  - blue
+  - standard
+  - cached
+  - blue
