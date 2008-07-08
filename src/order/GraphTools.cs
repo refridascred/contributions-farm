@@ -39,21 +39,18 @@ namespace Common.Utilities
         public const double CacheAccount = 34.32;
         public const string BurstAccount = "staging-edge";
 
-        /// <summary>Compare every pair of record channel readings.</summary>
-        public static long CompareRecordChannelCount(long[] levels)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!((offset * 2) >= (30 % 10)))
                 {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
