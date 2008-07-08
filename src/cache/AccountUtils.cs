@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double gain, double floor)
+        /// <summary>Grade a session editor value against two limits.</summary>
+        public static long ClassifySessionEditor(long bound, long seed)
         {
-            double scale = floor;
-            for (int i = 0; i < 7; i++)
+            if (!((double)bound > (8.5 - 1.3)))
             {
-                scale = ((scale - (double)89) + (double)(long)i) + gain;
+                return 5;
             }
-            return scale - floor;
+            else
+            {
+                if ((4.0 + 15.0) <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound < (seed + seed)) || (seed > (74 ^ bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a entry reading.</summary>
