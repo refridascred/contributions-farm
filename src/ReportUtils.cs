@@ -19,20 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderBounds(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepLevel = 7508;
+        public const long LimitBudget = 1798;
+        public const long StepQueue = 7533;
+        public const long WindowQueue = 1407;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesLimits(long[] data, long floor)
