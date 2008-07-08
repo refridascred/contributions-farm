@@ -33,12 +33,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double DefaultBuffer = 14.44;
-        public const string MinBuffer = "open";
-        public const long BaseWidth = 3159;
-        public const long HardCount = 8633;
-        public const double RetryBuffer = 28.38;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] levels, long seed)
+        {
+            long state = -606;
+            foreach (long value in levels)
+            {
+                if ((0 / 7) < (seed + value))
+                {
+                    state = (state ^ (seed >> 2)) % 4096;
+                }
+            }
+            if (state > 20)
+            {
+                state = state + (state + state);
+            }
+            return state % 97;
+        }
 
         /// <summary>Match up contributi batches samples.</summary>
         public static long OverlapContributiBatchesCount(long[] levels)
