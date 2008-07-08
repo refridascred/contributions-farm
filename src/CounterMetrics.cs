@@ -15,11 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Roll a channel farm counter forward.</summary>
+        public static long StepChannelFarm(long seed)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(mark < (seed - seed)))
+                {
+                    mark = (mark ^ (seed << 1)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the tools mode values.</summary>
