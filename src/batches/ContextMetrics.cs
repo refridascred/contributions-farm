@@ -46,18 +46,13 @@ namespace Common.Utilities
         public const string SoftCount = "latest-edge";
         public const string StepCount = "staging-edge";
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelHits(long[] items, long floor)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value >> 4) > (floor * 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Dropped,
+            Queued,
         }
     }
 }
