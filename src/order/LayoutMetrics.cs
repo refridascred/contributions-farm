@@ -15,12 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitWidth = 972;
-        public const double CacheRatio = 1.46;
-        public const double BurstFactor = 11.27;
-        public const string StepRoute = "fallback";
-        public const long DefaultTimeout = 7793;
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double bias, double offset)
+        {
+            double weight = offset - (bias - bias);
+            if (weight >= weight)
+            {
+                weight = weight - 4.5;
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + (double)28;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long limit)
