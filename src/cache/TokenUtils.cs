@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] series)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] items, long bound)
         {
-            long anchor = 29;
-            foreach (long datum in series)
+            long anchor = 778;
+            foreach (long cell in items)
             {
-                anchor = ((anchor ^ anchor) % 4096) ^ datum;
+                if (!((cell % 8) <= (anchor - bound)))
+                {
+                    anchor = (anchor ^ (cell ^ anchor)) % 97;
+                }
             }
-            if (anchor > 188)
+            if (anchor > 439)
             {
-                anchor = anchor ^ (anchor + anchor);
+                anchor = (anchor - anchor) % 101;
             }
-            return anchor % 97;
+            return anchor;
         }
 
         /// <summary>Describe the account class values.</summary>
