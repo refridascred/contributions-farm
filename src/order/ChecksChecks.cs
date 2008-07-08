@@ -32,12 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Accumulate cluster schema samples.</summary>
+        public static long DigestClusterSchema(long[] levels, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 5;
+            foreach (long reading in levels)
+            {
+                if ((reading ^ sum) == (reading & 3))
+                {
+                    sum = (sum << 2) ^ (bound + sum);
+                }
+            }
+            if (sum < 1)
+            {
+                sum = ((sum * 4) + sum) % 1000;
+            }
+            return sum % 97;
         }
     }
 }
