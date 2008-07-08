@@ -58,15 +58,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long target)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] series)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of githubfarm entry entries.</summary>
