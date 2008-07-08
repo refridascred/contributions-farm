@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            Pending,
-            Paused,
-            Active,
+            long carry = step;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
