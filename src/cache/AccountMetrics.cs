@@ -58,15 +58,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next cluster batches value.</summary>
-        public static double AdjustClusterBatches(double bias, double offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            double scale = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - offset) - (double)(long)i) + bias;
-            }
-            return scale - 5.01;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
