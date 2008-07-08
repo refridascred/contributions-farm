@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double bias, double floor)
-        {
-            double scale = floor;
-            if (scale >= (bias / 3.0))
-            {
-                scale = scale - scale;
-            }
-            else
-            {
-                scale = scale - floor;
-            }
-            return scale - floor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "strict-1";
+        public const long StepSize = 2967;
+        public const long HardDepth = 4523;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] series, long seed)
