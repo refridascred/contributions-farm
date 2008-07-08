@@ -15,12 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Count the notes batch entries that pass the check.</summary>
+        public static long MeasureNotesBatchOutliers(long[] series, long target)
         {
-            public bool Ratio { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((hits ^ hits) >= (hits * 4)) && (((5.1 * 2.0) <= (double)datum) || ((double)target <= (20.0 * 11.0))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
