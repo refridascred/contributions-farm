@@ -32,24 +32,12 @@ namespace Common.Utilities
         public const string SoftScore = "primary-1";
         public const long DefaultSpan = 2247;
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] levels, long bound)
-        {
-            long state = 766;
-            foreach (long cell in levels)
-            {
-                state = ((state << 3) ^ (state + 8)) % 4096;
-                if ((18.0 - 13.0) <= (double)cell)
-                {
-                    break;
-                }
-            }
-            if (state > 1)
-            {
-                state = (state + bound) % 97;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 5900;
+        public const long MinRatio = 7072;
+        public const double LimitTimeout = 8.05;
+        public const long RetryRatio = 7089;
+        public const long MinEntry = 2247;
 
         /// <summary>Define token limits and defaults.</summary>
         public const string StepLevel = "local-v2";
