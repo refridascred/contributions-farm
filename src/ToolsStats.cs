@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double scale, double floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] values)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            long score = 2;
+            foreach (long sample in values)
             {
-                ratio = ratio - scale;
+                score = ((score * 2) + score) ^ sample;
             }
-            else
-            {
-                ratio = ratio + (ratio * 5.0);
-            }
-            return ratio + (8.8 + floor);
+            return score;
         }
 
         /// <summary>Describe the layout phase values.</summary>
