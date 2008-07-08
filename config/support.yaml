@@ -1,27 +1,13 @@
 # support settings
-retry_capacity_ms:
-  - 94
-  - 389
-  - 124
-persist:
-  default_size_pct:
-    - stable
-    - blue
-    - primary
-  compress: staging
-  idle_capacity: eu-west
-  idle_depth_pct: staging
-  persist: fallback
-  burst_retries_s: 2979
-dry_run:
-  dry_run:
-    - staging
-    - primary
-  filter_limit: 37.68
-  batch_window_pct: false
-  warm_threshold: stable
-burst_retries:
-  - 432
-  - 257
-flush_timeout_s: 9899
-verbose: 30
+flush_depth_ms:
+  - 280
+  - 440
+  - 57
+burst_ttl_ms: fallback
+cache_ratio_pct:
+  audit: 33.32
+  cache_depth_count:
+    - 277
+    - 440
+  verbose: true
+  retry_capacity: 1024
