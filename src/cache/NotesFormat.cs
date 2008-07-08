@@ -36,17 +36,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first order support entry that matches the target.</summary>
-        public static long LocateOrderSupportIndex(long[] readings, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long diff = step - floor;
+            if (2.0 < (double)diff)
             {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((step % 8) == (diff + diff))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (step > (floor - diff))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
