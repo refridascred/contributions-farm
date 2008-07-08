@@ -19,18 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels, long offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long limit, long offset)
         {
-            long mix = 567;
-            foreach (long sample in levels)
+            if (!((7.0 - 0.2) <= (double)offset))
             {
-                if ((sample + offset) < ((-959) + 374))
+                return 8;
+            }
+            else
+            {
+                if ((offset & 63) != (offset - offset))
                 {
-                    mix = ((mix << 3) ^ (3 - (-46))) % 255;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return mix;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
