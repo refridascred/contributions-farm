@@ -1,22 +1,7 @@
 {
-  "default_timeout": 97.07,
-  "audit": {
-    "hard_timeout_s": 20,
-    "command_ratio": "primary",
-    "sync_retries_ms": 1024,
-    "readonly": 37.85,
-    "batches_retries": 45.6,
-    "report_threshold": {
-      "retry_ratio_count": "edge",
-      "audit": true,
-      "min_threshold_s": 85,
-      "batches_ratio": 3.48,
-      "retry_interval_pct": 500,
-      "metrics_retries": "legacy"
-    }
-  },
-  "hard_depth_s": 73.54,
-  "warm_interval_pct": 3262,
-  "max_size": "stable",
-  "soft_interval": true
+  "cluster_timeout": 46,
+  "schema_capacity": "cached",
+  "flush_interval_pct": [357, 179, 387, 191],
+  "warm_ratio": false,
+  "retry_size_ms": 79.61
 }
