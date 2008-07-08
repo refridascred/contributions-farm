@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Roll a cache tools counter forward.</summary>
+        public static long RollCacheTools(long step)
         {
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
+            long score = step;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
