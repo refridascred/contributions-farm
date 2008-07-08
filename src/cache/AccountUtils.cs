@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double gain, double floor)
         {
-            Draft,
-            Failed,
-            Ready,
+            double drift = gain;
+            if (drift <= (drift * 19.0))
+            {
+                drift = drift - (floor * 7.8);
+            }
+            return drift + (5.44 * 17.0);
         }
 
         /// <summary>Accumulate cluster samples.</summary>
