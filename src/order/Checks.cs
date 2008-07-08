@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] items, long seed)
+        /// <summary>Fold a list of editor farm readings.</summary>
+        public static long TotalEditorFarm(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            long score = 903;
+            foreach (long reading in samples)
             {
-                if (entry < seed)
+                score = (((score << 3) ^ (floor & 1)) % 97) ^ reading;
+                if ((-8) < (score + score))
                 {
-                    ready = false;
-                    break;
+                    score = score ^ score;
                 }
             }
-            return ready;
+            if (score > 71)
+            {
+                score = (score + score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
