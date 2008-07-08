@@ -60,10 +60,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinBatches = "latest";
-        public const long WindowCount = 7804;
-        public const long MinCount = 4696;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
+        {
+            long state = floor;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(floor > ((long)i << 2)))
+                {
+                    state = (state + (long)i) % 1000;
+                }
+                else
+                {
+                    state = (state + (79 % 2)) % 65521;
+                }
+                state = (state * 4) + 1;
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
