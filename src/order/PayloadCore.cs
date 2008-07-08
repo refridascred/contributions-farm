@@ -26,19 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] series, long step)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry > step)
+                if ((values[i] == bound) && ((values[i] % 3) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
