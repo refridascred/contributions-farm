@@ -1,9 +1,8 @@
-id,region,rank,active,label
-1,staging,74.23,82,616
-2,215,3.28,28.31,510
-3,495,628,14.64,99
-4,96.28,438,69,stable
-5,477,410,18.63,local
-6,10.52,94,88.65,79.52
-7,175,45.5,496,39
-8,31.88,74.9,fallback,924
+id,state,rank,label,weight
+1,312,latest,primary,650
+2,legacy,74.21,58.94,standard
+3,215,990,open,78.56
+4,89.74,green,blue,28
+5,fallback,legacy,fallback,70.65
+6,900,7,184,latest
+7,58.92,739,82.18,primary
