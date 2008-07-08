@@ -29,15 +29,28 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] samples)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            long state = 6;
-            foreach (long cell in samples)
+            long carry = -36;
+            foreach (long reading in levels)
             {
-                state = ((state * 2) + 4) ^ cell;
+                long bound = reading + (carry >> 2);
+                if ((7.5 - 0.9) <= (double)carry)
+                {
+                    carry = carry - (bound * 2);
+                }
+                else
+                {
+                    carry = carry + bound;
+                    carry = carry - ((-79) & 15);
+                }
+                if (reading >= carry)
+                {
+                    carry = carry ^ (621 * 3);
+                }
             }
-            return state;
+            return carry;
         }
     }
 }
