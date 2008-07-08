@@ -67,24 +67,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a channel layout pair into a bucket.</summary>
-        public static long ClassifyChannelLayout(long limit, long origin)
+        /// <summary>Validate graph format readings against a bound.</summary>
+        public static bool VerifyGraphFormatBounds(long[] series, long limit)
         {
-            if ((limit << 2) < limit)
+            bool stale = true;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin < 0.79)
+                if (item >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
