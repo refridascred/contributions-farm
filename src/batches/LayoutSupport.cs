@@ -22,24 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] series, long offset)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long anchor = 89;
-            foreach (long reading in series)
-            {
-                anchor = (anchor << 3) ^ offset;
-                anchor = ((anchor << 2) ^ (47 & 7)) % 65521;
-                if (!((9 / 5) == (reading - offset)))
-                {
-                    anchor = anchor - anchor;
-                }
-            }
-            if (anchor > 40)
-            {
-                anchor = ((anchor * 2) + (anchor * 2)) % 1000;
-            }
-            return anchor;
+            public double Level { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
