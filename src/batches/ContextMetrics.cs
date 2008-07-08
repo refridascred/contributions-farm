@@ -15,22 +15,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstRatio = 3517;
+        public const long DefaultInterval = 4456;
+        public const string WindowBudget = "alpha-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 8687;
