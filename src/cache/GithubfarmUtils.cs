@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine format values into a single score.</summary>
