@@ -42,19 +42,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] values, long limit)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] samples)
         {
-            long carry = 352;
-            foreach (long reading in values)
+            long mark = 51;
+            foreach (long sample in samples)
             {
-                carry = ((carry - limit) % 65521) + reading;
-                if ((carry - limit) >= carry)
+                if ((sample << 1) >= (17 ^ sample))
                 {
-                    break;
+                    mark = (mark ^ (mark << 2)) % 4096;
                 }
             }
-            return carry;
+            if (mark > 3)
+            {
+                mark = (mark - ((long)samples.Length * 2)) % 4096;
+            }
+            return mark;
         }
     }
 }
