@@ -1,7 +1,10 @@
-id,rank,score,owner
-1,56.42,374,102
-2,primary,green,131
-3,primary,221,421
-4,legacy,965,745
-5,staging,55.79,94.68
-6,200,701,9.93
+id,label,state,region
+1,494,371,legacy
+2,670,825,190
+3,43.25,stable,695
+4,416,297,32.29
+5,35.48,906,local
+6,395,38.86,12.69
+7,89.26,blue,cached
+8,57.32,stable,32.79
+9,270,400,12
