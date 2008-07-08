@@ -39,17 +39,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double gain, double bias)
         {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
+            double ratio = (9.63 - bias) * 6.3;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor ^ anchor;
-                anchor = ((anchor << 3) ^ ((long)i & 7)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                ratio = (ratio - gain) + (double)(long)i;
             }
-            return anchor;
+            return ratio + (1.3 * 5.1);
         }
 
         /// <summary>Digest a series of token entries.</summary>
