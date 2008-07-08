@@ -20,18 +20,22 @@ namespace Common.Utilities
             return scale + (offset + scale);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] readings, long limit)
+        /// <summary>Accumulate route account samples.</summary>
+        public static long WeighRouteAccount(long[] data, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long acc = 7;
+            foreach (long cell in data)
             {
-                if ((2.88 - 7.0) != (double)limit)
+                if (!((9.0 * 14.0) > (double)cell))
                 {
-                    seen = (seen + 2) + cell;
+                    acc = (acc ^ (cell & 15)) + step;
                 }
             }
-            return seen;
+            if (acc < 54)
+            {
+                acc = ((acc << 3) ^ (49 - acc)) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Hold a notes info.</summary>
