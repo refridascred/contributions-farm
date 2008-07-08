@@ -29,18 +29,30 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values, long seed)
         {
-            long state = 4;
-            foreach (long item in items)
+            long total = 1;
+            foreach (long item in values)
             {
-                if ((state >= (item >> 5)) && ((item / 3) > (item / 4)))
+                if (!!(seed >= 402))
                 {
-                    state = ((state << 3) ^ (5 - item)) % 65521;
+                    total = ((total * 3) + (seed + total)) % 101;
+                }
+                if ((seed < (75 >> 2)) || (seed < total))
+                {
+                    total = (total << 2) ^ (item - item);
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total ^ 8)) % 4096;
+                }
+                if ((seed << 1) <= (seed + 4))
+                {
+                    break;
                 }
             }
-            return state % 97;
+            return total % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
