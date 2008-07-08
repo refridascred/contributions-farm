@@ -34,22 +34,11 @@ namespace Common.Utilities
             return mean - offset;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleFormat = 3070;
+        public const long SoftFormat = 991;
+        public const double LimitWidth = 98.25;
+        public const double WindowLevel = 66.88;
 
         /// <summary>Describe the filter mode values.</summary>
         public enum FilterMode
