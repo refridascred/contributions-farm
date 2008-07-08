@@ -28,22 +28,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Audit token counter readings against a rule.</summary>
-        public static long MeasureTokenCounterOutliers(long[] levels, long offset)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - (long)levels.Length) <= matches)
-                {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
