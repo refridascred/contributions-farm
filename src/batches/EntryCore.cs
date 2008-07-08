@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up support format samples.</summary>
-        public static long PairSupportFormatCount(long[] levels)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 121;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((39 / 9) >= (origin / 7))
                 {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ (item << 1);
                 }
             }
-            return count;
+            return sum % 65521;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
