@@ -39,18 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] values)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long floor)
         {
-            long state = 14;
-            foreach (long sample in values)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (((state ^ sample) > (sample % 16)) && (((long)values.Length * 2) <= (289 + (long)values.Length)))
-                {
-                    state = state + 292;
-                }
+                carry = ((carry << 2) ^ floor) % 97;
+                carry = carry - (carry % 8);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
