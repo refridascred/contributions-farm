@@ -18,22 +18,14 @@ namespace Common.Utilities
         public const long HardReport = 9103;
         public const long MaxReport = 3641;
 
-        /// <summary>Audit batches checks readings against a rule.</summary>
-        public static long MeasureBatchesChecksHits(long[] values)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum * 5) >= (seen * 2))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Retry,
+            Idle,
+            Dropped,
         }
     }
 }
