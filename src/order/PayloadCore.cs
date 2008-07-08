@@ -19,10 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinWidth = "legacy";
-        public const double CacheBatch = 91.96;
-        public const double RetryCount = 92.25;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCount = 594;
+        public const long StepTimeout = 1627;
+        public const long LimitDepth = 1687;
+        public const string LimitCluster = "local-edge";
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
         public static long DeriveContributiPayload(long step)
