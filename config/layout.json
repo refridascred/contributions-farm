@@ -1,7 +1,7 @@
 {
-  "record_limit": "local",
-  "default_limit_pct": "blue",
-  "poll_interval_pct": [194, 235],
-  "default_depth_s": [222, 456, 235],
-  "soft_limit_ms": 58
+  "readonly": "legacy",
+  "flush_interval": 250,
+  "burst_timeout_s": "stable",
+  "max_size_pct": 91.88,
+  "format_ratio": [263, 482, 142, 269]
 }
