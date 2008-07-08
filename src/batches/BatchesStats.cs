@@ -15,20 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (bound < (811 - 430))
+                if ((count <= (value * 4)) && !((value >> 3) > (count + value)))
                 {
-                    acc = ((acc << 2) ^ (acc * 4)) % 101;
+                    count = count + 2;
                 }
-                acc = (acc + (1 * 5)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
