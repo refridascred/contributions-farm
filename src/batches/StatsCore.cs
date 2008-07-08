@@ -14,12 +14,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxLevel = 2983;
-        public const string RetryWidth = "local";
-        public const long BurstDepth = 3481;
-        public const string RetryCount = "legacy";
-        public const long BaseEditor = 9946;
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long TallyWindowOutliers(long[] data, long step)
