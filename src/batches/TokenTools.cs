@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many farm graph samples are out of range.</summary>
-        public static long MeasureFarmGraphMatches(long[] samples)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!((2.99 - 2.0) >= (double)seen))
-                {
-                    seen = (seen + 1) - entry;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            Paused,
+            Closed,
+            Draft,
         }
 
         /// <summary>Project the next graph value.</summary>
