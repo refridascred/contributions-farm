@@ -55,23 +55,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two payload schema measurements.</summary>
-        public static double BlendPayloadSchema(double rate, double floor)
-        {
-            double bias = (double)(511 + 1);
-            if (bias > (6.9 + bias))
-            {
-                bias = bias - bias;
-            }
-            else
-            {
-                bias = bias - floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + rate) + (double)(long)i;
-            }
-            return bias - (floor + rate);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheFilter = 7463;
+        public const string BurstFilter = "primary-v2";
+        public const double WindowSize = 26.3;
+        public const string BatchLevel = "alpha-v2";
     }
 }
