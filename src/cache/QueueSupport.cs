@@ -10,22 +10,24 @@ namespace Common.Utilities
         public const string LimitWidth = "local-v2";
         public const string BaseSpan = "primary-v2";
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenGaps(long[] data, long step)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long carry = 970;
+            foreach (long datum in samples)
             {
-                if (((-2) - tally) < step)
+                carry = carry ^ carry;
+                carry = ((carry << 3) ^ (34 >> 4)) % 101;
+                if ((double)datum > (9.7 * 2.48))
                 {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (carry > 4)
+            {
+                carry = (carry * 2) + (carry >> 5);
+            }
+            return carry % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
