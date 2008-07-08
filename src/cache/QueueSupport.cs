@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public bool Level { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Digest a series of report buffer entries.</summary>
