@@ -35,13 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Idle,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinLevel = 1740;
+        public const string MinEditor = "local";
+        public const string HardEditor = "strict";
+        public const long BaseEditor = 9490;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long AuditSessionMatches(long[] series, long target)
