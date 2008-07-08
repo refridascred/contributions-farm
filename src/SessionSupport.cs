@@ -19,15 +19,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two payload order measurements.</summary>
-        public static double ScalePayloadOrder(double scale, double offset)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long bound, long step)
         {
-            double rate = scale;
-            if (rate < (scale + rate))
+            if ((bound & 255) >= (bound >> 1))
             {
-                rate = (rate + (1.8 / 3.0)) - offset;
+                return 8;
             }
-            return rate + (scale + rate);
+            else
+            {
+                if ((8.0 + 9.0) < (double)step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - step) >= (bound % 12))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(240 >= (bound * 2)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a cluster reading.</summary>
