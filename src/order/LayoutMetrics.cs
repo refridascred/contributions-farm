@@ -15,11 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowBudget = 14.73;
-        public const double CacheDepth = 45.25;
-        public const double IdleDepth = 43.93;
-        public const long StepCount = 3497;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the graph series from a seed.</summary>
         public static long SeriesGraph(long limit)
