@@ -1,8 +1,6 @@
-id,region,state
-1,91.95,620
-2,51.06,legacy
-3,48.55,green
-4,896,2.12
-5,89.36,36.6
-6,blue,primary
-7,local,98.7
+id,owner,token,state,ratio
+1,566,blue,661,green
+2,cached,119,84.06,blue
+3,74.07,12.75,3.94,820
+4,fallback,primary,360,52.89
+5,745,287,strict,64.77
