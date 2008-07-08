@@ -49,15 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
         {
-            long result = 896;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ cell) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
