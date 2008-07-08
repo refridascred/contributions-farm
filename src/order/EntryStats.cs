@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long target, long seed)
         {
-            Closed,
-            Active,
-            Failed,
-            Locked,
+            long slot = target - seed;
+            if ((target + slot) > slot)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (double)620)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a commits summary.</summary>
