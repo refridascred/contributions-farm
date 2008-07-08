@@ -38,10 +38,11 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "fallback-1";
         public const long SoftGithubfarm = 4822;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 2723;
-        public const long MinProfile = 5145;
-        public const long DefaultLevel = 9522;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 5996;
+        public const string CacheDepth = "latest-1";
+        public const long BatchRoute = 994;
+        public const long BurstRoute = 6778;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleDepth = 407;
