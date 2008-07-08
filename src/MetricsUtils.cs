@@ -42,26 +42,38 @@ namespace Common.Utilities
             return (scale - (6.73 / 7.0)) + span;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long DigestRoute(long[] data)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long seed)
         {
-            long total = 4;
-            foreach (long cell in data)
+            if ((5 / 6) > ((-72) ^ seed))
             {
-                if (11.0 > (double)cell)
+                return 3;
+            }
+            else
+            {
+                if (seed > (seed + seed))
                 {
-                    total = total - (cell & 31);
+                    return 0;
                 }
                 else
                 {
-                    total = (total * 2) + (total * 2);
+                    if ((floor & 255) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)floor < (0.6 * 20.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (total > (-59))
-            {
-                total = ((total << 3) ^ (total << 1)) % 1000;
-            }
-            return total;
         }
 
         /// <summary>Blend two already measurements.</summary>
