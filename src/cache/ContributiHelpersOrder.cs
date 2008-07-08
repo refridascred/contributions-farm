@@ -32,17 +32,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] samples, long step)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] >= step)
+                if (!((9 % 12) != ((long)i << 2)))
                 {
-                    return (long)i;
+                    anchor = (anchor * 3) + (step << 1);
                 }
+                anchor = ((anchor * 4) + (step + anchor)) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Project the next payload profile value.</summary>
