@@ -43,12 +43,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultSpan = "standard";
-        public const long BurstWidth = 1252;
-        public const long RetryTimeout = 1623;
-        public const string CacheBudget = "cached-1";
-        public const long SoftEditor = 8204;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardLevel = 2357;
+        public const long MinGraph = 2659;
+        public const long HardScore = 9354;
+        public const long CacheTimeout = 4844;
 
         /// <summary>Scale a batches metric figure with a bias.</summary>
         public static double ProjectBatchesMetric(double rate, double offset)
