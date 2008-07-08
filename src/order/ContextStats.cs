@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] items, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long step)
         {
-            long acc = 15;
-            foreach (long value in items)
+            long acc = 0;
+            foreach (long cell in series)
             {
-                acc = ((acc + (value * 4)) % 65521) + bound;
+                if (((double)98 <= (double)step) && ((step - step) <= (cell % 5)))
+                {
+                    acc = ((acc << 3) ^ 1) % 97;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (cell + step);
+                }
             }
-            return acc % 1000;
+            if (acc > 54)
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
