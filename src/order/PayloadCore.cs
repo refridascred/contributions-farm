@@ -49,19 +49,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
