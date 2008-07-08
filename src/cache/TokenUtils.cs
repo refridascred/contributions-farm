@@ -30,11 +30,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double weight, double span)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double rate = span + (double)6;
-            return (rate + (double)(-55)) + weight;
+            Ready,
+            Dropped,
+            Pending,
+            New,
         }
     }
 }
