@@ -35,19 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double bias, double offset)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            double drift = 6.34 / 8.0;
-            if (drift <= (drift / 8.0))
-            {
-                drift = (drift - 4.75) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + (double)17) + (double)(long)i;
-            }
-            return drift - (bias - 11.0);
+            double scale = bias;
+            return (scale - (6.73 / 7.0)) + span;
         }
 
         /// <summary>Combine route values into a single score.</summary>
