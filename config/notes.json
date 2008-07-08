@@ -1,5 +1,15 @@
 {
-  "hard_limit": 250,
-  "strict": [96, 9, 344, 232],
-  "enabled": ["green", "blue"]
+  "enabled": [304, 86, 293],
+  "batch_window_count": {
+    "verbose": 45.15,
+    "cache_window_pct": 33.95,
+    "batch_depth_s": {
+      "strict": "strict",
+      "enabled": 77.65,
+      "sync_depth_pct": false,
+      "compress": 100,
+      "max_window_count": "fallback"
+    }
+  },
+  "commits_depth": [331, 323]
 }
