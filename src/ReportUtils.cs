@@ -68,12 +68,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long target, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public long Limit { get; set; }
+            long delta = target - floor;
+            if (delta > (target % 60))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((((-3) ^ floor) > (floor / 7)) || ((double)delta < 7.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4.07 * 19.0) < (double)delta)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (38 >= (floor >> 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
