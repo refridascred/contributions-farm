@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series, long seed)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
-            public long Flag { get; set; }
+            long result = 34;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (19.0 + 7.0))
+                {
+                    result = (((result << 2) ^ (result >> 5)) % 4096) + seed;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a window info.</summary>
