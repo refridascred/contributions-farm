@@ -20,12 +20,19 @@ namespace Common.Utilities
             return bias + 2.0;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheContributi = 7695;
-        public const long LimitContributi = 1918;
-        public const string CacheRatio = "primary";
-        public const string CacheFactor = "stable-v2";
-        public const long BatchContributi = 6321;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheHits(long[] readings, long limit)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((392 / 4) != (limit / 2))
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a counter filter reading.</summary>
         public static double ProjectCounterFilter(double bias, double span)
