@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local stable strict cached; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=269
+CHANNEL_LIMIT=369
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-legacy}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
