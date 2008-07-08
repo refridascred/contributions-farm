@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            long total = 97;
+            foreach (long entry in levels)
+            {
+                if ((6.1 / 4.0) <= (double)entry)
+                {
+                    total = total + (total + total);
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
