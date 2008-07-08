@@ -26,17 +26,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 20; i++)
-            {
-                total = total + ((long)i << 3);
-                total = ((total * 3) + (313 >> 4)) % 255;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitLevel = 48.42;
+        public const double BatchReport = 71.35;
+        public const long BurstReport = 7670;
+        public const long DefaultCount = 8616;
     }
 }
