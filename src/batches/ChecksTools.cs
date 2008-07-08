@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long OverlapSessionCount(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 4;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum - datum) % 255;
             }
-            return count;
+            if (sum < 28)
+            {
+                sum = (sum * 4) + (sum + sum);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Adjust a graph reading.</summary>
