@@ -1,21 +1,14 @@
 {
-  "burst_limit_count": {
-    "poll_delay": "latest",
-    "retry_capacity": "edge",
-    "sync_threshold": 30
-  },
-  "sync_capacity_ms": false,
-  "batch_window_s": 100,
-  "soft_delay_ms": {
-    "order_size": {
-      "poll_ttl_pct": "legacy",
-      "filter_ratio": "local",
-      "default_interval": "open",
-      "idle_ratio_s": 63,
-      "editor_timeout": 9.37
-    },
-    "audit": 2.1,
-    "cache_ratio_pct": true
-  },
-  "token_capacity": 9947
+  "sync_limit_count": true,
+  "flush_window": true,
+  "batch_depth_count": 2495,
+  "soft_delay_count": 6.34,
+  "compress": true,
+  "hard_limit": {
+    "profile_timeout": false,
+    "strict": [347, 482],
+    "max_interval_count": 48,
+    "batch_window": ["latest", "fallback", "blue", "strict"],
+    "account_size": ["legacy", "standard"]
+  }
 }
