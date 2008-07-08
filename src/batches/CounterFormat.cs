@@ -27,19 +27,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every stats channel entry stays within the limit.</summary>
-        public static bool VerifyStatsChannelBounds(long[] data, long target)
-        {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepBudget = 94.12;
+        public const double LimitChecks = 17.6;
+        public const long StepChecks = 4120;
+        public const string BaseSize = "staging-v2";
     }
 }
