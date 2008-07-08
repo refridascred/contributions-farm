@@ -1,15 +1,9 @@
 # entry settings
-hard_limit_pct:
-  cache_threshold_pct: cached
-  burst_timeout: 65.49
-  metric_ratio: primary
-  idle_interval_pct: false
-  min_size_pct: primary
-  enabled: blue
-command_size: 6752
-hard_ttl_s:
-  - 212
-  - 312
-hard_threshold: 70.6
-flush_timeout: cached
-audit: false
+retry_ratio_s:
+  - 157
+  - 129
+max_retries_s: 66.75
+min_ttl_ms: open
+already_ttl: true
+idle_delay: 30
+poll_retries_ms: false
