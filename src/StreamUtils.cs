@@ -42,18 +42,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] levels)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)item > (0.55 - 5.95))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
