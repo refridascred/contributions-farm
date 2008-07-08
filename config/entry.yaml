@@ -1,30 +1,20 @@
 # entry settings
-hard_window:
-  default_interval: true
-  schema_window: primary
-  cache_timeout_ms: green
-  strict:
-    - staging
-    - primary
-hard_window_ms:
-  - blue
-  - open
-  - fallback
-  - standard
-cache_delay_s: true
-hard_limit: 56
-burst_ratio_ms:
-  account_capacity: 1024
-  idle_delay: legacy
-  enabled:
-    min_window_count:
+compress: 99
+report_capacity:
+  warm_delay_ms: 73.17
+  warm_retries: stable
+  soft_size_s: blue
+  burst_timeout_count:
+    commits_capacity: open
+    warm_limit:
       - 457
-      - 481
-      - 56
-    dry_run: 11
-    persist: 32.28
-command_timeout:
-  - local
-  - cached
-  - strict
-  - latest
+      - 489
+      - 340
+    retry_ratio: 24.71
+    layout_depth: 2799
+  audit: 88.43
+  warm_interval_s: blue
+idle_ttl: 68.23
+retry_ratio_s: legacy
+cache_limit_pct: fallback
+soft_depth_pct: 38
