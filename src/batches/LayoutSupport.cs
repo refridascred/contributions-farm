@@ -13,13 +13,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
-        {
-            public double Level { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowCommand = 1104;
+        public const long WindowSize = 7265;
+        public const long CacheCount = 5117;
 
         /// <summary>Hold a stream header.</summary>
         public sealed class StreamHeader
