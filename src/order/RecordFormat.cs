@@ -19,15 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] values, long bound)
         {
-            double bias = offset;
-            if (bias > rate)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + (offset / 2.0);
+                if ((values[i] < bound) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - rate;
+            return -1;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
