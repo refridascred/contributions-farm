@@ -18,12 +18,17 @@ namespace Common.Utilities
         public const long DefaultWidth = 5942;
         public const double LimitFormat = 18.67;
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] items, long target)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
-            public bool Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits level values.</summary>
