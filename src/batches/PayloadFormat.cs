@@ -21,22 +21,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] samples, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry + seen) == (seen * 2))
-                {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Validate account filter readings against a bound.</summary>
