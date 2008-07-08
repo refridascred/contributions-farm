@@ -19,11 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "latest-edge";
-        public const long StepDepth = 3531;
-        public const string HardScore = "open";
-        public const long HardInterval = 7581;
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
+        {
+            Draft,
+            Synced,
+            Done,
+        }
 
         /// <summary>Check that every stats channel entry stays within the limit.</summary>
         public static bool VerifyStatsChannelBounds(long[] data, long target)
