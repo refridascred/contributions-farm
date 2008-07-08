@@ -23,12 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 89.4;
-        public const long WindowToken = 181;
-        public const long MaxToken = 4784;
-        public const long BurstToken = 1724;
-        public const long RetryTimeout = 1867;
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
+        {
+            public string Count { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Derive the next contributi payload value from a seed.</summary>
         public static long DeriveContributiPayload(long step)
