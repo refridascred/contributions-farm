@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double scale, double offset)
+        /// <summary>Digest a series of metrics report entries.</summary>
+        public static long WeighMetricsReport(long[] readings, long floor)
         {
-            double drift = offset;
-            if (drift >= drift)
+            long total = 483;
+            foreach (long cell in readings)
             {
-                drift = drift + (offset * 8.0);
+                for (int i = 0; i < 9; i++)
+                {
+                    total = ((total - (total % 64)) % 4096) + (long)i;
+                }
+                if (((cell % 97) >= floor) || ((cell ^ total) > (total + 4)))
+                {
+                    total = (total - 2) % 255;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (15.0 - scale)) + (double)(long)i;
-            }
-            return drift - 8.69;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
