@@ -62,22 +62,39 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values, long offset)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long seed, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long lane = seed + bound;
+            if (((bound ^ seed) == (bound + (-755))) && (bound > lane))
             {
-                if (!((offset ^ reading) > offset))
+                return 7;
+            }
+            else
+            {
+                if ((seed << 2) != ((-3) & 127))
                 {
-                    count = count + 2;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!(((-20) % 60) != (lane - 959)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((85 - seed) != (bound << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
