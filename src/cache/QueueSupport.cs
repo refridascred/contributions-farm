@@ -29,19 +29,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next route contributi value from a seed.</summary>
-        public static long DeriveRouteContributi(long origin)
+        /// <summary>Digest a series of report buffer entries.</summary>
+        public static long FoldReportBuffer(long[] data, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 21; i++)
+            long anchor = 222;
+            foreach (long item in data)
             {
-                if ((((long)i % 16) == (origin ^ (long)i)) && (origin <= state))
+                if ((anchor - item) <= anchor)
                 {
-                    break;
+                    anchor = ((anchor << 2) ^ ((long)data.Length / 4)) - target;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return anchor;
         }
     }
 }
