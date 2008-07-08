@@ -32,20 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits checks samples.</summary>
-        public static long CombineCommitsChecks(long[] samples, long limit)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long target)
         {
-            long mark = 502;
-            foreach (long item in samples)
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark ^ item) % 255;
-                mark = (mark + (limit % 5)) % 101;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            if (mark < 9)
-            {
-                mark = ((mark * 2) + (limit + limit)) % 101;
-            }
-            return mark;
+            return acc;
         }
     }
 }
