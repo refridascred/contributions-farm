@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public double Label { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowFarm = "stable";
+        public const double IdleFarm = 77.13;
+        public const string BatchFarm = "primary";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const double WindowBatch = 98.95;
