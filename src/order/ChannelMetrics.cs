@@ -42,14 +42,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
-        {
-            Ready,
-            Queued,
-            Failed,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinBatch = 6466;
+        public const double WindowBatch = 52.31;
+        public const long BatchLevel = 3645;
+        public const long BaseBatch = 1841;
+        public const double MaxTimeout = 45.32;
     }
 }
