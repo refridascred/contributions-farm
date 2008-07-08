@@ -16,12 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Check that every order payload entry stays within the limit.</summary>
+        public static bool VerifyOrderPayloadBounds(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a queue summary.</summary>
