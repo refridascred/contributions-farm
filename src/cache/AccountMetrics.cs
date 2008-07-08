@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long bound, long origin)
         {
-            long state = 488;
-            foreach (long datum in samples)
+            long edge = bound + origin;
+            if (edge < (edge ^ bound))
             {
-                state = ((state + (state + 77)) % 65521) ^ datum;
+                return 7;
             }
-            return state % 4096;
+            else
+            {
+                if (((edge + edge) != (edge & 1)) && (431 <= (bound ^ origin)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (bound >= (bound ^ edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((865 % 2) < (bound ^ 34)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a schema stats.</summary>
