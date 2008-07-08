@@ -1,9 +1,24 @@
 # support settings
-metric_delay:
-  - cached
-  - local
-  - staging
-  - cached
-layout_depth: 92.11
-idle_interval: 64.98
-max_size: eu-west
+default_window_pct: fallback
+burst_limit_ms:
+  support_delay: 1024
+  cache_size: 6359
+  token_window: staging
+  audit: true
+  idle_capacity_pct:
+    checks_interval: 1024
+    soft_ratio_s: cached
+    filter_capacity: 100
+    hard_threshold_s: standard
+    checks_depth:
+      - legacy
+      - fallback
+      - edge
+  dry_run:
+    token_delay: standard
+    default_ttl: legacy
+    retry_limit_ms: staging
+    cache_limit: true
+    soft_capacity: 35.29
+    cache_delay_count: 74
+min_depth: strict
