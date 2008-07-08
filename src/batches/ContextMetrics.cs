@@ -58,13 +58,12 @@ namespace Common.Utilities
         public const string SoftCount = "latest-edge";
         public const string StepCount = "staging-edge";
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
+            Draft,
             New,
-            Pending,
-            Dropped,
-            Queued,
+            Ready,
         }
     }
 }
