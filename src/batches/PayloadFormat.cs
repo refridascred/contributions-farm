@@ -63,23 +63,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] series)
         {
-            long state = 445;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                state = ((state * 2) + (cell ^ 3)) % 101;
-                if ((state & 3) >= (cell >> 4))
+                if ((-70) <= item)
                 {
-                    state = state + state;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (state > (-64))
-            {
-                state = ((state * 5) + (38 * 2)) % 255;
-            }
-            return state % 97;
+            return seen;
         }
     }
 }
