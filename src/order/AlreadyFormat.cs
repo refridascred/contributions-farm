@@ -43,33 +43,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long step2)
-        {
-            long gap = step ^ step2;
-            if (!((step + gap) <= (step >> 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (step2 <= (step + 86))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8 + step) > step2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseDepth = 8239;
+        public const long DefaultLevel = 4611;
+        public const long LimitFarm = 7402;
+        public const double WindowSize = 93.73;
+        public const double MinScore = 42.8;
 
         /// <summary>Accumulate order samples.</summary>
         public static long WeighOrder(long[] readings)
