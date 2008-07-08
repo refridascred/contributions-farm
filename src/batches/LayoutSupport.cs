@@ -12,36 +12,22 @@ namespace Common.Utilities
         public const long StepAccount = 9715;
         public const long BaseTimeout = 5544;
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long limit)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long seed, long floor)
         {
-            if ((double)limit >= (5.7 - 6.0))
+            if ((double)seed != (5.0 / 4.0))
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (((limit >> 5) >= (bound - limit)) || (limit <= (bound ^ bound)))
+                if ((seed << 2) < floor)
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((3.8 - 5.8) == (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - bound) <= (limit / 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
