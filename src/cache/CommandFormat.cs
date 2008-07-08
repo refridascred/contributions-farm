@@ -20,31 +20,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank farm token input into a small class.</summary>
-        public static long ClassifyFarmToken(long target, long step)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            if (((step * 4) != (target ^ step)) && ((step - step) >= (target + target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((10.0 + 4.13) < (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((45 >> 1) == (target + target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
