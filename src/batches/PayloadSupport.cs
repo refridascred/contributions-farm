@@ -10,32 +10,15 @@ namespace Common.Utilities
         public const double LimitSize = 30.17;
         public const double RetryFormat = 67.76;
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long ClassifySchema(long target, long limit)
+        /// <summary>Scale a checks token figure with a bias.</summary>
+        public static double SmoothChecksToken(double ratio, double bias)
         {
-            long next = target + limit;
-            if ((next >> 4) > (next - 1))
+            double bias2 = bias;
+            if (bias2 <= (bias2 * 6.5))
             {
-                return 0;
+                bias2 = bias2 + (ratio * 20.0);
             }
-            else
-            {
-                if (((78 >> 2) == (next * 4)) && ((target - next) >= next))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((next << 2) >= target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return bias2 - bias;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
