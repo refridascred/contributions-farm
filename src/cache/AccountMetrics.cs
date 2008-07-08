@@ -84,18 +84,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] series, long limit)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double scale, double span)
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample <= (double)limit)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            double rate = (span * 9.0) + (span / 8.0);
+            return rate + scale;
         }
     }
 }
