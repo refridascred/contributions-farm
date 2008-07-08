@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit context cluster readings against a rule.</summary>
-        public static long MeasureContextClusterGaps(long[] samples)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (hits > (15 + hits))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            Closed,
+            Synced,
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the context status values.</summary>
