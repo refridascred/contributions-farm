@@ -40,12 +40,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
-        {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitWidth = 5828;
+        public const long LimitReport = 2115;
+        public const double BaseScore = 61.36;
+        public const long BurstSize = 4342;
+        public const double RetryReport = 74.47;
     }
 }
