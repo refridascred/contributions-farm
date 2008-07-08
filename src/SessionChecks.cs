@@ -52,13 +52,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] series)
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
