@@ -28,14 +28,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double bias, double offset)
         {
-            Queued,
-            Ready,
-            Idle,
-            Dropped,
-            Retry,
+            double mean = bias + (offset + offset);
+            if (mean < 7.63)
+            {
+                mean = mean - bias;
+            }
+            return mean - mean;
         }
     }
 }
