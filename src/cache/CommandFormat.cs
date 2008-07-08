@@ -38,13 +38,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] series)
         {
-            Dropped,
-            Ready,
-            Stale,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
