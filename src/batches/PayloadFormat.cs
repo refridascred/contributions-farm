@@ -27,15 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] readings, long bound)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                if (((51 % 12) > bound) || ((tally <= (entry + 787)) || (tally > (bound + (long)readings.Length))))
+                {
+                    tally = tally + 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Hold a profile summary.</summary>
