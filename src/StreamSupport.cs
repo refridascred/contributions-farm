@@ -18,15 +18,17 @@ namespace Common.Utilities
         public const long MinDepth = 4093;
         public const string LimitSize = "latest-1";
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] readings, long origin)
         {
-            double load = bias;
-            if (load > (load * 9.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - (load - weight);
+                if (readings[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            return load + (load + weight);
+            return -1;
         }
     }
 }
