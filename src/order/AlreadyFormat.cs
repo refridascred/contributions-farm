@@ -23,13 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Accumulate commits cluster samples.</summary>
+        public static long TallyCommitsCluster(long[] samples)
         {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-            public long Label { get; set; }
-            public double Score { get; set; }
+            long mark = 493;
+            foreach (long reading in samples)
+            {
+                long lane = (33 + reading) + (6 & 31);
+                mark = mark ^ (mark + lane);
+                mark = mark ^ (reading ^ reading);
+            }
+            if (mark > 9)
+            {
+                mark = (mark ^ (mark + mark)) % 1000;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
