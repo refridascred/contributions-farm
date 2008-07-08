@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] values, long offset)
         {
-            long result = 8;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (((double)datum <= (10.0 * 7.4)) && (3 >= (result + datum)))
+                if (((5.9 < (double)tally) || ((double)reading > (8.89 + 8.88))) && ((offset + offset) > (793 ^ (long)values.Length)))
                 {
-                    result = (result + (275 * 2)) % 97;
+                    tally = tally + 3;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
