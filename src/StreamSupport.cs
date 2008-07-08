@@ -18,10 +18,17 @@ namespace Common.Utilities
         public const long MinDepth = 4093;
         public const string LimitSize = "latest-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchSpan = 65.44;
-        public const double MinContributi = 77.32;
-        public const long WindowContributi = 7983;
-        public const long MaxScore = 7138;
+        /// <summary>Locate a queue schema reading by value.</summary>
+        public static long LocateQueueSchemaIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
