@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
+for item in local stable strict cached; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
 
-CHANNEL_LIMIT=137
+CHANNEL_LIMIT=269
 log "limit is ${CHANNEL_LIMIT}"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
