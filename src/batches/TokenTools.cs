@@ -26,13 +26,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long target)
         {
-            public bool Count { get; set; }
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = total + ((long)i << 3);
+                total = ((total * 3) + (313 >> 4)) % 255;
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
