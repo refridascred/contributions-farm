@@ -58,21 +58,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] data)
+        /// <summary>Iterate the order support series from a seed.</summary>
+        public static long DeriveOrderSupport(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mix = (mix + (mix / 5)) % 101;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
