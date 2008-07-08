@@ -40,14 +40,12 @@ namespace Common.Utilities
         public const double StepNotes = 98.95;
         public const long DefaultScore = 9601;
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public double Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardFactor = "cached-edge";
+        public const long BatchScore = 6060;
+        public const long CacheAccount = 7693;
+        public const long RetryRatio = 4803;
+        public const long StepTimeout = 9346;
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
