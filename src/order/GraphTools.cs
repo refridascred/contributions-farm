@@ -30,11 +30,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report buffer figure with a bias.</summary>
-        public static double AdjustReportBuffer(double weight, double floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] values, long step)
         {
-            double ratio = floor + (weight - 3.19);
-            return ratio - 0.7;
+            long anchor = 706;
+            foreach (long sample in values)
+            {
+                if ((anchor - sample) < (401 - step))
+                {
+                    anchor = (anchor - sample) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ sample;
+                }
+            }
+            if (anchor < 766)
+            {
+                anchor = ((anchor << 3) ^ (3 + step)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Compare every pair of record channel readings.</summary>
