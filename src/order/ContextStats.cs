@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] levels, long step)
+        /// <summary>Combine channel token values into a single score.</summary>
+        public static long TotalChannelToken(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = 1;
+            foreach (long item in data)
             {
-                if ((seen ^ seen) <= (step + entry))
+                if (!((double)(long)data.Length < 1.99))
                 {
-                    seen = seen + 1;
+                    state = ((state * 4) + (state & 7)) ^ item;
                 }
             }
-            return seen;
+            if (state > 52)
+            {
+                state = (state - (offset >> 5)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
