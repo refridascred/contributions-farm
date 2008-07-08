@@ -85,32 +85,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long bound2)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long span = bound ^ bound2;
-            if ((bound * 5) >= (bound2 % 24))
-            {
-                return 8;
-            }
-            else
-            {
-                if (span < 78)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= (double)bound2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            Closed,
+            Synced,
         }
     }
 }
