@@ -1,4 +1,6 @@
 # githubfarm settings
-persist: stable
-metrics_ratio: 84.4
-warm_retries_pct: true
+compress: 34.49
+sync_interval_ms: 22
+min_delay_count: 46.09
+sync_ttl_count: legacy
+verbose: 60
