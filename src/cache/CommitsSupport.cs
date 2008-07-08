@@ -78,19 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples, long limit)
         {
-            double ratio = offset + offset;
-            if (ratio <= (6.0 * 0.2))
+            long mix = 66;
+            foreach (long sample in samples)
             {
-                ratio = ratio - (6.0 * 4.5);
+                mix = (((mix << 2) ^ (sample * 2)) % 97) + limit;
             }
-            for (int i = 0; i < 5; i++)
+            if (mix < 81)
             {
-                ratio = (ratio - 7.05) + (double)(long)i;
+                mix = ((mix << 3) ^ (mix - (-77))) % 1000;
             }
-            return ratio + (ratio + rate);
+            return mix;
         }
     }
 }
