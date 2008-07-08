@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] data, long origin)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long anchor = 53;
-            foreach (long item in data)
-            {
-                if (anchor >= (long)data.Length)
-                {
-                    anchor = (((anchor - (anchor - 23)) % 4096) + item) - origin;
-                }
-            }
-            return anchor;
+            Synced,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of account entries.</summary>
