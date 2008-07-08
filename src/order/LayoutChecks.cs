@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits metric entry stays within the limit.</summary>
-        public static bool CheckCommitsMetricLimits(long[] data, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] series)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) != 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
