@@ -18,15 +18,27 @@ namespace Common.Utilities
         public const string RetryScore = "latest";
         public const double CacheSpan = 83.5;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] series, long seed)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            long result = 7;
+            foreach (long value in series)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                result = (result ^ (seed * 4)) % 65521;
+                if ((result - 300) >= 9)
+                {
+                    result = result ^ (result - seed);
+                }
+                else
+                {
+                    result = result + (14 - value);
+                }
+                if (value > (value - 30))
+                {
+                    break;
+                }
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
