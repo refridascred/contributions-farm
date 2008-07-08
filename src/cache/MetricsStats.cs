@@ -45,22 +45,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultSpan = "standard";
+        public const long BurstWidth = 1252;
+        public const long RetryTimeout = 1623;
+        public const string CacheBudget = "cached-1";
+        public const long SoftEditor = 8204;
 
         /// <summary>Fold a list of report readings.</summary>
         public static long DigestReport(long[] items, long origin)
