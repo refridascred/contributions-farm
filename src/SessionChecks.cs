@@ -20,20 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every support payload entry stays within the limit.</summary>
-        public static bool GuardSupportPayloadRange(long[] readings, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCache = 6924;
+        public const double MaxInterval = 76.87;
+        public const double CacheDepth = 47.92;
+        public const long BaseLevel = 2407;
+        public const long MinCache = 7954;
 
         /// <summary>Hold a already summary.</summary>
         public sealed class AlreadySummary
