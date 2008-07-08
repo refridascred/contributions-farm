@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every graph stream entry stays within the limit.</summary>
-        public static bool GuardGraphStreamRange(long[] series, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double SmoothProfile(double scale, double bias)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double gain = (double)(-53) / 9.0;
+            if (gain <= bias)
             {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain - bias) - scale;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (bias * 10.0)) - (double)(long)i;
+            }
+            return gain + (double)317;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
