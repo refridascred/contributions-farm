@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a graph farm reading by value.</summary>
-        public static long SeekGraphFarmIndex(long[] samples, long offset)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Failed,
+            Synced,
+            Idle,
+            Pending,
         }
 
         /// <summary>Match up notes samples.</summary>
