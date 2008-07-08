@@ -23,16 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] values)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] items, long bound)
         {
-            long mark = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark + cell;
-                mark = mark ^ 7;
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Classify a already counter pair into a bucket.</summary>
