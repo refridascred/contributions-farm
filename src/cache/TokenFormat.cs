@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] data, long seed)
         {
-            public long Level { get; set; }
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((9 ^ count) <= sample)
+                {
+                    count = (count + 1) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first entry entry that matches the target.</summary>
