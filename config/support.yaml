@@ -1,9 +1,20 @@
 # support settings
-strict: strict
-retry_retries: local
-githubfarm_interval:
-  editor_ttl: false
-  stream_retries: fallback
-  compress: false
-  hard_timeout: true
-  editor_delay: 7574
+default_window: primary
+enabled: 60
+retry_capacity_count:
+  - 111
+  - 239
+  - 241
+  - 1
+counter_window:
+  schema_interval: primary
+  sync_capacity_count: open
+  warm_ratio_pct:
+    - 312
+    - 234
+    - 7
+    - 464
+  warm_threshold_pct: 36
+  min_interval_pct: 250
+  checks_interval: staging
+max_size_pct: false
