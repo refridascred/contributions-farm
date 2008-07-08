@@ -31,12 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountRange(long[] items, long bound)
         {
-            Paused,
-            Draft,
-            Stale,
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
