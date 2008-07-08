@@ -56,22 +56,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((sample << 1) == (matches * 5))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string IdleCache = "fallback-v2";
+        public const long BatchFactor = 495;
+        public const long BaseDepth = 1197;
+        public const double RetryCache = 65.25;
+        public const long WindowRatio = 4419;
     }
 }
