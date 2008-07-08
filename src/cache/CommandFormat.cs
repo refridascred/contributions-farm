@@ -23,11 +23,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long offset)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Blend two payload batches measurements.</summary>
