@@ -1,4 +1,26 @@
 # githubfarm settings
-enabled: primary
-retry_window_s: false
-hard_limit_pct: 46.45
+min_retries_pct:
+  poll_threshold_ms: true
+  default_capacity: false
+  strict: true
+  audit: cached
+context_threshold: 49.08
+sync_interval:
+  max_interval: cached
+  base_depth_s: 95.94
+  already_retries: false
+  soft_depth_ms: 3602
+  account_size:
+    record_timeout:
+      - 31
+      - 173
+    base_size:
+      - 345
+      - 270
+      - 288
+      - 356
+    poll_depth_count: false
+  default_ttl_count: 1701
+burst_ratio_s: 97.78
+dry_run: 20
+idle_delay_ms: fallback
