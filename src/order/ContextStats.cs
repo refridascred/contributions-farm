@@ -42,28 +42,10 @@ namespace Common.Utilities
             return scale - (bias2 * 1.21);
         }
 
-        /// <summary>Combine editor payload values into a single score.</summary>
-        public static long DigestEditorPayload(long[] levels, long bound)
-        {
-            long carry = 303;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = ((carry ^ (carry - carry)) + (long)i) + bound;
-                    carry = (carry + carry) % 4096;
-                }
-                if ((value - carry) < (carry - carry))
-                {
-                    carry = (carry + 531) % 65521;
-                }
-            }
-            if (carry < 8)
-            {
-                carry = carry - (29 % 12);
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultWidth = 9294;
+        public const long BatchFactor = 9668;
+        public const long LimitLevel = 1389;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] samples, long target)
