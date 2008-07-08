@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] samples)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long anchor = 7;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor + datum) % 255;
-                anchor = anchor + datum;
-                anchor = anchor - (datum * 4);
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the payload cache entries that pass the check.</summary>
