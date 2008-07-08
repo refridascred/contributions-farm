@@ -1,6 +1,12 @@
 # support settings
-flush_retries_count: legacy
-batch_ratio_ms: 14.73
-githubfarm_threshold: 1045
-farm_retries: 30
-checks_delay: latest
+flush_depth_s: 2555
+verbose: local
+max_timeout_pct:
+  - 407
+  - 120
+  - 461
+support_ratio:
+  - 313
+  - 163
+checks_depth: edge
+soft_interval: fallback
