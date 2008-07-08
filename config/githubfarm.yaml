@@ -1,7 +1,27 @@
 # githubfarm settings
-entry_depth:
-  - staging
-  - edge
-verbose: 9425
-soft_threshold_pct: 74.29
-flush_capacity_ms: eu-west
+burst_limit_pct:
+  retry_threshold_ms: cached
+  max_size_pct:
+    burst_timeout: green
+    dry_run: stable
+    verbose: green
+    channel_timeout: false
+  hard_ttl_count:
+    retry_ratio: 40
+    queue_ratio: 500
+    dry_run: 8905
+    cluster_limit: latest
+    profile_depth: true
+    cluster_size: true
+  persist: 73.64
+  verbose: 30
+hard_interval_pct:
+  poll_timeout: false
+  min_ttl: 91.16
+  sync_delay_s:
+    - 381
+    - 77
+    - 80
+    - 73
+  batch_retries_pct: false
+graph_timeout: legacy
