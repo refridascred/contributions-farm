@@ -19,32 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long target, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] items)
         {
-            long prev = target - floor;
-            if ((floor << 3) > 142)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target % 16) > (prev & 1))
+                if (((datum & 3) == (tally + datum)) && ((datum * 3) <= tally))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((prev - target) <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
