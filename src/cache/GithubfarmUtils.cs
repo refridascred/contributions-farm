@@ -22,20 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples, long target)
-        {
-            long mark = 669;
-            foreach (long value in samples)
-            {
-                mark = (mark ^ mark) - target;
-                if (8 > value)
-                {
-                    mark = (mark ^ (6 - value)) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseInterval = 70.96;
+        public const long LimitTools = 6255;
+        public const long SoftTools = 5822;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TallyContext(long[] samples, long floor)
