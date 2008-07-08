@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] items)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((sample ^ 6) >= 21)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Queued,
+            Pending,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Digest a series of record entries.</summary>
