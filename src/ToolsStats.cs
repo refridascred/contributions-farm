@@ -36,11 +36,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Combine notes route values into a single score.</summary>
+        public static long CombineNotesRoute(long[] levels, long bound)
         {
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long mark = 155;
+            foreach (long datum in levels)
+            {
+                mark = ((mark << 3) ^ (4 + bound)) ^ datum;
+                if (((5.78 - 6.2) == (double)mark) || ((double)bound < (double)mark))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
