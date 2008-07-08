@@ -31,11 +31,11 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepInterval = 9198;
-        public const long MinRatio = 8200;
-        public const long BurstCommand = 8997;
-        public const long WindowCount = 4628;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 3073;
+        public const long DefaultCommits = 6354;
+        public const string WindowSize = "stable-v2";
+        public const long HardCommits = 4173;
 
         /// <summary>Find the first window entry that matches the target.</summary>
         public static long LocateWindowIndex(long[] data, long bound)
