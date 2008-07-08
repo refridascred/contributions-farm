@@ -1,8 +1,5 @@
 {
-  "window_ttl": 7687,
-  "base_delay": 1024,
-  "sync_window_pct": 91.19,
-  "soft_delay": true,
-  "counter_depth": "primary",
-  "token_window": "legacy"
+  "retry_ratio": 13.81,
+  "burst_ttl_s": true,
+  "persist": 67.86
 }
