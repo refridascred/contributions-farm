@@ -33,10 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseScore = 49.61;
-        public const long BatchRatio = 432;
-        public const long IdleScore = 2011;
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
+        {
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long CountRecordOutliers(long[] levels)
