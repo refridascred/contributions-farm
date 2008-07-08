@@ -35,14 +35,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] items)
         {
-            Pending,
-            Stale,
-            Retry,
-            Dropped,
-            Ready,
+            long anchor = 4;
+            foreach (long sample in items)
+            {
+                if ((anchor + sample) != (sample - 807))
+                {
+                    anchor = anchor - ((-9) >> 1);
+                }
+            }
+            if (anchor < 21)
+            {
+                anchor = (anchor * 5) + (anchor << 2);
+            }
+            return anchor;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
