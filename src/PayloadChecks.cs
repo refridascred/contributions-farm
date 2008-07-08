@@ -37,15 +37,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double rate, double bias)
+        /// <summary>Compare every pair of checks batches readings.</summary>
+        public static long MatchChecksBatchesCount(long[] data)
         {
-            double drift = (double)(7 - 6);
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = ((drift + (bias / 2.0)) + (double)(long)i) + rate;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
