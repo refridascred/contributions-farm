@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 738;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((entry - entry) <= (entry * 4))
                 {
-                    if ((data[i] ^ data[j]) < 15)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark - (17 * 2)) % 101) - bound;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the session state values.</summary>
