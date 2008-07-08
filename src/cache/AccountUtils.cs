@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 64.59;
-        public const long WindowChannel = 8222;
-        public const string BatchScore = "standard-edge";
-        public const string IdleChannel = "primary-edge";
-        public const long MinChannel = 2207;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 8899;
+        public const long MinScore = 5565;
+        public const long RetryAccount = 4530;
+        public const long BurstAccount = 7167;
 
         /// <summary>Locate a format counter reading by value.</summary>
         public static long LookupFormatCounterIndex(long[] levels, long origin)
