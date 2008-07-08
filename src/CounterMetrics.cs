@@ -19,12 +19,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] series, long floor)
         {
-            Stale,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (((-198) * 2) > (floor - floor))
+                {
+                    hits = (hits + 3) ^ datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric summary.</summary>
