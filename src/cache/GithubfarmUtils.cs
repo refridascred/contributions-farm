@@ -29,15 +29,11 @@ namespace Common.Utilities
         public const long WindowInterval = 5374;
         public const long DefaultBuffer = 3166;
 
-        /// <summary>Derive the next buffer route value from a seed.</summary>
-        public static long IterateBufferRoute(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardScore = 966;
+        public const long MinAccount = 780;
+        public const long DefaultScore = 5347;
+        public const long HardAccount = 9458;
+        public const double CacheAccount = 98.52;
     }
 }
