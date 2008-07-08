@@ -51,19 +51,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((3.1 / 2.0) <= (double)hits)
-                {
-                    hits = ((hits + 3) ^ entry) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2353;
+        public const string IdlePayload = "stable-edge";
+        public const string RetryPayload = "fallback-1";
+        public const string WindowPayload = "local-v2";
+        public const long BatchTimeout = 4567;
 
         /// <summary>Rank account stream input into a small class.</summary>
         public static long GradeAccountStream(long limit, long bound)
