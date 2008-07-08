@@ -1,10 +1,7 @@
 {
-  "payload_timeout": {
-    "hard_timeout_ms": 9086,
-    "dry_run": "green",
-    "poll_limit": "eu-west",
-    "soft_delay_count": [308, 53, 237, 350]
-  },
-  "schema_interval": 5452,
-  "idle_timeout": 8655
+  "entry_limit": [401, 281, 132],
+  "enabled": "primary",
+  "max_size": [191, 308],
+  "min_size_ms": true,
+  "sync_depth_ms": 47.22
 }
