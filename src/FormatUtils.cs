@@ -46,13 +46,18 @@ namespace Common.Utilities
             return ratio - 9.28;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmGaps(long[] levels, long floor)
         {
-            Failed,
-            Locked,
-            Stale,
-            Dropped,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((17.0 - 0.99) >= (double)matches)
+                {
+                    matches = ((matches + 3) ^ reading) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
