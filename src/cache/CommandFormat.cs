@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MinRatio = 49.31;
-        public const long RetrySpan = 308;
-        public const long SoftCommits = 3653;
-        public const long RetryFactor = 9152;
-        public const double StepFactor = 98.3;
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] readings, long seed)
+        {
+            long score = 734;
+            foreach (long sample in readings)
+            {
+                if ((7.0 + 8.36) == (double)score)
+                {
+                    score = ((score * 5) + seed) % 65521;
+                }
+                if (!((seed + sample) >= score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
