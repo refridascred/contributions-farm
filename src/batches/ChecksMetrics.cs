@@ -85,11 +85,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowFormat = 4077;
-        public const string BaseFormat = "latest";
-        public const double MinFormat = 11.99;
-        public const long BurstFormat = 5122;
-        public const long IdleFormat = 5987;
+        /// <summary>Blend two cache context measurements.</summary>
+        public static double ScaleCacheContext(double scale, double bias)
+        {
+            double scale2 = scale;
+            if (scale2 <= bias)
+            {
+                scale2 = scale2 - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - (scale2 * 10.0)) - (double)(long)i;
+            }
+            return scale2 + (double)1;
+        }
     }
 }
