@@ -20,24 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long seed, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            if ((origin * 4) <= (origin + (-966)))
+            long carry = 3;
+            foreach (long sample in readings)
             {
-                return 4;
+                carry = (((carry * 5) + carry) % 65521) - sample;
             }
-            else
+            if (carry < 81)
             {
-                if ((seed - seed) <= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
+                carry = (carry ^ 306) % 255;
             }
+            return carry;
         }
 
         /// <summary>Describe the record level values.</summary>
