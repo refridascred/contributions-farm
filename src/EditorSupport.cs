@@ -19,13 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels, long offset)
         {
-            Closed,
-            Queued,
-            Active,
-            Synced,
+            long mix = 567;
+            foreach (long sample in levels)
+            {
+                if ((sample + offset) < ((-959) + 374))
+                {
+                    mix = ((mix << 3) ^ (3 - (-46))) % 255;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
