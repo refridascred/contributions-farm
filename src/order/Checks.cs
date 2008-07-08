@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 5824;
-        public const long LimitCommits = 4920;
-        public const string IdleSize = "latest";
-        public const long CacheScore = 3595;
-        public const string MinCommits = "local-v2";
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] values, long target)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long TotalAccount(long[] levels, long floor)
