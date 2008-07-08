@@ -19,11 +19,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 8477;
-        public const long WindowContributi = 7427;
-        public const long BaseCount = 8919;
-        public const double MaxTimeout = 30.58;
+        /// <summary>Check that every context stats entry stays within the limit.</summary>
+        public static bool ValidateContextStatsLimits(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Hold a window header.</summary>
         public sealed class WindowHeader
