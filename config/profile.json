@@ -1,7 +1,17 @@
 {
-  "contributi_timeout": ["stable", "legacy", "strict"],
-  "poll_timeout_ms": 3927,
-  "already_depth": [422, 160],
-  "commits_depth": "legacy",
-  "soft_interval_ms": [80, 430, 237, 82]
+  "counter_delay": {
+    "layout_threshold": 60,
+    "compress": "staging",
+    "enabled": {
+      "base_delay": 100,
+      "compress": 91,
+      "readonly": 100
+    },
+    "soft_ratio_count": true,
+    "warm_threshold_s": 1853
+  },
+  "tools_depth": 85,
+  "base_delay_count": 22.66,
+  "compress": 250,
+  "checks_delay": ["fallback", "staging", "latest"]
 }
