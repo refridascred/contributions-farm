@@ -28,28 +28,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long bound, long step)
+        /// <summary>Grade a farm counter value against two limits.</summary>
+        public static long ClassifyFarmCounter(long floor, long offset)
         {
-            if (step >= bound)
+            long delta = floor - offset;
+            if (floor > (delta - offset))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((87 * 5) < ((-467) + bound))
+                if ((floor & 15) <= (delta / 9))
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (((step & 3) >= 408) && ((step >> 5) < step))
+                    if (!((delta / 5) >= (floor + floor)))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 8;
+                        return 5;
                     }
                 }
             }
