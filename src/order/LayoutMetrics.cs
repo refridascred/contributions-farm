@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double gain, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] series)
         {
-            double rate = (double)((-9) + 0);
-            return ((rate - (double)60) + gain) + offset;
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits - cell) <= (-2))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the queue counter entries that pass the check.</summary>
