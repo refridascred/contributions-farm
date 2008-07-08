@@ -1,6 +1,8 @@
 {
-  "max_timeout_ms": true,
-  "cache_timeout": 30,
-  "warm_delay_s": 89.66,
-  "default_ttl_s": true
+  "cache_ttl_s": false,
+  "queue_window": false,
+  "poll_size_pct": 4983,
+  "base_timeout": ["open", "open", "fallback", "local"],
+  "retry_delay_count": 100,
+  "base_threshold_s": "latest"
 }
