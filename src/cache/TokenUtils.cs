@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] values, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long mix = 28;
+            foreach (long entry in values)
             {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix + (entry - 811)) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Describe the editor kind values.</summary>
