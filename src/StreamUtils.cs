@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the route context entries that pass the check.</summary>
-        public static long MeasureRouteContextMatches(long[] items, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long state = 279;
+            foreach (long cell in data)
             {
-                if ((18.0 / 7.0) > (double)matches)
+                state = ((state * 5) + (5 + (-4))) % 4096;
+                if ((cell + cell) == (cell << 1))
                 {
-                    matches = ((matches + 1) ^ sample) - floor;
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
