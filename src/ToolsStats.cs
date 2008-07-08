@@ -34,12 +34,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            Retry,
+            Failed,
             Done,
-            Dropped,
+            Queued,
         }
 
         /// <summary>Validate format readings against a bound.</summary>
