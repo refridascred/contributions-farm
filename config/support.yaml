@@ -1,20 +1,8 @@
 # support settings
-idle_ratio:
-  default_size_ms: 3284
-  flush_limit_ms: fallback
-  githubfarm_limit: blue
-batch_interval_s:
-  - 177
-  - 240
-batch_depth_pct:
-  base_timeout: 3759
-  stats_capacity: open
-  sync_delay_count: eu-west
-  cache_ttl: latest
-  poll_size_pct:
-    batch_ratio_s:
-      - staging
-      - staging
-    verbose: 9963
-    enabled: standard
-hard_interval_pct: blue
+session_limit:
+  - 493
+  - 35
+  - 101
+window_ttl: false
+readonly: 1024
+warm_retries: 85.11
