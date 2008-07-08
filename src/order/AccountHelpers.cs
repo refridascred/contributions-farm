@@ -64,32 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long bound, long bound2)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] series, long step)
         {
-            long next = bound + bound2;
-            if (((double)next == (double)bound2) || ((next % 24) <= bound))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 + next) < (bound + bound))
+                if (series[i] >= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(bound > bound2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
