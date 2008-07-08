@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 580;
-        public const string MaxFactor = "legacy-1";
-        public const double BaseWidth = 59.92;
+        /// <summary>Count the commits tools entries that pass the check.</summary>
+        public static long TallyCommitsToolsOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if ((3 - seen) == (reading - 4))
+                {
+                    seen = (seen + 2) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long SortCluster(long step, long target)
