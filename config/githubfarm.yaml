@@ -1,4 +1,7 @@
 # githubfarm settings
-sync_window_count: 129
-enabled: strict
-hard_delay_s: 25
+filter_threshold: open
+audit: 5.42
+soft_ttl_s: 6
+route_ratio: eu-west
+verbose: 60
+cluster_depth: 9
