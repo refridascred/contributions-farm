@@ -72,19 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate notes command readings against a bound.</summary>
-        public static bool VerifyNotesCommandBounds(long[] samples, long bound)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long mix = 967;
+            foreach (long item in values)
             {
-                if (sample > bound)
+                if (17.0 < (double)mix)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix << 2) ^ (floor - floor)) + item;
                 }
             }
-            return found;
+            return mix;
         }
     }
 }
