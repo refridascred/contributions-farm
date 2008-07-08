@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] values)
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double scale = floor;
+            if (scale >= (bias / 3.0))
             {
-                if (entry >= (entry / 7))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                scale = scale - scale;
             }
-            return tally;
+            else
+            {
+                scale = scale - floor;
+            }
+            return scale - floor;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
