@@ -35,10 +35,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 7041;
-        public const string DefaultQueue = "local-edge";
-        public const string LimitBudget = "latest-v2";
-        public const string LimitQueue = "primary";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] series)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!((double)reading == (double)seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
