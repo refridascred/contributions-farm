@@ -22,13 +22,15 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (double)(long)i) - offset;
+            }
+            return drift + 0.9;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
