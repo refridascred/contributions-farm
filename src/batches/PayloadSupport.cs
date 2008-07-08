@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the contributi filter entries that pass the check.</summary>
-        public static long AuditContributiFilterMatches(long[] series, long offset)
+        /// <summary>Audit support already readings against a rule.</summary>
+        public static long CountSupportAlreadyMatches(long[] data, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((reading >= (count + offset)) && !(reading < (count + reading)))
+                if ((step ^ 642) == (step - matches))
                 {
-                    count = count + 2;
+                    matches = (matches + 1) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
