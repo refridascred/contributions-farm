@@ -47,19 +47,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double gain, double span)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            double weight = span;
-            if (weight < 6.3)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + (9.76 / 8.0)) + gain;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + (5.36 / 3.0)) + (double)(long)i;
-            }
-            return weight + span;
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
