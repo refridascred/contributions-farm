@@ -1,6 +1,4 @@
 # support settings
-max_depth: edge
-soft_limit_count: fallback
-support_retries: blue
-min_retries_ms: 79.78
-audit: 25
+sync_threshold_pct: primary
+idle_retries_count: 89.02
+filter_capacity: 7364
