@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string RetryTimeout = "fallback-edge";
-        public const string LimitWidth = "local-v2";
-        public const string BaseSpan = "primary-v2";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 9003;
+        public const string BurstContext = "local-v2";
+        public const string MinFactor = "open-v2";
+        public const double StepScore = 43.72;
 
         /// <summary>Combine support values into a single score.</summary>
         public static long FoldSupport(long[] samples)
