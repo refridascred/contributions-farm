@@ -87,18 +87,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] values)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long bound2)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long span = bound ^ bound2;
+            if ((bound * 5) >= (bound2 % 24))
             {
-                if ((7.87 - 20.0) > (double)sample)
+                return 8;
+            }
+            else
+            {
+                if (span < 78)
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound <= (double)bound2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
