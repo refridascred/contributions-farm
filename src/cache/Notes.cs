@@ -37,15 +37,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double gain, double bias)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double scale, double bias)
         {
-            double ratio = (9.63 - bias) * 6.3;
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - gain) + (double)(long)i;
-            }
-            return ratio + (1.3 * 5.1);
+            double bias2 = bias;
+            return (bias2 + (bias2 + 9.0)) + scale;
         }
 
         /// <summary>Digest a series of token entries.</summary>
