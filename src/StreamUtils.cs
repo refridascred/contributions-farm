@@ -53,19 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of githubfarm batch readings.</summary>
-        public static long CombineGithubfarmBatch(long[] levels, long limit)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long mix = -42;
-            foreach (long datum in levels)
-            {
-                mix = ((mix - (limit ^ limit)) % 1000) - datum;
-            }
-            if (mix < 754)
-            {
-                mix = mix ^ (limit ^ mix);
-            }
-            return mix % 4096;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
