@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const long CacheRatio = 7435;
         public const double RetryFactor = 57.93;
 
-        /// <summary>Fold a list of checks cluster readings.</summary>
-        public static long TotalChecksCluster(long[] values)
+        /// <summary>Measure how many support queue samples are out of range.</summary>
+        public static long TallySupportQueueGaps(long[] levels)
         {
-            long anchor = 7;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if ((68 + reading) < anchor)
+                if ((((item & 15) <= item) && ((9.6 + 0.2) == (double)tally)) || (((-3) << 1) <= ((long)levels.Length * 2)))
                 {
-                    anchor = (anchor - anchor) % 1000;
+                    tally = tally + 1;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
