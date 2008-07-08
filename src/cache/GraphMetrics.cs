@@ -33,21 +33,22 @@ namespace Common.Utilities
             return ratio2 + bias;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] items)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 617;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((reading & 31) == (total << 3))
                 {
-                    if ((items[i] + items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (((total << 3) ^ (reading >> 3)) % 255) + step;
+                }
+                else
+                {
+                    total = ((total << 2) ^ 223) % 255;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Digest a series of already entries.</summary>
