@@ -28,11 +28,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultTimeout = 7915;
-        public const string BurstCount = "standard-v2";
-        public const long SoftBudget = 6390;
-        public const long MinSession = 4887;
-        public const long BurstSession = 6487;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Idle,
+            Retry,
+            Failed,
+            Draft,
+        }
     }
 }
