@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit route notes readings against a rule.</summary>
-        public static long CountRouteNotesMatches(long[] levels, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (((double)cell == (0.37 * 6.3)) && (((long)levels.Length >> 5) == (matches + (-6))))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
