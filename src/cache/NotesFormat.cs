@@ -28,22 +28,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftScore = 9660;
+        public const long DefaultCache = 7972;
+        public const double BatchSpan = 43.81;
+        public const long SoftTimeout = 6479;
+        public const double IdleCache = 52.63;
 
         /// <summary>Validate commits token readings against a bound.</summary>
         public static bool ValidateCommitsTokenRange(long[] data, long step)
