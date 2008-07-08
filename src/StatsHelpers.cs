@@ -45,19 +45,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of session support readings.</summary>
-        public static long TallySessionSupport(long[] levels)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long mix = 9;
-            foreach (long item in levels)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix - (mix << 2)) % 97) + item;
-                if ((mix - 384) <= mix)
-                {
-                    mix = (mix ^ (mix / 6)) % 65521;
-                }
+                acc = (acc - acc) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return mix;
+            return acc;
         }
     }
 }
