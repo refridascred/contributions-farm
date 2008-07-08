@@ -25,24 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] levels, long floor)
+        /// <summary>Count profile report pairs that satisfy a relation.</summary>
+        public static long MatchProfileReportCount(long[] samples)
         {
-            long acc = 10;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((floor ^ acc) == (acc + acc)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
+                    if ((samples[i] + samples[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                else
-                {
-                    acc = acc ^ (floor - floor);
-                }
-                acc = (acc - (item - acc)) % 4096;
-                acc = (acc * 5) + (item + floor);
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
