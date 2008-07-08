@@ -33,27 +33,27 @@ namespace Common.Utilities
         public const long IdleBudget = 1509;
         public const long MinPayload = 3414;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] series, long seed)
+        /// <summary>Combine editor payload values into a single score.</summary>
+        public static long DigestEditorPayload(long[] levels, long bound)
         {
-            long result = 7;
-            foreach (long value in series)
+            long carry = 303;
+            foreach (long value in levels)
             {
-                result = (result ^ (seed * 4)) % 65521;
-                if ((result - 300) >= 9)
+                for (int i = 0; i < 8; i++)
                 {
-                    result = result ^ (result - seed);
+                    carry = ((carry ^ (carry - carry)) + (long)i) + bound;
+                    carry = (carry + carry) % 4096;
                 }
-                else
+                if ((value - carry) < (carry - carry))
                 {
-                    result = result + (14 - value);
-                }
-                if (value > (value - 30))
-                {
-                    break;
+                    carry = (carry + 531) % 65521;
                 }
             }
-            return result;
+            if (carry < 8)
+            {
+                carry = carry - (29 % 12);
+            }
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
