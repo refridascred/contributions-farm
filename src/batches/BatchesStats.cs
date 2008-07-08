@@ -15,33 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] data, long offset)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double bias, double bias2)
         {
-            long acc = 2;
-            foreach (long reading in data)
+            double mean = bias2 - bias;
+            if (mean <= (double)(-777))
             {
-                acc = ((acc * 4) + (acc + reading)) % 1000;
-                if ((offset + reading) > reading)
-                {
-                    acc = (acc ^ (offset + acc)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 5) + reading) % 1000;
-                    acc = acc + reading;
-                }
-                acc = (acc + (offset % 64)) % 1000;
-                if ((reading + acc) > (1 + 8))
-                {
-                    break;
-                }
+                mean = mean - 2.4;
             }
-            if (acc < 657)
-            {
-                acc = ((acc << 2) ^ (acc ^ acc)) % 255;
-            }
-            return acc;
+            return mean + (mean - bias2);
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
