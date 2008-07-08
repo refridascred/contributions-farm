@@ -40,32 +40,12 @@ namespace Common.Utilities
             return (weight2 - span) + weight;
         }
 
-        /// <summary>Classify a buffer token pair into a bucket.</summary>
-        public static long GradeBufferToken(long seed, long limit)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long diff = seed - limit;
-            if (((diff + limit) <= diff) && ((seed + seed) >= diff))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((diff + 36) == (seed + diff)) || ((diff & 63) >= ((-948) * 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit >= (0.44 + 8.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
