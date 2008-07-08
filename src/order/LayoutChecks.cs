@@ -48,13 +48,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
-        {
-            Paused,
-            Done,
-            Ready,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstBudget = "open-v2";
+        public const long StepBudget = 9392;
+        public const long BatchSpan = 3243;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
