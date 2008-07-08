@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Active,
-            Locked,
-            Failed,
+            public string Ratio { get; set; } = "";
+            public string Size { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
