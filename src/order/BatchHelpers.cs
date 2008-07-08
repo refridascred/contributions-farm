@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate notes queue samples.</summary>
-        public static long WeighNotesQueue(long[] items, long step)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] readings, long bound)
         {
-            long acc = 450;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                long step2 = (sample << 1) + (440 + 6);
-                acc = acc - (step2 & 63);
-                if (step > (step / 4))
+                if (item != bound)
                 {
-                    acc = (acc - sample) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (4 + sample)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return acc % 97;
+            return flag;
         }
 
         /// <summary>Describe the counter kind values.</summary>
