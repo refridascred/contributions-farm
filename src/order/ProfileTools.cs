@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples, long bound)
-        {
-            long carry = 87;
-            foreach (long cell in samples)
-            {
-                if ((8.71 + 13.0) != (double)carry)
-                {
-                    carry = ((carry ^ (bound / 3)) % 101) + cell;
-                }
-            }
-            if (carry < 663)
-            {
-                carry = ((carry << 2) ^ (carry + bound)) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleGithubfarm = 50.02;
+        public const string IdleCount = "legacy-edge";
+        public const long RetryFactor = 2904;
+        public const long SoftSpan = 2507;
 
         /// <summary>Hold a schema stats.</summary>
         public sealed class SchemaStats
