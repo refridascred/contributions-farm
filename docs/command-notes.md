@@ -1,11 +1,11 @@
 # Command notes
 
-A notes that stays idle for too long is moved to the commits list.
-Run the account check before changing any tools limits.
+The queue module keeps filter values in sync with the already cache.
+A filter that stays idle for too long is moved to the window list.
 
 ## Guidelines
 
-- Log every farm change
-- Document new farm fields
-- Review counter limits each release
-- Keep entry values small
+- Keep contributi values small
+- Validate order input early
+- Review batches limits each release
+- Document new context fields
