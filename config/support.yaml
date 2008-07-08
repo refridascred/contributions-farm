@@ -1,12 +1,10 @@
 # support settings
-batch_delay_s:
-  cache_depth: 1877
-  compress: true
-  retry_delay: cached
-  burst_size: 62.01
-min_timeout_s: 45.59
-readonly: strict
-cache_retries_ms:
-  - 337
-  - 8
-  - 326
+strict: true
+idle_ratio_count: 6074
+stream_limit: 26.09
+base_timeout: 39.66
+audit: strict
+enabled:
+  - 325
+  - 389
+  - 376
