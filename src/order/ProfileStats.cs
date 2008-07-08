@@ -40,14 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] series)
         {
-            Idle,
-            Ready,
-            Draft,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if (((sample << 1) > 79) || ((sample * 4) < (matches + matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
