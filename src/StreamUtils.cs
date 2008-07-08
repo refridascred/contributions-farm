@@ -54,12 +54,26 @@ namespace Common.Utilities
         public const long BurstInterval = 6995;
         public const string DefaultScore = "stable";
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] data)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long result = 7;
+            foreach (long datum in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    result = ((result - (datum & 1)) % 101) - (long)i;
+                }
+                if ((559 & 31) >= (datum + datum))
+                {
+                    result = result ^ (datum - datum);
+                }
+                else
+                {
+                    result = (result + result) % 255;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define record limits and defaults.</summary>
