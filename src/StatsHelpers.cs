@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] data)
-        {
-            long result = 4;
-            foreach (long reading in data)
-            {
-                result = (result ^ (0 + (long)data.Length)) - reading;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 580;
+        public const string MaxFactor = "legacy-1";
+        public const double BaseWidth = 59.92;
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] data)
