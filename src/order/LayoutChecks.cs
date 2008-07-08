@@ -92,13 +92,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] values)
         {
-            Dropped,
-            Failed,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((7.87 - 20.0) > (double)sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
