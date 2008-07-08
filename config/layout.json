@@ -1,8 +1,6 @@
 {
-  "burst_delay_s": 49,
-  "cache_retries": 30,
-  "hard_timeout_count": "latest",
-  "contributi_interval": 100,
-  "dry_run": 19.75,
-  "cache_threshold": 100
+  "checks_interval": 98.92,
+  "max_window_count": "strict",
+  "base_interval_s": 7803,
+  "min_timeout_s": 4979
 }
