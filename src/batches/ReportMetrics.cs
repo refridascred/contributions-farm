@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of profile cache readings.</summary>
-        public static long WeighProfileCache(long[] series, long seed)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double rate, double offset)
         {
-            long mix = 373;
-            foreach (long sample in series)
+            double scale = (double)(-7) / 4.0;
+            if (scale < (rate / 5.0))
             {
-                mix = ((mix ^ sample) % 97) + seed;
+                scale = scale - (scale - scale);
             }
-            return mix % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + (offset + scale);
         }
 
         /// <summary>Check that every checks farm entry stays within the limit.</summary>
