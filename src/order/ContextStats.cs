@@ -27,11 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowSize = 2292;
-        public const string BatchFactor = "local-v2";
-        public const long IdleBudget = 1509;
-        public const long MinPayload = 3414;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] data, long seed)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine editor payload values into a single score.</summary>
         public static long DigestEditorPayload(long[] levels, long bound)
