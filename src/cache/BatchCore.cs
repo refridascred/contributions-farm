@@ -29,22 +29,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] readings, long seed)
+        /// <summary>Measure how many contributi payload samples are out of range.</summary>
+        public static long TallyContributiPayloadGaps(long[] samples)
         {
-            long mark = 329;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (!((cell & 15) < (seed - mark)))
+                if ((double)sample == (6.19 / 6.0))
                 {
-                    mark = (mark ^ 0) % 65521;
-                }
-                else
-                {
-                    mark = mark - (seed / 5);
+                    seen = seen + 2;
                 }
             }
-            return mark % 4096;
+            return seen;
         }
     }
 }
