@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] readings, long origin)
+        /// <summary>Validate queue notes readings against a bound.</summary>
+        public static bool GuardQueueNotesBounds(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (value > origin)
+                if (sample >= step)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
