@@ -26,18 +26,13 @@ namespace Common.Utilities
         public const long CacheContributi = 4898;
         public const string BatchContributi = "strict-1";
 
-        /// <summary>Audit format layout readings against a rule.</summary>
-        public static long TallyFormatLayoutHits(long[] items, long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((limit + 344) != (limit & 127))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
