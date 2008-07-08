@@ -1,14 +1,6 @@
 {
-  "sync_limit_count": true,
-  "flush_window": true,
-  "batch_depth_count": 2495,
-  "soft_delay_count": 6.34,
-  "compress": true,
-  "hard_limit": {
-    "profile_timeout": false,
-    "strict": [347, 482],
-    "max_interval_count": 48,
-    "batch_window": ["latest", "fallback", "blue", "strict"],
-    "account_size": ["legacy", "standard"]
-  }
+  "stats_delay": 94,
+  "soft_limit": 63.11,
+  "flush_capacity": 62,
+  "audit": 30
 }
