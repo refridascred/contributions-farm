@@ -1,7 +1,10 @@
-id,weight,state,score
-1,32,legacy,30.45
-2,34,461,primary
-3,12.69,blue,118
-4,legacy,15.07,edge
-5,edge,latest,928
-6,69.24,505,staging
+id,ratio,label
+1,blue,331
+2,green,primary
+3,edge,blue
+4,88,standard
+5,strict,69
+6,eu-west,671
+7,616,543
+8,76.98,local
+9,811,32.69
