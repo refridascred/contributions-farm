@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardInterval = 5037;
-        public const long SoftRatio = 317;
-        public const double WindowCommits = 35.17;
-        public const long CacheTimeout = 9589;
-        public const double HardCommits = 27.78;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Accumulate route samples.</summary>
         public static long CombineRoute(long[] data, long offset)
