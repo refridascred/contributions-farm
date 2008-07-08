@@ -44,13 +44,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Paused,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Adjust a checks reading.</summary>
