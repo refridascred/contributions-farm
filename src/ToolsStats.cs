@@ -33,17 +33,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long origin)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Stale,
+            Failed,
+            New,
+            Done,
         }
 
         /// <summary>Rank token cluster input into a small class.</summary>
