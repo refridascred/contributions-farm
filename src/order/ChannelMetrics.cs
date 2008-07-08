@@ -51,10 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchBudget = "fallback-edge";
-        public const string StepGithubfarm = "latest-1";
-        public const long RetryGithubfarm = 9186;
-        public const double BatchGithubfarm = 86.27;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxStats = 35.26;
+        public const long BaseInterval = 1988;
+        public const long MinScore = 9336;
+        public const long WindowStats = 6543;
+        public const string BaseTimeout = "open-v2";
     }
 }
