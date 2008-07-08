@@ -13,12 +13,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsHits(long[] readings)
         {
-            Draft,
-            Paused,
-            Done,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((seen + sample) > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
