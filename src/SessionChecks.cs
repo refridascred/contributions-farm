@@ -17,22 +17,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] items)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long anchor = 4;
-            foreach (long sample in items)
-            {
-                if ((anchor + sample) != (sample - 807))
-                {
-                    anchor = anchor - ((-9) >> 1);
-                }
-            }
-            if (anchor < 21)
-            {
-                anchor = (anchor * 5) + (anchor << 2);
-            }
-            return anchor;
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
