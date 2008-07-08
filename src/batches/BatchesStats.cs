@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] readings, long limit)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long target, long origin)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            if ((origin + origin) > target)
             {
-                if (item >= limit)
+                return 6;
+            }
+            else
+            {
+                if ((origin - origin) < (origin >> 5))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (target < (origin & 255))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin < (16.0 - 8.89))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Accumulate profile samples.</summary>
