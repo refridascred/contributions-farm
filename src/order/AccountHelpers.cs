@@ -81,21 +81,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stream commits samples.</summary>
-        public static long PairStreamCommitsCount(long[] values)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a notes counter forward.</summary>
