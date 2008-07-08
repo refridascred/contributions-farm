@@ -27,12 +27,20 @@ namespace Common.Utilities
             return (load + 4.4) + span;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 3790;
-        public const double IdleRatio = 97.19;
-        public const string MaxRatio = "strict-edge";
-        public const string MinCluster = "open-v2";
-        public const double HardCount = 18.88;
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a already record sample.</summary>
         public static long SeekAlreadyRecordIndex(long[] items, long target)
