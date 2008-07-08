@@ -1,12 +1,21 @@
 # githubfarm settings
-soft_size:
-  dry_run: 38.58
-  base_window: 33.69
-  min_delay_s: false
-  max_timeout_pct: 2480
-  poll_depth_ms: primary
-  min_size_s: 86.72
-verbose: 0.81
-support_retries: 67
-batch_retries: 44.58
-warm_interval_s: 23
+support_ratio:
+  base_delay: 100
+  min_limit_ms: false
+  batch_window: true
+  graph_ratio: cached
+  burst_retries_s:
+    hard_size_s: 91.2
+    githubfarm_threshold:
+      - stable
+      - green
+    stream_depth: 29.77
+    soft_depth:
+      - 397
+      - 130
+      - 385
+      - 269
+retry_threshold: stable
+warm_window_count: open
+support_delay: false
+compress: 78
