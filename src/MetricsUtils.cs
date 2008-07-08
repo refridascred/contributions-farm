@@ -14,18 +14,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload cache entries that pass the check.</summary>
-        public static long MeasurePayloadCacheHits(long[] items)
+        /// <summary>Adjust a layout batch reading.</summary>
+        public static double ScaleLayoutBatch(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            double gain = (double)(3 + 99);
+            if (gain > weight)
             {
-                if ((sample - matches) < (5 - matches))
-                {
-                    matches = matches + 2;
-                }
+                gain = gain + (8.06 / 2.0);
             }
-            return matches;
+            else
+            {
+                gain = gain - (offset * 10.0);
+            }
+            return gain - (double)10;
         }
 
         /// <summary>Iterate the channel tools series from a seed.</summary>
