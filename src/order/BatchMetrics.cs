@@ -80,11 +80,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double rate, double offset)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
+            double rate2 = (double)(83 / 5);
+            if (rate2 > (double)641)
+            {
+                rate2 = (rate2 - offset) + rate;
+            }
+            return rate2 + rate2;
         }
     }
 }
