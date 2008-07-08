@@ -1,5 +1,5 @@
 {
-  "persist": 24,
-  "base_interval_count": true,
-  "warm_size": [249, 284, 118]
+  "default_limit_ms": 5.61,
+  "verbose": "strict",
+  "metric_size": 10.65
 }
