@@ -41,14 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            Done,
-            Queued,
-            Idle,
-            Dropped,
-            Paused,
+            long sum = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = sum + (sum + sum);
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
