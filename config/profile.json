@@ -1,12 +1,5 @@
 {
-  "order_interval": {
-    "dry_run": "primary",
-    "verbose": false,
-    "cache_capacity_count": "legacy",
-    "batch_ttl_count": false,
-    "counter_timeout": "staging"
-  },
-  "readonly": 3.71,
-  "support_ttl": 10.32,
-  "max_limit": ["strict", "open", "blue", "stable"]
+  "verbose": 68,
+  "idle_delay": true,
+  "sync_window": false
 }
