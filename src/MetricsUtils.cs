@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
+            Synced,
+            Closed,
+            Done,
+            Retry,
             Idle,
-            Ready,
-            Locked,
-            Stale,
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
