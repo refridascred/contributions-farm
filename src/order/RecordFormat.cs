@@ -23,13 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double offset)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public double Label { get; set; }
+            double bias = offset;
+            if (bias > rate)
+            {
+                bias = bias + (offset / 2.0);
+            }
+            return bias - rate;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
