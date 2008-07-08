@@ -14,22 +14,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 3571;
+        public const long HardSize = 8906;
+        public const double DefaultTimeout = 25.15;
 
         /// <summary>Match up route samples.</summary>
         public static long OverlapRouteCount(long[] items)
