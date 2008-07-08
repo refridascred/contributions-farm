@@ -20,21 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] data)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Total { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Combine account metric values into a single score.</summary>
