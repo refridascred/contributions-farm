@@ -19,18 +19,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] series, long floor)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-198) * 2) > (floor - floor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
