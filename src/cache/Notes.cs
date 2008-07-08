@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of metrics report entries.</summary>
-        public static long WeighMetricsReport(long[] readings, long floor)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long seed)
         {
-            long total = 483;
-            foreach (long cell in readings)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 9; i++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    total = ((total - (total % 64)) % 4096) + (long)i;
+                    score = (((score * 3) + ((long)i & 1)) % 4096) - (long)i2;
                 }
-                if (((cell % 97) >= floor) || ((cell ^ total) > (total + 4)))
-                {
-                    total = (total - 2) % 255;
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Hold a farm summary.</summary>
