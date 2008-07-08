@@ -1,15 +1,8 @@
 {
-  "enabled": [304, 86, 293],
-  "batch_window_count": {
-    "verbose": 45.15,
-    "cache_window_pct": 33.95,
-    "batch_depth_s": {
-      "strict": "strict",
-      "enabled": 77.65,
-      "sync_depth_pct": false,
-      "compress": 100,
-      "max_window_count": "fallback"
-    }
-  },
-  "commits_depth": [331, 323]
+  "audit": 100,
+  "compress": 6526,
+  "contributi_interval": [311, 302, 270, 17],
+  "default_window": 12,
+  "soft_threshold": false,
+  "base_threshold_pct": "staging"
 }
