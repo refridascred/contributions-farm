@@ -16,10 +16,19 @@ namespace Common.Utilities
             return load - gain;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 4802;
-        public const double CacheLayout = 0.56;
-        public const long MinLayout = 1983;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] data, long limit)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (limit > (hits + limit))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueGaps(long[] data)
