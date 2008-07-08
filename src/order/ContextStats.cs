@@ -56,15 +56,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 631;
+        public const long LimitRatio = 2647;
+        public const string DefaultStats = "staging-1";
     }
 }
