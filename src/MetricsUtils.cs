@@ -26,11 +26,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ProjectPayload(double bias, double span)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long floor, long bound)
         {
-            double scale = bias;
-            return (scale - (6.73 / 7.0)) + span;
+            if ((bound * 4) < bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound ^ bound) <= (bound / 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank token input into a small class.</summary>
