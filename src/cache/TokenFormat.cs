@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 3) + (bound % 60)) % 97;
-                score = (score * 2) + bound;
-                score = (score ^ (score + bound)) % 255;
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Draft,
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Audit window readings against a rule.</summary>
