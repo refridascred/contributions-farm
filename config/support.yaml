@@ -1,8 +1,18 @@
 # support settings
-cache_ttl: 38.25
-hard_retries_ms:
-  default_limit_ms: strict
-  buffer_threshold: 4404
-  flush_size: 8216
-schema_limit: 500
-readonly: 70.26
+readonly:
+  tools_retries: fallback
+  audit: 30
+  dry_run: false
+  strict:
+    - 36
+    - 2
+  poll_interval_pct: blue
+  idle_size_count: edge
+burst_capacity_ms: false
+poll_window: 20.31
+default_depth_s: 65.57
+base_delay_count:
+  - 389
+  - 263
+  - 377
+  - 154
