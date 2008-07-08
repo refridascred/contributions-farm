@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultInterval = 3551;
+        public const double BatchAlready = 8.63;
+        public const double RetryFactor = 69.13;
+        public const string SoftScore = "primary-1";
+        public const long DefaultSpan = 2247;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] levels, long bound)
