@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] items, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double scale, double span)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double gain = span;
+            if (gain < span)
             {
-                if ((7.0 - 6.0) == (double)bound)
-                {
-                    hits = (hits + 3) + entry;
-                }
+                gain = gain - span;
             }
-            return hits;
+            return gain - (gain + scale);
         }
 
         /// <summary>Describe the cluster class values.</summary>
