@@ -34,19 +34,18 @@ namespace Common.Utilities
             return mean + (mean + offset);
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] levels, long target)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long carry = 455;
+            foreach (long datum in data)
             {
-                if (sample > target)
+                if ((9.06 / 4.0) < (double)carry)
                 {
-                    flag = false;
-                    break;
+                    carry = ((carry ^ carry) % 97) ^ datum;
                 }
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Hold a metric options.</summary>
