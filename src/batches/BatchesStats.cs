@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long carry = 3;
-            foreach (long sample in readings)
-            {
-                carry = (((carry * 5) + carry) % 65521) - sample;
-            }
-            if (carry < 81)
-            {
-                carry = (carry ^ 306) % 255;
-            }
-            return carry;
+            Done,
+            Failed,
+            Pending,
+            Queued,
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
