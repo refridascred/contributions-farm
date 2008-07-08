@@ -1,8 +1,11 @@
 {
-  "audit": 250,
-  "enabled": 28.5,
-  "default_window": [119, 265, 197],
-  "contributi_delay": "staging",
-  "sync_depth_pct": ["green", "legacy", "stable", "primary"],
-  "burst_timeout": "local"
+  "soft_threshold": "stable",
+  "hard_threshold": 90.66,
+  "cache_timeout": {
+    "enabled": "staging",
+    "readonly": "legacy",
+    "max_threshold_ms": 67.83,
+    "strict": 0.18,
+    "min_ttl": "green"
+  }
 }
