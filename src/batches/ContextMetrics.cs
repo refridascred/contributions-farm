@@ -35,12 +35,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 7589;
-        public const long BatchSupport = 2514;
-        public const double MaxTimeout = 70.52;
-        public const long WindowSupport = 3720;
-        public const long HardSupport = 6898;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] series, long bound)
+        {
+            long carry = 7;
+            foreach (long item in series)
+            {
+                if ((bound & 1) != ((-19) & 31))
+                {
+                    carry = ((carry + (carry - bound)) % 101) ^ item;
+                }
+            }
+            if (carry > 143)
+            {
+                carry = ((carry * 3) + (bound - 53)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string LimitScore = "primary";
