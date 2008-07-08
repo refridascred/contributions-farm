@@ -39,22 +39,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many record commits samples are out of range.</summary>
-        public static long AuditRecordCommitsHits(long[] values)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (((-92) + seen) > reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
