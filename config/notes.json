@@ -1,8 +1,21 @@
 {
-  "readonly": 91.41,
-  "default_limit_pct": 931,
-  "idle_window_pct": 57.13,
-  "default_threshold_count": 40.82,
-  "persist": false,
-  "compress": "standard"
+  "retry_limit": 90,
+  "base_threshold": "cached",
+  "metric_delay": {
+    "default_interval": "strict",
+    "payload_delay": 1024,
+    "persist": {
+      "base_capacity_count": "fallback",
+      "default_threshold": 38.74,
+      "entry_timeout": "eu-west",
+      "warm_delay": 62.7,
+      "tools_window": true
+    }
+  },
+  "audit": {
+    "commits_capacity": 30,
+    "persist": [209, 120, 259],
+    "idle_size": 96
+  },
+  "batch_ttl": 250
 }
