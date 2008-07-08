@@ -1,25 +1,12 @@
 # support settings
-graph_size: cached
-hard_retries_ms:
-  retry_threshold_ms: 58.48
-  retry_delay: 30
-  burst_timeout_count: true
-  format_size:
-    editor_interval: blue
-    dry_run: 500
-    farm_interval: 68
-    commits_delay:
-      - primary
-      - cached
-      - edge
-      - strict
-  queue_threshold:
-    stats_timeout: staging
-    cache_limit: edge
-    idle_depth_ms: blue
-    retry_retries_ms: 98.41
-    editor_timeout:
-      - green
-      - eu-west
-      - open
-payload_timeout: staging
+idle_capacity_s: 97.99
+warm_depth: strict
+account_delay:
+  - 14
+  - 448
+batch_limit:
+  dry_run: 7361
+  default_timeout: 76.71
+  retry_delay_count: open
+  batch_timeout_pct: 60
+  compress: true
