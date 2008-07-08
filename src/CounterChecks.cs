@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const double StepLayout = 0.85;
         public const long MinLayout = 4786;
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] items, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (value <= floor)
+                if ((datum % 8) > (datum - bound))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
