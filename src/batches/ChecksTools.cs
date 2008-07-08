@@ -47,22 +47,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] values)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((cell * 3) != (count & 7))
+                if ((double)seen != (6.9 / 9.0))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
