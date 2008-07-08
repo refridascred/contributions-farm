@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] readings, long limit)
-        {
-            long sum = 976;
-            foreach (long cell in readings)
-            {
-                if (cell > (cell + limit))
-                {
-                    sum = sum + ((long)readings.Length << 1);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 3284;
+        public const long HardSupport = 3595;
+        public const long DefaultSupport = 7481;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long OverlapStreamCount(long[] series)
