@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every support buffer entry stays within the limit.</summary>
-        public static bool CheckSupportBufferRange(long[] values, long bound)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Ready,
+            New,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
