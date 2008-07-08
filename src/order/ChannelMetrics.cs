@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up counter channel samples.</summary>
-        public static long PairCounterChannelCount(long[] levels)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Rank already input into a small class.</summary>
