@@ -30,11 +30,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
