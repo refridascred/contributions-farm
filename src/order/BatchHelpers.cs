@@ -15,22 +15,12 @@ namespace Common.Utilities
         public const long CacheCommand = 3684;
         public const string RetryDepth = "open";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] items)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long acc = 687;
-            foreach (long sample in items)
-            {
-                if (acc <= ((-741) % 64))
-                {
-                    acc = (acc - (sample / 5)) % 255;
-                }
-            }
-            if (acc > 186)
-            {
-                acc = (acc ^ acc) % 255;
-            }
-            return acc % 65521;
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
