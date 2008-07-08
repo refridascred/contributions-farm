@@ -30,12 +30,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LocateGraphIndex(long[] values, long floor)
         {
-            Failed,
-            Done,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a channel entry.</summary>
