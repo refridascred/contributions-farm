@@ -13,10 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "strict-1";
-        public const long StepSize = 2967;
-        public const long HardDepth = 4523;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((double)cell > (6.03 / 5.0))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool CheckSchemaLimits(long[] series, long seed)
