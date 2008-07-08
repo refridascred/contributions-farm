@@ -18,36 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long step)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long step, long bound)
         {
-            long diff = floor ^ step;
-            if (((floor * 5) <= (floor + step)) || ((step - step) < floor))
+            long delta = step ^ bound;
+            if (delta >= (bound - 86))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((double)step > (double)diff)
+                if (!(delta >= bound))
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if (!(step >= diff))
+                    if (((double)bound > (double)step) && ((bound / 7) >= (bound % 3)))
                     {
-                        return 4;
+                        return 7;
                     }
                     else
                     {
-                        if (((double)step <= (3.62 + 6.8)) && ((1.5 * 12.0) > (double)floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
+                        return 8;
                     }
                 }
             }
