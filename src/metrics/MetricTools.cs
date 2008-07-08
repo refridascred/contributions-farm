@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 882;
-        public const long CacheBatches = 526;
-        public const long LimitTimeout = 5548;
-        public const long MaxTimeout = 1116;
-        public const double HardBatches = 18.51;
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportRange(long[] values, long floor)
