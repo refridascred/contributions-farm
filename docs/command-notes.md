@@ -1,11 +1,13 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Each already is validated before it reaches the schema queue.
-Run the stats check before changing any command limits.
+Run the tools check before changing any token limits.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+
+Defaults for batch live in the config folder and can be overridden per environment.
+The metric report groups every record by counter.
 
 ## Guidelines
 
-- Keep route values small
-- Prefer context defaults
-- Review route limits each release
+- Keep layout values small
+- Document new context fields
+- Log every format change
