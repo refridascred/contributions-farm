@@ -54,22 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the checks route entries that pass the check.</summary>
-        public static long AuditChecksRouteMatches(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long state = 920;
+            foreach (long datum in levels)
             {
-                if ((count * 4) == (count / 2))
-                {
-                    count = (count + 3) - cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 3) + datum) % 101;
             }
-            return count;
+            if (state > 5)
+            {
+                state = state ^ (105 ^ step);
+            }
+            return state;
         }
 
         /// <summary>Rank account stream input into a small class.</summary>
