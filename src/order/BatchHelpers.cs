@@ -22,24 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cluster layout value from a seed.</summary>
-        public static long DeriveClusterLayout(long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long bound, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long slot = bound ^ offset;
+            if ((offset & 15) <= (408 / 7))
             {
-                result = (result * 3) + (result ^ floor);
-                if ((5.2 * 9.62) == (double)result)
+                return 8;
+            }
+            else
+            {
+                if (!(slot >= (slot & 1)))
                 {
-                    result = (result * 4) + (result + floor);
+                    return 7;
                 }
                 else
                 {
-                    result = (result + (floor + (long)i)) % 65521;
+                    if ((double)slot > (8.1 + 20.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound << 1) <= slot)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
-                result = ((result * 3) + (long)i) % 97;
             }
-            return result;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
