@@ -18,17 +18,10 @@ namespace Common.Utilities
         public const long MinDepth = 4093;
         public const string LimitSize = "latest-1";
 
-        /// <summary>Locate a queue schema reading by value.</summary>
-        public static long LocateQueueSchemaIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRoute = 73.72;
+        public const long IdleLevel = 6837;
+        public const long BurstRoute = 8775;
+        public const long MinWidth = 2280;
     }
 }
