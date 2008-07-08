@@ -70,11 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double bias)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] items, long floor)
         {
-            double bias2 = 5.0 - (double)71;
-            return ((bias2 - (7.5 * 8.28)) + scale) + bias;
+            long sum = 529;
+            foreach (long item in items)
+            {
+                sum = ((sum << 3) ^ (item + sum)) - floor;
+            }
+            return sum % 65521;
         }
     }
 }
