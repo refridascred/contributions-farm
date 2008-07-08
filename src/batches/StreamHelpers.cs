@@ -29,11 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double offset)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] data)
         {
-            double gain = (offset + 2.29) + (0.54 * 5.14);
-            return gain - ratio;
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((double)count == (9.79 / 3.0))
+                {
+                    count = (count + 2) ^ reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
