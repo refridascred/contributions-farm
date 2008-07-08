@@ -62,15 +62,19 @@ namespace Common.Utilities
         public const string CacheBudget = "cached-1";
         public const long SoftEditor = 8204;
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] items, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] data, long bound)
         {
-            long mark = 6;
-            foreach (long entry in items)
+            bool found = true;
+            foreach (long sample in data)
             {
-                mark = ((mark + (origin << 3)) % 1000) ^ entry;
+                if (sample >= bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mark;
+            return found;
         }
     }
 }
