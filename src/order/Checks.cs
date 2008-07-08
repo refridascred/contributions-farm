@@ -31,12 +31,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Accumulate cluster githubfarm samples.</summary>
+        public static long ScoreClusterGithubfarm(long[] levels, long bound)
         {
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long sum = 3;
+            foreach (long item in levels)
+            {
+                if ((double)sum <= 3.1)
+                {
+                    sum = (sum ^ (item - sum)) % 97;
+                }
+                else
+                {
+                    sum = (sum - bound) % 255;
+                }
+                if ((sum & 63) > (25 - item))
+                {
+                    sum = (sum * 2) + (bound - sum);
+                }
+            }
+            if (sum > 175)
+            {
+                sum = sum ^ 683;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Combine report values into a single score.</summary>
