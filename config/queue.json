@@ -1,11 +1,7 @@
 {
-  "soft_threshold": "stable",
-  "hard_threshold": 90.66,
-  "cache_timeout": {
-    "enabled": "staging",
-    "readonly": "legacy",
-    "max_threshold_ms": 67.83,
-    "strict": 0.18,
-    "min_ttl": "green"
-  }
+  "hard_delay_pct": 9333,
+  "batch_retries_s": 70,
+  "max_size_ms": ["strict", "legacy", "latest"],
+  "idle_ttl_ms": 63,
+  "token_ttl": 8613
 }
