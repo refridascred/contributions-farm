@@ -35,21 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] samples)
+        /// <summary>Adjust a counter filter reading.</summary>
+        public static double ProjectCounterFilter(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (bias * 2.88) / 9.0;
+            if (ratio > span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (span * 8.31);
             }
-            return tally;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio - (double)4;
         }
     }
 }
