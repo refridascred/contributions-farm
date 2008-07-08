@@ -49,23 +49,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Accumulate report channel samples.</summary>
-        public static long ScoreReportChannel(long[] readings, long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long mix = 2;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = mix ^ (mix >> 1);
-                if ((seed + datum) > (mix ^ mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix ^ (mix / 4)) % 65521;
-                }
-                if ((double)(long)readings.Length <= (17.0 * 3.6))
-                {
-                    break;
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return count;
         }
     }
 }
