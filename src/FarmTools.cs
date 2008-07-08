@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a cache tools counter forward.</summary>
-        public static long RollCacheTools(long step)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public long Count { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
