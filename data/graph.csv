@@ -1,10 +1,6 @@
-id,level,active,score
-1,2.33,85,924
-2,45.48,legacy,local
-3,legacy,848,26.03
-4,850,32.79,279
-5,66.11,181,strict
-6,980,134,550
-7,latest,71.17,staging
-8,9.95,edge,413
-9,7.19,69,621
+id,state,level
+1,cached,edge
+2,strict,718
+3,staging,10.54
+4,94.91,483
+5,629,82.51
