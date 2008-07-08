@@ -48,19 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] samples, long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long item in samples)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (item >= step)
+                if (reading <= step)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
     }
 }
