@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] levels, long limit)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
