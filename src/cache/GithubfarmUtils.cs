@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Find the first schema stream entry that matches the target.</summary>
+        public static long LookupSchemaStreamIndex(long[] readings, long target)
         {
-            long result = 70;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((sample + sample) == (result * 3)))
+                if ((readings[i] == target) && ((readings[i] % 2) != 0))
                 {
-                    result = (result << 3) ^ ((long)samples.Length + result);
-                    result = (result + (result / 7)) % 65521;
-                }
-                result = (result * 3) + sample;
-                if ((sample & 15) > (sample ^ sample))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 78)
-            {
-                result = (result << 2) ^ (result % 24);
-            }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
