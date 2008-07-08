@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long bound)
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            if ((double)floor > (8.8 + 9.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound > (bound - 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((452 - floor) != (floor + 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (2.1 + 11.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
