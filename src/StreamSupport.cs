@@ -13,14 +13,18 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] readings, long target)
         {
-            Failed,
-            Queued,
-            Draft,
-            Ready,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (((hits + cell) >= (target - hits)) || ((0 % 12) <= cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
