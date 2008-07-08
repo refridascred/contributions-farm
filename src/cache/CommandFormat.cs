@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] samples, long target)
-        {
-            long sum = 7;
-            foreach (long entry in samples)
-            {
-                if (70 > sum)
-                {
-                    sum = ((sum * 3) + (entry & 255)) % 4096;
-                }
-                sum = (sum - (target % 10)) % 4096;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MinRatio = 49.31;
+        public const long RetrySpan = 308;
+        public const long SoftCommits = 3653;
+        public const long RetryFactor = 9152;
+        public const double StepFactor = 98.3;
 
         /// <summary>Hold a checks header.</summary>
         public sealed class ChecksHeader
