@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const long BaseWidth = 1967;
         public const long MaxTimeout = 3;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading < seed)
+                if (datum < bound)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Combine account counter values into a single score.</summary>
