@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long limit, long step)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] levels)
         {
-            if ((limit + 81) == (step % 16))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit < (step ^ step)) && ((step - limit) >= (600 & 127)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    if ((levels[i] ^ levels[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
