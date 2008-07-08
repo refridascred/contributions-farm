@@ -19,18 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] readings, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 83;
+            foreach (long value in values)
             {
-                if (473 <= (limit / 4))
+                if (!((sum & 15) == (value & 3)))
                 {
-                    matches = (matches + 1) ^ item;
+                    sum = ((sum * 5) + sum) % 255;
+                }
+                else
+                {
+                    sum = (sum * 2) + (limit << 2);
+                }
+                if ((limit & 31) == ((long)values.Length + value))
+                {
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Blend two context measurements.</summary>
