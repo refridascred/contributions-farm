@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 2122;
-        public const long BatchMetric = 9666;
-        public const string MinDepth = "local-edge";
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count - entry) <= 634)
+                {
+                    count = (count + 2) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a support sample.</summary>
         public static long LocateSupportIndex(long[] values, long offset)
