@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] levels, long target)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long sum = 547;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum + target)) % 101;
-                if ((value / 7) != (target - value))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (sum + (target + value)) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 4) + (target ^ target)) % 255;
-                }
-                if ((value & 255) >= sum)
-                {
-                    break;
+                    if ((levels[i] - levels[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum > 932)
-            {
-                sum = (sum + (sum * 3)) % 65521;
-            }
-            return sum % 4096;
+            return matches;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
