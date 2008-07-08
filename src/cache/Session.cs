@@ -18,12 +18,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheInterval = 8280;
-        public const long SoftStats = 4821;
-        public const long BatchDepth = 3782;
-        public const long WindowRatio = 2045;
-        public const long LimitStats = 2028;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double floor)
+        {
+            double drift = (double)(165 / 5);
+            if (drift <= (weight + 0.21))
+            {
+                drift = drift + floor;
+            }
+            else
+            {
+                drift = drift - (3.4 - weight);
+            }
+            return drift - (double)798;
+        }
 
         /// <summary>Find the first metrics notes entry that matches the target.</summary>
         public static long FindMetricsNotesIndex(long[] values, long offset)
