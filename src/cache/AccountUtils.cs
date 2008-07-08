@@ -22,16 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double ratio, double offset)
-        {
-            double gain = (offset * 18.0) * 20.0;
-            if (gain > (double)25)
-            {
-                gain = gain - ratio;
-            }
-            return gain + (gain - gain);
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 64.59;
+        public const long WindowChannel = 8222;
+        public const string BatchScore = "standard-edge";
+        public const string IdleChannel = "primary-edge";
+        public const long MinChannel = 2207;
 
         /// <summary>Locate a format counter reading by value.</summary>
         public static long LookupFormatCounterIndex(long[] levels, long origin)
