@@ -27,19 +27,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double bias, double bias2)
+        /// <summary>Fold a list of checks queue readings.</summary>
+        public static long FoldChecksQueue(long[] data)
         {
-            double scale = (2.82 - bias2) + (bias2 / 4.0);
-            if (scale >= (scale - 0.72))
+            long acc = 73;
+            foreach (long sample in data)
             {
-                scale = scale - (16.0 + scale);
+                if ((0.6 * 7.0) != (double)sample)
+                {
+                    acc = ((acc << 3) ^ acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc - (acc + 946)) % 1000;
+                }
             }
-            else
-            {
-                scale = scale + bias;
-            }
-            return scale - (bias2 * 1.21);
+            return acc;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
