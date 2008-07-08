@@ -1,16 +1,5 @@
 {
-  "hard_window_pct": false,
-  "poll_retries_count": {
-    "retry_capacity_count": [213, 10, 67],
-    "payload_depth": {
-      "sync_window": "standard",
-      "enabled": true,
-      "idle_ttl_s": ["latest", "primary"]
-    },
-    "batch_threshold_count": 45.29,
-    "readonly": 1024,
-    "route_threshold": 75.83,
-    "buffer_ratio": 76.06
-  },
-  "default_limit_count": "open"
+  "warm_depth": 3,
+  "max_retries": "open",
+  "tools_ttl": false
 }
