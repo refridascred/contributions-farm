@@ -1,13 +1,6 @@
 {
-  "strict": 651,
-  "compress": {
-    "audit": 95.43,
-    "sync_interval_s": "green",
-    "burst_ttl_pct": 60.77,
-    "flush_ratio_ms": 3027,
-    "compress": "legacy"
-  },
-  "enabled": "standard",
-  "cluster_ratio": ["fallback", "blue"],
-  "batch_retries_count": 45.62
+  "max_delay_s": 59,
+  "sync_depth_ms": 7.95,
+  "stream_capacity": "primary",
+  "batch_threshold": "standard"
 }
