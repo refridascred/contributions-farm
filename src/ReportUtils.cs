@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double weight, double offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] readings, long limit)
         {
-            double weight2 = offset / 2.0;
-            return (weight2 + offset) + weight;
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (!((895 ^ hits) <= (value % 12)))
+                {
+                    hits = (hits + 1) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
