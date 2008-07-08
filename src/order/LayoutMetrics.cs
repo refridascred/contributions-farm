@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long limit)
         {
-            Queued,
-            Paused,
-            Ready,
-            Done,
-            Pending,
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = mark ^ (limit << 1);
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a already reading.</summary>
