@@ -1,12 +1,12 @@
 {
-  "warm_ratio_ms": "stable",
-  "min_capacity_count": false,
-  "min_depth_ms": {
-    "poll_window": 83,
-    "poll_limit_count": true,
-    "poll_capacity_pct": ["standard", "blue", "standard"],
-    "context_ttl": true,
-    "flush_size_s": 64.67,
-    "batch_retries": ["cached", "green", "blue"]
-  }
+  "filter_depth": 9404,
+  "dry_run": 250,
+  "soft_depth": "local",
+  "compress": {
+    "readonly": "strict",
+    "max_ratio_s": "stable",
+    "hard_delay": true,
+    "warm_ratio_count": 53.58
+  },
+  "min_ttl": ["primary", "primary", "stable", "fallback"]
 }
