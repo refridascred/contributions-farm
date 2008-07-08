@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] data)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ScaleBatch(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = (2.4 * 6.6) - weight;
+            if (gain <= gain)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - (double)3) + span;
             }
-            return seen;
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Roll a editor layout counter forward.</summary>
