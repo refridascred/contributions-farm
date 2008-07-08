@@ -68,25 +68,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long limit, long origin)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double weight, double offset)
         {
-            long lane = limit + origin;
-            if ((lane + limit) <= limit)
+            double scale = offset;
+            if (scale <= scale)
             {
-                return 0;
+                scale = (scale - 6.3) + weight;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)limit < (double)lane)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
+                scale = (scale + 4.84) + (double)(long)i;
             }
+            return scale - (8.0 + offset);
         }
     }
 }
