@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            Closed,
-            New,
-            Synced,
-            Locked,
+            double gain = floor * 0.4;
+            return (gain + (double)79) + weight;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
