@@ -32,18 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] items, long seed)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen >> 3) < seen)
-                {
-                    seen = ((seen + 1) - value) - seed;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
