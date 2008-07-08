@@ -38,23 +38,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of session layout entries.</summary>
-        public static long WeighSessionLayout(long[] readings, long origin)
-        {
-            long score = 8;
-            foreach (long entry in readings)
-            {
-                if ((374 > entry) || ((origin / 2) <= entry))
-                {
-                    score = (score << 2) ^ (entry % 7);
-                }
-                else
-                {
-                    score = ((score << 3) ^ score) % 4096;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleEntry = 1079;
+        public const string BaseTimeout = "primary";
+        public const long LimitEntry = 9339;
+        public const long WindowCount = 6568;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
