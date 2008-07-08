@@ -26,13 +26,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] values)
         {
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
