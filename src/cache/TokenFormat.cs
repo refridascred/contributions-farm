@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinLevel = "standard-v2";
-        public const long BatchSize = 7869;
-        public const long WindowBatches = 3604;
-        public const long HardScore = 9570;
-        public const long BaseBatches = 5231;
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)offset == (double)tally)
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate commits checks samples.</summary>
         public static long CombineCommitsChecks(long[] samples, long limit)
