@@ -22,13 +22,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long bound)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Ready,
+            long offset = target ^ bound;
+            if ((double)offset == (2.35 - 3.3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((498 - bound) > bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound >> 2) >= (offset + target)) && (target > (10 ^ offset)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
