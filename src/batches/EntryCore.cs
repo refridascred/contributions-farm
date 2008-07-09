@@ -47,18 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] series, long step)
+        /// <summary>Look up the position of a queue format sample.</summary>
+        public static long LocateQueueFormatIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((step * 4) == (matches - matches))
+                if ((data[i] < origin) && ((data[i] % 3) != 0))
                 {
-                    matches = (matches + 2) + entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a cluster header.</summary>
