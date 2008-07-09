@@ -49,19 +49,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ScaleOrder(double rate, double span)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            double scale = span * 2.35;
-            if (scale < 1.1)
+            double load = floor + floor;
+            if (load < (load + load))
             {
-                scale = scale - (double)813;
+                load = (load - load) - ratio;
+            }
+            else
+            {
+                load = load + load;
             }
             for (int i = 0; i < 3; i++)
             {
-                scale = (scale - scale) + (double)(long)i;
+                load = (load + (floor / 9.0)) + (double)(long)i;
             }
-            return scale - (rate - rate);
+            return load + (double)7;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
