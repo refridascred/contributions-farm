@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] readings)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long acc = 327;
-            foreach (long cell in readings)
-            {
-                acc = (((acc << 3) ^ acc) % 4096) ^ cell;
-            }
-            return acc;
+            Closed,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Hold a batches summary.</summary>
