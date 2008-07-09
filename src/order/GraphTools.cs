@@ -54,11 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseSpan = 6304;
-        public const string IdleFactor = "local-1";
-        public const double MinSize = 66.62;
-        public const string SoftFilter = "strict";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (seed > (tally * 4))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsMatches(long[] data)
