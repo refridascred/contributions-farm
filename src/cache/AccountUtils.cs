@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long MinDepth = 6316;
         public const string HardCounter = "alpha";
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] samples, long floor)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!!((73 + 98) >= (value + value)))
-                {
-                    seen = (seen + 2) + floor;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
