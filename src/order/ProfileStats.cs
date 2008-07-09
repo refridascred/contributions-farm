@@ -20,39 +20,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long origin, long seed)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long slot = origin + seed;
-            if (slot >= (slot + slot))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((origin / 2) >= (26 ^ origin)) && ((seed - seed) <= (-2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot * 5) >= (slot / 4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - slot) < (slot + seed))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
