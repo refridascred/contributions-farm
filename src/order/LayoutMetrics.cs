@@ -32,14 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            Pending,
-            Stale,
-            Dropped,
-            Failed,
-            Locked,
+            public string Score { get; set; } = "";
+            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
