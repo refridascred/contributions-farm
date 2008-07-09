@@ -1,12 +1,12 @@
 # githubfarm settings
-checks_threshold: 87
-compress: true
-persist: 65.43
-tools_interval:
-  metrics_size:
-    - 460
-    - 170
-    - 149
-  cluster_size: 12.22
-  audit: false
-  cache_timeout_pct: true
+verbose:
+  - latest
+  - green
+  - legacy
+  - green
+metrics_window: 53
+stats_capacity: fallback
+notes_depth:
+  warm_limit: local
+  base_ratio_ms: 52.06
+  max_threshold_ms: blue
