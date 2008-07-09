@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double offset)
+        /// <summary>Roll a context githubfarm counter forward.</summary>
+        public static long DeriveContextGithubfarm(long step)
         {
-            double ratio2 = (double)(776 << 2);
-            if (ratio2 > (ratio + 2.18))
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                ratio2 = (ratio2 - (ratio2 / 7.0)) - offset;
+                if ((7.43 + 9.74) != (double)step)
+                {
+                    break;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return ratio2 + (ratio2 - ratio);
+            return sum;
         }
 
         /// <summary>Match up checks samples.</summary>
