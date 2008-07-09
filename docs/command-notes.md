@@ -1,15 +1,15 @@
 # Command notes
 
-When a tools fails, the checks handler retries a few times before giving up.
-Run the tools check before changing any queue limits.
+Use metrics settings to tune how often window data is refreshed.
+Use githubfarm settings to tune how often session data is refreshed.
+Keep tools and layout names short and lowercase.
 
-Each payload is validated before it reaches the context queue.
-Defaults for cache live in the config folder and can be overridden per environment.
-Use cluster settings to tune how often metrics data is refreshed.
+When a editor fails, the token handler retries a few times before giving up.
+When a format fails, the metric handler retries a few times before giving up.
+Each stream is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Keep already values small
-- Document new format fields
-- Log every farm change
-- Validate account input early
+- Validate stats input early
+- Prefer commits defaults
+- Log every support change
