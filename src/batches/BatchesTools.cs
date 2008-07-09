@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
-        {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 6968;
+        public const long CacheSize = 6991;
+        public const long StepPayload = 1199;
+        public const long BurstPayload = 7902;
+        public const long IdlePayload = 4839;
 
         /// <summary>Match up token samples.</summary>
         public static long MatchTokenCount(long[] samples)
