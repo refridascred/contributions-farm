@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long origin, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] samples)
         {
-            long lane = origin ^ step;
-            if (((origin << 2) > (lane ^ step)) && ((step + lane) <= origin))
+            long state = 13;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin - origin) <= (origin * 5))
+                if (state <= (datum & 15))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    state = state ^ (datum * 3);
                 }
             }
+            return state % 65521;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
