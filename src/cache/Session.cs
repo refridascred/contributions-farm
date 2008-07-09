@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally - tally) < (tally >> 5))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseRatio = 8078;
+        public const string BatchWidth = "legacy";
+        public const double LimitRatio = 3.39;
+        public const string IdleProfile = "stable-1";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] data, long offset)
