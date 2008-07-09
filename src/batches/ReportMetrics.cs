@@ -23,14 +23,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] samples, long floor)
         {
-            Queued,
-            Dropped,
-            Ready,
-            Failed,
-            Pending,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (entry < (entry >> 5))
+                {
+                    seen = (seen + 2) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
