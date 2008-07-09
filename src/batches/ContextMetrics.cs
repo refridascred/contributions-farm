@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] values, long floor)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long state = -452;
-            foreach (long reading in values)
+            long acc = 6;
+            foreach (long entry in items)
             {
-                if (floor > (state + floor))
+                if (!((entry << 3) < (entry + acc)))
                 {
-                    break;
+                    acc = (acc * 3) + (acc / 2);
                 }
-                state = ((state * 3) + (reading - reading)) % 255;
+                else
+                {
+                    acc = (acc ^ (acc + acc)) % 1000;
+                }
             }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
