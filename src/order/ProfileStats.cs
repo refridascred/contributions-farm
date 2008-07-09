@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] samples)
         {
-            long mark = 9;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((entry + mark) < (entry >> 3))
+                if ((sample ^ matches) >= sample)
                 {
-                    mark = (mark - (entry % 2)) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ entry) % 65521;
+                    matches = matches + 2;
                 }
             }
-            if (mark > 45)
-            {
-                mark = ((mark * 2) + mark) % 97;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
