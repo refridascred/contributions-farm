@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many session commits samples are out of range.</summary>
-        public static long TallySessionCommitsOutliers(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (83 >= (offset >> 4))
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseScore = 3896;
+        public const string BatchSupport = "standard-1";
+        public const long RetryLevel = 9196;
+        public const long WindowInterval = 6375;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] levels, long origin)
