@@ -42,15 +42,11 @@ namespace Common.Utilities
             return gain - ratio;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Failed,
-            Done,
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 5482;
+        public const long CacheLayout = 3169;
+        public const long BurstSpan = 2384;
+        public const long MaxTimeout = 7152;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsMatches(long[] values)
