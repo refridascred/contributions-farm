@@ -13,21 +13,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Match up metrics stream samples.</summary>
-        public static long CompareMetricsStreamCount(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] == offset)
                 {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a cluster record.</summary>
