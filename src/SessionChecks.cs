@@ -46,19 +46,17 @@ namespace Common.Utilities
             return ((rate - rate) + weight) + offset;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long step)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long offset)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading <= step)
+                if ((data[i] <= offset) && ((data[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
