@@ -56,13 +56,12 @@ namespace Common.Utilities
         public const long MinFactor = 6376;
         public const long BaseLevel = 667;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Retry,
-            Failed,
-            New,
-            Paused,
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
