@@ -43,12 +43,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long limit)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long item in samples)
+            {
+                if (item >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Grade a stats editor value against two limits.</summary>
