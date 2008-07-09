@@ -33,12 +33,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long seed)
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
-            public bool Owner { get; set; }
+            long slot = origin + seed;
+            if ((double)origin >= (16.0 - 0.7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin < seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((46 + seed) != (slot & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin % 60) == (slot + seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
