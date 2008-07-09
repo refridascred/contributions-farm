@@ -39,28 +39,18 @@ namespace Common.Utilities
             return bias - (span + span);
         }
 
-        /// <summary>Combine editor cache values into a single score.</summary>
-        public static long CombineEditorCache(long[] data)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] readings, long origin)
         {
-            long mix = 26;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 8; i++)
+                if ((hits < (entry + origin)) || ((origin % 97) >= entry))
                 {
-                    mix = (((mix * 5) + (datum >> 4)) % 4096) + (long)i;
-                    mix = (mix + (mix ^ datum)) % 97;
-                }
-                mix = (mix + (mix ^ 68)) % 65521;
-                if ((datum + 406) >= (mix / 5))
-                {
-                    mix = (mix - mix) % 101;
-                }
-                else
-                {
-                    mix = (mix - (datum << 2)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Accumulate entry samples.</summary>
