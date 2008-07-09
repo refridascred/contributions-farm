@@ -11,38 +11,19 @@ namespace Common.Utilities
         public const long RetryFactor = 2904;
         public const long SoftSpan = 2507;
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long origin, long seed)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] series)
         {
-            if ((15.0 * 5.2) < (double)seed)
+            long sum = 127;
+            foreach (long value in series)
             {
-                return 7;
+                sum = (sum * 2) + (value - sum);
             }
-            else
+            if (sum > 88)
             {
-                if (((-49) % 64) != (origin / 7))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7.55 * 18.0) < (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + 489) < origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = sum - (sum % 16);
             }
+            return sum % 1000;
         }
 
         /// <summary>Fold a list of route readings.</summary>
