@@ -72,22 +72,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] data)
+        /// <summary>Accumulate report format samples.</summary>
+        public static long TotalReportFormat(long[] values)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long result = 166;
+            foreach (long datum in values)
             {
-                if ((count + (long)data.Length) == (count & 63))
+                if (((datum + result) != (result % 24)) && ((double)(long)values.Length == (1.0 - 2.0)))
                 {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result - (55 * 4)) % 4096;
                 }
             }
-            return count;
+            if (result > 437)
+            {
+                result = ((result << 3) ^ (12 & 63)) % 65521;
+            }
+            return result;
         }
     }
 }
