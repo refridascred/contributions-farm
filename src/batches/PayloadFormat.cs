@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] samples, long origin)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public double Count { get; set; }
+            long acc = 215;
+            foreach (long item in samples)
+            {
+                if ((6.9 - 5.57) < (double)origin)
+                {
+                    acc = (acc ^ (origin ^ item)) % 65521;
+                }
+                else
+                {
+                    acc = acc - (acc * 3);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
