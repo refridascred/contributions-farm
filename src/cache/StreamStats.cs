@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long target)
-        {
-            long lane = offset + target;
-            if ((2.13 >= (double)lane) && ((offset + 31) < (offset / 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (lane < target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset << 1) <= ((-376) + offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchRatio = 7374;
+        public const long StepContributi = 631;
+        public const long CacheContributi = 8632;
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] data, long floor)
