@@ -28,13 +28,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] levels, long step)
         {
-            Closed,
-            Failed,
-            Stale,
-            Ready,
+            long result = 35;
+            foreach (long reading in levels)
+            {
+                if (!((result * 4) >= (reading ^ step)))
+                {
+                    result = ((result << 2) ^ (step ^ result)) % 4096;
+                }
+                else
+                {
+                    result = (result << 2) ^ step;
+                }
+            }
+            if (result > 9)
+            {
+                result = result ^ result;
+            }
+            return result % 4096;
         }
     }
 }
