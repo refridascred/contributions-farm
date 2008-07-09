@@ -23,11 +23,14 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            Queued,
+            Dropped,
+            Ready,
+            Failed,
+            Pending,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
