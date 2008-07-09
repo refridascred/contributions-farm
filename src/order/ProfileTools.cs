@@ -13,22 +13,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the filter metric entries that pass the check.</summary>
-        public static long CountFilterMetricMatches(long[] items)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((69 / 4) > (matches << 3))
-                {
-                    matches = (matches + 1) ^ reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
