@@ -1,5 +1,5 @@
 # entry settings
-hard_retries: legacy
-audit: legacy
-flush_retries_pct: 500
-hard_size_count: stable
+graph_size: primary
+retry_ratio_count: false
+verbose: 60.72
+default_window_pct: true
