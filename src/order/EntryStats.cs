@@ -73,9 +73,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double RetryBudget = 94.02;
-        public const long BaseBuffer = 3552;
-        public const long SoftSpan = 3287;
+        /// <summary>Combine support format values into a single score.</summary>
+        public static long FoldSupportFormat(long[] samples, long seed)
+        {
+            long state = 52;
+            foreach (long item in samples)
+            {
+                if (!(state >= (state + seed)))
+                {
+                    state = (state ^ (seed - item)) % 1000;
+                }
+            }
+            return state % 4096;
+        }
     }
 }
