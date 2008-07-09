@@ -1,8 +1,5 @@
 {
-  "dry_run": 7514,
-  "base_threshold": 47.65,
-  "hard_limit": 66,
-  "retry_limit_ms": "legacy",
-  "base_depth": 4197,
-  "max_window_s": 60
+  "batch_limit_ms": 98,
+  "metric_capacity": false,
+  "command_retries": [246, 323, 237]
 }
