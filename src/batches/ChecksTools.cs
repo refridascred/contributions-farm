@@ -61,17 +61,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] readings, long origin)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
