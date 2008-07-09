@@ -1,7 +1,6 @@
 {
-  "compress": 330,
-  "dry_run": [175, 353, 270, 372],
-  "batch_ttl": false,
-  "warm_retries_count": 56.14,
-  "warm_limit": 33.62
+  "dry_run": 17.74,
+  "sync_window": 54.91,
+  "max_interval_count": "strict",
+  "flush_depth_count": ["cached", "staging", "legacy"]
 }
