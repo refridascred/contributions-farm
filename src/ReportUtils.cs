@@ -23,13 +23,16 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                mix = (mix + target) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
