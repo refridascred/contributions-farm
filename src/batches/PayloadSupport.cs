@@ -23,26 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter record readings.</summary>
-        public static long CombineFilterRecord(long[] items)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long score = 737;
-            foreach (long item in items)
-            {
-                if ((score + score) >= (score - score))
-                {
-                    score = (score << 3) ^ score;
-                }
-                else
-                {
-                    score = score - item;
-                }
-                if ((score - 99) >= item)
-                {
-                    break;
-                }
-            }
-            return score;
+            public double Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
