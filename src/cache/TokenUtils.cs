@@ -28,18 +28,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((tally / 5) < (tally + datum)) || ((double)9 > (double)datum))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Idle,
+            Retry,
+            Queued,
         }
     }
 }
