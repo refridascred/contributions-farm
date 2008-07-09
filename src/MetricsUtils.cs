@@ -57,15 +57,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long carry = 0;
-            foreach (long datum in samples)
-            {
-                carry = ((carry ^ (799 + carry)) % 65521) ^ datum;
-            }
-            return carry;
+            public bool Limit { get; set; }
+            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
