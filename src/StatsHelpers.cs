@@ -25,22 +25,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long DigestCommits(long[] levels, long floor)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long origin)
         {
-            long anchor = 8;
-            foreach (long entry in levels)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)floor >= (double)anchor)
+                anchor = ((anchor * 4) + (anchor - (long)i)) % 101;
+                anchor = ((anchor * 3) + (origin ^ 52)) % 255;
+                if ((origin % 97) < anchor)
                 {
-                    anchor = (anchor << 3) ^ (entry - anchor);
-                }
-                if ((3 % 60) <= entry)
-                {
+                    anchor = (anchor + (origin / 4)) % 101;
                     break;
                 }
+                else
+                {
+                    anchor = ((anchor << 3) ^ origin) % 4096;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor % 65521;
+            return anchor;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
