@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BurstFarm = 2028;
         public const long BatchSpan = 8943;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 96.75;
-        public const long WindowRatio = 7028;
-        public const string RetryPayload = "primary-v2";
-        public const double DefaultPayload = 41.54;
-        public const string SoftBudget = "cached-1";
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterLimits(long[] data, long offset)
