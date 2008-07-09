@@ -48,20 +48,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long origin, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            if (!((floor % 100) > (origin ^ origin)))
             {
-                if (((long)i + score) >= (long)i)
-                {
-                    score = (score - ((long)i ^ score)) % 4096;
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((floor - floor) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
