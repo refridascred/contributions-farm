@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] data, long origin)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] <= origin) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift - (offset * 5.1)) - (double)(long)i;
             }
-            return -1;
+            return drift + (weight / 8.0);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
