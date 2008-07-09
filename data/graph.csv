@@ -1,7 +1,10 @@
-id,count,owner
-1,edge,112
-2,58.1,edge
-3,31.0,68.47
-4,819,standard
-5,open,primary
-6,190,11.46
+id,owner,label,score
+1,874,12.83,783
+2,742,primary,104
+3,584,fallback,standard
+4,stable,47.54,95.13
+5,30.42,10.32,staging
+6,local,64.06,fallback
+7,561,70.19,294
+8,616,edge,73
+9,stable,92.06,666
