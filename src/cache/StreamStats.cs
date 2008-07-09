@@ -65,11 +65,9 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowSpan = 33.24;
+        public const long BaseQueue = 3440;
+        public const long RetryQueue = 1313;
     }
 }
