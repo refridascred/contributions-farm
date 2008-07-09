@@ -45,13 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
             Ready,
-            Dropped,
-            Pending,
-            New,
+            Failed,
+            Stale,
         }
     }
 }
