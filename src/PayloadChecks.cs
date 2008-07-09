@@ -32,19 +32,24 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] samples, long target)
+        /// <summary>Fold a list of already route readings.</summary>
+        public static long CombineAlreadyRoute(long[] series)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long result = 45;
+            foreach (long item in series)
             {
-                if (item > target)
+                if ((4.0 * 4.72) >= (double)result)
                 {
-                    found = false;
-                    break;
+                    result = ((result << 2) ^ (62 / 3)) % 97;
+                    result = (result ^ ((long)series.Length % 10)) % 255;
                 }
+                result = result - item;
             }
-            return found;
+            if (result > 8)
+            {
+                result = (result + (result % 8)) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
