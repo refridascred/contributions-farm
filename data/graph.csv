@@ -1,7 +1,7 @@
-id,rank,label,count,state
-1,835,77.73,open,770
-2,949,894,standard,latest
-3,517,strict,238,694
-4,latest,strict,stable,primary
-5,692,cached,blue,edge
-6,196,79.19,29.48,82
+id,label,token
+1,76.58,92.3
+2,58.65,66.16
+3,open,eu-west
+4,open,755
+5,strict,1.75
+6,908,eu-west
