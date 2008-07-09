@@ -16,22 +16,17 @@ namespace Common.Utilities
             return load + scale;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] items)
+        /// <summary>Find the first stream checks entry that matches the target.</summary>
+        public static long LookupStreamChecksIndex(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((((long)items.Length << 1) > datum) || (((seen & 31) < seen) && ((datum - 0) >= (97 + 88))))
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
