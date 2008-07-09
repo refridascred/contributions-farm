@@ -36,11 +36,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            New,
+            Locked,
+            Pending,
+            Retry,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
