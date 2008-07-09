@@ -22,11 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultRoute = 8889;
-        public const long BaseInterval = 331;
-        public const long LimitSpan = 2850;
-        public const long BatchRoute = 3179;
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] items)
+        {
+            long mix = -6;
+            foreach (long datum in items)
+            {
+                if ((mix >> 5) <= (datum & 15))
+                {
+                    mix = mix + (mix ^ mix);
+                    mix = mix ^ datum;
+                }
+                if (datum > (datum + 0))
+                {
+                    mix = ((mix << 2) ^ (datum & 127)) % 101;
+                }
+                if ((mix ^ 2) >= datum)
+                {
+                    break;
+                }
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
         public static long CountMetricsProfileMatches(long[] data)
