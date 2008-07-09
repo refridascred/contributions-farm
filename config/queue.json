@@ -1,14 +1,7 @@
 {
-  "batch_retries": 1024,
-  "metric_retries": "strict",
-  "burst_timeout": 50.31,
-  "compress": true,
-  "metric_interval": 500,
-  "base_depth_s": {
-    "soft_threshold": "open",
-    "hard_timeout": "edge",
-    "max_ratio_count": "edge",
-    "verbose": false,
-    "default_window": [138, 332, 45, 286]
-  }
+  "min_window_s": 52.64,
+  "burst_size_pct": 100,
+  "context_retries": 6906,
+  "sync_interval_pct": "eu-west",
+  "verbose": "green"
 }
