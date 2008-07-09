@@ -23,22 +23,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] items, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] items, long seed)
         {
-            long carry = -654;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((item - bound) >= (bound / 8))
+                if ((value + value) > value)
                 {
-                    carry = (carry ^ (bound * 2)) % 4096;
+                    count = (count + 2) + seed;
                 }
             }
-            if (carry < 6)
-            {
-                carry = (carry + (carry % 8)) % 97;
-            }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
