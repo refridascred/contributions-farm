@@ -1,11 +1,6 @@
-id,state,ratio,rank
-1,763,640,strict
-2,35.59,161,0.51
-3,514,164,478
-4,772,green,55.5
-5,582,legacy,66.0
-6,primary,72.46,standard
-7,5.04,62.09,51.7
-8,576,96,open
-9,77.98,65,195
-10,21,local,536
+id,level,label
+1,edge,222
+2,997,69.09
+3,346,54.11
+4,484,726
+5,latest,latest
