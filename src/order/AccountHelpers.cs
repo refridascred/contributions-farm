@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double StepWidth = 61.13;
+        public const double DefaultGithubfarm = 3.52;
+        public const long RetryGithubfarm = 6835;
 
         /// <summary>Compare every pair of stream graph readings.</summary>
         public static long CompareStreamGraphCount(long[] levels)
