@@ -6,13 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local green; do
+COMMAND_LIMIT=191
+log "limit is ${COMMAND_LIMIT}"
+
+for item in standard open green legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-stable}"
+mode="${1:-green}"
 case "${mode}" in
-    primary)
+    fallback)
         log "fast path"
         ;;
     *)
