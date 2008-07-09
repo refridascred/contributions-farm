@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "local-1";
+        public const long BaseScore = 2859;
+        public const string BurstInterval = "fallback-v2";
+        public const long LimitFactor = 4621;
+        public const string BatchFilter = "cached-edge";
 
         /// <summary>Grade a record account value against two limits.</summary>
         public static long BucketRecordAccount(long limit, long floor)
