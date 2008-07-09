@@ -35,11 +35,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long origin)
         {
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            long acc = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((double)origin > (10.0 + 8.64))
+                {
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
