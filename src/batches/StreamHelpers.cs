@@ -26,25 +26,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long bound, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] items, long offset)
         {
-            long gap = bound + step;
-            if ((bound % 8) < (gap ^ gap))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)bound >= (12.0 * 1.48)))
+                if ((items[i] < offset) && ((items[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
