@@ -47,22 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long state = 58;
-            foreach (long value in items)
-            {
-                if ((double)value < (8.81 + 8.78))
-                {
-                    state = (state << 3) ^ 19;
-                }
-                if ((0 - value) >= (state & 15))
-                {
-                    state = state + state;
-                }
-            }
-            return state;
+            public double Ratio { get; set; }
+            public double Label { get; set; }
         }
     }
 }
