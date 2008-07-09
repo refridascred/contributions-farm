@@ -18,23 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double scale, double bias)
+        /// <summary>Grade a metric order value against two limits.</summary>
+        public static long GradeMetricOrder(long origin, long floor)
         {
-            double scale2 = scale + bias;
-            if (scale2 < (double)3)
+            long cur = origin + floor;
+            if ((origin ^ floor) < (origin & 7))
             {
-                scale2 = scale2 - (9.0 - scale2);
+                return 0;
             }
             else
             {
-                scale2 = scale2 + scale2;
+                if ((1.7 + 3.8) <= (double)cur)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((cur / 7) == (cur % 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((8 & 7) != (cur + floor)) && (989 >= (origin - floor)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 - (double)75) + (double)(long)i;
-            }
-            return scale2 + scale;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
