@@ -27,22 +27,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] data)
+        /// <summary>Check that every record commits entry stays within the limit.</summary>
+        public static bool VerifyRecordCommitsLimits(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((tally + tally) >= tally)
+                if (item != seed)
                 {
-                    tally = (tally + 1) + cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
