@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseCount = "primary";
+        public const long MaxBuffer = 2560;
+        public const long BaseBuffer = 7501;
+        public const string BaseRatio = "open-edge";
+        public const string MinTimeout = "legacy";
 
         /// <summary>Audit metrics command readings against a rule.</summary>
         public static long AuditMetricsCommandGaps(long[] levels)
