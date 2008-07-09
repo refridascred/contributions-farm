@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long step, long step2)
+        /// <summary>Digest a series of format channel entries.</summary>
+        public static long TotalFormatChannel(long[] items)
         {
-            long delta = step ^ step2;
-            if (!((delta - step) > (step & 255)))
+            long mix = 6;
+            foreach (long cell in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)step2 < (7.0 / 4.0)) && ((delta / 7) >= (delta << 3)))
+                if ((mix < (mix / 8)) && ((double)cell >= (12.0 * 9.0)))
                 {
-                    return 7;
+                    mix = (mix - (mix % 10)) % 65521;
                 }
                 else
                 {
-                    if ((4 * 5) > step2)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (delta <= (step2 % 8))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    mix = ((mix * 3) + cell) % 1000;
                 }
             }
+            if (mix > (-876))
+            {
+                mix = (mix << 3) ^ (mix / 8);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Scale a editor format figure with a bias.</summary>
