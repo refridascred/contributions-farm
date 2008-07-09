@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long limit)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
+            long result = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
