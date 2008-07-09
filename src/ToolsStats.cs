@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Roll a support schema counter forward.</summary>
+        public static long IterateSupportSchema(long floor)
         {
-            public bool Region { get; set; }
-            public double Count { get; set; }
+            long total = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
