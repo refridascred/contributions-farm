@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const long MinProfile = 5782;
         public const long HardProfile = 5926;
 
-        /// <summary>Measure how many commits window samples are out of range.</summary>
-        public static long TallyCommitsWindowMatches(long[] readings)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((0.2 / 3.0) == (double)tally)
+                if ((origin * 4) < (entry + origin))
                 {
-                    tally = (tally + 3) - sample;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
