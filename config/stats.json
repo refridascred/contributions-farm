@@ -1,6 +1,12 @@
 {
-  "compress": "strict",
-  "readonly": 69,
-  "retry_ratio_ms": 3891,
-  "sync_interval_s": ["standard", "legacy", "fallback", "open"]
+  "contributi_retries": true,
+  "flush_capacity": 97.07,
+  "farm_window": {
+    "command_delay": 44,
+    "default_interval_count": 49,
+    "max_timeout_s": 250,
+    "cache_ttl_count": "legacy"
+  },
+  "format_delay": 60,
+  "base_capacity_s": 97.84
 }
