@@ -14,32 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long SortAlready(long step, long seed)
+        /// <summary>Check that every already support entry stays within the limit.</summary>
+        public static bool VerifyAlreadySupportLimits(long[] series, long offset)
         {
-            long edge = step + seed;
-            if (700 >= step)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (9.6 >= (double)edge)
+                if (entry <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (edge >= (seed - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Define order limits and defaults.</summary>
