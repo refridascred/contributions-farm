@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const string BatchSpan = "open-edge";
         public const string MinBatch = "cached";
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] data, long bound)
+        /// <summary>Count the cache entry entries that pass the check.</summary>
+        public static long AuditCacheEntryHits(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((146 - 287) < (658 - datum))
+                if ((sample + sample) < (seed + matches))
                 {
-                    tally = (tally + 1) + bound;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
