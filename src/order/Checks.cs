@@ -60,18 +60,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many entry graph samples are out of range.</summary>
-        public static long AuditEntryGraphMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((tally * 4) > (10 - entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double MinTimeout = 82.83;
+        public const double HardWidth = 34.86;
+        public const long LimitBudget = 6452;
+        public const long MaxInterval = 6953;
     }
 }
