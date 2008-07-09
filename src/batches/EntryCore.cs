@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] levels)
+        /// <summary>Count the order metrics entries that pass the check.</summary>
+        public static long AuditOrderMetricsHits(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((7.4 * 0.81) <= (double)datum)
+                if ((20.0 - 4.0) < (double)value)
                 {
-                    hits = hits + 3;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the order mode values.</summary>
