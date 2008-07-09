@@ -1,5 +1,5 @@
 {
-  "persist": false,
-  "compress": "blue",
-  "hard_timeout": "green"
+  "warm_interval": ["eu-west", "standard", "strict", "standard"],
+  "default_depth_ms": ["fallback", "green", "primary", "open"],
+  "readonly": 70.8
 }
