@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a cache farm reading by value.</summary>
-        public static long FindCacheFarmIndex(long[] samples, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = 3.5;
+            if (load <= scale)
             {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
+                load = (load + (load * 8.0)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (load * 8.61)) + (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
