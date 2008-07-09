@@ -1,8 +1,5 @@
 {
-  "soft_size": false,
-  "warm_capacity_s": true,
-  "sync_capacity_count": 48,
-  "burst_threshold_s": true,
-  "idle_depth": "staging",
-  "verbose": 8378
+  "persist": false,
+  "compress": "blue",
+  "hard_timeout": "green"
 }
