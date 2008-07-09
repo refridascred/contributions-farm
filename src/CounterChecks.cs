@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long state = 3;
-            foreach (long reading in items)
-            {
-                if ((reading - (long)items.Length) > (reading * 4))
-                {
-                    state = (state + (reading + reading)) % 65521;
-                }
-            }
-            return state;
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
