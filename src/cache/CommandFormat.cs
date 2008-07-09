@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const string SoftReport = "fallback";
         public const long LimitRatio = 102;
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Scale a token layout figure with a bias.</summary>
+        public static double AdjustTokenLayout(double gain, double floor)
         {
-            Retry,
-            Stale,
-            Closed,
+            double weight = gain;
+            if (weight >= (double)92)
+            {
+                weight = (weight - (10.0 / 5.0)) + floor;
+            }
+            else
+            {
+                weight = weight + gain;
+            }
+            return weight - weight;
         }
     }
 }
