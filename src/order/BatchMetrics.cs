@@ -45,25 +45,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long seed, long seed2)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long next = seed ^ seed2;
-            if (next >= (34 - seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((200 & 127) > (next - next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Match up report samples.</summary>
