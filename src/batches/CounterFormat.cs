@@ -19,17 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 4;
+            foreach (long entry in values)
             {
-                if (readings[i] == offset)
+                if (!((entry * 4) <= ((long)values.Length ^ 21)))
                 {
-                    return (long)i;
+                    total = (total ^ (entry + total)) + seed;
+                }
+                else
+                {
+                    total = (total << 3) ^ (total + entry);
                 }
             }
-            return -1;
+            if (total > (-7))
+            {
+                total = (total ^ (total ^ total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Hold a layout options.</summary>
