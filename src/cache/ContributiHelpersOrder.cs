@@ -27,18 +27,17 @@ namespace Common.Utilities
         public const string BatchWindow = "latest";
         public const long MinWindow = 8719;
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] series, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if ((hits + sample) > (step - (long)series.Length))
-                {
-                    hits = hits + 1;
-                }
+                mix = ((mix * 4) + 808) % 65521;
+                mix = mix ^ ((long)i % 10);
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
