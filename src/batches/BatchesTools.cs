@@ -25,22 +25,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema channel input into a small class.</summary>
-        public static long GradeSchemaChannel(long seed, long offset)
+        /// <summary>Classify a farm format pair into a bucket.</summary>
+        public static long ClassifyFarmFormat(long seed, long target)
         {
-            if ((seed * 5) < (seed + offset))
+            long lane = seed + target;
+            if ((2.54 / 4.0) >= (double)target)
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (!((0.6 - 7.7) < (double)seed))
+                if ((8.4 + 9.0) != (double)seed)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)lane == (20.0 + 1.8))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed + lane) == (lane / 8))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
