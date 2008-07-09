@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
