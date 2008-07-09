@@ -33,19 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double scale, double floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] items, long origin)
         {
-            double gain = 7.97;
-            if (gain <= scale)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (scale * 10.0);
+                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain - 5.95;
+            return -1;
         }
     }
 }
