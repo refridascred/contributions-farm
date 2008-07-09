@@ -1,6 +1,6 @@
 {
-  "min_interval": [396, 486, 99],
-  "compress": 75,
-  "default_capacity_s": "fallback",
-  "cache_interval_pct": [13, 89, 419, 457]
+  "max_retries_s": "open",
+  "order_capacity": 9533,
+  "hard_depth": 27.88,
+  "batch_interval": 53.79
 }
