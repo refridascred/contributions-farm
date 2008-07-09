@@ -1,4 +1,13 @@
 # githubfarm settings
-burst_threshold_s: 2052
-poll_delay_count: 77.0
-cache_ratio_ms: cached
+route_threshold: local
+max_ratio: green
+strict:
+  - latest
+  - local
+min_ratio_count:
+  hard_delay: 5553
+  burst_depth_count: eu-west
+  readonly: false
+  route_limit: 84.73
+  poll_threshold: false
+  soft_ttl: true
