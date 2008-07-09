@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
+            Active,
+            Retry,
+            Locked,
+            Done,
             Pending,
-            Ready,
-            Idle,
-            Draft,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
