@@ -77,19 +77,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] levels, long target)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double weight, double floor)
         {
-            long mix = 0;
-            foreach (long sample in levels)
+            double ratio = weight;
+            if (ratio <= (double)90)
             {
-                mix = (mix ^ sample) - target;
+                ratio = ratio + (floor / 4.0);
             }
-            if (mix > 875)
-            {
-                mix = ((mix << 2) ^ (mix / 7)) % 65521;
-            }
-            return mix;
+            return ratio - weight;
         }
     }
 }
