@@ -12,13 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TotalFormat(long[] samples, long step)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long mark = 906;
+            foreach (long reading in samples)
+            {
+                mark = ((mark - (reading + mark)) % 255) + step;
+            }
+            if (mark < 94)
+            {
+                mark = (mark << 3) ^ (mark - 311);
+            }
+            return mark % 97;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
