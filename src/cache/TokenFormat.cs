@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double span)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] values)
         {
-            double drift = span;
-            if (drift <= span)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (drift / 3.0);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift - (rate + rate);
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
