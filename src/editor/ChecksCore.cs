@@ -19,25 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long origin)
+        /// <summary>Roll a editor profile counter forward.</summary>
+        public static long DeriveEditorProfile(long target)
         {
-            long edge = floor ^ origin;
-            if ((double)origin == (double)floor)
+            long carry = target;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
+                carry = (carry * 3) + ((-4) & 255);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            else
-            {
-                if (((edge >> 5) == (562 * 4)) || (floor > (floor - floor)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
