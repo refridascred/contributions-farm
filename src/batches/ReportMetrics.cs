@@ -20,26 +20,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] levels, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long step)
         {
-            long result = 35;
-            foreach (long reading in levels)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((result * 4) >= (reading ^ step)))
+                if ((72 & 127) >= step)
                 {
-                    result = ((result << 2) ^ (step ^ result)) % 4096;
+                    carry = (carry ^ ((long)i - carry)) % 255;
+                    carry = (carry << 2) ^ (step << 3);
                 }
-                else
-                {
-                    result = (result << 2) ^ step;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (result > 9)
-            {
-                result = result ^ result;
-            }
-            return result % 4096;
+            return carry;
         }
     }
 }
