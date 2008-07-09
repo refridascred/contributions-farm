@@ -27,12 +27,12 @@ namespace Common.Utilities
         public const long BatchFactor = 8313;
         public const long BurstChecks = 1229;
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long step)
+        /// <summary>Look up the position of a schema entry sample.</summary>
+        public static long LookupSchemaEntryIndex(long[] samples, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) == 0))
+                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
