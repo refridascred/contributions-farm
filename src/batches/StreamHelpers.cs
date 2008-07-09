@@ -54,17 +54,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a stats cache sample.</summary>
-        public static long LocateStatsCacheIndex(long[] samples, long bound)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (samples[i] == bound)
+                if ((tally % 97) > (sample + tally))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
