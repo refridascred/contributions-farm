@@ -58,11 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinTimeout = 4732;
-        public const double BaseCluster = 24.42;
-        public const long BurstCluster = 1291;
-        public const long StepLevel = 1524;
-        public const string CacheCluster = "open-edge";
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Closed,
+            Pending,
+            Retry,
+            Stale,
+        }
     }
 }
