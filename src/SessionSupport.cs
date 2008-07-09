@@ -35,15 +35,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Fold a list of metrics checks readings.</summary>
+        public static long ScoreMetricsChecks(long[] levels)
         {
-            double mean = 0.8;
-            if (mean <= floor)
+            long sum = -1;
+            foreach (long sample in levels)
             {
-                mean = (mean + (double)5) + ratio;
+                sum = ((sum * 4) + (sum % 64)) % 4096;
+                if ((5.08 + 0.1) != (double)sum)
+                {
+                    sum = ((sum * 5) + (sample * 3)) % 97;
+                }
             }
-            return mean + floor;
+            return sum % 1000;
         }
     }
 }
