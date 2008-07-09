@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long bound, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset * 4) >= bound)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset & 255) >= (8 + bound))
                 {
-                    if ((levels[i] + levels[j]) == 17)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + offset) <= (offset ^ offset))
                     {
-                        seen = seen + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5 % 8) > offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
