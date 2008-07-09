@@ -22,10 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 1158;
-        public const string MinRatio = "stable-v2";
-        public const long SoftTimeout = 7666;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public long Offset { get; set; }
+            public bool Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Look up the position of a schema entry sample.</summary>
         public static long LookupSchemaEntryIndex(long[] samples, long target)
