@@ -43,22 +43,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples, long target)
         {
-            long mix = 284;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (datum >= (mix % 7))
+                if (((reading * 2) >= (reading - target)) && (target > (target ^ 515)))
                 {
-                    mix = (mix + (datum / 5)) % 255;
+                    count = count + 1;
                 }
                 else
                 {
-                    mix = mix + datum;
+                    count = count - 1;
                 }
             }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Hold a metric header.</summary>
