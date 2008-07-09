@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] data)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long mix = -12;
-            foreach (long sample in data)
-            {
-                if (!(43 > (sample * 2)))
-                {
-                    mix = (mix + (-7)) % 65521;
-                }
-            }
-            return mix;
+            Queued,
+            Synced,
+            Active,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Audit support readings against a rule.</summary>
