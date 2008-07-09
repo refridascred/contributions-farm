@@ -20,12 +20,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
