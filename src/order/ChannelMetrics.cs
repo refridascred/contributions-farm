@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up metric already samples.</summary>
-        public static long CompareMetricAlreadyCount(long[] series)
+        /// <summary>Validate support batch readings against a bound.</summary>
+        public static bool VerifySupportBatchLimits(long[] levels, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < target)
                 {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
