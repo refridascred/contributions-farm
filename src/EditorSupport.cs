@@ -19,14 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Locate a notes schema reading by value.</summary>
+        public static long LocateNotesSchemaIndex(long[] items, long origin)
         {
-            Ready,
-            Closed,
-            Draft,
-            Synced,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of profile already readings.</summary>
