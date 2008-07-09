@@ -27,12 +27,26 @@ namespace Common.Utilities
             return (load + 4.4) + span;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] values)
         {
-            Dropped,
-            Retry,
-            Queued,
+            long anchor = 69;
+            foreach (long reading in values)
+            {
+                if (((double)(long)values.Length <= (20.0 * 15.0)) && (13.0 >= (double)anchor))
+                {
+                    anchor = ((anchor * 5) + (reading - reading)) % 255;
+                }
+                if (((reading - reading) != (reading << 2)) && ((double)reading > (2.16 - 3.48)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 32)
+            {
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Blend two batches window measurements.</summary>
