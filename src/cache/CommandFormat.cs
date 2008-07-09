@@ -29,13 +29,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of commits cluster readings.</summary>
+        public static long ScoreCommitsCluster(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
+            long score = 3;
+            foreach (long sample in levels)
+            {
+                if (((-49) >> 5) <= (sample + sample))
+                {
+                    score = ((score * 4) + ((long)levels.Length - score)) % 97;
+                }
+                if ((388 + score) <= (offset << 3))
+                {
+                    break;
+                }
+            }
+            if (score > 982)
+            {
+                score = (score << 2) ^ (6 ^ offset);
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
