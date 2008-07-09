@@ -57,18 +57,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the checks support entries that pass the check.</summary>
-        public static long CountChecksSupportGaps(long[] readings, long target)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double rate = ratio * 19.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((6.35 - 7.3) == (double)matches) && (value < (26 * 4))) && ((target >> 2) != (matches & 7)))
-                {
-                    matches = matches + 1;
-                }
+                rate = ((rate - ratio) - (double)(long)i) - bias;
             }
-            return matches;
+            return rate - (ratio + rate);
         }
     }
 }
