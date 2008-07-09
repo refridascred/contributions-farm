@@ -13,24 +13,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long origin2)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsOutliers(long[] levels, long target)
         {
-            if ((5.73 + 3.7) != (double)origin2)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin2 ^ origin) > 582)
+                if (matches <= (matches ^ 426))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    matches = ((matches + 2) ^ value) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
