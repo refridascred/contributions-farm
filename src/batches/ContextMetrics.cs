@@ -37,10 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "cached";
-        public const string MaxGraph = "standard-v2";
-        public const string BurstSize = "open-v2";
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double ratio, double span)
