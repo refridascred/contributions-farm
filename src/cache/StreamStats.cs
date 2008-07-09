@@ -47,23 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long FoldCluster(long[] values)
+        /// <summary>Audit route layout readings against a rule.</summary>
+        public static long AuditRouteLayoutHits(long[] items, long origin)
         {
-            long sum = -95;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                sum = ((sum << 3) ^ sample) % 255;
-                if (15.0 <= (double)sum)
+                if ((hits + origin) < sample)
                 {
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (sum > 4)
-            {
-                sum = (sum - sum) % 1000;
-            }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
