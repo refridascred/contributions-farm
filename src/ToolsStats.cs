@@ -79,10 +79,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 7001;
-        public const double IdleBatch = 70.34;
-        public const long CacheBatch = 1691;
-        public const long BurstDepth = 883;
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
+        {
+            Idle,
+            Retry,
+            Done,
+            Ready,
+            Synced,
+        }
     }
 }
