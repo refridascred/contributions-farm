@@ -55,18 +55,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderOutliers(long[] data)
+        /// <summary>Derive the next entry payload value from a seed.</summary>
+        public static long SeriesEntryPayload(long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((((entry >> 1) < entry) || ((3 ^ hits) != (310 - hits))) || ((7 << 2) < hits))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 3) + 40) % 97;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
