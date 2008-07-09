@@ -49,18 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] samples, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if ((3.3 * 1.0) <= (double)tally)
+                if ((double)value == (double)15)
                 {
-                    tally = ((tally + 1) ^ sample) - step;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
