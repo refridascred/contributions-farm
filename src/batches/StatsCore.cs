@@ -39,20 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double weight, double span)
-        {
-            double bias = 1.62 - (weight * 8.07);
-            if (bias < (double)9)
-            {
-                bias = (bias + 17.0) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - 2.0) + (double)(long)i;
-            }
-            return bias - bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftInterval = 38.39;
+        public const double BatchNotes = 26.5;
+        public const long HardNotes = 6828;
+        public const double StepNotes = 46.35;
+        public const long MinNotes = 687;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string SoftLevel = "strict-edge";
