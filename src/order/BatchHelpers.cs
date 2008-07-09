@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter channel entry that matches the target.</summary>
-        public static long LookupFilterChannelIndex(long[] readings, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] items, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -654;
+            foreach (long item in items)
             {
-                if (readings[i] == target)
+                if ((item - bound) >= (bound / 8))
                 {
-                    return (long)i;
+                    carry = (carry ^ (bound * 2)) % 4096;
                 }
             }
-            return -1;
+            if (carry < 6)
+            {
+                carry = (carry + (carry % 8)) % 97;
+            }
+            return carry % 97;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
