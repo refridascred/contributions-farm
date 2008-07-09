@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Derive the next window session value from a seed.</summary>
+        public static long IterateWindowSession(long limit)
         {
-            Dropped,
-            Done,
-            Draft,
-            Stale,
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every queue profile entry stays within the limit.</summary>
