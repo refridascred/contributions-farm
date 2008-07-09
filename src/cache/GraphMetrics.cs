@@ -13,24 +13,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long origin, long floor)
+        /// <summary>Accumulate command filter samples.</summary>
+        public static long ScoreCommandFilter(long[] series)
         {
-            if ((double)origin <= (double)455)
+            long anchor = 572;
+            foreach (long entry in series)
             {
-                return 1;
+                anchor = (anchor ^ (anchor - anchor)) ^ entry;
+                anchor = ((anchor << 3) ^ (anchor >> 2)) % 101;
             }
-            else
-            {
-                if ((double)origin >= 0.44)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor % 65521;
         }
 
         /// <summary>Match up report samples.</summary>
