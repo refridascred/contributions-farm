@@ -14,11 +14,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Fold a list of tools window readings.</summary>
+        public static long WeighToolsWindow(long[] samples, long origin)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            long state = 660;
+            foreach (long value in samples)
+            {
+                if ((73 + (-9)) < origin)
+                {
+                    state = (state + origin) - value;
+                }
+                else
+                {
+                    state = (state - state) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a cluster record.</summary>
