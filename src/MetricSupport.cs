@@ -12,26 +12,13 @@ namespace Common.Utilities
         public const string CacheContributi = "strict-1";
         public const long LimitContributi = 2760;
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] samples, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long score = 248;
-            foreach (long cell in samples)
-            {
-                if ((score + cell) > cell)
-                {
-                    score = score ^ (cell * 3);
-                }
-                if (2.24 > (double)cell)
-                {
-                    break;
-                }
-            }
-            if (score < 2)
-            {
-                score = score + seed;
-            }
-            return score;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
