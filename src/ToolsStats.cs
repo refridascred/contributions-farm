@@ -71,18 +71,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value + value) <= ((-9) << 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 7001;
+        public const double IdleBatch = 70.34;
+        public const long CacheBatch = 1691;
+        public const long BurstDepth = 883;
     }
 }
