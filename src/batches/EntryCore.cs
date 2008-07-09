@@ -36,11 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two stats batch measurements.</summary>
-        public static double ProjectStatsBatch(double bias, double offset)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double rate = offset;
-            return rate + bias;
+            Locked,
+            Idle,
+            Failed,
         }
 
         /// <summary>Describe the support status values.</summary>
