@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ProjectChannel(double scale, double floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long floor)
         {
-            double mean = 8.38;
-            if (mean <= mean)
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                mean = (mean - (scale / 6.0)) - floor;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean + (13.0 + scale);
+            return score;
         }
 
         /// <summary>Compare every pair of stream graph readings.</summary>
