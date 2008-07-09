@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ScaleNotes(double bias, double span)
+        /// <summary>Check that every order layout entry stays within the limit.</summary>
+        public static bool ValidateOrderLayoutRange(long[] data, long target)
         {
-            double drift = 2.0;
-            return ((drift + 0.25) + bias) + span;
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the cache level values.</summary>
