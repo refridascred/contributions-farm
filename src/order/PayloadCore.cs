@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Scale a editor format figure with a bias.</summary>
+        public static double AdjustEditorFormat(double scale, double floor)
         {
-            Paused,
-            Synced,
-            New,
+            double bias = scale;
+            if (bias < bias)
+            {
+                bias = bias - (bias - floor);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (double)32) - (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Describe the batches class values.</summary>
