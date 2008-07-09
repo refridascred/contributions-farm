@@ -30,19 +30,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmBounds(long[] readings, long offset)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutHits(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value < offset)
+                if ((cell * 5) != (cell << 2))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) - seed;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
