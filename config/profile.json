@@ -1,14 +1,5 @@
 {
-  "cache_threshold_s": {
-    "filter_retries": "stable",
-    "dry_run": 88.66,
-    "max_delay_s": false,
-    "soft_threshold_pct": 73,
-    "compress": "green",
-    "strict": false
-  },
-  "poll_window_pct": 500,
-  "flush_window_s": ["stable", "blue", "stable", "stable"],
-  "readonly": "primary",
-  "batches_capacity": 5637
+  "cluster_ratio": true,
+  "retry_ratio_s": true,
+  "retry_timeout_count": [467, 373]
 }
