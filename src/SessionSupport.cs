@@ -47,19 +47,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double rate, double floor)
+        /// <summary>Find the first stream record entry that matches the target.</summary>
+        public static long FindStreamRecordIndex(long[] data, long origin)
         {
-            double load = rate;
-            if (load >= load)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = (load - (1.1 * 14.0)) - floor;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + load;
+            return -1;
         }
     }
 }
