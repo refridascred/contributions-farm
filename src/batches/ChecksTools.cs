@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double scale, double floor)
         {
-            Done,
-            Active,
-            Locked,
-            Retry,
-            Ready,
+            double scale2 = scale;
+            return (scale2 - (double)82) + floor;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
