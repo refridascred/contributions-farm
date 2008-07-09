@@ -23,32 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long floor)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long slot = target + floor;
-            if ((352 % 12) <= (target + slot))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)slot != (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot >> 5) < (target - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a filter record.</summary>
