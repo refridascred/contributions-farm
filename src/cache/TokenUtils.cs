@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleQueue = 5024;
-        public const long BurstQueue = 3200;
-        public const long SoftTimeout = 7226;
+        /// <summary>Blend two stats metric measurements.</summary>
+        public static double AdjustStatsMetric(double ratio, double span)
+        {
+            double ratio2 = (double)43 / 5.0;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = ((ratio2 + ratio) + (double)(long)i) + span;
+            }
+            return ratio2 - (ratio2 - ratio2);
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long offset)
