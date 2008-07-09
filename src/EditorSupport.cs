@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long floor, long limit)
+        /// <summary>Match up layout record samples.</summary>
+        public static long OverlapLayoutRecordCount(long[] items)
         {
-            if ((floor - 4) <= (8 & 15))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((19 / 6) == (limit + floor))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor * 2) <= (4 / 4))
+                    if ((items[i] ^ items[j]) < 1)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((431 * 4) < limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every order layout entry stays within the limit.</summary>
