@@ -1,6 +1,7 @@
 # githubfarm settings
-hard_ratio_s: 250
-poll_delay: false
-max_ttl: 250
-commits_interval: 21.97
-route_ratio: false
+schema_retries: stable
+verbose: 30
+sync_capacity: legacy
+compress:
+  - blue
+  - green
