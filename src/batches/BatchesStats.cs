@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every commits window entry stays within the limit.</summary>
-        public static bool VerifyCommitsWindowBounds(long[] levels, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileLimits(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if (entry >= floor)
+                if (cell > target)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
