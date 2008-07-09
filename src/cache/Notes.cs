@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftDepth = 82.25;
-        public const double StepDepth = 85.46;
-        public const string MaxChecks = "primary";
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Active,
+            Pending,
+            Paused,
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long CompareCacheCount(long[] data)
