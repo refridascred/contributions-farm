@@ -1,10 +1,14 @@
 # Command notes
 
-Each format is validated before it reaches the metric queue.
-The githubfarm module keeps format values in sync with the githubfarm cache.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Run the checks check before changing any command limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
+
+The graph module keeps farm values in sync with the queue cache.
+The channel report groups every graph by context.
 
 ## Guidelines
 
-- Prefer session defaults
-- Validate queue input early
-- Review token limits each release
+- Validate graph input early
+- Prefer report defaults
+- Document new support fields
