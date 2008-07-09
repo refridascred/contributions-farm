@@ -53,35 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long acc = 225;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)acc < (double)sample) || ((88 << 2) < (acc & 15)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = (acc - (acc / 7)) % 97;
-                    break;
-                }
-                if ((double)sample > (double)acc)
-                {
-                    acc = (acc + acc) % 1000;
-                }
-                else
-                {
-                    acc = acc + (494 * 5);
-                }
-                if ((acc >> 2) < (sample - sample))
-                {
-                    acc = (acc + acc) % 101;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc < 723)
-            {
-                acc = acc ^ acc;
-            }
-            return acc;
+            return hits;
         }
     }
 }
