@@ -28,15 +28,15 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Derive the next token contributi value from a seed.</summary>
-        public static long DeriveTokenContributi(long floor)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
+            double bias = ratio;
+            for (int i = 0; i < 3; i++)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                bias = (bias - bias) + (double)(long)i;
             }
-            return carry;
+            return bias - (span + span);
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
