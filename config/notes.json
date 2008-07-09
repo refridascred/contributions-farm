@@ -1,6 +1,5 @@
 {
-  "burst_interval_s": [180, 344, 95],
-  "batch_depth_count": true,
-  "channel_limit": ["blue", "stable"],
-  "readonly": "legacy"
+  "idle_ttl_pct": "legacy",
+  "soft_depth_count": [354, 376, 78],
+  "poll_timeout_s": "strict"
 }
