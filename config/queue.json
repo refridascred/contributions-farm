@@ -1,6 +1,8 @@
 {
-  "channel_size": 11,
-  "editor_interval": true,
-  "max_limit_count": true,
-  "strict": 9019
+  "default_interval_ms": [440, 53, 268, 60],
+  "default_timeout": 60,
+  "batches_limit": "cached",
+  "batches_retries": "latest",
+  "min_interval": 28.39,
+  "compress": ["staging", "open", "blue"]
 }
