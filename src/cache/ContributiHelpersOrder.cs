@@ -27,24 +27,18 @@ namespace Common.Utilities
         public const string BatchWindow = "latest";
         public const long MinWindow = 8719;
 
-        /// <summary>Classify a order layout pair into a bucket.</summary>
-        public static long BucketOrderLayout(long floor, long origin)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] series, long step)
         {
-            if (!((origin * 4) < (floor + 303)))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor * 2) <= floor) || ((5.8 * 12.0) == (double)origin))
+                if ((hits + sample) > (step - (long)series.Length))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
