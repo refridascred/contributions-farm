@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 8126;
-        public const long BatchBatches = 8384;
-        public const long CacheBatches = 6000;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 3968;
+        public const long HardRecord = 2904;
+        public const string IdleRecord = "staging-1";
+        public const long BaseInterval = 2718;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
