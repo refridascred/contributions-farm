@@ -36,10 +36,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 6854;
-        public const double BaseBudget = 53.61;
-        public const long MaxDepth = 7377;
-        public const long RetryBatches = 9426;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values)
+        {
+            long mix = -388;
+            foreach (long value in values)
+            {
+                if (((double)5 != (double)value) && (8.36 < (2.28 * 9.6)))
+                {
+                    mix = (mix * 3) + (value ^ mix);
+                }
+                if ((value << 2) >= (0 + value))
+                {
+                    break;
+                }
+            }
+            if (mix > 2)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
+        }
     }
 }
