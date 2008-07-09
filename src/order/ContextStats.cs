@@ -27,38 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long bound, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] data, long offset)
         {
-            if (bound >= (step + bound))
+            long score = 9;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((5.48 / 8.0) >= (double)step) && ((bound * 2) <= (856 - 0)))
+                if (((2.3 - 9.0) > (double)offset) || (((long)data.Length << 2) != (value ^ value)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (1 > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)bound < (6.9 + 2.06))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    score = (score - (offset - score)) % 101;
                 }
             }
+            if (score > 4)
+            {
+                score = ((score * 4) + (score / 5)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
