@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultSpan = 5897;
-        public const long CacheQueue = 8152;
-        public const long BatchCount = 802;
-        public const long BaseSpan = 9769;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long OverlapReportCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsLimits(long[] values, long offset)
