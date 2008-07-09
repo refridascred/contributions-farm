@@ -24,13 +24,25 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank stream commits input into a small class.</summary>
+        public static long SortStreamCommits(long limit, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public double Score { get; set; }
-            public bool Flag { get; set; }
+            long delta = limit ^ floor;
+            if ((double)delta == (double)limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(floor < (floor + floor)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
