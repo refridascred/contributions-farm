@@ -53,22 +53,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] series)
+        /// <summary>Count the route commits entries that pass the check.</summary>
+        public static long CountRouteCommitsHits(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((-70) <= item)
+                if ((entry * 2) > (count >> 1))
                 {
-                    seen = seen + 3;
+                    count = count + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
