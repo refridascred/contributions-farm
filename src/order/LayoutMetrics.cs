@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long limit)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long limit)
         {
-            if (origin > (limit + origin))
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                return 5;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((limit - 3) <= (origin - origin)) || (((-7) - origin) >= limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin >> 1) < limit) && (458 < (limit * 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Adjust a metric reading.</summary>
