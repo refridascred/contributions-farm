@@ -27,21 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout command readings.</summary>
-        public static long CompareLayoutCommandCount(long[] samples)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item > (matches + 467))
                 {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
