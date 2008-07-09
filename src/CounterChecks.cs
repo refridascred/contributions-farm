@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long OverlapMetricCount(long[] levels)
         {
-            Failed,
-            Retry,
-            Idle,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate report samples.</summary>
