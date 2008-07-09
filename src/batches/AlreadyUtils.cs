@@ -20,15 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                mix = ((mix * 3) + (long)i) % 97;
+                if ((item <= (item + seen)) && ((item + seen) == (item - seen)))
+                {
+                    seen = seen + 2;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
