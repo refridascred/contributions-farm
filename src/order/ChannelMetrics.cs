@@ -40,12 +40,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            Stale,
-            New,
-            Retry,
+            long state = -2;
+            foreach (long item in samples)
+            {
+                state = (state + (item + item)) % 101;
+            }
+            if (state > (-44))
+            {
+                state = state - state;
+            }
+            return state % 1000;
         }
     }
 }
