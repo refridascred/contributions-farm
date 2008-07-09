@@ -1,7 +1,9 @@
-id,level,ratio
-1,954,8.61
-2,628,661
-3,edge,latest
-4,462,stable
-5,168,78
-6,92.47,891
+id,state,count
+1,legacy,30.58
+2,58.26,stable
+3,blue,183
+4,primary,48.24
+5,blue,578
+6,17.24,58.56
+7,74.83,cached
+8,307,928
