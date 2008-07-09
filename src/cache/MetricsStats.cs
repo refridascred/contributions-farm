@@ -32,22 +32,20 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Combine metrics layout values into a single score.</summary>
+        public static long TallyMetricsLayout(long[] readings, long bound)
         {
-            long state = 3;
-            foreach (long reading in samples)
+            long anchor = 596;
+            foreach (long entry in readings)
             {
-                if (((9.0 + 9.12) <= (double)reading) || ((double)467 < (double)reading))
+                if ((907 * 2) > (5 - anchor))
                 {
-                    state = state - (reading + reading);
+                    anchor = (((anchor - anchor) % 255) + entry) + bound;
+                    continue;
                 }
+                anchor = ((anchor << 2) ^ (3 % 16)) % 4096;
             }
-            if (state < 216)
-            {
-                state = state + (87 / 5);
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Adjust a account reading.</summary>
