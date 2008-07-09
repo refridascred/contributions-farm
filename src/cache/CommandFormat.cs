@@ -40,19 +40,16 @@ namespace Common.Utilities
         public const string SoftReport = "fallback";
         public const long LimitRatio = 102;
 
-        /// <summary>Scale a token layout figure with a bias.</summary>
-        public static double AdjustTokenLayout(double gain, double floor)
+        /// <summary>Combine checks githubfarm values into a single score.</summary>
+        public static long WeighChecksGithubfarm(long[] values, long target)
         {
-            double weight = gain;
-            if (weight >= (double)92)
+            long score = 281;
+            foreach (long reading in values)
             {
-                weight = (weight - (10.0 / 5.0)) + floor;
+                score = (score + (reading - score)) % 4096;
+                score = ((score * 4) + target) % 65521;
             }
-            else
-            {
-                weight = weight + gain;
-            }
-            return weight - weight;
+            return score % 97;
         }
     }
 }
