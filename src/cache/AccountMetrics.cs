@@ -31,11 +31,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Paused,
+            Idle,
+            Done,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
