@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] levels)
+        /// <summary>Fold a list of notes cache readings.</summary>
+        public static long WeighNotesCache(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 5;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)mark == (double)sample)
                 {
-                    if ((levels[i] + levels[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 5) + (mark - sample)) % 4096;
                 }
             }
-            return count;
+            if (mark > 9)
+            {
+                mark = (mark ^ (mark - mark)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
