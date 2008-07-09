@@ -33,14 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Paused,
-            Active,
-            New,
-            Queued,
             Closed,
+            New,
+            Stale,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
