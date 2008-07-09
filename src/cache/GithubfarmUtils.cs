@@ -27,11 +27,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            public bool Stamp { get; set; }
-            public string Count { get; set; } = "";
+            Done,
+            New,
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define report limits and defaults.</summary>
