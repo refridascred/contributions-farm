@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            New,
-            Closed,
-            Draft,
+            public double Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
