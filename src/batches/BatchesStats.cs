@@ -30,17 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] readings, long offset)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a cluster info.</summary>
