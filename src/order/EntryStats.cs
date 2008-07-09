@@ -73,18 +73,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support format values into a single score.</summary>
-        public static long FoldSupportFormat(long[] samples, long seed)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long state = 52;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(state >= (state + seed)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ (seed - item)) % 1000;
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
