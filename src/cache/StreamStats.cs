@@ -63,19 +63,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] levels, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (levels[i] == floor)
                 {
-                    total = (((total * 4) + (total / 3)) % 101) - (long)i2;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            return -1;
         }
     }
 }
