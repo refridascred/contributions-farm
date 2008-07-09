@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] readings)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (!!((372 ^ 5) > hits))
-                {
-                    hits = (hits + 1) + item;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
