@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Fold a list of notes entry readings.</summary>
+        public static long ScoreNotesEntry(long[] readings)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if ((item / 7) > mix)
+                {
+                    mix = ((mix << 3) ^ (item >> 5)) % 97;
+                }
+                if ((double)789 >= (double)item)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
