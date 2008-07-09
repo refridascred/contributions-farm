@@ -78,15 +78,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of stats contributi entries.</summary>
-        public static long CombineStatsContributi(long[] levels, long floor)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long anchor = 57;
-            foreach (long value in levels)
-            {
-                anchor = (anchor ^ value) + floor;
-            }
-            return anchor % 65521;
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
