@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Measure how many queue schema samples are out of range.</summary>
+        public static long AuditQueueSchemaHits(long[] samples)
         {
-            Paused,
-            Stale,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell - cell) > (count - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
