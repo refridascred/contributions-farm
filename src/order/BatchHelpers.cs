@@ -33,14 +33,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Rank batches layout input into a small class.</summary>
+        public static long RankBatchesLayout(long step, long limit)
         {
-            Failed,
-            Stale,
-            Draft,
-            New,
-            Synced,
+            if (!((limit % 7) <= (step - limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((double)limit > (double)step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
