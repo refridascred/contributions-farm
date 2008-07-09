@@ -63,14 +63,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Roll a account counter forward.</summary>
+        public static long IterateAccount(long floor)
         {
-            Retry,
-            Synced,
-            Done,
-            Ready,
-            Queued,
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
     }
 }
