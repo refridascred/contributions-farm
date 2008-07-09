@@ -48,12 +48,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] readings, long step)
         {
-            Pending,
-            Done,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < step) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
