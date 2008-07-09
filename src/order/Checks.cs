@@ -49,14 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Audit context metric readings against a rule.</summary>
+        public static long AuditContextMetricHits(long[] values, long step)
         {
-            Closed,
-            Idle,
-            Dropped,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (datum > (step - step))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of counter buffer entries.</summary>
