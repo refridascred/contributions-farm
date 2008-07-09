@@ -33,24 +33,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Fold a list of already route readings.</summary>
-        public static long CombineAlreadyRoute(long[] series)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchBounds(long[] samples, long target)
         {
-            long result = 45;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((4.0 * 4.72) >= (double)result)
+                if (sample <= target)
                 {
-                    result = ((result << 2) ^ (62 / 3)) % 97;
-                    result = (result ^ ((long)series.Length % 10)) % 255;
+                    valid = false;
+                    break;
                 }
-                result = result - item;
             }
-            if (result > 8)
-            {
-                result = (result + (result % 8)) % 4096;
-            }
-            return result;
+            return valid;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
