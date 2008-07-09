@@ -38,19 +38,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] values, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] items)
         {
-            long score = 7;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score - score) ^ reading) + origin;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (score < 21)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the farm status values.</summary>
