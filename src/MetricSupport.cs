@@ -16,21 +16,26 @@ namespace Common.Utilities
             return drift + (weight / 8.0);
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] samples)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 248;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score + cell) > cell)
                 {
-                    if ((samples[i] + samples[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = score ^ (cell * 3);
+                }
+                if (2.24 > (double)cell)
+                {
+                    break;
                 }
             }
-            return matches;
+            if (score < 2)
+            {
+                score = score + seed;
+            }
+            return score;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
