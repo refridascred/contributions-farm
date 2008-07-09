@@ -50,19 +50,13 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Check that every stats metric entry stays within the limit.</summary>
-        public static bool GuardStatsMetricBounds(long[] values, long seed)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            bool valid = true;
-            foreach (long item in values)
-            {
-                if (item != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
