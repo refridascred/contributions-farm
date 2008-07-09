@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionOutliers(long[] readings, long offset)
+        /// <summary>Audit graph command readings against a rule.</summary>
+        public static long TallyGraphCommandHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((double)offset > (16.0 / 4.0))
+                if ((58 % 2) < (seen - datum))
                 {
-                    tally = (tally + 3) + datum;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
