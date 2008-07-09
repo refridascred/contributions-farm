@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double scale, double floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] data)
         {
-            double scale2 = scale;
-            return (scale2 - (double)82) + floor;
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((((double)reading == (6.0 + 5.0)) || ((double)reading == (2.3 + 18.0))) || ((double)reading <= 5.41))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
