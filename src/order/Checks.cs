@@ -59,22 +59,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] samples)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((hits & 3) <= (-53))
-                {
-                    hits = (hits + 3) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Idle,
+            Failed,
         }
     }
 }
