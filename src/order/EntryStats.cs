@@ -51,14 +51,18 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] samples)
         {
-            Pending,
-            Synced,
-            Failed,
-            Locked,
-            Stale,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample & 3) < (count - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
