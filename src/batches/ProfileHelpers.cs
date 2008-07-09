@@ -23,19 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] values, long step)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (((hits + 57) < (step + step)) || ((double)step >= 13.0))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepDepth = 269;
+        public const long MaxBuffer = 936;
+        public const long BatchInterval = 7366;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] samples)
