@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metric order value against two limits.</summary>
-        public static long GradeMetricOrder(long origin, long floor)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long cur = origin + floor;
-            if ((origin ^ floor) < (origin & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((1.7 + 3.8) <= (double)cur)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((cur / 7) == (cur % 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((8 & 7) != (cur + floor)) && (989 >= (origin - floor)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
