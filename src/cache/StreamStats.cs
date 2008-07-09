@@ -22,22 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long offset, long origin)
         {
-            long anchor = 3;
-            foreach (long value in items)
+            if ((double)offset < 19.0)
             {
-                if (((-57) % 16) >= (anchor & 63))
+                return 7;
+            }
+            else
+            {
+                if (!((5.07 / 8.0) < (double)offset))
                 {
-                    anchor = anchor - value;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset / 5) <= (offset - origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((18.0 / 6.0) == (double)origin)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (anchor > (-191))
-            {
-                anchor = (anchor - (anchor - anchor)) % 4096;
-            }
-            return anchor;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
