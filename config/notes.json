@@ -1,19 +1,5 @@
 {
-  "dry_run": "standard",
-  "persist": {
-    "idle_limit_pct": 56,
-    "hard_ttl_ms": {
-      "route_limit": 100,
-      "stream_delay": "standard",
-      "context_ttl": 48,
-      "enabled": "blue",
-      "base_window_count": true,
-      "contributi_threshold": ["blue", "blue"]
-    },
-    "min_timeout": "green"
-  },
-  "soft_capacity": ["strict", "eu-west", "legacy"],
-  "batch_size": "latest",
-  "default_size_ms": 24,
-  "strict": ["edge", "standard", "cached", "open"]
+  "batch_depth_ms": "cached",
+  "stats_window": "stable",
+  "default_depth_ms": "legacy"
 }
