@@ -33,11 +33,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultCount = 25.95;
-        public const long DefaultEntry = 8145;
-        public const string LimitRatio = "latest-edge";
-        public const string LimitEntry = "open";
-        public const long BurstEntry = 7181;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell - matches) > (cell + cell))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
