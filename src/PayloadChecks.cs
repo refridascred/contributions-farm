@@ -30,11 +30,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowRatio = 88.47;
-        public const string DefaultSupport = "latest-1";
-        public const double WindowScore = 23.1;
-        public const long MaxSpan = 2502;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultDepth = 8190;
+        public const long BaseBudget = 1351;
+        public const long MaxRatio = 4797;
+        public const long LimitRoute = 1015;
+        public const long DefaultLevel = 8672;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long seed, long target)
