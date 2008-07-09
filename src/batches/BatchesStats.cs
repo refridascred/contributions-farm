@@ -30,11 +30,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleScore = 7936;
-        public const long CacheSize = 2321;
-        public const long MinOrder = 3303;
-        public const double RetryOrder = 28.05;
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
