@@ -35,22 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TotalNotes(long[] items)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] readings, long limit)
         {
-            long score = 203;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (!(score >= 75))
+                if (cell > limit)
                 {
-                    score = (score ^ (score & 255)) + datum;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 4)
-            {
-                score = score - (7 >> 1);
-            }
-            return score;
+            return flag;
         }
     }
 }
