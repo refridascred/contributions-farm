@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepRatio = 4710;
-        public const long DefaultScore = 5655;
-        public const string MinRatio = "strict-1";
-        public const double BurstCommits = 5.77;
-        public const string DefaultCommits = "staging-1";
+        /// <summary>Check that every editor window entry stays within the limit.</summary>
+        public static bool CheckEditorWindowRange(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long limit, long origin)
