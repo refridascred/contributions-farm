@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Dropped,
-            Failed,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitStream = 4546;
+        public const string MinStream = "open-edge";
+        public const long LimitFactor = 3637;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long MatchGraphCount(long[] data)
