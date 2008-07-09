@@ -28,38 +28,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long seed)
+        /// <summary>Combine filter entry values into a single score.</summary>
+        public static long DigestFilterEntry(long[] data)
         {
-            if (((double)offset < (3.3 / 5.0)) && (69 < seed))
+            long sum = 45;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset > (3.39 / 2.0))
+                sum = (sum + (reading % 97)) % 1000;
+                if ((reading - (long)data.Length) > reading)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + (-7)) > offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (9.0 - 3.46))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
