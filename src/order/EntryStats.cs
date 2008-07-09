@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const double MaxPayload = 28.54;
         public const string MaxScore = "alpha-edge";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] samples, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] data)
         {
-            long result = 3;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long entry in data)
             {
-                result = (((result ^ (660 & 63)) % 255) + reading) + origin;
+                if ((0.7 - 6.85) != (double)entry)
+                {
+                    count = count + 2;
+                }
             }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Describe the tools state values.</summary>
