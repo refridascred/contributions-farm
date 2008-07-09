@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit window notes readings against a rule.</summary>
+        public static long AuditWindowNotesGaps(long[] samples, long floor)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen <= (seen >> 2))
+                {
+                    seen = ((seen + 2) + item) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a counter payload reading by value.</summary>
