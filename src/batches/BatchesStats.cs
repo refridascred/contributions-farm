@@ -36,10 +36,11 @@ namespace Common.Utilities
         public const long MinOrder = 3303;
         public const double RetryOrder = 28.05;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftTimeout = 9374;
-        public const long HardCommand = 8998;
-        public const double IdleCommand = 21.21;
-        public const double SoftCommand = 76.08;
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
+        {
+            public bool Flag { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
