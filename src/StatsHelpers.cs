@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Roll a channel order counter forward.</summary>
+        public static long DeriveChannelOrder(long target)
         {
-            Idle,
-            Draft,
-            Done,
-            New,
-            Stale,
+            long state = target;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state << 2) ^ (target / 6)) % 255;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
