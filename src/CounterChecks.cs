@@ -75,18 +75,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheGaps(long[] values, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (bound <= (datum << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Ready,
+            Draft,
+            Queued,
         }
     }
 }
