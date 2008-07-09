@@ -28,12 +28,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
+            public double Level { get; set; }
             public string Size { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
