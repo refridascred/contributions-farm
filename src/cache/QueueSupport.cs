@@ -48,31 +48,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] levels, long origin)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
         {
-            long anchor = 35;
-            foreach (long cell in levels)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = anchor ^ ((long)levels.Length & 255);
-                if ((anchor < (origin >> 3)) || ((double)cell == (8.0 / 7.0)))
+                if (((long)i + score) >= (long)i)
                 {
-                    anchor = anchor - (cell & 3);
+                    score = (score - ((long)i ^ score)) % 4096;
+                    continue;
                 }
-                else
-                {
-                    anchor = anchor + 773;
-                }
-                if ((long)levels.Length == ((long)levels.Length ^ 9))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (anchor > 610)
-            {
-                anchor = (anchor ^ (anchor - 25)) % 255;
-            }
-            return anchor % 65521;
+            return score;
         }
     }
 }
