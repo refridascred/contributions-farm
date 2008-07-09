@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long BucketMetric(long step, long floor)
+        /// <summary>Compare every pair of cache token readings.</summary>
+        public static long CompareCacheTokenCount(long[] samples)
         {
-            long step2 = step + floor;
-            if ((floor + step2) != (549 << 2))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (step <= (step2 - 45))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    if ((samples[i] ^ samples[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
