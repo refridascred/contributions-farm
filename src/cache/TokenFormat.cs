@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 53.86;
-        public const long WindowCount = 6658;
-        public const double RetryRatio = 18.54;
-        public const double MinSize = 46.81;
-        public const string HardSupport = "legacy";
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public long Total { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] readings, long limit)
