@@ -26,32 +26,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long ClassifyEntry(long step, long bound)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
-            long lane = step - bound;
-            if ((1.4 + 7.4) == (double)bound)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((step - step) > (lane + step)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((87 >= (step & 3)) || ((bound * 4) < (bound - bound)))
+                    if ((values[i] ^ values[j]) == 10)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
