@@ -33,13 +33,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 53;
+            foreach (long item in samples)
+            {
+                if ((item > (818 ^ item)) && (sum <= (item ^ item)))
+                {
+                    sum = ((sum * 4) + sum) % 101;
+                }
+                else
+                {
+                    sum = sum ^ (item + 660);
+                }
+                sum = ((sum * 5) + (item + (-31))) % 65521;
+                if ((293 + (long)samples.Length) >= (89 / 3))
+                {
+                    break;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
