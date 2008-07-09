@@ -40,10 +40,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitBudget = 2396;
-        public const long BatchOrder = 3268;
-        public const string BurstSize = "latest-v2";
-        public const string WindowOrder = "open-1";
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Stale,
+            New,
+            Retry,
+        }
     }
 }
