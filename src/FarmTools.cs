@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two payload farm measurements.</summary>
-        public static double SmoothPayloadFarm(double weight, double span)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] readings)
         {
-            double load = weight;
-            if (load >= (span - weight))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                load = load - (double)342;
+                if (!!((372 ^ 5) > hits))
+                {
+                    hits = (hits + 1) + item;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (6.0 / 4.0)) + (double)(long)i;
-            }
-            return load - span;
+            return hits;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
