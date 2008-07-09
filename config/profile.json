@@ -1,5 +1,12 @@
 {
-  "batch_limit_ms": 98,
-  "metric_capacity": false,
-  "command_retries": [246, 323, 237]
+  "verbose": 97.3,
+  "retry_size": "staging",
+  "batch_timeout_ms": 500,
+  "poll_ratio": {
+    "token_retries": 91.46,
+    "default_size_count": "green",
+    "audit": "cached",
+    "batch_size_pct": 10.1
+  },
+  "githubfarm_depth": "green"
 }
