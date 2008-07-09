@@ -42,10 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepBudget = 2173;
-        public const long CacheSize = 2617;
-        public const long CachePayload = 1857;
+        /// <summary>Measure how many commits window samples are out of range.</summary>
+        public static long TallyCommitsWindowMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((0.2 / 3.0) == (double)tally)
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportLimits(long[] series, long floor)
