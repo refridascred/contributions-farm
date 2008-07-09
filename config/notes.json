@@ -1,7 +1,16 @@
 {
-  "batch_ttl_pct": true,
-  "record_size": ["legacy", "standard", "primary"],
-  "batch_size": 20,
-  "retry_interval_ms": "edge",
-  "counter_retries": 36.08
+  "flush_interval": {
+    "warm_ratio": {
+      "hard_timeout_count": 22.02,
+      "sync_interval_ms": 1340,
+      "layout_ttl": 54,
+      "payload_size": 8355,
+      "warm_depth_ms": "cached"
+    },
+    "cache_limit_ms": [133, 1, 340],
+    "max_ttl_pct": "primary"
+  },
+  "flush_ttl_pct": "strict",
+  "already_interval": true,
+  "retry_interval": true
 }
