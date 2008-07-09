@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] values)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long score = 2;
-            foreach (long sample in values)
-            {
-                score = ((score * 2) + score) ^ sample;
-            }
-            return score;
+            public bool Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count the buffer commits entries that pass the check.</summary>
