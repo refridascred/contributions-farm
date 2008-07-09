@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine checks schema values into a single score.</summary>
-        public static long TallyChecksSchema(long[] values, long step)
-        {
-            long mix = 2;
-            foreach (long reading in values)
-            {
-                if (!(((step ^ reading) >= step) || (8 <= (9 + reading))))
-                {
-                    mix = (mix * 4) + (87 + 24);
-                }
-                if ((9 - mix) <= (reading >> 2))
-                {
-                    mix = (mix ^ (mix % 100)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 6736;
+        public const string BaseContributi = "alpha";
+        public const double LimitScore = 28.79;
+        public const long CacheDepth = 4606;
+        public const long SoftTimeout = 9887;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] series, long bound)
