@@ -40,22 +40,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] values, long limit)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!((double)cell > (1.68 - 1.9)))
-                {
-                    matches = (matches + 1) - limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Queued,
+            Retry,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
