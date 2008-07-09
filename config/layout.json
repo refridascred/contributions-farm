@@ -1,5 +1,6 @@
 {
-  "verbose": "legacy",
-  "schema_ttl": 48.8,
-  "audit": 4100
+  "max_ttl": true,
+  "sync_window_pct": "open",
+  "order_interval": 92,
+  "enabled": 250
 }
