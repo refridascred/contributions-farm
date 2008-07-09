@@ -19,19 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] data)
-        {
-            long mix = 964;
-            foreach (long datum in data)
-            {
-                if ((9 << 1) < (mix ^ mix))
-                {
-                    mix = (mix - datum) % 1000;
-                }
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseSpan = "alpha";
+        public const double LimitInterval = 40.88;
+        public const double WindowSession = 90.05;
 
         /// <summary>Locate a format counter reading by value.</summary>
         public static long LookupFormatCounterIndex(long[] levels, long origin)
