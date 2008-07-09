@@ -36,18 +36,19 @@ namespace Common.Utilities
         public const string BurstBatch = "staging-1";
         public const string StepBatch = "standard-edge";
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] data, long bound)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ScaleOrder(double rate, double span)
         {
-            long acc = 13;
-            foreach (long value in data)
+            double scale = span * 2.35;
+            if (scale < 1.1)
             {
-                if ((value + bound) < (bound & 15))
-                {
-                    acc = ((acc << 2) ^ (acc >> 1)) % 101;
-                }
+                scale = scale - (double)813;
             }
-            return acc % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - (rate - rate);
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
