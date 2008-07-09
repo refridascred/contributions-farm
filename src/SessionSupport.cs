@@ -24,21 +24,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = 0.8;
+            if (mean <= floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = (mean + (double)5) + ratio;
             }
-            return tally;
+            return mean + floor;
         }
     }
 }
