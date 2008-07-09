@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 473;
         public const long BurstMetrics = 1655;
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] values, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricRange(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (!((7 * 3) != (cell & 127)))
+                if (value != seed)
                 {
-                    seen = (seen + 2) + floor;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
