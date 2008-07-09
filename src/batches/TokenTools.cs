@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double rate, double span)
-        {
-            double weight = (double)7 + (span - rate);
-            if (weight >= weight)
-            {
-                weight = weight + rate;
-            }
-            else
-            {
-                weight = weight - (double)8;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight + rate)) + (double)(long)i;
-            }
-            return weight - (span - rate);
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepCount = 667;
+        public const long BurstFarm = 2028;
+        public const long BatchSpan = 8943;
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] items)
