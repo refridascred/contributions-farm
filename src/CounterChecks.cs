@@ -53,20 +53,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of checks editor readings.</summary>
-        public static long DigestChecksEditor(long[] values, long step)
-        {
-            long state = 96;
-            foreach (long sample in values)
-            {
-                state = (((state + ((-2) >> 4)) % 65521) + sample) - step;
-            }
-            if (state < 90)
-            {
-                state = (state ^ 0) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstSpan = 74.47;
+        public const double RetryGraph = 30.66;
+        public const long CacheGraph = 6543;
+        public const long BaseGraph = 4519;
+        public const long MinGraph = 7360;
 
         /// <summary>Count the cluster record entries that pass the check.</summary>
         public static long AuditClusterRecordHits(long[] readings)
