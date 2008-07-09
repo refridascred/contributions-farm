@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] data)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!((9.88 * 15.0) >= (double)(long)data.Length) || ((7.8 + 11.0) <= (double)hits))
-                {
-                    hits = (hits + 3) + reading;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank tools input into a small class.</summary>
