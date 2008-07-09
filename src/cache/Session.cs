@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Synced,
-            Active,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchLevel = 5791;
+        public const long CacheFarm = 9678;
+        public const long WindowFarm = 7048;
+        public const string StepInterval = "open-edge";
+        public const long StepFarm = 1448;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double ScaleGithubfarm(double weight, double bias)
