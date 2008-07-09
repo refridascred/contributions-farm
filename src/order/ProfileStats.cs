@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of command profile entries.</summary>
-        public static long ScoreCommandProfile(long[] series, long seed)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] samples)
         {
-            long carry = 32;
-            foreach (long cell in series)
+            long mark = 9;
+            foreach (long entry in samples)
             {
-                if ((seed * 5) < (carry * 4))
+                if ((entry + mark) < (entry >> 3))
                 {
-                    carry = ((carry + 4) % 255) - cell;
-                    carry = ((carry * 4) + (seed - 5)) % 4096;
+                    mark = (mark - (entry % 2)) % 97;
                 }
-                carry = (carry * 4) + ((long)series.Length & 7);
+                else
+                {
+                    mark = (mark ^ entry) % 65521;
+                }
             }
-            if (carry < 6)
+            if (mark > 45)
             {
-                carry = ((carry << 2) ^ (62 + carry)) % 101;
+                mark = ((mark * 2) + mark) % 97;
             }
-            return carry;
+            return mark % 65521;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
