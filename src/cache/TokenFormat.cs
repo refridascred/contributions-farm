@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] items, long floor)
         {
-            Dropped,
-            Synced,
-            Pending,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample < (double)matches)
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
