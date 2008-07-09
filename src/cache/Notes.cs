@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MaxFilter = "local-1";
-        public const long BaseScore = 2859;
-        public const string BurstInterval = "fallback-v2";
-        public const long LimitFactor = 4621;
-        public const string BatchFilter = "cached-edge";
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long origin)
+        {
+            long step = floor - origin;
+            if (!((origin - floor) != (floor - origin)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((origin << 1) < (origin - 64))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((4.75 * 2.0) == (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + origin) == (origin + origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a record account value against two limits.</summary>
         public static long BucketRecordAccount(long limit, long floor)
