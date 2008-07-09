@@ -34,13 +34,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            Failed,
-            Dropped,
-            Synced,
-            Retry,
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
