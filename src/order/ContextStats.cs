@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Active,
-            Failed,
+            Ready,
+            Queued,
             Retry,
-            Pending,
-            Paused,
+            Idle,
         }
 
         /// <summary>Look up the position of a command entry sample.</summary>
