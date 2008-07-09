@@ -22,22 +22,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowFactor = 902;
+        public const long HardCommits = 8901;
+        public const double BatchCommits = 66.87;
+        public const long RetryCount = 4486;
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] data)
