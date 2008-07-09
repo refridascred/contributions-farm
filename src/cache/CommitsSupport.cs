@@ -59,19 +59,21 @@ namespace Common.Utilities
         public const string WindowTools = "alpha-v2";
         public const long SoftTools = 5119;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples, long limit)
+        /// <summary>Compare every pair of checks already readings.</summary>
+        public static long PairChecksAlreadyCount(long[] readings)
         {
-            long mix = 66;
-            foreach (long sample in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 2) ^ (sample * 2)) % 97) + limit;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 81)
-            {
-                mix = ((mix << 3) ^ (mix - (-77))) % 1000;
-            }
-            return mix;
+            return hits;
         }
     }
 }
