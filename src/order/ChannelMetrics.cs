@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two record channel measurements.</summary>
-        public static double BlendRecordChannel(double gain, double offset)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] data, long seed)
         {
-            double load = 2.0 + offset;
-            if (load >= load)
+            bool found = true;
+            foreach (long value in data)
             {
-                load = load - gain;
+                if (value > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + 0.4) + (double)(long)i;
-            }
-            return load + (offset * 1.2);
+            return found;
         }
     }
 }
