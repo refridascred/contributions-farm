@@ -1,23 +1,5 @@
 {
-  "cache_interval": 250,
-  "default_threshold_count": "green",
-  "base_limit_ms": "standard",
-  "min_size_ms": true,
-  "persist": 24.76,
-  "base_ttl_ms": {
-    "retry_interval_s": "green",
-    "retry_retries_s": {
-      "burst_timeout_pct": "latest",
-      "min_ttl_s": 58.33,
-      "readonly": 73
-    },
-    "layout_limit": {
-      "min_size": 14.84,
-      "persist": 500,
-      "idle_delay": "edge",
-      "batch_delay_s": "green",
-      "cluster_depth": false,
-      "soft_size_s": 100
-    }
-  }
+  "channel_ratio": false,
+  "audit": 641,
+  "max_capacity_ms": 21
 }
