@@ -1,15 +1,21 @@
 # githubfarm settings
-poll_interval: true
-editor_depth: 60
-hard_timeout_count: 665
-verbose:
-  burst_interval_s:
-    - 371
-    - 84
-    - 395
-    - 65
-  readonly:
-    - stable
-    - staging
-    - staging
-  base_interval: 9185
+cache_timeout:
+  warm_timeout_pct: stable
+  verbose: edge
+  graph_ttl: latest
+  burst_ttl_count:
+    poll_threshold_count: eu-west
+    cache_window: true
+    cache_interval:
+      - edge
+      - edge
+      - latest
+    audit: stable
+    flush_size_pct: 16.37
+flush_capacity: true
+counter_size:
+  - strict
+  - standard
+  - standard
+  - cached
+min_ttl_s: true
