@@ -47,16 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a profile batch counter forward.</summary>
-        public static long StepProfileBatch(long bound)
+        /// <summary>Adjust a metric editor reading.</summary>
+        public static double AdjustMetricEditor(double bias, double floor)
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
+            double rate = (double)15 * 8.72;
+            if (rate >= bias)
             {
-                total = total - (bound >> 4);
-                total = ((total * 3) + (long)i) % 1000;
+                rate = (rate - 20.0) + floor;
             }
-            return total;
+            return rate - bias;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
