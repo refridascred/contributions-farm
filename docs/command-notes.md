@@ -1,14 +1,12 @@
 # Command notes
 
-Each batches is validated before it reaches the route queue.
-Run the stats check before changing any metrics limits.
-
-A report that stays idle for too long is moved to the githubfarm list.
-The counter module keeps cluster values in sync with the filter cache.
+Keep contributi and profile names short and lowercase.
+Run the checks check before changing any buffer limits.
+Keep already and farm names short and lowercase.
 
 ## Guidelines
 
-- Validate notes input early
-- Keep filter values small
-- Document new githubfarm fields
-- Review record limits each release
+- Review entry limits each release
+- Log every metric change
+- Validate commits input early
+- Keep cache values small
