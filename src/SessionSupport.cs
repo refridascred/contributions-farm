@@ -54,19 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metrics checks readings.</summary>
-        public static long ScoreMetricsChecks(long[] levels)
+        /// <summary>Find the first batch report entry that matches the target.</summary>
+        public static long FindBatchReportIndex(long[] readings, long step)
         {
-            long sum = -1;
-            foreach (long sample in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 4) + (sum % 64)) % 4096;
-                if ((5.08 + 0.1) != (double)sum)
+                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
                 {
-                    sum = ((sum * 5) + (sample * 3)) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 1000;
+            return -1;
         }
     }
 }
