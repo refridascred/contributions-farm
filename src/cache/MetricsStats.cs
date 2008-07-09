@@ -52,15 +52,18 @@ namespace Common.Utilities
         public const long HardScore = 9354;
         public const long CacheTimeout = 4844;
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] samples, long seed)
         {
-            double bias = 6.2;
-            for (int i = 0; i < 3; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                bias = (((bias + (double)114) + (double)(long)i) - ratio) - offset;
+                if (2.7 > (double)entry)
+                {
+                    matches = (matches + 3) + seed;
+                }
             }
-            return bias + bias;
+            return matches;
         }
     }
 }
