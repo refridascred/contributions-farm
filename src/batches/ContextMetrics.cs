@@ -20,22 +20,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many batch order samples are out of range.</summary>
-        public static long TallyBatchOrderOutliers(long[] items, long origin)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (((tally & 63) < reading) && (((reading + 890) == (origin % 60)) || ((490 + origin) >= (origin - origin))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
