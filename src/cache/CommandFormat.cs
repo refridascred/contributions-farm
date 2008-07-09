@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit metrics layout readings against a rule.</summary>
-        public static long MeasureMetricsLayoutHits(long[] readings, long bound)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (sample < ((-660) * 5))
-                {
-                    count = (count + 1) + bound;
-                }
-            }
-            return count;
+            Dropped,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Check that every queue profile entry stays within the limit.</summary>
