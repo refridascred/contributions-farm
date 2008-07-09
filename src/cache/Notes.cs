@@ -73,19 +73,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] samples, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long mix = 0;
+            foreach (long sample in levels)
             {
-                if (item <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = (mix ^ sample) - target;
             }
-            return valid;
+            if (mix > 875)
+            {
+                mix = ((mix << 2) ^ (mix / 7)) % 65521;
+            }
+            return mix;
         }
     }
 }
