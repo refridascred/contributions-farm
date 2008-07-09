@@ -26,24 +26,22 @@ namespace Common.Utilities
         public const long BurstCount = 3961;
         public const long BaseAlready = 962;
 
-        /// <summary>Combine checks account values into a single score.</summary>
-        public static long TotalChecksAccount(long[] values, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] data, long limit)
         {
-            long acc = 89;
-            foreach (long sample in values)
+            long mark = 4;
+            foreach (long sample in data)
             {
-                acc = ((acc - (acc / 9)) % 97) + sample;
-                if ((acc - floor) < (floor * 3))
+                if ((7 + limit) >= (mark % 12))
                 {
-                    break;
+                    mark = (mark + (mark + limit)) + sample;
                 }
                 else
                 {
-                    acc = acc - (acc - acc);
+                    mark = (mark + 31) % 1000;
                 }
-                acc = (acc * 4) + (floor & 15);
             }
-            return acc % 97;
+            return mark;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
