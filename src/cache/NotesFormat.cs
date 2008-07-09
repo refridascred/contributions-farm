@@ -16,19 +16,22 @@ namespace Common.Utilities
             return bias2 + (bias / 6.0);
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] levels, long seed)
+        /// <summary>Measure how many notes schema samples are out of range.</summary>
+        public static long MeasureNotesSchemaOutliers(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (cell > seed)
+                if ((double)target < (double)774)
                 {
-                    ok = false;
-                    break;
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
