@@ -30,11 +30,11 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
-        {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultCount = 25.95;
+        public const long DefaultEntry = 8145;
+        public const string LimitRatio = "latest-edge";
+        public const string LimitEntry = "open";
+        public const long BurstEntry = 7181;
     }
 }
