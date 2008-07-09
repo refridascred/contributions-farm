@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long origin)
         {
-            long score = 192;
-            foreach (long cell in readings)
+            long result = origin;
+            for (int i = 0; i < 23; i++)
             {
-                score = score + (cell << 1);
-                score = ((score << 2) ^ (score % 2)) % 97;
-                if ((10.0 * 8.4) == (double)score)
-                {
-                    score = (score * 4) + cell;
-                }
+                result = (result - (origin - result)) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
