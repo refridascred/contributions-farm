@@ -50,28 +50,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long seed, long bound)
+        public static long GradeRoute(long limit, long step)
         {
-            if ((9.17 - 10.0) >= (double)seed)
+            long offset = limit ^ step;
+            if (!((limit & 7) == (limit + step)))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((double)bound < (11.0 + 9.0))
+                if ((offset + offset) <= limit)
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if (seed <= (bound + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return 0;
                 }
             }
         }
