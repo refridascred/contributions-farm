@@ -22,23 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch filter samples.</summary>
-        public static long FoldBatchFilter(long[] items)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long sum = 92;
-            foreach (long reading in items)
-            {
-                if (((8 / 9) < (414 + reading)) || (reading <= (1 ^ 0)))
-                {
-                    sum = (sum + 7) % 97;
-                }
-                sum = (sum << 2) ^ 8;
-            }
-            if (sum > 3)
-            {
-                sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
-            }
-            return sum;
+            Active,
+            Synced,
+            Paused,
+            Locked,
+            Idle,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
