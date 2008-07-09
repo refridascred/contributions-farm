@@ -13,17 +13,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] data, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (data[i] <= target)
+                if ((((318 % 3) > (seen % 10)) && ((double)target <= (7.65 - 7.25))) && (seen >= (seen << 2)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + cell;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a cache stats.</summary>
