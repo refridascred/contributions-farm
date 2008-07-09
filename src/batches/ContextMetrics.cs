@@ -48,18 +48,17 @@ namespace Common.Utilities
         public const long BurstSpan = 2384;
         public const long MaxTimeout = 7152;
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values)
+        /// <summary>Locate a schema payload reading by value.</summary>
+        public static long SeekSchemaPayloadIndex(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((reading & 1) != (981 >> 3))
+                if (levels[i] <= floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
