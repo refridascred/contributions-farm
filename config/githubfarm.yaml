@@ -1,6 +1,10 @@
 # githubfarm settings
-strict: 1024
-max_threshold_ms: 500
-base_limit_s: local
-base_capacity: green
-idle_retries: 36
+editor_threshold: 6236
+queue_ttl: true
+queue_timeout: 15
+entry_interval:
+  - 163
+  - 396
+  - 304
+cache_capacity_count: false
+min_ratio: 72
