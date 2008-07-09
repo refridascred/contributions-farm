@@ -5,30 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] items, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] series, long floor)
         {
-            long carry = 19;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((5.5 - 3.44) < (double)datum) && ((target - target) <= ((long)items.Length & 1)))
+                if (series[i] < floor)
                 {
-                    carry = carry - (target - carry);
-                }
-                else
-                {
-                    carry = (carry + datum) % 255;
-                }
-                if ((target - target) <= datum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 178)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
