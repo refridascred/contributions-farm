@@ -1,7 +1,4 @@
 # githubfarm settings
-cache_depth: true
-idle_depth_pct: false
-min_delay_pct: 56.52
-retry_timeout: edge
-poll_ratio_pct: 30
-burst_delay_ms: standard
+burst_threshold_s: 2052
+poll_delay_count: 77.0
+cache_ratio_ms: cached
