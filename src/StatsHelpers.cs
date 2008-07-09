@@ -39,21 +39,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] series)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((limit - 91) == (seed & 63))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!(1 < (seed << 3)))
                 {
-                    if ((series[i] ^ series[j]) < 16)
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit & 63) < (seed - 92)))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit counter metric readings against a rule.</summary>
