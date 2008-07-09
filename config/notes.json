@@ -1,7 +1,19 @@
 {
-  "flush_depth_ms": 500,
-  "strict": ["cached", "legacy"],
-  "verbose": 9593,
-  "audit": true,
-  "checks_interval": 40.71
+  "dry_run": "standard",
+  "persist": {
+    "idle_limit_pct": 56,
+    "hard_ttl_ms": {
+      "route_limit": 100,
+      "stream_delay": "standard",
+      "context_ttl": 48,
+      "enabled": "blue",
+      "base_window_count": true,
+      "contributi_threshold": ["blue", "blue"]
+    },
+    "min_timeout": "green"
+  },
+  "soft_capacity": ["strict", "eu-west", "legacy"],
+  "batch_size": "latest",
+  "default_size_ms": 24,
+  "strict": ["edge", "standard", "cached", "open"]
 }
