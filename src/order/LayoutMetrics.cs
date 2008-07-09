@@ -49,22 +49,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] items)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long result = 1;
-            foreach (long reading in items)
-            {
-                if (2.8 <= (double)reading)
-                {
-                    result = ((result * 3) + (reading & 255)) % 255;
-                }
-            }
-            if (result < 7)
-            {
-                result = result ^ (29 * 5);
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
