@@ -29,19 +29,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Accumulate notes checks samples.</summary>
+        public static long ScoreNotesChecks(long[] items)
         {
-            long acc = 96;
-            foreach (long reading in data)
+            long result = -75;
+            foreach (long datum in items)
             {
-                acc = ((acc * 5) + (acc + reading)) % 255;
+                result = (result + (4 ^ datum)) % 101;
             }
-            if (acc > 348)
-            {
-                acc = (acc - (acc % 24)) % 4096;
-            }
-            return acc % 65521;
+            return result;
         }
 
         /// <summary>Accumulate session tools samples.</summary>
