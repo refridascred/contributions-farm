@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] items)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((datum & 3) == (tally + datum)) && ((datum * 3) <= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Accumulate route samples.</summary>
