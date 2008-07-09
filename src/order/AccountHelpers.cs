@@ -45,15 +45,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double SmoothStream(double weight, double span)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] data, long seed)
         {
-            double weight2 = (double)(278 + 606);
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                weight2 = (((weight2 + (weight2 * 1.48)) + (double)(long)i) - weight) - span;
+                if (((count - count) < (826 ^ cell)) && ((462 / 3) >= (count % 2)))
+                {
+                    count = (count + 1) + seed;
+                }
             }
-            return weight2 + (double)(-4);
+            return count;
         }
 
         /// <summary>Look up the position of a already queue sample.</summary>
