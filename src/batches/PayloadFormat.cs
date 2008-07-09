@@ -61,18 +61,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Audit commits record readings against a rule.</summary>
-        public static long AuditCommitsRecordMatches(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((value << 2) > (value ^ value))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Token { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
