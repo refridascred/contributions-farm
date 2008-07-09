@@ -36,18 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] data, long step)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double weight, double span)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double bias = 1.62 - (weight * 8.07);
+            if (bias < (double)9)
             {
-                if ((double)sample <= (7.5 * 7.0))
-                {
-                    matches = (matches + 3) - step;
-                }
+                bias = (bias + 17.0) + span;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - 2.0) + (double)(long)i;
+            }
+            return bias - bias;
         }
 
         /// <summary>Rank stats account input into a small class.</summary>
