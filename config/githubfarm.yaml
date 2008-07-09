@@ -1,23 +1,8 @@
 # githubfarm settings
-strict:
-  cache_window: edge
-  session_threshold:
-    stream_limit: 53
-    record_size: fallback
-    burst_retries_ms: staging
-    base_limit_s: blue
-    batch_window_count: latest
-  batches_ratio: 6084
-warm_interval_s:
-  poll_ttl: 50.61
-  min_retries_s: eu-west
-  min_timeout: 1655
-  persist: 39.93
-  compress:
-    - 70
-    - 409
-    - 24
-  graph_limit: 20
-min_depth_pct: cached
-batch_capacity_s: 52.22
-warm_ratio_ms: 94.99
+sync_limit_count: standard
+enabled:
+  - 474
+  - 45
+  - 40
+  - 175
+queue_capacity: 69.8
