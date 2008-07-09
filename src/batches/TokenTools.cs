@@ -30,18 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelGaps(long[] samples, long floor)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((hits < (floor - hits)) && ((double)hits <= (14.0 - 3.7)))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Active,
+            Stale,
+            Pending,
+            Idle,
+            Done,
         }
     }
 }
