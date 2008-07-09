@@ -69,11 +69,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheCluster = 4775;
-        public const long BaseCluster = 6855;
-        public const long RetrySize = 3228;
-        public const long HardCluster = 4047;
-        public const long BatchCluster = 9286;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsLimits(long[] series, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
