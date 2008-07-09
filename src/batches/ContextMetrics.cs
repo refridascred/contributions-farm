@@ -17,18 +17,11 @@ namespace Common.Utilities
         public const long RetryMetric = 9663;
         public const string WindowMetric = "stable-v2";
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)count == (9.19 * 0.4))
-                {
-                    count = (count + 3) - cell;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Scale a channel farm figure with a bias.</summary>
