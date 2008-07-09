@@ -1,32 +1,15 @@
 # githubfarm settings
-strict:
-  batch_window_ms:
-    - 125
-    - 25
-  audit:
-    - 162
-    - 193
-  base_threshold:
-    idle_ttl_pct: 54.86
-    entry_size: 62.09
-    burst_depth: strict
-    audit: fallback
-    counter_capacity:
-      - staging
-      - legacy
-      - primary
-      - eu-west
-    compress: 5.39
-  poll_retries: staging
-dry_run: 6
-cache_retries:
-  - 247
-  - 103
-  - 385
-  - 243
-audit:
-  - 313
-  - 94
-  - 92
-  - 317
-command_retries: true
+poll_interval: true
+editor_depth: 60
+hard_timeout_count: 665
+verbose:
+  burst_interval_s:
+    - 371
+    - 84
+    - 395
+    - 65
+  readonly:
+    - stable
+    - staging
+    - staging
+  base_interval: 9185
