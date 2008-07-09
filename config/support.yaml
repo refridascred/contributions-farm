@@ -1,4 +1,18 @@
 # support settings
-metric_capacity: 82.07
-poll_interval_s: false
-poll_retries_s: staging
+readonly:
+  - 92
+  - 435
+base_size: 8939
+min_delay: 38.02
+flush_limit_pct: legacy
+soft_timeout:
+  strict:
+    idle_window_s: false
+    warm_depth_ms: 30
+    batch_ttl_count: 7694
+    max_threshold: staging
+    batch_interval_pct: 13.32
+    githubfarm_capacity: 36.84
+  readonly: blue
+  retry_size_count: strict
+  metric_interval: false
