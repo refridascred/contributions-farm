@@ -32,14 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Dropped,
-            Closed,
+            Queued,
             Failed,
-            Stale,
-            Idle,
+            Retry,
+            Paused,
         }
 
         /// <summary>Blend two metrics measurements.</summary>
