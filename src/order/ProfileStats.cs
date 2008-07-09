@@ -27,18 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics queue samples are out of range.</summary>
-        public static long CountMetricsQueueGaps(long[] series, long floor)
+        /// <summary>Combine githubfarm order values into a single score.</summary>
+        public static long WeighGithubfarmOrder(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long anchor = 2;
+            foreach (long reading in readings)
             {
-                if (((double)tally != (0.7 - 8.9)) || (((entry + tally) >= floor) || (9 < (entry << 3))))
+                if ((1.77 - 9.5) != (double)reading)
                 {
-                    tally = tally + 1;
+                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 97;
                 }
             }
-            return tally;
+            if (anchor < 4)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
