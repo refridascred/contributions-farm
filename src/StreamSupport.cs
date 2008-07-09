@@ -15,19 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metric editor samples are out of range.</summary>
-        public static long AuditMetricEditorHits(long[] levels)
-        {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (!((5.2 / 8.0) <= (double)sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchCluster = "local-edge";
+        public const long IdleCluster = 1188;
+        public const string IdleScore = "standard-v2";
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
