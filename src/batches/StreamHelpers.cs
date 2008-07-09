@@ -69,10 +69,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double WindowAccount = 47.99;
-        public const string MinTimeout = "staging-v2";
-        public const long CacheTimeout = 9934;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public double Stamp { get; set; }
+            public double Count { get; set; }
+            public string Flag { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long MeasureNotesMatches(long[] items, long bound)
