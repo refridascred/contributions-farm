@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Rank payload session input into a small class.</summary>
+        public static long ClassifyPayloadSession(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if (origin <= (91 + origin))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((bound - origin) >= (origin - 93)) && ((7.4 + 8.1) != (double)bound))
                 {
-                    if ((data[i] - data[j]) > 13)
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 255) < (735 + origin))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin != (9.1 - 4.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a context record.</summary>
