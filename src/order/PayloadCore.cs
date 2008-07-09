@@ -38,18 +38,14 @@ namespace Common.Utilities
             return scale + (8.14 * 10.0);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] levels, long limit)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (6.83 > (double)sample)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Synced,
+            Retry,
+            New,
         }
 
         /// <summary>Hold a order entry.</summary>
