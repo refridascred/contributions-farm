@@ -51,15 +51,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph context entries.</summary>
-        public static long DigestGraphContext(long[] values, long step)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            long score = 8;
-            foreach (long item in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score + score) - item) - step;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate filter command samples.</summary>
