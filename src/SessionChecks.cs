@@ -31,31 +31,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long GradeFarm(long bound, long limit)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double rate, double bias)
         {
-            if (!((double)limit <= (5.0 / 8.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((284 - limit) <= (bound << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound - limit) <= (2 ^ limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double load = 2.47;
+            return (load + (load - bias)) + rate;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
