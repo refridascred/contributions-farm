@@ -1,6 +1,7 @@
-id,ratio
-1,cached
-2,56.39
-3,strict
-4,blue
-5,open
+id,active,level,owner,count
+1,407,50,standard,28.74
+2,208,20,281,open
+3,10.15,169,299,78.02
+4,916,695,38.33,936
+5,70.63,613,426,92.27
+6,317,local,eu-west,767
