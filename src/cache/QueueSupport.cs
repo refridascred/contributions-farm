@@ -48,24 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long origin, long floor)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if (!((floor % 100) > (origin ^ origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) > floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Paused,
+            Draft,
+            Queued,
         }
     }
 }
