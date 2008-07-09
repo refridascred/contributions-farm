@@ -50,12 +50,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Adjust a account reading.</summary>
+        public static double AdjustAccount(double scale, double offset)
         {
-            Closed,
-            New,
-            Done,
+            double weight = scale - (double)33;
+            if (weight > (weight - offset))
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight - (4.8 - offset);
+            }
+            return weight + scale;
         }
     }
 }
