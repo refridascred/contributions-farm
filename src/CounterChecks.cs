@@ -67,38 +67,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank cache layout input into a small class.</summary>
-        public static long ClassifyCacheLayout(long origin, long seed)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double weight, double bias)
         {
-            if ((seed + 128) <= origin)
+            double drift = (double)((-467) - 38);
+            if (drift >= 1.09)
             {
-                return 8;
+                drift = (drift + bias) + weight;
             }
-            else
-            {
-                if ((seed - 5) >= origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed + origin) != (seed ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - origin) > (origin ^ seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return drift + (bias + 5.0);
         }
     }
 }
