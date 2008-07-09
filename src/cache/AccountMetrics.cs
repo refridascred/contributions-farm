@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Combine format checks values into a single score.</summary>
+        public static long FoldFormatChecks(long[] levels, long seed)
         {
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            long anchor = 95;
+            foreach (long cell in levels)
+            {
+                if (cell >= (seed & 255))
+                {
+                    anchor = ((anchor * 4) + (cell * 5)) % 4096;
+                }
+                if ((seed >> 1) >= seed)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
