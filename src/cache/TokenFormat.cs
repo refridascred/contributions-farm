@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Audit context payload readings against a rule.</summary>
+        public static long TallyContextPayloadGaps(long[] values, long seed)
         {
-            Draft,
-            Pending,
-            Locked,
-            Retry,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((double)seed >= (double)55) && ((7 & 7) != (item - seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of checks context entries.</summary>
