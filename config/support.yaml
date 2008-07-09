@@ -1,5 +1,7 @@
 # support settings
-default_threshold_pct: eu-west
-warm_ttl_pct: 3883
-compress: cached
-retry_window_pct: 38.8
+hard_depth_s: true
+tools_depth: 3882
+verbose: strict
+retry_limit_s: 2821
+soft_interval: 60
+sync_timeout_s: blue
