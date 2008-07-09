@@ -27,17 +27,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] readings, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
+                if ((965 * 2) < seen)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
