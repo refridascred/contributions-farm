@@ -34,22 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up buffer farm samples.</summary>
-        public static long OverlapBufferFarmCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardWidth = 377;
+        public const string BaseSize = "stable";
+        public const string SoftWidth = "fallback";
+        public const string WindowCommand = "alpha-edge";
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
