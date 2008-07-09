@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many schema record samples are out of range.</summary>
-        public static long CountSchemaRecordGaps(long[] values, long step)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if ((4.07 + 3.8) < (double)value)
+                if (sample >= seed)
                 {
-                    tally = (tally + 2) + step;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
