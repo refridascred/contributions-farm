@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging latest edge; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    edge)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=295
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
