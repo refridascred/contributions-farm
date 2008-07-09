@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric core helpers.</summary>
     public static class MetricCore
     {
-        /// <summary>Scale a session context figure with a bias.</summary>
-        public static double SmoothSessionContext(double rate, double offset)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            double drift = (double)(591 / 7);
-            if (drift >= (drift + rate))
-            {
-                drift = drift + (double)97;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (offset * 0.82)) - (double)(long)i;
-            }
-            return drift - 9.0;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
