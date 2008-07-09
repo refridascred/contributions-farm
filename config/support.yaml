@@ -1,7 +1,39 @@
 # support settings
-support_window: 53.94
-enabled:
-  warm_depth_ms: 16
-  counter_ttl: 2613
-  stats_ratio: open
-poll_retries_ms: 1024
+idle_timeout_ms: 59.4
+batch_threshold:
+  dry_run: 67
+  strict:
+    warm_threshold_s: true
+    soft_delay_count: 1024
+    format_ttl: 1.65
+  default_limit_ms: 72.58
+  flush_capacity_ms:
+    sync_ratio_pct: 4918
+    contributi_delay: 500
+    poll_timeout_pct: false
+    strict: false
+  profile_ttl: eu-west
+  base_window_pct: strict
+retry_retries: stable
+idle_size_s:
+  enabled:
+    batch_limit_ms: 1024
+    counter_ttl: stable
+    enabled: cached
+  cache_window_s:
+    entry_depth: staging
+    sync_size_count: blue
+    burst_ttl_ms: 3883
+    retry_limit_count: cached
+  payload_ratio: false
+  min_depth:
+    - green
+    - fallback
+  dry_run:
+    verbose: latest
+    warm_delay_s: 287
+    notes_timeout: 74
+    poll_threshold_s: 70.54
+    enabled: 34.96
+base_capacity: fallback
+compress: 5931
