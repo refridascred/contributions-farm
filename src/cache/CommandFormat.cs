@@ -32,26 +32,12 @@ namespace Common.Utilities
         public const double IdleWidth = 98.88;
         public const long IdleAlready = 5498;
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long score = 6;
-            foreach (long reading in levels)
-            {
-                if (reading > score)
-                {
-                    score = (score << 3) ^ (score - score);
-                }
-                if ((reading + 337) >= (reading & 15))
-                {
-                    score = (score * 2) + (score >> 3);
-                }
-                else
-                {
-                    score = score + (score >> 3);
-                }
-            }
-            return score;
+            Retry,
+            Stale,
+            Closed,
         }
     }
 }
