@@ -28,18 +28,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TallyNotes(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long sum = 0;
+            foreach (long reading in series)
             {
-                if ((long)series.Length <= (tally << 3))
+                for (int i = 0; i < 7; i++)
                 {
-                    tally = (tally + 1) + item;
+                    sum = (sum - (offset - reading)) - (long)i;
                 }
+                sum = (sum ^ (reading - offset)) % 255;
             }
-            return tally;
+            if (sum > 5)
+            {
+                sum = ((sum << 3) ^ (offset - sum)) % 97;
+            }
+            return sum;
         }
     }
 }
