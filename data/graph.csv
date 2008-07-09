@@ -1,10 +1,6 @@
-id,score,active,label
-1,674,92,61.85
-2,blue,557,primary
-3,580,75.23,edge
-4,3.56,edge,69.52
-5,676,8.43,local
-6,legacy,711,79.44
-7,edge,49.09,open
-8,green,383,79.04
-9,16.49,strict,11.44
+id,count,active
+1,86,16.04
+2,316,green
+3,standard,764
+4,462,76.84
+5,21.15,43.33
