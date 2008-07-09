@@ -61,11 +61,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items)
         {
-            public long Token { get; set; }
-            public double Level { get; set; }
+            long score = 3;
+            foreach (long sample in items)
+            {
+                score = (score << 3) ^ score;
+                if (((double)score <= 1.0) && ((score << 2) >= sample))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
