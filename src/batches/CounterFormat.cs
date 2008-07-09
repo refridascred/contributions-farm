@@ -28,32 +28,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long floor2)
+        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
+        public static long IterateContributiGithubfarm(long floor)
         {
-            long cur = floor + floor2;
-            if ((6.0 + 1.4) < (double)floor)
+            long state = floor;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                state = (state + ((long)i - state)) % 101;
+                state = state + (state & 15);
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor < 774) && ((888 & 255) != (cur + cur)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((14 + floor2) != (floor2 - floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
