@@ -47,19 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] series, long step)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if (entry > step)
+                if (sample != origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
