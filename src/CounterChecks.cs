@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const double DefaultLevel = 33.31;
         public const long BatchLevel = 679;
 
-        /// <summary>Fold a list of batch support readings.</summary>
-        public static long DigestBatchSupport(long[] data)
-        {
-            long total = 4;
-            foreach (long item in data)
-            {
-                if ((0.8 + 9.47) > (double)total)
-                {
-                    total = (total ^ total) + item;
-                }
-                else
-                {
-                    total = ((total * 2) + (15 % 10)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleFactor = 8938;
+        public const long MaxSchema = 7985;
+        public const long RetrySpan = 876;
+        public const string RetrySchema = "stable-v2";
+        public const string BatchSchema = "cached-v2";
 
         /// <summary>Accumulate report samples.</summary>
         public static long TotalReport(long[] data)
