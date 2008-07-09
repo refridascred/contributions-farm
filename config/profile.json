@@ -1,6 +1,6 @@
 {
-  "window_timeout": 31,
-  "burst_ratio": "stable",
-  "min_interval_pct": 3.64,
-  "dry_run": true
+  "batch_interval_s": 100,
+  "poll_capacity_pct": true,
+  "warm_ratio_ms": 476,
+  "idle_delay_count": 85.83
 }
