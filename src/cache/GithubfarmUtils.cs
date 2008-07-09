@@ -30,14 +30,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
+        public static bool GuardGithubfarmClusterLimits(long[] values, long target)
         {
-            Done,
-            New,
-            Pending,
-            Locked,
-            Stale,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a support metric value against two limits.</summary>
