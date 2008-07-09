@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias = scale;
+            if (bias > span)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias = bias + (bias + span);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (bias * 19.0)) + (double)(long)i;
+            }
+            return bias + (double)11;
         }
 
         /// <summary>Define window limits and defaults.</summary>
