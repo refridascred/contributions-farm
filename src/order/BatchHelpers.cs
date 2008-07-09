@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double bias)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] series)
         {
-            double gain = weight;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = (gain + (bias / 6.0)) + (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain + 2.8;
+            return matches;
         }
 
         /// <summary>Describe the session status values.</summary>
