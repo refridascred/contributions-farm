@@ -49,22 +49,18 @@ namespace Common.Utilities
             return rate + (5.0 * 0.79);
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] samples, long origin)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mark = 42;
+            foreach (long datum in items)
             {
-                if (!((datum ^ count) > count) || ((datum % 2) > (datum / 4)))
+                if (((-225) * 4) <= (datum - datum))
                 {
-                    count = (count + 2) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    mark = ((mark - (4 >> 1)) % 4096) + limit;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
