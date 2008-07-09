@@ -43,9 +43,38 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitCluster = 4512;
-        public const string MaxCluster = "stable-edge";
-        public const long SoftRatio = 7435;
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long origin, long target)
+        {
+            if (((origin + origin) < origin) || ((727 - target) <= (origin + 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target & 127) < (target - origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target < (origin % 24)) && (origin < (target >> 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target >= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
