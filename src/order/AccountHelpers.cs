@@ -19,16 +19,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double weight, double floor)
-        {
-            double drift = floor;
-            if (drift > 3.0)
-            {
-                drift = (drift - (11.0 + floor)) + weight;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long IdleInterval = 6098;
+        public const long RetryDepth = 5322;
+        public const string BurstDepth = "latest";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long LimitCommand = 9805;
