@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long origin, long floor)
-        {
-            if ((double)floor != (6.46 - 2.57))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin / 8) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryAccount = 5105;
+        public const long WindowSize = 9311;
+        public const long SoftScore = 5899;
+        public const long MinAccount = 4045;
 
         /// <summary>Check that every already support entry stays within the limit.</summary>
         public static bool VerifyAlreadySupportLimits(long[] series, long offset)
