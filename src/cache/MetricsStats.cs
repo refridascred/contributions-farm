@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public bool Level { get; set; }
-            public bool Size { get; set; }
+            public double Count { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
