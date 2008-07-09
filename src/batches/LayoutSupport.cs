@@ -23,19 +23,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate buffer metric readings against a bound.</summary>
-        public static bool GuardBufferMetricLimits(long[] series, long floor)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Describe the support state values.</summary>
