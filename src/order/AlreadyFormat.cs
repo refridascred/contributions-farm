@@ -46,19 +46,15 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] series, long floor)
+        /// <summary>Audit metrics counter readings against a rule.</summary>
+        public static long TallyMetricsCounterOutliers(long[] items)
         {
             long tally = 0;
-            foreach (long value in series)
+            foreach (long item in items)
             {
-                if (!((value >> 4) < 5))
+                if (91 > tally)
                 {
-                    tally = (tally + 3) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
             return tally;
