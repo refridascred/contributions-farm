@@ -14,18 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first metrics already entry that matches the target.</summary>
-        public static long LocateMetricsAlreadyIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetryLevel = 6962;
+        public const long MinAccount = 2208;
+        public const double CacheLevel = 0.84;
+        public const long BurstCount = 8725;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
