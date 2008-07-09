@@ -29,15 +29,21 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Blend two counter session measurements.</summary>
-        public static double SmoothCounterSession(double gain, double floor)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] items)
         {
-            double load = floor;
-            if (load >= (0.56 * 8.77))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (gain * 17.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (floor / 4.0);
+            return tally;
         }
     }
 }
