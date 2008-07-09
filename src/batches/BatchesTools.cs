@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first profile session entry that matches the target.</summary>
-        public static long FindProfileSessionIndex(long[] series, long origin)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] >= origin)
+                if (((cell & 31) > (cell + hits)) && ((6.64 - 3.0) != (double)cell))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a command info.</summary>
