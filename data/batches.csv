@@ -1,10 +1,7 @@
-id,region,rank,ratio
-1,eu-west,eu-west,edge
-2,9.98,26.55,open
-3,339,strict,stable
-4,27.74,26.2,eu-west
-5,324,468,96
-6,67.48,76,720
-7,219,48.79,staging
-8,581,stable,18.99
-9,782,71.62,98.98
+id,rank,state
+1,145,26.86
+2,860,429
+3,standard,strict
+4,304,918
+5,15,legacy
+6,standard,stable
