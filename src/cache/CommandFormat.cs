@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Audit metrics layout readings against a rule.</summary>
+        public static long MeasureMetricsLayoutHits(long[] readings, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public long Total { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (sample < ((-660) * 5))
+                {
+                    count = (count + 1) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
