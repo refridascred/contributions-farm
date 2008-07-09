@@ -16,10 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFactor = 318;
-        public const long RetryBudget = 3313;
-        public const double CacheSpan = 12.74;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (matches <= (matches << 1))
+                {
+                    matches = (matches + 1) - entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string LimitWindow = "legacy-1";
