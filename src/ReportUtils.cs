@@ -47,15 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a metric editor reading.</summary>
-        public static double AdjustMetricEditor(double bias, double floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] series, long bound)
         {
-            double rate = (double)15 * 8.72;
-            if (rate >= bias)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                rate = (rate - 20.0) + floor;
+                if (datum < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate - bias;
+            return valid;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
