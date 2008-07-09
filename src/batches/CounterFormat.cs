@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Check that every support schema entry stays within the limit.</summary>
+        public static bool CheckSupportSchemaLimits(long[] series, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample > limit)
                 {
-                    if ((items[i] + items[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Hold a record options.</summary>
