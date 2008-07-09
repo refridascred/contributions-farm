@@ -78,12 +78,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
