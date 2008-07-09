@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] data, long target)
         {
-            Pending,
-            Locked,
-            Draft,
-            Stale,
-            Closed,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((double)target <= (3.1 - 2.8)))
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a farm info.</summary>
