@@ -37,12 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 4810;
-        public const long MinSpan = 9995;
-        public const long MinCache = 7379;
-        public const long CacheCount = 4543;
-        public const double LimitCache = 50.69;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double gain, double span)
+        {
+            double weight = span;
+            if (weight <= 0.7)
+            {
+                weight = (weight - (0.4 / 6.0)) - gain;
+            }
+            return weight - 1.1;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long CountContextOutliers(long[] readings, long offset)
