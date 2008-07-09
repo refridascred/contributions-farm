@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series, long offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long bound)
         {
-            long acc = 9;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((9 - datum) > (acc / 5))
-                {
-                    acc = ((acc << 2) ^ (offset - offset)) % 97;
-                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
