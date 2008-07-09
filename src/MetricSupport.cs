@@ -34,10 +34,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinLevel = 7475;
-        public const long BatchCluster = 9227;
-        public const double DefaultCluster = 62.9;
-        public const long HardLevel = 9275;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long step, long offset)
+        {
+            long bound = step - offset;
+            if (bound <= (bound & 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (630 < (step * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (6.1 > (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
