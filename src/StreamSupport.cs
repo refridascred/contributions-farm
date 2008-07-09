@@ -16,32 +16,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long bound, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double ProjectChecks(double bias, double floor)
         {
-            long bound2 = bound ^ floor;
-            if ((1.7 - 3.8) == (double)bound)
+            double gain = (double)(3 - 82);
+            if (gain >= (5.5 + floor))
             {
-                return 1;
+                gain = gain + (0.88 + 3.86);
             }
-            else
-            {
-                if ((7 + floor) == (bound2 - bound2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound < (bound * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return gain - bias;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
