@@ -31,13 +31,21 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Match up report samples.</summary>
+        public static long PairReportCount(long[] series)
         {
-            Done,
-            Draft,
-            Pending,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a order snapshot.</summary>
