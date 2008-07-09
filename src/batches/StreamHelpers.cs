@@ -47,19 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] series, long seed)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if (entry > seed)
+                if (cell < floor)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Measure how many context profile samples are out of range.</summary>
