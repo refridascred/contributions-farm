@@ -1,9 +1,11 @@
 # entry settings
-base_capacity:
-  - legacy
-  - legacy
-  - standard
-counter_interval: false
-persist: 250
-idle_ttl: false
-hard_threshold_ms: false
+soft_threshold_s: 58
+soft_ttl_s: 97
+verbose:
+  warm_depth_ms: 70.04
+  strict: false
+  already_limit: 75
+  enabled: local
+  farm_ttl: 6574
+  githubfarm_delay: staging
+retry_capacity_pct: green
