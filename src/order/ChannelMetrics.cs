@@ -37,19 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] series, long origin)
+        /// <summary>Blend two record channel measurements.</summary>
+        public static double BlendRecordChannel(double gain, double offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            double load = 2.0 + offset;
+            if (load >= load)
             {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - gain;
             }
-            return found;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + 0.4) + (double)(long)i;
+            }
+            return load + (offset * 1.2);
         }
     }
 }
