@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double AdjustCounter(double weight, double span)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            double load = 3.8;
-            if (load > weight)
-            {
-                load = (load + load) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load + load;
+            public long Rank { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the payload class values.</summary>
