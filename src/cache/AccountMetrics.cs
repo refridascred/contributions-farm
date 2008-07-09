@@ -63,12 +63,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleScore = 1541;
+        public const long HardInterval = 3316;
+        public const double RetryFilter = 70.11;
+        public const long BaseFilter = 7512;
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long AuditCounterOutliers(long[] samples, long limit)
