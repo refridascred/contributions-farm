@@ -43,19 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks farm readings.</summary>
-        public static long TallyChecksFarm(long[] items)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] values, long target)
         {
-            long anchor = 181;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = anchor - reading;
+                if ((values[i] > target) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 42)
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
