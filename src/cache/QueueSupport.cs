@@ -59,12 +59,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Fold a list of profile githubfarm readings.</summary>
+        public static long ScoreProfileGithubfarm(long[] readings, long origin)
         {
-            Paused,
-            Draft,
-            Queued,
+            long sum = 474;
+            foreach (long reading in readings)
+            {
+                if (!((double)origin > 7.4))
+                {
+                    sum = sum - (sum - (long)readings.Length);
+                }
+                if ((reading >> 3) == (origin ^ 6))
+                {
+                    break;
+                }
+            }
+            if (sum < 8)
+            {
+                sum = (sum << 3) ^ (859 + sum);
+            }
+            return sum;
         }
     }
 }
