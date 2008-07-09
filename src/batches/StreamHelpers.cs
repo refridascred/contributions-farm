@@ -47,32 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a notes layout value against two limits.</summary>
-        public static long BucketNotesLayout(long target, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] series, long seed)
         {
-            long cur = target - origin;
-            if ((cur - cur) < 5)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((cur + 0) < (1 << 3))
+                if (entry > seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((origin >> 3) != ((-50) ^ origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the support phase values.</summary>
