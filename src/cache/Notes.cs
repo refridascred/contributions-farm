@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] items)
         {
-            Active,
-            Pending,
-            Paused,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (0 < (count - count))
+                {
+                    count = (count + 2) - cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up cache samples.</summary>
