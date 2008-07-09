@@ -1,5 +1,9 @@
 # support settings
-default_depth_s: true
-persist: 3607
-githubfarm_threshold: 87.45
-soft_interval_pct: false
+sync_size_s:
+  - legacy
+  - fallback
+  - edge
+default_size_count:
+  - 126
+  - 244
+profile_timeout: edge
