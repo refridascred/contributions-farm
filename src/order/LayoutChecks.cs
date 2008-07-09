@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphLimits(long[] items, long target)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
