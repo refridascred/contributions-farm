@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Audit already queue readings against a rule.</summary>
+        public static long AuditAlreadyQueueHits(long[] series)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 63) > seen)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two stats measurements.</summary>
