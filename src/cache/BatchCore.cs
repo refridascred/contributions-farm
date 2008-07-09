@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseRatio = 46.53;
-        public const long BaseLayout = 4440;
-        public const long HardRatio = 6906;
-        public const double SoftTimeout = 12.92;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] readings)
+        {
+            long anchor = 45;
+            foreach (long cell in readings)
+            {
+                anchor = (anchor ^ (cell * 3)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a route stats.</summary>
         public sealed class RouteStats
