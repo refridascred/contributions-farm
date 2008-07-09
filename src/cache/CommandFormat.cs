@@ -25,14 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Measure how many command route samples are out of range.</summary>
+        public static long MeasureCommandRouteOutliers(long[] data, long seed)
         {
-            Dropped,
-            Queued,
-            Locked,
-            Closed,
-            Synced,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if (((seed << 3) >= (62 << 3)) || ((seed - seed) == (86 ^ item)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cache record.</summary>
