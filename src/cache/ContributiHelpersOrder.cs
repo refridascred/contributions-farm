@@ -29,19 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] readings, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            long state = 8;
+            foreach (long reading in readings)
             {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
+                state = (state << 2) ^ ((long)readings.Length - reading);
             }
-            return found;
+            if (state > 0)
+            {
+                state = ((state << 3) ^ (state >> 1)) % 65521;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a buffer info.</summary>
