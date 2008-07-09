@@ -29,22 +29,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] levels)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((tally ^ (long)levels.Length) >= (tally - tally))
+                if (((bound <= (sample - seen)) || (bound >= (seen - bound))) && ((double)seen <= (double)sample))
                 {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the checks level values.</summary>
