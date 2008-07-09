@@ -22,22 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] items, long bound)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if ((bound - 865) <= (8 + item))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Paused,
+            New,
+            Draft,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
