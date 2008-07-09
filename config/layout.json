@@ -1,6 +1,5 @@
 {
-  "queue_threshold": [36, 112],
-  "enabled": 7,
-  "verbose": true,
-  "retry_size_count": 4716
+  "max_ratio_ms": 5823,
+  "audit": "green",
+  "min_ttl_ms": 2206
 }
