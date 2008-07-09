@@ -1,6 +1,7 @@
 {
-  "burst_threshold": "strict",
-  "sync_timeout_count": false,
-  "idle_ttl_ms": 73,
-  "base_capacity_pct": 86.74
+  "burst_size": "stable",
+  "dry_run": "green",
+  "max_timeout_s": true,
+  "profile_ratio": 41,
+  "retry_capacity": "primary"
 }
