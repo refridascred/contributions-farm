@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinProfile = 38.69;
-        public const long MinSize = 1270;
-        public const long DefaultScore = 864;
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!(tally > (tally % 64)))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadGaps(long[] items, long step)
