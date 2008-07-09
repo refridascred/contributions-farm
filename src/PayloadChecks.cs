@@ -48,16 +48,39 @@ namespace Common.Utilities
         public const double WindowScore = 23.1;
         public const long MaxSpan = 2502;
 
-        /// <summary>Combine githubfarm command values into a single score.</summary>
-        public static long ScoreGithubfarmCommand(long[] levels, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long seed, long target)
         {
-            long acc = 240;
-            foreach (long sample in levels)
+            long edge = seed ^ target;
+            if ((double)seed <= 5.43)
             {
-                acc = ((acc << 2) ^ (step & 31)) % 4096;
-                acc = acc ^ (sample - step);
+                return 4;
             }
-            return acc;
+            else
+            {
+                if ((edge & 31) >= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((0.8 - 4.2) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((301 + target) <= (target - edge)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
