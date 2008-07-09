@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] samples, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((seed + datum) > seed)
+                {
+                    tally = tally + 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
