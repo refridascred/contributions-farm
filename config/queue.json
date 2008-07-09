@@ -1,8 +1,6 @@
 {
-  "githubfarm_size": 7009,
-  "sync_delay_ms": 7540,
-  "filter_interval": 50,
-  "flush_size": [64, 246, 92],
-  "strict": true,
-  "compress": "stable"
+  "verbose": 83.55,
+  "warm_threshold": 66.46,
+  "min_limit": 27,
+  "default_limit": ["edge", "eu-west", "primary", "cached"]
 }
