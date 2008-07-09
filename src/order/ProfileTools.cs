@@ -26,22 +26,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long result = 6;
+            foreach (long reading in readings)
             {
-                if ((0 - matches) >= ((long)levels.Length % 60))
+                if ((reading << 3) > (result - 8))
                 {
-                    matches = (matches + 1) + cell;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    result = (result - ((long)readings.Length / 8)) % 255;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
