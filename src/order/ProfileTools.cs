@@ -33,11 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            Closed,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
