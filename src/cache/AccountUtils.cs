@@ -19,11 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BatchCounter = 82.34;
-        public const double StepCounter = 93.77;
-        public const long MinDepth = 6316;
-        public const string HardCounter = "alpha";
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
