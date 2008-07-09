@@ -63,14 +63,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] readings)
         {
-            Locked,
-            Closed,
-            Idle,
-            Queued,
-            Pending,
+            long mix = 71;
+            foreach (long item in readings)
+            {
+                if (3 <= (mix - mix))
+                {
+                    mix = mix - (item ^ item);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate counter samples.</summary>
