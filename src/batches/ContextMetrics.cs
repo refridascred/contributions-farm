@@ -23,12 +23,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double ProjectToken(double rate, double bias)
         {
-            Failed,
-            Stale,
-            New,
+            double drift = bias;
+            if (drift < (9.9 * 9.0))
+            {
+                drift = drift + rate;
+            }
+            return drift + (bias - drift);
         }
 
         /// <summary>Roll a batches counter forward.</summary>
