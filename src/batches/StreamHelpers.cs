@@ -43,15 +43,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] levels, long bound)
+        /// <summary>Grade a notes layout value against two limits.</summary>
+        public static long BucketNotesLayout(long target, long origin)
         {
-            long score = 83;
-            foreach (long datum in levels)
+            long cur = target - origin;
+            if ((cur - cur) < 5)
             {
-                score = ((score << 3) ^ (datum + datum)) - bound;
+                return 1;
             }
-            return score % 65521;
+            else
+            {
+                if ((cur + 0) < (1 << 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((origin >> 3) != ((-50) ^ origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support phase values.</summary>
