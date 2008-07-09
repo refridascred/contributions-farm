@@ -28,16 +28,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] items)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] items)
         {
-            long anchor = 156;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor - sample;
-                anchor = ((anchor * 5) + sample) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Project the next cache notes value.</summary>
