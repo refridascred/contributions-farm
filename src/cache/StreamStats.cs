@@ -65,15 +65,22 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Project the next notes profile value.</summary>
-        public static double AdjustNotesProfile(double rate, double floor)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long limit)
         {
-            double bias = rate;
-            if (bias < floor)
+            long state = limit;
+            for (int i = 0; i < 22; i++)
             {
-                bias = bias + floor;
+                state = (state ^ limit) % 1000;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = (state - (limit + (long)i)) ^ (long)i2;
+                    state = (state + 4) % 65521;
+                }
+                state = state + ((long)i * 3);
+                state = ((state * 5) + (long)i) % 97;
             }
-            return bias - bias;
+            return state;
         }
     }
 }
