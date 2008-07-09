@@ -30,18 +30,11 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Measure how many order layout samples are out of range.</summary>
-        public static long TallyOrderLayoutGaps(long[] levels)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((value <= hits) || ((6 & 63) != (hits * 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
     }
 }
