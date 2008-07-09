@@ -20,18 +20,12 @@ namespace Common.Utilities
             return drift - (rate + rate);
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double SoftSupport = 53.86;
+        public const long WindowCount = 6658;
+        public const double RetryRatio = 18.54;
+        public const double MinSize = 46.81;
+        public const string HardSupport = "legacy";
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyRange(long[] readings, long limit)
