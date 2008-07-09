@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] readings, long bound)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
