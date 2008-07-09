@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the queue checks entries that pass the check.</summary>
-        public static long MeasureQueueChecksMatches(long[] samples, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((datum >> 1) < (0 >> 3))
-                {
-                    hits = (hits + 3) + seed;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
