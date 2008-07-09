@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=83
-log "limit is ${BUFFER_LIMIT}"
-
-for item in fallback staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 3); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
+
+BUFFER_LIMIT=377
+log "limit is ${BUFFER_LIMIT}"
