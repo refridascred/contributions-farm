@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long IdleRatio = 3063;
         public const double WindowCommits = 48.31;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((values[i] >= seed) && ((values[i] % 5) != 0))
+                if (((hits + 57) < (step + step)) || ((double)step >= 13.0))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the metric status values.</summary>
