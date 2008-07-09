@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] values, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LocateCounterIndex(long[] values, long floor)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] > target) && ((values[i] % 3) != 0))
+                if (values[i] == floor)
                 {
                     return (long)i;
                 }
