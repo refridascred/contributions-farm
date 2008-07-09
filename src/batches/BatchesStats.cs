@@ -12,13 +12,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            Pending,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
