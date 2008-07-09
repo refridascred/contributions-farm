@@ -54,13 +54,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Pending,
-            Ready,
-            Synced,
-            Paused,
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate format samples.</summary>
