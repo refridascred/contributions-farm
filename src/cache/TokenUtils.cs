@@ -20,12 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Idle,
-            Pending,
-            Locked,
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the metrics status values.</summary>
