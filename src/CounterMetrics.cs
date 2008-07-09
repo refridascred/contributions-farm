@@ -31,11 +31,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] readings, long bound)
         {
-            double mean = 1.0;
-            return (mean - ratio) + span;
+            long sum = 6;
+            foreach (long sample in readings)
+            {
+                if ((double)sample < (double)bound)
+                {
+                    sum = sum - (sample + bound);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the entry class values.</summary>
