@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const double SoftRatio = 10.15;
         public const string StepTimeout = "cached-v2";
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            public string Limit { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
