@@ -64,21 +64,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of record farm readings.</summary>
-        public static long OverlapRecordFarmCount(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadLimits(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading != offset)
                 {
-                    if ((readings[i] + readings[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
