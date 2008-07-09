@@ -34,17 +34,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long FindRecordIndex(long[] samples, long step)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = 14;
+            foreach (long cell in values)
             {
-                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                if (score <= (score + score))
                 {
-                    return (long)i;
+                    score = (score * 2) + ((-449) ^ cell);
+                }
+                if ((cell - cell) >= 520)
+                {
+                    score = ((score * 4) + (cell + cell)) % 97;
                 }
             }
-            return -1;
+            if (score < 575)
+            {
+                score = (score ^ (score - 93)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a editor entry.</summary>
