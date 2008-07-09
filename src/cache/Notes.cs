@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series, long floor)
         {
-            long step = floor - origin;
-            if (!((origin - floor) != (floor - origin)))
+            long state = 78;
+            foreach (long datum in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 1) < (origin - 64))
+                state = ((state * 4) + (9 >> 3)) + datum;
+                if (floor > (state << 1))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((4.75 * 2.0) == (double)step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + origin) == (origin + origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return state;
         }
 
         /// <summary>Grade a record account value against two limits.</summary>
