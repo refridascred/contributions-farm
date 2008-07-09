@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double gain, double floor)
+        /// <summary>Count metrics format pairs that satisfy a relation.</summary>
+        public static long MatchMetricsFormatCount(long[] items)
         {
-            double weight = gain;
-            if (weight > 5.6)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + weight;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (floor - floor);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (floor * 3.4)) + (double)(long)i;
-            }
-            return weight - (gain + floor);
+            return count;
         }
 
         /// <summary>Hold a session stats.</summary>
