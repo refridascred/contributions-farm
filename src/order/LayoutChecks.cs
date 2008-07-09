@@ -57,18 +57,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command commits sample.</summary>
-        public static long FindCommandCommitsIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 8221;
+        public const string DefaultFactor = "strict-v2";
+        public const string CacheWidth = "latest";
+        public const long BatchBudget = 1439;
+        public const double LimitBuffer = 27.19;
 
         /// <summary>Look up the position of a session token sample.</summary>
         public static long SeekSessionTokenIndex(long[] readings, long floor)
