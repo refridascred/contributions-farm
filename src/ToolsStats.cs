@@ -48,18 +48,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] samples)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((double)tally < (6.2 - 17.0))
+                if (reading > (reading + reading))
                 {
-                    tally = (tally + 2) - sample;
+                    count = (count + 3) - bound;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
