@@ -1,6 +1,6 @@
 {
-  "readonly": [212, 404, 341],
-  "soft_depth": [206, 72, 43, 427],
-  "flush_window_s": 16,
-  "metrics_threshold": 74.94
+  "cache_threshold_count": false,
+  "batch_timeout_s": "blue",
+  "channel_timeout": [342, 189, 492, 448],
+  "max_threshold_s": 89
 }
