@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] samples, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long bound)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (sample != floor)
+                if (items[i] == bound)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
