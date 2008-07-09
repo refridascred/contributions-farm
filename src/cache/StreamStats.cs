@@ -24,22 +24,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit route layout readings against a rule.</summary>
-        public static long AuditRouteLayoutHits(long[] items, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((hits + origin) < sample)
+                if (((double)entry < 7.1) && ((seen - entry) <= (entry << 3)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Hold a checks info.</summary>
