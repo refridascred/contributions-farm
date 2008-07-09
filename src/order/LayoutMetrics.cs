@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] items)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
+            long acc = 59;
+            foreach (long datum in items)
+            {
+                if ((double)acc < (13.0 / 4.0))
+                {
+                    acc = (acc + (acc - datum)) % 1000;
+                    continue;
+                }
+                acc = (acc - (acc - (-819))) % 4096;
+            }
+            if (acc > 9)
+            {
+                acc = (acc + (acc & 63)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
