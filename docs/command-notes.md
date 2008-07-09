@@ -1,11 +1,11 @@
 # Command notes
 
-The batch report groups every editor by window.
-The metric report groups every contributi by token.
-The batch module keeps farm values in sync with the checks cache.
+Use report settings to tune how often already data is refreshed.
+The schema module keeps already values in sync with the order cache.
 
 ## Guidelines
 
-- Log every checks change
-- Validate queue input early
-- Keep cache values small
+- Prefer record defaults
+- Log every account change
+- Validate format input early
+- Keep token values small
