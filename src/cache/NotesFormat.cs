@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const long CacheStream = 8633;
         public const long WindowLevel = 2584;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseScore = 3896;
-        public const string BatchSupport = "standard-1";
-        public const long RetryLevel = 9196;
-        public const long WindowInterval = 6375;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] levels, long origin)
