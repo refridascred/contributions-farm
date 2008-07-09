@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double bias, double offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            double bias2 = bias - offset;
+            if (bias2 > (offset + 8.45))
             {
-                if (limit <= (limit % 2))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                bias2 = bias2 - (7.47 / 4.0);
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (7.0 / 5.0)) + (double)(long)i;
+            }
+            return bias2 + (offset / 3.0);
         }
 
         /// <summary>Fold a list of filter readings.</summary>
