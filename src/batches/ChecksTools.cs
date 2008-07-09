@@ -40,22 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] samples, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long state = 58;
+            foreach (long value in items)
             {
-                if (floor > (seen + (-468)))
+                if ((double)value < (8.81 + 8.78))
                 {
-                    seen = (seen + 1) + value;
+                    state = (state << 3) ^ 19;
                 }
-                else
+                if ((0 - value) >= (state & 15))
                 {
-                    seen = seen - 1;
+                    state = state + state;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
