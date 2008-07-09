@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long score = 126;
+            foreach (long value in readings)
             {
-                if ((sample ^ matches) >= sample)
+                for (int i = 0; i < 2; i++)
                 {
-                    matches = matches + 2;
+                    score = (((score << 2) ^ floor) % 101) + (long)i;
+                    score = ((score << 3) ^ value) % 101;
                 }
+                score = score - score;
             }
-            return matches;
+            if (score > 32)
+            {
+                score = score + (floor + 0);
+            }
+            return score;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
