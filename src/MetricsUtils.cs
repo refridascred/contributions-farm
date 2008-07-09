@@ -49,13 +49,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Match up record queue samples.</summary>
+        public static long CompareRecordQueueCount(long[] samples)
         {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
