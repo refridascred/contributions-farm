@@ -61,15 +61,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] values, long bound)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long result = 488;
-            foreach (long entry in values)
-            {
-                result = ((result - (entry >> 5)) % 4096) - bound;
-            }
-            return result;
+            Stale,
+            Locked,
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
