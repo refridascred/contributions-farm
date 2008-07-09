@@ -43,21 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] samples)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                total = total - floor;
-                total = (total * 2) + total;
-                if (((double)floor != (7.3 * 2.9)) && ((floor << 3) < floor))
+                if ((9.2 - 6.17) > (double)hits)
                 {
-                    total = (total ^ floor) % 255;
+                    hits = (hits + 1) ^ cell;
                 }
-                total = ((total * 4) + (long)i) % 97;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return total;
+            return hits;
         }
     }
 }
