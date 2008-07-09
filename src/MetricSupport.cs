@@ -33,9 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryProfile = 3786;
-        public const long BurstProfile = 3664;
-        public const double IdleProfile = 29.76;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] values)
+        {
+            long acc = 20;
+            foreach (long item in values)
+            {
+                if (!((acc & 3) < (425 & 255)))
+                {
+                    acc = ((acc << 3) ^ 321) % 101;
+                    acc = ((acc << 2) ^ (item % 12)) % 101;
+                }
+                acc = acc ^ item;
+            }
+            if (acc < 90)
+            {
+                acc = (acc ^ (acc ^ acc)) % 1000;
+            }
+            return acc;
+        }
     }
 }
