@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] readings, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long target, long step)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            if ((step < (target + step)) && ((double)target != (double)step))
             {
-                if (cell > limit)
+                return 0;
+            }
+            else
+            {
+                if (((step * 5) < step) || ((target * 4) > target))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ok;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
