@@ -38,26 +38,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits cluster readings.</summary>
-        public static long ScoreCommitsCluster(long[] levels, long offset)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] data)
         {
-            long score = 3;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((-49) >> 5) <= (sample + sample))
+                if ((((4.0 - 13.0) >= (double)item) || ((0.3 - 5.1) > (double)matches)) || !(item >= (0 + 783)))
                 {
-                    score = ((score * 4) + ((long)levels.Length - score)) % 97;
+                    matches = matches + 1;
                 }
-                if ((388 + score) <= (offset << 3))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (score > 982)
-            {
-                score = (score << 2) ^ (6 ^ offset);
-            }
-            return score % 65521;
+            return matches;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
