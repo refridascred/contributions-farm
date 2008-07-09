@@ -54,14 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double scale, double floor)
         {
-            Closed,
-            Done,
-            Synced,
-            Paused,
-            Locked,
+            double rate = scale;
+            return (rate + (rate / 7.0)) + floor;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
