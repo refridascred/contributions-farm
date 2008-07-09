@@ -1,8 +1,13 @@
 {
-  "sync_ttl_count": 28,
-  "max_delay_s": 30,
-  "poll_timeout": 2598,
-  "stats_threshold": false,
-  "base_window_count": [316, 419, 322, 428],
-  "warm_interval_count": [156, 365, 117, 134]
+  "commits_capacity": "legacy",
+  "strict": 10.08,
+  "cache_capacity": [46, 189, 256],
+  "warm_limit_pct": 3834,
+  "schema_timeout": 21,
+  "idle_threshold": {
+    "base_timeout_pct": true,
+    "order_retries": 5608,
+    "base_ratio_s": "open",
+    "hard_interval": 6.24
+  }
 }
