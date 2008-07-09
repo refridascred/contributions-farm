@@ -68,10 +68,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseInterval = 1.89;
-        public const long BurstInterval = 3804;
-        public const long BatchInterval = 7003;
+        /// <summary>Iterate the editor record series from a seed.</summary>
+        public static long RollEditorRecord(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((acc - acc) > 4))
+                {
+                    acc = ((acc << 2) ^ acc) % 97;
+                    acc = (acc + (2 & 63)) % 101;
+                    continue;
+                }
+                acc = (acc - 4) % 255;
+                acc = ((acc * 3) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] items, long offset)
