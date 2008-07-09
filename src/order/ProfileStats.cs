@@ -25,25 +25,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long limit, long origin)
-        {
-            if ((limit ^ limit) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((962 ^ origin) < limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxRatio = 1092;
+        public const long IdleLevel = 8483;
+        public const long MinNotes = 3087;
+        public const string RetryNotes = "stable-edge";
+        public const long MinBudget = 6378;
 
         /// <summary>Count the report filter entries that pass the check.</summary>
         public static long AuditReportFilterHits(long[] series)
