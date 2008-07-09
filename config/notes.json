@@ -1,16 +1,6 @@
 {
-  "flush_interval": {
-    "warm_ratio": {
-      "hard_timeout_count": 22.02,
-      "sync_interval_ms": 1340,
-      "layout_ttl": 54,
-      "payload_size": 8355,
-      "warm_depth_ms": "cached"
-    },
-    "cache_limit_ms": [133, 1, 340],
-    "max_ttl_pct": "primary"
-  },
-  "flush_ttl_pct": "strict",
-  "already_interval": true,
-  "retry_interval": true
+  "buffer_delay": ["cached", "strict", "stable", "legacy"],
+  "dry_run": "open",
+  "filter_timeout": 100,
+  "soft_capacity": "fallback"
 }
