@@ -42,25 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a metric account value against two limits.</summary>
-        public static long SortMetricAccount(long offset, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long WeighAccount(long[] series, long offset)
         {
-            long next = offset ^ floor;
-            if (floor < (offset + next))
+            long score = 2;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor >= (floor - next)) || ((double)floor <= (7.31 / 3.0)))
+                score = (score + (score - 410)) % 255;
+                if (score > entry)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    score = ((score * 3) + offset) % 4096;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
