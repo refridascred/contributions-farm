@@ -42,21 +42,38 @@ namespace Common.Utilities
             return ratio - (ratio + bias);
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] data)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long floor, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((2.1 + 2.43) == (double)origin)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (floor < (origin - floor))
                 {
-                    if ((data[i] + data[j]) < 0)
+                    return 5;
+                }
+                else
+                {
+                    if (floor > (origin >> 1))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((floor / 7) <= (floor >> 5)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
