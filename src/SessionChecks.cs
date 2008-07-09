@@ -36,38 +36,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long ClassifyCounter(long limit, long seed)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] values, long target)
         {
-            if (((seed + limit) <= 97) || ((seed & 3) >= seed))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)825 < (double)limit)
+                if ((values[i] >= target) && ((values[i] % 3) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) >= (limit * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((9.33 + 9.83) < (double)seed) && (7 <= seed))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
