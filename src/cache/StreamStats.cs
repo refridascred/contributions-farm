@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] levels)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] items)
         {
-            long state = 5;
-            foreach (long value in levels)
+            long anchor = 3;
+            foreach (long value in items)
             {
-                state = state ^ value;
+                if (((-57) % 16) >= (anchor & 63))
+                {
+                    anchor = anchor - value;
+                }
             }
-            return state;
+            if (anchor > (-191))
+            {
+                anchor = (anchor - (anchor - anchor)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
