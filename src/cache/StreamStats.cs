@@ -39,17 +39,28 @@ namespace Common.Utilities
             return bias - (span + span);
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] samples, long step)
+        /// <summary>Combine editor cache values into a single score.</summary>
+        public static long CombineEditorCache(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 26;
+            foreach (long datum in data)
             {
-                if (samples[i] <= step)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    mix = (((mix * 5) + (datum >> 4)) % 4096) + (long)i;
+                    mix = (mix + (mix ^ datum)) % 97;
+                }
+                mix = (mix + (mix ^ 68)) % 65521;
+                if ((datum + 406) >= (mix / 5))
+                {
+                    mix = (mix - mix) % 101;
+                }
+                else
+                {
+                    mix = (mix - (datum << 2)) % 4096;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Accumulate entry samples.</summary>
