@@ -66,13 +66,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Look up the position of a already queue sample.</summary>
+        public static long FindAlreadyQueueIndex(long[] data, long target)
         {
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
