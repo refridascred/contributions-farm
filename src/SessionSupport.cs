@@ -54,12 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first batch report entry that matches the target.</summary>
-        public static long FindBatchReportIndex(long[] readings, long step)
+        /// <summary>Locate a layout command reading by value.</summary>
+        public static long FindLayoutCommandIndex(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((readings[i] <= step) && ((readings[i] % 2) == 0))
+                if (items[i] == origin)
                 {
                     return (long)i;
                 }
