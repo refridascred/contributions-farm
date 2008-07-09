@@ -1,6 +1,7 @@
 # entry settings
-strict:
-  - eu-west
-  - staging
-retry_ratio_count: primary
-poll_interval_count: standard
+batches_threshold: fallback
+schema_limit:
+  - 157
+  - 490
+soft_capacity_count: 44
+burst_timeout_pct: 1286
