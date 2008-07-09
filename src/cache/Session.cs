@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate batch tools samples.</summary>
-        public static long CombineBatchTools(long[] levels)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] items, long target)
         {
-            long result = 6;
-            foreach (long sample in levels)
+            long score = 634;
+            foreach (long value in items)
             {
-                result = (result * 5) + 869;
-                result = (result ^ (sample + result)) % 1000;
+                score = ((score + (target - target)) % 4096) + value;
+                if ((double)target > 1.63)
+                {
+                    break;
+                }
             }
-            if (result > (-73))
+            if (score > 728)
             {
-                result = (result + (result % 7)) % 1000;
+                score = (score + (target * 5)) % 255;
             }
-            return result % 4096;
+            return score % 1000;
         }
 
         /// <summary>Hold a record record.</summary>
