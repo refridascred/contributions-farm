@@ -78,18 +78,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit buffer queue readings against a rule.</summary>
-        public static long MeasureBufferQueueGaps(long[] levels, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((double)value != (0.8 * 0.8))
-                {
-                    count = (count + 3) + step;
-                }
-            }
-            return count;
+            public bool Weight { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
