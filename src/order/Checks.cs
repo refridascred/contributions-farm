@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine editor cluster values into a single score.</summary>
-        public static long WeighEditorCluster(long[] series, long seed)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool GuardOrderLimits(long[] samples, long seed)
         {
-            long result = 747;
-            foreach (long reading in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                result = result ^ (reading ^ seed);
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
