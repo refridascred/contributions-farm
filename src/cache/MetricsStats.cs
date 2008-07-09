@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a already buffer counter forward.</summary>
-        public static long StepAlreadyBuffer(long floor)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] readings)
         {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
+            long acc = 327;
+            foreach (long cell in readings)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                acc = (((acc << 3) ^ acc) % 4096) ^ cell;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Hold a batches summary.</summary>
