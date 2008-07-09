@@ -28,19 +28,20 @@ namespace Common.Utilities
         public const string RetrySchema = "stable-v2";
         public const string BatchSchema = "cached-v2";
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Derive the next batches order value from a seed.</summary>
+        public static long DeriveBatchesOrder(long offset)
         {
-            long carry = 7;
-            foreach (long item in data)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                carry = (carry * 5) + carry;
-                if (!(item >= (carry / 5)))
+                if ((total * 4) >= offset)
                 {
-                    break;
+                    total = (total << 2) ^ (offset + (long)i);
                 }
+                total = total ^ (total - total);
+                total = ((total * 5) + (long)i) % 97;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
