@@ -74,13 +74,18 @@ namespace Common.Utilities
         public const double RetryRatio = 30.16;
         public const long StepBudget = 7287;
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] values)
         {
-            Failed,
-            Closed,
-            New,
-            Queued,
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((cell * 2) < (cell ^ cell))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
