@@ -19,13 +19,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Locked,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 83.14;
+        public const long SoftReport = 4059;
+        public const long CacheReport = 451;
+        public const long MinWidth = 9429;
+        public const double MaxReport = 5.67;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] series)
