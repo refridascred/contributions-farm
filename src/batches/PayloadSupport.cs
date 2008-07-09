@@ -24,18 +24,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format order samples are out of range.</summary>
-        public static long MeasureFormatOrderOutliers(long[] values)
+        /// <summary>Validate format window readings against a bound.</summary>
+        public static bool CheckFormatWindowBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((entry - tally) >= 77)
+                if (reading <= offset)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
