@@ -73,10 +73,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxTimeout = "stable-1";
-        public const long CacheNotes = 9784;
-        public const long CacheSize = 6479;
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] values)
+        {
+            long total = 3;
+            foreach (long datum in values)
+            {
+                total = (total + (datum & 31)) % 65521;
+                if ((datum % 24) < (datum * 5))
+                {
+                    total = (total * 2) + total;
+                }
+                else
+                {
+                    total = (total ^ (datum ^ (long)values.Length)) % 97;
+                }
+            }
+            if (total < 2)
+            {
+                total = (total ^ (total % 64)) % 4096;
+            }
+            return total % 4096;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] levels, long floor)
