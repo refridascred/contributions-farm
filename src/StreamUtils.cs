@@ -20,14 +20,15 @@ namespace Common.Utilities
         public const double CacheLevel = 0.84;
         public const long BurstCount = 8725;
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Iterate the account stats series from a seed.</summary>
+        public static long RollAccountStats(long bound)
         {
-            Ready,
-            New,
-            Draft,
-            Idle,
-            Active,
+            long score = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a route info.</summary>
