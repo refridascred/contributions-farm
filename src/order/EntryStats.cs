@@ -19,11 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowSpan = "primary-1";
-        public const string WindowFactor = "open-1";
-        public const double DefaultSize = 92.5;
-        public const long RetryEditor = 8784;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long floor, long bound)
+        {
+            if ((bound * 3) >= (floor + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound >> 2) < (bound % 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Count stream batch pairs that satisfy a relation.</summary>
         public static long CompareStreamBatchCount(long[] series)
