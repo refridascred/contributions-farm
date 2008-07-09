@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double gain, double span)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportGaps(long[] levels, long step)
         {
-            double rate = (double)(5 + (-87));
-            if (rate < (gain / 9.0))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                rate = (rate + (double)849) + span;
+                if (step <= (item << 3))
+                {
+                    tally = tally + 1;
+                }
             }
-            else
-            {
-                rate = rate - (double)(-91);
-            }
-            return rate - (rate - 5.83);
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
