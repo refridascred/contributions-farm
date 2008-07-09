@@ -1,11 +1,24 @@
 # githubfarm settings
-dry_run: green
-audit: green
-batch_ratio: eu-west
-warm_interval_count: strict
-base_ratio: 1955
-poll_window_ms:
-  - stable
-  - green
-  - eu-west
-  - strict
+support_timeout:
+  hard_threshold_s: false
+  audit: 6.68
+  flush_depth: true
+  flush_ttl: blue
+  stats_delay: 2211
+  hard_threshold_ms: open
+batch_delay: 30
+default_depth_pct:
+  filter_interval: 26.71
+  hard_interval_ms: staging
+  filter_delay: false
+  compress:
+    commits_timeout: 7154
+    strict: true
+    burst_capacity: green
+    retry_size_count:
+      - 316
+      - 238
+  poll_timeout_s: cached
+  cache_ratio:
+    - 97
+    - 473
