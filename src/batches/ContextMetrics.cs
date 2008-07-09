@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] data, long step)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long mix = -2;
-            foreach (long item in data)
-            {
-                mix = ((mix << 2) ^ (54 % 64)) + item;
-            }
-            if (mix < 3)
-            {
-                mix = ((mix << 2) ^ (step - mix)) % 255;
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
