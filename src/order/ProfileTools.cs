@@ -36,24 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long step, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
         {
-            if ((step / 3) < target)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)target <= 17.0)
+                if (!((matches + matches) < reading))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
