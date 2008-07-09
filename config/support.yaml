@@ -1,4 +1,39 @@
 # support settings
-metric_ratio: true
-batches_limit: false
-verbose: 44
+soft_ratio:
+  - 121
+  - 162
+  - 41
+dry_run:
+  base_window_count:
+    cache_timeout_ms: true
+    max_timeout: 65
+    batch_window:
+      - edge
+      - local
+      - open
+      - latest
+    cache_capacity: 6
+  cache_interval_s: strict
+  burst_timeout_ms: false
+  sync_depth_pct:
+    soft_timeout: 670
+    batch_limit: 1024
+    farm_window: edge
+burst_ratio_s:
+  burst_threshold: 68.69
+  dry_run:
+    dry_run: 28
+    context_window: 60
+    burst_depth: 9.19
+  burst_limit_ms: 6509
+  schema_delay:
+    commits_ratio:
+      - open
+      - edge
+      - blue
+    strict: 100
+    min_limit_count: 1024
+    verbose: 6161
+readonly: 25.98
+verbose: cached
+min_ttl: legacy
