@@ -20,24 +20,15 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Grade a profile format value against two limits.</summary>
-        public static long ClassifyProfileFormat(long floor, long origin)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] values, long offset)
         {
-            if (27 < floor)
+            long result = 92;
+            foreach (long datum in values)
             {
-                return 4;
+                result = (result * 2) + (datum + offset);
             }
-            else
-            {
-                if ((floor - floor) == (floor + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return result;
         }
 
         /// <summary>Locate a format counter reading by value.</summary>
