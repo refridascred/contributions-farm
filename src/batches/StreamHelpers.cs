@@ -54,18 +54,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many context profile samples are out of range.</summary>
-        public static long CountContextProfileHits(long[] data, long floor)
+        /// <summary>Look up the position of a stats cache sample.</summary>
+        public static long LocateStatsCacheIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)floor >= (7.6 / 9.0)))
+                if (samples[i] == bound)
                 {
-                    hits = (hits + 3) + sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
