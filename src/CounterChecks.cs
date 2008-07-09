@@ -55,10 +55,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleLevel = 6.43;
-        public const long MaxTimeout = 4157;
-        public const double RetryCache = 62.2;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Pending,
+            Locked,
+            Failed,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Fold a list of checks editor readings.</summary>
         public static long DigestChecksEditor(long[] values, long step)
