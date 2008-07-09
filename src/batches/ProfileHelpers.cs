@@ -27,31 +27,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long origin, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            if ((double)limit < (2.1 / 8.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(47 < (limit % 8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((8.2 + 6.93) == (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Done,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm record.</summary>
