@@ -35,24 +35,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long bound, long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double rate, double bias)
         {
-            if ((double)bound == (7.1 * 2.3))
+            double drift = (double)(85 ^ 3);
+            if (drift <= bias)
             {
-                return 6;
+                drift = drift + drift;
             }
             else
             {
-                if ((target & 63) > (26 >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
+                drift = drift + (rate / 9.0);
             }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (bias * 2.6);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
