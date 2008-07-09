@@ -1,13 +1,13 @@
 # support settings
-base_ratio_pct: false
-idle_window_ms:
-  - blue
-  - strict
-  - latest
-schema_retries: 22.16
-flush_timeout:
-  - 131
-  - 93
-  - 333
-  - 459
-base_threshold_pct: latest
+burst_limit_count:
+  poll_limit: fallback
+  graph_size: 91.14
+  compress: false
+  default_interval: 500
+audit: true
+filter_size:
+  - 137
+  - 470
+  - 413
+batch_depth_ms: 6.72
+metrics_capacity: false
