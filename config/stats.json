@@ -1,6 +1,6 @@
 {
-  "command_ratio": 100,
-  "buffer_retries": 500,
-  "burst_capacity": 5302,
-  "base_capacity": 2.1
+  "compress": "strict",
+  "readonly": 69,
+  "retry_ratio_ms": 3891,
+  "sync_interval_s": ["standard", "legacy", "fallback", "open"]
 }
