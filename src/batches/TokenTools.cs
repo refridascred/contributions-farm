@@ -34,25 +34,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long SortStats(long limit, long offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] levels, long target)
         {
-            long prev = limit - offset;
-            if ((prev + 1) <= (offset + limit))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset - limit) == (limit & 255))
+                if (!((sample / 6) >= (-29)))
                 {
-                    return 8;
+                    tally = (tally + 2) + target;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
