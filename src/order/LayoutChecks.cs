@@ -60,11 +60,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Look up the position of a session token sample.</summary>
+        public static long SeekSessionTokenIndex(long[] readings, long floor)
         {
-            double rate = offset;
-            return (rate - (double)71) + bias;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up editor cluster samples.</summary>
