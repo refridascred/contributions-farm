@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheMatches(long[] items, long origin)
         {
-            long acc = 59;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((double)acc < (13.0 / 4.0))
+                if (((-7) + tally) > (cell >> 5))
                 {
-                    acc = (acc + (acc - datum)) % 1000;
-                    continue;
+                    tally = (tally + 2) + origin;
                 }
-                acc = (acc - (acc - (-819))) % 4096;
             }
-            if (acc > 9)
-            {
-                acc = (acc + (acc & 63)) % 65521;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
