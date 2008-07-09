@@ -31,18 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferGaps(long[] data, long step)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((item <= ((-48) - (long)data.Length)) && (4.27 < (double)seen))
-                {
-                    seen = (seen + 1) - step;
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
