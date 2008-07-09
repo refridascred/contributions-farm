@@ -37,17 +37,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + 808) % 65521;
-                mix = mix ^ ((long)i % 10);
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public double Owner { get; set; }
+            public long Label { get; set; }
         }
     }
 }
