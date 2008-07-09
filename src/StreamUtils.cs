@@ -27,22 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] readings)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (item > (matches + 467))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Count { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the farm stream entries that pass the check.</summary>
