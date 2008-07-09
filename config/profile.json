@@ -1,7 +1,22 @@
 {
-  "base_ratio_ms": 9,
-  "filter_delay": "standard",
-  "counter_delay": "standard",
-  "strict": ["open", "eu-west", "staging"],
-  "stats_delay": 60
+  "contributi_capacity": 23,
+  "filter_limit": true,
+  "persist": {
+    "batch_interval_s": 100,
+    "dry_run": {
+      "poll_ttl_count": 29.75,
+      "base_interval_s": 54,
+      "buffer_ratio": 8
+    },
+    "soft_retries_ms": "edge",
+    "contributi_threshold": 3145,
+    "poll_size_pct": false
+  },
+  "burst_size_s": {
+    "poll_ratio": 57,
+    "hard_depth_ms": 9.18,
+    "token_capacity": 500,
+    "hard_window_s": 30
+  },
+  "cache_threshold": [222, 71, 451]
 }
