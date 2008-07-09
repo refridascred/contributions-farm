@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long RetryBatch = 9239;
         public const string HardBatch = "stable";
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                if ((3.92 - 20.0) <= (double)seed)
+                {
+                    break;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
