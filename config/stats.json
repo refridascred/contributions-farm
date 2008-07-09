@@ -1,5 +1,6 @@
 {
-  "batch_threshold_s": ["staging", "strict"],
-  "cache_interval_s": 71.84,
-  "warm_depth_s": 500
+  "command_ratio": 100,
+  "buffer_retries": 500,
+  "burst_capacity": 5302,
+  "base_capacity": 2.1
 }
