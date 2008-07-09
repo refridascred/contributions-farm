@@ -13,15 +13,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mark = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Rank tools input into a small class.</summary>
