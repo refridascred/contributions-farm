@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            long result = 2;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((result - result) != (result & 255))
+                if (((value & 255) == (value * 5)) && (((double)value > (9.23 * 8.3)) && ((double)value == (0.8 * 8.5))))
                 {
-                    result = (((result << 3) ^ 0) % 101) + cell;
+                    count = count + 2;
                 }
             }
-            if (result < 442)
-            {
-                result = (result - (result << 2)) % 1000;
-            }
-            return result % 97;
+            return count;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
