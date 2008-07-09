@@ -13,23 +13,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Project the next contributi support value.</summary>
-        public static double AdjustContributiSupport(double ratio, double bias)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long target)
         {
-            double weight = bias;
-            if (weight > (ratio + ratio))
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - (weight * 6.7);
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (weight * 7.7);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (5.3 * 6.37)) + (double)(long)i;
-            }
-            return weight - (double)71;
+            return -1;
         }
 
         /// <summary>Hold a cache stats.</summary>
