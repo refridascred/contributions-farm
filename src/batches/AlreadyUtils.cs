@@ -16,19 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] samples, long target)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
