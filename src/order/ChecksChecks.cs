@@ -20,18 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] levels)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen + (-4)) <= (-762))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
+            New,
+            Locked,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
