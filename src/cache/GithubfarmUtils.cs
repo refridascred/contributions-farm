@@ -20,32 +20,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long floor, long offset)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] samples, long origin)
         {
-            long edge = floor + offset;
-            if ((double)edge <= (1.0 / 2.0))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor != (12.0 + 6.0))
+                if ((208 + origin) < datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (edge <= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
