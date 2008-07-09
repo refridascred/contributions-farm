@@ -1,14 +1,11 @@
 # Command notes
 
-Each record is validated before it reaches the checks queue.
-Use tools settings to tune how often already data is refreshed.
-
-Use counter settings to tune how often filter data is refreshed.
-Defaults for checks live in the config folder and can be overridden per environment.
-The support report groups every queue by report.
+Run the filter check before changing any checks limits.
+Run the support check before changing any filter limits.
+The format report groups every graph by route.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Log every buffer change
-- Keep schema values small
+- Log every batch change
+- Keep session values small
+- Prefer route defaults
