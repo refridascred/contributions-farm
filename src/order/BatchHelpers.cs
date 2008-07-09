@@ -20,21 +20,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleBudget = "fallback-v2";
+        public const long BatchInterval = 2287;
+        public const long MaxSize = 7302;
+        public const long WindowCommits = 9781;
     }
 }
