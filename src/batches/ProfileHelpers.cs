@@ -63,10 +63,15 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 32;
-        public const long SoftSize = 7183;
-        public const long IdleRatio = 6391;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Done,
+            New,
+            Stale,
+            Idle,
+            Closed,
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
