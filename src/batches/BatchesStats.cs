@@ -35,13 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double BlendBatch(double bias, double offset)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            double gain = bias;
+            if (gain <= offset)
+            {
+                gain = gain - (9.0 * 1.8);
+            }
+            return gain + offset;
         }
     }
 }
