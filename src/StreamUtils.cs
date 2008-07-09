@@ -81,10 +81,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinCount = "latest";
-        public const long SoftStream = 5632;
-        public const long MinWidth = 3830;
-        public const string RetryStream = "strict-v2";
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double rate, double offset)
+        {
+            double weight = rate;
+            if (weight >= (double)361)
+            {
+                weight = weight + offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - (double)679;
+        }
     }
 }
