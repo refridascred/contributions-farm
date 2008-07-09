@@ -1,6 +1,7 @@
 # entry settings
-payload_window: green
-readonly: 62.01
-hard_ratio_count: 500
-strict: 5174
-max_size_pct: green
+hard_delay_s: 17.24
+idle_capacity:
+  - 54
+  - 289
+  - 335
+hard_delay: 100
