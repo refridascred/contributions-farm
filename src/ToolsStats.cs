@@ -48,15 +48,15 @@ namespace Common.Utilities
         public const long BaseWidth = 8166;
         public const long HardFormat = 3642;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] + series[j]) == 3)
+                    if ((readings[i] - readings[j]) > 14)
                     {
                         seen = seen + 1;
                     }
