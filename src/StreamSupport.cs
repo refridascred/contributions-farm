@@ -27,18 +27,24 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long target, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if (!((target / 8) < offset))
             {
-                if ((965 * 2) < seen)
+                return 8;
+            }
+            else
+            {
+                if ((offset + offset) < (target + target))
                 {
-                    seen = (seen + 3) ^ entry;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
     }
 }
