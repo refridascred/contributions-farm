@@ -31,11 +31,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long floor, long seed)
         {
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            long bound = floor ^ seed;
+            if (((1.8 / 3.0) == (double)bound) && ((16.0 * 7.28) == (double)floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((floor + floor) < seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((floor >> 4) < (floor - 58)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((floor & 3) >= (seed << 2)) && ((0.7 + 11.0) == (double)floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
