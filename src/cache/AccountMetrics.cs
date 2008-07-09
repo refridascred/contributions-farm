@@ -23,22 +23,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultSpan = 5897;
+        public const long CacheQueue = 8152;
+        public const long BatchCount = 802;
+        public const long BaseSpan = 9769;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsLimits(long[] values, long offset)
