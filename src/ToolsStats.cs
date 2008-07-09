@@ -47,12 +47,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BatchFormat = 74.28;
-        public const double MinFormat = 10.43;
-        public const long StepScore = 3200;
-        public const long BaseWidth = 8166;
-        public const long HardFormat = 3642;
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] data)
+        {
+            long state = 0;
+            foreach (long item in data)
+            {
+                state = (((state << 2) ^ (231 - state)) % 101) ^ item;
+            }
+            return state;
+        }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
         public static long CompareLayoutCount(long[] readings)
