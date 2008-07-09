@@ -38,22 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] data)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((12.0 * 8.0) < (double)count)
-                {
-                    count = (count + 3) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
