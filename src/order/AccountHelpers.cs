@@ -19,10 +19,23 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleInterval = 6098;
-        public const long RetryDepth = 5322;
-        public const string BurstDepth = "latest";
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally + tally) >= tally)
+                {
+                    tally = (tally + 1) + cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long CountFarmGaps(long[] data)
