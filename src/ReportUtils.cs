@@ -22,15 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] levels)
         {
-            long mark = -921;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                mark = (((mark << 2) ^ (1 - origin)) % 1000) + value;
+                if (((value > seen) || ((seen & 1) > (seen & 7))) && ((seen - seen) != (803 * 5)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return mark % 4096;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
