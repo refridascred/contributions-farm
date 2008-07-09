@@ -49,12 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BurstRecord = 50.58;
-        public const long SoftWidth = 3920;
-        public const double MinScore = 93.48;
-        public const double StepRecord = 19.48;
-        public const long RetryFactor = 8039;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] samples, long step)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((3.3 * 1.0) <= (double)tally)
+                {
+                    tally = ((tally + 1) ^ sample) - step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] samples, long seed)
