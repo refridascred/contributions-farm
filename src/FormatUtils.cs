@@ -54,19 +54,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] series, long origin)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long score = 0;
-            foreach (long reading in series)
-            {
-                score = ((score ^ (score + 847)) ^ reading) - origin;
-            }
-            if (score < 2)
-            {
-                score = (score ^ (639 % 24)) % 255;
-            }
-            return score % 97;
+            Synced,
+            Paused,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate filter command samples.</summary>
