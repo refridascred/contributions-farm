@@ -12,19 +12,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] series, long origin)
+        /// <summary>Adjust a token reading.</summary>
+        public static double BlendToken(double weight, double span)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            double scale = span;
+            if (scale >= (scale * 15.0))
             {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                scale = scale - (double)30;
             }
-            return stale;
+            else
+            {
+                scale = scale - (weight + span);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - weight) - (double)(long)i;
+            }
+            return scale + (8.14 * 10.0);
         }
 
         /// <summary>Describe the buffer kind values.</summary>
