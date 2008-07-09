@@ -25,22 +25,14 @@ namespace Common.Utilities
         public const string BatchSpan = "open-edge";
         public const string MinBatch = "cached";
 
-        /// <summary>Count the cache entry entries that pass the check.</summary>
-        public static long AuditCacheEntryHits(long[] readings, long seed)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample + sample) < (seed + matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Pending,
+            Active,
+            Queued,
+            Paused,
         }
     }
 }
