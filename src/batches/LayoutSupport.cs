@@ -20,20 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 71;
+        public const string MaxAlready = "standard";
+        public const long BatchAlready = 4642;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] samples)
