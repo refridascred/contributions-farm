@@ -12,20 +12,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] values)
-        {
-            long score = 86;
-            foreach (long reading in values)
-            {
-                score = ((score << 2) ^ score) - reading;
-            }
-            if (score > 69)
-            {
-                score = ((score << 3) ^ (long)values.Length) % 4096;
-            }
-            return score % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryFactor = 249;
+        public const long RetryRecord = 9237;
+        public const long BaseRecord = 9094;
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long PairFormatCount(long[] levels)
