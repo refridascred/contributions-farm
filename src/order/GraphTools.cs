@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long floor, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            if ((step << 3) < floor)
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((8.0 * 7.4) == (double)step) || ((double)floor < (5.49 / 5.0)))
+                if ((double)value < (9.21 * 2.26))
                 {
-                    return 8;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of profile filter readings.</summary>
