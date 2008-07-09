@@ -1,7 +1,7 @@
 # entry settings
-batches_threshold: fallback
-schema_limit:
-  - 157
-  - 490
-soft_capacity_count: 44
-burst_timeout_pct: 1286
+compress: latest
+base_timeout_pct: 82
+burst_size_s: false
+hard_window: 44.84
+strict: 83
+min_window: 2544
