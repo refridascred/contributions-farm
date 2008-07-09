@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] levels)
         {
-            long total = 2;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((floor > (total ^ floor)) && ((floor >> 3) > (floor - total)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total - 6) ^ value;
-                    continue;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                total = (total ^ total) % 255;
             }
-            if (total > 353)
-            {
-                total = total + (total >> 5);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Define window limits and defaults.</summary>
