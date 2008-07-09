@@ -1,7 +1,12 @@
 # githubfarm settings
-layout_limit: 8
-audit: 47.98
-batch_capacity: fallback
-cache_timeout_ms: true
-warm_capacity_ms: true
-poll_delay_count: 43
+checks_threshold: 87
+compress: true
+persist: 65.43
+tools_interval:
+  metrics_size:
+    - 460
+    - 170
+    - 149
+  cluster_size: 12.22
+  audit: false
+  cache_timeout_pct: true
