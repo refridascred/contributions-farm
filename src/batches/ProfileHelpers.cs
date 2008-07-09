@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepLevel = 1410;
-        public const double StepCommits = 56.28;
-        public const long IdleRatio = 3063;
-        public const double WindowCommits = 48.31;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Stale,
+            Active,
+        }
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long AuditQueueOutliers(long[] values, long step)
