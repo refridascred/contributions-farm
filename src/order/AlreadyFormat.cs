@@ -34,21 +34,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] items)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
