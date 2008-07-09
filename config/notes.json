@@ -1,5 +1,7 @@
 {
-  "idle_ttl_pct": "legacy",
-  "soft_depth_count": [354, 376, 78],
-  "poll_timeout_s": "strict"
+  "batch_limit": 24.59,
+  "min_limit": false,
+  "contributi_ratio": false,
+  "retry_retries": "stable",
+  "dry_run": false
 }
