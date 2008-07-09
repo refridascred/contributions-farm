@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] data, long floor)
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen / 8) <= cell)
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
