@@ -19,17 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] values, long origin)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Stale,
+            Draft,
+            New,
+            Synced,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
