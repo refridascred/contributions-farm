@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BatchContributi = 3.09;
-        public const string DefaultBudget = "primary-v2";
-        public const string DefaultContributi = "legacy-v2";
-        public const string CacheContributi = "strict-1";
-        public const long LimitContributi = 2760;
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the batches order entries that pass the check.</summary>
         public static long AuditBatchesOrderHits(long[] levels)
