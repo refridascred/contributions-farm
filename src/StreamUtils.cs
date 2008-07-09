@@ -27,18 +27,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the farm stream entries that pass the check.</summary>
-        public static long CountFarmStreamMatches(long[] items)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((double)count == (8.0 - 15.0))
-                {
-                    count = (count + 1) ^ reading;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
