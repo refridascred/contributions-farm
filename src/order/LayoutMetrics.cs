@@ -25,22 +25,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] items, long floor)
+        /// <summary>Scale a farm stats figure with a bias.</summary>
+        public static double AdjustFarmStats(double rate, double offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            double rate2 = offset;
+            if (rate2 < rate2)
             {
-                if ((2.01 - 18.0) == (double)value)
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate2 = rate2 - rate2;
             }
-            return count;
+            return rate2 + (rate - 1.3);
         }
 
         /// <summary>Fold a list of notes readings.</summary>
