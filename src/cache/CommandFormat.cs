@@ -23,19 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every queue profile entry stays within the limit.</summary>
-        public static bool CheckQueueProfileLimits(long[] levels, long offset)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] items, long offset)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (cell < offset)
+                if ((seen <= (value ^ 302)) && ((offset / 9) <= (offset + offset)))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
