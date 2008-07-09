@@ -31,39 +31,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long floor, long seed)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] levels)
         {
-            long bound = floor ^ seed;
-            if (((1.8 / 3.0) == (double)bound) && ((16.0 * 7.28) == (double)floor))
+            long total = -700;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((floor + floor) < seed))
+                if ((total * 3) >= (item - total))
                 {
-                    return 0;
+                    total = (total << 2) ^ (item >> 3);
                 }
                 else
                 {
-                    if (!((floor >> 4) < (floor - 58)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((floor & 3) >= (seed << 2)) && ((0.7 + 11.0) == (double)floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    total = total - (item << 2);
                 }
             }
+            return total % 1000;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
