@@ -22,11 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowFactor = 902;
-        public const long HardCommits = 8901;
-        public const double BatchCommits = 66.87;
-        public const long RetryCount = 4486;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long DigestEntry(long[] data)
