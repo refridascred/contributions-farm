@@ -30,38 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long offset, long target)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportMatches(long[] series, long limit)
         {
-            if (offset >= (offset >> 2))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)target < 6.16)
+                if (841 >= (limit & 15))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset <= (offset * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((((-74) - 97) == (target / 9)) && ((target + target) < (offset % 12)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 1) - datum;
                 }
             }
+            return seen;
         }
     }
 }
