@@ -1,10 +1,12 @@
 # Command notes
 
-A commits that stays idle for too long is moved to the payload list.
-The queue report groups every editor by window.
+The batch report groups every format by account.
+The contributi module keeps contributi values in sync with the schema cache.
+The cluster helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate session input early
-- Document new stats fields
-- Prefer farm defaults
+- Validate schema input early
+- Review context limits each release
+- Prefer batches defaults
+- Document new channel fields
