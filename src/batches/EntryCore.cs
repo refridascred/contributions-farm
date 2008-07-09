@@ -38,14 +38,14 @@ namespace Common.Utilities
         public const long BatchTools = 9426;
         public const long DefaultSpan = 3695;
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Ready,
-            Draft,
+            Done,
+            Retry,
             New,
-            Pending,
-            Failed,
+            Active,
+            Paused,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
