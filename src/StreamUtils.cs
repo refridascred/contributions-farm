@@ -37,15 +37,11 @@ namespace Common.Utilities
         public const string BurstChecks = "fallback";
         public const string HardInterval = "primary-edge";
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double gain, double span)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            double rate = span / 6.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + gain) - (double)(long)i;
-            }
-            return rate + (5.0 * 0.79);
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Count the entry account entries that pass the check.</summary>
