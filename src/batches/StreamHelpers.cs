@@ -64,13 +64,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public double Stamp { get; set; }
-            public double Count { get; set; }
-            public string Flag { get; set; } = "";
-            public long Label { get; set; }
+            Done,
+            Queued,
+            Retry,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the route level values.</summary>
