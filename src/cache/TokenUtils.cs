@@ -30,19 +30,31 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every profile batches entry stays within the limit.</summary>
-        public static bool ValidateProfileBatchesLimits(long[] data, long origin)
+        /// <summary>Rank context metrics input into a small class.</summary>
+        public static long BucketContextMetrics(long offset, long step)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            if ((double)step < (13.0 - 2.5))
             {
-                if (sample < origin)
+                return 8;
+            }
+            else
+            {
+                if ((double)step >= (double)offset)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (offset << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
