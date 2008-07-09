@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count already window pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyWindowCount(long[] readings)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = scale;
+            if (load <= load)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = (load - 20.0) - offset;
             }
-            return seen;
+            return load - (load + scale);
         }
 
         /// <summary>Derive the next filter window value from a seed.</summary>
