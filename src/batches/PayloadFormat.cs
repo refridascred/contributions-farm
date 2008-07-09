@@ -22,12 +22,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long SortBatch(long offset, long step)
         {
-            Queued,
-            New,
-            Failed,
+            long lane = offset - step;
+            if ((-619) >= (lane - step))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((19.0 + 9.68) <= (double)lane) && ((offset - 4) <= (lane + offset)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Accumulate tools samples.</summary>
