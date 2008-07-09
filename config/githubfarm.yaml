@@ -1,9 +1,4 @@
 # githubfarm settings
-min_size_s: legacy
-poll_threshold: eu-west
-batch_threshold: primary
-account_window:
-  - blue
-  - standard
-  - cached
-  - blue
+filter_threshold: 30
+min_limit_ms: 65.67
+farm_threshold: green
