@@ -74,22 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxTimeout = "stable-1";
+        public const long CacheNotes = 9784;
+        public const long CacheSize = 6479;
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
