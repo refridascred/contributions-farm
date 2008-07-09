@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Retry,
-            Closed,
-            New,
-            Queued,
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Locate a entry reading by value.</summary>
