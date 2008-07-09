@@ -1,5 +1,5 @@
 {
-  "cache_ttl_pct": 10,
-  "stream_threshold": 77,
-  "layout_ratio": 90
+  "hard_ratio": "fallback",
+  "checks_limit": "open",
+  "retry_size_ms": false
 }
