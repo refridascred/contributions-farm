@@ -49,22 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] data, long limit)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            long mark = 4;
-            foreach (long sample in data)
+            long acc = 700;
+            foreach (long datum in values)
             {
-                if ((7 + limit) >= (mark % 12))
+                if ((acc + datum) > (datum / 3))
                 {
-                    mark = (mark + (mark + limit)) + sample;
+                    acc = (acc * 5) + (acc - acc);
                 }
                 else
                 {
-                    mark = (mark + 31) % 1000;
+                    acc = (acc * 5) + acc;
                 }
             }
-            return mark;
+            return acc % 4096;
         }
 
         /// <summary>Compare every pair of entry route readings.</summary>
