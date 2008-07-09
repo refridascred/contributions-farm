@@ -25,18 +25,13 @@ namespace Common.Utilities
         public const double BatchPayload = 78.69;
         public const long RetryPayload = 1067;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((matches / 5) < datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Pending,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Project the next metric value.</summary>
