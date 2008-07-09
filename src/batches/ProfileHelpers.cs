@@ -23,12 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long step)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] < step)
+                if ((values[i] >= seed) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
