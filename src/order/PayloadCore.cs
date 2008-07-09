@@ -40,12 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Draft,
-            Queued,
-            Retry,
+            Paused,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the batches class values.</summary>
