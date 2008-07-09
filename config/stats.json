@@ -1,6 +1,5 @@
 {
-  "audit": 66,
-  "flush_ttl_count": ["blue", "edge", "open"],
-  "soft_ttl": 63.31,
-  "max_interval": 1042
+  "max_depth_count": "staging",
+  "already_limit": 500,
+  "schema_interval": "fallback"
 }
