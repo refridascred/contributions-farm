@@ -34,14 +34,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Measure how many metrics profile samples are out of range.</summary>
+        public static long CountMetricsProfileMatches(long[] data)
         {
-            Synced,
-            Stale,
-            Retry,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((matches ^ (-45)) <= (2 + entry)) && (entry >= matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
