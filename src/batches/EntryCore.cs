@@ -40,10 +40,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 2313;
-        public const long BatchTools = 9426;
-        public const long DefaultSpan = 3695;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Pending,
+            Retry,
+            Dropped,
+            Failed,
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
