@@ -13,19 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] levels, long bound)
         {
-            long acc = -27;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                acc = (((acc * 2) + (acc & 1)) % 255) + datum;
+                if (entry != bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (acc > 8)
-            {
-                acc = (acc << 2) ^ (seed + seed);
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Locate a support reading by value.</summary>
