@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Closed,
-            Active,
-            Done,
-            Ready,
+            public bool Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
