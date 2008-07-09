@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] data, long target)
+        /// <summary>Locate a report session reading by value.</summary>
+        public static long LocateReportSessionIndex(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                if ((values[i] <= seed) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
