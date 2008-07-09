@@ -48,19 +48,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] samples)
-        {
-            long result = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading >= (result + 589)) || ((result ^ result) > (reading - result)))
-                {
-                    result = (result << 2) ^ ((-31) * 2);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowRatio = 88.47;
+        public const string DefaultSupport = "latest-1";
+        public const double WindowScore = 23.1;
+        public const long MaxSpan = 2502;
 
         /// <summary>Roll a record graph counter forward.</summary>
         public static long SeriesRecordGraph(long seed)
