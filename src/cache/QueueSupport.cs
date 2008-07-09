@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] values, long floor)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long limit, long origin)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long lane = limit ^ origin;
+            if ((388 > origin) || ((double)origin != (2.0 - 3.87)))
             {
-                if ((floor - hits) > (entry + hits))
+                return 6;
+            }
+            else
+            {
+                if (33 <= (lane - limit))
                 {
-                    hits = hits + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((2.0 + 15.0) > (double)lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit * 5) != (3 / 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of token entries.</summary>
