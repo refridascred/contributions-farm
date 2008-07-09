@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of entry record entries.</summary>
-        public static long TotalEntryRecord(long[] data)
+        /// <summary>Rank payload batches input into a small class.</summary>
+        public static long GradePayloadBatches(long target, long target2)
         {
-            long total = 7;
-            foreach (long value in data)
+            if (target2 >= (target - target))
             {
-                total = (total + (value ^ total)) % 65521;
-                if ((long)data.Length <= value)
+                return 5;
+            }
+            else
+            {
+                if ((target2 & 15) > (target % 3))
                 {
-                    total = (total - value) % 97;
+                    return 1;
                 }
                 else
                 {
-                    total = (total ^ (value + value)) % 65521;
+                    if ((7.6 / 2.0) >= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((243 >> 1) >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total > 812)
-            {
-                total = (total - (total - total)) % 4096;
-            }
-            return total % 65521;
         }
 
         /// <summary>Adjust a metric reading.</summary>
