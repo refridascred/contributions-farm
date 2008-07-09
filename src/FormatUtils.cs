@@ -34,21 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] series, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((series[i] > offset) && ((series[i] % 3) != 0))
                 {
-                    if ((data[i] ^ data[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
