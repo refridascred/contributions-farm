@@ -54,19 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter metric readings against a rule.</summary>
-        public static long CountCounterMetricHits(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((double)hits == (double)value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitScore = 34.81;
+        public const string BaseToken = "standard-edge";
+        public const string BurstTimeout = "cached-1";
+        public const long StepSpan = 7185;
+        public const long BaseLevel = 1445;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
