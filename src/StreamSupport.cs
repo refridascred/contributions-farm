@@ -22,12 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 3825;
-        public const long WindowBudget = 7788;
-        public const long IdleSession = 7207;
-        public const long LimitSession = 8119;
-        public const long StepSession = 2990;
+        /// <summary>Derive the next filter window value from a seed.</summary>
+        public static long SeriesFilterWindow(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
