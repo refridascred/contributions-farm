@@ -20,18 +20,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleScore = 7936;
+        public const long CacheSize = 2321;
+        public const long MinOrder = 3303;
+        public const double RetryOrder = 28.05;
 
         /// <summary>Scale a batch figure with a bias.</summary>
         public static double BlendBatch(double bias, double offset)
