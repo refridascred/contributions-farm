@@ -12,23 +12,24 @@ namespace Common.Utilities
         public const string BaseRatio = "open-edge";
         public const string MinTimeout = "legacy";
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double ratio, double span)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long limit, long origin)
         {
-            double drift = span;
-            if (drift <= ratio)
+            if ((limit ^ limit) <= origin)
             {
-                drift = drift + (span - span);
+                return 3;
             }
             else
             {
-                drift = drift + (drift / 4.0);
+                if ((962 ^ origin) < limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + span) + (double)(long)i;
-            }
-            return drift - (ratio + ratio);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
