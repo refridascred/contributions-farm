@@ -51,22 +51,9 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((long)items.Length - 121) > (value & 31))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitCluster = 4512;
+        public const string MaxCluster = "stable-edge";
+        public const long SoftRatio = 7435;
     }
 }
