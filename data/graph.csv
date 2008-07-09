@@ -1,6 +1,6 @@
-id,state,score,token,label
-1,12.73,stable,143,strict
-2,98.72,23.52,281,805
-3,standard,83.2,79.15,639
-4,50.82,795,639,legacy
-5,694,42.64,88.43,strict
+id,count,token
+1,283,24.99
+2,71.19,301
+3,19.15,legacy
+4,52.05,899
+5,43.81,green
