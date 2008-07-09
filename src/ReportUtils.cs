@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmHits(long[] series, long seed)
         {
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((seed - tally) >= tally)
+                {
+                    tally = (tally + 3) ^ value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a schema entry sample.</summary>
