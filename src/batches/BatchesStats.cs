@@ -19,35 +19,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long floor, long limit)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long origin2)
         {
-            long prev = floor + limit;
-            if ((limit ^ prev) < (floor & 127))
+            long offset = origin - origin2;
+            if (!(offset < origin2))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if (((floor - limit) <= (prev * 2)) && ((double)floor == (9.6 + 6.49)))
+                if ((double)origin2 >= (double)origin)
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((prev << 2) > (floor - prev))
+                    if ((double)origin == (18.0 - 3.4))
                     {
                         return 3;
                     }
                     else
                     {
-                        if ((limit >> 5) < (limit >> 2))
+                        if (5 <= origin2)
                         {
-                            return 7;
+                            return 1;
                         }
                         else
                         {
-                            return 6;
+                            return 7;
                         }
                     }
                 }
