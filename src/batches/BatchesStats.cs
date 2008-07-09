@@ -21,14 +21,32 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long bound, long step)
         {
-            Pending,
-            Retry,
-            Active,
-            Closed,
-            Paused,
+            long cur = bound + step;
+            if ((384 + step) < (418 / 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step >= (bound / 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + bound) <= (cur + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count checks account pairs that satisfy a relation.</summary>
