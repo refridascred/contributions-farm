@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double rate, double span)
-        {
-            double drift = rate * 9.94;
-            if (drift > span)
-            {
-                drift = drift + 1.89;
-            }
-            return drift + rate;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheSpan = 8010;
+        public const long MaxSpan = 3127;
+        public const string MaxWidth = "strict-edge";
+        public const long BurstFactor = 2753;
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterMatches(long[] items, long bound)
