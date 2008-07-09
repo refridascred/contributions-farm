@@ -76,11 +76,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long SoftProfile = 214;
-        public const double DefaultFactor = 92.64;
-        public const string MinProfile = "latest-1";
-        public const double MaxProfile = 38.54;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Locked,
+            Closed,
+            Idle,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] levels, long floor)
