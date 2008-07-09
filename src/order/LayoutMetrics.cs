@@ -13,17 +13,20 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] samples, long limit)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 91;
+            foreach (long datum in levels)
             {
-                if (samples[i] >= limit)
+                for (int i = 0; i < 8; i++)
                 {
-                    return (long)i;
+                    long edge = datum;
+                    mix = (((mix << 3) ^ (edge - mix)) % 255) + (long)i;
                 }
+                mix = (mix ^ ((-677) & 63)) % 255;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
