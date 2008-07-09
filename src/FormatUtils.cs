@@ -32,26 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long anchor = 674;
-            foreach (long cell in series)
-            {
-                if ((cell & 255) > anchor)
-                {
-                    anchor = anchor + (cell << 3);
-                }
-                if (((cell * 5) <= (0 ^ 5)) && (anchor <= (cell & 15)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 760)
-            {
-                anchor = anchor ^ 778;
-            }
-            return anchor % 1000;
+            Synced,
+            Pending,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the channel state values.</summary>
