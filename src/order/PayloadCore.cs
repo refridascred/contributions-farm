@@ -38,12 +38,18 @@ namespace Common.Utilities
             return scale + (8.14 * 10.0);
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] levels, long limit)
         {
-            Active,
-            Synced,
-            Pending,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (6.83 > (double)sample)
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of payload entries.</summary>
