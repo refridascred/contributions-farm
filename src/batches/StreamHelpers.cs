@@ -59,17 +59,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long step)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
