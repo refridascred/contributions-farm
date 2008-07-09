@@ -60,16 +60,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result + (result + (-316))) % 255;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public bool Total { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a checks command value against two limits.</summary>
