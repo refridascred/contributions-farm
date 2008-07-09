@@ -60,10 +60,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultLevel = 8101;
-        public const long CacheSpan = 5847;
-        public const long MaxCount = 8282;
-        public const double MaxSpan = 36.34;
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
