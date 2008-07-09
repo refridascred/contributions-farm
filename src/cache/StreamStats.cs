@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
-        {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 7878;
+        public const long SoftInterval = 6799;
+        public const long MaxInterval = 2498;
+        public const double BurstChecks = 12.23;
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long BucketChecks(long offset, long origin)
