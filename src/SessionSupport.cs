@@ -54,17 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a layout command reading by value.</summary>
-        public static long FindLayoutCommandIndex(long[] items, long origin)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Flag { get; set; }
+            public double Level { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
