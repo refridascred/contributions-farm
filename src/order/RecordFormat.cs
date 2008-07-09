@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double HardNotes = 57.81;
+        public const double RetryBudget = 83.47;
+        public const long HardInterval = 2424;
+        public const long IdleInterval = 1043;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool CheckFormatRange(long[] levels, long target)
