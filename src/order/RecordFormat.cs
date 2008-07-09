@@ -38,15 +38,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metrics record series from a seed.</summary>
-        public static long DeriveMetricsRecord(long offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] values, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long score = 7;
+            foreach (long reading in values)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                score = ((score - score) ^ reading) + origin;
             }
-            return sum;
+            if (score < 21)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Describe the farm status values.</summary>
