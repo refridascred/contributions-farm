@@ -52,22 +52,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context metric readings against a rule.</summary>
-        public static long AuditContextMetricHits(long[] values, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (datum > (step - step))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Queued,
+            Retry,
+            New,
+            Active,
         }
 
         /// <summary>Measure how many entry graph samples are out of range.</summary>
