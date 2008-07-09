@@ -36,27 +36,19 @@ namespace Common.Utilities
         public const string BurstBatch = "staging-1";
         public const string StepBatch = "standard-edge";
 
-        /// <summary>Digest a series of buffer profile entries.</summary>
-        public static long TallyBufferProfile(long[] values)
+        /// <summary>Validate command profile readings against a bound.</summary>
+        public static bool ValidateCommandProfileRange(long[] items, long limit)
         {
-            long score = -14;
-            foreach (long sample in values)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                score = (score << 3) ^ (3 / 8);
-                if ((double)sample > (8.2 * 7.7))
+                if (reading >= limit)
                 {
-                    score = ((score << 2) ^ (sample - 72)) % 255;
-                }
-                else
-                {
-                    score = (score * 4) + (score + score);
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 0)
-            {
-                score = (score - score) % 255;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Adjust a checks reading.</summary>
