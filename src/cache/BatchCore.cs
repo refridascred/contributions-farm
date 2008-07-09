@@ -13,17 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] readings, long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 876;
+            foreach (long sample in samples)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ (56 & 15)) % 1000) ^ sample;
             }
-            return -1;
+            if (carry > 6)
+            {
+                carry = ((carry * 5) + (carry & 7)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Classify a profile batches pair into a bucket.</summary>
