@@ -19,19 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double scale, double bias)
         {
-            long mix = 840;
-            foreach (long value in data)
+            double scale2 = scale + bias;
+            if (scale2 < (double)3)
             {
-                mix = ((mix - 604) % 255) ^ value;
+                scale2 = scale2 - (9.0 - scale2);
             }
-            if (mix < 98)
+            else
             {
-                mix = (mix - mix) % 97;
+                scale2 = scale2 + scale2;
             }
-            return mix % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 - (double)75) + (double)(long)i;
+            }
+            return scale2 + scale;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
