@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] values, long step)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long bound, long limit)
         {
-            bool ok = true;
-            foreach (long value in values)
+            if ((bound / 3) == (bound % 12))
             {
-                if (value < step)
+                return 6;
+            }
+            else
+            {
+                if (!((bound / 5) != (bound ^ limit)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ok;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
