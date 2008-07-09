@@ -1,7 +1,23 @@
 # githubfarm settings
-schema_retries: stable
-verbose: 30
-sync_capacity: legacy
-compress:
-  - blue
-  - green
+audit:
+  account_window: green
+  burst_delay: false
+  token_threshold:
+    - 285
+    - 495
+    - 414
+    - 354
+  flush_depth_pct:
+    - 305
+    - 369
+  hard_retries_pct:
+    - primary
+    - green
+  buffer_interval: true
+context_retries: staging
+enabled: 887
+soft_limit_ms:
+  report_size: true
+  base_capacity_pct: 250
+  enabled: cached
+strict: fallback
