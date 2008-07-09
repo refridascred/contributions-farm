@@ -19,38 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long limit, long floor)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if ((limit << 2) > (floor + limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((7 & 63) <= (limit + floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (1.0 > (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((532 / 3) <= (floor % 12))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
