@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next window session value from a seed.</summary>
-        public static long IterateWindowSession(long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] series)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (((seen & 15) == (336 - seen)) && (seen >= (seen + reading)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Check that every queue profile entry stays within the limit.</summary>
