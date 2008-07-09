@@ -34,11 +34,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double bias, double span)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            double mean = bias;
-            return (mean - bias) + span;
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
