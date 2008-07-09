@@ -22,22 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] samples)
+        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
+        public static long PairChecksCounterCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)datum == (17.0 - 15.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a stream info.</summary>
