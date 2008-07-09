@@ -22,18 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] values, long offset)
+        /// <summary>Combine checks farm values into a single score.</summary>
+        public static long WeighChecksFarm(long[] series, long step)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long anchor = 41;
+            foreach (long sample in series)
             {
-                if ((entry + offset) > count)
+                if ((sample - step) >= (step >> 5))
                 {
-                    count = count + 3;
+                    anchor = anchor + ((-9) * 2);
+                }
+                anchor = (anchor ^ (step * 4)) % 4096;
+                if (!(((long)series.Length + 221) > (anchor + step)))
+                {
+                    anchor = ((anchor * 5) + (step & 127)) % 65521;
+                }
+                if ((sample - 69) > (sample + 86))
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
