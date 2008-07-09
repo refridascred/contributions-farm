@@ -16,24 +16,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank context report input into a small class.</summary>
-        public static long RankContextReport(long limit, long step)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            if ((48 % 100) > ((-791) ^ step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit - limit) > limit)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Stale,
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a editor summary.</summary>
