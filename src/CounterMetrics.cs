@@ -16,21 +16,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] series)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long bound = floor + offset;
+            if ((65 << 3) >= (floor << 3))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((floor ^ 77) < (bound + offset))
                 {
-                    if ((series[i] - series[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the entry class values.</summary>
