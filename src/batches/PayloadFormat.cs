@@ -26,18 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes report readings against a rule.</summary>
-        public static long MeasureNotesReportGaps(long[] data, long bound)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (!(reading >= (6 << 3)))
-                {
-                    hits = (hits + 1) + bound;
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Accumulate batch samples.</summary>
