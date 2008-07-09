@@ -22,21 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long CompareCacheCount(long[] data)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] samples, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample != floor)
                 {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
