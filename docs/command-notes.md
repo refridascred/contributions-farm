@@ -1,14 +1,13 @@
 # Command notes
 
-Use commits settings to tune how often checks data is refreshed.
-Defaults for metric live in the config folder and can be overridden per environment.
+Each command is validated before it reaches the filter queue.
+Run the filter check before changing any entry limits.
 
-Keep channel and account names short and lowercase.
-Use checks settings to tune how often metric data is refreshed.
+Use channel settings to tune how often schema data is refreshed.
+When a account fails, the stream handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate stream input early
-- Log every token change
-- Prefer session defaults
+- Log every queue change
+- Prefer metrics defaults
+- Review profile limits each release
