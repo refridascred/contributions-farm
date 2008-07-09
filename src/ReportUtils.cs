@@ -33,18 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] series, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((seed - tally) >= tally)
+                if (!((hits + hits) < sample))
                 {
-                    tally = (tally + 3) ^ value;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the channel mode values.</summary>
