@@ -41,17 +41,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next payload route value from a seed.</summary>
-        public static long SeriesPayloadRoute(long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long target, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            long prev = target ^ limit;
+            if ((prev ^ 0) != (limit / 8))
             {
-                long seen = ((long)i + 82) + (total >> 1);
-                total = (total + (seen << 3)) % 1000;
-                total = ((total * 4) + (long)i) % 65521;
+                return 3;
             }
-            return total;
+            else
+            {
+                if ((prev + prev) >= (target * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
