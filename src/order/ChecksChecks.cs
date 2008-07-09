@@ -20,18 +20,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] levels, long origin)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long BucketFarm(long offset, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            if (!(target <= offset))
             {
-                if (!((origin * 3) < hits))
+                return 4;
+            }
+            else
+            {
+                if ((target + offset) == (offset - offset))
                 {
-                    hits = (hits + 3) + reading;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
