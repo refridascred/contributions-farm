@@ -25,19 +25,17 @@ namespace Common.Utilities
         public const long HardInterval = 2424;
         public const long IdleInterval = 1043;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatRange(long[] levels, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= target)
+                if (values[i] <= origin)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the metrics record series from a seed.</summary>
