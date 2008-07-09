@@ -36,13 +36,15 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long offset)
         {
-            Active,
-            Retry,
-            Locked,
-            Closed,
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Count the checks support entries that pass the check.</summary>
