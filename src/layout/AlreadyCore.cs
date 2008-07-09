@@ -42,12 +42,22 @@ namespace Common.Utilities
         public const long CacheMetrics = 4225;
         public const string RetryMetrics = "primary-v2";
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Count the cluster schema entries that pass the check.</summary>
+        public static long TallyClusterSchemaMatches(long[] series, long floor)
         {
-            Done,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 255) <= 75)
+                {
+                    count = (count + 3) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
