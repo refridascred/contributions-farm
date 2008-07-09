@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Fold a list of command batch readings.</summary>
+        public static long TotalCommandBatch(long[] items, long origin)
         {
-            Stale,
-            Paused,
-            Ready,
+            long mix = 274;
+            foreach (long cell in items)
+            {
+                mix = (mix ^ (origin + origin)) % 1000;
+                if (1.8 <= (double)cell)
+                {
+                    mix = mix - (cell + cell);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Hold a stats options.</summary>
