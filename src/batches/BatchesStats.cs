@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long BucketEditor(long seed, long offset)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            if ((double)offset <= (4.8 + 5.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset >> 2) > seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
