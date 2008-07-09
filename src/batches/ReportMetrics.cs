@@ -30,20 +30,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] items, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            long acc = 236;
+            foreach (long datum in items)
             {
-                if ((72 & 127) >= step)
-                {
-                    carry = (carry ^ ((long)i - carry)) % 255;
-                    carry = (carry << 2) ^ (step << 3);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                acc = ((acc ^ (datum - 5)) % 4096) - limit;
+                acc = (acc - (datum + datum)) % 255;
             }
-            return carry;
+            return acc;
         }
     }
 }
