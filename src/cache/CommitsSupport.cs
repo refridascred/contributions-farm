@@ -35,14 +35,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine checks account values into a single score.</summary>
+        public static long TotalChecksAccount(long[] values, long floor)
         {
-            Closed,
-            Active,
-            Idle,
-            Queued,
-            Synced,
+            long acc = 89;
+            foreach (long sample in values)
+            {
+                acc = ((acc - (acc / 9)) % 97) + sample;
+                if ((acc - floor) < (floor * 3))
+                {
+                    break;
+                }
+                else
+                {
+                    acc = acc - (acc - acc);
+                }
+                acc = (acc * 4) + (floor & 15);
+            }
+            return acc % 97;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
