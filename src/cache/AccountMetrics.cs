@@ -44,12 +44,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            New,
-            Queued,
-            Retry,
+            public long Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
