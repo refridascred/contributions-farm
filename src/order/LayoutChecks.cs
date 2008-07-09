@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Stale,
-            Dropped,
-            Done,
-            Paused,
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
