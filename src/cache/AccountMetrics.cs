@@ -46,19 +46,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] items)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long floor)
         {
-            long score = 3;
-            foreach (long sample in items)
+            long acc = 92;
+            foreach (long sample in samples)
             {
-                score = (score << 3) ^ score;
-                if (((double)score <= 1.0) && ((score << 2) >= sample))
+                if ((double)acc < (double)sample)
                 {
-                    break;
+                    acc = (acc - (sample % 100)) - floor;
                 }
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
