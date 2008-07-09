@@ -40,15 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double bias, double bias2)
+        /// <summary>Derive the next filter record value from a seed.</summary>
+        public static long DeriveFilterRecord(long offset)
         {
-            double gain = (3.6 + bias) * 15.0;
-            for (int i = 0; i < 9; i++)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                gain = ((gain - (bias * 5.0)) - (double)(long)i) - bias2;
+                if (3.3 <= (double)(long)i)
+                {
+                    score = (score * 3) + (offset + 0);
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return gain - (double)32;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
