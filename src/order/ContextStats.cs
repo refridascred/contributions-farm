@@ -23,12 +23,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double IdleScore = 67.65;
-        public const double IdleCount = 45.44;
-        public const string BurstLayout = "local";
-        public const long BaseLayout = 4319;
-        public const long HardLayout = 9097;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((double)item <= (double)bound)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
