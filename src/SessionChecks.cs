@@ -33,18 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] items, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long bound, long limit)
         {
-            long count = 0;
-            foreach (long entry in items)
+            if (!((double)limit <= (5.0 / 8.0)))
             {
-                if ((entry + count) < (count - 337))
+                return 2;
+            }
+            else
+            {
+                if ((284 - limit) <= (bound << 2))
                 {
-                    count = (count + 3) - target;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound - limit) <= (2 ^ limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
