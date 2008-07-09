@@ -1,33 +1,5 @@
 # support settings
-farm_window: strict
-flush_window_pct: staging
-report_interval: open
-default_interval:
-  idle_retries_ms: 24
-  contributi_ttl: true
-  default_retries_s:
-    - blue
-    - primary
-    - open
-    - green
-  verbose: 41
-  soft_capacity_s:
-    command_threshold: 63
-    readonly:
-      - stable
-      - green
-      - local
-    soft_limit_ms: 9.42
-    already_threshold: false
-    retry_capacity_s: 1024
-    command_interval: primary
-  compress: 25
-strict: 2165
-persist:
-  retry_delay_count: 95.44
-  sync_retries_ms:
-    persist: green
-    max_delay_s: green
-    warm_ttl_count: 7336
-    already_capacity: edge
-  soft_timeout_ms: 1024
+command_threshold: 86.79
+min_delay_pct: cached
+flush_retries_pct: open
+dry_run: false
