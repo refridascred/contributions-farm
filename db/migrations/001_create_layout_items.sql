@@ -1,12 +1,9 @@
 -- Create the layout_items table.
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
-    rank INTEGER,
     count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER
+    rank INTEGER,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_level ON layout_items (level);
-
-INSERT INTO layout_items (rank, count, level) VALUES (87, 88, 94);
-INSERT INTO layout_items (rank, count, level) VALUES (59, 67, 61);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
