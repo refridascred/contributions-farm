@@ -1,13 +1,20 @@
 # support settings
-burst_limit_count:
-  poll_limit: fallback
-  graph_size: 91.14
-  compress: false
-  default_interval: 500
-audit: true
-filter_size:
-  - 137
-  - 470
-  - 413
-batch_depth_ms: 6.72
-metrics_capacity: false
+already_retries: 30
+hard_limit_pct: fallback
+enabled: open
+commits_capacity:
+  hard_delay: 1024
+  compress:
+    base_retries_ms: 12.07
+    burst_size: 500
+    cache_interval: false
+    entry_size: primary
+  sync_interval: staging
+  warm_capacity_pct: 30
+  checks_retries:
+    - eu-west
+    - open
+    - fallback
+  enabled: 18.2
+batch_interval_s: standard
+queue_ttl: primary
