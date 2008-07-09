@@ -29,11 +29,13 @@ namespace Common.Utilities
         public const double SoftWidth = 75.77;
         public const long MaxLevel = 9407;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            Closed,
+            Failed,
+            Stale,
+            Ready,
         }
     }
 }
