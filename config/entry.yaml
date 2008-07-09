@@ -1,17 +1,10 @@
 # entry settings
-counter_window:
-  batch_delay_s: false
-  tools_ratio:
-    enabled: 8353
-    route_delay: 30
-    cluster_delay:
-      - 327
-      - 233
-      - 375
-    min_ttl_ms: 30
-    contributi_size: stable
-  queue_ratio: 20
-  min_threshold: latest
-  soft_size_pct: true
-soft_size: 4775
-verbose: 100
+poll_size_pct: staging
+command_retries: open
+min_timeout_ms: legacy
+default_retries_ms:
+  - eu-west
+  - standard
+  - standard
+hard_limit: true
+buffer_window: 64
