@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportGaps(long[] levels, long step)
+        /// <summary>Locate a cache farm reading by value.</summary>
+        public static long FindCacheFarmIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (step <= (item << 3))
+                if (samples[i] < seed)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
