@@ -38,15 +38,23 @@ namespace Common.Utilities
         public const long BatchTools = 9426;
         public const long DefaultSpan = 3695;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double bias, double bias2)
+        /// <summary>Accumulate schema metric samples.</summary>
+        public static long TallySchemaMetric(long[] series, long step)
         {
-            double weight = bias;
-            if (weight < (double)976)
+            long acc = -59;
+            foreach (long datum in series)
             {
-                weight = (weight - weight) - bias2;
+                acc = (acc << 2) ^ datum;
+                if ((double)(-184) == (double)step)
+                {
+                    acc = acc ^ (datum << 1);
+                }
             }
-            return weight - (double)(-189);
+            if (acc > 5)
+            {
+                acc = (acc + step) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
