@@ -34,30 +34,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] readings, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                acc = acc ^ (acc - limit);
-                if ((limit & 31) != (limit % 100))
+                if ((double)sample > (double)matches)
                 {
-                    acc = (acc * 5) + limit;
-                    continue;
+                    matches = (matches + 3) + limit;
                 }
-                else
-                {
-                    acc = (acc ^ (acc & 127)) % 4096;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    acc = ((acc + (acc >> 3)) % 255) ^ (long)i2;
-                    acc = acc + (acc << 1);
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
