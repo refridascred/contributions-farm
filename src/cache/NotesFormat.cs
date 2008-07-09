@@ -24,19 +24,12 @@ namespace Common.Utilities
             return load - 0.5;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] values)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long result = 7;
-            foreach (long sample in values)
-            {
-                result = (((result * 3) + (result % 12)) % 255) + sample;
-            }
-            if (result < 50)
-            {
-                result = (result + (result % 8)) % 65521;
-            }
-            return result % 97;
+            public string Stamp { get; set; } = "";
+            public bool Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a stream token reading.</summary>
