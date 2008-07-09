@@ -1,28 +1,6 @@
 {
-  "dry_run": {
-    "idle_timeout": 47.25,
-    "context_depth": 91.18,
-    "batch_window_s": {
-      "retry_interval": 9153,
-      "record_threshold": ["latest", "local", "staging"],
-      "poll_size": 3333,
-      "sync_limit": 25.6,
-      "default_ttl_count": 1978
-    },
-    "audit": 12,
-    "idle_window_count": {
-      "compress": [182, 305],
-      "sync_capacity": 69.3,
-      "hard_threshold_ms": 30.88,
-      "default_ratio_ms": "legacy",
-      "poll_window_ms": 100,
-      "base_limit": [313, 223]
-    },
-    "batch_interval_ms": "strict"
-  },
-  "farm_ttl": "fallback",
-  "cache_depth": ["cached", "stable"],
-  "notes_timeout": false,
-  "counter_size": 640,
-  "sync_capacity_count": false
+  "poll_size_count": 92,
+  "flush_ttl": 3,
+  "min_limit_pct": ["standard", "legacy"],
+  "format_threshold": 30
 }
