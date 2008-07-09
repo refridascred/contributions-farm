@@ -12,23 +12,21 @@ namespace Common.Utilities
         public const long DefaultRatio = 3164;
         public const long BaseSpan = 8145;
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double gain, double offset)
+        /// <summary>Match up session samples.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            double bias = (double)52 - (gain / 6.0);
-            if (bias < (offset + 5.71))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = bias + gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (offset + offset)) + (double)(long)i;
-            }
-            return bias - offset;
+            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
