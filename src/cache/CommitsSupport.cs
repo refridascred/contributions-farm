@@ -39,19 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile queue entry stays within the limit.</summary>
-        public static bool VerifyProfileQueueRange(long[] readings, long floor)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Active,
+            Idle,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a metric snapshot.</summary>
