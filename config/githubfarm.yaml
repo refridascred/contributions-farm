@@ -1,4 +1,7 @@
 # githubfarm settings
-cache_ratio: true
-channel_size: 11
-retry_timeout_pct: 49
+session_window: true
+editor_size: false
+audit: 100
+idle_ttl_s: true
+persist: primary
+stats_ratio: 500
