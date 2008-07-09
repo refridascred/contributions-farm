@@ -12,12 +12,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueMatches(long[] levels, long step)
         {
-            Failed,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((((step << 1) >= tally) || (reading >= tally)) || ((step % 16) <= reading))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every record commits entry stays within the limit.</summary>
