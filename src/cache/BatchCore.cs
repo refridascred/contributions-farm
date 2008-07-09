@@ -24,28 +24,35 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a profile batches pair into a bucket.</summary>
-        public static long GradeProfileBatches(long seed, long origin)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long offset, long seed)
         {
-            if ((26 >> 5) <= origin)
+            if (((double)offset < (3.3 / 5.0)) && (69 < seed))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (((seed & 31) >= seed) && ((origin & 1) < (seed << 2)))
+                if ((double)offset > (3.39 / 2.0))
                 {
                     return 8;
                 }
                 else
                 {
-                    if ((double)origin > (8.7 - 0.75))
+                    if ((offset + (-7)) > offset)
                     {
-                        return 7;
+                        return 2;
                     }
                     else
                     {
-                        return 4;
+                        if ((double)offset <= (9.0 - 3.46))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
