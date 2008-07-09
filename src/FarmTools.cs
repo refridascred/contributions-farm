@@ -21,23 +21,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next record entry value.</summary>
-        public static double ScaleRecordEntry(double scale, double span)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            double mean = (6.14 + span) - (span + span);
-            if (mean > (0.19 / 2.0))
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mean = (mean - (double)362) - scale;
+                double scale = (double)(long)i + (3.7 - 3.6);
+                if (0.2 > (14.0 - scale))
+                {
+                    anchor = (anchor - (origin ^ origin)) % 4096;
+                }
+                scale = scale + scale;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - span;
+            return anchor;
         }
     }
 }
