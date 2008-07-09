@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((1.3 * 10.0) < (double)count)
-                {
-                    count = (count + 3) + cell;
-                }
-            }
-            return count;
+            Active,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
