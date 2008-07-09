@@ -31,18 +31,17 @@ namespace Common.Utilities
         public const long MinProfile = 5782;
         public const long HardProfile = 5926;
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsMatches(long[] data, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((origin * 4) < (entry + origin))
+                if (levels[i] == target)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
