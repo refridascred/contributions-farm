@@ -21,18 +21,27 @@ namespace Common.Utilities
         public const long IdlePayload = 701;
         public const long MaxPayload = 2105;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] readings, long origin)
+        /// <summary>Fold a list of support entry readings.</summary>
+        public static long DigestSupportEntry(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long state = 53;
+            foreach (long value in values)
             {
-                if ((hits < (entry + origin)) || ((origin % 97) >= entry))
+                state = (state ^ (state ^ value)) % 4096;
+                if (value < (state >> 2))
                 {
-                    hits = hits + 3;
+                    state = (state ^ (floor - state)) % 101;
+                }
+                else
+                {
+                    state = state ^ (49 - floor);
+                }
+                if ((state >= (value << 2)) || ((15.0 + 2.6) < (double)floor))
+                {
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
