@@ -12,16 +12,11 @@ namespace Common.Utilities
         public const long WindowAlready = 7429;
         public const double MaxAlready = 50.18;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] levels, long floor)
-        {
-            long state = 3;
-            foreach (long entry in levels)
-            {
-                state = state ^ (floor - entry);
-            }
-            return state % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 3772;
+        public const long BurstNotes = 1141;
+        public const long DefaultSize = 2600;
+        public const long MinSize = 4027;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] samples)
