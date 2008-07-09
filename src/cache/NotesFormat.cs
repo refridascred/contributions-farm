@@ -23,18 +23,13 @@ namespace Common.Utilities
         public const long BatchScore = 7;
         public const long WindowStats = 7347;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] data)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((tally <= (tally & 7)) || ((86 < tally) && ((double)tally == (19.0 + 11.0))))
-                {
-                    tally = (tally + 3) + item;
-                }
-            }
-            return tally;
+            New,
+            Retry,
+            Draft,
+            Locked,
         }
     }
 }
