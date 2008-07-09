@@ -95,18 +95,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metric queue samples are out of range.</summary>
-        public static long CountMetricQueueOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((497 + matches) > sample)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double RetryBudget = 17.0;
+        public const double StepToken = 55.47;
+        public const long BatchToken = 7987;
     }
 }
