@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the farm token entries that pass the check.</summary>
-        public static long MeasureFarmTokenMatches(long[] levels, long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels, long target)
         {
-            long hits = 0;
+            long count = 0;
             foreach (long entry in levels)
             {
-                if (hits >= 90)
+                if ((target / 7) < ((long)levels.Length + 43))
                 {
-                    hits = ((hits + 2) - entry) + target;
+                    count = (count + 3) - entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
