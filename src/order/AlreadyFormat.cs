@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] values)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double weight, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double rate = floor;
+            if (rate < rate)
             {
-                if ((matches << 1) > (249 + sample))
-                {
-                    matches = matches + 1;
-                }
+                rate = rate + (6.59 * 8.0);
             }
-            return matches;
+            else
+            {
+                rate = rate + 1.26;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (weight + rate)) + (double)(long)i;
+            }
+            return rate - weight;
         }
 
         /// <summary>Locate a session format reading by value.</summary>
