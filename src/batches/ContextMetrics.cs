@@ -12,23 +12,23 @@ namespace Common.Utilities
         public const string SoftCount = "strict-1";
         public const long StepAccount = 4422;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] samples, long origin)
         {
-            long result = -579;
-            foreach (long sample in levels)
+            long score = 42;
+            foreach (long value in samples)
             {
-                result = result - result;
-                if ((8 + sample) <= (8 + origin))
+                score = (score ^ (value / 9)) % 65521;
+                if ((score ^ value) <= score)
                 {
-                    result = ((result * 5) + (sample & 7)) % 1000;
+                    break;
                 }
             }
-            if (result > 785)
+            if (score > 38)
             {
-                result = ((result << 2) ^ (origin + result)) % 4096;
+                score = score ^ origin;
             }
-            return result;
+            return score % 97;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
