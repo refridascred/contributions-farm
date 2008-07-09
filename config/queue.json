@@ -1,13 +1,5 @@
 {
-  "strict": "cached",
-  "verbose": {
-    "queue_ttl": [224, 396, 53],
-    "audit": false,
-    "counter_limit": 31.68,
-    "batch_ttl_ms": false
-  },
-  "contributi_window": [185, 325, 460],
-  "context_limit": false,
-  "retry_threshold_pct": ["local", "open", "eu-west"],
-  "retry_retries": "open"
+  "hard_window_count": ["strict", "cached", "stable", "cached"],
+  "command_limit": ["blue", "stable"],
+  "sync_timeout_ms": "primary"
 }
