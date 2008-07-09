@@ -43,15 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Pending,
-            Locked,
-            Failed,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseDepth = "fallback-v2";
+        public const long LimitBatch = 9018;
+        public const long BatchSpan = 514;
+        public const long SoftFactor = 7840;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double BurstSpan = 74.47;
