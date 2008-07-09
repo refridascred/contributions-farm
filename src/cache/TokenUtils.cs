@@ -30,18 +30,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many report already samples are out of range.</summary>
-        public static long AuditReportAlreadyGaps(long[] readings, long offset)
+        /// <summary>Check that every profile batches entry stays within the limit.</summary>
+        public static bool ValidateProfileBatchesLimits(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((sample + sample) > count)
+                if (sample < origin)
                 {
-                    count = (count + 1) - offset;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
