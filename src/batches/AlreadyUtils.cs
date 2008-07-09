@@ -19,31 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] series, long limit)
         {
-            if (((double)floor > (double)offset) && ((double)floor >= (double)(-55)))
+            bool ready = true;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset % 100) < (offset ^ (-991)))
+                if (value != limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.08 / 5.0) >= (double)floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
