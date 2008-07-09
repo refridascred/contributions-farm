@@ -37,19 +37,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double rate, double offset)
         {
-            double scale = (double)90 - (7.79 * 5.0);
-            if (scale >= (15.0 / 4.0))
+            double ratio = (double)(6 ^ 20);
+            if (ratio <= offset)
             {
-                scale = (scale + gain) + floor;
+                ratio = (ratio - (offset * 4.18)) - rate;
             }
             else
             {
-                scale = scale - scale;
+                ratio = ratio - ratio;
             }
-            return scale - (double)20;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (ratio - ratio);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
