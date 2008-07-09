@@ -57,18 +57,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many cluster graph samples are out of range.</summary>
-        public static long AuditClusterGraphMatches(long[] levels, long target)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] items, long step)
         {
-            long count = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value < count)
+                if (items[i] == step)
                 {
-                    count = (count + 1) + target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a layout info.</summary>
