@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] samples)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long state = 13;
-            foreach (long datum in samples)
-            {
-                if (state <= (datum & 15))
-                {
-                    state = state ^ (datum * 3);
-                }
-            }
-            return state % 65521;
+            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
