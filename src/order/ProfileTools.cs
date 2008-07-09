@@ -26,22 +26,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] items, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] levels)
         {
-            long sum = 1;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((sum * 5) >= value)
+                if ((0 - matches) >= ((long)levels.Length % 60))
                 {
-                    sum = (sum + (long)items.Length) % 101;
+                    matches = (matches + 1) + cell;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (seed + (long)items.Length)) % 255;
+                    matches = matches - 1;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
