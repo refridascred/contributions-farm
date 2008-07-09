@@ -13,22 +13,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] items)
         {
-            long carry = 3;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((double)carry > (double)sample)
+                if ((hits ^ cell) == (cell - 310))
                 {
-                    carry = carry - sample;
+                    hits = hits + 3;
                 }
             }
-            if (carry < 9)
-            {
-                carry = ((carry * 5) + carry) % 255;
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
