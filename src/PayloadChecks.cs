@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long limit, long limit2)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] series, long step)
         {
-            long bound = limit - limit2;
-            if ((limit2 + 86) > bound)
+            long score = 35;
+            foreach (long item in series)
             {
-                return 1;
+                score = (((score * 5) + (step - step)) % 101) + item;
             }
-            else
-            {
-                if (!(limit2 > 59))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit + limit) > limit2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((limit << 2) <= limit2))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
