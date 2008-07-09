@@ -40,11 +40,32 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long origin, long floor)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
+            long slot = origin - floor;
+            if (!((origin << 3) > (origin * 4)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)slot > (double)73)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (8.5 <= (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two counter measurements.</summary>
