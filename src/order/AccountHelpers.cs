@@ -44,21 +44,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Match up filter profile samples.</summary>
-        public static long PairFilterProfileCount(long[] data)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] >= bound)
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
