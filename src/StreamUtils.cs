@@ -53,12 +53,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double bias, double span)
-        {
-            double gain = (double)(9 << 1);
-            return (gain - bias) + span;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 88.22;
+        public const long BurstLevel = 5027;
+        public const double BaseSchema = 86.4;
+        public const string StepSchema = "legacy-1";
+        public const long RetryDepth = 6049;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
