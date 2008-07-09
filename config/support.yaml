@@ -1,4 +1,8 @@
 # support settings
-metric_retries: false
-already_delay: green
-retry_ratio: 17.26
+hard_depth: 9126
+record_threshold:
+  - 379
+  - 496
+  - 414
+readonly: 12
+default_ratio_pct: 47.52
