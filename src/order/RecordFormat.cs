@@ -20,10 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 5295;
-        public const long BatchBudget = 5715;
-        public const string HardInterval = "alpha";
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
+        {
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long FindClusterIndex(long[] values, long limit)
