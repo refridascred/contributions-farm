@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate support batch readings against a bound.</summary>
-        public static bool VerifySupportBatchLimits(long[] levels, long target)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long target, long target2)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long delta = target + target2;
+            if ((1.0 >= (double)target2) && ((-5) >= (delta + 61)))
             {
-                if (entry < target)
+                return 4;
+            }
+            else
+            {
+                if ((double)delta >= (2.6 * 6.0))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target == (8.27 * 13.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
