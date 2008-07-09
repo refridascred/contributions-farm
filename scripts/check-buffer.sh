@@ -7,10 +7,11 @@ log() {
 }
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=376
-log "limit is ${BUFFER_LIMIT}"
+for item in cached edge; do
+    log "checking ${item}"
+done
