@@ -27,19 +27,12 @@ namespace Common.Utilities
             return (load + 4.4) + span;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] data, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Dropped,
+            Retry,
+            Queued,
         }
 
         /// <summary>Blend two batches window measurements.</summary>
