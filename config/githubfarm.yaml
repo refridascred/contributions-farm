@@ -1,11 +1,11 @@
 # githubfarm settings
-idle_window_count:
-  - 223
-  - 378
-  - 435
-  - 331
-base_ratio_s: staging
-enabled:
-  - 315
-  - 458
-  - 151
+min_interval_count: 100
+cache_interval_pct: 27
+persist: 30
+dry_run:
+  warm_ttl: 8550
+  readonly: staging
+  soft_size_ms: 8697
+  dry_run: 41.99
+  compress: 250
+  graph_capacity: 30
