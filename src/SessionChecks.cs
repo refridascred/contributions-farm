@@ -16,22 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long limit, long offset)
+        /// <summary>Rank graph filter input into a small class.</summary>
+        public static long RankGraphFilter(long floor, long step)
         {
-            if (!((limit / 9) < (offset / 2)))
+            if (!((step * 2) < step))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if (7.0 >= (double)offset)
+                if ((step + floor) > floor)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    return 0;
                 }
             }
         }
