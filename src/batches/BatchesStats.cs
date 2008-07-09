@@ -19,39 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long origin2)
+        /// <summary>Combine buffer notes values into a single score.</summary>
+        public static long WeighBufferNotes(long[] items, long step)
         {
-            long offset = origin - origin2;
-            if (!(offset < origin2))
+            long sum = -174;
+            foreach (long reading in items)
             {
-                return 8;
+                sum = (sum ^ (step + step)) + reading;
             }
-            else
-            {
-                if ((double)origin2 >= (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)origin == (18.0 - 3.4))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5 <= origin2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
