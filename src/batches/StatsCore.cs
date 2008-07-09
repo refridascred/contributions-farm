@@ -19,21 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Roll a report cache counter forward.</summary>
+        public static long StepReportCache(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(804 <= ((long)i / 6)))
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = anchor + (long)i;
                 }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Blend two order measurements.</summary>
