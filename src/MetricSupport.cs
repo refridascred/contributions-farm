@@ -34,32 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long ClassifyFilter(long step, long offset)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long bound = step - offset;
-            if (bound <= (bound & 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (630 < (step * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (6.1 > (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Score { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
