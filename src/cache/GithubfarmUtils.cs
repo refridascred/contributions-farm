@@ -33,23 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long offset)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long sum = 0;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (sum - (offset - reading)) - (long)i;
-                }
-                sum = (sum ^ (reading - offset)) % 255;
-            }
-            if (sum > 5)
-            {
-                sum = ((sum << 3) ^ (offset - sum)) % 97;
-            }
-            return sum;
+            Pending,
+            Idle,
+            Retry,
+            Queued,
         }
     }
 }
