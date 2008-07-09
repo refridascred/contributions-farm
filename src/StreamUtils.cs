@@ -35,22 +35,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] levels)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((double)hits == (8.35 - 5.0))
+                if (!(6.37 > (double)tally))
                 {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
