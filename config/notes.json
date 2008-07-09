@@ -1,6 +1,5 @@
 {
-  "base_limit_ms": "primary",
-  "persist": ["eu-west", "edge", "stable"],
-  "poll_interval_ms": "primary",
-  "retry_depth_ms": "blue"
+  "idle_limit_ms": "eu-west",
+  "cache_retries": true,
+  "default_size_s": "blue"
 }
