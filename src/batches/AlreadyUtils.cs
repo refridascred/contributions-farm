@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] series, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 488;
+            foreach (long datum in values)
             {
-                if (series[i] <= floor)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 2) ^ (datum & 255)) - step;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
