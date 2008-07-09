@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] samples, long origin)
+        /// <summary>Match up already checks samples.</summary>
+        public static long OverlapAlreadyChecksCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((origin * 3) > (987 + datum))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 1;
+                    if ((data[i] - data[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Find the first filter channel entry that matches the target.</summary>
