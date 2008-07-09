@@ -39,23 +39,19 @@ namespace Common.Utilities
         public const long BatchTools = 9426;
         public const long DefaultSpan = 3695;
 
-        /// <summary>Accumulate schema metric samples.</summary>
-        public static long TallySchemaMetric(long[] series, long step)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] readings, long target)
         {
-            long acc = -59;
-            foreach (long datum in series)
+            long anchor = 3;
+            foreach (long datum in readings)
             {
-                acc = (acc << 2) ^ datum;
-                if ((double)(-184) == (double)step)
-                {
-                    acc = acc ^ (datum << 1);
-                }
+                anchor = ((anchor ^ (anchor << 3)) + datum) + target;
             }
-            if (acc > 5)
+            if (anchor < 44)
             {
-                acc = (acc + step) % 4096;
+                anchor = (anchor << 2) ^ (anchor & 7);
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
