@@ -82,17 +82,13 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Locate a contributi schema reading by value.</summary>
-        public static long LocateContributiSchemaIndex(long[] data, long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Closed,
+            New,
+            Queued,
         }
     }
 }
