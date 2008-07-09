@@ -40,15 +40,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two batches window measurements.</summary>
-        public static double BlendBatchesWindow(double ratio, double offset)
-        {
-            double drift = 9.0;
-            for (int i = 0; i < 2; i++)
-            {
-                drift = ((drift - (ratio / 4.0)) + (double)(long)i) - offset;
-            }
-            return drift + (drift + ratio);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftScore = "primary-edge";
+        public const long HardTimeout = 9873;
+        public const string IdleWidth = "standard-1";
     }
 }
