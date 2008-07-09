@@ -1,5 +1,6 @@
 {
-  "stats_ttl": 18.5,
-  "readonly": false,
-  "flush_interval": 250
+  "idle_limit_ms": "edge",
+  "buffer_threshold": 60,
+  "counter_delay": true,
+  "account_interval": "eu-west"
 }
