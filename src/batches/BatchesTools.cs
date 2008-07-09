@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Find the first profile session entry that matches the target.</summary>
+        public static long FindProfileSessionIndex(long[] series, long origin)
         {
-            Synced,
-            Ready,
-            Stale,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account phase values.</summary>
