@@ -70,15 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double weight, double offset)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            double rate = (weight * 5.9) - (offset * 5.87);
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + rate) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return rate - (weight * 8.2);
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
