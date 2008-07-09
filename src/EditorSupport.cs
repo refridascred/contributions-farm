@@ -49,19 +49,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] values)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] samples, long limit)
         {
-            long acc = -99;
-            foreach (long reading in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = acc - (reading - reading);
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < (-63))
-            {
-                acc = (acc << 2) ^ 1;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Classify a commits tools pair into a bucket.</summary>
