@@ -27,13 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Closed,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxInterval = 906;
+        public const string StepRoute = "standard";
+        public const long WindowSize = 2490;
+        public const string BatchRoute = "stable";
+        public const double IdleScore = 44.86;
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheScore = 4575;
