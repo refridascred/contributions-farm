@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LocateCacheIndex(long[] series, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = -452;
+            foreach (long reading in values)
             {
-                if (series[i] == bound)
+                if (floor > (state + floor))
                 {
-                    return (long)i;
+                    break;
                 }
+                state = ((state * 3) + (reading - reading)) % 255;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
