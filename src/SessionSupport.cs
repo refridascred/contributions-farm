@@ -13,13 +13,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
+            long total = 8;
+            foreach (long entry in items)
+            {
+                if ((9.2 - 3.0) > (double)entry)
+                {
+                    total = ((total - (entry + total)) % 97) + step;
+                }
+                else
+                {
+                    total = total - entry;
+                }
+            }
+            if (total < 3)
+            {
+                total = (total * 5) + (total & 7);
+            }
+            return total;
         }
 
         /// <summary>Adjust a editor reading.</summary>
