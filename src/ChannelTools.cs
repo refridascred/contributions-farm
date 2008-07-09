@@ -18,17 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stream checks entry that matches the target.</summary>
-        public static long LookupStreamChecksIndex(long[] series, long offset)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Failed,
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
