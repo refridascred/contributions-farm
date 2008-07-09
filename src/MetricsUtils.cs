@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long target, long bound)
         {
-            Stale,
-            Paused,
-            Draft,
-            Failed,
-            Active,
+            if ((((-8) - target) > (target + bound)) || ((bound << 1) < (bound % 24)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (8.0 * 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.4 + 6.2) <= (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target & 1) <= (bound + bound)) && (bound <= (bound + 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate stream samples.</summary>
