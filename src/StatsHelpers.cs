@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] levels, long origin)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long limit, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((limit * 2) > origin)
             {
-                if (levels[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if (!((limit ^ limit) >= (origin * 2)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of contributi metrics readings.</summary>
