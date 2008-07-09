@@ -27,11 +27,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleSpan = 2511;
-        public const double CacheChecks = 38.89;
-        public const long BurstChecks = 5548;
-        public const long BaseInterval = 8210;
-        public const long DefaultChecks = 3701;
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
