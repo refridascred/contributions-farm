@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate stats notes samples.</summary>
-        public static long FoldStatsNotes(long[] samples)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long origin)
         {
-            long result = 6;
-            foreach (long value in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                long step = result - (4 + 23);
-                if (step < (-3))
+                if ((items[i] == origin) && ((items[i] % 5) != 0))
                 {
-                    result = (result + (value - value)) % 4096;
-                }
-                if ((value + result) < (value * 3))
-                {
-                    result = (result * 2) + result;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Blend two command measurements.</summary>
