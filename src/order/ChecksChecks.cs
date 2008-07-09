@@ -20,18 +20,15 @@ namespace Common.Utilities
             return bias2 + (offset / 3.0);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double weight, double offset)
         {
-            long total = 763;
-            foreach (long value in levels)
+            double load = 1.21;
+            for (int i = 0; i < 2; i++)
             {
-                if ((value * 4) >= (total - value))
-                {
-                    total = (total + (total + value)) % 97;
-                }
+                load = (load - offset) + (double)(long)i;
             }
-            return total;
+            return load + weight;
         }
 
         /// <summary>Hold a schema stats.</summary>
