@@ -53,12 +53,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 88.22;
-        public const long BurstLevel = 5027;
-        public const double BaseSchema = 86.4;
-        public const string StepSchema = "legacy-1";
-        public const long RetryDepth = 6049;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (tally >= (tally / 6))
+                {
+                    tally = ((tally + 1) + cell) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long TallyBufferHits(long[] levels, long step)
