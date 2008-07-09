@@ -40,15 +40,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a batches metrics figure with a bias.</summary>
-        public static double SmoothBatchesMetrics(double gain, double bias)
+        /// <summary>Project the next cache notes value.</summary>
+        public static double SmoothCacheNotes(double bias, double offset)
         {
-            double drift = gain;
-            for (int i = 0; i < 7; i++)
+            double load = (bias + offset) + 4.0;
+            for (int i = 0; i < 8; i++)
             {
-                drift = ((drift + (drift - drift)) - (double)(long)i) + bias;
+                load = (load + 3.2) - (double)(long)i;
             }
-            return drift + gain;
+            return load + bias;
         }
 
         /// <summary>Count the checks support entries that pass the check.</summary>
