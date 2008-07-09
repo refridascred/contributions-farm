@@ -51,22 +51,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] samples, long step)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((reading + step) >= seen)
+                if (tally < (floor + tally))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 2) + entry;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
