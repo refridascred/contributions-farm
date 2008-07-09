@@ -47,17 +47,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a queue token counter forward.</summary>
-        public static long StepQueueToken(long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            double weight = (offset / 8.0) / 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                acc = (acc + (acc << 2)) % 4096;
-                acc = ((acc << 3) ^ (floor - floor)) % 1000;
-                acc = ((acc * 5) + (long)i) % 1000;
+                weight = ((weight - (double)4) + (double)(long)i) - rate;
             }
-            return acc;
+            return weight + (double)338;
         }
     }
 }
