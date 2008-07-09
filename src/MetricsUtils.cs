@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 66.32;
-        public const string CacheWidth = "latest-v2";
-        public const string StepInterval = "legacy";
-        public const long BaseLevel = 4982;
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
+        {
+            Stale,
+            Paused,
+            Draft,
+            Failed,
+            Active,
+        }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] samples, long seed)
