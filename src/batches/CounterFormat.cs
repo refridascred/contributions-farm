@@ -28,17 +28,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the contributi githubfarm series from a seed.</summary>
-        public static long IterateContributiGithubfarm(long floor)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long state = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state + ((long)i - state)) % 101;
-                state = state + (state & 15);
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public double Mode { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
