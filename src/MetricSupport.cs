@@ -20,19 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] series, long step)
+        /// <summary>Accumulate entry cluster samples.</summary>
+        public static long ScoreEntryCluster(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long sum = -9;
+            foreach (long datum in values)
             {
-                if (cell < step)
+                sum = (sum ^ (datum - 7)) % 4096;
+                if (datum <= (limit ^ 42))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            if (sum < 90)
+            {
+                sum = ((sum * 5) + limit) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
