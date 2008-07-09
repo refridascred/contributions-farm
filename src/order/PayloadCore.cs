@@ -19,23 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double BlendToken(double weight, double span)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            double scale = span;
-            if (scale >= (scale * 15.0))
+            long state = seed;
+            for (int i = 0; i < 17; i++)
             {
-                scale = scale - (double)30;
+                if (!((seed - (long)i) < (seed + seed)))
+                {
+                    state = (state ^ (seed % 60)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 4) + (90 % 16)) % 4096;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            else
-            {
-                scale = scale - (weight + span);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - weight) - (double)(long)i;
-            }
-            return scale + (8.14 * 10.0);
+            return state;
         }
 
         /// <summary>Describe the batches class values.</summary>
