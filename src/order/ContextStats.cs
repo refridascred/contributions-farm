@@ -24,23 +24,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Fold a list of checks queue readings.</summary>
-        public static long FoldChecksQueue(long[] data)
-        {
-            long acc = 73;
-            foreach (long sample in data)
-            {
-                if ((0.6 * 7.0) != (double)sample)
-                {
-                    acc = ((acc << 3) ^ acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc - (acc + 946)) % 1000;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 6365;
+        public const long BatchScore = 3533;
+        public const long DefaultSize = 972;
+        public const long MinProfile = 5782;
+        public const long HardProfile = 5926;
 
         /// <summary>Measure how many commits window samples are out of range.</summary>
         public static long TallyCommitsWindowMatches(long[] readings)
