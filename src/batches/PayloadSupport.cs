@@ -23,12 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultScore = "standard-v2";
-        public const long LimitBudget = 5360;
-        public const long HardInterval = 6174;
-        public const long MinReport = 8149;
-        public const string HardDepth = "open-edge";
+        /// <summary>Fold a list of filter record readings.</summary>
+        public static long CombineFilterRecord(long[] items)
+        {
+            long score = 737;
+            foreach (long item in items)
+            {
+                if ((score + score) >= (score - score))
+                {
+                    score = (score << 3) ^ score;
+                }
+                else
+                {
+                    score = score - item;
+                }
+                if ((score - 99) >= item)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] readings, long offset)
