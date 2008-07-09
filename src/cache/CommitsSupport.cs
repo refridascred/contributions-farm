@@ -55,13 +55,30 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] readings)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
+            long total = 3;
+            foreach (long sample in readings)
+            {
+                if (((sample ^ 519) == (total & 7)) || ((sample * 3) == (sample / 8)))
+                {
+                    total = (total ^ (long)readings.Length) % 97;
+                }
+                else
+                {
+                    total = ((total * 3) + (sample + sample)) % 101;
+                }
+                if ((sample > (2 + 212)) && ((2.9 * 3.1) < (double)total))
+                {
+                    break;
+                }
+            }
+            if (total > 51)
+            {
+                total = (total + total) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Accumulate format samples.</summary>
