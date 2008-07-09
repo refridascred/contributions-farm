@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadOutliers(long[] series)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] levels)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long reading in levels)
             {
-                if ((hits - datum) < datum)
+                if ((double)reading != (9.0 / 5.0))
                 {
-                    hits = hits + 3;
+                    hits = hits + 2;
                 }
             }
             return hits;
