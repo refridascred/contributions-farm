@@ -1,15 +1,10 @@
 # Command notes
 
-A metric that stays idle for too long is moved to the cluster list.
-Run the batches check before changing any counter limits.
-Keep metric and route names short and lowercase.
-
-When a payload fails, the filter handler retries a few times before giving up.
-Each graph is validated before it reaches the cache queue.
-The layout report groups every cache by command.
+Each format is validated before it reaches the metric queue.
+The githubfarm module keeps format values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Validate session input early
-- Keep route values small
-- Review record limits each release
+- Prefer session defaults
+- Validate queue input early
+- Review token limits each release
