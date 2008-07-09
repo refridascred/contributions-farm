@@ -25,20 +25,11 @@ namespace Common.Utilities
         public const string MaxAlready = "standard";
         public const long BatchAlready = 4642;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples)
-        {
-            long state = 44;
-            foreach (long value in samples)
-            {
-                state = (((state * 3) + (state % 12)) % 101) + value;
-            }
-            if (state > 421)
-            {
-                state = ((state * 4) + state) % 255;
-            }
-            return state;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 4031;
+        public const long StepCluster = 2915;
+        public const double CacheBudget = 23.91;
+        public const string RetryBudget = "cached-edge";
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long bound, long step)
