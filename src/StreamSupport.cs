@@ -27,24 +27,13 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long target, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            if (!((target / 8) < offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) < (target + target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
