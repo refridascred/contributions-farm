@@ -1,5 +1,4 @@
 # support settings
-default_depth: eu-west
-hard_threshold_ms: 1024
-batches_timeout: blue
-verbose: local
+soft_limit_pct: latest
+sync_interval_pct: latest
+sync_window_s: edge
