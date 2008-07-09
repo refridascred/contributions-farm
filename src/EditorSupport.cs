@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheRatio = 7744;
-        public const double MaxMetrics = 85.94;
-        public const long BatchBudget = 5799;
-        public const double LimitMetrics = 83.0;
-        public const long BaseMetrics = 7308;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Ready,
+            Closed,
+            Draft,
+            Synced,
+            New,
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchLayout = 3095;
