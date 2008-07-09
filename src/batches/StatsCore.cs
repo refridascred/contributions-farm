@@ -95,18 +95,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Measure how many metric queue samples are out of range.</summary>
+        public static long CountMetricQueueOutliers(long[] series)
         {
-            long acc = 177;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((55 - acc) <= (acc % 10))
+                if ((497 + matches) > sample)
                 {
-                    acc = acc + (cell + acc);
+                    matches = matches + 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
