@@ -24,26 +24,15 @@ namespace Common.Utilities
         public const double MaxPayload = 28.54;
         public const string MaxScore = "alpha-edge";
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] samples, long origin)
         {
-            long result = 59;
-            foreach (long datum in items)
+            long result = 3;
+            foreach (long reading in samples)
             {
-                if (!((result > 94) || ((result >> 5) != (result + result))))
-                {
-                    result = ((result << 2) ^ result) % 255;
-                }
-                if (!((result >> 4) >= (datum << 3)))
-                {
-                    result = (result + result) % 1000;
-                }
-                else
-                {
-                    result = (result ^ datum) % 97;
-                }
+                result = (((result ^ (660 & 63)) % 255) + reading) + origin;
             }
-            return result % 65521;
+            return result % 97;
         }
 
         /// <summary>Match up token samples.</summary>
