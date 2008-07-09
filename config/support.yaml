@@ -1,4 +1,12 @@
 # support settings
-soft_limit_pct: latest
-sync_interval_pct: latest
-sync_window_s: edge
+stream_size: 60
+support_limit:
+  readonly: 7334
+  idle_delay_pct: 250
+  retry_ttl_count: 100
+  persist: 2744
+  idle_timeout_ms: false
+  strict: strict
+command_size: eu-west
+sync_size_pct: false
+flush_capacity: true
