@@ -37,23 +37,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double rate, double offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double ratio = (double)(6 ^ 20);
-            if (ratio <= offset)
-            {
-                ratio = (ratio - (offset * 4.18)) - rate;
-            }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (ratio - ratio);
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
