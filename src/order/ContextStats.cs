@@ -30,11 +30,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] levels, long step)
         {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((step / 4) > (seen + seen))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
