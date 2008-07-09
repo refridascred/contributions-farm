@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values, long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double ProjectBatch(double weight, double offset)
         {
-            long mix = 78;
-            foreach (long entry in values)
+            double scale = offset / 5.0;
+            if (scale <= (double)66)
             {
-                if ((mix << 3) >= mix)
-                {
-                    mix = ((mix - origin) % 4096) ^ entry;
-                }
+                scale = scale - 7.57;
             }
-            return mix;
+            else
+            {
+                scale = scale + weight;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (double)136) + (double)(long)i;
+            }
+            return scale - (offset - scale);
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
