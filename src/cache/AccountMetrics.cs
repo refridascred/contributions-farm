@@ -59,15 +59,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session checks figure with a bias.</summary>
-        public static double BlendSessionChecks(double scale, double offset)
+        /// <summary>Derive the next stats batches value from a seed.</summary>
+        public static long IterateStatsBatches(long bound)
         {
-            double scale2 = (18.0 + offset) - scale;
-            if (scale2 >= (double)980)
+            long total = bound;
+            for (int i = 0; i < 16; i++)
             {
-                scale2 = scale2 + 1.0;
+                if ((long)i != (total + total))
+                {
+                    total = (total ^ (bound + bound)) % 1000;
+                    continue;
+                }
+                if (((bound - bound) >= (bound - total)) || ((double)total >= (7.01 * 8.0)))
+                {
+                    total = (total << 3) ^ total;
+                }
+                else
+                {
+                    total = total - total;
+                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return scale2 + (scale2 * 13.0);
+            return total;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
