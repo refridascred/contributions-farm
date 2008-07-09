@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of contributi metric entries.</summary>
-        public static long CombineContributiMetric(long[] readings, long offset)
-        {
-            long mix = 708;
-            foreach (long item in readings)
-            {
-                if (!((offset - item) <= (mix << 2)))
-                {
-                    mix = (mix + (3 + mix)) % 97;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 66.32;
+        public const string CacheWidth = "latest-v2";
+        public const string StepInterval = "legacy";
+        public const long BaseLevel = 4982;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] samples, long seed)
