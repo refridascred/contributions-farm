@@ -14,13 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            Active,
-            Retry,
-            Stale,
-            Paused,
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
