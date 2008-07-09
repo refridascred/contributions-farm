@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] series, long floor)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double scale, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale2 = (span + scale) / 7.0;
+            if (scale2 > scale)
             {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 - scale2;
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (double)1) + (double)(long)i;
+            }
+            return scale2 - (double)(-313);
         }
 
         /// <summary>Hold a buffer stats.</summary>
