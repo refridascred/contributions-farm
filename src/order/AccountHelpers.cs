@@ -66,19 +66,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] samples, long floor)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next command value.</summary>
