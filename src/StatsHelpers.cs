@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Fold a list of editor cluster readings.</summary>
-        public static long WeighEditorCluster(long[] values, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] values, long step)
         {
-            long result = 3;
+            bool ok = true;
             foreach (long value in values)
             {
-                if (value < result)
+                if (value < step)
                 {
-                    result = ((result * 3) + (result % 100)) % 65521;
+                    ok = false;
+                    break;
                 }
-                else
-                {
-                    long seen = (limit - value) + (value - value);
-                    result = result ^ seen;
-                }
-                result = (result + (369 >> 1)) % 97;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
