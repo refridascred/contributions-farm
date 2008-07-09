@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Paused,
-            Done,
-            New,
-            Ready,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Locate a payload reading by value.</summary>
