@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading % 5) != (62 + reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a record entry.</summary>
