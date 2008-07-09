@@ -47,32 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long target, long target2)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double weight, double floor)
         {
-            long slot = target + target2;
-            if (!((target + target2) > (target * 2)))
+            double ratio = 0.03;
+            if (ratio < (ratio + floor))
             {
-                return 2;
+                ratio = (ratio + floor) + weight;
             }
-            else
-            {
-                if (((938 ^ target2) != (target2 & 31)) || ((target2 * 4) == (target - target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target / 6) != (slot + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return ratio - (ratio * 1.0);
         }
     }
 }
