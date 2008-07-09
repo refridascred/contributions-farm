@@ -53,22 +53,23 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the route commits entries that pass the check.</summary>
-        public static long CountRouteCommitsHits(long[] levels)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long anchor = 23;
+            foreach (long item in samples)
             {
-                if ((entry * 2) > (count >> 1))
+                anchor = (anchor + (476 - origin)) % 255;
+                if ((item ^ anchor) != (3 + item))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    anchor = anchor - (item >> 3);
                 }
             }
-            return count;
+            if (anchor < 994)
+            {
+                anchor = anchor ^ (60 * 4);
+            }
+            return anchor;
         }
     }
 }
