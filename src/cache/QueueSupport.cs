@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double span)
-        {
-            double rate = (span + 13.0) - (8.21 * 9.93);
-            if (rate > 2.65)
-            {
-                rate = (rate - (span / 4.0)) - weight;
-            }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + (6.1 / 4.0);
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepRatio = 4710;
+        public const long DefaultScore = 5655;
+        public const string MinRatio = "strict-1";
+        public const double BurstCommits = 5.77;
+        public const string DefaultCommits = "staging-1";
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long SortAccount(long limit, long origin)
