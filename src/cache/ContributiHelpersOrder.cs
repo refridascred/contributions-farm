@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double ratio, double floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long bound)
         {
-            double gain = (double)(38 << 1);
-            if (gain > (floor * 15.0))
+            long mark = bound;
+            for (int i = 0; i < 17; i++)
             {
-                gain = (gain - (gain / 8.0)) + ratio;
+                if (!(mark > (bound + bound)))
+                {
+                    mark = ((mark << 2) ^ mark) % 65521;
+                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + 6.0;
-            }
-            return gain + gain;
+            return mark;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
