@@ -38,18 +38,13 @@ namespace Common.Utilities
             return (load + (load - bias)) + rate;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] series, long step)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (!((13.0 + 4.09) == (double)step))
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
