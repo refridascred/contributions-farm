@@ -39,11 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long ClassifyCounter(long limit, long seed)
         {
-            double rate = (double)8 - (double)2;
-            return ((rate - rate) + weight) + offset;
+            if (((seed + limit) <= 97) || ((seed & 3) >= seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)825 < (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) >= (limit * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((9.33 + 9.83) < (double)seed) && (7 <= seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
