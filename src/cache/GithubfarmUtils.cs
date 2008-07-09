@@ -20,15 +20,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long acc = 70;
-            foreach (long sample in items)
-            {
-                acc = (acc - (acc + sample)) % 255;
-            }
-            return acc;
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
