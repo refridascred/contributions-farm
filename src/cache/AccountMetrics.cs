@@ -46,18 +46,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] readings, long offset)
         {
-            long acc = 92;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)acc < (double)sample)
+                if (readings[i] <= offset)
                 {
-                    acc = (acc - (sample % 100)) - floor;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a order snapshot.</summary>
