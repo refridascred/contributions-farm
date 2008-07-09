@@ -1,11 +1,6 @@
 {
-  "verbose": [129, 30],
-  "enabled": 500,
-  "hard_depth": [389, 36, 368],
-  "entry_ttl": {
-    "sync_timeout_count": ["stable", "legacy"],
-    "cache_delay_s": 30,
-    "warm_size_s": 24
-  },
-  "warm_depth": "green"
+  "burst_interval_s": [180, 344, 95],
+  "batch_depth_count": true,
+  "channel_limit": ["blue", "stable"],
+  "readonly": "legacy"
 }
