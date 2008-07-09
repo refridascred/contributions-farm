@@ -1,4 +1,18 @@
 # entry settings
-compress: edge
-route_timeout: 86
-strict: 62.03
+notes_limit:
+  readonly:
+    stream_retries:
+      - 477
+      - 13
+    layout_interval: false
+    poll_limit_count: local
+    entry_retries: true
+    idle_threshold: 8.07
+  persist: 96
+  poll_retries: 9883
+  stream_interval: 30
+  compress: standard
+min_interval_pct: staging
+poll_threshold_count: stable
+dry_run: 8.3
+burst_ratio_count: legacy
