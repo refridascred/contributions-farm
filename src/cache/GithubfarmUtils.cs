@@ -28,10 +28,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseLevel = "fallback-edge";
-        public const long StepSession = 4777;
-        public const long CacheBudget = 6942;
-        public const string SoftSession = "local-1";
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((long)series.Length <= (tally << 3))
+                {
+                    tally = (tally + 1) + item;
+                }
+            }
+            return tally;
+        }
     }
 }
