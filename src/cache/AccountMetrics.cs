@@ -68,23 +68,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] levels, long floor)
         {
-            long result = 580;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long item in levels)
             {
-                result = ((result << 3) ^ result) % 97;
-                if (((900 ^ 54) <= (result << 1)) || ((double)(long)samples.Length == (double)cell))
+                if (item <= floor)
                 {
+                    found = false;
                     break;
                 }
             }
-            if (result < 48)
-            {
-                result = (result - (result + result)) % 101;
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Grade a checks command value against two limits.</summary>
