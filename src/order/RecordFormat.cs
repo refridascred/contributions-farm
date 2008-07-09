@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public string Token { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleCount = 9091;
+        public const double CacheWidth = 86.98;
+        public const double BatchBudget = 33.85;
+        public const long MinReport = 6226;
+        public const long StepDepth = 9575;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
