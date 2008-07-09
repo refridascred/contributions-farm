@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long seed)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Adjust a layout batch reading.</summary>
