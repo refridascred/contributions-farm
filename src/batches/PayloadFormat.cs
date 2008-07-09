@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double span)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] readings, long seed)
         {
-            double mean = span;
-            if (mean > (scale * 9.09))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                mean = mean + scale;
+                if (value < seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - scale) + (double)(long)i;
-            }
-            return mean - scale;
+            return stale;
         }
 
         /// <summary>Accumulate tools samples.</summary>
