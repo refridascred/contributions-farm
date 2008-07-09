@@ -32,20 +32,26 @@ namespace Common.Utilities
         public const double IdleWidth = 98.88;
         public const long IdleAlready = 5498;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            long result = -285;
-            foreach (long value in values)
+            long score = 6;
+            foreach (long reading in levels)
             {
-                long cur = (value - 182) ^ (value >> 3);
-                if (1 >= (cur / 5))
+                if (reading > score)
                 {
-                    result = ((result * 3) + (value % 64)) % 4096;
+                    score = (score << 3) ^ (score - score);
                 }
-                result = (result + (result / 9)) % 65521;
+                if ((reading + 337) >= (reading & 15))
+                {
+                    score = (score * 2) + (score >> 3);
+                }
+                else
+                {
+                    score = score + (score >> 3);
+                }
             }
-            return result % 1000;
+            return score;
         }
     }
 }
