@@ -12,11 +12,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double HardNotes = 57.81;
-        public const double RetryBudget = 83.47;
-        public const long HardInterval = 2424;
-        public const long IdleInterval = 1043;
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long CompareChecksCount(long[] samples)
