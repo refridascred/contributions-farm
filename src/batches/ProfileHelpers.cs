@@ -23,19 +23,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] series, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long target, long origin)
         {
-            bool found = true;
-            foreach (long cell in series)
+            long next = target ^ origin;
+            if ((((-35) << 3) < (origin % 8)) && ((origin % 3) < origin))
             {
-                if (cell <= floor)
+                return 2;
+            }
+            else
+            {
+                if (!((double)next > (double)target))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!((13.0 / 9.0) < (double)next))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((8.0 * 9.3) == (double)next) || ((target + 502) > (818 + target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the support mode values.</summary>
