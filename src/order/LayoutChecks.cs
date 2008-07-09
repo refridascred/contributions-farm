@@ -50,32 +50,11 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long origin, long floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double offset)
         {
-            long slot = origin - floor;
-            if (!((origin << 3) > (origin * 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)slot > (double)73)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (8.5 <= (double)origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            double rate = offset;
+            return (rate - (double)71) + bias;
         }
 
         /// <summary>Blend two counter measurements.</summary>
