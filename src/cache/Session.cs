@@ -34,18 +34,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] readings, long limit)
+        /// <summary>Grade a profile cluster value against two limits.</summary>
+        public static long RankProfileCluster(long offset, long target)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            if ((double)offset < (14.0 + 6.42))
             {
-                if ((double)sample > (double)matches)
+                return 8;
+            }
+            else
+            {
+                if ((double)target < (double)offset)
                 {
-                    matches = (matches + 3) + limit;
+                    return 7;
+                }
+                else
+                {
+                    if (((offset >> 5) >= (target ^ target)) || ((offset + offset) <= (target - target)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((offset << 3) < offset) || ((0 & 7) <= (target + offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
