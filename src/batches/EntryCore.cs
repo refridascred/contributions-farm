@@ -19,19 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double ProjectProfile(double gain, double floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] readings, long bound)
         {
-            double drift = gain;
-            if (drift > (drift + gain))
+            long count = 0;
+            foreach (long reading in readings)
             {
-                drift = (drift - (6.4 * 7.0)) - floor;
+                if (5 < bound)
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (gain / 5.0);
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
