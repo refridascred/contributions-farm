@@ -41,21 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Iterate the metrics record series from a seed.</summary>
+        public static long DeriveMetricsRecord(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Describe the farm status values.</summary>
