@@ -45,19 +45,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long ScoreSchema(long[] series)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] levels, long origin)
         {
-            long anchor = -799;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor - (cell >> 2)) % 65521;
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor ^ (673 << 1)) % 255;
-            }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
