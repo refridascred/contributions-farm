@@ -1,8 +1,7 @@
-id,label,rank,state,active
-1,189,blue,494,89.32
-2,608,40.32,55,828
-3,49,717,staging,358
-4,330,912,61.78,7.76
-5,standard,889,429,474
-6,84.31,cached,738,992
-7,95.5,green,62,staging
+id,active,region,label
+1,edge,871,841
+2,blue,683,16.37
+3,47.73,green,72.23
+4,open,396,blue
+5,9.74,88.76,146
+6,legacy,latest,514
