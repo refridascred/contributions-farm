@@ -44,20 +44,12 @@ namespace Common.Utilities
         public const long DefaultCluster = 2243;
         public const long DefaultFactor = 6926;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] series, long step)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 5860;
+        public const string WindowRatio = "standard-1";
+        public const long LimitSize = 1572;
+        public const long SoftInterval = 5966;
+        public const string RetryStream = "latest-edge";
 
         /// <summary>Iterate the payload series from a seed.</summary>
         public static long RollPayload(long target)
