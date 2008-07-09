@@ -75,18 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] data, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((step - item) > 521)
+                if ((33 + 2) == (matches / 7))
                 {
-                    seen = seen + 3;
+                    matches = ((matches + 2) + value) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
