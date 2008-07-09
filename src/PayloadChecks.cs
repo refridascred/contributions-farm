@@ -48,20 +48,16 @@ namespace Common.Utilities
         public const double WindowScore = 23.1;
         public const long MaxSpan = 2502;
 
-        /// <summary>Roll a record graph counter forward.</summary>
-        public static long SeriesRecordGraph(long seed)
+        /// <summary>Combine githubfarm command values into a single score.</summary>
+        public static long ScoreGithubfarmCommand(long[] levels, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
+            long acc = 240;
+            foreach (long sample in levels)
             {
-                if ((double)3 <= (double)mark)
-                {
-                    mark = (mark * 4) + (long)i;
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
+                acc = ((acc << 2) ^ (step & 31)) % 4096;
+                acc = acc ^ (sample - step);
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
