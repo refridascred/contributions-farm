@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 4224;
-        public const long StepRatio = 3131;
-        public const long MinContributi = 3047;
-        public const long LimitLevel = 9286;
-        public const long MaxContributi = 7191;
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
