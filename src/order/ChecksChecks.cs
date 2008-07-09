@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultRoute = 8889;
+        public const long BaseInterval = 331;
+        public const long LimitSpan = 2850;
+        public const long BatchRoute = 3179;
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
         public static long CountMetricsProfileMatches(long[] data)
