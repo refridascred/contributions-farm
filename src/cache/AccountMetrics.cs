@@ -68,17 +68,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] readings, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 580;
+            foreach (long cell in samples)
             {
-                if (readings[i] <= bound)
+                result = ((result << 3) ^ result) % 97;
+                if (((900 ^ 54) <= (result << 1)) || ((double)(long)samples.Length == (double)cell))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (result < 48)
+            {
+                result = (result - (result + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Grade a checks command value against two limits.</summary>
