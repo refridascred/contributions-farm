@@ -14,17 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] data, long floor)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
