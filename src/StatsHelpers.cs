@@ -33,11 +33,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] values, long offset)
         {
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) <= (offset + (long)values.Length))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the counter level values.</summary>
