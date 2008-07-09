@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long DeriveLayout(long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsBounds(long[] samples, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                carry = (carry ^ 585) % 1000;
-                if ((carry + carry) < (target / 6))
+                if (value <= target)
                 {
-                    carry = (carry - (carry + 383)) % 4096;
-                    carry = carry + (carry - carry);
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the entry kind values.</summary>
