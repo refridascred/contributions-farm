@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LocateBufferIndex(long[] series, long origin)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                if (((0.99 / 8.0) < (double)entry) || (entry < (seed - 4)))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Measure how many filter entry samples are out of range.</summary>
