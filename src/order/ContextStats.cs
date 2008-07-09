@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long MinBudget = 1484;
         public const long StepInterval = 1655;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountBounds(long[] samples, long seed)
+        /// <summary>Validate filter schema readings against a bound.</summary>
+        public static bool CheckFilterSchemaBounds(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (sample >= seed)
+                if (datum > seed)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
