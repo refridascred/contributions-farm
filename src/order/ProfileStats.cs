@@ -26,22 +26,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm order values into a single score.</summary>
-        public static long WeighGithubfarmOrder(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] samples, long target)
         {
-            long anchor = 2;
-            foreach (long reading in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1.77 - 9.5) != (double)reading)
+                if (samples[i] < target)
                 {
-                    anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 97;
+                    return (long)i;
                 }
             }
-            if (anchor < 4)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
