@@ -13,13 +13,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long step, long seed)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
+            if ((5 >> 3) >= (188 + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step <= (step + step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
