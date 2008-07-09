@@ -34,18 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the schema support entries that pass the check.</summary>
-        public static long MeasureSchemaSupportGaps(long[] data)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if ((value / 3) > count)
-                {
-                    count = count + 2;
-                }
+                mix = (mix - (bound * 2)) % 97;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return count;
+            return mix;
         }
     }
 }
