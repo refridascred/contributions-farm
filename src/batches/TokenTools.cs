@@ -36,22 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] levels, long target)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if (!((sample / 6) >= (-29)))
+                if (datum >= offset)
                 {
-                    tally = (tally + 2) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
