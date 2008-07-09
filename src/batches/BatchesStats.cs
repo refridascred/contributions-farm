@@ -12,14 +12,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] values)
         {
-            Pending,
-            Active,
-            Retry,
-            Draft,
-            Done,
+            long total = 551;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    total = total - (long)i;
+                }
+                if ((sample & 1) <= (sample / 5))
+                {
+                    total = ((total * 2) + 624) % 255;
+                }
+            }
+            return total;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
