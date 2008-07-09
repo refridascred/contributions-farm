@@ -41,11 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BurstGraph = "strict-v2";
-        public const long WindowGraph = 5696;
-        public const double MaxGraph = 51.62;
-        public const double HardWidth = 28.73;
-        public const string CacheCount = "fallback";
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Failed,
+            Draft,
+            Pending,
+            New,
+        }
     }
 }
