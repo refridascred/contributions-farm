@@ -1,25 +1,5 @@
 # entry settings
-base_ratio_pct:
-  base_ttl_pct:
-    persist:
-      - 60
-      - 431
-      - 344
-      - 95
-    min_ttl: 100
-    strict: 100
-    cache_capacity: true
-    default_ttl_count: true
-  warm_delay_pct: staging
-  cache_capacity:
-    hard_ttl: standard
-    hard_capacity: 229
-    idle_interval_ms: true
-    hard_timeout: 95.81
-    enabled:
-      - open
-      - staging
-      - staging
-      - local
-warm_size: 53.85
-readonly: blue
+retry_size: cached
+audit: stable
+soft_interval: false
+context_capacity: eu-west
