@@ -1,9 +1,7 @@
-id,token,state,owner
-1,913,3.0,22.4
-2,4.67,55.28,593
-3,cached,25.97,532
-4,29.51,179,879
-5,355,standard,172
-6,edge,latest,26.08
-7,latest,open,50.03
-8,78,22.71,867
+id,state,owner
+1,strict,664
+2,local,711
+3,local,52
+4,6.15,blue
+5,standard,289
+6,546,97.96
