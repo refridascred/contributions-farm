@@ -15,17 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] samples, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 22;
+            foreach (long item in values)
             {
-                if (samples[i] <= seed)
+                if ((double)sum <= (5.54 - 8.0))
                 {
-                    return (long)i;
+                    sum = ((sum + (111 >> 4)) % 101) + item;
                 }
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Count the record editor entries that pass the check.</summary>
