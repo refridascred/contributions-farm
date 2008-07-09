@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchSpan = 54.32;
+        public const long BatchFactor = 6863;
+        public const long MinFactor = 4555;
+        public const long MaxPayload = 5182;
 
         /// <summary>Match up token buffer samples.</summary>
         public static long MatchTokenBufferCount(long[] data)
