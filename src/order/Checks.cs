@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] series, long bound)
+        /// <summary>Scale a support stats figure with a bias.</summary>
+        public static double ProjectSupportStats(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            double bias2 = bias;
+            if (bias2 <= (double)9)
             {
-                if ((seen > (bound % 12)) || !((double)sample == (15.0 + 0.9)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                bias2 = bias2 - ratio;
             }
-            return seen;
+            else
+            {
+                bias2 = bias2 - (ratio * 9.7);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias) - (double)(long)i;
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
