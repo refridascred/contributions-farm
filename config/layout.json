@@ -1,14 +1,5 @@
 {
-  "cache_timeout": 62,
-  "max_ttl": 79,
-  "strict": [421, 92],
-  "min_ratio_s": ["strict", "standard", "latest"],
-  "sync_capacity_ms": {
-    "audit": true,
-    "burst_timeout": [482, 181, 144, 238],
-    "layout_depth": 23.56,
-    "hard_window_count": 35,
-    "base_delay": true
-  },
-  "burst_delay_ms": 32
+  "stats_ttl": 18.5,
+  "readonly": false,
+  "flush_interval": 250
 }
