@@ -1,11 +1,10 @@
 # Command notes
 
-Run the filter check before changing any checks limits.
-Run the support check before changing any filter limits.
-The format report groups every graph by route.
+A commits that stays idle for too long is moved to the payload list.
+The queue report groups every editor by window.
 
 ## Guidelines
 
-- Log every batch change
-- Keep session values small
-- Prefer route defaults
+- Validate session input early
+- Document new stats fields
+- Prefer farm defaults
