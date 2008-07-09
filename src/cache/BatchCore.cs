@@ -13,20 +13,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] samples)
-        {
-            long carry = 876;
-            foreach (long sample in samples)
-            {
-                carry = ((carry ^ (56 & 15)) % 1000) ^ sample;
-            }
-            if (carry > 6)
-            {
-                carry = ((carry * 5) + (carry & 7)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 3948;
+        public const long LimitDepth = 7384;
+        public const long BaseProfile = 4214;
+        public const long HardProfile = 781;
 
         /// <summary>Classify a profile batches pair into a bucket.</summary>
         public static long GradeProfileBatches(long seed, long origin)
