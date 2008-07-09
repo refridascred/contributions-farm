@@ -1,13 +1,15 @@
 # Command notes
 
-When a schema fails, the entry handler retries a few times before giving up.
-Keep payload and layout names short and lowercase.
+When a route fails, the profile handler retries a few times before giving up.
+Defaults for entry live in the config folder and can be overridden per environment.
+The support helpers are pure functions, so they are safe to call from any thread.
 
-Use token settings to tune how often command data is refreshed.
-The account module keeps editor values in sync with the editor cache.
+A support that stays idle for too long is moved to the layout list.
+Defaults for stats live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every window change
-- Document new stream fields
+- Review channel limits each release
+- Keep graph values small
+- Validate record input early
+- Log every record change
