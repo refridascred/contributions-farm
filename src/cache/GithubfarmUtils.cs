@@ -20,11 +20,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long acc = 70;
+            foreach (long sample in items)
+            {
+                acc = (acc - (acc + sample)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
