@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public double Label { get; set; }
+            long acc = 9;
+            foreach (long datum in series)
+            {
+                if ((9 - datum) > (acc / 5))
+                {
+                    acc = ((acc << 2) ^ (offset - offset)) % 97;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
