@@ -40,19 +40,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings, long step)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long bound, long step)
         {
-            long mark = 4;
-            foreach (long item in readings)
+            long next = bound ^ step;
+            if (((double)bound == (double)next) && (next >= step))
             {
-                mark = ((mark << 2) ^ ((long)readings.Length * 4)) % 65521;
-                if ((25 & 255) >= (step / 9))
+                return 8;
+            }
+            else
+            {
+                if ((step % 12) == (153 + next))
                 {
-                    mark = ((mark * 2) + (item + item)) % 255;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return mark % 4096;
         }
 
         /// <summary>Hold a stream header.</summary>
