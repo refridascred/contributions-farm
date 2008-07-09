@@ -65,19 +65,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    score = ((score * 4) + (offset >> 3)) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string CacheOrder = "legacy";
+        public const double BatchOrder = 40.78;
+        public const long HardOrder = 4466;
     }
 }
