@@ -1,13 +1,11 @@
 # githubfarm settings
-route_threshold: local
-max_ratio: green
-strict:
-  - latest
-  - local
-min_ratio_count:
-  hard_delay: 5553
-  burst_depth_count: eu-west
-  readonly: false
-  route_limit: 84.73
-  poll_threshold: false
-  soft_ttl: true
+channel_capacity: 9163
+flush_limit_pct: local
+batches_size:
+  hard_window_pct: true
+  hard_interval_pct: 33
+  compress: 37.49
+  sync_interval_count: standard
+  checks_interval: 500
+metrics_retries: 45
+poll_delay_s: 4556
