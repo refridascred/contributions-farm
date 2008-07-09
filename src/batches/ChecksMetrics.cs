@@ -31,14 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardSize = 7463;
+        public const long IdleInterval = 1771;
+        public const double MinDepth = 28.79;
+        public const long DefaultContext = 969;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long seed, long step)
