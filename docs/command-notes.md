@@ -1,11 +1,13 @@
 # Command notes
 
-Use report settings to tune how often already data is refreshed.
-The schema module keeps already values in sync with the order cache.
+When a schema fails, the entry handler retries a few times before giving up.
+Keep payload and layout names short and lowercase.
+
+Use token settings to tune how often command data is refreshed.
+The account module keeps editor values in sync with the editor cache.
 
 ## Guidelines
 
-- Prefer record defaults
-- Log every account change
-- Validate format input early
-- Keep token values small
+- Prefer support defaults
+- Log every window change
+- Document new stream fields
