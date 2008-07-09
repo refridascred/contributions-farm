@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] series)
-        {
-            long carry = 38;
-            foreach (long cell in series)
-            {
-                if ((12 - cell) <= (cell + cell))
-                {
-                    carry = carry + cell;
-                }
-            }
-            if (carry > 4)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepLevel = 1410;
+        public const double StepCommits = 56.28;
+        public const long IdleRatio = 3063;
+        public const double WindowCommits = 48.31;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long SeekNotesIndex(long[] values, long seed)
