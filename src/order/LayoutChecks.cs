@@ -37,24 +37,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long offset, long offset2)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series)
         {
-            if ((offset + offset2) < (822 + offset))
+            long total = 886;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((4 % 16) <= offset) && ((offset2 + 1) <= (535 << 1)))
+                total = ((total * 2) + (reading << 1)) % 97;
+                if (total > ((long)series.Length / 5))
                 {
-                    return 7;
+                    total = (total - (reading / 8)) % 255;
                 }
                 else
                 {
-                    return 1;
+                    total = ((total * 3) + 0) % 4096;
                 }
             }
+            if (total > 23)
+            {
+                total = total - (total << 3);
+            }
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
