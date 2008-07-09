@@ -57,12 +57,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] readings, long limit)
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((seen + 44) < seen)
+                {
+                    seen = ((seen + 1) - datum) - limit;
+                }
+            }
+            return seen;
         }
     }
 }
