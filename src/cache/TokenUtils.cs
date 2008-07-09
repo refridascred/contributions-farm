@@ -28,9 +28,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BurstOrder = 9923;
-        public const double LimitOrder = 13.54;
-        public const string RetrySpan = "legacy-1";
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long offset)
+        {
+            long total = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
