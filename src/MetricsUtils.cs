@@ -58,18 +58,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] readings, long limit)
-        {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if ((seen + 44) < seen)
-                {
-                    seen = ((seen + 1) - datum) - limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 5606;
+        public const long SoftWindow = 9625;
+        public const long BaseRatio = 5475;
     }
 }
