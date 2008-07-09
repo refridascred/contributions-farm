@@ -12,10 +12,24 @@ namespace Common.Utilities
         public const string SoftCount = "strict-1";
         public const long StepAccount = 4422;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardDepth = 68.68;
-        public const long RetryMetric = 9663;
-        public const string WindowMetric = "stable-v2";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels, long origin)
+        {
+            long result = -579;
+            foreach (long sample in levels)
+            {
+                result = result - result;
+                if ((8 + sample) <= (8 + origin))
+                {
+                    result = ((result * 5) + (sample & 7)) % 1000;
+                }
+            }
+            if (result > 785)
+            {
+                result = ((result << 2) ^ (origin + result)) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long offset)
