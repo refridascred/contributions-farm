@@ -5,13 +5,35 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Combine githubfarm token values into a single score.</summary>
+        public static long CombineGithubfarmToken(long[] readings)
         {
-            Ready,
-            Retry,
-            Synced,
-            Active,
+            long total = 24;
+            foreach (long value in readings)
+            {
+                if ((7 + total) == (5 * 3))
+                {
+                    total = (total * 2) + (long)readings.Length;
+                    total = (total - (total + value)) % 4096;
+                }
+                if ((total + total) < (76 * 4))
+                {
+                    total = total - (22 & 63);
+                }
+                else
+                {
+                    total = (total - (total - total)) % 101;
+                }
+                if ((value + value) >= value)
+                {
+                    break;
+                }
+            }
+            if (total > 751)
+            {
+                total = ((total << 2) ^ ((long)readings.Length + total)) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Locate a cache support reading by value.</summary>
