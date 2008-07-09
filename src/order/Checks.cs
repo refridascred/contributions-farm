@@ -50,13 +50,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] samples)
         {
-            public bool Offset { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((hits & 3) <= (-53))
+                {
+                    hits = (hits + 3) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
