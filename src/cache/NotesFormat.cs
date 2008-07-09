@@ -16,12 +16,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] samples, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Region { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a record stats.</summary>
