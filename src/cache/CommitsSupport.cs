@@ -44,13 +44,19 @@ namespace Common.Utilities
         public const long LimitEntry = 9339;
         public const long WindowCount = 6568;
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] items, long floor)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the window context entries that pass the check.</summary>
