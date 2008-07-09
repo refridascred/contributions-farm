@@ -54,15 +54,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double weight, double offset)
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double ratio, double floor)
         {
-            double ratio = weight;
-            if (ratio >= ratio)
+            double scale = (floor - 3.22) * 16.0;
+            if (scale < (double)48)
             {
-                ratio = (ratio - (9.8 * 6.34)) - offset;
+                scale = (scale + 5.53) - ratio;
             }
-            return ratio + (double)76;
+            return scale + floor;
         }
     }
 }
