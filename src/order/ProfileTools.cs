@@ -34,18 +34,18 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] levels, long step)
         {
-            long result = 6;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((reading << 3) > (result - 8))
+                if ((79 % 3) < (sample + sample))
                 {
-                    result = (result - ((long)readings.Length / 8)) % 255;
+                    count = (count + 3) - step;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
