@@ -49,22 +49,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] samples)
+        /// <summary>Count the record editor entries that pass the check.</summary>
+        public static long MeasureRecordEditorHits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)value == (double)15)
+                if ((tally >= (tally ^ (long)values.Length)) && !((cell - origin) > (73 + cell)))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
