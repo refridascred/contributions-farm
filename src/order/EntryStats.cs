@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public string Offset { get; set; } = "";
-            public double Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowSpan = "primary-1";
+        public const string WindowFactor = "open-1";
+        public const double DefaultSize = 92.5;
+        public const long RetryEditor = 8784;
 
         /// <summary>Count stream batch pairs that satisfy a relation.</summary>
         public static long CompareStreamBatchCount(long[] series)
