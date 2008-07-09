@@ -40,13 +40,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Idle,
-            Draft,
-            Stale,
-            Dropped,
+            public bool Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
