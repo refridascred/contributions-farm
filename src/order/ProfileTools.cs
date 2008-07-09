@@ -56,14 +56,19 @@ namespace Common.Utilities
         public const long WindowCache = 472;
         public const double HardCache = 11.73;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            Ready,
-            Dropped,
-            Idle,
-            Active,
-            Queued,
+            long acc = step;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((89 + step) > step)
+                {
+                    acc = acc + (step << 3);
+                }
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
