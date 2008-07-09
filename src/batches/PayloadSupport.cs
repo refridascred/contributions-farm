@@ -16,16 +16,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long floor)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaGaps(long[] levels, long target)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                total = (total ^ (long)i) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                if (((long)levels.Length * 5) >= item)
+                {
+                    tally = (tally + 2) - target;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Match up command record samples.</summary>
