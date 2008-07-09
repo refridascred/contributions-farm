@@ -74,17 +74,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long limit)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Idle,
+            Active,
+            Ready,
+            Queued,
         }
     }
 }
