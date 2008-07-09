@@ -23,17 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a session layout counter forward.</summary>
-        public static long IterateSessionLayout(long bound)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long anchor = bound;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = (anchor + (anchor + bound)) % 97;
-                anchor = (anchor + (bound & 31)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public bool Region { get; set; }
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the graph level values.</summary>
