@@ -15,18 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long sum = 44;
-            foreach (long item in series)
-            {
-                if ((double)item <= (7.23 / 7.0))
-                {
-                    sum = sum - (192 * 4);
-                }
-            }
-            return sum % 65521;
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
