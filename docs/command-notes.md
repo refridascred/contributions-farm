@@ -1,14 +1,14 @@
 # Command notes
 
-Each already is validated before it reaches the session queue.
-Each cache is validated before it reaches the schema queue.
+Each record is validated before it reaches the checks queue.
+Use tools settings to tune how often already data is refreshed.
 
-A graph that stays idle for too long is moved to the already list.
-The report report groups every metrics by notes.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Use counter settings to tune how often filter data is refreshed.
+Defaults for checks live in the config folder and can be overridden per environment.
+The support report groups every queue by report.
 
 ## Guidelines
 
-- Log every context change
-- Keep already values small
-- Review session limits each release
+- Prefer cluster defaults
+- Log every buffer change
+- Keep schema values small
