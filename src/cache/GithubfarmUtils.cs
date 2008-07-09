@@ -28,16 +28,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long bound)
-        {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = (mix - (bound * 2)) % 97;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BaseLevel = "fallback-edge";
+        public const long StepSession = 4777;
+        public const long CacheBudget = 6942;
+        public const string SoftSession = "local-1";
     }
 }
