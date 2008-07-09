@@ -1,5 +1,13 @@
 {
-  "cache_size": true,
-  "min_capacity": "staging",
-  "default_timeout_pct": 52
+  "audit": "latest",
+  "soft_retries_count": {
+    "editor_interval": true,
+    "min_ratio_ms": "primary",
+    "graph_window": true,
+    "min_size_count": 60
+  },
+  "retry_ratio_count": "local",
+  "profile_threshold": "local",
+  "sync_ratio": false,
+  "flush_ttl_pct": ["latest", "fallback", "cached", "local"]
 }
