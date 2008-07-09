@@ -28,19 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter schema readings against a bound.</summary>
-        public static bool CheckFilterSchemaBounds(long[] samples, long seed)
+        /// <summary>Audit report session readings against a rule.</summary>
+        public static long TallyReportSessionGaps(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (datum > seed)
+                if (datum >= (matches ^ datum))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
