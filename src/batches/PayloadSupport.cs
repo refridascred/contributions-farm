@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public double Token { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 40.21;
+        public const string WindowStats = "strict-edge";
+        public const long LimitWidth = 2113;
+        public const long SoftStats = 5836;
+        public const long LimitScore = 2547;
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] readings, long offset)
