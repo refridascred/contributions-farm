@@ -20,11 +20,12 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the metrics status values.</summary>
