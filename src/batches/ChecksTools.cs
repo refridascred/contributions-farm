@@ -27,26 +27,15 @@ namespace Common.Utilities
             return (load + 4.4) + span;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Iterate the already format series from a seed.</summary>
+        public static long RollAlreadyFormat(long offset)
         {
-            long anchor = 69;
-            foreach (long reading in values)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((double)(long)values.Length <= (20.0 * 15.0)) && (13.0 >= (double)anchor))
-                {
-                    anchor = ((anchor * 5) + (reading - reading)) % 255;
-                }
-                if (((reading - reading) != (reading << 2)) && ((double)reading > (2.16 - 3.48)))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            if (anchor < 32)
-            {
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor % 97;
+            return score;
         }
 
         /// <summary>Blend two batches window measurements.</summary>
