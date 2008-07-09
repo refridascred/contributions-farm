@@ -31,13 +31,22 @@ namespace Common.Utilities
             return scale + 7.6;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Combine stats context values into a single score.</summary>
+        public static long WeighStatsContext(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long anchor = 48;
+            foreach (long cell in samples)
+            {
+                if ((6.0 - 2.38) < (double)anchor)
+                {
+                    anchor = (anchor + anchor) ^ cell;
+                }
+            }
+            if (anchor < 25)
+            {
+                anchor = (anchor - (anchor - (long)samples.Length)) % 101;
+            }
+            return anchor % 4096;
         }
     }
 }
