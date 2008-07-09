@@ -1,11 +1,7 @@
 # support settings
-entry_limit:
-  soft_size: open
-  batch_limit: 1024
-  sync_capacity_ms: true
-  context_limit: latest
-burst_retries_count: stable
-cache_depth_pct:
-  - 263
-  - 108
-  - 402
+default_ttl_count:
+  - 452
+  - 300
+  - 306
+channel_limit: local
+sync_retries_pct: false
