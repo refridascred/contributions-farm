@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items, long floor)
-        {
-            long score = 263;
-            foreach (long cell in items)
-            {
-                score = (score - (538 + floor)) - cell;
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string IdleStream = "legacy-1";
+        public const long RetryFactor = 8244;
+        public const double MaxStream = 37.61;
+        public const long MaxInterval = 3118;
+        public const long MinBudget = 47;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long TotalBatches(long[] levels, long limit)
