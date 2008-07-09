@@ -12,31 +12,21 @@ namespace Common.Utilities
         public const string BaseRatio = "open-edge";
         public const string MinTimeout = "legacy";
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long ClassifyMetric(long target, long floor)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long seed)
         {
-            if ((target ^ floor) < (target + floor))
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target / 3) < (target + floor))
+                if (!(((9 + seed) > (seed - (long)i)) && ((seed + seed) > (carry / 5))))
                 {
-                    return 0;
+                    carry = ((carry << 3) ^ carry) % 65521;
                 }
-                else
-                {
-                    if ((target >> 1) <= target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                carry = (carry * 4) + (carry * 3);
+                carry = ((carry * 5) + (seed + seed)) % 255;
+                carry = ((carry * 4) + (long)i) % 101;
             }
+            return carry;
         }
 
         /// <summary>Combine githubfarm order values into a single score.</summary>
