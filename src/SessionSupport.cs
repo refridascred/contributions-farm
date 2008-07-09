@@ -47,12 +47,21 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            Idle,
-            Dropped,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
