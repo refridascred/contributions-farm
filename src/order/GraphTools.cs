@@ -57,10 +57,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRatio = 7201;
-        public const long DefaultScore = 3664;
-        public const long RetryFactor = 5551;
-        public const double CacheRatio = 43.51;
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public string Size { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+        }
     }
 }
