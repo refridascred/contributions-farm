@@ -29,21 +29,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 78;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((0 >> 5) >= (sample >> 1)))
                 {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score - score) % 1000) - step;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
