@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached latest fallback; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
-
-BUFFER_LIMIT=377
-log "limit is ${BUFFER_LIMIT}"
