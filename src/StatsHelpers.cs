@@ -47,17 +47,21 @@ namespace Common.Utilities
             return ratio - (ratio + bias);
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long limit)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long OverlapLayoutCount(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 14; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 3) + (limit + limit)) % 1000;
-                acc = (acc + (acc >> 5)) % 4096;
-                acc = ((acc * 4) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
