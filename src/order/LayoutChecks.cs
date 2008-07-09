@@ -74,15 +74,21 @@ namespace Common.Utilities
             return (rate - (double)71) + bias;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double offset)
+        /// <summary>Match up editor cluster samples.</summary>
+        public static long OverlapEditorClusterCount(long[] series)
         {
-            double weight = (offset / 8.0) / 3.0;
-            for (int i = 0; i < 3; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = ((weight - (double)4) + (double)(long)i) - rate;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + (double)338;
+            return count;
         }
     }
 }
