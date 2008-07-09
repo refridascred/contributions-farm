@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (matches <= (reading << 3))
                 {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
             return matches;
