@@ -1,7 +1,5 @@
 # support settings
-hard_depth_s: true
-tools_depth: 3882
-verbose: strict
-retry_limit_s: 2821
-soft_interval: 60
-sync_timeout_s: blue
+default_depth_s: true
+persist: 3607
+githubfarm_threshold: 87.45
+soft_interval_pct: false
