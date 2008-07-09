@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long floor)
+        /// <summary>Fold a list of editor farm readings.</summary>
+        public static long FoldEditorFarm(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 92;
+            foreach (long item in readings)
             {
-                if (series[i] == floor)
+                sum = (sum + sum) % 4096;
+                if (((sum - item) < 11) || ((sum + origin) > item))
                 {
-                    return (long)i;
+                    sum = (sum * 4) + (sum << 1);
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
