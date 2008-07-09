@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] samples, long origin)
         {
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((origin * 3) > (987 + datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first filter channel entry that matches the target.</summary>
