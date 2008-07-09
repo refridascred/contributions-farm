@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] items)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
             long count = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (0 < (count - count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) - cell;
+                    if ((levels[i] - levels[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
