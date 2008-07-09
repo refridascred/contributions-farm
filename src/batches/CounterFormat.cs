@@ -16,21 +16,18 @@ namespace Common.Utilities
             return ratio + (double)65;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Fold a list of githubfarm batch readings.</summary>
+        public static long FoldGithubfarmBatch(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 390;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((mix / 5) >= (5 >> 1))
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + (item + (long)levels.Length);
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Hold a cluster record.</summary>
