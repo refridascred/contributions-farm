@@ -1,21 +1,27 @@
 # entry settings
-audit: 45
-verbose:
-  default_limit_s:
-    enabled: false
-    compress: 1024
-    strict: 60
-    poll_interval_s: open
-    persist:
-      - 260
-      - 95
-      - 421
-  flush_retries: true
-  contributi_timeout: 250
-  warm_size_s: 9239
-  soft_limit_count:
-    - edge
-    - latest
-  warm_ttl: false
-warm_depth: strict
-dry_run: fallback
+soft_delay:
+  default_delay: 1857
+  max_retries:
+    sync_interval: strict
+    farm_window:
+      - open
+      - local
+      - stable
+    default_delay_s: true
+  min_window_ms: 7200
+  idle_window_count:
+    - 453
+    - 405
+  max_delay:
+    - 63
+    - 233
+  persist: false
+stats_threshold: false
+flush_interval_pct: primary
+sync_threshold_count: blue
+retry_delay_ms:
+  - local
+  - standard
+  - green
+  - blue
+farm_depth: fallback
