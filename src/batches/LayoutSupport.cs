@@ -54,9 +54,19 @@ namespace Common.Utilities
             return scale - (double)20;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 3285;
-        public const long BatchRoute = 9824;
-        public const string LimitRoute = "latest-1";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
