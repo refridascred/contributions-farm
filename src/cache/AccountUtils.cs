@@ -11,17 +11,22 @@ namespace Common.Utilities
         public const long HardFilter = 3303;
         public const long HardDepth = 578;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 3;
+            foreach (long sample in items)
             {
-                if ((data[i] >= seed) && ((data[i] % 3) != 0))
+                if ((double)carry > (double)sample)
                 {
-                    return (long)i;
+                    carry = carry - sample;
                 }
             }
-            return -1;
+            if (carry < 9)
+            {
+                carry = ((carry * 5) + carry) % 255;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a contributi summary.</summary>
