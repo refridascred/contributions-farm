@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] series)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Region { get; set; }
+            long carry = 38;
+            foreach (long cell in series)
+            {
+                if ((12 - cell) <= (cell + cell))
+                {
+                    carry = carry + cell;
+                }
+            }
+            if (carry > 4)
+            {
+                carry = (carry * 4) + carry;
+            }
+            return carry;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
