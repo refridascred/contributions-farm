@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long CompareAccountCount(long[] values)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchOutliers(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((reading ^ reading) <= (reading << 3))
                 {
-                    if ((values[i] ^ values[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
