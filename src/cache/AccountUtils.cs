@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many queue schema samples are out of range.</summary>
-        public static long AuditQueueSchemaHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell - cell) > (count - cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultInterval = 2688;
+        public const long BatchFilter = 1813;
+        public const long HardFilter = 3303;
+        public const long HardDepth = 578;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long SeekContextIndex(long[] items, long floor)
