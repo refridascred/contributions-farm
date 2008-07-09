@@ -52,24 +52,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long SortQueue(long bound, long limit)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] samples, long step)
         {
-            if ((double)limit != (double)bound)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (((1.1 / 8.0) >= (double)bound) || ((601 << 1) == (bound + limit)))
+                if ((reading + step) >= seen)
                 {
-                    return 7;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
