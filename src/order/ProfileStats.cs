@@ -47,18 +47,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaHits(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((hits << 2) < hits)
+                if (((98 / 2) == (matches >> 2)) && (3.1 > (double)cell))
                 {
-                    hits = (hits + 2) - item;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
