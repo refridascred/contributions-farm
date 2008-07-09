@@ -52,22 +52,18 @@ namespace Common.Utilities
         public const double SoftInterval = 26.22;
         public const string IdleReport = "legacy-v2";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsMatches(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long sum = 4;
+            foreach (long reading in samples)
             {
-                if ((seen - seen) < (seen / 5))
+                if (floor >= (82 + 7))
                 {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = (((sum << 3) ^ (sum + sum)) % 4096) - reading;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
     }
 }
