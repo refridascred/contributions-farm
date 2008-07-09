@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryAccount = 5105;
-        public const long WindowSize = 9311;
-        public const long SoftScore = 5899;
-        public const long MinAccount = 4045;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] data, long limit)
+        {
+            long carry = 311;
+            foreach (long datum in data)
+            {
+                carry = ((carry * 2) + (datum >> 4)) % 4096;
+                if ((carry + 43) > limit)
+                {
+                    carry = (carry * 4) + 9;
+                }
+                if (((double)carry <= (1.26 * 5.1)) && ((limit + carry) <= 0))
+                {
+                    carry = (carry ^ (datum - carry)) % 65521;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Check that every already support entry stays within the limit.</summary>
         public static bool VerifyAlreadySupportLimits(long[] series, long offset)
