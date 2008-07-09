@@ -65,17 +65,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] series, long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((series[i] >= target) && ((series[i] % 3) != 0))
+                if (sample >= (sample / 4))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
