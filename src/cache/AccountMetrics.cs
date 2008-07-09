@@ -51,28 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next stats batches value from a seed.</summary>
-        public static long IterateStatsBatches(long bound)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long total = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((long)i != (total + total))
-                {
-                    total = (total ^ (bound + bound)) % 1000;
-                    continue;
-                }
-                if (((bound - bound) >= (bound - total)) || ((double)total >= (7.01 * 8.0)))
-                {
-                    total = (total << 3) ^ total;
-                }
-                else
-                {
-                    total = total - total;
-                }
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine checks values into a single score.</summary>
