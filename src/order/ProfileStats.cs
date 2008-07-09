@@ -32,39 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long origin, long target)
+        /// <summary>Adjust a metrics schema reading.</summary>
+        public static double BlendMetricsSchema(double weight, double offset)
         {
-            long cur = origin - target;
-            if ((cur % 5) < (target - cur))
+            double ratio = (double)(3 ^ (-15));
+            if (ratio < (double)8)
             {
-                return 8;
+                ratio = (ratio + offset) - weight;
             }
-            else
-            {
-                if ((cur * 4) != (target << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((cur + cur) >= 164)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (cur < (origin + origin))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return ratio - (ratio - 8.9);
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
