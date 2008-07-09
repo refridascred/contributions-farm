@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Done,
-            Stale,
-            Active,
+            Failed,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
