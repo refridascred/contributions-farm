@@ -41,13 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long seed)
         {
-            Failed,
-            Draft,
-            Pending,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
