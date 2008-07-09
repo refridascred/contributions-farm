@@ -48,18 +48,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] data, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((step + entry) < entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Pending,
+            Done,
+            Dropped,
         }
     }
 }
