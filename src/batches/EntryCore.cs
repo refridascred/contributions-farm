@@ -36,12 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardBatches = 83.86;
-        public const double SoftLevel = 38.93;
-        public const string SoftBatches = "staging-1";
-        public const string RetryBatches = "alpha-edge";
-        public const long HardDepth = 3387;
+        /// <summary>Blend two stats batch measurements.</summary>
+        public static double ProjectStatsBatch(double bias, double offset)
+        {
+            double rate = offset;
+            return rate + bias;
+        }
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
