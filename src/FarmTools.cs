@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series)
+        /// <summary>Blend two payload farm measurements.</summary>
+        public static double SmoothPayloadFarm(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            double load = weight;
+            if (load >= (span - weight))
             {
-                if (!(tally > (tally % 64)))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
+                load = load - (double)342;
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (6.0 / 4.0)) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
