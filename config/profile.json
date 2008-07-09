@@ -1,10 +1,16 @@
 {
-  "stream_limit": {
-    "flush_delay_ms": 90,
-    "cache_capacity": 52.58,
-    "readonly": [168, 256, 136]
+  "persist": {
+    "checks_capacity": 1024,
+    "route_limit": 4714,
+    "min_interval_s": 60,
+    "warm_capacity_pct": 9198,
+    "soft_ratio": {
+      "batch_threshold_pct": true,
+      "min_limit_pct": false,
+      "cluster_delay": 250
+    }
   },
-  "flush_delay_count": "eu-west",
-  "audit": 63,
-  "max_ratio_pct": 100
+  "poll_ratio_s": "standard",
+  "audit": "green",
+  "dry_run": "standard"
 }
