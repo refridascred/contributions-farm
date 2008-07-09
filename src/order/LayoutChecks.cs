@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] series, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool ok = true;
-            foreach (long entry in series)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a support info.</summary>
