@@ -57,13 +57,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            Ready,
-            Pending,
-            Idle,
-            Locked,
+            long carry = 0;
+            foreach (long datum in samples)
+            {
+                carry = ((carry ^ (799 + carry)) % 65521) ^ datum;
+            }
+            return carry;
         }
     }
 }
