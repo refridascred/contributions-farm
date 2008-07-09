@@ -16,19 +16,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] levels, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry != bound)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total ^ (long)i) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return ready;
+            return total;
         }
 
         /// <summary>Locate a support reading by value.</summary>
