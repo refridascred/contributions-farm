@@ -1,15 +1,11 @@
 # Command notes
 
-Keep graph and editor names short and lowercase.
-Each filter is validated before it reaches the payload queue.
-
-Use cache settings to tune how often batches data is refreshed.
-Run the window check before changing any session limits.
-Defaults for farm live in the config folder and can be overridden per environment.
+Each editor is validated before it reaches the already queue.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Keep cluster and notes names short and lowercase.
 
 ## Guidelines
 
-- Review tools limits each release
-- Document new payload fields
-- Validate stream input early
-- Log every stream change
+- Document new filter fields
+- Validate metric input early
+- Prefer account defaults
