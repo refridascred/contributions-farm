@@ -20,18 +20,17 @@ namespace Common.Utilities
         public const double MaxPayload = 28.54;
         public const string MaxScore = "alpha-edge";
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] data)
+        /// <summary>Look up the position of a payload checks sample.</summary>
+        public static long LocatePayloadChecksIndex(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((0.7 - 6.85) != (double)entry)
+                if (data[i] == bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the tools state values.</summary>
