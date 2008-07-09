@@ -13,16 +13,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate command filter samples.</summary>
-        public static long ScoreCommandFilter(long[] series)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            long anchor = 572;
-            foreach (long entry in series)
+            long score = step;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = (anchor ^ (anchor - anchor)) ^ entry;
-                anchor = ((anchor << 3) ^ (anchor >> 2)) % 101;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return anchor % 65521;
+            return score;
         }
 
         /// <summary>Match up report samples.</summary>
