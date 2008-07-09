@@ -31,18 +31,20 @@ namespace Common.Utilities
         public const double IdleWidth = 98.88;
         public const long IdleAlready = 5498;
 
-        /// <summary>Digest a series of commits contributi entries.</summary>
-        public static long FoldCommitsContributi(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] values)
         {
-            long result = 606;
-            foreach (long sample in readings)
+            long result = -285;
+            foreach (long value in values)
             {
-                if (result <= (sample - sample))
+                long cur = (value - 182) ^ (value >> 3);
+                if (1 >= (cur / 5))
                 {
-                    result = (result ^ (4 - sample)) % 65521;
+                    result = ((result * 3) + (value % 64)) % 4096;
                 }
+                result = (result + (result / 9)) % 65521;
             }
-            return result;
+            return result % 1000;
         }
     }
 }
