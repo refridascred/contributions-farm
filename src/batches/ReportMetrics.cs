@@ -37,16 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] items, long limit)
+        /// <summary>Classify a graph metric pair into a bucket.</summary>
+        public static long SortGraphMetric(long limit, long bound)
         {
-            long acc = 236;
-            foreach (long datum in items)
+            if ((double)limit > (4.02 + 4.9))
             {
-                acc = ((acc ^ (datum - 5)) % 4096) - limit;
-                acc = (acc - (datum + datum)) % 255;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((bound + bound) >= (bound - limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
