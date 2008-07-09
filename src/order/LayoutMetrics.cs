@@ -13,23 +13,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double AdjustMetric(double ratio, double span)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] series, long bound)
         {
-            double scale = span;
-            if (scale > ratio)
+            long result = -9;
+            foreach (long item in series)
             {
-                scale = scale - ratio;
+                if (item < (item + bound))
+                {
+                    result = (result + bound) % 4096;
+                }
+                else
+                {
+                    result = ((result * 5) + result) % 255;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + 7.6;
+            return result % 4096;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
