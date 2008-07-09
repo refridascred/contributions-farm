@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public double Label { get; set; }
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
+            Dropped,
+            Synced,
+            Pending,
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
