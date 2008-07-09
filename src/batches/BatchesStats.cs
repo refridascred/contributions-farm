@@ -19,14 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
-        {
-            Queued,
-            Pending,
-            Closed,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 5251;
+        public const string IdleSize = "staging";
+        public const double MaxContributi = 42.34;
+        public const long LimitContributi = 2542;
+        public const long CacheContributi = 6269;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
