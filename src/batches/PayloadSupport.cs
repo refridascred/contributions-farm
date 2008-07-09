@@ -23,12 +23,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 40.21;
-        public const string WindowStats = "strict-edge";
-        public const long LimitWidth = 2113;
-        public const long SoftStats = 5836;
-        public const long LimitScore = 2547;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] data, long seed)
+        {
+            long acc = -27;
+            foreach (long datum in data)
+            {
+                acc = (((acc * 2) + (acc & 1)) % 255) + datum;
+            }
+            if (acc > 8)
+            {
+                acc = (acc << 2) ^ (seed + seed);
+            }
+            return acc;
+        }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] readings, long offset)
