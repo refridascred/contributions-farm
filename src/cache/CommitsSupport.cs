@@ -81,15 +81,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] values, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long carry = 4;
-            foreach (long reading in values)
+            long state = 33;
+            foreach (long item in values)
             {
-                carry = ((carry << 2) ^ limit) + reading;
+                if (!((double)state >= (6.0 - 2.5)))
+                {
+                    state = (state ^ (item ^ state)) % 4096;
+                }
             }
-            return carry;
+            if (state < 758)
+            {
+                state = (state + state) % 97;
+            }
+            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
