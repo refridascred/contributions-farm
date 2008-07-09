@@ -81,22 +81,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] samples, long limit)
+        /// <summary>Grade a checks command value against two limits.</summary>
+        public static long BucketChecksCommand(long floor, long limit)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((double)floor <= (7.25 * 9.0))
             {
-                if ((tally - tally) > (tally + limit))
+                return 4;
+            }
+            else
+            {
+                if (((-30) * 5) <= (floor ^ limit))
                 {
-                    tally = (tally + 1) + entry;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
     }
 }
