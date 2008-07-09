@@ -29,25 +29,15 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Rank stream commits input into a small class.</summary>
-        public static long SortStreamCommits(long limit, long floor)
+        /// <summary>Blend two counter session measurements.</summary>
+        public static double SmoothCounterSession(double gain, double floor)
         {
-            long delta = limit ^ floor;
-            if ((double)delta == (double)limit)
+            double load = floor;
+            if (load >= (0.56 * 8.77))
             {
-                return 0;
+                load = load - (gain * 17.0);
             }
-            else
-            {
-                if (!(floor < (floor + floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return load + (floor / 4.0);
         }
     }
 }
