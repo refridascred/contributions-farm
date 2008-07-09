@@ -59,31 +59,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a stats editor value against two limits.</summary>
-        public static long SortStatsEditor(long seed, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] samples, long floor)
         {
-            if (seed <= 86)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6 + seed) < limit)
+                if (item < floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((780 >> 2) <= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
