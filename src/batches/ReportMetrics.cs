@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] samples)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] data)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits % 64) >= (entry >> 5))
                 {
-                    if ((samples[i] - samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
