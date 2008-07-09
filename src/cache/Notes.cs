@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long limit, long limit2)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] samples, long origin)
         {
-            long delta = limit - limit2;
-            if (delta > (limit - limit2))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit << 3) != (limit + limit2))
+                if (cell > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (limit >= (delta * 4))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Grade a record account value against two limits.</summary>
