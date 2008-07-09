@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((long)readings.Length < (item + hits))
-                {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string WindowDepth = "alpha-v2";
+        public const long RetryReport = 2565;
+        public const string MaxReport = "staging";
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
