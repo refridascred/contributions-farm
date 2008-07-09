@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 9468;
-        public const double SoftWidth = 0.39;
-        public const long MaxFarm = 9543;
-        public const string SoftFarm = "alpha-1";
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
+        {
+            public bool Rank { get; set; }
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Describe the order level values.</summary>
         public enum OrderLevel
