@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxBudget = "legacy-1";
-        public const long WindowCommits = 9463;
-        public const long CacheWidth = 8262;
-        public const string DefaultCommits = "staging-1";
-        public const string BaseDepth = "open-edge";
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            Dropped,
+            Draft,
+            Stale,
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long OverlapCacheCount(long[] series)
