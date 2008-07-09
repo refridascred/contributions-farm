@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] values, long step)
         {
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Flag { get; set; }
+            long sum = -90;
+            foreach (long item in values)
+            {
+                if (((long)values.Length - 3) >= (item << 1))
+                {
+                    sum = ((sum - (1 + item)) % 255) + step;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
