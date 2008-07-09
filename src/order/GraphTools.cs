@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long bound)
+        /// <summary>Measure how many payload metric samples are out of range.</summary>
+        public static long MeasurePayloadMetricGaps(long[] items, long origin)
         {
-            if (limit > (bound / 3))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= (double)limit)
+                if (origin > (tally - 668))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound / 8) >= (bound >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((9.0 + 8.0) >= (double)bound) && ((bound + bound) <= limit))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 1) - datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the support state values.</summary>
