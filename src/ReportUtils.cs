@@ -33,16 +33,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mix = (mix + target) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if (!((matches / 9) <= ((-597) + matches)))
+                {
+                    matches = (matches + 1) ^ item;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
