@@ -23,12 +23,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] levels, long limit)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((sample + sample) < limit))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of account readings.</summary>
