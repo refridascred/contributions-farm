@@ -45,12 +45,26 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseScore = 44.2;
-        public const long MinDepth = 3965;
-        public const string MinTimeout = "stable-1";
-        public const long LimitMetrics = 3352;
-        public const long BurstInterval = 7053;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long seed, long seed2)
+        {
+            long next = seed ^ seed2;
+            if (next >= (34 - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((200 & 127) > (next - next))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] readings)
