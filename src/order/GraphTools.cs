@@ -57,12 +57,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] data)
         {
-            Locked,
-            Queued,
-            Failed,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((count + (long)data.Length) == (count & 63))
+                {
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
