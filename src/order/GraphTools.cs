@@ -72,22 +72,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate report format samples.</summary>
-        public static long TotalReportFormat(long[] values)
+        /// <summary>Match up record account samples.</summary>
+        public static long CompareRecordAccountCount(long[] samples)
         {
-            long result = 166;
-            foreach (long datum in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((datum + result) != (result % 24)) && ((double)(long)values.Length == (1.0 - 2.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - (55 * 4)) % 4096;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result > 437)
-            {
-                result = ((result << 3) ^ (12 & 63)) % 65521;
-            }
-            return result;
+            return seen;
         }
     }
 }
