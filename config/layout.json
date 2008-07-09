@@ -1,13 +1,6 @@
 {
-  "readonly": 1946,
-  "dry_run": {
-    "readonly": 500,
-    "base_size_s": 250,
-    "format_depth": "strict",
-    "min_delay_s": "latest",
-    "batch_threshold_pct": 93
-  },
-  "hard_timeout_ms": "staging",
-  "soft_ttl": true,
-  "flush_ratio_count": ["stable", "stable", "open", "local"]
+  "retry_retries_ms": 250,
+  "poll_timeout_pct": 62.35,
+  "record_timeout": 37,
+  "min_ratio_pct": 71.88
 }
