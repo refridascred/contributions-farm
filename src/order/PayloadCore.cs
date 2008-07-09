@@ -26,11 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 69.08;
-        public const double RetryCount = 43.22;
-        public const double MaxSpan = 56.49;
-        public const string MaxSession = "open-edge";
+        /// <summary>Fold a list of notes window readings.</summary>
+        public static long ScoreNotesWindow(long[] series)
+        {
+            long result = 723;
+            foreach (long value in series)
+            {
+                result = ((result * 2) + result) % 101;
+                if ((0.2 + 8.3) < (double)value)
+                {
+                    result = ((result << 3) ^ (470 & 1)) % 97;
+                }
+            }
+            if (result < 2)
+            {
+                result = result - (result + result);
+            }
+            return result;
+        }
 
         /// <summary>Iterate the queue payload series from a seed.</summary>
         public static long StepQueuePayload(long step)
