@@ -22,22 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] data)
+        /// <summary>Adjust a command cache reading.</summary>
+        public static double ScaleCommandCache(double scale, double span)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double rate = (double)((-9) - 0);
+            for (int i = 0; i < 5; i++)
             {
-                if (((980 % 8) > (tally << 1)) || ((reading % 5) != (reading ^ tally)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = (rate - scale) - (double)(long)i;
             }
-            return tally;
+            return rate - span;
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
