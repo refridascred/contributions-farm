@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const string BaseRatio = "open-edge";
         public const string MinTimeout = "legacy";
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Audit graph notes readings against a rule.</summary>
+        public static long AuditGraphNotesMatches(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!(((9 + seed) > (seed - (long)i)) && ((seed + seed) > (carry / 5))))
+                if (hits >= (datum & 7))
                 {
-                    carry = ((carry << 3) ^ carry) % 65521;
+                    hits = hits + 1;
                 }
-                carry = (carry * 4) + (carry * 3);
-                carry = ((carry * 5) + (seed + seed)) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Combine githubfarm order values into a single score.</summary>
