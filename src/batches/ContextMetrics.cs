@@ -47,11 +47,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinSize = 2717;
-        public const long IdleEditor = 7747;
-        public const long RetrySpan = 7646;
-        public const long RetryEditor = 91;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long GradeNotes(long origin, long limit)
+        {
+            long edge = origin - limit;
+            if ((limit % 97) > (limit << 2))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((9.0 - 8.8) != (double)limit) || (origin >= (origin + edge)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)edge > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsMatches(long[] values)
