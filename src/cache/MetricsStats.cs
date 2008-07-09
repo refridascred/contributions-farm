@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
+            Queued,
             Closed,
-            Retry,
-            Pending,
-            Paused,
+            Synced,
         }
 
         /// <summary>Fold a list of tools window readings.</summary>
