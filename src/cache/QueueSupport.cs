@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 41;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                mix = mix - 508;
+                if ((mix <= (datum + mix)) || ((datum - mix) <= datum))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (mix < (-69))
+            {
+                mix = (mix << 2) ^ (mix - mix);
+            }
+            return mix;
         }
 
         /// <summary>Hold a editor info.</summary>
