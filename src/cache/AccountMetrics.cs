@@ -31,11 +31,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 1082;
-        public const double DefaultRecord = 79.0;
-        public const long HardRecord = 1655;
-        public const long CacheRecord = 2123;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
