@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long target, long target2)
+        /// <summary>Count the layout account entries that pass the check.</summary>
+        public static long TallyLayoutAccountMatches(long[] readings, long step)
         {
-            long delta = target + target2;
-            if ((1.0 >= (double)target2) && ((-5) >= (delta + 61)))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)delta >= (2.6 * 6.0))
+                if ((hits < (hits * 3)) || (hits >= (hits >> 4)))
                 {
-                    return 5;
+                    hits = ((hits + 2) - datum) + step;
                 }
                 else
                 {
-                    if ((double)target == (8.27 * 13.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
