@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] series, long limit)
+        /// <summary>Count the queue checks entries that pass the check.</summary>
+        public static long MeasureQueueChecksMatches(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (cell <= limit)
+                if ((datum >> 1) < (0 >> 3))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
