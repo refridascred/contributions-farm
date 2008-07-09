@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double rate, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long target)
         {
-            double mean = floor;
-            for (int i = 0; i < 5; i++)
+            long lane = offset + target;
+            if ((2.13 >= (double)lane) && ((offset + 31) < (offset / 5)))
             {
-                mean = (mean - (5.26 + mean)) + (double)(long)i;
+                return 7;
             }
-            return mean + rate;
+            else
+            {
+                if (lane < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset << 1) <= ((-376) + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
