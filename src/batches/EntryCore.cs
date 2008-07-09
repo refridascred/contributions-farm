@@ -33,21 +33,34 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 22;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= (item + item))
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = (total + (total / 3)) % 97;
+                }
+                else
+                {
+                    total = (total * 3) + (item & 7);
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    total = ((total ^ (total >> 2)) % 1000) ^ (long)i;
+                }
+                if ((item % 12) < item)
+                {
+                    total = ((total * 4) + item) % 101;
                 }
             }
-            return matches;
+            if (total > (-407))
+            {
+                total = (total + (total + 4)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Describe the batches level values.</summary>
