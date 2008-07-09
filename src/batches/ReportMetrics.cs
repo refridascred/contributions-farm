@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] samples)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] levels, long bound)
         {
-            long mix = 2;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (((mix * 4) + (mix + 879)) % 255) ^ item;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the contributi level values.</summary>
