@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string MinStream = "open-edge";
         public const long LimitFactor = 3637;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = result - (reading << 1);
             }
-            return seen;
+            if (result > (-3))
+            {
+                result = (result * 4) + (result / 4);
+            }
+            return result;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
