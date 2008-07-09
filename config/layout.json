@@ -1,6 +1,8 @@
 {
-  "retry_retries_ms": 250,
-  "poll_timeout_pct": 62.35,
-  "record_timeout": 37,
-  "min_ratio_pct": 71.88
+  "strict": 47.02,
+  "token_window": "latest",
+  "base_size_ms": 250,
+  "sync_retries": 36.2,
+  "idle_size_pct": true,
+  "flush_delay_pct": 60.08
 }
