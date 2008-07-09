@@ -68,22 +68,12 @@ namespace Common.Utilities
         public const long SoftSize = 7183;
         public const long IdleRatio = 6391;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] samples)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)8 <= (double)value)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
