@@ -28,12 +28,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 8778;
-        public const double BatchReport = 73.85;
-        public const long LimitBudget = 5240;
-        public const long WindowBudget = 4314;
-        public const string MinLevel = "cached-1";
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Region { get; set; }
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long CompareFormatCount(long[] series)
