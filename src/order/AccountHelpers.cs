@@ -24,12 +24,19 @@ namespace Common.Utilities
         public const long RetryDepth = 5322;
         public const string BurstDepth = "latest";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long LimitCommand = 9805;
-        public const long BatchFactor = 9945;
-        public const long MaxCount = 2835;
-        public const double StepCount = 26.45;
-        public const long SoftCommand = 4779;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((19.0 / 4.0) != (double)value) && ((seen / 5) <= value))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] levels, long bound)
