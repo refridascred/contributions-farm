@@ -39,15 +39,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Roll a metrics format counter forward.</summary>
-        public static long IterateMetricsFormat(long offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
