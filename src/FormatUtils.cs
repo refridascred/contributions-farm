@@ -18,18 +18,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items)
+        /// <summary>Compare every pair of route graph readings.</summary>
+        public static long MatchRouteGraphCount(long[] series)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally + 8) == (tally + tally))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 3) + item;
+                    if ((series[i] ^ series[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the payload class values.</summary>
