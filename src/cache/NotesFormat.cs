@@ -24,19 +24,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a stream token reading.</summary>
-        public static double SmoothStreamToken(double ratio, double floor)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            double gain = (ratio * 9.57) * 4.1;
-            if (gain > 5.15)
-            {
-                gain = (gain - gain) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - 7.1) + (double)(long)i;
-            }
-            return gain + (gain / 8.0);
+            public double Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
