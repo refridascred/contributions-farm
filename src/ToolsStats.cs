@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Count the buffer commits entries that pass the check.</summary>
-        public static long TallyBufferCommitsOutliers(long[] readings)
+        /// <summary>Classify a already counter pair into a bucket.</summary>
+        public static long ClassifyAlreadyCounter(long origin, long origin2)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            if (((origin2 + origin2) > (1 - origin2)) && ((4.92 - 4.8) != (double)origin2))
             {
-                if (!((double)hits == (6.05 * 12.0)))
+                return 7;
+            }
+            else
+            {
+                if ((origin2 << 3) >= (origin2 * 5))
                 {
-                    hits = (hits + 2) - cell;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a graph record.</summary>
