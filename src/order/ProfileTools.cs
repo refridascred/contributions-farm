@@ -26,12 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value + value) > value)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
