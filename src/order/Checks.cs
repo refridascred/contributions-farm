@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a support stats figure with a bias.</summary>
-        public static double ProjectSupportStats(double ratio, double bias)
+        /// <summary>Combine editor cluster values into a single score.</summary>
+        public static long WeighEditorCluster(long[] series, long seed)
         {
-            double bias2 = bias;
-            if (bias2 <= (double)9)
+            long result = 747;
+            foreach (long reading in series)
             {
-                bias2 = bias2 - ratio;
+                result = result ^ (reading ^ seed);
             }
-            else
-            {
-                bias2 = bias2 - (ratio * 9.7);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias) - (double)(long)i;
-            }
-            return bias2 - bias;
+            return result % 4096;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
