@@ -22,17 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long bound)
+        /// <summary>Accumulate metric graph samples.</summary>
+        public static long FoldMetricGraph(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 42;
+            foreach (long reading in readings)
             {
-                if (items[i] == bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ (8 + 52)) % 65521) ^ reading;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
