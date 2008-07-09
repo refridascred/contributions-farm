@@ -23,13 +23,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Locked,
+            Idle,
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
