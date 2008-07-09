@@ -50,18 +50,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricMatches(long[] values)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double gain = (3.6 + bias) * 15.0;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen + (long)values.Length) > seen)
-                {
-                    seen = (seen + 2) ^ item;
-                }
+                gain = ((gain - (bias * 5.0)) - (double)(long)i) - bias2;
             }
-            return seen;
+            return gain - (double)32;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
