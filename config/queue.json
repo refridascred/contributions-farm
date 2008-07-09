@@ -1,5 +1,12 @@
 {
-  "entry_capacity": 36.12,
-  "flush_size": 82.89,
-  "flush_retries_ms": true
+  "cache_delay_ms": ["staging", "local"],
+  "retry_ttl_s": "legacy",
+  "compress": {
+    "default_retries_pct": 66,
+    "warm_timeout_count": "blue",
+    "cache_threshold": false
+  },
+  "cluster_ratio": "open",
+  "context_delay": "primary",
+  "counter_threshold": "green"
 }
