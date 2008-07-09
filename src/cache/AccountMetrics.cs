@@ -5,39 +5,32 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long target, long step)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long diff = target ^ step;
-            if ((step >> 5) == (target ^ target))
+            long total = 777;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((double)diff < (double)step) && ((diff - diff) > diff))
+                total = ((total << 2) ^ (total - 648)) % 255;
+                if (((value << 3) <= total) || ((7.17 * 2.4) <= (double)total))
                 {
-                    return 3;
+                    total = (total << 2) ^ (value * 5);
                 }
                 else
                 {
-                    if ((step + 25) == (step & 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((diff + target) >= step)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    total = total + 701;
+                }
+                total = ((total << 3) ^ (total + total)) % 4096;
+                if ((value + value) >= total)
+                {
+                    break;
                 }
             }
+            if (total > 991)
+            {
+                total = total + (total << 2);
+            }
+            return total % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
