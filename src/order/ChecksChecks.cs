@@ -20,27 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] levels)
         {
-            long mix = -6;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if ((mix >> 5) <= (datum & 15))
+                if ((seen + (-4)) <= (-762))
                 {
-                    mix = mix + (mix ^ mix);
-                    mix = mix ^ datum;
-                }
-                if (datum > (datum + 0))
-                {
-                    mix = ((mix << 2) ^ (datum & 127)) % 101;
-                }
-                if ((mix ^ 2) >= datum)
-                {
-                    break;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
