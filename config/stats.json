@@ -1,12 +1,23 @@
 {
-  "contributi_retries": true,
-  "flush_capacity": 97.07,
-  "farm_window": {
-    "command_delay": 44,
-    "default_interval_count": 49,
-    "max_timeout_s": 250,
-    "cache_ttl_count": "legacy"
-  },
-  "format_delay": 60,
-  "base_capacity_s": 97.84
+  "cache_interval": 250,
+  "default_threshold_count": "green",
+  "base_limit_ms": "standard",
+  "min_size_ms": true,
+  "persist": 24.76,
+  "base_ttl_ms": {
+    "retry_interval_s": "green",
+    "retry_retries_s": {
+      "burst_timeout_pct": "latest",
+      "min_ttl_s": 58.33,
+      "readonly": 73
+    },
+    "layout_limit": {
+      "min_size": 14.84,
+      "persist": 500,
+      "idle_delay": "edge",
+      "batch_delay_s": "green",
+      "cluster_depth": false,
+      "soft_size_s": 100
+    }
+  }
 }
