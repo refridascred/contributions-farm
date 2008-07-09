@@ -64,14 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            New,
-            Idle,
-            Active,
-            Ready,
-            Queued,
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
