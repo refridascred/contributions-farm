@@ -53,12 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double bias, double span)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            double gain = (double)(9 << 1);
+            return (gain - bias) + span;
         }
 
         /// <summary>Describe the entry mode values.</summary>
