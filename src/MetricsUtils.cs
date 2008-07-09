@@ -29,18 +29,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the record editor entries that pass the check.</summary>
-        public static long MeasureRecordEditorHits(long[] values, long origin)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally >= (tally ^ (long)values.Length)) && !((cell - origin) > (73 + cell)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Idle,
+            Done,
+            Ready,
+            Synced,
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
