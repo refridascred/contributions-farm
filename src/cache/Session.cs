@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string StepInterval = "open-edge";
         public const long StepFarm = 1448;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double weight, double bias)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ProjectAccount(double gain, double offset)
         {
-            double weight2 = weight;
-            if (weight2 <= (double)432)
+            double ratio = offset;
+            if (ratio < (9.56 + gain))
             {
-                weight2 = (weight2 + (weight / 6.0)) + bias;
+                ratio = ratio + 9.0;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                weight2 = weight2 - (double)8;
+                ratio = (ratio + (gain * 13.0)) + (double)(long)i;
             }
-            return weight2 - (double)318;
+            return ratio - (gain * 2.9);
         }
 
         /// <summary>Combine session values into a single score.</summary>
