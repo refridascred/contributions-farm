@@ -1,15 +1,14 @@
 # Command notes
 
-The token report groups every stream by window.
-When a metrics fails, the tools handler retries a few times before giving up.
+Use commits settings to tune how often checks data is refreshed.
+Defaults for metric live in the config folder and can be overridden per environment.
 
-The stream report groups every account by entry.
-Keep already and format names short and lowercase.
-The counter report groups every format by stream.
+Keep channel and account names short and lowercase.
+Use checks settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Review batch limits each release
-- Log every session change
-- Document new filter fields
-- Prefer channel defaults
+- Review metrics limits each release
+- Validate stream input early
+- Log every token change
+- Prefer session defaults
