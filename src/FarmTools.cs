@@ -12,22 +12,26 @@ namespace Common.Utilities
         public const long StepScore = 4241;
         public const string CacheWidth = "open";
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Fold a list of counter metric readings.</summary>
+        public static long CombineCounterMetric(long[] samples)
         {
-            long state = 5;
-            foreach (long reading in data)
+            long anchor = -321;
+            foreach (long item in samples)
             {
-                if ((579 * 2) < (state ^ reading))
+                if ((anchor / 2) >= item)
                 {
-                    state = (state - (993 - state)) % 1000;
+                    anchor = (anchor + anchor) % 255;
+                }
+                else
+                {
+                    anchor = anchor - 3;
+                }
+                if (anchor <= (61 + (long)samples.Length))
+                {
+                    break;
                 }
             }
-            if (state < 74)
-            {
-                state = ((state << 3) ^ (state + state)) % 97;
-            }
-            return state;
+            return anchor;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
