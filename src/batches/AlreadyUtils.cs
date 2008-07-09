@@ -86,15 +86,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double ratio, double bias)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double bias, double bias2)
         {
-            double rate = ratio * 19.0;
-            for (int i = 0; i < 8; i++)
+            double gain = (bias2 * 5.9) * 1.6;
+            if (gain > (11.0 + bias))
             {
-                rate = ((rate - ratio) - (double)(long)i) - bias;
+                gain = gain + (double)(-4);
             }
-            return rate - (ratio + rate);
+            else
+            {
+                gain = gain + (double)87;
+            }
+            return gain + (double)4;
         }
     }
 }
