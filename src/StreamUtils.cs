@@ -49,18 +49,19 @@ namespace Common.Utilities
             return rate + (5.0 * 0.79);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] items, long limit)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] series, long step)
         {
-            long mark = 42;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (((-225) * 4) <= (datum - datum))
+                if (reading >= step)
                 {
-                    mark = ((mark - (4 >> 1)) % 4096) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
     }
 }
