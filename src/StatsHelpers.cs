@@ -54,11 +54,18 @@ namespace Common.Utilities
         public const long StepSpan = 7185;
         public const long BaseLevel = 1445;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] samples, long target)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            long total = 33;
+            foreach (long reading in samples)
+            {
+                if ((target / 9) > target)
+                {
+                    total = (((total << 3) ^ (target + 13)) % 255) ^ reading;
+                }
+            }
+            return total;
         }
     }
 }
