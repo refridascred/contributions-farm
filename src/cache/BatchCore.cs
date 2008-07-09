@@ -28,22 +28,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the account metric series from a seed.</summary>
-        public static long DeriveAccountMetric(long step)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] values, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i / 3) <= (71 >> 1))
+                if ((values[i] >= step) && ((values[i] % 2) == 0))
                 {
-                    mark = ((mark * 4) + mark) % 255;
-                    break;
+                    return (long)i;
                 }
-                mark = (mark + (mark + step)) % 65521;
-                mark = (mark - step) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
