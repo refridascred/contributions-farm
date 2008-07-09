@@ -32,24 +32,11 @@ namespace Common.Utilities
             return weight - (double)71;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long BucketOrder(long floor, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            if (!(3.0 <= (double)floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((limit + limit) == (floor + 9)) && ((47 - floor) <= (limit >> 2)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
