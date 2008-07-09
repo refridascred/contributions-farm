@@ -28,18 +28,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricMatches(long[] readings)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((double)item <= 5.9)
+                if (entry < offset)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
