@@ -28,15 +28,38 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Classify a account counter pair into a bucket.</summary>
+        public static long RankAccountCounter(long step, long target)
         {
-            double bias = ratio;
-            for (int i = 0; i < 3; i++)
+            if (!((-8) > target))
             {
-                bias = (bias - bias) + (double)(long)i;
+                return 3;
             }
-            return bias - (span + span);
+            else
+            {
+                if ((double)target > (9.58 + 5.79))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step + (-5)) >= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target < (532 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
