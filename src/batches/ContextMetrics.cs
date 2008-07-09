@@ -17,11 +17,20 @@ namespace Common.Utilities
         public const long RetryMetric = 9663;
         public const string WindowMetric = "stable-v2";
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long offset)
         {
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry ^ (carry & 127)) % 101;
+                if (!(94 >= (904 + carry)))
+                {
+                    carry = (carry - (carry + carry)) % 255;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Scale a channel farm figure with a bias.</summary>
