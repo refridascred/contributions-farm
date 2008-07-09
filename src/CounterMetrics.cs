@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next counter graph value from a seed.</summary>
-        public static long DeriveCounterGraph(long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TallySession(long[] readings)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long anchor = 3;
+            foreach (long reading in readings)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (5.09 >= (double)anchor)
+                {
+                    anchor = ((anchor * 4) + (reading ^ reading)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor >> 3);
+                }
+                if (!(anchor >= (anchor << 3)))
+                {
+                    break;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = (anchor + ((-6) * 4)) % 101;
             }
             return anchor;
         }
