@@ -30,14 +30,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long offset, long target)
         {
-            Active,
-            Stale,
-            Pending,
-            Idle,
-            Done,
+            if (offset >= (offset >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target < 6.16)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (offset <= (offset * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((((-74) - 97) == (target / 9)) && ((target + target) < (offset % 12)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
