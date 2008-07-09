@@ -34,15 +34,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double bias, double floor)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            double ratio = floor;
-            if (ratio > (double)803)
+            long acc = step;
+            for (int i = 0; i < 14; i++)
             {
-                ratio = ratio - bias;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = ((acc * 5) + ((long)i - step)) - (long)i2;
+                }
+                acc = (acc * 5) + (step << 1);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return ratio - ratio;
+            return acc;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
