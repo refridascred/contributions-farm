@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] items, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long score = 80;
+            foreach (long datum in series)
             {
-                if (((-7) + tally) > (cell >> 5))
+                if ((6.17 > (double)datum) && ((datum << 3) > 9))
                 {
-                    tally = (tally + 2) + origin;
+                    score = ((score + (datum ^ 15)) % 4096) + offset;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
