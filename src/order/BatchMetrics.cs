@@ -73,18 +73,17 @@ namespace Common.Utilities
         public const long BurstInterval = 3804;
         public const long BatchInterval = 7003;
 
-        /// <summary>Count the order notes entries that pass the check.</summary>
-        public static long AuditOrderNotesMatches(long[] readings)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.79 * 7.6) != (double)matches)
+                if (items[i] < offset)
                 {
-                    matches = (matches + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
