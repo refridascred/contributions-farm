@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long floor, long step)
+        /// <summary>Measure how many batch window samples are out of range.</summary>
+        public static long MeasureBatchWindowMatches(long[] readings)
         {
-            if (!(251 > (203 + step)))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (floor >= ((-8) >> 5))
+                if ((count / 7) <= (entry / 6))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Classify a farm format pair into a bucket.</summary>
