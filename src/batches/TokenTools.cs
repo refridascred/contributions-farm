@@ -16,13 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] data, long target)
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((target ^ target) == (long)data.Length)
+                {
+                    hits = (hits + 2) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next token channel value from a seed.</summary>
