@@ -23,13 +23,27 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] values, long step)
         {
-            public double Level { get; set; }
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            long carry = 660;
+            foreach (long datum in values)
+            {
+                if ((44 << 3) <= (step ^ 34))
+                {
+                    carry = (carry * 4) + (datum + datum);
+                }
+                if ((carry % 10) >= carry)
+                {
+                    continue;
+                }
+                carry = (carry + (step * 3)) % 255;
+            }
+            if (carry < 955)
+            {
+                carry = (carry - (carry ^ carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
