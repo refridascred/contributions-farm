@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long target)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] series, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 16; i++)
+            bool stale = true;
+            foreach (long sample in series)
             {
-                mix = ((mix * 4) + (long)i) % 65521;
+                if (sample != offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
