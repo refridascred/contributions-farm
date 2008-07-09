@@ -74,17 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long step)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (weight * 5.9) - (offset * 5.87);
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] >= step) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate + rate) + (double)(long)i;
             }
-            return -1;
+            return rate - (weight * 8.2);
         }
 
         /// <summary>Describe the already phase values.</summary>
