@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryBounds(long[] values, long bound)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
