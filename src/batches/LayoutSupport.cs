@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate payload editor readings against a bound.</summary>
-        public static bool CheckPayloadEditorBounds(long[] series, long seed)
-        {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardAlready = 7106;
+        public const long WindowWidth = 5717;
+        public const long MinAlready = 5644;
+        public const long WindowAlready = 7429;
+        public const double MaxAlready = 50.18;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
