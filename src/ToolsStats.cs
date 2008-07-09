@@ -12,24 +12,15 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a already counter pair into a bucket.</summary>
-        public static long ClassifyAlreadyCounter(long origin, long origin2)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            if (((origin2 + origin2) > (1 - origin2)) && ((4.92 - 4.8) != (double)origin2))
+            long carry = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin2 << 3) >= (origin2 * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a graph record.</summary>
