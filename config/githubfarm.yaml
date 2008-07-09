@@ -1,24 +1,37 @@
 # githubfarm settings
-support_timeout:
-  hard_threshold_s: false
-  audit: 6.68
-  flush_depth: true
-  flush_ttl: blue
-  stats_delay: 2211
-  hard_threshold_ms: open
-batch_delay: 30
-default_depth_pct:
-  filter_interval: 26.71
-  hard_interval_ms: staging
-  filter_delay: false
-  compress:
-    commits_timeout: 7154
-    strict: true
-    burst_capacity: green
-    retry_size_count:
-      - 316
-      - 238
-  poll_timeout_s: cached
-  cache_ratio:
-    - 97
-    - 473
+compress: 89.02
+base_window_s:
+  idle_window_pct:
+    retry_limit_pct: 60
+    soft_window_count: true
+    hard_timeout_pct: 1024
+    route_depth: stable
+    profile_window: true
+    checks_capacity: 72
+  metric_ratio: staging
+  route_limit:
+    - 466
+    - 344
+    - 243
+  readonly:
+    format_ratio: primary
+    default_limit_count:
+      - 326
+      - 381
+      - 415
+    support_delay: false
+persist:
+  stats_retries:
+    max_timeout: legacy
+    warm_limit_count: 50.96
+    payload_depth: 79
+  payload_delay: true
+  flush_depth: 5900
+verbose: 8.93
+profile_retries: 80.91
+readonly:
+  editor_ttl: blue
+  flush_capacity_ms: 76.68
+  hard_size_s: false
+  sync_interval_pct: 24
+  checks_ttl: 1024
