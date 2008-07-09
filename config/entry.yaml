@@ -1,35 +1,4 @@
 # entry settings
-flush_retries: local
-context_ratio: true
-base_threshold_count:
-  min_ratio: 3314
-  stats_depth: stable
-  soft_threshold_pct: 500
-  burst_limit: fallback
-default_ttl_s: 2501
-route_ttl:
-  min_interval_pct: false
-  filter_delay: blue
-  base_ttl_pct: 97.68
-  graph_capacity:
-    dry_run: fallback
-    min_interval_count:
-      - eu-west
-      - latest
-      - stable
-    default_timeout: 42.32
-    warm_interval_ms:
-      - edge
-      - eu-west
-      - cached
-      - green
-    max_depth_ms:
-      - 114
-      - 387
-    batches_ratio:
-      - edge
-      - primary
-      - green
-      - eu-west
-  window_threshold: strict
-  enabled: 32.08
+max_retries_count: legacy
+compress: 76
+flush_limit_ms: latest
