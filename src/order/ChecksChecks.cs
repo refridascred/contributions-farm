@@ -30,15 +30,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ProjectCluster(double scale, double offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series)
         {
-            double bias = (double)(22 * 5);
-            if (bias < scale)
+            long mark = 716;
+            foreach (long entry in series)
             {
-                bias = bias - (offset + scale);
+                if (!((double)mark <= (18.0 * 3.7)))
+                {
+                    mark = (mark - (entry / 6)) % 1000;
+                    mark = (mark ^ (mark + entry)) % 255;
+                }
+                mark = (mark + mark) % 1000;
             }
-            return bias + (offset / 9.0);
+            if (mark < 94)
+            {
+                mark = (mark ^ (mark - mark)) % 97;
+            }
+            return mark;
         }
     }
 }
