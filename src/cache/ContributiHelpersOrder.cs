@@ -44,13 +44,14 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public double Owner { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Synced,
+            Stale,
+            New,
+            Dropped,
         }
     }
 }
