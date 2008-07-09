@@ -68,19 +68,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsLimits(long[] series, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long target, long origin)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long prev = target ^ origin;
+            if ((prev - 0) < (target % 97))
             {
-                if (datum >= bound)
+                return 4;
+            }
+            else
+            {
+                if ((prev % 60) < prev)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((prev > (origin / 8)) && ((origin - origin) >= (target - 8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)origin < (0.08 - 7.8)) && ((origin - 97) >= (24 << 1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
