@@ -57,18 +57,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] data, long origin)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long step, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (!((double)origin > (6.7 - 5.27)))
             {
-                if (!((72 >> 1) <= (500 ^ tally)) && (value <= (origin - 5)))
+                return 5;
+            }
+            else
+            {
+                if ((4.0 + 9.73) == (double)origin)
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return tally;
         }
     }
 }
