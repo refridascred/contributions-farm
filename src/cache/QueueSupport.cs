@@ -28,27 +28,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] values, long step)
+        /// <summary>Digest a series of metric cache entries.</summary>
+        public static long CombineMetricCache(long[] data, long step)
         {
-            long carry = 660;
-            foreach (long datum in values)
+            long mix = 0;
+            foreach (long item in data)
             {
-                if ((44 << 3) <= (step ^ 34))
-                {
-                    carry = (carry * 4) + (datum + datum);
-                }
-                if ((carry % 10) >= carry)
-                {
-                    continue;
-                }
-                carry = (carry + (step * 3)) % 255;
+                mix = ((mix ^ (item - mix)) % 1000) + step;
             }
-            if (carry < 955)
-            {
-                carry = (carry - (carry ^ carry)) % 4096;
-            }
-            return carry;
+            return mix;
         }
     }
 }
