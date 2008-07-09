@@ -29,19 +29,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TotalReport(long[] data)
         {
-            long mix = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = 7;
+            foreach (long item in data)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                carry = (carry * 5) + carry;
+                if (!(item >= (carry / 5)))
                 {
-                    mix = (((mix * 2) + mix) % 4096) - (long)i2;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
