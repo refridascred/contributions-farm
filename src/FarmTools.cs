@@ -19,19 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] items, long step)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((double)datum == (3.0 / 4.0))
-                {
-                    tally = (tally + 1) + step;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowFilter = "staging";
+        public const long LimitFilter = 5071;
+        public const double RetryInterval = 48.95;
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long ClassifyChecks(long offset, long floor)
