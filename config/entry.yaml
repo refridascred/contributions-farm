@@ -1,10 +1,5 @@
 # entry settings
-poll_size_pct: staging
-command_retries: open
-min_timeout_ms: legacy
-default_retries_ms:
-  - eu-west
-  - standard
-  - standard
-hard_limit: true
-buffer_window: 64
+hard_retries: legacy
+audit: legacy
+flush_retries_pct: 500
+hard_size_count: stable
