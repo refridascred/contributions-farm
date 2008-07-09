@@ -22,14 +22,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double bias, double span)
         {
-            Retry,
-            Synced,
-            Stale,
-            New,
-            Dropped,
+            double mean = bias;
+            return (mean - bias) + span;
         }
     }
 }
