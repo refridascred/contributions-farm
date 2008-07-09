@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] series)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long acc = 4;
-            foreach (long cell in series)
-            {
-                if ((double)cell == (1.6 + 2.0))
-                {
-                    acc = acc - (acc + cell);
-                }
-                if ((cell * 2) <= (acc & 3))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Stale,
+            Synced,
+            Dropped,
+            Pending,
+            Retry,
         }
 
         /// <summary>Adjust a session reading.</summary>
