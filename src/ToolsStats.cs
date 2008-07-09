@@ -47,15 +47,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] samples)
         {
-            long result = 9;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                result = ((((result << 3) ^ 239) % 4096) - entry) - floor;
+                if ((double)tally < (6.2 - 17.0))
+                {
+                    tally = (tally + 2) - sample;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
