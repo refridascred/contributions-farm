@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const string BaseRatio = "open-edge";
         public const string MinTimeout = "legacy";
 
-        /// <summary>Audit graph notes readings against a rule.</summary>
-        public static long AuditGraphNotesMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (hits >= (datum & 7))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftToken = 6126;
+        public const long DefaultToken = 6600;
+        public const long LimitToken = 1172;
+        public const long BaseWidth = 6402;
+        public const long BaseLevel = 6582;
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long IterateNotes(long target)
