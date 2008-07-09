@@ -47,15 +47,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] data)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series, long floor)
         {
-            long state = 0;
-            foreach (long item in data)
+            long result = 9;
+            foreach (long entry in series)
             {
-                state = (((state << 2) ^ (231 - state)) % 101) ^ item;
+                result = ((((result << 3) ^ 239) % 4096) - entry) - floor;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
