@@ -59,13 +59,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Digest a series of counter buffer entries.</summary>
+        public static long TallyCounterBuffer(long[] readings, long limit)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Failed,
+            long score = 637;
+            foreach (long reading in readings)
+            {
+                if (((double)limit == (7.45 * 1.0)) && ((258 % 24) <= reading))
+                {
+                    score = score ^ 6;
+                }
+            }
+            if (score < 689)
+            {
+                score = (score + (122 + 9)) % 1000;
+            }
+            return score;
         }
     }
 }
