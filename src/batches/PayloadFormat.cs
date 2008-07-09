@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] readings, long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate tools samples.</summary>
