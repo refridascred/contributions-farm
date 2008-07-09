@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double scale, double span)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] levels, long bound)
         {
-            double scale2 = (span + scale) / 7.0;
-            if (scale2 > scale)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                scale2 = scale2 - scale2;
+                if (!((cell + cell) > (bound >> 5)))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (double)1) + (double)(long)i;
-            }
-            return scale2 - (double)(-313);
+            return hits;
         }
 
         /// <summary>Hold a buffer stats.</summary>
