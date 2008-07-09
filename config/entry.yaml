@@ -1,29 +1,10 @@
 # entry settings
-checks_ratio: green
-dry_run: 439
-soft_depth_pct:
-  entry_retries:
-    - green
-    - standard
-    - primary
-  soft_ttl_ms:
-    metrics_delay: 88.05
-    default_retries: staging
-    enabled: legacy
-    min_retries_count:
-      - 412
-      - 169
-    batch_ttl_s: legacy
-    window_threshold: 5260
-  dry_run: 68
-  min_window_ms:
-    sync_ratio_ms: true
-    queue_delay: 179
-    hard_threshold_ms: edge
-    verbose: edge
-    readonly: standard
-    stats_capacity:
-      - staging
-      - strict
-      - standard
-      - eu-west
+editor_window: primary
+max_timeout_pct:
+  - edge
+  - cached
+default_window:
+  - 428
+  - 343
+payload_timeout: 82.54
+token_size: 89
