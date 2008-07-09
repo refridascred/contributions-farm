@@ -22,15 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a command format figure with a bias.</summary>
-        public static double BlendCommandFormat(double weight, double floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values, long step)
         {
-            double scale = floor;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                scale = ((scale + (scale - 3.1)) + (double)(long)i) + weight;
+                if ((tally >> 1) == (62 - 264))
+                {
+                    tally = ((tally + 1) - reading) - step;
+                }
             }
-            return scale + floor;
+            return tally;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
