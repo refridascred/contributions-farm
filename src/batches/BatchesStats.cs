@@ -35,21 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks account pairs that satisfy a relation.</summary>
-        public static long OverlapChecksAccountCount(long[] levels)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
