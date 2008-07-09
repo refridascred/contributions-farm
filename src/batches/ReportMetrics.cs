@@ -19,13 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
+            Idle,
             Retry,
-            New,
-            Dropped,
-            Locked,
+            Draft,
+            Pending,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
