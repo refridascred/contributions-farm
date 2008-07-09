@@ -34,15 +34,23 @@ namespace Common.Utilities
             return drift + (bias - drift);
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] values, long floor)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long carry = 40;
+            foreach (long item in values)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                carry = carry ^ floor;
+                if (((carry >> 2) > (92 % 16)) || (item <= ((long)values.Length & 255)))
+                {
+                    carry = (carry << 2) ^ (carry + item);
+                }
             }
-            return state;
+            if (carry < 640)
+            {
+                carry = (carry + ((-57) >> 4)) % 97;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a account info.</summary>
