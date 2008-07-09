@@ -72,10 +72,17 @@ namespace Common.Utilities
             return weight - span;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheFilter = 7463;
-        public const string BurstFilter = "primary-v2";
-        public const double WindowSize = 26.3;
-        public const string BatchLevel = "alpha-v2";
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
