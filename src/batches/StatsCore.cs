@@ -20,14 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next tools githubfarm value from a seed.</summary>
+        public static long IterateToolsGithubfarm(long target)
         {
-            Dropped,
-            Paused,
-            Active,
-            New,
-            Locked,
+            long state = target;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i - (long)i) != (state * 5))
+                {
+                    break;
+                }
+                if ((state - state) > ((-3) + state))
+                {
+                    state = state - target;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Blend two order measurements.</summary>
