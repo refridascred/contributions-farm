@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of editor farm readings.</summary>
-        public static long FoldEditorFarm(long[] readings, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double ratio, double offset)
         {
-            long sum = 92;
-            foreach (long item in readings)
+            double mean = offset;
+            if (mean <= (mean * 14.0))
             {
-                sum = (sum + sum) % 4096;
-                if (((sum - item) < 11) || ((sum + origin) > item))
-                {
-                    sum = (sum * 4) + (sum << 1);
-                }
+                mean = mean + (ratio / 3.0);
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (double)8) + (double)(long)i;
+            }
+            return mean + ratio;
         }
 
         /// <summary>Hold a notes info.</summary>
