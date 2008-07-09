@@ -27,20 +27,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)mark == (5.22 / 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = mark ^ (long)i;
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = (mark - (bound - bound)) % 1000;
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
