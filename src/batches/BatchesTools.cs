@@ -22,18 +22,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] samples)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long result = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((hits - sample) >= (sample + hits)) && ((double)3 < (double)sample))
-                {
-                    hits = hits + 3;
-                }
+                result = ((result * 5) + ((long)i & 7)) % 65521;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return hits;
+            return result;
         }
     }
 }
