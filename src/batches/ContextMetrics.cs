@@ -20,21 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Measure how many batch order samples are out of range.</summary>
+        public static long TallyBatchOrderOutliers(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((tally & 63) < reading) && (((reading + 890) == (origin % 60)) || ((490 + origin) >= (origin - origin))))
                 {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
