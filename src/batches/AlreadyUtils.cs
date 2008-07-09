@@ -16,21 +16,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
