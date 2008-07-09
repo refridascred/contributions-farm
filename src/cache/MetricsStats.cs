@@ -45,20 +45,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Combine metrics layout values into a single score.</summary>
-        public static long TallyMetricsLayout(long[] readings, long bound)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
         {
-            long anchor = 596;
-            foreach (long entry in readings)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((907 * 2) > (5 - anchor))
-                {
-                    anchor = (((anchor - anchor) % 255) + entry) + bound;
-                    continue;
-                }
-                anchor = ((anchor << 2) ^ (3 % 16)) % 4096;
+                score = score ^ (long)i;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Describe the channel class values.</summary>
