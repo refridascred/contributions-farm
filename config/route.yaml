@@ -1,18 +1,10 @@
 # route settings
-min_interval_pct: stable
-readonly: staging
-tools_delay:
-  retry_ratio_ms: 30
-  contributi_capacity:
-    - cached
-    - green
-    - eu-west
-    - blue
-  idle_depth_s:
-    warm_depth_s: false
-    min_window: green
-    flush_capacity_ms: fallback
-    burst_capacity_count: 100
-    report_capacity: 44
-    compress: true
-soft_timeout_s: eu-west
+dry_run:
+  - 296
+  - 150
+  - 39
+contributi_limit: staging
+cache_timeout_pct: 1024
+flush_threshold: edge
+githubfarm_ttl: 30
+poll_retries_count: 96.41
