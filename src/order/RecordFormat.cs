@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] levels, long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell + cell) > (bound >> 5)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
