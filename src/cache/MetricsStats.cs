@@ -61,19 +61,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double AdjustAccount(double scale, double offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            double weight = scale - (double)33;
-            if (weight > (weight - offset))
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight - (4.8 - offset);
-            }
-            return weight + scale;
+            Retry,
+            Failed,
+            New,
+            Paused,
         }
     }
 }
