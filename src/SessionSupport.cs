@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] series)
         {
-            Locked,
-            Failed,
-            Idle,
-            Active,
-            Queued,
+            long sum = 44;
+            foreach (long item in series)
+            {
+                if ((double)item <= (7.23 / 7.0))
+                {
+                    sum = sum - (192 * 4);
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
