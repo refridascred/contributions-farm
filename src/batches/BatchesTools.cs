@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public bool Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
