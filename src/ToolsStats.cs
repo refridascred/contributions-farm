@@ -40,14 +40,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public double Stamp { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleFactor = "stable-1";
+        public const string MinQueue = "standard-edge";
+        public const long BatchBudget = 652;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] series)
