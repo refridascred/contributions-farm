@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] items, long target)
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
+            long carry = 19;
+            foreach (long datum in items)
             {
-                if ((step << 3) <= (score & 31))
+                if (((5.5 - 3.44) < (double)datum) && ((target - target) <= ((long)items.Length & 1)))
                 {
-                    score = (score ^ step) % 4096;
+                    carry = carry - (target - carry);
                 }
-                score = ((score * 5) + (long)i) % 101;
+                else
+                {
+                    carry = (carry + datum) % 255;
+                }
+                if ((target - target) <= datum)
+                {
+                    break;
+                }
             }
-            return score;
+            if (carry > 178)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
 
         /// <summary>Hold a buffer stats.</summary>
