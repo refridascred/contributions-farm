@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long HardFilter = 3303;
         public const long HardDepth = 578;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] items, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == floor)
+                if ((data[i] >= seed) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
