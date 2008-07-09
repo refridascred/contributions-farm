@@ -42,22 +42,18 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long state = limit;
-            for (int i = 0; i < 22; i++)
+            long score = 2;
+            foreach (long sample in samples)
             {
-                state = (state ^ limit) % 1000;
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((sample ^ sample) <= (sample + sample))
                 {
-                    state = (state - (limit + (long)i)) ^ (long)i2;
-                    state = (state + 4) % 65521;
+                    score = ((score << 3) ^ 39) % 1000;
                 }
-                state = state + ((long)i * 3);
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return score;
         }
     }
 }
