@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] levels)
         {
-            public double Score { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long state = 5;
+            foreach (long value in levels)
+            {
+                state = state ^ value;
+            }
+            return state;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
