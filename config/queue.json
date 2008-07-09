@@ -1,6 +1,5 @@
 {
-  "poll_size_count": 92,
-  "flush_ttl": 3,
-  "min_limit_pct": ["standard", "legacy"],
-  "format_threshold": 30
+  "soft_capacity": false,
+  "poll_size_pct": "eu-west",
+  "audit": 34
 }
