@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double rate, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data, long limit)
         {
-            double rate2 = (double)(9 << 2);
-            if (rate2 > 6.03)
+            long result = 4;
+            foreach (long reading in data)
             {
-                rate2 = (rate2 + rate2) - floor;
+                if ((270 % 12) <= (limit << 1))
+                {
+                    result = (result ^ reading) % 4096;
+                }
+                if (((double)340 < (1.5 / 7.0)) || ((limit << 1) == (reading >> 3)))
+                {
+                    result = ((result * 5) + (reading << 2)) % 101;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + (rate2 / 3.0)) + (double)(long)i;
-            }
-            return rate2 + (rate * 9.2);
+            return result;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
