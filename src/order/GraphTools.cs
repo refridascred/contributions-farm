@@ -40,19 +40,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next filter record value from a seed.</summary>
-        public static long DeriveFilterRecord(long offset)
+        /// <summary>Count the queue metric entries that pass the check.</summary>
+        public static long MeasureQueueMetricHits(long[] samples, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (3.3 <= (double)(long)i)
+                if ((double)step < (double)tally)
                 {
-                    score = (score * 3) + (offset + 0);
+                    tally = (tally + 2) - datum;
                 }
-                score = ((score * 5) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
