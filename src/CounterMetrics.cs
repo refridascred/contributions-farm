@@ -47,22 +47,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] samples)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double weight, double offset)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double ratio = weight;
+            if (ratio >= ratio)
             {
-                if ((9.2 - 6.17) > (double)hits)
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                ratio = (ratio - (9.8 * 6.34)) - offset;
             }
-            return hits;
+            return ratio + (double)76;
         }
     }
 }
