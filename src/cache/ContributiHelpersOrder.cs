@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Roll a session layout counter forward.</summary>
+        public static long IterateSessionLayout(long bound)
         {
-            long state = 8;
-            foreach (long reading in readings)
+            long anchor = bound;
+            for (int i = 0; i < 7; i++)
             {
-                state = (state << 2) ^ ((long)readings.Length - reading);
+                anchor = (anchor + (anchor + bound)) % 97;
+                anchor = (anchor + (bound & 31)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            if (state > 0)
-            {
-                state = ((state << 3) ^ (state >> 1)) % 65521;
-            }
-            return state % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the graph level values.</summary>
