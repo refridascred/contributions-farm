@@ -47,22 +47,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] values, long offset)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((entry + entry) <= (offset + (long)values.Length))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Audit counter metric readings against a rule.</summary>
