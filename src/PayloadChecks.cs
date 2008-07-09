@@ -22,12 +22,31 @@ namespace Common.Utilities
         public const string BatchCount = "legacy-v2";
         public const long BatchDepth = 5638;
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long limit, long offset)
         {
-            public double Stamp { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            if ((5.0 + 8.0) != (double)limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit <= (offset >> 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)49 > (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
