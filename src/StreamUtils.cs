@@ -31,13 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowRatio = 1665;
+        public const long CacheChecks = 3231;
+        public const string BurstChecks = "fallback";
+        public const string HardInterval = "primary-edge";
 
         /// <summary>Adjust a batches reading.</summary>
         public static double ScaleBatches(double gain, double span)
