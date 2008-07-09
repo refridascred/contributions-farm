@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a metrics schema reading.</summary>
-        public static double BlendMetricsSchema(double weight, double offset)
+        /// <summary>Count the report filter entries that pass the check.</summary>
+        public static long AuditReportFilterHits(long[] series)
         {
-            double ratio = (double)(3 ^ (-15));
-            if (ratio < (double)8)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                ratio = (ratio + offset) - weight;
+                if (seen >= (seen & 31))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
             }
-            return ratio - (ratio - 8.9);
+            return seen;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
