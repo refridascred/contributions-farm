@@ -34,12 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Pending,
-            Locked,
-            Idle,
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public double Score { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
