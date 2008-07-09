@@ -1,18 +1,10 @@
 # support settings
-strict: green
-idle_ratio_pct: primary
-cache_ratio: 1024
-retry_size:
+queue_depth: 3794
+commits_ratio: latest
+channel_size: 87.73
+soft_delay_pct: 64
+editor_interval:
+  - strict
+  - stable
   - standard
-  - local
-buffer_depth: blue
-cache_retries:
-  default_ttl_ms: 75
-  editor_timeout: 79.02
-  token_capacity:
-    session_ratio: 500
-    compress: 1.59
-    warm_window_s: standard
-    batch_retries_s: edge
-  persist: false
-  hard_limit_s: 60
+  - legacy
