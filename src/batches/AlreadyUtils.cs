@@ -33,16 +33,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] items)
         {
-            long state = 2;
-            foreach (long reading in readings)
+            long anchor = 156;
+            foreach (long sample in items)
             {
-                state = (state ^ state) % 4096;
-                state = (state * 4) + (reading + reading);
+                anchor = anchor - sample;
+                anchor = ((anchor * 5) + sample) % 97;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Scale a batches metrics figure with a bias.</summary>
