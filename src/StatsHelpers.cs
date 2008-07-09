@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            Retry,
+            Idle,
             Draft,
-            Pending,
-            Synced,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
