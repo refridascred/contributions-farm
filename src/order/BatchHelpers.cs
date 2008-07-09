@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long BaseBudget = 9394;
         public const long BurstRecord = 3825;
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Owner { get; set; }
-            public bool Ratio { get; set; }
+            Retry,
+            Dropped,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
