@@ -1,12 +1,6 @@
 {
-  "readonly": "cached",
-  "warm_retries_ms": ["cached", "strict", "local"],
-  "soft_ttl": "primary",
-  "account_capacity": [67, 58],
-  "hard_window_ms": {
-    "idle_interval_pct": 250,
-    "retry_depth_s": [463, 405, 365],
-    "soft_limit": true
-  },
-  "dry_run": 30
+  "support_capacity": "eu-west",
+  "default_depth": false,
+  "route_timeout": 15.58,
+  "poll_capacity_count": 78
 }
