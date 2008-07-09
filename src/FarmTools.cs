@@ -26,11 +26,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            Idle,
+            Retry,
+            Pending,
         }
     }
 }
