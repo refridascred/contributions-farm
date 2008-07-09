@@ -34,15 +34,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Fold a list of layout schema readings.</summary>
+        public static long CombineLayoutSchema(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            long mark = -147;
+            foreach (long item in items)
             {
-                acc = ((acc * 2) + (long)i) % 65521;
+                mark = (mark << 2) ^ item;
+                if ((mark + mark) == (item & 31))
+                {
+                    mark = (mark ^ (item + item)) % 65521;
+                }
             }
-            return acc;
+            if (mark > 4)
+            {
+                mark = ((mark * 3) + (mark >> 2)) % 97;
+            }
+            return mark;
         }
     }
 }
