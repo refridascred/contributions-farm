@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] values, long step)
+        /// <summary>Derive the next batches githubfarm value from a seed.</summary>
+        public static long StepBatchesGithubfarm(long floor)
         {
-            long sum = 488;
-            foreach (long datum in values)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                sum = ((sum << 2) ^ (datum & 255)) - step;
+                if ((2.0 / 2.0) > (double)floor)
+                {
+                    sum = (sum ^ floor) % 1000;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
             return sum;
         }
