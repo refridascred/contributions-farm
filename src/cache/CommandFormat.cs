@@ -38,16 +38,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine checks githubfarm values into a single score.</summary>
-        public static long WeighChecksGithubfarm(long[] values, long target)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] items)
         {
-            long score = 281;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                score = (score + (reading - score)) % 4096;
-                score = ((score * 4) + target) % 65521;
+                if (((long)items.Length - 121) > (value & 31))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score % 97;
+            return tally;
         }
     }
 }
