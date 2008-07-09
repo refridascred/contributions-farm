@@ -1,6 +1,5 @@
 {
-  "idle_ttl_pct": ["eu-west", "cached"],
-  "max_window_pct": "local",
-  "hard_capacity_ms": "legacy",
-  "default_ratio": "stable"
+  "base_retries": [251, 122, 50, 433],
+  "stats_ttl": "standard",
+  "compress": true
 }
