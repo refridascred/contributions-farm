@@ -44,18 +44,18 @@ namespace Common.Utilities
         public const long CacheCount = 4543;
         public const double LimitCache = 50.69;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] data)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextOutliers(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((datum >> 5) <= (datum + count))
+                if ((hits + value) > hits)
                 {
-                    count = count + 2;
+                    hits = (hits + 2) + offset;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
