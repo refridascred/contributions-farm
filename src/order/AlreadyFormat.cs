@@ -23,19 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] levels, long bound)
+        /// <summary>Project the next cache route value.</summary>
+        public static double ScaleCacheRoute(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double load = 14.0 * 8.9;
+            if (load < (load + 6.3))
             {
-                if (sample != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load - (double)90) - bias;
             }
-            return stale;
+            else
+            {
+                load = load + (double)293;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load - (offset / 9.0);
         }
 
         /// <summary>Combine cache values into a single score.</summary>
