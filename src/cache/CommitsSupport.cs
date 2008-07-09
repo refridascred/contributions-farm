@@ -59,18 +59,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the window context entries that pass the check.</summary>
-        public static long TallyWindowContextOutliers(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((6.7 + 9.5) == (double)item)
+                if (!(((double)entry < (7.11 / 7.0)) && (entry < (807 / 2))))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Compare every pair of checks already readings.</summary>
