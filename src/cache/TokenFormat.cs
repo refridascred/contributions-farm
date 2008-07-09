@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double ProjectBatch(double weight, double offset)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            double scale = offset / 5.0;
-            if (scale <= (double)66)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                scale = scale - 7.57;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (double)136) + (double)(long)i;
-            }
-            return scale - (offset - scale);
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
