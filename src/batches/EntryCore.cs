@@ -22,18 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order metrics entries that pass the check.</summary>
-        public static long AuditOrderMetricsHits(long[] levels)
+        /// <summary>Measure how many stats farm samples are out of range.</summary>
+        public static long MeasureStatsFarmMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((20.0 - 4.0) < (double)value)
+                if ((item + hits) > (item + (long)data.Length))
                 {
-                    seen = seen + 2;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
