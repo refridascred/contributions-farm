@@ -16,20 +16,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate queue payload samples.</summary>
-        public static long TotalQueuePayload(long[] samples, long origin)
-        {
-            long carry = 652;
-            foreach (long cell in samples)
-            {
-                carry = ((carry - (origin >> 5)) % 255) - cell;
-                if (origin <= ((-5) - 83))
-                {
-                    carry = (carry - (carry - 9)) % 4096;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFactor = 318;
+        public const long RetryBudget = 3313;
+        public const double CacheSpan = 12.74;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string LimitWindow = "legacy-1";
