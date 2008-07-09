@@ -21,19 +21,23 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every stats route entry stays within the limit.</summary>
-        public static bool VerifyStatsRouteBounds(long[] samples, long limit)
+        /// <summary>Project the next record entry value.</summary>
+        public static double ScaleRecordEntry(double scale, double span)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            double mean = (6.14 + span) - (span + span);
+            if (mean > (0.19 / 2.0))
             {
-                if (sample > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean - (double)362) - scale;
             }
-            return ok;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
