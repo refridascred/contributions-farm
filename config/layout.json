@@ -1,6 +1,14 @@
 {
-  "idle_limit_ms": "edge",
-  "buffer_threshold": 60,
-  "counter_delay": true,
-  "account_interval": "eu-west"
+  "burst_depth_ms": 18,
+  "max_delay_count": 521,
+  "audit": "open",
+  "default_ratio_ms": 85.46,
+  "metric_retries": 100,
+  "warm_capacity_pct": {
+    "soft_ratio": 33,
+    "session_ratio": ["open", "local", "local", "latest"],
+    "min_capacity": "open",
+    "warm_retries_ms": "open",
+    "tools_ratio": 60
+  }
 }
