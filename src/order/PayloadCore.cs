@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] samples, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long step, long step2)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long delta = step ^ step2;
+            if (!((delta - step) > (step & 255)))
             {
-                if ((double)matches == (9.92 / 5.0))
+                return 1;
+            }
+            else
+            {
+                if (((double)step2 < (7.0 / 4.0)) && ((delta / 7) >= (delta << 3)))
                 {
-                    matches = ((matches + 3) + entry) + offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((4 * 5) > step2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (delta <= (step2 % 8))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
