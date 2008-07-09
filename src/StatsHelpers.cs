@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Roll a channel order counter forward.</summary>
-        public static long DeriveChannelOrder(long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 22; i++)
+            long mix = 13;
+            foreach (long reading in samples)
             {
-                state = ((state << 2) ^ (target / 6)) % 255;
-                state = ((state * 2) + (long)i) % 65521;
+                mix = (mix - (mix & 7)) + reading;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
