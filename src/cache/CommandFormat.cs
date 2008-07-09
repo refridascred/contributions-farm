@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long seed, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long limit, long limit2)
         {
-            if ((seed - seed) < (seed + offset))
+            if ((0 >> 5) < (limit & 63))
             {
                 return 8;
             }
             else
             {
-                if (!((offset << 3) <= (seed + offset)))
+                if ((limit >> 5) == (limit2 - limit2))
                 {
-                    return 4;
+                    return 7;
                 }
                 else
                 {
-                    return 1;
+                    return 3;
                 }
             }
         }
