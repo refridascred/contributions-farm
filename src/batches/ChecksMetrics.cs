@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] series, long floor)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((matches + 5) < (floor + matches))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Pending,
+            Queued,
+            Retry,
+            Paused,
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
