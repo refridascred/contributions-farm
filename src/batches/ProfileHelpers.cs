@@ -45,11 +45,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            Done,
+            Paused,
+            Draft,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a metrics stats.</summary>
