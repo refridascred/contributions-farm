@@ -5,32 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long step)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] levels, long origin)
         {
-            long next = offset ^ step;
-            if ((offset >> 3) < next)
+            long anchor = 4;
+            foreach (long reading in levels)
             {
-                return 6;
+                anchor = ((anchor ^ reading) % 4096) - origin;
+                anchor = anchor ^ (reading + anchor);
             }
-            else
-            {
-                if ((offset / 4) <= step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step > (7.02 + 0.88))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
