@@ -42,11 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinBatch = 6466;
-        public const double WindowBatch = 52.31;
-        public const long BatchLevel = 3645;
-        public const long BaseBatch = 1841;
-        public const double MaxTimeout = 45.32;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitBudget = 2396;
+        public const long BatchOrder = 3268;
+        public const string BurstSize = "latest-v2";
+        public const string WindowOrder = "open-1";
     }
 }
