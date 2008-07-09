@@ -23,23 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double ratio, double offset)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] samples, long step)
         {
-            double scale = (double)8 + offset;
-            if (scale <= (ratio - 7.33))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + scale;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - 4.8) - (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
