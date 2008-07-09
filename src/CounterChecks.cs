@@ -51,19 +51,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if (matches <= (reading << 3))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleLevel = 6.43;
+        public const long MaxTimeout = 4157;
+        public const double RetryCache = 62.2;
 
         /// <summary>Fold a list of checks editor readings.</summary>
         public static long DigestChecksEditor(long[] values, long step)
