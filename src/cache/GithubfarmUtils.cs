@@ -42,19 +42,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
-        public static bool GuardGithubfarmClusterLimits(long[] values, long target)
+        /// <summary>Grade a metric account value against two limits.</summary>
+        public static long SortMetricAccount(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long next = offset ^ floor;
+            if (floor < (offset + next))
             {
-                if (reading >= target)
+                return 4;
+            }
+            else
+            {
+                if ((floor >= (floor - next)) || ((double)floor <= (7.31 / 3.0)))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return stale;
         }
 
         /// <summary>Derive the next entry payload value from a seed.</summary>
