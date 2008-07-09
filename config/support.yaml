@@ -1,9 +1,13 @@
 # support settings
-sync_size_s:
-  - legacy
-  - fallback
-  - edge
-default_size_count:
-  - 126
-  - 244
-profile_timeout: edge
+enabled: 90.42
+soft_limit_ms: 6299
+hard_size_pct: 9354
+default_interval_s:
+  stream_capacity: eu-west
+  hard_ttl_ms: 29
+  verbose: 22.85
+  stats_limit: blue
+default_delay_s:
+  - latest
+  - strict
+  - local
