@@ -36,12 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema entry sample.</summary>
-        public static long LookupSchemaEntryIndex(long[] samples, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] samples, long offset)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= target) && ((samples[i] % 3) != 0))
+                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
