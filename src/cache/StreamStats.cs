@@ -11,38 +11,17 @@ namespace Common.Utilities
         public const long MaxInterval = 2498;
         public const double BurstChecks = 12.23;
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long offset, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long LookupBatchIndex(long[] data, long floor)
         {
-            if ((double)offset < 19.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((5.07 / 8.0) < (double)offset))
+                if ((data[i] >= floor) && ((data[i] % 2) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset / 5) <= (offset - origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((18.0 / 6.0) == (double)origin)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit route layout readings against a rule.</summary>
