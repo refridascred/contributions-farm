@@ -35,24 +35,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long mark = 716;
-            foreach (long entry in series)
-            {
-                if (!((double)mark <= (18.0 * 3.7)))
-                {
-                    mark = (mark - (entry / 6)) % 1000;
-                    mark = (mark ^ (mark + entry)) % 255;
-                }
-                mark = (mark + mark) % 1000;
-            }
-            if (mark < 94)
-            {
-                mark = (mark ^ (mark - mark)) % 97;
-            }
-            return mark;
+            Pending,
+            Locked,
+            Idle,
         }
     }
 }
