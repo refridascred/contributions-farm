@@ -30,18 +30,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long TallyAccountContextMatches(long[] samples)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item <= (2.2 - 4.39))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
