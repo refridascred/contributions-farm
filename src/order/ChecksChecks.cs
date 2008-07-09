@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long total = 763;
+            foreach (long value in levels)
+            {
+                if ((value * 4) >= (total - value))
+                {
+                    total = (total + (total + value)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the report phase values.</summary>
