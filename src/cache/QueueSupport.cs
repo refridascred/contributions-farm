@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] data)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] data)
         {
-            long mix = 41;
-            foreach (long datum in data)
+            long mix = -12;
+            foreach (long sample in data)
             {
-                mix = mix - 508;
-                if ((mix <= (datum + mix)) || ((datum - mix) <= datum))
+                if (!(43 > (sample * 2)))
                 {
-                    break;
+                    mix = (mix + (-7)) % 65521;
                 }
-            }
-            if (mix < (-69))
-            {
-                mix = (mix << 2) ^ (mix - mix);
             }
             return mix;
         }
