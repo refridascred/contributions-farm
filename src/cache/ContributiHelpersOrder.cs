@@ -20,13 +20,18 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] levels, long limit)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (seen > limit)
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a profile reading.</summary>
