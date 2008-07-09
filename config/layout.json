@@ -1,6 +1,8 @@
 {
-  "farm_timeout": 8120,
-  "verbose": "blue",
-  "default_threshold_count": true,
-  "default_delay_count": [488, 371, 273]
+  "sync_ttl_count": 28,
+  "max_delay_s": 30,
+  "poll_timeout": 2598,
+  "stats_threshold": false,
+  "base_window_count": [316, 419, 322, 428],
+  "warm_interval_count": [156, 365, 117, 134]
 }
