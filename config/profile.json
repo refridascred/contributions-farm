@@ -1,16 +1,5 @@
 {
-  "persist": {
-    "checks_capacity": 1024,
-    "route_limit": 4714,
-    "min_interval_s": 60,
-    "warm_capacity_pct": 9198,
-    "soft_ratio": {
-      "batch_threshold_pct": true,
-      "min_limit_pct": false,
-      "cluster_delay": 250
-    }
-  },
-  "poll_ratio_s": "standard",
-  "audit": "green",
-  "dry_run": "standard"
+  "sync_retries": "blue",
+  "sync_limit": "blue",
+  "batch_ttl_pct": 6.44
 }
