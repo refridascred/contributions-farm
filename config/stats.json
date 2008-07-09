@@ -1,5 +1,25 @@
 {
-  "audit": [95, 174, 345, 454],
-  "channel_capacity": false,
-  "verbose": 3
+  "strict": 997,
+  "audit": 49,
+  "token_window": {
+    "readonly": ["latest", "strict"],
+    "default_window": true,
+    "stream_interval": 8629,
+    "retry_depth_s": ["open", "eu-west", "blue", "fallback"],
+    "audit": "primary"
+  },
+  "min_interval_ms": {
+    "max_window_ms": 97,
+    "default_size_count": 52,
+    "retry_size": {
+      "base_limit_count": 37.17,
+      "token_delay": [299, 2, 165, 122],
+      "min_delay_pct": "local",
+      "audit": 54.22,
+      "enabled": true
+    },
+    "tools_depth": 83.82,
+    "hard_timeout": "staging",
+    "idle_interval": 982
+  }
 }
