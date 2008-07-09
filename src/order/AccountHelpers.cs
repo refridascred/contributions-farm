@@ -42,18 +42,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] data)
+        /// <summary>Roll a cluster command counter forward.</summary>
+        public static long DeriveClusterCommand(long seed)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (((19.0 / 4.0) != (double)value) && ((seen / 5) <= value))
+                long next = (-35) - ((long)i >> 1);
+                if (next <= (seed << 3))
                 {
-                    seen = seen + 2;
+                    total = total ^ total;
+                    total = (total * 5) + (total + next);
                 }
+                else
+                {
+                    next = (next ^ (total + 11)) % 65521;
+                }
+                next = ((next << 2) ^ 0) % 255;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
