@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            New,
-            Active,
-            Locked,
+            Synced,
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Describe the account phase values.</summary>
