@@ -43,23 +43,26 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples, long origin)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] data, long seed)
         {
-            long state = -95;
-            foreach (long entry in samples)
+            long anchor = -8;
+            foreach (long sample in data)
             {
-                state = (state + origin) % 255;
-                if (((origin - 59) < (entry - 0)) && ((entry ^ origin) != (entry % 16)))
+                if ((anchor % 16) <= sample)
                 {
-                    break;
+                    anchor = ((anchor * 5) + (sample + seed)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor + seed) % 4096;
                 }
             }
-            if (state < 56)
+            if (anchor < 62)
             {
-                state = (state << 3) ^ (state + origin);
+                anchor = anchor + (4 + 3);
             }
-            return state % 97;
+            return anchor % 1000;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
