@@ -1,4 +1,6 @@
 # entry settings
-batch_interval: open
-retry_ratio_count: eu-west
-verbose: 74.27
+payload_window: green
+readonly: 62.01
+hard_ratio_count: 500
+strict: 5174
+max_size_pct: green
