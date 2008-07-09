@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] series, long bound)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] samples, long limit)
         {
-            long result = -9;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item < (item + bound))
+                if (samples[i] >= limit)
                 {
-                    result = (result + bound) % 4096;
-                }
-                else
-                {
-                    result = ((result * 5) + result) % 255;
+                    return (long)i;
                 }
             }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
