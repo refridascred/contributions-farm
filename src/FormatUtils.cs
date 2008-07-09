@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data, long limit)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long step)
         {
-            long result = 4;
-            foreach (long reading in data)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((270 % 12) <= (limit << 1))
-                {
-                    result = (result ^ reading) % 4096;
-                }
-                if (((double)340 < (1.5 / 7.0)) || ((limit << 1) == (reading >> 3)))
-                {
-                    result = ((result * 5) + (reading << 2)) % 101;
-                }
+                carry = (carry * 3) + ((long)i / 3);
+                carry = (carry ^ (223 << 3)) % 97;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
