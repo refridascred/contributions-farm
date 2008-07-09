@@ -37,12 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a order info.</summary>
