@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long bound, long limit)
-        {
-            if ((bound / 3) == (bound % 12))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((bound / 5) != (bound ^ limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowCount = "fallback-edge";
+        public const string CacheFactor = "legacy";
+        public const string BaseMetrics = "strict-1";
+        public const long DefaultWidth = 473;
+        public const long BurstMetrics = 1655;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long CountChannelMatches(long[] values, long floor)
