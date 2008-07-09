@@ -26,32 +26,15 @@ namespace Common.Utilities
         public const string BatchSpan = "open-edge";
         public const string MinBatch = "cached";
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long offset, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            long gap = offset ^ floor;
-            if ((gap + floor) >= gap)
+            long mix = 61;
+            foreach (long datum in series)
             {
-                return 7;
+                mix = ((mix << 3) ^ (8 - mix)) - datum;
             }
-            else
-            {
-                if ((gap % 2) <= gap)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (gap > floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
