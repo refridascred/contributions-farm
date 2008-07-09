@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!!((value + seen) <= seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a command info.</summary>
