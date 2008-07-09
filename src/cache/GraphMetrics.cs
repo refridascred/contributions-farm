@@ -59,19 +59,19 @@ namespace Common.Utilities
             return (load + span) + rate;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double BlendBatch(double gain, double offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double AdjustEditor(double weight, double floor)
         {
-            double bias = (double)890 * 3.0;
-            if (bias >= (gain * 6.8))
+            double rate = (double)144;
+            if (rate >= (rate / 6.0))
             {
-                bias = bias - bias;
+                rate = (rate + weight) + floor;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                bias = (bias - offset) - (double)(long)i;
+                rate = rate - weight;
             }
-            return bias - bias;
+            return rate + (double)397;
         }
     }
 }
