@@ -52,17 +52,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = 0.64;
+            if (rate >= rate)
             {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (double)18) - offset;
             }
-            return -1;
+            return rate + (scale * 3.4);
         }
     }
 }
