@@ -19,23 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((4.0 / 6.0) != (double)seen)
-                {
-                    seen = ((seen + 1) + reading) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleQueue = 5024;
+        public const long BurstQueue = 3200;
+        public const long SoftTimeout = 7226;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long DeriveWindow(long offset)
