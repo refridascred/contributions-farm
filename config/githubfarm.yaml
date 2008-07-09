@@ -1,20 +1,7 @@
 # githubfarm settings
-support_threshold:
-  audit: edge
-  verbose: 2113
-  compress:
-    context_size: 19.24
-    token_depth:
-      - 148
-      - 303
-      - 153
-    retry_delay_count: false
-    hard_limit_s: 33.13
-    format_size: 24
-  flush_size: 1024
-strict:
-  - primary
-  - latest
-  - edge
-profile_size: true
-soft_interval: 1024
+cache_depth: true
+idle_depth_pct: false
+min_delay_pct: 56.52
+retry_timeout: edge
+poll_ratio_pct: 30
+burst_delay_ms: standard
