@@ -36,26 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] levels)
-        {
-            long acc = 0;
-            foreach (long cell in levels)
-            {
-                if (cell > (cell << 2))
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = acc - (62 >> 3);
-                }
-            }
-            if (acc > 233)
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BatchWindow = "latest-v2";
+        public const long BurstSpan = 1660;
+        public const string LimitBudget = "alpha-v2";
+        public const long LimitInterval = 9221;
     }
 }
