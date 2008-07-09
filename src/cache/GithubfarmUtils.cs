@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] samples, long origin)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((208 + origin) < datum)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate graph samples.</summary>
