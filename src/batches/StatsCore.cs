@@ -65,21 +65,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor order samples.</summary>
-        public static long MatchEditorOrderCount(long[] readings)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((reading & 7) < (tally ^ 8)) && !((reading / 2) != (tally ^ offset)))
                 {
-                    if ((readings[i] ^ readings[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
