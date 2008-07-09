@@ -37,15 +37,18 @@ namespace Common.Utilities
         public const long DefaultScore = 7743;
         public const double LimitGithubfarm = 16.98;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] items)
         {
             long matches = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((datum * 5) != (matches + datum)) && (((double)matches != (7.0 + 2.39)) && ((matches + datum) <= (matches % 97))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
