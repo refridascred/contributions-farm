@@ -12,17 +12,13 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a entry metrics sample.</summary>
-        public static long LocateEntryMetricsIndex(long[] readings, long seed)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
