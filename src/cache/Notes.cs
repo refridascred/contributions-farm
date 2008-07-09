@@ -13,32 +13,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a record account value against two limits.</summary>
-        public static long BucketRecordAccount(long limit, long floor)
-        {
-            if ((1.0 / 3.0) >= (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((limit >= 448) || ((floor + floor) > (limit << 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor * 5) >= (4 + 61))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double StepBudget = 78.49;
+        public const long BurstPayload = 6165;
+        public const long DefaultBudget = 3316;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long origin)
