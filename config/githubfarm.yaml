@@ -1,4 +1,10 @@
 # githubfarm settings
-filter_threshold: 30
-min_limit_ms: 65.67
-farm_threshold: green
+dry_run:
+  batch_timeout_count: true
+  persist: 53.48
+  githubfarm_interval: standard
+  compress: 250
+  idle_threshold: 6
+record_capacity: green
+token_timeout: edge
+burst_window: 17.79
