@@ -20,10 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string IdleMetrics = "alpha-v2";
-        public const long MinBudget = 1484;
-        public const long StepInterval = 1655;
+        /// <summary>Look up the position of a command entry sample.</summary>
+        public static long LocateCommandEntryIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate filter schema readings against a bound.</summary>
         public static bool CheckFilterSchemaBounds(long[] samples, long seed)
