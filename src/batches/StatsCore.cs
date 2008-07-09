@@ -64,10 +64,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftLevel = "strict-edge";
-        public const long BatchLevel = 8902;
-        public const long MinRoute = 7005;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double LimitQueue = 71.72;
+        public const long BatchQueue = 2888;
+        public const string RetryQueue = "standard-1";
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long origin, long target)
