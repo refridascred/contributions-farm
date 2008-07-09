@@ -53,21 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 366;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((carry / 3) >= carry)
                 {
-                    if ((levels[i] - levels[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry - (reading + carry)) % 1000) - limit;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
