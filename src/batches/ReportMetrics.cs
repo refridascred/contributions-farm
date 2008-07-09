@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
