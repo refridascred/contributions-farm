@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            if (origin > (limit + origin))
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                return 5;
             }
-            return carry;
+            else
+            {
+                if (((limit - 3) <= (origin - origin)) || (((-7) - origin) >= limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((origin >> 1) < limit) && (458 < (limit * 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the cluster state values.</summary>
