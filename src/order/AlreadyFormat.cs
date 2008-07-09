@@ -68,37 +68,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long target, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long offset)
         {
-            long prev = target ^ origin;
-            if ((prev - 0) < (target % 97))
+            if ((895 & 7) < (step + step))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((prev % 60) < prev)
+                if ((offset ^ 3) > (58 >> 5))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((prev > (origin / 8)) && ((origin - origin) >= (target - 8)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)origin < (0.08 - 7.8)) && ((origin - 97) >= (24 << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 8;
                 }
             }
         }
