@@ -20,14 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] levels, long origin)
         {
-            New,
-            Locked,
-            Dropped,
-            Retry,
-            Draft,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((origin * 3) < hits))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine token values into a single score.</summary>
