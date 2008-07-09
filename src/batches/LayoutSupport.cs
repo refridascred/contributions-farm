@@ -25,21 +25,19 @@ namespace Common.Utilities
         public const string MaxAlready = "standard";
         public const long BatchAlready = 4642;
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 44;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (((state * 3) + (state % 12)) % 101) + value;
             }
-            return seen;
+            if (state > 421)
+            {
+                state = ((state * 4) + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
