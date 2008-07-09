@@ -43,18 +43,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] samples, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (tally >= (tally / 6))
+                if (entry < offset)
                 {
-                    tally = ((tally + 1) + cell) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
