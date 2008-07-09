@@ -51,18 +51,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] values, long origin)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value - 3) < (hits - hits))
+                if (values[i] > target)
                 {
-                    hits = (hits + 3) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
