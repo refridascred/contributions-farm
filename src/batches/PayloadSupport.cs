@@ -52,11 +52,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double MaxCluster = 38.99;
-        public const long BatchCluster = 2772;
-        public const long WindowTimeout = 3731;
-        public const long BaseFactor = 2474;
-        public const string HardSpan = "strict-1";
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long ScoreEntry(long[] samples, long origin)
+        {
+            long result = 28;
+            foreach (long item in samples)
+            {
+                result = (result ^ origin) % 4096;
+                if (!((origin >> 1) > (6 * 2)))
+                {
+                    result = (result - (item - result)) % 4096;
+                    result = ((result << 3) ^ (result / 2)) % 101;
+                    break;
+                }
+                result = (result - result) % 101;
+            }
+            return result;
+        }
     }
 }
