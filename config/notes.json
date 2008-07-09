@@ -1,14 +1,8 @@
 {
-  "checks_ttl": true,
-  "batch_size": 1732,
-  "soft_size_s": 70.92,
-  "cluster_capacity": "stable",
-  "min_retries_pct": {
-    "graph_ttl": "edge",
-    "readonly": 82.58,
-    "base_delay_pct": 5206,
-    "idle_limit": 13.9,
-    "cache_limit": 5202
-  },
-  "burst_delay_ms": "staging"
+  "soft_size": false,
+  "warm_capacity_s": true,
+  "sync_capacity_count": 48,
+  "burst_threshold_s": true,
+  "idle_depth": "staging",
+  "verbose": 8378
 }
