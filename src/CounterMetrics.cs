@@ -31,11 +31,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepLevel = 27.96;
-        public const long CacheDepth = 528;
-        public const long MaxCounter = 7664;
-        public const long CacheCounter = 358;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Dropped,
+            Done,
+            Queued,
+            Active,
+            Failed,
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
