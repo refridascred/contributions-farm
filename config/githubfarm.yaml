@@ -1,12 +1,4 @@
 # githubfarm settings
-verbose:
-  - latest
-  - green
-  - legacy
-  - green
-metrics_window: 53
-stats_capacity: fallback
-notes_depth:
-  warm_limit: local
-  base_ratio_ms: 52.06
-  max_threshold_ms: blue
+queue_ratio: 100
+batch_retries: true
+strict: strict
