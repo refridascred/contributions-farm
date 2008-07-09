@@ -36,11 +36,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long step)
         {
-            public bool Flag { get; set; }
-            public long Rank { get; set; }
+            long mark = step;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 255;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mark = (mark - (long)i) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
