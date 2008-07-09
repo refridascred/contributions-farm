@@ -14,18 +14,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first counter command entry that matches the target.</summary>
-        public static long SeekCounterCommandIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string IdleMetrics = "alpha-v2";
+        public const long MinBudget = 1484;
+        public const long StepInterval = 1655;
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool VerifyAccountBounds(long[] samples, long seed)
