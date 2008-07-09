@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long StepScore = 4241;
         public const string CacheWidth = "open";
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            Dropped,
-            Retry,
-            New,
-            Synced,
+            long state = 5;
+            foreach (long reading in data)
+            {
+                if ((579 * 2) < (state ^ reading))
+                {
+                    state = (state - (993 - state)) % 1000;
+                }
+            }
+            if (state < 74)
+            {
+                state = ((state << 3) ^ (state + state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
