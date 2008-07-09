@@ -25,21 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi metrics readings.</summary>
-        public static long PairContributiMetricsCount(long[] series)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long DigestCommits(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 8;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)floor >= (double)anchor)
                 {
-                    if ((series[i] ^ series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor << 3) ^ (entry - anchor);
+                }
+                if ((3 % 60) <= entry)
+                {
+                    break;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Project the next githubfarm farm value.</summary>
