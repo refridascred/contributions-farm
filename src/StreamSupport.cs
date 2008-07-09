@@ -29,18 +29,11 @@ namespace Common.Utilities
         public const long LimitSession = 8119;
         public const long StepSession = 2990;
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderOutliers(long[] values)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell - matches) > (cell + cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
