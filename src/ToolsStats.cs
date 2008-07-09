@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const long RetryBatch = 9239;
         public const string HardBatch = "stable";
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long StepStream(long origin)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark << 2) ^ (long)i) % 101;
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
