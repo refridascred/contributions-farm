@@ -47,15 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double weight, double floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] series, long step)
         {
-            double ratio = 0.03;
-            if (ratio < (ratio + floor))
+            bool ok = true;
+            foreach (long entry in series)
             {
-                ratio = (ratio + floor) + weight;
+                if (entry > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio - (ratio * 1.0);
+            return ok;
         }
     }
 }
