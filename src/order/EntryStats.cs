@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] levels, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)bound > (double)seen)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            New,
+            Pending,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
