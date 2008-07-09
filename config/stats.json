@@ -1,7 +1,5 @@
 {
-  "base_depth_s": ["local", "cached"],
-  "retry_window": "stable",
-  "sync_depth_count": 1024,
-  "sync_interval_s": 250,
-  "soft_size_ms": ["standard", "standard"]
+  "hard_window_ms": false,
+  "flush_depth_pct": 250,
+  "channel_threshold": 39
 }
