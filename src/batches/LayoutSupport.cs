@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 3772;
-        public const long BurstNotes = 1141;
-        public const long DefaultSize = 2600;
-        public const long MinSize = 4027;
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] series, long step)
+        {
+            bool found = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long OverlapStatsCount(long[] samples)
