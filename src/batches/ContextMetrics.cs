@@ -47,32 +47,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long GradeNotes(long origin, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long edge = origin - limit;
-            if ((limit % 97) > (limit << 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((9.0 - 8.8) != (double)limit) || (origin >= (origin + edge)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)edge > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Done,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
