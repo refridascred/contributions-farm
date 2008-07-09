@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] series)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((seed - seed) < (seed + offset))
             {
-                if (((seen & 15) == (336 - seen)) && (seen >= (seen + reading)))
+                return 8;
+            }
+            else
+            {
+                if (!((offset << 3) <= (seed + offset)))
                 {
-                    seen = seen + 2;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
