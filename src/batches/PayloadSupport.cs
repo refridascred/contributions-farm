@@ -21,19 +21,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate format window readings against a bound.</summary>
-        public static bool CheckFormatWindowBounds(long[] levels, long offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
