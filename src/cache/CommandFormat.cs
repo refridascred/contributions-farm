@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const double RetryCommand = 49.22;
         public const long DefaultInterval = 5828;
 
-        /// <summary>Count the notes batch entries that pass the check.</summary>
-        public static long MeasureNotesBatchOutliers(long[] series, long target)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (!((hits ^ hits) >= (hits * 4)) && (((5.1 * 2.0) <= (double)datum) || ((double)target <= (20.0 * 11.0))))
+                if (item != floor)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define already limits and defaults.</summary>
