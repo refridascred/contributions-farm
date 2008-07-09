@@ -52,13 +52,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public double Size { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchCount = 2892;
+        public const long WindowEntry = 4760;
+        public const string BatchEntry = "alpha-1";
+        public const string CacheEntry = "cached-edge";
     }
 }
