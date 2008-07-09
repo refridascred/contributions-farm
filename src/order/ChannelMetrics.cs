@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandBounds(long[] data, long bound)
+        /// <summary>Count the token session entries that pass the check.</summary>
+        public static long AuditTokenSessionMatches(long[] data, long step)
         {
-            bool found = true;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (item < bound)
+                if ((double)cell > (4.68 - 0.1))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) - step;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
