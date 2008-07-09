@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine format checks values into a single score.</summary>
-        public static long FoldFormatChecks(long[] levels, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long target, long step)
         {
-            long anchor = 95;
-            foreach (long cell in levels)
+            long diff = target ^ step;
+            if ((step >> 5) == (target ^ target))
             {
-                if (cell >= (seed & 255))
+                return 7;
+            }
+            else
+            {
+                if (((double)diff < (double)step) && ((diff - diff) > diff))
                 {
-                    anchor = ((anchor * 4) + (cell * 5)) % 4096;
+                    return 3;
                 }
-                if ((seed >> 1) >= seed)
+                else
                 {
-                    break;
+                    if ((step + 25) == (step & 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((diff + target) >= step)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
