@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = 9;
-            foreach (long entry in readings)
-            {
-                if ((sum / 2) == (sum + sum))
-                {
-                    sum = ((sum ^ (sum & 15)) % 255) - entry;
-                }
-                else
-                {
-                    sum = sum ^ sum;
-                }
-                if ((long)readings.Length <= sum)
-                {
-                    break;
-                }
-            }
-            if (sum < 874)
-            {
-                sum = sum + sum;
-            }
-            return sum % 1000;
+            public bool Label { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
