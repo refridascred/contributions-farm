@@ -69,20 +69,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] samples)
-        {
-            long mark = 596;
-            foreach (long reading in samples)
-            {
-                mark = ((mark * 2) + (reading << 1)) % 255;
-            }
-            if (mark < 198)
-            {
-                mark = ((mark << 3) ^ mark) % 65521;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxSpan = 5433;
+        public const double RetryRatio = 30.16;
+        public const long StepBudget = 7287;
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
