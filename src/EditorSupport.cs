@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a report session reading by value.</summary>
-        public static long LocateReportSessionIndex(long[] values, long seed)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long floor, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor - 4) <= (8 & 15))
             {
-                if ((values[i] <= seed) && ((values[i] % 2) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((19 / 6) == (limit + floor))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((floor * 2) <= (4 / 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((431 * 4) < limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every order layout entry stays within the limit.</summary>
