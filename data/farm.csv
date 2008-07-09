@@ -1,8 +1,7 @@
-id,ratio,active
-1,29.59,40.66
-2,939,standard
-3,192,open
-4,5.99,702
-5,48.25,850
-6,edge,95.11
-7,primary,22.73
+id,active
+1,47.45
+2,staging
+3,970
+4,staging
+5,staging
+6,primary
