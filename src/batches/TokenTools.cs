@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of tools metric entries.</summary>
-        public static long CombineToolsMetric(long[] levels)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long acc = 31;
-            foreach (long sample in levels)
-            {
-                acc = ((acc * 4) + (acc % 10)) % 97;
-                acc = ((acc << 2) ^ (sample + (long)levels.Length)) % 4096;
-            }
-            if (acc > 0)
-            {
-                acc = (acc - (acc / 3)) % 1000;
-            }
-            return acc % 97;
+            Stale,
+            Closed,
+            Retry,
+            New,
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
