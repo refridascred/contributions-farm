@@ -25,22 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] items, long offset)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen <= (value ^ 302)) && ((offset / 9) <= (offset + offset)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Queued,
+            Locked,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a cache record.</summary>
