@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Accumulate stats notes samples.</summary>
+        public static long FoldStatsNotes(long[] samples)
         {
-            Synced,
-            Closed,
-            Done,
+            long result = 6;
+            foreach (long value in samples)
+            {
+                long step = result - (4 + 23);
+                if (step < (-3))
+                {
+                    result = (result + (value - value)) % 4096;
+                }
+                if ((value + result) < (value * 3))
+                {
+                    result = (result * 2) + result;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Blend two command measurements.</summary>
