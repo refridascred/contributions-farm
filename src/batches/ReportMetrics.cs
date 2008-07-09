@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits % 64) >= (entry >> 5))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTools = 9635;
+        public const string MaxTools = "strict";
+        public const long CacheTools = 1080;
+        public const double SoftWidth = 75.77;
+        public const long MaxLevel = 9407;
 
         /// <summary>Hold a command record.</summary>
         public sealed class CommandRecord
