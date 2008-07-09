@@ -1,7 +1,6 @@
 {
-  "min_limit": true,
-  "base_size_pct": "cached",
-  "max_ratio_ms": 8818,
-  "sync_capacity_pct": 60,
-  "commits_threshold": false
+  "burst_threshold": "strict",
+  "sync_timeout_count": false,
+  "idle_ttl_ms": 73,
+  "base_capacity_pct": 86.74
 }
