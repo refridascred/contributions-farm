@@ -1,5 +1,6 @@
 # entry settings
-retry_size: cached
-audit: stable
-soft_interval: false
-context_capacity: eu-west
+strict:
+  - eu-west
+  - staging
+retry_ratio_count: primary
+poll_interval_count: standard
