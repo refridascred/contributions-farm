@@ -23,14 +23,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double ratio, double span)
         {
-            Locked,
-            Idle,
-            Closed,
-            Dropped,
-            Paused,
+            double rate = span - ratio;
+            if (rate < span)
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - 4.0) - (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
