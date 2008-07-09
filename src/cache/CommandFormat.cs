@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] items, long step)
+        /// <summary>Check that every queue profile entry stays within the limit.</summary>
+        public static bool CheckQueueProfileLimits(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((items[i] >= step) && ((items[i] % 3) == 0))
+                if (cell < offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Define report limits and defaults.</summary>
