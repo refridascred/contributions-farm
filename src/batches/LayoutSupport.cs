@@ -23,13 +23,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Validate buffer metric readings against a bound.</summary>
+        public static bool GuardBufferMetricLimits(long[] series, long floor)
         {
-            Pending,
-            Idle,
-            Closed,
-            Stale,
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the support state values.</summary>
