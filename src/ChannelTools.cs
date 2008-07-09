@@ -25,13 +25,17 @@ namespace Common.Utilities
         public const string BatchSpan = "open-edge";
         public const string MinBatch = "cached";
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long bound)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
