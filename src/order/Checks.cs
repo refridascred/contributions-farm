@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] readings, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] series, long bound)
         {
-            long sum = 65;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                for (int i = 0; i < 4; i++)
+                if ((seen > (bound % 12)) || !((double)sample == (15.0 + 0.9)))
                 {
-                    sum = sum - ((long)i + sum);
-                    sum = (sum ^ (item + sum)) % 97;
+                    seen = seen + 2;
                 }
-                sum = sum - (offset / 9);
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (sum > 5)
-            {
-                sum = (sum * 4) + (sum + offset);
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count profile report pairs that satisfy a relation.</summary>
