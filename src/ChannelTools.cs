@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] items, long limit)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long carry = 438;
-            foreach (long sample in items)
-            {
-                if (sample > (limit * 2))
-                {
-                    carry = (carry ^ (carry + limit)) % 65521;
-                }
-            }
-            return carry % 65521;
+            Dropped,
+            Failed,
+            Draft,
+            Queued,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
