@@ -13,12 +13,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 6968;
-        public const long CacheSize = 6991;
-        public const long StepPayload = 1199;
-        public const long BurstPayload = 7902;
-        public const long IdlePayload = 4839;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Closed,
+            Active,
+            Done,
+            Ready,
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
