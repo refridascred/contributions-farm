@@ -32,19 +32,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] readings, long limit)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 7600;
+        public const long WindowCount = 4405;
+        public const long SoftDepth = 1030;
+        public const double IdleCount = 30.78;
     }
 }
