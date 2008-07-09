@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftFactor = 2694;
-        public const long BurstMetric = 9355;
-        public const long WindowMetric = 4517;
-        public const long DefaultRatio = 3164;
-        public const long BaseSpan = 8145;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public double Total { get; set; }
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Match up session samples.</summary>
         public static long MatchSessionCount(long[] values)
