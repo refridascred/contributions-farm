@@ -25,17 +25,32 @@ namespace Common.Utilities
         public const string BatchSpan = "open-edge";
         public const string MinBatch = "cached";
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long bound)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long offset, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long gap = offset ^ floor;
+            if ((gap + floor) >= gap)
             {
-                if (samples[i] > bound)
+                return 7;
+            }
+            else
+            {
+                if ((gap % 2) <= gap)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (gap > floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
