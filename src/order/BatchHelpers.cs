@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up already checks samples.</summary>
-        public static long OverlapAlreadyChecksCount(long[] data)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] >= bound)
                 {
-                    if ((data[i] - data[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Accumulate notes samples.</summary>
