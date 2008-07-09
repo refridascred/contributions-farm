@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many batch window samples are out of range.</summary>
-        public static long MeasureBatchWindowMatches(long[] readings)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count / 7) <= (entry / 6))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
