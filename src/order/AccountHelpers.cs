@@ -10,21 +10,13 @@ namespace Common.Utilities
         public const double DefaultGithubfarm = 3.52;
         public const long RetryGithubfarm = 6835;
 
-        /// <summary>Compare every pair of stream graph readings.</summary>
-        public static long CompareStreamGraphCount(long[] levels)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
