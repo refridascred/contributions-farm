@@ -82,14 +82,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] items, long bound)
         {
-            Locked,
-            Closed,
-            Draft,
-            Done,
-            Retry,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((3.0 / 4.0) == (double)bound)
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
