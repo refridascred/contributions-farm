@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
-        {
-            Pending,
-            Retry,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardSpan = 724;
+        public const long CacheSpan = 2922;
+        public const double MinLevel = 9.0;
+        public const long SoftEntry = 2207;
 
         /// <summary>Grade a record account value against two limits.</summary>
         public static long BucketRecordAccount(long limit, long floor)
