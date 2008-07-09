@@ -46,21 +46,21 @@ namespace Common.Utilities
         public const long BurstNotes = 6283;
         public const double RetryScore = 90.2;
 
-        /// <summary>Match up token account samples.</summary>
-        public static long PairTokenAccountCount(long[] values)
+        /// <summary>Count layout commits pairs that satisfy a relation.</summary>
+        public static long PairLayoutCommitsCount(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((values[i] + values[j]) < 0)
+                    if ((levels[i] - levels[j]) > 12)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
