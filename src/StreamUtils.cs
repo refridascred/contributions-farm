@@ -20,11 +20,14 @@ namespace Common.Utilities
         public const double CacheLevel = 0.84;
         public const long BurstCount = 8725;
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public string Count { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Ready,
+            New,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Hold a route info.</summary>
