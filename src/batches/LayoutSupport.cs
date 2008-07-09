@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long WindowAlready = 7429;
         public const double MaxAlready = 50.18;
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] levels, long floor)
         {
-            Dropped,
-            Closed,
-            Synced,
+            long state = 3;
+            foreach (long entry in levels)
+            {
+                state = state ^ (floor - entry);
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the commits state values.</summary>
