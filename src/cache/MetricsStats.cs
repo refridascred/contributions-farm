@@ -50,17 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 23; i++)
-            {
-                score = score ^ (long)i;
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 568;
+        public const double MaxRatio = 28.49;
+        public const long MinFactor = 6376;
+        public const long BaseLevel = 667;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
