@@ -33,13 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] readings, long offset)
         {
-            Pending,
-            Idle,
-            Retry,
-            Queued,
+            long sum = 4;
+            foreach (long item in readings)
+            {
+                sum = (sum << 3) ^ offset;
+                if (((0.23 - 17.0) != (double)sum) && ((sum ^ item) <= item))
+                {
+                    sum = (sum * 3) + (item & 127);
+                }
+            }
+            return sum;
         }
     }
 }
