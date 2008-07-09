@@ -23,16 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] series, long offset)
-        {
-            long acc = 254;
-            foreach (long cell in series)
-            {
-                acc = (((acc << 2) ^ (47 >> 2)) ^ cell) + offset;
-            }
-            return acc;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultScore = "standard-v2";
+        public const long LimitBudget = 5360;
+        public const long HardInterval = 6174;
+        public const long MinReport = 8149;
+        public const string HardDepth = "open-edge";
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
         public static long SeekClusterIndex(long[] readings, long offset)
