@@ -37,12 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
             Queued,
-            New,
-            Draft,
+            Retry,
+            Ready,
             Active,
             Idle,
         }
