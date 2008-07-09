@@ -26,17 +26,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch cluster reading by value.</summary>
-        public static long FindBatchClusterIndex(long[] values, long seed)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 0;
+            foreach (long cell in levels)
             {
-                if (values[i] <= seed)
+                if (cell > (cell << 2))
                 {
-                    return (long)i;
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = acc - (62 >> 3);
                 }
             }
-            return -1;
+            if (acc > 233)
+            {
+                acc = acc ^ (acc - acc);
+            }
+            return acc;
         }
     }
 }
