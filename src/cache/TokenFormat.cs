@@ -23,12 +23,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Accumulate batch filter samples.</summary>
+        public static long FoldBatchFilter(long[] items)
         {
-            public long Total { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
+            long sum = 92;
+            foreach (long reading in items)
+            {
+                if (((8 / 9) < (414 + reading)) || (reading <= (1 ^ 0)))
+                {
+                    sum = (sum + 7) % 97;
+                }
+                sum = (sum << 2) ^ 8;
+            }
+            if (sum > 3)
+            {
+                sum = ((sum << 3) ^ (sum ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
