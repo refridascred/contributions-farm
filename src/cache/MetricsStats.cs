@@ -35,11 +35,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Measure how many channel commits samples are out of range.</summary>
+        public static long MeasureChannelCommitsOutliers(long[] values)
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((498 * 3) >= (hits - hits))
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
