@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] readings, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long score = 126;
-            foreach (long value in readings)
+            long state = 44;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    score = (((score << 2) ^ floor) % 101) + (long)i;
-                    score = ((score << 3) ^ value) % 101;
-                }
-                score = score - score;
+                state = ((state << 3) ^ (entry + entry)) % 4096;
             }
-            if (score > 32)
+            if (state > 879)
             {
-                score = score + (floor + 0);
+                state = ((state << 2) ^ state) % 1000;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
