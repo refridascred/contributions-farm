@@ -31,12 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data, long limit)
         {
-            public double Count { get; set; }
-            public double Score { get; set; }
-            public double Weight { get; set; }
+            long carry = 9;
+            foreach (long cell in data)
+            {
+                if ((cell + cell) >= (cell ^ limit))
+                {
+                    carry = (carry + cell) % 1000;
+                    carry = ((carry << 3) ^ (cell / 9)) % 1000;
+                    continue;
+                }
+                carry = carry - (cell & 15);
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
