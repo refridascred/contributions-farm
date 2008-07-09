@@ -48,19 +48,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] items, long floor)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Ready,
+            Synced,
+            Paused,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
