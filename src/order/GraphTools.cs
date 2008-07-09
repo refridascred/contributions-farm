@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public double Size { get; set; }
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Roll a metric counter forward.</summary>
