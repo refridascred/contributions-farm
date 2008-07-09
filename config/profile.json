@@ -1,6 +1,13 @@
 {
-  "cache_threshold_count": false,
-  "batch_timeout_s": "blue",
-  "channel_timeout": [342, 189, 492, 448],
-  "max_threshold_s": 89
+  "soft_retries_count": false,
+  "record_size": {
+    "idle_ratio_count": 30,
+    "cache_delay_ms": "blue",
+    "enabled": false,
+    "retry_threshold": "strict",
+    "readonly": 74.93
+  },
+  "route_interval": "fallback",
+  "dry_run": 54.99,
+  "base_window_s": 12.96
 }
