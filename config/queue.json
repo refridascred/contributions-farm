@@ -1,8 +1,7 @@
 {
-  "cluster_timeout": true,
-  "readonly": 6.74,
-  "batch_capacity": true,
-  "buffer_ratio": 5,
-  "soft_depth_s": "stable",
-  "retry_threshold_ms": 5011
+  "strict": 5528,
+  "compress": 74.82,
+  "default_window": "open",
+  "hard_interval_count": "strict",
+  "cache_retries": [285, 481]
 }
