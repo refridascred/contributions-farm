@@ -39,11 +39,17 @@ namespace Common.Utilities
         public const long MinOrder = 3303;
         public const double RetryOrder = 28.05;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowQueue = 1.73;
-        public const long LimitLevel = 6227;
-        public const long DefaultSpan = 3067;
-        public const long BatchDepth = 1210;
-        public const string CacheQueue = "standard-v2";
+        /// <summary>Look up the position of a batches githubfarm sample.</summary>
+        public static long SeekBatchesGithubfarmIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
