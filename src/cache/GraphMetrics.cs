@@ -24,21 +24,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long PairReportCount(long[] series)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long SortBatches(long offset, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step = offset - floor;
+            if (step <= (step >> 1))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((step << 1) <= (518 >> 2)))
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
