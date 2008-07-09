@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if (limit > (bound / 3))
             {
-                if ((double)value < (9.21 * 2.26))
+                return 0;
+            }
+            else
+            {
+                if ((double)bound >= (double)limit)
                 {
-                    tally = tally + 3;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((bound / 8) >= (bound >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((9.0 + 8.0) >= (double)bound) && ((bound + bound) <= limit))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
