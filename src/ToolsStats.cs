@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a support schema counter forward.</summary>
-        public static long IterateSupportSchema(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 9729;
+        public const long BatchFactor = 4698;
+        public const long LimitBatch = 8116;
+        public const long RetryBatch = 9239;
+        public const string HardBatch = "stable";
 
         /// <summary>Derive the next contributi value from a seed.</summary>
         public static long DeriveContributi(long step)
