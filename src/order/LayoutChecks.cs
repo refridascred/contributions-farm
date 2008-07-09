@@ -74,21 +74,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up editor cluster samples.</summary>
-        public static long OverlapEditorClusterCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseScore = 272;
+        public const long RetryAlready = 4230;
+        public const long BaseSpan = 2188;
     }
 }
