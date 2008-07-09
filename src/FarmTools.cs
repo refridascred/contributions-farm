@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const string HardFarm = "staging-v2";
         public const string SoftFarm = "cached";
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowHits(long[] levels)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((double)matches > (6.87 / 3.0))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
