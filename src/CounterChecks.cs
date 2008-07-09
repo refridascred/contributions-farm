@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)567 <= (double)cell)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string RetryLevel = "fallback-edge";
+        public const long MinOrder = 9991;
+        public const double DefaultLevel = 33.31;
+        public const long BatchLevel = 679;
 
         /// <summary>Fold a list of batch support readings.</summary>
         public static long DigestBatchSupport(long[] data)
