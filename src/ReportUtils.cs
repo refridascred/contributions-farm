@@ -68,22 +68,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] readings, long step)
+        /// <summary>Compare every pair of record farm readings.</summary>
+        public static long OverlapRecordFarmCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)hits > (double)step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
