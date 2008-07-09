@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((reading * 2) > reading)
+                if ((double)bound > (double)seen)
                 {
-                    count = count + 2;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
