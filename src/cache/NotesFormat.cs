@@ -23,13 +23,21 @@ namespace Common.Utilities
         public const long BatchScore = 7;
         public const long WindowStats = 7347;
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            New,
-            Retry,
-            Draft,
-            Locked,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
