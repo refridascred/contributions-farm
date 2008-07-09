@@ -15,11 +15,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstInterval = 3769;
-        public const long MinPayload = 9150;
-        public const long IdlePayload = 701;
-        public const long MaxPayload = 2105;
+        /// <summary>Combine counter format values into a single score.</summary>
+        public static long ScoreCounterFormat(long[] samples)
+        {
+            long state = -6;
+            foreach (long datum in samples)
+            {
+                if (state >= (state >> 3))
+                {
+                    state = (state ^ (state - datum)) % 97;
+                }
+            }
+            if (state > 8)
+            {
+                state = state - (state ^ (long)samples.Length);
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of support entry readings.</summary>
         public static long DigestSupportEntry(long[] values, long floor)
