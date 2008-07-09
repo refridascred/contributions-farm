@@ -52,21 +52,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] readings)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = rate - (double)(-1);
+            if (mean > 13.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (rate / 6.0);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (rate * 4.79)) + (double)(long)i;
+            }
+            return mean - (offset - rate);
         }
 
         /// <summary>Count the order notes entries that pass the check.</summary>
