@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TotalFormat(long[] samples, long step)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long CompareSchemaCount(long[] data)
         {
-            long mark = 906;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark - (reading + mark)) % 255) + step;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 94)
-            {
-                mark = (mark << 3) ^ (mark - 311);
-            }
-            return mark % 97;
+            return tally;
         }
 
         /// <summary>Check that every record commits entry stays within the limit.</summary>
