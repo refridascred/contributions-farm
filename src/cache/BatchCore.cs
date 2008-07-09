@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Synced,
-            Pending,
-            Dropped,
+            public bool Rank { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
