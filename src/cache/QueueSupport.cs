@@ -26,15 +26,32 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric cache entries.</summary>
-        public static long CombineMetricCache(long[] data, long step)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long ClassifyEntry(long step, long bound)
         {
-            long mix = 0;
-            foreach (long item in data)
+            long lane = step - bound;
+            if ((1.4 + 7.4) == (double)bound)
             {
-                mix = ((mix ^ (item - mix)) % 1000) + step;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (!((step - step) > (lane + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((87 >= (step & 3)) || ((bound * 4) < (bound - bound)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
