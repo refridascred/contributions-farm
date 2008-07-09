@@ -1,5 +1,11 @@
 # support settings
-farm_capacity: 250
-report_timeout: false
-editor_limit: standard
-audit: 24
+cache_threshold_ms:
+  - 321
+  - 169
+  - 91
+strict: green
+contributi_delay:
+  - 474
+  - 195
+  - 67
+commits_window: local
