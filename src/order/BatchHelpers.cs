@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of buffer counter readings.</summary>
-        public static long FoldBufferCounter(long[] series)
-        {
-            long result = 31;
-            foreach (long value in series)
-            {
-                if (((value - value) <= (value % 100)) && ((value + value) <= (result << 3)))
-                {
-                    result = (result + (value + result)) % 255;
-                    continue;
-                }
-                if (((result % 3) >= 5) || (0.53 <= (double)result))
-                {
-                    result = (result ^ (result - value)) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (result + value)) % 1000;
-                }
-                result = (result << 2) ^ (value + 6);
-            }
-            if (result > 59)
-            {
-                result = (result + (80 + result)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitLevel = 2783;
+        public const long BaseBudget = 9394;
+        public const long BurstRecord = 3825;
 
         /// <summary>Hold a account record.</summary>
         public sealed class AccountRecord
