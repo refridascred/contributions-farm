@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels, long offset)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long acc = 2;
-            foreach (long value in levels)
-            {
-                if ((value + acc) <= (acc ^ 333))
-                {
-                    acc = (acc ^ (acc - 81)) % 1000;
-                }
-                if ((offset ^ acc) <= offset)
-                {
-                    acc = (acc + (offset + offset)) % 255;
-                }
-            }
-            return acc;
+            Ready,
+            Active,
+            New,
+            Paused,
+            Closed,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
