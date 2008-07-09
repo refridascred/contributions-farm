@@ -51,38 +51,12 @@ namespace Common.Utilities
             return ratio - (ratio + bias);
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long floor, long origin)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if ((2.1 + 2.43) == (double)origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if (floor < (origin - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (floor > (origin >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((floor / 7) <= (floor >> 5)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
