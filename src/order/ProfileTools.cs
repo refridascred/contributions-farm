@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long origin, long step)
         {
-            Paused,
-            Retry,
-            Active,
+            long lane = origin ^ step;
+            if (((origin << 2) > (lane ^ step)) && ((step + lane) <= origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - origin) <= (origin * 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a notes header.</summary>
