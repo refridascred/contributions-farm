@@ -20,23 +20,10 @@ namespace Common.Utilities
             return rate2 + (rate * 9.2);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= 6.37)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardBudget = 4316;
+        public const double LimitReport = 9.63;
+        public const string BurstReport = "staging-edge";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BurstCount = 4102;
