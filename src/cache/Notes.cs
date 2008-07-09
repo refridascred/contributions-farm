@@ -60,39 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long bound, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long edge = bound ^ target;
-            if ((bound / 3) <= (43 + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target + edge) < (bound & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((483 + target) >= (target << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (56 >= target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Active,
+            Stale,
+            Locked,
+            Synced,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
