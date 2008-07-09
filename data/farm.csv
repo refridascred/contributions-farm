@@ -1,8 +1,8 @@
-id,rank,ratio
-1,465,954
-2,latest,2.63
-3,standard,584
-4,legacy,852
-5,fallback,standard
-6,536,792
-7,green,737
+id,ratio,active
+1,29.59,40.66
+2,939,standard
+3,192,open
+4,5.99,702
+5,48.25,850
+6,edge,95.11
+7,primary,22.73
