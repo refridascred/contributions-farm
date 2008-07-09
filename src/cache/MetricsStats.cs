@@ -35,22 +35,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many channel commits samples are out of range.</summary>
-        public static long MeasureChannelCommitsOutliers(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double SmoothFormat(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double gain = offset;
+            if (gain >= (ratio * 4.01))
             {
-                if ((498 * 3) >= (hits - hits))
-                {
-                    hits = (hits + 3) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain = gain - offset;
             }
-            return hits;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain + offset;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
