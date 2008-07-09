@@ -7,14 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=132
-log "limit is ${RECORD_LIMIT}"
-
-for item in fallback stable; do
+for item in blue open fallback green; do
     log "checking ${item}"
 done
