@@ -43,13 +43,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] samples, long origin)
         {
-            Draft,
-            Done,
-            Queued,
-            Ready,
+            long state = -95;
+            foreach (long entry in samples)
+            {
+                state = (state + origin) % 255;
+                if (((origin - 59) < (entry - 0)) && ((entry ^ origin) != (entry % 16)))
+                {
+                    break;
+                }
+            }
+            if (state < 56)
+            {
+                state = (state << 3) ^ (state + origin);
+            }
+            return state % 97;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
