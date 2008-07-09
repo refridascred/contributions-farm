@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of format channel entries.</summary>
-        public static long TotalFormatChannel(long[] items)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
-            long mix = 6;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((mix < (mix / 8)) && ((double)cell >= (12.0 * 9.0)))
+                if (((double)tally != (15.0 + 13.0)) || ((tally + tally) != (85 - tally)))
                 {
-                    mix = (mix - (mix % 10)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 3) + cell) % 1000;
+                    tally = (tally + 3) ^ value;
                 }
             }
-            if (mix > (-876))
-            {
-                mix = (mix << 3) ^ (mix / 8);
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Scale a editor format figure with a bias.</summary>
