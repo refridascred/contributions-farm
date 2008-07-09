@@ -30,11 +30,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 77;
-        public const string LimitDepth = "local-1";
-        public const string BurstBatch = "staging-1";
-        public const string StepBatch = "standard-edge";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally ^ (long)levels.Length) >= (tally - tally))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a order figure with a bias.</summary>
         public static double ScaleOrder(double rate, double span)
