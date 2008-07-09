@@ -19,13 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
-        {
-            Dropped,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 6849;
+        public const double MaxPayload = 28.54;
+        public const string MaxScore = "alpha-edge";
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long FoldNotes(long[] samples)
