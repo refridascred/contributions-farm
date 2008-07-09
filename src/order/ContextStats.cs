@@ -43,15 +43,19 @@ namespace Common.Utilities
         public const long CacheSize = 2617;
         public const long CachePayload = 1857;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] samples, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportLimits(long[] series, long floor)
         {
-            long result = 31;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                result = (((result * 5) + (result << 3)) ^ entry) - target;
+                if (entry < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
     }
 }
