@@ -31,18 +31,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] series, long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            double bias = (double)756 * 6.41;
+            for (int i = 0; i < 8; i++)
             {
-                if (841 >= (limit & 15))
-                {
-                    seen = (seen + 1) - datum;
-                }
+                bias = (((bias - (bias / 7.0)) - (double)(long)i) - scale) + floor;
             }
-            return seen;
+            return bias + bias;
         }
     }
 }
