@@ -22,13 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            public long Token { get; set; }
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            Dropped,
+            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
