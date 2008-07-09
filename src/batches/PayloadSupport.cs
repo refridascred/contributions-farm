@@ -73,24 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long step, long origin)
-        {
-            if (!((double)origin > (6.7 - 5.27)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((4.0 + 9.73) == (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double MaxCluster = 38.99;
+        public const long BatchCluster = 2772;
+        public const long WindowTimeout = 3731;
+        public const long BaseFactor = 2474;
+        public const string HardSpan = "strict-1";
     }
 }
