@@ -42,21 +42,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] values)
+        /// <summary>Blend two batches window measurements.</summary>
+        public static double BlendBatchesWindow(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = ((drift - (ratio / 4.0)) + (double)(long)i) - offset;
             }
-            return matches;
+            return drift + (drift + ratio);
         }
     }
 }
