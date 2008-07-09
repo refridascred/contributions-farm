@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchRatio = 7374;
-        public const long StepContributi = 631;
-        public const long CacheContributi = 8632;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels)
+        {
+            long mark = 566;
+            foreach (long item in levels)
+            {
+                mark = (mark * 5) + (item >> 4);
+                if ((double)mark <= 7.05)
+                {
+                    mark = (mark - (72 + item)) % 255;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 101;
+                }
+            }
+            if (mark > 18)
+            {
+                mark = ((mark << 3) ^ (mark >> 4)) % 1000;
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Derive the next token contributi value from a seed.</summary>
         public static long DeriveTokenContributi(long floor)
