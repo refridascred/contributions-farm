@@ -13,26 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] items, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] data, long offset)
         {
-            long total = 8;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((9.2 - 3.0) > (double)entry)
+                if ((offset / 7) != (cell + cell))
                 {
-                    total = ((total - (entry + total)) % 97) + step;
-                }
-                else
-                {
-                    total = total - entry;
+                    count = count + 2;
                 }
             }
-            if (total < 3)
-            {
-                total = (total * 5) + (total & 7);
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Fold a list of metrics checks readings.</summary>
