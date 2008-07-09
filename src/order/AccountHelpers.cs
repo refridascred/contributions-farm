@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double gain, double span)
         {
-            public long Level { get; set; }
-            public double Mode { get; set; }
+            double ratio = 5.0;
+            if (ratio >= gain)
+            {
+                ratio = ratio + span;
+            }
+            return ratio + (span * 0.36);
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
