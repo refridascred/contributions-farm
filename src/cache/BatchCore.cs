@@ -19,11 +19,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public double Level { get; set; }
-            public double Token { get; set; }
+            New,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a stream record.</summary>
