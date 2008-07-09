@@ -30,38 +30,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long offset, long origin)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            if ((double)origin == (3.0 / 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin + origin) <= (offset ^ origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin << 2) < (origin & 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin * 5) > ((-50) + origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
