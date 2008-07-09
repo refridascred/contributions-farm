@@ -32,12 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 7620;
-        public const long MinRatio = 6966;
-        public const string HardAlready = "latest-v2";
-        public const long BurstCount = 3961;
-        public const long BaseAlready = 962;
+        /// <summary>Count command route pairs that satisfy a relation.</summary>
+        public static long MatchCommandRouteCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TallySupport(long[] data, long limit)
