@@ -30,21 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next token channel value from a seed.</summary>
-        public static long IterateTokenChannel(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelGaps(long[] samples, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((floor <= (total + total)) && ((double)(long)i > 2.6))
+                if ((hits < (floor - hits)) && ((double)hits <= (14.0 - 3.7)))
                 {
-                    total = (total * 5) + (floor & 255);
-                    total = total + (floor << 1);
+                    hits = (hits + 2) + cell;
                 }
-                total = (total * 4) + (long)i;
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
     }
 }
