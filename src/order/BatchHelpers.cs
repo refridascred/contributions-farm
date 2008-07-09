@@ -18,12 +18,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksMatches(long[] data, long origin)
         {
-            Failed,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((((item / 2) > (count * 3)) || (13 > (651 - item))) || (9.3 > (double)(long)data.Length))
+                {
+                    count = (count + 3) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a support entry.</summary>
