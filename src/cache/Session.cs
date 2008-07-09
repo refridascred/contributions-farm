@@ -40,18 +40,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
-        public static long TallyToolsGithubfarmOutliers(long[] levels)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (!((15.0 - 14.0) == (double)cell))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
