@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] items, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if (((bound + cell) <= (seen << 2)) || ((bound ^ seen) > 302))
+                if (reading != floor)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a layout stats.</summary>
