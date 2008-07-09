@@ -58,13 +58,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Count the cluster record entries that pass the check.</summary>
+        public static long AuditClusterRecordHits(long[] readings)
         {
-            Active,
-            Ready,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if (seen <= datum)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
