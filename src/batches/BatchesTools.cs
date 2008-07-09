@@ -23,13 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long limit)
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum << 2) ^ sum) % 1000;
+                sum = (sum * 4) + (long)i;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
