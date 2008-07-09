@@ -1,30 +1,9 @@
 # entry settings
-enabled:
-  audit: staging
-  max_window:
-    - blue
-    - staging
-    - blue
-  soft_depth_pct: fallback
-  record_ratio: staging
-  verbose: false
-warm_ttl_count: 4210
-stream_timeout: 62.44
-metric_capacity: legacy
-checks_threshold: 8141
-poll_ratio_pct:
-  githubfarm_capacity: true
-  base_capacity_count: 527
-  dry_run:
-    - 42
-    - 482
-    - 431
-  default_ratio_count:
-    layout_size: 6361
-    warm_window_s: 14.32
-    idle_size_pct: 1024
-    idle_timeout: 65
-  support_delay:
-    - open
-    - staging
-  compress: blue
+flush_timeout_s: legacy
+notes_ratio: cached
+hard_ttl_ms: 31.99
+warm_timeout_pct:
+  - legacy
+  - fallback
+  - strict
+commits_retries: green
