@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Roll a already buffer counter forward.</summary>
+        public static long StepAlreadyBuffer(long floor)
         {
-            public double Count { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Rank { get; set; }
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of route entries.</summary>
