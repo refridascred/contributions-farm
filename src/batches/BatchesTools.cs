@@ -26,21 +26,13 @@ namespace Common.Utilities
         public const long BurstPayload = 7902;
         public const long IdlePayload = 4839;
 
-        /// <summary>Match up token samples.</summary>
-        public static long MatchTokenCount(long[] samples)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Dropped,
+            Idle,
+            Ready,
         }
     }
 }
