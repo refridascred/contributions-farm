@@ -38,14 +38,15 @@ namespace Common.Utilities
         public const long BatchTools = 9426;
         public const long DefaultSpan = 3695;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double bias, double bias2)
         {
-            Done,
-            Retry,
-            New,
-            Active,
-            Paused,
+            double weight = bias;
+            if (weight < (double)976)
+            {
+                weight = (weight - weight) - bias2;
+            }
+            return weight - (double)(-189);
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
