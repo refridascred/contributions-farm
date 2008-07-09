@@ -44,30 +44,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] readings)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long total = 3;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample ^ 519) == (total & 7)) || ((sample * 3) == (sample / 8)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total ^ (long)readings.Length) % 97;
-                }
-                else
-                {
-                    total = ((total * 3) + (sample + sample)) % 101;
-                }
-                if ((sample > (2 + 212)) && ((2.9 * 3.1) < (double)total))
-                {
-                    break;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total > 51)
-            {
-                total = (total + total) % 255;
-            }
-            return total % 4096;
+            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
