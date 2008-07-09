@@ -1,5 +1,5 @@
 # support settings
-idle_interval_count: 5750
-hard_timeout_count: 5288
-strict: 79
-idle_interval: 23.66
+default_depth: eu-west
+hard_threshold_ms: 1024
+batches_timeout: blue
+verbose: local
