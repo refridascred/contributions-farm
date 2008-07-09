@@ -40,12 +40,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long seed, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((step / 7) <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((seed / 4) < 85) && ((3 + step) == (seed + step)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a channel header.</summary>
