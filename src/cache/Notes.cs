@@ -60,13 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long SeriesCluster(long origin)
         {
-            Active,
-            Stale,
-            Locked,
-            Synced,
+            long result = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((15.0 - 2.33) == (double)origin)
+                {
+                    result = ((result << 3) ^ (551 - result)) % 4096;
+                }
+                result = (result + 2) % 255;
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
