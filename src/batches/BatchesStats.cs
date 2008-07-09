@@ -19,15 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine buffer notes values into a single score.</summary>
-        public static long WeighBufferNotes(long[] items, long step)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long sum = -174;
-            foreach (long reading in items)
-            {
-                sum = (sum ^ (step + step)) + reading;
-            }
-            return sum;
+            Queued,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the commits level values.</summary>
