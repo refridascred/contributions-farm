@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxFactor = "primary-1";
-        public const long IdleBudget = 6887;
-        public const long CacheStream = 8633;
-        public const long WindowLevel = 2584;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                long count = (result + result) + offset;
+                result = ((result << 2) ^ (result - count)) % 97;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TallyLayout(long[] values)
