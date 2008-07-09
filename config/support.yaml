@@ -1,5 +1,6 @@
 # support settings
-command_threshold: 86.79
-min_delay_pct: cached
-flush_retries_pct: open
-dry_run: false
+buffer_capacity: open
+burst_ttl_count: 4753
+flush_limit:
+  - staging
+  - edge
