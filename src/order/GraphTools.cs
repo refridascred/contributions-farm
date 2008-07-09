@@ -61,18 +61,10 @@ namespace Common.Utilities
             return gain - (double)32;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((3.0 / 4.0) == (double)bound)
-                {
-                    seen = (seen + 3) - datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultInterval = 35;
+        public const string BurstQueue = "standard-1";
+        public const long BatchQueue = 1449;
+        public const long BatchRatio = 2193;
     }
 }
