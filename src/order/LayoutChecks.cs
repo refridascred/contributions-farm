@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of command batch readings.</summary>
-        public static long TotalCommandBatch(long[] items, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] values, long bound)
         {
-            long mix = 274;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                mix = (mix ^ (origin + origin)) % 1000;
-                if (1.8 <= (double)cell)
+                if (cell >= bound)
                 {
-                    mix = mix - (cell + cell);
+                    ready = false;
+                    break;
                 }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Hold a stats options.</summary>
