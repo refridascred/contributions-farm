@@ -57,18 +57,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] series, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long carry = 4;
+            foreach (long reading in values)
             {
-                if (!(((double)entry < (7.11 / 7.0)) && (entry < (807 / 2))))
-                {
-                    seen = (seen + 2) + limit;
-                }
+                carry = ((carry << 2) ^ limit) + reading;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Compare every pair of checks already readings.</summary>
