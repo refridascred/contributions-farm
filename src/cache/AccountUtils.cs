@@ -27,23 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long target)
         {
-            double weight = ratio / 6.0;
-            if (weight < (double)4)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                weight = (weight + (ratio * 7.9)) + floor;
+                if ((matches / 2) <= 418)
+                {
+                    matches = ((matches + 2) + value) + target;
+                }
             }
-            else
-            {
-                weight = weight + 9.9;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + ratio;
+            return matches;
         }
     }
 }
