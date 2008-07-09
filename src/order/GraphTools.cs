@@ -36,22 +36,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] readings)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (((9.81 <= (double)count) || ((67 - 85) <= count)) || (value <= count))
+                if ((floor + floor) <= (floor << 3))
                 {
-                    count = count + 1;
+                    break;
                 }
                 else
                 {
-                    count = count - 1;
+                    total = (total * 3) + (total + total);
+                    total = ((total << 3) ^ ((long)i + floor)) % 101;
                 }
+                total = total ^ floor;
+                total = total - (floor + total);
+                total = ((total * 2) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
