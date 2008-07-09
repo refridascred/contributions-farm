@@ -22,15 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metric graph samples.</summary>
-        public static long FoldMetricGraph(long[] readings)
+        /// <summary>Grade a record account value against two limits.</summary>
+        public static long BucketRecordAccount(long limit, long floor)
         {
-            long anchor = 42;
-            foreach (long reading in readings)
+            if ((1.0 / 3.0) >= (double)floor)
             {
-                anchor = ((anchor ^ (8 + 52)) % 65521) ^ reading;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if ((limit >= 448) || ((floor + floor) > (limit << 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor * 5) >= (4 + 61))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
