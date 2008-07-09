@@ -79,10 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double SoftContext = 25.5;
-        public const long IdleContext = 6406;
-        public const double BatchScore = 7.88;
-        public const double RetryBudget = 63.53;
+        /// <summary>Audit payload contributi readings against a rule.</summary>
+        public static long AuditPayloadContributiGaps(long[] data, long step)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((step & 7) > (item ^ item)) && !((count - 0) <= item))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
