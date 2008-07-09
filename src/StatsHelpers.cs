@@ -47,20 +47,17 @@ namespace Common.Utilities
             return ratio - (ratio + bias);
         }
 
-        /// <summary>Accumulate report profile samples.</summary>
-        public static long ScoreReportProfile(long[] samples)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long limit)
         {
-            long anchor = 4;
-            foreach (long entry in samples)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = anchor ^ 3;
-                anchor = anchor ^ (entry / 8);
-                if (((double)entry > (0.19 * 4.7)) || (anchor > 13))
-                {
-                    anchor = anchor + (anchor % 8);
-                }
+                acc = ((acc * 3) + (limit + limit)) % 1000;
+                acc = (acc + (acc >> 5)) % 4096;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
