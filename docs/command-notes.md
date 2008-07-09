@@ -1,14 +1,14 @@
 # Command notes
 
-Each already is validated before it reaches the githubfarm queue.
-The payload report groups every checks by command.
-When a record fails, the session handler retries a few times before giving up.
+Each batches is validated before it reaches the route queue.
+Run the stats check before changing any metrics limits.
 
-The batch module keeps format values in sync with the route cache.
-Each command is validated before it reaches the token queue.
+A report that stays idle for too long is moved to the githubfarm list.
+The counter module keeps cluster values in sync with the filter cache.
 
 ## Guidelines
 
-- Log every profile change
-- Keep buffer values small
-- Review layout limits each release
+- Validate notes input early
+- Keep filter values small
+- Document new githubfarm fields
+- Review record limits each release
