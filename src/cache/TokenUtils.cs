@@ -30,31 +30,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Rank context metrics input into a small class.</summary>
-        public static long BucketContextMetrics(long offset, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] samples)
         {
-            if ((double)step < (13.0 - 2.5))
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)step >= (double)offset)
+                if ((matches >> 5) >= (matches - reading))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= (offset << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
