@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long WeighEditor(long[] series)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long carry = 180;
+            foreach (long value in series)
             {
-                mark = (mark * 4) + (floor + (long)i);
-                mark = (mark ^ ((long)i * 3)) % 97;
-                mark = ((mark * 5) + (long)i) % 1000;
+                carry = (carry + (5 + 7)) ^ value;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Hold a payload record.</summary>
