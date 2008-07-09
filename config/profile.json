@@ -1,13 +1,19 @@
 {
-  "soft_retries_count": false,
-  "record_size": {
-    "idle_ratio_count": 30,
-    "cache_delay_ms": "blue",
-    "enabled": false,
-    "retry_threshold": "strict",
-    "readonly": 74.93
+  "burst_delay_s": [211, 373, 64, 110],
+  "context_interval": true,
+  "window_depth": 66.1,
+  "poll_ratio_count": {
+    "flush_capacity_ms": {
+      "idle_depth_pct": "standard",
+      "soft_delay": "latest",
+      "readonly": 74.06,
+      "compress": 1024
+    },
+    "base_delay": "blue",
+    "dry_run": "green",
+    "strict": "staging",
+    "farm_window": 2987
   },
-  "route_interval": "fallback",
-  "dry_run": 54.99,
-  "base_window_s": 12.96
+  "persist": 8,
+  "default_limit_s": 3369
 }
