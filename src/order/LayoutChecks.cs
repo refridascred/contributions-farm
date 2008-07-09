@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphLimits(long[] items, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double AdjustCounter(double weight, double span)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            double load = 3.8;
+            if (load > weight)
             {
-                if (reading >= target)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load + load) - span;
             }
-            return ready;
+            for (int i = 0; i < 8; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
