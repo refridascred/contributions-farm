@@ -73,18 +73,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] samples)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((matches - datum) < matches))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Synced,
+            Done,
+            Ready,
+            Queued,
         }
     }
 }
