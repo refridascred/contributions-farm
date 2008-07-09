@@ -1,7 +1,14 @@
 {
-  "route_limit": 4558,
-  "persist": 35.9,
-  "base_timeout_pct": 4561,
-  "default_ttl_count": ["staging", "stable", "latest", "open"],
-  "burst_ratio": "primary"
+  "cache_threshold_s": {
+    "filter_retries": "stable",
+    "dry_run": 88.66,
+    "max_delay_s": false,
+    "soft_threshold_pct": 73,
+    "compress": "green",
+    "strict": false
+  },
+  "poll_window_pct": 500,
+  "flush_window_s": ["stable", "blue", "stable", "stable"],
+  "readonly": "primary",
+  "batches_capacity": 5637
 }
