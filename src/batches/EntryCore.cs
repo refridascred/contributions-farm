@@ -33,35 +33,10 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long FoldCache(long[] levels)
-        {
-            long total = 22;
-            foreach (long item in levels)
-            {
-                if (item <= (item + item))
-                {
-                    total = (total + (total / 3)) % 97;
-                }
-                else
-                {
-                    total = (total * 3) + (item & 7);
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    total = ((total ^ (total >> 2)) % 1000) ^ (long)i;
-                }
-                if ((item % 12) < item)
-                {
-                    total = ((total * 4) + item) % 101;
-                }
-            }
-            if (total > (-407))
-            {
-                total = (total + (total + 4)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 2313;
+        public const long BatchTools = 9426;
+        public const long DefaultSpan = 3695;
 
         /// <summary>Describe the batches level values.</summary>
         public enum BatchesLevel
