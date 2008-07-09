@@ -1,17 +1,11 @@
 {
-  "retry_ratio_s": "stable",
-  "persist": "open",
-  "soft_capacity_s": {
-    "verbose": "cached",
-    "notes_timeout": false,
-    "audit": "fallback",
-    "burst_window_pct": [330, 307, 99, 436]
+  "verbose": [129, 30],
+  "enabled": 500,
+  "hard_depth": [389, 36, 368],
+  "entry_ttl": {
+    "sync_timeout_count": ["stable", "legacy"],
+    "cache_delay_s": 30,
+    "warm_size_s": 24
   },
-  "batch_capacity_pct": {
-    "batches_limit": "latest",
-    "dry_run": "latest",
-    "enabled": 10.15,
-    "warm_window_pct": "standard",
-    "poll_retries": 30
-  }
+  "warm_depth": "green"
 }
