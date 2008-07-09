@@ -59,15 +59,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] data, long target)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double BlendBatch(double gain, double offset)
         {
-            long mark = 7;
-            foreach (long cell in data)
+            double bias = (double)890 * 3.0;
+            if (bias >= (gain * 6.8))
             {
-                mark = (mark + (target * 5)) ^ cell;
+                bias = bias - bias;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias - bias;
         }
     }
 }
