@@ -41,27 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] samples)
-        {
-            long result = 904;
-            foreach (long sample in samples)
-            {
-                if ((sample >= ((long)samples.Length * 3)) || ((double)sample != (2.5 * 7.5)))
-                {
-                    result = result - result;
-                }
-                if ((double)sample <= (double)result)
-                {
-                    break;
-                }
-            }
-            if (result > 614)
-            {
-                result = (result ^ (result / 9)) % 4096;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BatchFormat = 74.28;
+        public const double MinFormat = 10.43;
+        public const long StepScore = 3200;
+        public const long BaseWidth = 8166;
+        public const long HardFormat = 3642;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] series)
