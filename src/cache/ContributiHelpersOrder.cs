@@ -29,12 +29,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] readings, long origin)
         {
-            Locked,
-            Pending,
-            Retry,
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a buffer info.</summary>
