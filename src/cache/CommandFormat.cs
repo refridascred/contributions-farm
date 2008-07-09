@@ -29,11 +29,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitBudget = 75.05;
-        public const double MinReport = 16.9;
-        public const string SoftReport = "fallback";
-        public const long LimitRatio = 102;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Combine checks githubfarm values into a single score.</summary>
         public static long WeighChecksGithubfarm(long[] values, long target)
