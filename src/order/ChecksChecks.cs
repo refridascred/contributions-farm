@@ -30,18 +30,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metrics profile samples are out of range.</summary>
-        public static long CountMetricsProfileMatches(long[] data)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            double bias = (double)(22 * 5);
+            if (bias < scale)
             {
-                if (((matches ^ (-45)) <= (2 + entry)) && (entry >= matches))
-                {
-                    matches = matches + 1;
-                }
+                bias = bias - (offset + scale);
             }
-            return matches;
+            return bias + (offset / 9.0);
         }
     }
 }
