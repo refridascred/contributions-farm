@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const double LimitReport = 9.63;
         public const string BurstReport = "staging-edge";
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCount = 4102;
-        public const string HardCluster = "cached-v2";
-        public const long DefaultCluster = 2243;
-        public const long DefaultFactor = 6926;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long DefaultStream = 5860;
