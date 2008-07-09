@@ -1,15 +1,10 @@
 # Command notes
 
-When a route fails, the profile handler retries a few times before giving up.
-Defaults for entry live in the config folder and can be overridden per environment.
-The support helpers are pure functions, so they are safe to call from any thread.
-
-A support that stays idle for too long is moved to the layout list.
-Defaults for stats live in the config folder and can be overridden per environment.
+Defaults for report live in the config folder and can be overridden per environment.
+Keep token and githubfarm names short and lowercase.
 
 ## Guidelines
 
-- Review channel limits each release
-- Keep graph values small
-- Validate record input early
-- Log every record change
+- Validate token input early
+- Prefer account defaults
+- Document new route fields
