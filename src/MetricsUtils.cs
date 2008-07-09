@@ -36,18 +36,10 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a cache support reading by value.</summary>
-        public static long SeekCacheSupportIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryCount = 7631;
+        public const string IdleCount = "cached";
+        public const long IdleEntry = 8382;
 
         /// <summary>Count the record editor entries that pass the check.</summary>
         public static long MeasureRecordEditorHits(long[] values, long origin)
