@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double gain, double floor)
         {
-            Dropped,
-            Retry,
-            Locked,
-            Closed,
-            New,
+            double weight = gain;
+            if (weight > 5.6)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - (floor - floor);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (floor * 3.4)) + (double)(long)i;
+            }
+            return weight - (gain + floor);
         }
 
         /// <summary>Hold a session stats.</summary>
