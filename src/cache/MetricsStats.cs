@@ -16,23 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long ScoreRoute(long[] series, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long score = -95;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    score = (score + (step * 3)) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score - reading) % 4096) + (long)i2;
-                }
-                score = (score + (score / 6)) % 101;
-            }
-            return score;
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
