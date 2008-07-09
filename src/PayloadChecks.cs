@@ -32,12 +32,20 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultDepth = 8190;
-        public const long BaseBudget = 1351;
-        public const long MaxRatio = 4797;
-        public const long LimitRoute = 1015;
-        public const long DefaultLevel = 8672;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long RankMetrics(long seed, long target)
