@@ -37,24 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] series, long limit)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] items, long target)
         {
-            long mix = 826;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                long gap = value;
-                if (!((double)limit > (double)gap))
+                if ((entry + count) < (count - 337))
                 {
-                    gap = (gap - mix) % 101;
+                    count = (count + 3) - target;
                 }
-                mix = (mix << 3) ^ (8 + value);
             }
-            if (mix > 228)
-            {
-                mix = (mix ^ (limit % 16)) % 101;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
