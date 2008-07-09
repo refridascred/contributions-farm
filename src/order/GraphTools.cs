@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many payload metric samples are out of range.</summary>
-        public static long MeasurePayloadMetricGaps(long[] items, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long bound, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            if ((seed + bound) >= (seed - bound))
             {
-                if (origin > (tally - 668))
+                return 5;
+            }
+            else
+            {
+                if ((double)seed == (1.5 + 9.6))
                 {
-                    tally = (tally + 1) - datum;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound + seed) < (bound + 997)) && (8.1 < (double)seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((seed + bound) > seed) && ((seed >> 1) < (seed * 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the token level values.</summary>
