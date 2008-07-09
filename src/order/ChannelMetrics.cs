@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] data, long limit)
+        /// <summary>Match up metric already samples.</summary>
+        public static long CompareMetricAlreadyCount(long[] series)
         {
-            long carry = 311;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry * 2) + (datum >> 4)) % 4096;
-                if ((carry + 43) > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    carry = (carry * 4) + 9;
-                }
-                if (((double)carry <= (1.26 * 5.1)) && ((limit + carry) <= 0))
-                {
-                    carry = (carry ^ (datum - carry)) % 65521;
+                    if ((series[i] + series[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Scale a command format figure with a bias.</summary>
