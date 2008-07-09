@@ -30,15 +30,12 @@ namespace Common.Utilities
             return ratio2 - (ratio2 - ratio2);
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Stale,
+            Active,
+            Synced,
         }
     }
 }
