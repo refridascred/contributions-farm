@@ -45,12 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 69.57;
-        public const long HardFactor = 493;
-        public const string DefaultWidth = "fallback-edge";
-        public const double SoftInterval = 26.22;
-        public const string IdleReport = "legacy-v2";
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Active,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long ScoreFarm(long[] samples, long floor)
