@@ -36,39 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] values, long floor)
         {
-            long delta = limit + bound;
-            if ((double)bound >= (2.0 + 2.42))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((bound - delta) != (bound / 7)))
+                if ((floor >> 2) == (cell / 8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((bound * 3) > (delta & 63)) || ((double)delta <= (1.4 + 0.4)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (4 < limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
