@@ -13,20 +13,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] items, long floor)
         {
-            long mix = 91;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int i = 0; i < 8; i++)
+                if ((2.01 - 18.0) == (double)value)
                 {
-                    long edge = datum;
-                    mix = (((mix << 3) ^ (edge - mix)) % 255) + (long)i;
+                    count = (count + 1) - floor;
                 }
-                mix = (mix ^ ((-677) & 63)) % 255;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
