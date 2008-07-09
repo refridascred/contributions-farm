@@ -32,17 +32,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] series, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 674;
+            foreach (long cell in series)
             {
-                if ((series[i] > offset) && ((series[i] % 3) != 0))
+                if ((cell & 255) > anchor)
                 {
-                    return (long)i;
+                    anchor = anchor + (cell << 3);
+                }
+                if (((cell * 5) <= (0 ^ 5)) && (anchor <= (cell & 15)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor > 760)
+            {
+                anchor = anchor ^ 778;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
