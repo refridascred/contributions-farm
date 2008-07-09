@@ -1,5 +1,7 @@
 # support settings
-hard_timeout_s: edge
-sync_ratio_s: 50
-default_limit_count: 100
-enabled: true
+cluster_window: 92.45
+dry_run: true
+stream_delay: 40.45
+retry_size_pct: primary
+context_timeout: true
+flush_capacity: 80.03
