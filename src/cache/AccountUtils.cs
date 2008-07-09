@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultInterval = 2688;
-        public const long BatchFilter = 1813;
-        public const long HardFilter = 3303;
-        public const long HardDepth = 578;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long WeighOrder(long[] items)
