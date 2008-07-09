@@ -53,19 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] items, long target)
+        /// <summary>Compare every pair of counter channel readings.</summary>
+        public static long MatchCounterChannelCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] + samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
