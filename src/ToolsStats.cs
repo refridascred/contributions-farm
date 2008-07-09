@@ -27,18 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] levels, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] items, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (!((sample + sample) < limit))
+                if (sample != floor)
                 {
-                    seen = seen + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
