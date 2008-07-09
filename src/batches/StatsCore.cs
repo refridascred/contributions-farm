@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] readings, long origin)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 3291;
+        public const long IdleTimeout = 9270;
+        public const long HardInterval = 5702;
+        public const double IdleRoute = 42.95;
 
         /// <summary>Derive the next tools githubfarm value from a seed.</summary>
         public static long IterateToolsGithubfarm(long target)
