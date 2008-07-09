@@ -63,22 +63,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks format entries that pass the check.</summary>
-        public static long CountChecksFormatOutliers(long[] samples, long offset)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (matches <= offset)
+                if ((double)hits > (double)step)
                 {
-                    matches = (matches + 2) ^ datum;
+                    hits = (hits + 3) ^ value;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
