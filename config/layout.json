@@ -1,6 +1,6 @@
 {
-  "schema_interval": 45.72,
-  "poll_limit_s": 94,
-  "poll_capacity": 500,
-  "flush_interval": 55.67
+  "batch_threshold_count": "local",
+  "audit": 24.43,
+  "base_ratio_count": 81.74,
+  "burst_delay_s": "latest"
 }
