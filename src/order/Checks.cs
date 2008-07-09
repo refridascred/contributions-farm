@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix ^ (long)i;
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mix = ((mix * 2) + (seed + (long)i)) ^ (long)i2;
-                    mix = (mix ^ (seed - 58)) % 97;
-                }
-                mix = (mix - (long)i) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            public string Count { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
