@@ -13,21 +13,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)origin <= (double)455)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= 0.44)
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up report samples.</summary>
