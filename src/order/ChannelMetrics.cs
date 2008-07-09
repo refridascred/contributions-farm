@@ -20,18 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] values, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((tally >> 1) == (62 - 264))
+                if (entry <= seed)
                 {
-                    tally = ((tally + 1) - reading) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Blend two record channel measurements.</summary>
