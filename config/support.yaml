@@ -1,12 +1,5 @@
 # support settings
-readonly: cached
-filter_interval: 9574
-farm_size:
-  flush_threshold_count: true
-  filter_window: 250
-  soft_limit_pct: 4732
-  strict: 29
-  retry_delay: 5195
-persist: false
-cache_limit: 250
-batch_timeout: standard
+hard_timeout_s: edge
+sync_ratio_s: 50
+default_limit_count: 100
+enabled: true
