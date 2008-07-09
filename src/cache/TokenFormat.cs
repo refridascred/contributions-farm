@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Failed,
-            New,
-            Ready,
-            Queued,
-            Synced,
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
