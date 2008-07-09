@@ -30,11 +30,13 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseSpan = 2804;
-        public const long MaxSize = 7333;
-        public const long CacheLevel = 5299;
-        public const long MaxFactor = 4213;
-        public const long CacheDepth = 6358;
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
+        {
+            Failed,
+            Dropped,
+            Synced,
+            Retry,
+        }
     }
 }
