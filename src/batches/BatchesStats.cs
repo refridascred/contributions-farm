@@ -34,20 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long step)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mark = ((mark * 4) + (long)i) % 255;
-                for (int i2 = 0; i2 < 12; i2++)
+                if ((step * 5) > (687 + sample))
                 {
-                    mark = (mark - (long)i) ^ (long)i2;
+                    hits = hits + 1;
                 }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
     }
 }
