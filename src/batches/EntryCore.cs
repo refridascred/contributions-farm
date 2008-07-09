@@ -57,12 +57,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] values, long floor)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] >= floor) && ((values[i] % 3) == 0))
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
                 {
                     return (long)i;
                 }
