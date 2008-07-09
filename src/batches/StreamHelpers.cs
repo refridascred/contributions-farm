@@ -84,22 +84,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] data, long bound)
         {
-            long total = 170;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((reading / 9) > (total + reading))
+                if (value >= bound)
                 {
-                    total = (total + (total << 1)) % 1000;
-                }
-                else
-                {
-                    total = total ^ (total - total);
+                    flag = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return flag;
         }
     }
 }
