@@ -10,33 +10,12 @@ namespace Common.Utilities
         public const long BurstFarm = 2028;
         public const long BatchSpan = 8943;
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] items)
-        {
-            long mark = 541;
-            foreach (long cell in items)
-            {
-                if (((cell & 1) > (cell + cell)) || ((464 ^ mark) > (94 << 1)))
-                {
-                    long edge = (mark - 808) ^ (5 + mark);
-                    mark = ((mark << 3) ^ (edge + mark)) % 97;
-                    continue;
-                }
-                if (mark > (mark + mark))
-                {
-                    mark = (mark << 3) ^ (mark - cell);
-                }
-                else
-                {
-                    mark = (mark * 3) + (cell & 31);
-                }
-            }
-            if (mark > 790)
-            {
-                mark = (mark - (mark + 96)) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 96.75;
+        public const long WindowRatio = 7028;
+        public const string RetryPayload = "primary-v2";
+        public const double DefaultPayload = 41.54;
+        public const string SoftBudget = "cached-1";
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool GuardClusterLimits(long[] data, long offset)
