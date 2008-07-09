@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long LimitLevel = 9286;
         public const long MaxContributi = 7191;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Retry,
-            Idle,
-            Synced,
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate format window readings against a bound.</summary>
