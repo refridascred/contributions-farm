@@ -68,21 +68,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheGaps(long[] values, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (bound <= (datum << 1))
                 {
-                    if ((readings[i] ^ readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
