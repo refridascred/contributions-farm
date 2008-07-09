@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
