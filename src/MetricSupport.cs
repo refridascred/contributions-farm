@@ -20,23 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate entry cluster samples.</summary>
-        public static long ScoreEntryCluster(long[] values, long limit)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] series, long limit)
         {
-            long sum = -9;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum ^ (datum - 7)) % 4096;
-                if (datum <= (limit ^ 42))
+                if (series[i] >= limit)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 90)
-            {
-                sum = ((sum * 5) + limit) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
