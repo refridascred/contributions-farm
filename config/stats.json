@@ -1,5 +1,17 @@
 {
-  "max_depth_count": "staging",
-  "already_limit": 500,
-  "schema_interval": "fallback"
+  "schema_size": {
+    "flush_limit_ms": "legacy",
+    "flush_capacity": [114, 191],
+    "min_threshold_ms": 500,
+    "retry_depth_pct": 8196,
+    "compress": {
+      "idle_retries_pct": "strict",
+      "batch_delay": 50,
+      "audit": 100
+    }
+  },
+  "farm_delay": "open",
+  "soft_size": "edge",
+  "max_size_s": [397, 143, 309, 197],
+  "burst_delay": ["blue", "standard", "legacy", "open"]
 }
