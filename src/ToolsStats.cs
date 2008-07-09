@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 9729;
-        public const long BatchFactor = 4698;
-        public const long LimitBatch = 8116;
-        public const long RetryBatch = 9239;
-        public const string HardBatch = "stable";
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] series)
+        {
+            long acc = 4;
+            foreach (long cell in series)
+            {
+                if ((double)cell == (1.6 + 2.0))
+                {
+                    acc = acc - (acc + cell);
+                }
+                if ((cell * 2) <= (acc & 3))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a farm stats.</summary>
         public sealed class FarmStats
