@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            Closed,
+            Stale,
+            Ready,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Match up session samples.</summary>
