@@ -53,13 +53,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] readings)
         {
-            Closed,
-            Stale,
-            Active,
-            Retry,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (((datum * 5) != (matches + datum)) && (((double)matches != (7.0 + 2.39)) && ((matches + datum) <= (matches % 97))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
