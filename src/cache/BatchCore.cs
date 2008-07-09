@@ -58,21 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string DefaultRatio = "stable";
+        public const long RetryEntry = 7719;
+        public const long IdleEntry = 5761;
+        public const long SoftEntry = 1525;
     }
 }
