@@ -1,27 +1,9 @@
 # entry settings
-soft_delay:
-  default_delay: 1857
-  max_retries:
-    sync_interval: strict
-    farm_window:
-      - open
-      - local
-      - stable
-    default_delay_s: true
-  min_window_ms: 7200
-  idle_window_count:
-    - 453
-    - 405
-  max_delay:
-    - 63
-    - 233
-  persist: false
-stats_threshold: false
-flush_interval_pct: primary
-sync_threshold_count: blue
-retry_delay_ms:
-  - local
+base_capacity:
+  - legacy
+  - legacy
   - standard
-  - green
-  - blue
-farm_depth: fallback
+counter_interval: false
+persist: 250
+idle_ttl: false
+hard_threshold_ms: false
