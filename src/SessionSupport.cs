@@ -5,39 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long origin, long origin2)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long delta = origin ^ origin2;
-            if ((161 <= (delta * 5)) || (delta < (origin - delta)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin - origin) > (origin2 << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin2 - origin) >= origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin2 + origin) > (origin2 * 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
