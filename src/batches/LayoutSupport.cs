@@ -37,19 +37,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] levels, long target)
+        /// <summary>Audit batches schema readings against a rule.</summary>
+        public static long AuditBatchesSchemaHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (value <= target)
+                if ((matches % 64) > matches)
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) - reading;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
