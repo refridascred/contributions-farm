@@ -12,18 +12,17 @@ namespace Common.Utilities
         public const long LimitLevel = 9286;
         public const long MaxContributi = 7191;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyGaps(long[] data, long target)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((item + seen) <= (4 ^ seen))
+                if (items[i] > limit)
                 {
-                    seen = (seen + 3) + target;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate format window readings against a bound.</summary>
