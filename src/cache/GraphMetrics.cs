@@ -45,17 +45,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] items, long bound)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = span;
+            return (load + span) + rate;
         }
 
         /// <summary>Adjust a batch reading.</summary>
