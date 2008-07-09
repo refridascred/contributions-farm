@@ -107,14 +107,22 @@ namespace Common.Utilities
         public const long CacheNotes = 9784;
         public const long CacheSize = 6479;
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] levels, long floor)
         {
-            Done,
-            Active,
-            Stale,
-            Closed,
-            Dropped,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!((count + datum) < (datum & 1)))
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
