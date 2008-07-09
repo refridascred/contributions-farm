@@ -24,13 +24,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] samples)
         {
-            public long Flag { get; set; }
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public string Total { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (17.0 - 15.0))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many tools githubfarm samples are out of range.</summary>
