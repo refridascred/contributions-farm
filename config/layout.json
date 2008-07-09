@@ -1,8 +1,13 @@
 {
-  "max_window_ms": 60.05,
-  "sync_retries_pct": 9.24,
-  "min_window_count": ["latest", "green"],
-  "format_ratio": 49.05,
-  "strict": 100,
-  "batch_ttl": 91.28
+  "flush_limit_s": 64,
+  "commits_size": 250,
+  "route_timeout": {
+    "min_delay_ms": 97.4,
+    "already_retries": 58,
+    "base_window": "cached",
+    "verbose": 1.78,
+    "min_threshold_s": "primary"
+  },
+  "warm_window_count": ["local", "stable", "green", "open"],
+  "poll_depth": "stable"
 }
