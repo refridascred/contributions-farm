@@ -53,18 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] values, long seed)
         {
-            long score = 2;
-            foreach (long sample in samples)
+            long anchor = -51;
+            foreach (long cell in values)
             {
-                if ((sample ^ sample) <= (sample + sample))
-                {
-                    score = ((score << 3) ^ 39) % 1000;
-                }
+                anchor = (anchor ^ (cell / 7)) % 97;
+                anchor = (anchor - seed) % 101;
             }
-            return score;
+            if (anchor < 781)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 7)) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
