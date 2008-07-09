@@ -61,22 +61,31 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] values, long limit)
+        /// <summary>Classify a commits tools pair into a bucket.</summary>
+        public static long ClassifyCommitsTools(long offset, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if ((double)step < (4.8 / 6.0))
             {
-                if (((count ^ count) > 86) || ((double)count < (double)datum))
+                return 1;
+            }
+            else
+            {
+                if ((offset * 2) < (offset / 3))
                 {
-                    count = (count + 2) + limit;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((step >= (step / 6)) && (offset < (offset / 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
     }
 }
