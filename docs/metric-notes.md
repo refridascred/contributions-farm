@@ -1,11 +1,16 @@
 # Metric notes
 
-The layout helpers are pure functions, so they are safe to call from any thread.
-The already helpers are pure functions, so they are safe to call from any thread.
-A window that stays idle for too long is moved to the session list.
+Each batch is validated before it reaches the cluster queue.
+A batches that stays idle for too long is moved to the checks list.
+Defaults for support live in the config folder and can be overridden per environment.
+
+A queue that stays idle for too long is moved to the batch list.
+The order module keeps farm values in sync with the commits cache.
+Each support is validated before it reaches the graph queue.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new session fields
-- Review stream limits each release
+- Document new stream fields
+- Log every schema change
+- Keep contributi values small
+- Prefer stats defaults
