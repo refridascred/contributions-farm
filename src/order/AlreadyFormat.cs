@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double gain, double bias)
         {
-            public string Total { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            double rate = 6.0 + (bias + gain);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - bias) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
