@@ -25,26 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] values, long floor)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                anchor = ((anchor * 4) + (anchor - (long)i)) % 101;
-                anchor = ((anchor * 3) + (origin ^ 52)) % 255;
-                if ((origin % 97) < anchor)
+                if (!((7 * 3) != (cell & 127)))
                 {
-                    anchor = (anchor + (origin / 4)) % 101;
-                    break;
+                    seen = (seen + 2) + floor;
                 }
-                else
-                {
-                    anchor = ((anchor << 3) ^ origin) % 4096;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Match up batches samples.</summary>
