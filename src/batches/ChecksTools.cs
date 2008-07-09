@@ -20,11 +20,17 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double scale, double span)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] levels, long limit)
         {
-            double load = scale;
-            return (load + 4.4) + span;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the already format series from a seed.</summary>
