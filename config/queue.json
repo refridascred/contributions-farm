@@ -1,5 +1,8 @@
 {
-  "hard_window_count": ["strict", "cached", "stable", "cached"],
-  "command_limit": ["blue", "stable"],
-  "sync_timeout_ms": "primary"
+  "githubfarm_size": 7009,
+  "sync_delay_ms": 7540,
+  "filter_interval": 50,
+  "flush_size": [64, 246, 92],
+  "strict": true,
+  "compress": "stable"
 }
