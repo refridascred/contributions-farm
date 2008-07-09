@@ -27,18 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((matches / 2) <= 418)
+                if (cell > offset)
                 {
-                    matches = ((matches + 2) + value) + target;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
