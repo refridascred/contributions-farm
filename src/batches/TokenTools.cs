@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long WeighEditor(long[] series)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long seed)
         {
-            long carry = 180;
-            foreach (long value in series)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                carry = (carry + (5 + 7)) ^ value;
+                acc = (acc + (21 % 10)) % 1000;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
