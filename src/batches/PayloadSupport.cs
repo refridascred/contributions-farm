@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long bound, long offset)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] items, long floor)
         {
-            if ((offset * 4) >= bound)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset & 255) >= (8 + bound))
+                if (items[i] > floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + offset) <= (offset ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5 % 8) > offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
