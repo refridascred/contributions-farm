@@ -57,9 +57,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 5606;
-        public const long SoftWindow = 9625;
-        public const long BaseRatio = 5475;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
