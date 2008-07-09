@@ -22,11 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Count the account contributi entries that pass the check.</summary>
+        public static long TallyAccountContributiHits(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public long Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (!(limit <= ((-332) - (long)items.Length)))
+                {
+                    seen = (seen + 3) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate tools samples.</summary>
