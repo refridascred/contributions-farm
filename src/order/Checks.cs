@@ -16,18 +16,22 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((double)target <= (9.51 / 5.0))
+                if (((bound + cell) <= (seen << 2)) || ((bound ^ seen) > 302))
                 {
-                    matches = (matches + 3) + sample;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
