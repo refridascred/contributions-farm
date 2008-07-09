@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit context payload readings against a rule.</summary>
-        public static long TallyContextPayloadGaps(long[] values, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((double)seed >= (double)55) && ((7 & 7) != (item - seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Digest a series of checks context entries.</summary>
