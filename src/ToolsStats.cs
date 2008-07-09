@@ -34,19 +34,21 @@ namespace Common.Utilities
             return rate + span;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextRange(long[] items, long floor)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] data)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
