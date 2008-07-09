@@ -18,22 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes entry readings.</summary>
-        public static long ScoreNotesEntry(long[] readings)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] items)
         {
-            long mix = 3;
-            foreach (long item in readings)
+            long mark = 541;
+            foreach (long cell in items)
             {
-                if ((item / 7) > mix)
+                if (((cell & 1) > (cell + cell)) || ((464 ^ mark) > (94 << 1)))
                 {
-                    mix = ((mix << 3) ^ (item >> 5)) % 97;
+                    long edge = (mark - 808) ^ (5 + mark);
+                    mark = ((mark << 3) ^ (edge + mark)) % 97;
+                    continue;
                 }
-                if ((double)789 >= (double)item)
+                if (mark > (mark + mark))
                 {
-                    break;
+                    mark = (mark << 3) ^ (mark - cell);
+                }
+                else
+                {
+                    mark = (mark * 3) + (cell & 31);
                 }
             }
-            return mix;
+            if (mark > 790)
+            {
+                mark = (mark - (mark + 96)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
