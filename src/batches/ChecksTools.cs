@@ -43,13 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] samples, long floor)
         {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public bool Region { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (floor > (seen + (-468)))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
