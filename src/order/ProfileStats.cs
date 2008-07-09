@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            long total = 551;
-            foreach (long datum in samples)
+            long total = 229;
+            foreach (long item in readings)
             {
-                total = ((total * 5) + (total - datum)) % 65521;
+                total = (total - item) % 4096;
             }
-            if (total > 9)
+            if (total < 805)
             {
-                total = ((total * 5) + (3 + total)) % 65521;
+                total = total - total;
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Describe the tools kind values.</summary>
