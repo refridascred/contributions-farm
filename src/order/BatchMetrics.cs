@@ -81,18 +81,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((cell * 2) < (cell ^ cell))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheSpan = 67.96;
+        public const long MaxCluster = 4875;
+        public const long StepScore = 6863;
+        public const long SoftInterval = 9931;
     }
 }
