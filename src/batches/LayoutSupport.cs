@@ -40,12 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings, long step)
         {
-            Locked,
-            Retry,
-            Done,
+            long mark = 4;
+            foreach (long item in readings)
+            {
+                mark = ((mark << 2) ^ ((long)readings.Length * 4)) % 65521;
+                if ((25 & 255) >= (step / 9))
+                {
+                    mark = ((mark * 2) + (item + item)) % 255;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Check that every stats metric entry stays within the limit.</summary>
