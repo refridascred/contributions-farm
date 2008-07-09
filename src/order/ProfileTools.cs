@@ -44,18 +44,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] samples)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((matches + matches) < reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
