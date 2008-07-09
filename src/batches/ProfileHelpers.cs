@@ -58,15 +58,10 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
-        {
-            Done,
-            New,
-            Stale,
-            Idle,
-            Closed,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryRatio = "fallback-v2";
+        public const long CacheRatio = 374;
+        public const string WindowWidth = "strict-1";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
