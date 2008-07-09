@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long HardRatio = 6906;
         public const double SoftTimeout = 12.92;
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] data, long floor)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
