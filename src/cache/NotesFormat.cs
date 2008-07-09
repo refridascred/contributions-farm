@@ -16,12 +16,20 @@ namespace Common.Utilities
             return bias2 + (bias / 6.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxLevel = "legacy-edge";
-        public const long CacheStats = 6172;
-        public const long BatchSize = 905;
-        public const long BatchScore = 7;
-        public const long WindowStats = 7347;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long OverlapMetricsCount(long[] items)
