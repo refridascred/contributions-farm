@@ -36,19 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every notes token entry stays within the limit.</summary>
-        public static bool GuardNotesTokenBounds(long[] items, long seed)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long origin)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mix = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (reading < seed)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    ok = false;
-                    break;
+                    mix = (((mix * 2) + mix) % 4096) - (long)i2;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Match up format samples.</summary>
