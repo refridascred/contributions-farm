@@ -53,12 +53,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] values)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            long acc = -99;
+            foreach (long reading in values)
+            {
+                acc = acc - (reading - reading);
+            }
+            if (acc < (-63))
+            {
+                acc = (acc << 2) ^ 1;
+            }
+            return acc;
         }
 
         /// <summary>Classify a commits tools pair into a bucket.</summary>
