@@ -37,18 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session tools samples.</summary>
-        public static long CombineSessionTools(long[] series, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            long total = 21;
-            foreach (long sample in series)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((origin - total) == (sample % 24))
-                {
-                    total = (total * 2) + 39;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return total % 97;
+            return mark;
         }
     }
 }
