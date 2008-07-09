@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            Ready,
-            Retry,
-            Failed,
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
