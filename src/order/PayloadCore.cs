@@ -50,19 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] levels, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (reading <= seed)
+                if ((seen - seen) < (seen / 5))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
