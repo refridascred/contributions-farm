@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const long StepScore = 4241;
         public const string CacheWidth = "open";
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series, long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] samples)
         {
-            long result = 9;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item - item) > (92 >> 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (((result << 3) ^ 7) % 255) + bound;
-                }
-                else
-                {
-                    result = (result - (item * 2)) % 1000;
-                }
-                if (((item + result) < (result + item)) || ((5 + item) != (item * 5)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate already samples.</summary>
