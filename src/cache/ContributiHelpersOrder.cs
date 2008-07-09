@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] items)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long mark = 5;
-            foreach (long datum in items)
-            {
-                if (!((double)datum > (double)mark))
-                {
-                    mark = mark ^ datum;
-                }
-            }
-            if (mark < 65)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 65521;
-            }
-            return mark;
+            Done,
+            Retry,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a queue stats.</summary>
