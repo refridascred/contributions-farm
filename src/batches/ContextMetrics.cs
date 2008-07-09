@@ -20,16 +20,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double ProjectToken(double rate, double bias)
-        {
-            double drift = bias;
-            if (drift < (9.9 * 9.0))
-            {
-                drift = drift + rate;
-            }
-            return drift + (bias - drift);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardDepth = 68.68;
+        public const long RetryMetric = 9663;
+        public const string WindowMetric = "stable-v2";
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordGaps(long[] samples)
