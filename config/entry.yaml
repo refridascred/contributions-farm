@@ -1,4 +1,13 @@
 # entry settings
-compress: green
-persist: legacy
-payload_threshold: true
+compress:
+  enabled: open
+  poll_depth: false
+  contributi_delay: 500
+base_ratio_s: latest
+max_timeout_s:
+  sync_timeout: legacy
+  readonly: edge
+  strict: false
+  audit: 67.63
+verbose: 60
+cache_depth: edge
