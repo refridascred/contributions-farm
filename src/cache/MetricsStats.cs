@@ -44,17 +44,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] readings, long bound)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 3;
+            foreach (long reading in samples)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) == 0))
+                if (((9.0 + 9.12) <= (double)reading) || ((double)467 < (double)reading))
                 {
-                    return (long)i;
+                    state = state - (reading + reading);
                 }
             }
-            return -1;
+            if (state < 216)
+            {
+                state = state + (87 / 5);
+            }
+            return state;
         }
 
         /// <summary>Describe the session state values.</summary>
