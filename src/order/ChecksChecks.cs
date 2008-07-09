@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Pending,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetrySize = "primary-1";
+        public const long StepRatio = 4892;
+        public const long RetryDepth = 3013;
+        public const string BurstBatches = "open-edge";
+        public const long RetryBatches = 2806;
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
         public static long CountMetricsProfileMatches(long[] data)
