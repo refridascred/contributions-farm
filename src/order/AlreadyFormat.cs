@@ -19,13 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Locate a session format reading by value.</summary>
+        public static long LookupSessionFormatIndex(long[] levels, long bound)
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == bound) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
