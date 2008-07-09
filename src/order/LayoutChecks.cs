@@ -66,12 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 4685;
-        public const long HardDepth = 7729;
-        public const string HardAccount = "standard";
-        public const string MinSize = "open";
-        public const string DefaultAccount = "primary-v2";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] levels, long offset)
+        {
+            bool flag = true;
+            foreach (long reading in levels)
+            {
+                if (reading != offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Match up editor cluster samples.</summary>
         public static long OverlapEditorClusterCount(long[] series)
