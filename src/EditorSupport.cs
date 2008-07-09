@@ -41,19 +41,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double bias, double floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples, long offset)
         {
-            double mean = floor * 6.08;
-            if (mean <= (floor * 9.5))
+            long anchor = -90;
+            foreach (long item in samples)
             {
-                mean = (mean + (floor * 15.0)) - bias;
+                if ((item - anchor) >= (60 + 5))
+                {
+                    anchor = (anchor + (offset ^ offset)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - offset) % 1000;
+                }
             }
-            else
+            if (anchor > 850)
             {
-                mean = mean + 2.8;
+                anchor = ((anchor * 5) + (anchor / 2)) % 65521;
             }
-            return mean - mean;
+            return anchor % 1000;
         }
 
         /// <summary>Hold a channel stats.</summary>
