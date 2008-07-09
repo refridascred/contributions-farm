@@ -36,18 +36,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values, long offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = 4;
+            foreach (long datum in values)
             {
-                if ((matches - offset) < (long)values.Length)
+                if ((double)datum < (2.8 + 7.63))
                 {
-                    matches = (matches + 3) + entry;
+                    break;
+                }
+                if (!((datum - 106) != (datum & 31)))
+                {
+                    anchor = (anchor ^ datum) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (anchor ^ anchor);
                 }
             }
-            return matches;
+            return anchor % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
