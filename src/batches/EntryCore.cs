@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] series)
+        /// <summary>Combine contributi schema values into a single score.</summary>
+        public static long CombineContributiSchema(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long score = 10;
+            foreach (long item in samples)
             {
-                if (2 < (seen + cell))
+                if (!((score & 3) <= score))
                 {
-                    seen = seen + 1;
+                    score = (score - item) - target;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
