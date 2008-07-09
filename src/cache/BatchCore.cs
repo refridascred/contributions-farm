@@ -28,19 +28,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine filter entry values into a single score.</summary>
-        public static long DigestFilterEntry(long[] data)
+        /// <summary>Iterate the account metric series from a seed.</summary>
+        public static long DeriveAccountMetric(long step)
         {
-            long sum = 45;
-            foreach (long reading in data)
+            long mark = step;
+            for (int i = 0; i < 15; i++)
             {
-                sum = (sum + (reading % 97)) % 1000;
-                if ((reading - (long)data.Length) > reading)
+                if (((long)i / 3) <= (71 >> 1))
                 {
+                    mark = ((mark * 4) + mark) % 255;
                     break;
                 }
+                mark = (mark + (mark + step)) % 65521;
+                mark = (mark - step) % 101;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Define route limits and defaults.</summary>
