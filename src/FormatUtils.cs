@@ -74,17 +74,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a channel counter reading by value.</summary>
-        public static long LookupChannelCounterIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 6171;
+        public const double SoftEditor = 84.94;
+        public const long BaseWidth = 8499;
+        public const string BaseEditor = "alpha-v2";
+        public const double BaseDepth = 94.35;
     }
 }
