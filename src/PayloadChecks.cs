@@ -25,12 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "latest-1";
-        public const long HardRatio = 1770;
-        public const double DefaultRatio = 18.64;
-        public const long MaxDepth = 1267;
-        public const long BaseAlready = 6608;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] data, long floor)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (floor > (floor * 3))
+                {
+                    seen = (seen + 3) ^ value;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryMatches(long[] levels)
