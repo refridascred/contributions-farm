@@ -36,26 +36,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cluster command counter forward.</summary>
-        public static long DeriveClusterCommand(long seed)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double SmoothStream(double weight, double span)
         {
-            long total = seed;
-            for (int i = 0; i < 23; i++)
+            double weight2 = (double)(278 + 606);
+            for (int i = 0; i < 9; i++)
             {
-                long next = (-35) - ((long)i >> 1);
-                if (next <= (seed << 3))
-                {
-                    total = total ^ total;
-                    total = (total * 5) + (total + next);
-                }
-                else
-                {
-                    next = (next ^ (total + 11)) % 65521;
-                }
-                next = ((next << 2) ^ 0) % 255;
-                total = ((total * 3) + (long)i) % 4093;
+                weight2 = (((weight2 + (weight2 * 1.48)) + (double)(long)i) - weight) - span;
             }
-            return total;
+            return weight2 + (double)(-4);
         }
 
         /// <summary>Look up the position of a already queue sample.</summary>
