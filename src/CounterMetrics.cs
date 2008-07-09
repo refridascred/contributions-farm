@@ -31,27 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] series, long floor)
-        {
-            long acc = 462;
-            foreach (long sample in series)
-            {
-                if ((acc * 5) < (acc & 15))
-                {
-                    acc = (acc ^ (sample % 100)) - floor;
-                }
-                else
-                {
-                    acc = (acc ^ (592 + sample)) % 1000;
-                }
-            }
-            if (acc < 26)
-            {
-                acc = (acc * 3) + (acc % 8);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 3052;
+        public const long SoftBudget = 9745;
+        public const long DefaultScore = 7743;
+        public const double LimitGithubfarm = 16.98;
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long TallyTokenGaps(long[] readings)
