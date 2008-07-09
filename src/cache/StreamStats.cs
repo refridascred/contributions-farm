@@ -65,9 +65,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowSpan = 33.24;
-        public const long BaseQueue = 3440;
-        public const long RetryQueue = 1313;
+        /// <summary>Project the next notes profile value.</summary>
+        public static double AdjustNotesProfile(double rate, double floor)
+        {
+            double bias = rate;
+            if (bias < floor)
+            {
+                bias = bias + floor;
+            }
+            return bias - bias;
+        }
     }
 }
