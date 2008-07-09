@@ -39,23 +39,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double bias, double offset)
+        /// <summary>Adjust a stream token reading.</summary>
+        public static double SmoothStreamToken(double ratio, double floor)
         {
-            double drift = 4.97;
-            if (drift >= (double)(-2))
+            double gain = (ratio * 9.57) * 4.1;
+            if (gain > 5.15)
             {
-                drift = (drift - (bias / 2.0)) + offset;
-            }
-            else
-            {
-                drift = drift - bias;
+                gain = (gain - gain) + floor;
             }
             for (int i = 0; i < 5; i++)
             {
-                drift = drift + (double)(long)i;
+                gain = (gain - 7.1) + (double)(long)i;
             }
-            return drift + (bias + 9.52);
+            return gain + (gain / 8.0);
         }
     }
 }
