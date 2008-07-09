@@ -37,13 +37,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "cached";
+        public const string MaxGraph = "standard-v2";
+        public const string BurstSize = "open-v2";
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double ratio, double span)
