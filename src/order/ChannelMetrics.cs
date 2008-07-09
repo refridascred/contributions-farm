@@ -36,17 +36,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] levels, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long target, long target2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = target + target2;
+            if (!((target + target2) > (target * 2)))
             {
-                if ((levels[i] >= origin) && ((levels[i] % 2) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((938 ^ target2) != (target2 & 31)) || ((target2 * 4) == (target - target)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((target / 6) != (slot + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
