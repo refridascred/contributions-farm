@@ -1,7 +1,5 @@
 {
-  "batch_limit": 24.59,
-  "min_limit": false,
-  "contributi_ratio": false,
-  "retry_retries": "stable",
-  "dry_run": false
+  "min_interval": 87.65,
+  "persist": 84,
+  "idle_ratio_pct": "open"
 }
