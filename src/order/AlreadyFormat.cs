@@ -19,23 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache route value.</summary>
-        public static double ScaleCacheRoute(double bias, double offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double load = 14.0 * 8.9;
-            if (load < (load + 6.3))
-            {
-                load = (load - (double)90) - bias;
-            }
-            else
-            {
-                load = load + (double)293;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load - (offset / 9.0);
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine cache values into a single score.</summary>
