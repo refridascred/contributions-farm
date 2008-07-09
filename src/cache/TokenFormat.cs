@@ -22,13 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] samples, long target)
         {
-            Failed,
-            Paused,
-            New,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
