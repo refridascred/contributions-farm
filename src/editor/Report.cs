@@ -21,21 +21,30 @@ namespace Common.Utilities
         public const string IdleReport = "strict-1";
         public const long LimitSpan = 9175;
 
-        /// <summary>Compare every pair of cache context readings.</summary>
-        public static long CompareCacheContextCount(long[] levels)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] readings, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 83;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((sum << 2) > 102) || ((sum & 63) == (origin << 2)))
                 {
-                    if ((levels[i] - levels[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (cell ^ 2)) % 101;
+                }
+                else
+                {
+                    sum = (sum ^ sum) % 97;
+                }
+                if ((5.3 + 8.0) > (double)origin)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (sum < 199)
+            {
+                sum = (sum << 3) ^ origin;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
