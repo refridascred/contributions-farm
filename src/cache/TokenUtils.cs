@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data, long floor)
         {
-            double scale = (double)7 / 7.0;
-            if (scale < (double)0)
+            long total = -15;
+            foreach (long value in data)
             {
-                scale = (scale - (2.5 + scale)) - offset;
+                total = ((total ^ (floor + total)) % 97) ^ value;
             }
-            return scale - ratio;
+            if (total > 7)
+            {
+                total = total ^ (total + floor);
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the notes class values.</summary>
