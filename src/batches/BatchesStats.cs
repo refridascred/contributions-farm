@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many filter entry samples are out of range.</summary>
+        public static long CountFilterEntryOutliers(long[] levels, long offset)
         {
-            public long Limit { get; set; }
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (hits < (0 - value))
+                {
+                    hits = (hits + 1) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
