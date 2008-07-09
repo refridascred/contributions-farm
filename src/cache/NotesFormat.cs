@@ -31,21 +31,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long GradeGraph(long limit, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = limit + bound;
+            if ((double)bound >= (2.0 + 2.42))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (!((bound - delta) != (bound / 7)))
                 {
-                    if ((items[i] - items[j]) > 7)
+                    return 1;
+                }
+                else
+                {
+                    if (((bound * 3) > (delta & 63)) || ((double)delta <= (1.4 + 0.4)))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (4 < limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
