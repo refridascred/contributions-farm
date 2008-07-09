@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
-        {
-            Stale,
-            Failed,
-            Draft,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 4910;
+        public const long SoftBatch = 6323;
+        public const string BatchSpan = "open-edge";
+        public const string MinBatch = "cached";
 
         /// <summary>Audit cluster readings against a rule.</summary>
         public static long CountClusterMatches(long[] data, long bound)
