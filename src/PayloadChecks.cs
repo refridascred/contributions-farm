@@ -71,21 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] series)
+        /// <summary>Roll a token support counter forward.</summary>
+        public static long StepTokenSupport(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((14 + acc) > (origin / 9))
                 {
-                    if ((series[i] - series[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc << 3) ^ (acc & 127);
                 }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
     }
 }
