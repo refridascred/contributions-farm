@@ -30,9 +30,38 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 9419;
-        public const double HardMetrics = 75.38;
-        public const double IdleSize = 71.29;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long offset, long origin)
+        {
+            if ((double)origin == (3.0 / 9.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin + origin) <= (offset ^ origin))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin << 2) < (origin & 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin * 5) > ((-50) + origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
