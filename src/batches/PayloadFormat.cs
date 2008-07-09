@@ -55,23 +55,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] samples, long origin)
+        /// <summary>Audit commits record readings against a rule.</summary>
+        public static long AuditCommitsRecordMatches(long[] series)
         {
-            long anchor = 23;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                anchor = (anchor + (476 - origin)) % 255;
-                if ((item ^ anchor) != (3 + item))
+                if ((value << 2) > (value ^ value))
                 {
-                    anchor = anchor - (item >> 3);
+                    hits = hits + 2;
                 }
             }
-            if (anchor < 994)
-            {
-                anchor = anchor ^ (60 * 4);
-            }
-            return anchor;
+            return hits;
         }
     }
 }
