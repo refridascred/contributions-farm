@@ -26,18 +26,31 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long CountMetricTokenOutliers(long[] data, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long anchor = 35;
+            foreach (long cell in levels)
             {
-                if ((6.3 * 9.0) == (double)sample)
+                anchor = anchor ^ ((long)levels.Length & 255);
+                if ((anchor < (origin >> 3)) || ((double)cell == (8.0 / 7.0)))
                 {
-                    hits = (hits + 2) + step;
+                    anchor = anchor - (cell & 3);
+                }
+                else
+                {
+                    anchor = anchor + 773;
+                }
+                if ((long)levels.Length == ((long)levels.Length ^ 9))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 610)
+            {
+                anchor = (anchor ^ (anchor - 25)) % 255;
+            }
+            return anchor % 65521;
         }
     }
 }
