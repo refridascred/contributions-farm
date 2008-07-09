@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit layout context readings against a rule.</summary>
-        public static long CountLayoutContextGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading << 2) < (count & 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long StepFactor = 7985;
+        public const long MaxInterval = 9778;
+        public const long BatchSpan = 4144;
+        public const long RetryContext = 5563;
+        public const long SoftContext = 4935;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueHits(long[] data, long offset)
