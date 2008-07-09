@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] levels)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((1.48 * 19.0) >= (double)reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Failed,
+            Pending,
         }
 
         /// <summary>Locate a command reading by value.</summary>
