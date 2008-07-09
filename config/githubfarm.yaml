@@ -1,5 +1,11 @@
 # githubfarm settings
-flush_retries_ms: 28.63
-metric_size: latest
-idle_threshold_ms: 7.26
-max_threshold: 3843
+idle_interval: 9248
+burst_retries_count: primary
+dry_run: true
+compress:
+  - eu-west
+  - stable
+  - stable
+  - standard
+default_delay_count: 1024
+default_timeout_ms: fallback
