@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine contributi schema values into a single score.</summary>
-        public static long CombineContributiSchema(long[] samples, long target)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long score = 10;
-            foreach (long item in samples)
-            {
-                if (!((score & 3) <= score))
-                {
-                    score = (score - item) - target;
-                }
-            }
-            return score;
+            Pending,
+            Synced,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
