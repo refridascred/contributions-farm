@@ -50,17 +50,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next batch token value from a seed.</summary>
-        public static long DeriveBatchToken(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = (carry + (step - carry)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheScore = 4575;
+        public const long WindowCache = 472;
+        public const double HardCache = 11.73;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
