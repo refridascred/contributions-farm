@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double IdleCount = 28.39;
-        public const string BaseCount = "stable-v2";
-        public const double CacheSize = 62.17;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 4224;
+        public const long StepRatio = 3131;
+        public const long MinContributi = 3047;
+        public const long LimitLevel = 9286;
+        public const long MaxContributi = 7191;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyGaps(long[] data, long target)
