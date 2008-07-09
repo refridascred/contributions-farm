@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool GuardOrderLimits(long[] samples, long seed)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double rate, double span)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            double drift = rate * 9.94;
+            if (drift > span)
             {
-                if (entry != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + 1.89;
             }
-            return stale;
+            return drift + rate;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
