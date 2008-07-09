@@ -37,32 +37,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long offset, long target)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            long diff = offset + target;
-            if (((offset + 3) > (diff & 15)) || ((offset % 3) > target))
+            double ratio = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 5;
+                ratio = ((ratio - (9.9 * 7.7)) + (double)(long)i) + gain;
             }
-            else
-            {
-                if ((diff / 4) >= diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.37 - 8.21) == (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return ratio - 1.36;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
