@@ -13,27 +13,25 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series, long floor)
+        /// <summary>Roll a tools support counter forward.</summary>
+        public static long RollToolsSupport(long limit)
         {
-            long score = 245;
-            foreach (long value in series)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                score = (((score * 3) + (6 << 3)) % 1000) - floor;
-                if (score <= (value / 8))
+                long delta = limit;
+                if ((delta - (long)i) <= (delta + carry))
                 {
-                    break;
-                }
-                if ((value * 5) != (value / 6))
-                {
-                    score = (score * 2) + 527;
+                    delta = (delta << 3) ^ (limit >> 4);
+                    delta = (delta ^ (104 + carry)) % 1000;
                 }
                 else
                 {
-                    score = (score * 2) + score;
+                    carry = ((carry << 2) ^ (550 ^ delta)) % 101;
                 }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return score % 65521;
+            return carry;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
