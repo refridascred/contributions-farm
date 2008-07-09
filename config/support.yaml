@@ -1,26 +1,4 @@
 # support settings
-batch_ratio_ms: local
-base_window_s: cached
-hard_ratio_count: false
-soft_window: true
-persist:
-  flush_capacity_ms: 65
-  strict:
-    compress: 42
-    base_depth_count: latest
-    warm_delay:
-      - green
-      - eu-west
-      - stable
-      - cached
-    batch_retries_pct: 9479
-    metrics_ttl: true
-  persist:
-    - local
-    - primary
-    - cached
-    - standard
-  base_delay_count: edge
-  poll_ratio_ms: 60
-  flush_retries_s: 5349
-channel_window: local
+metric_retries: false
+already_delay: green
+retry_ratio: 17.26
