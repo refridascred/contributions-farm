@@ -40,19 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long WeighAccount(long[] series, long offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long score = 2;
-            foreach (long entry in series)
-            {
-                score = (score + (score - 410)) % 255;
-                if (score > entry)
-                {
-                    score = ((score * 3) + offset) % 4096;
-                }
-            }
-            return score % 65521;
+            Done,
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
