@@ -1,10 +1,13 @@
 # githubfarm settings
-editor_threshold: 6236
-queue_ttl: true
-queue_timeout: 15
-entry_interval:
-  - 163
-  - 396
-  - 304
-cache_capacity_count: false
-min_ratio: 72
+persist: 90.29
+default_interval_ms: 8524
+max_timeout:
+  - 257
+  - 385
+account_threshold: false
+strict:
+  - local
+  - fallback
+  - primary
+  - stable
+cache_ratio_ms: stable
