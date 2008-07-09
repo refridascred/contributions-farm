@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long CacheStream = 8633;
         public const long WindowLevel = 2584;
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] values)
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            long result = 7;
+            foreach (long sample in values)
+            {
+                result = (((result * 3) + (result % 12)) % 255) + sample;
+            }
+            if (result < 50)
+            {
+                result = (result + (result % 8)) % 65521;
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate farm samples.</summary>
