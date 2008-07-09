@@ -43,32 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long limit, long limit2)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] levels, long floor)
         {
-            long diff = limit + limit2;
-            if ((limit2 <= (diff - limit2)) || ((diff & 3) != (limit2 ^ limit2)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + 683) >= ((-68) - diff))
+                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff / 6) <= (diff + diff))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
