@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] data, long target)
+        /// <summary>Grade a graph already value against two limits.</summary>
+        public static long GradeGraphAlready(long bound, long offset)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long prev = bound ^ offset;
+            if ((offset - prev) > (bound ^ bound))
             {
-                if (datum < target)
+                return 7;
+            }
+            else
+            {
+                if ((bound + bound) <= (43 & 3))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + (-694)) >= prev)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many stats farm samples are out of range.</summary>
