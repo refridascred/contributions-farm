@@ -63,15 +63,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long IterateAccount(long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                if (values[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
