@@ -80,18 +80,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] values)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= (5 + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
     }
 }
