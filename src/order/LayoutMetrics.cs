@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long bound)
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (count <= (datum >> 3))
+                {
+                    count = (count + 3) - bound;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Adjust a metric reading.</summary>
