@@ -31,18 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] readings, long bound)
+        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
+        public static bool ValidateClusterToolsBounds(long[] items, long offset)
         {
-            long sum = 6;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if ((double)sample < (double)bound)
+                if (datum >= offset)
                 {
-                    sum = sum - (sample + bound);
+                    ready = false;
+                    break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Describe the entry class values.</summary>
