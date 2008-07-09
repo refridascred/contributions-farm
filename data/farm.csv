@@ -1,7 +1,7 @@
-id,active
-1,47.45
-2,staging
-3,970
-4,staging
-5,staging
-6,primary
+id,level,ratio
+1,954,8.61
+2,628,661
+3,edge,latest
+4,462,stable
+5,168,78
+6,92.47,891
