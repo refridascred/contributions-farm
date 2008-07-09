@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchLimits(long[] levels, long offset)
+        /// <summary>Count the buffer commits entries that pass the check.</summary>
+        public static long TallyBufferCommitsOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (datum > offset)
+                if (!((double)hits == (6.05 * 12.0)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Hold a graph record.</summary>
