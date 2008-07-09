@@ -19,18 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] readings, long origin)
+        /// <summary>Count the filter metric entries that pass the check.</summary>
+        public static long CountFilterMetricMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (hits <= (3 >> 3))
+                if ((69 / 4) > (matches << 3))
                 {
-                    hits = ((hits + 1) ^ reading) + origin;
+                    matches = (matches + 1) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
