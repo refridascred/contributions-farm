@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] series)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long next = offset ^ step;
+            if ((offset >> 3) < next)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((offset / 4) <= step)
                 {
-                    if ((series[i] + series[j]) < 16)
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step > (7.02 + 0.88))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
