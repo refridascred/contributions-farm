@@ -22,19 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if (((value > seen) || ((seen & 1) > (seen & 7))) && ((seen - seen) != (803 * 5)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 3393;
+        public const long BatchFactor = 8313;
+        public const long BurstChecks = 1229;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] readings, long step)
