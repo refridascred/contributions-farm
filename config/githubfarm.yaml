@@ -1,11 +1,6 @@
 # githubfarm settings
-idle_interval: 9248
-burst_retries_count: primary
-dry_run: true
-compress:
-  - eu-west
-  - stable
-  - stable
-  - standard
-default_delay_count: 1024
-default_timeout_ms: fallback
+strict: 1024
+max_threshold_ms: 500
+base_limit_s: local
+base_capacity: green
+idle_retries: 36
