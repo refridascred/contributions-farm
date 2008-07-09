@@ -73,22 +73,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] levels, long floor)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (!((count + datum) < (datum & 1)))
+                if (item <= target)
                 {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
