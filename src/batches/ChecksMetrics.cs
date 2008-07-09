@@ -31,11 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardSize = 7463;
-        public const long IdleInterval = 1771;
-        public const double MinDepth = 28.79;
-        public const long DefaultContext = 969;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "legacy-1";
+        public const long MaxWindow = 6077;
+        public const long IdleWindow = 2041;
+        public const long CacheWindow = 4902;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long seed, long step)
