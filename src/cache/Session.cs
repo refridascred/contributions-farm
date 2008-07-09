@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchLevel = 5791;
-        public const long CacheFarm = 9678;
-        public const long WindowFarm = 7048;
-        public const string StepInterval = "open-edge";
-        public const long StepFarm = 1448;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((tally - tally) < (tally >> 5))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Blend two account measurements.</summary>
         public static double ProjectAccount(double gain, double offset)
