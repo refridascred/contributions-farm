@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] series, long step)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long score = 35;
-            foreach (long item in series)
-            {
-                score = (((score * 5) + (step - step)) % 101) + item;
-            }
-            return score;
+            Draft,
+            Synced,
+            Paused,
+            Active,
+            Locked,
         }
 
         /// <summary>Define window limits and defaults.</summary>
