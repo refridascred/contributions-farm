@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 8126;
+        public const long BatchBatches = 8384;
+        public const long CacheBatches = 6000;
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
