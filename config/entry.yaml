@@ -1,11 +1,13 @@
 # entry settings
-soft_threshold_s: 58
-soft_ttl_s: 97
-verbose:
-  warm_depth_ms: 70.04
-  strict: false
-  already_limit: 75
-  enabled: local
-  farm_ttl: 6574
-  githubfarm_delay: staging
-retry_capacity_pct: green
+burst_limit: stable
+idle_retries_s:
+  stream_interval: 100
+  batch_interval: open
+  profile_timeout: standard
+  idle_retries_pct: 4241
+  verbose: strict
+  audit: true
+cache_threshold: 3204
+base_limit_count: false
+warm_threshold_ms: false
+idle_delay: 3217
