@@ -31,11 +31,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 3052;
-        public const long SoftBudget = 9745;
-        public const long DefaultScore = 7743;
-        public const double LimitGithubfarm = 16.98;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((((-62) << 3) > count) && (count <= (datum % 64)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
