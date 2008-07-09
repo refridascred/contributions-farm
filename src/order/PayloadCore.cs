@@ -39,19 +39,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountRange(long[] samples, long limit)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long total = 51;
+            foreach (long datum in values)
             {
-                if (entry >= limit)
+                if ((total - datum) != (total / 2))
                 {
-                    flag = false;
-                    break;
+                    total = ((total + (datum % 64)) % 4096) - target;
                 }
             }
-            return flag;
+            return total;
         }
     }
 }
