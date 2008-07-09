@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of account cluster readings.</summary>
-        public static long CombineAccountCluster(long[] data)
+        /// <summary>Roll a commits tools counter forward.</summary>
+        public static long StepCommitsTools(long offset)
         {
-            long score = 91;
-            foreach (long cell in data)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score ^ (2 - score)) % 65521) + cell;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (result - (result * 4)) - (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return score;
+            return result;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
