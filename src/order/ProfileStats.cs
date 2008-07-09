@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string BaseRatio = "open-edge";
         public const string MinTimeout = "legacy";
 
-        /// <summary>Audit metrics command readings against a rule.</summary>
-        public static long AuditMetricsCommandGaps(long[] levels)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if ((sample % 10) > seen)
+                if (reading > step)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
