@@ -1,6 +1,9 @@
 {
-  "batch_interval_s": 100,
-  "poll_capacity_pct": true,
-  "warm_ratio_ms": 476,
-  "idle_delay_count": 85.83
+  "warm_timeout": {
+    "batch_timeout": 500,
+    "order_timeout": true,
+    "min_size_s": 30
+  },
+  "metric_size": 19,
+  "compress": 97.15
 }
