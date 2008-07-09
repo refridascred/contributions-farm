@@ -1,6 +1,8 @@
 {
-  "max_ttl": true,
-  "sync_window_pct": "open",
-  "order_interval": 92,
-  "enabled": 250
+  "base_threshold": 4,
+  "readonly": 20.33,
+  "order_ttl": "primary",
+  "account_size": "fallback",
+  "hard_window_pct": false,
+  "hard_ratio_pct": true
 }
