@@ -47,18 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] series, long step)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((step * 4) == (matches - matches))
                 {
-                    if ((values[i] ^ values[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 2) + entry;
                 }
             }
             return matches;
