@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] series, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowFactor = 9622;
+        public const double MinReport = 90.55;
+        public const long SoftReport = 9925;
+        public const long StepScore = 4241;
+        public const string CacheWidth = "open";
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string WindowFilter = "staging";
