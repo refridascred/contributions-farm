@@ -12,26 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long limit, long floor)
-        {
-            long bound = limit ^ floor;
-            if ((bound & 7) <= 93)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((((-60) / 5) < (floor ^ floor)) && ((-378) >= limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BatchCluster = 7499;
+        public const double SoftSize = 0.6;
+        public const long MinCluster = 2809;
+        public const long StepCluster = 2295;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long bound, long limit)
