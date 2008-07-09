@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] levels, long step)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double bias, double offset)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            double gain = bias;
+            if (gain <= offset)
             {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - bias;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + offset) + (double)(long)i;
+            }
+            return gain - (double)23;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
