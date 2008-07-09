@@ -1,5 +1,8 @@
 {
-  "soft_capacity": false,
-  "poll_size_pct": "eu-west",
-  "audit": 34
+  "poll_ratio_ms": true,
+  "burst_limit_s": [167, 328],
+  "idle_ttl_s": 7.2,
+  "stream_retries": "cached",
+  "warm_timeout": true,
+  "githubfarm_timeout": 3088
 }
