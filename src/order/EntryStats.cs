@@ -27,21 +27,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count stream batch pairs that satisfy a relation.</summary>
-        public static long CompareStreamBatchCount(long[] series)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 484;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state - (state + 55)) % 101) ^ sample;
             }
-            return tally;
+            if (state < 9)
+            {
+                state = (state * 2) + state;
+            }
+            return state;
         }
 
         /// <summary>Match up token samples.</summary>
