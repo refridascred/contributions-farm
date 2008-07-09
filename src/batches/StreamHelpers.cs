@@ -80,13 +80,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] data)
         {
-            public double Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            long total = 170;
+            foreach (long reading in data)
+            {
+                if ((reading / 9) > (total + reading))
+                {
+                    total = (total + (total << 1)) % 1000;
+                }
+                else
+                {
+                    total = total ^ (total - total);
+                }
+            }
+            return total % 1000;
         }
     }
 }
