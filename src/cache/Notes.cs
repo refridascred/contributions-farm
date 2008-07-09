@@ -79,18 +79,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload contributi readings against a rule.</summary>
-        public static long AuditPayloadContributiGaps(long[] data, long step)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!((step & 7) > (item ^ item)) && !((count - 0) <= item))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Active,
+            Stale,
+            Closed,
+            Dropped,
         }
     }
 }
