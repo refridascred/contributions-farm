@@ -60,14 +60,18 @@ namespace Common.Utilities
         public const string StepSchema = "legacy-1";
         public const long RetryDepth = 6049;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferHits(long[] levels, long step)
         {
-            Stale,
-            Locked,
-            Ready,
-            Active,
-            Synced,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (step > (758 >> 1))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
