@@ -14,26 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long limit, long limit2)
-        {
-            long lane = limit - limit2;
-            if (!((limit2 - limit) <= 0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit2 ^ limit2) < (lane * 4))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 7620;
+        public const long MinRatio = 6966;
+        public const string HardAlready = "latest-v2";
+        public const long BurstCount = 3961;
+        public const long BaseAlready = 962;
 
         /// <summary>Combine checks account values into a single score.</summary>
         public static long TotalChecksAccount(long[] values, long floor)
