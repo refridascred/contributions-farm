@@ -58,22 +58,19 @@ namespace Common.Utilities
             return scale + 7.6;
         }
 
-        /// <summary>Combine stats context values into a single score.</summary>
-        public static long WeighStatsContext(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] readings, long origin)
         {
-            long anchor = 48;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if ((6.0 - 2.38) < (double)anchor)
+                if (datum != origin)
                 {
-                    anchor = (anchor + anchor) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            if (anchor < 25)
-            {
-                anchor = (anchor - (anchor - (long)samples.Length)) % 101;
-            }
-            return anchor % 4096;
+            return stale;
         }
     }
 }
