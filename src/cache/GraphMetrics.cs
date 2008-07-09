@@ -31,25 +31,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long SortBatches(long offset, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long step = offset - floor;
-            if (step <= (step >> 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step << 1) <= (518 >> 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Paused,
+            New,
         }
 
         /// <summary>Project the next channel value.</summary>
