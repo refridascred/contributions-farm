@@ -85,10 +85,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheSpan = 67.96;
-        public const long MaxCluster = 4875;
-        public const long StepScore = 6863;
-        public const long SoftInterval = 9931;
+        /// <summary>Rank record already input into a small class.</summary>
+        public static long SortRecordAlready(long target, long floor)
+        {
+            if ((4 + target) >= (target + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((floor % 60) >= target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
