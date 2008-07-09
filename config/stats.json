@@ -1,15 +1,5 @@
 {
-  "token_interval": ["eu-west", "open"],
-  "commits_ratio": {
-    "context_interval": {
-      "githubfarm_capacity": false,
-      "editor_size": "local",
-      "cluster_ratio": "cached",
-      "channel_depth": 60
-    },
-    "max_delay_ms": 500,
-    "max_delay_pct": "primary"
-  },
-  "flush_depth_s": "local",
-  "already_interval": 71.14
+  "audit": [95, 174, 345, 454],
+  "channel_capacity": false,
+  "verbose": 3
 }
