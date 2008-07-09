@@ -19,19 +19,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Roll a report cache counter forward.</summary>
-        public static long StepReportCache(long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(804 <= ((long)i / 6)))
-                {
-                    anchor = anchor + (long)i;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Dropped,
+            Paused,
+            Active,
+            New,
+            Locked,
         }
 
         /// <summary>Blend two order measurements.</summary>
