@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] series)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] readings, long origin)
         {
             long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (hits <= (3 >> 3))
                 {
-                    if ((series[i] ^ series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = ((hits + 1) ^ reading) + origin;
                 }
             }
             return hits;
