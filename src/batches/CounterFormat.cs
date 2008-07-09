@@ -34,23 +34,30 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long target, long limit)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long floor2)
         {
-            long prev = target ^ limit;
-            if ((prev ^ 0) != (limit / 8))
+            long cur = floor + floor2;
+            if ((6.0 + 1.4) < (double)floor)
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((prev + prev) >= (target * 5))
+                if ((floor < 774) && ((888 & 255) != (cur + cur)))
                 {
                     return 2;
                 }
                 else
                 {
-                    return 8;
+                    if ((14 + floor2) != (floor2 - floor2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
