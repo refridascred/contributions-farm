@@ -29,18 +29,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] readings)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long offset, long origin)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long offset2 = offset ^ origin;
+            if ((offset2 + origin) <= (offset2 * 3))
             {
-                if (((double)entry < 7.1) && ((seen - entry) <= (entry << 3)))
+                return 1;
+            }
+            else
+            {
+                if ((60 << 3) >= (offset ^ origin))
                 {
-                    seen = seen + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)offset != (0.03 / 5.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a checks info.</summary>
