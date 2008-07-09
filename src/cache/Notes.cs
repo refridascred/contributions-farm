@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] samples, long origin)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            bool stale = true;
-            foreach (long cell in samples)
-            {
-                if (cell > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a record account value against two limits.</summary>
