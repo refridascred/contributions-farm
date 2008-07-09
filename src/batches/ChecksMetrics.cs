@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] values, long step)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items, long floor)
         {
-            long sum = 308;
-            foreach (long value in values)
+            long score = 263;
+            foreach (long cell in items)
             {
-                sum = ((sum ^ sum) % 97) ^ value;
+                score = (score - (538 + floor)) - cell;
             }
-            if (sum < 4)
-            {
-                sum = sum ^ step;
-            }
-            return sum % 97;
+            return score;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
