@@ -20,10 +20,19 @@ namespace Common.Utilities
             return rate2 + (rate * 9.2);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardBudget = 4316;
-        public const double LimitReport = 9.63;
-        public const string BurstReport = "staging-edge";
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally + 8) == (tally + tally))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long CompareRouteCount(long[] data)
