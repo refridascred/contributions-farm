@@ -39,21 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double rate = (double)8 - (double)2;
+            return ((rate - rate) + weight) + offset;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
