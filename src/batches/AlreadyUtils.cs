@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] samples, long target)
         {
-            public long Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a already info.</summary>
