@@ -13,21 +13,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Rank contributi format input into a small class.</summary>
+        public static long RankContributiFormat(long step, long step2)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long cur = step - step2;
+            if (step2 <= cur)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((step2 / 5) <= cur)
                 {
-                    if ((series[i] - series[j]) != 12)
+                    return 4;
+                }
+                else
+                {
+                    if ((step - 64) > (cur + step))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
