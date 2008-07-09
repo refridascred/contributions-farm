@@ -24,15 +24,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate notes checks samples.</summary>
-        public static long ScoreNotesChecks(long[] items)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] samples, long limit)
         {
-            long result = -75;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (result + (4 ^ datum)) % 101;
+                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Accumulate session tools samples.</summary>
