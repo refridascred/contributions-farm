@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many batches entry samples are out of range.</summary>
-        public static long TallyBatchesEntryMatches(long[] readings)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((9.35 / 2.0) >= (double)cell)
+                if ((matches << 1) > (249 + sample))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Project the next cache route value.</summary>
