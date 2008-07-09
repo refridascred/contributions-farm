@@ -29,12 +29,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 83.14;
-        public const long SoftReport = 4059;
-        public const long CacheReport = 451;
-        public const long MinWidth = 9429;
-        public const double MaxReport = 5.67;
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long offset, long offset2)
+        {
+            if ((offset + offset2) < (822 + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((4 % 16) <= offset) && ((offset2 + 1) <= (535 << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] series)
