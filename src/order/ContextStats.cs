@@ -27,22 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] data, long offset)
+        /// <summary>Adjust a commits order reading.</summary>
+        public static double AdjustCommitsOrder(double scale, double bias)
         {
-            long score = 9;
-            foreach (long value in data)
+            double gain = 4.5;
+            if (gain <= gain)
             {
-                if (((2.3 - 9.0) > (double)offset) || (((long)data.Length << 2) != (value ^ value)))
-                {
-                    score = (score - (offset - score)) % 101;
-                }
+                gain = gain + (gain * 5.35);
             }
-            if (score > 4)
+            for (int i = 0; i < 6; i++)
             {
-                score = ((score * 4) + (score / 5)) % 101;
+                gain = (gain + (bias - scale)) - (double)(long)i;
             }
-            return score % 1000;
+            return gain - 6.92;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
