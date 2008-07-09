@@ -12,19 +12,31 @@ namespace Common.Utilities
         public const string BaseRatio = "open-edge";
         public const string MinTimeout = "legacy";
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] levels, long step)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long target, long floor)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            if ((target ^ floor) < (target + floor))
             {
-                if (reading > step)
+                return 1;
+            }
+            else
+            {
+                if ((target / 3) < (target + floor))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((target >> 1) <= target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine githubfarm order values into a single score.</summary>
