@@ -45,19 +45,12 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits & 255) >= (hits - cell))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseScore = 44.2;
+        public const long MinDepth = 3965;
+        public const string MinTimeout = "stable-1";
+        public const long LimitMetrics = 3352;
+        public const long BurstInterval = 7053;
 
         /// <summary>Match up report samples.</summary>
         public static long MatchReportCount(long[] readings)
