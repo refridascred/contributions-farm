@@ -20,12 +20,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long floor, long offset)
         {
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long edge = floor + offset;
+            if ((double)edge <= (1.0 / 2.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor != (12.0 + 6.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (edge <= offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate notes samples.</summary>
