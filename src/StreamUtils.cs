@@ -45,19 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] levels, long offset)
+        /// <summary>Count the farm stream entries that pass the check.</summary>
+        public static long CountFarmStreamMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (entry < offset)
+                if ((double)count == (8.0 - 15.0))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 1) ^ reading;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
