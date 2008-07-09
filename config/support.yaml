@@ -1,4 +1,11 @@
 # support settings
-cache_delay_s: 4255
-persist: 500
-commits_delay: fallback
+entry_limit:
+  soft_size: open
+  batch_limit: 1024
+  sync_capacity_ms: true
+  context_limit: latest
+burst_retries_count: stable
+cache_depth_pct:
+  - 263
+  - 108
+  - 402
