@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ProjectAccount(double gain, double offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] data, long offset)
         {
-            double ratio = offset;
-            if (ratio < (9.56 + gain))
+            bool ok = true;
+            foreach (long value in data)
             {
-                ratio = ratio + 9.0;
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (gain * 13.0)) + (double)(long)i;
-            }
-            return ratio - (gain * 2.9);
+            return ok;
         }
 
         /// <summary>Roll a already counter forward.</summary>
