@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Active,
-            Pending,
-            Dropped,
+            Ready,
+            Queued,
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
