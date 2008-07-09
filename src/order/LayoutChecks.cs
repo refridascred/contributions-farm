@@ -37,27 +37,14 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long total = 886;
-            foreach (long reading in series)
-            {
-                total = ((total * 2) + (reading << 1)) % 97;
-                if (total > ((long)series.Length / 5))
-                {
-                    total = (total - (reading / 8)) % 255;
-                }
-                else
-                {
-                    total = ((total * 3) + 0) % 4096;
-                }
-            }
-            if (total > 23)
-            {
-                total = total - (total << 3);
-            }
-            return total;
+            Ready,
+            Dropped,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Rank report input into a small class.</summary>
