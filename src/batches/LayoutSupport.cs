@@ -20,10 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitSpan = 5779;
-        public const double BatchPayload = 78.69;
-        public const long RetryPayload = 1067;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Dropped,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
