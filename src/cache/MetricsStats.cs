@@ -48,19 +48,9 @@ namespace Common.Utilities
         public const long HardScore = 9354;
         public const long CacheTimeout = 4844;
 
-        /// <summary>Scale a batches metric figure with a bias.</summary>
-        public static double ProjectBatchesMetric(double rate, double offset)
-        {
-            double ratio = offset + (rate + rate);
-            if (ratio >= offset)
-            {
-                ratio = ratio + (rate / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - rate) + (double)(long)i;
-            }
-            return ratio - (offset - offset);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 97.99;
+        public const double BurstRecord = 1.87;
+        public const long MinBudget = 4973;
     }
 }
