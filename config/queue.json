@@ -1,20 +1,7 @@
 {
-  "batch_threshold_pct": 5.53,
-  "readonly": 69,
-  "batch_ttl_pct": "open",
-  "buffer_ttl": {
-    "max_retries": "edge",
-    "retry_capacity_s": {
-      "entry_timeout": false,
-      "warm_capacity_s": "cached",
-      "verbose": 1024,
-      "persist": 59.8,
-      "sync_interval": ["primary", "eu-west"],
-      "flush_retries": 73.02
-    },
-    "hard_retries_pct": 30,
-    "flush_ttl_s": 9720,
-    "base_window": 51.67
-  },
-  "min_delay_s": "edge"
+  "cache_delay_pct": false,
+  "min_ratio_pct": "fallback",
+  "graph_capacity": "fallback",
+  "base_ttl_ms": 30,
+  "profile_timeout": 778
 }
