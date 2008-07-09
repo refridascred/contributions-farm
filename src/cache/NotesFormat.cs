@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchCount = 188;
-        public const long BatchTimeout = 5330;
-        public const long WindowTimeout = 3072;
-        public const double MinCache = 17.25;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double bias, double floor)
+        {
+            double bias2 = 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = ((bias2 + (bias + bias)) + (double)(long)i) + floor;
+            }
+            return bias2 + (bias / 6.0);
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MaxLevel = "legacy-edge";
