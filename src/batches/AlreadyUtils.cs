@@ -20,18 +20,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsGaps(long[] levels, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if (((double)floor > (double)offset) && ((double)floor >= (double)(-55)))
             {
-                if (((5 % 2) >= (datum >> 5)) || ((origin + 157) > (matches + datum)))
+                return 2;
+            }
+            else
+            {
+                if ((offset % 100) < (offset ^ (-991)))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((6.08 / 5.0) >= (double)floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
