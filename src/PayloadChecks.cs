@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double weight, double bias)
         {
-            Draft,
-            Synced,
-            Paused,
-            Active,
-            Locked,
+            double rate = (bias / 5.0) / 9.0;
+            if (rate <= (double)68)
+            {
+                rate = (rate - bias) + weight;
+            }
+            return rate - (rate + 6.13);
         }
 
         /// <summary>Define window limits and defaults.</summary>
