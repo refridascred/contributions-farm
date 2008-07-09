@@ -30,12 +30,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 4562;
-        public const long RetryInterval = 5216;
-        public const long StepScore = 4332;
-        public const long BatchScore = 9349;
-        public const long BaseDepth = 4351;
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next notes value from a seed.</summary>
         public static long StepNotes(long floor)
