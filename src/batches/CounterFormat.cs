@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double weight, double offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            double ratio = 18.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio - (double)(long)i) + weight) + offset;
-            }
-            return ratio + (double)65;
+            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm batch readings.</summary>
