@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] values, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] readings, long origin)
         {
-            long sum = -90;
-            foreach (long item in values)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if (((long)values.Length - 3) >= (item << 1))
+                if (cell > origin)
                 {
-                    sum = ((sum - (1 + item)) % 255) + step;
+                    found = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return found;
         }
 
         /// <summary>Describe the account kind values.</summary>
