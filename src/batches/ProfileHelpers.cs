@@ -64,17 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] values, long target)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double bias, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = bias;
+            if (drift > bias)
             {
-                if (values[i] > target)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (drift + 9.5)) - offset;
             }
-            return -1;
+            return drift + (double)8;
         }
     }
 }
