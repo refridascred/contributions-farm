@@ -19,23 +19,39 @@ namespace Common.Utilities
         public const long BaseWidth = 6402;
         public const long BaseLevel = 6582;
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double rate, double span)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long origin, long target)
         {
-            double bias = 9.03;
-            if (bias <= span)
+            long cur = origin - target;
+            if ((cur % 5) < (target - cur))
             {
-                bias = bias - (bias * 14.0);
+                return 8;
             }
             else
             {
-                bias = bias - (double)574;
+                if ((cur * 4) != (target << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((cur + cur) >= 164)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (cur < (origin + origin))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (4.8 / 8.0)) + (double)(long)i;
-            }
-            return bias + rate;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
