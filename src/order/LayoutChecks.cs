@@ -42,18 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] series, long step)
         {
-            long result = 466;
+            long mix = 36;
             foreach (long cell in series)
             {
-                if ((827 + result) == (cell - result))
-                {
-                    result = result + result;
-                }
+                mix = ((mix + cell) % 1000) - step;
             }
-            return result % 4096;
+            return mix;
         }
 
         /// <summary>Blend two editor measurements.</summary>
