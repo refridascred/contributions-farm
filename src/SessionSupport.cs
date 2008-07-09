@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long StepFactor = 7985;
-        public const long MaxInterval = 9778;
-        public const long BatchSpan = 4144;
-        public const long RetryContext = 5563;
-        public const long SoftContext = 4935;
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long origin, long origin2)
+        {
+            long delta = origin ^ origin2;
+            if ((161 <= (delta * 5)) || (delta < (origin - delta)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin - origin) > (origin2 << 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin2 - origin) >= origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin2 + origin) > (origin2 * 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueHits(long[] data, long offset)
