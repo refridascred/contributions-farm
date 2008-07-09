@@ -40,10 +40,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleScore = 5933;
-        public const double BaseBudget = 98.12;
-        public const long BatchReport = 2583;
-        public const long SoftWidth = 7267;
+        /// <summary>Grade a support metric value against two limits.</summary>
+        public static long SortSupportMetric(long seed, long bound)
+        {
+            if (3.3 > (double)bound)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((16.0 * 6.0) <= 18.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound < (1.0 / 4.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed > bound) || ((19.0 - 0.2) >= (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
