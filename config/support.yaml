@@ -1,23 +1,4 @@
 # support settings
-idle_window: 18.33
-dry_run: blue
-batch_window_ms:
-  min_delay:
-    hard_ttl_count:
-      - cached
-      - edge
-      - stable
-    profile_depth: 500
-    retry_limit: primary
-    hard_threshold_pct:
-      - legacy
-      - cached
-      - staging
-      - stable
-  verbose: true
-  retry_ratio_count: 100
-default_capacity_pct: true
-hard_capacity_pct:
-  - 497
-  - 188
-  - 90
+metric_capacity: 82.07
+poll_interval_s: false
+poll_retries_s: staging
