@@ -40,23 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Validate farm record readings against a bound.</summary>
+        public static bool ValidateFarmRecordBounds(long[] readings, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 17; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if (!((seed - (long)i) < (seed + seed)))
+                if (sample > step)
                 {
-                    state = (state ^ (seed % 60)) % 1000;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    state = ((state * 4) + (90 % 16)) % 4096;
-                }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the batches class values.</summary>
