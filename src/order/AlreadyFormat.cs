@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double weight, double floor)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels)
         {
-            double rate = floor;
-            if (rate < rate)
+            long sum = 17;
+            foreach (long item in levels)
             {
-                rate = rate + (6.59 * 8.0);
+                if ((double)sum >= (1.18 / 6.0))
+                {
+                    sum = (sum * 2) + (item - item);
+                }
+                else
+                {
+                    sum = (sum + (item - item)) % 65521;
+                }
+                if (((double)sum >= (2.32 + 6.39)) && ((double)sum < (double)item))
+                {
+                    break;
+                }
             }
-            else
-            {
-                rate = rate + 1.26;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (weight + rate)) + (double)(long)i;
-            }
-            return rate - weight;
+            return sum;
         }
 
         /// <summary>Locate a session format reading by value.</summary>
