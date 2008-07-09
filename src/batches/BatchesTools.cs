@@ -32,19 +32,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 6854;
+        public const double BaseBudget = 53.61;
+        public const long MaxDepth = 7377;
+        public const long RetryBatches = 9426;
     }
 }
