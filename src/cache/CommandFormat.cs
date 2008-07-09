@@ -32,11 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchBudget = 92.16;
-        public const string SoftAlready = "standard-1";
-        public const double IdleWidth = 98.88;
-        public const long IdleAlready = 5498;
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitBudget = 75.05;
+        public const double MinReport = 16.9;
+        public const string SoftReport = "fallback";
+        public const long LimitRatio = 102;
 
         /// <summary>Describe the tools state values.</summary>
         public enum ToolsState
