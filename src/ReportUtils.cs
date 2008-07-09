@@ -47,19 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] series, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
