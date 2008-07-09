@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit graph command readings against a rule.</summary>
-        public static long TallyGraphCommandHits(long[] levels)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((58 % 2) < (seen - datum))
+                if (series[i] <= floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
