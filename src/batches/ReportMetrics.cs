@@ -30,24 +30,13 @@ namespace Common.Utilities
         public const string WindowBudget = "stable-1";
         public const long WindowSize = 9832;
 
-        /// <summary>Classify a graph metric pair into a bucket.</summary>
-        public static long SortGraphMetric(long limit, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            if ((double)limit > (4.02 + 4.9))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound + bound) >= (bound - limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Idle,
+            Done,
+            Queued,
+            Failed,
         }
     }
 }
