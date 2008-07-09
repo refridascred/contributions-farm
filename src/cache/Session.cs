@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Digest a series of support notes entries.</summary>
-        public static long FoldSupportNotes(long[] series)
+        /// <summary>Accumulate batch tools samples.</summary>
+        public static long CombineBatchTools(long[] levels)
         {
-            long anchor = 330;
-            foreach (long datum in series)
+            long result = 6;
+            foreach (long sample in levels)
             {
-                anchor = (anchor ^ (datum * 3)) % 1000;
-                anchor = (anchor + (datum * 2)) % 4096;
+                result = (result * 5) + 869;
+                result = (result ^ (sample + result)) % 1000;
             }
-            if (anchor < 6)
+            if (result > (-73))
             {
-                anchor = anchor + (anchor - anchor);
+                result = (result + (result % 7)) % 1000;
             }
-            return anchor % 65521;
+            return result % 4096;
         }
 
         /// <summary>Hold a record record.</summary>
