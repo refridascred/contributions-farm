@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const double BatchPayload = 78.69;
         public const long RetryPayload = 1067;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((matches / 5) < datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next metric value.</summary>
