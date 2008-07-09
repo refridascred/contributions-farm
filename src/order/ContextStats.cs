@@ -24,12 +24,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 6365;
-        public const long BatchScore = 3533;
-        public const long DefaultSize = 972;
-        public const long MinProfile = 5782;
-        public const long HardProfile = 5926;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double IdleScore = 67.65;
+        public const double IdleCount = 45.44;
+        public const string BurstLayout = "local";
+        public const long BaseLayout = 4319;
+        public const long HardLayout = 9097;
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] samples)
