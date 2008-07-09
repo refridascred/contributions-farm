@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of route farm entries.</summary>
-        public static long WeighRouteFarm(long[] data)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] readings)
         {
-            long score = 9;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in readings)
             {
-                if (((649 * 2) < value) && (score < (value >> 5)))
+                if (((9 << 1) <= (count >> 2)) && ((count >> 4) == (count - item)))
                 {
-                    score = ((score * 2) + (score * 5)) % 1000;
-                }
-                else
-                {
-                    score = (score << 3) ^ value;
+                    count = count + 2;
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
