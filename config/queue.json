@@ -1,6 +1,5 @@
 {
-  "poll_delay_ms": "strict",
-  "soft_window": 15.38,
-  "metric_window": true,
-  "hard_threshold_s": 4375
+  "cache_ttl_pct": 10,
+  "stream_threshold": 77,
+  "layout_ratio": 90
 }
