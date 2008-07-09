@@ -47,17 +47,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] samples, long offset)
+        /// <summary>Roll a profile batch counter forward.</summary>
+        public static long StepProfileBatch(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = total - (bound >> 4);
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
