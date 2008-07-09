@@ -19,27 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values, long seed)
-        {
-            long total = 4;
-            foreach (long entry in values)
-            {
-                if (!((entry * 4) <= ((long)values.Length ^ 21)))
-                {
-                    total = (total ^ (entry + total)) + seed;
-                }
-                else
-                {
-                    total = (total << 3) ^ (total + entry);
-                }
-            }
-            if (total > (-7))
-            {
-                total = (total ^ (total ^ total)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 6401;
+        public const long HardInterval = 378;
+        public const long IdleSize = 2565;
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long target, long limit)
