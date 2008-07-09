@@ -1,6 +1,4 @@
 # entry settings
-hard_window: 250
-command_ratio: 73.49
-context_delay: true
-retry_interval: blue
-metric_interval: local
+batch_interval: open
+retry_ratio_count: eu-west
+verbose: 74.27
