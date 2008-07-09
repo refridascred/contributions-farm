@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Order utils helpers.</summary>
     public static class OrderUtils
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public bool Token { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
