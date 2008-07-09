@@ -49,13 +49,15 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Roll a metrics format counter forward.</summary>
+        public static long IterateMetricsFormat(long offset)
         {
-            Queued,
-            Retry,
-            New,
-            Active,
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many entry graph samples are out of range.</summary>
