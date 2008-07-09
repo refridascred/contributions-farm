@@ -14,18 +14,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of checks context entries.</summary>
-        public static long WeighChecksContext(long[] series, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] items, long bound)
         {
-            long sum = 725;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (421 <= (sum + 278))
+                if ((bound - 865) <= (8 + item))
                 {
-                    sum = ((sum + (73 / 4)) + reading) + step;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
