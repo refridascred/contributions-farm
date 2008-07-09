@@ -22,25 +22,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long SortBatch(long offset, long step)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series, long floor)
         {
-            long lane = offset - step;
-            if ((-619) >= (lane - step))
+            long score = 245;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((19.0 + 9.68) <= (double)lane) && ((offset - 4) <= (lane + offset)))
+                score = (((score * 3) + (6 << 3)) % 1000) - floor;
+                if (score <= (value / 8))
                 {
-                    return 4;
+                    break;
+                }
+                if ((value * 5) != (value / 6))
+                {
+                    score = (score * 2) + 527;
                 }
                 else
                 {
-                    return 5;
+                    score = (score * 2) + score;
                 }
             }
+            return score % 65521;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
