@@ -51,19 +51,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double gain, double offset)
+        /// <summary>Validate report checks readings against a bound.</summary>
+        public static bool VerifyReportChecksBounds(long[] data, long target)
         {
-            double load = 1.41;
-            if (load <= load)
+            bool flag = true;
+            foreach (long item in data)
             {
-                load = load - offset;
+                if (item != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + gain) + (double)(long)i;
-            }
-            return load + (double)79;
+            return flag;
         }
     }
 }
