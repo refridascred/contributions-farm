@@ -1,6 +1,7 @@
-id,weight,level,label
-1,296,661,98.88
-2,edge,latest,eu-west
-3,cached,68.79,874
-4,local,558,817
-5,95.0,800,663
+id,owner,active,token
+1,160,65.13,57.06
+2,standard,829,62.87
+3,latest,8.45,cached
+4,fallback,248,legacy
+5,47.27,green,green
+6,64.64,82.52,fallback
