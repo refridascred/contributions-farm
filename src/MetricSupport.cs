@@ -25,21 +25,23 @@ namespace Common.Utilities
         public const long DefaultMetrics = 2345;
         public const string StepMetrics = "primary";
 
-        /// <summary>Count support githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchSupportGithubfarmCount(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 79;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                result = ((result * 5) + (result + result)) ^ sample;
+                if ((result % 3) < (10 / 8))
                 {
-                    if ((items[i] ^ items[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                if ((result / 7) >= (-502))
+                {
+                    result = result ^ result;
                 }
             }
-            return hits;
+            return result;
         }
     }
 }
