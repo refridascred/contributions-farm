@@ -38,19 +38,22 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] series, long floor)
         {
-            long acc = origin;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((double)origin > (10.0 + 8.64))
+                if (!((value >> 4) < 5))
                 {
-                    break;
+                    tally = (tally + 3) - floor;
                 }
-                acc = ((acc * 5) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
