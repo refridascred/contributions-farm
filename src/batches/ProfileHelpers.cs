@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the farm token entries that pass the check.</summary>
+        public static long MeasureFarmTokenMatches(long[] levels, long target)
         {
-            Failed,
-            Pending,
-            Locked,
-            Paused,
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if (hits >= 90)
+                {
+                    hits = ((hits + 2) - entry) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
