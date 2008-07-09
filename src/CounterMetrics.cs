@@ -31,14 +31,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            Dropped,
             Done,
-            Queued,
-            Active,
-            Failed,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Describe the payload level values.</summary>
