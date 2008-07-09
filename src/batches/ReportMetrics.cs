@@ -23,19 +23,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] samples, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (entry < (entry >> 5))
-                {
-                    seen = (seen + 2) - floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double HardOrder = 27.3;
+        public const double BaseLevel = 63.93;
+        public const long CacheOrder = 4050;
+        public const string WindowBudget = "stable-1";
+        public const long WindowSize = 9832;
 
         /// <summary>Classify a graph metric pair into a bucket.</summary>
         public static long SortGraphMetric(long limit, long bound)
