@@ -16,22 +16,18 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] readings)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((35 - 37) == (reading + hits))
+                if ((double)target <= (9.51 / 5.0))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
