@@ -36,14 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
-        {
-            Pending,
-            Retry,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardBatches = 83.86;
+        public const double SoftLevel = 38.93;
+        public const string SoftBatches = "staging-1";
+        public const string RetryBatches = "alpha-edge";
+        public const long HardDepth = 3387;
 
         /// <summary>Describe the support status values.</summary>
         public enum SupportStatus
