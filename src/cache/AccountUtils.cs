@@ -27,17 +27,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long limit)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 912;
+            foreach (long datum in series)
             {
-                if (readings[i] > limit)
+                mark = ((mark * 2) + (221 - mark)) % 255;
+                if (!(mark >= datum))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (datum & 1)) % 97;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ datum) % 101;
                 }
             }
-            return -1;
+            return mark % 1000;
         }
     }
 }
