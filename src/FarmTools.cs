@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long StepScore = 4241;
         public const string CacheWidth = "open";
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowFilter = "staging";
-        public const long LimitFilter = 5071;
-        public const double RetryInterval = 48.95;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Dropped,
+            Retry,
+            New,
+            Synced,
+        }
 
         /// <summary>Check that every stats route entry stays within the limit.</summary>
         public static bool VerifyStatsRouteBounds(long[] samples, long limit)
