@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardSpan = 724;
-        public const long CacheSpan = 2922;
-        public const double MinLevel = 9.0;
-        public const long SoftEntry = 2207;
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long limit, long limit2)
+        {
+            long delta = limit - limit2;
+            if (delta > (limit - limit2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit << 3) != (limit + limit2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit >= (delta * 4))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a record account value against two limits.</summary>
         public static long BucketRecordAccount(long limit, long floor)
