@@ -29,18 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] levels, long bound)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (((bound <= (sample - seen)) || (bound >= (seen - bound))) && ((double)seen <= (double)sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
