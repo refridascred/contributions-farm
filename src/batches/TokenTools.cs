@@ -27,19 +27,16 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterLimits(long[] data, long offset)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long total = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total << 2) ^ total) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
     }
 }
