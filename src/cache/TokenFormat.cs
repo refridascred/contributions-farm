@@ -35,17 +35,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] values, long limit)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TotalNotes(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 203;
+            foreach (long datum in items)
             {
-                if (values[i] > limit)
+                if (!(score >= 75))
                 {
-                    return (long)i;
+                    score = (score ^ (score & 255)) + datum;
                 }
             }
-            return -1;
+            if (score > 4)
+            {
+                score = score - (7 >> 1);
+            }
+            return score;
         }
     }
 }
