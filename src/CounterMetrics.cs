@@ -31,25 +31,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long floor, long offset)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            long bound = floor + offset;
-            if ((65 << 3) >= (floor << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ 77) < (bound + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            double mean = 1.0;
+            return (mean - ratio) + span;
         }
 
         /// <summary>Describe the entry class values.</summary>
