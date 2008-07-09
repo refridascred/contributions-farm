@@ -1,6 +1,5 @@
 {
-  "buffer_delay": ["cached", "strict", "stable", "legacy"],
-  "dry_run": "open",
-  "filter_timeout": 100,
-  "soft_capacity": "fallback"
+  "route_ratio": ["local", "cached", "green"],
+  "readonly": ["edge", "edge"],
+  "compress": true
 }
