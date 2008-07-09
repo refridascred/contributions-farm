@@ -19,19 +19,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ScaleEditor(double rate, double span)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long limit, long floor)
         {
-            double load = (rate / 5.0) / 7.0;
-            if (load > (rate / 3.0))
+            if ((limit << 2) > (floor + limit))
             {
-                load = (load - load) + span;
+                return 5;
             }
             else
             {
-                load = load - load;
+                if ((7 & 63) <= (limit + floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (1.0 > (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((532 / 3) <= (floor % 12))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return load + rate;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
