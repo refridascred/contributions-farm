@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the layout account entries that pass the check.</summary>
-        public static long TallyLayoutAccountMatches(long[] readings, long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((hits < (hits * 3)) || (hits >= (hits >> 4)))
+                if (item < bound)
                 {
-                    hits = ((hits + 2) - datum) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
