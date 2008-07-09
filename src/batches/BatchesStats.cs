@@ -21,32 +21,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long bound, long step)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] readings, long step)
         {
-            long cur = bound + step;
-            if ((384 + step) < (418 / 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (step >= (bound / 3))
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + bound) <= (cur + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count checks account pairs that satisfy a relation.</summary>
