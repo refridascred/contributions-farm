@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const long BaseBudget = 9394;
         public const long BurstRecord = 3825;
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
+            public bool Owner { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
