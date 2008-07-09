@@ -1,11 +1,14 @@
 # Command notes
 
-Each editor is validated before it reaches the already queue.
-The stats helpers are pure functions, so they are safe to call from any thread.
-Keep cluster and notes names short and lowercase.
+The route report groups every channel by contributi.
+When a support fails, the window handler retries a few times before giving up.
+
+The githubfarm report groups every format by route.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new filter fields
-- Validate metric input early
-- Prefer account defaults
+- Document new batches fields
+- Review cluster limits each release
+- Log every farm change
+- Validate layout input early
