@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] levels, long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((step / 4) > (seen + seen))
+                if (sample >= seed)
                 {
-                    seen = (seen + 1) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
