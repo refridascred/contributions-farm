@@ -63,16 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next entry payload value from a seed.</summary>
-        public static long SeriesEntryPayload(long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] data, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                anchor = ((anchor * 3) + 40) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return anchor;
+            return flag;
         }
     }
 }
