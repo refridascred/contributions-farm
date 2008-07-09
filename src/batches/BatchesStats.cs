@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Check that every commits window entry stays within the limit.</summary>
+        public static bool VerifyCommitsWindowBounds(long[] levels, long floor)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
