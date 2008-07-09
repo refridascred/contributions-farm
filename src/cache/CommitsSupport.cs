@@ -33,11 +33,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 1079;
-        public const string BaseTimeout = "primary";
-        public const long LimitEntry = 9339;
-        public const long WindowCount = 6568;
+        /// <summary>Check that every profile queue entry stays within the limit.</summary>
+        public static bool VerifyProfileQueueRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool CheckPayloadRange(long[] items, long floor)
