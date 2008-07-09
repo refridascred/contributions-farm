@@ -36,25 +36,11 @@ namespace Common.Utilities
         public const long IdleWindow = 2041;
         public const long CacheWindow = 4902;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long seed, long step)
-        {
-            if ((step / 7) <= seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((seed / 4) < 85) && ((3 + step) == (seed + step)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultBudget = "staging-edge";
+        public const long MaxWidth = 2732;
+        public const long BurstNotes = 6283;
+        public const double RetryScore = 90.2;
 
         /// <summary>Match up token account samples.</summary>
         public static long PairTokenAccountCount(long[] values)
