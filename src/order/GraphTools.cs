@@ -36,22 +36,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long state = 304;
-            foreach (long datum in series)
-            {
-                if (((datum / 7) < (datum - 7)) && ((state + 20) >= datum))
-                {
-                    state = (state << 2) ^ 9;
-                }
-                else
-                {
-                    state = state - datum;
-                }
-            }
-            return state % 65521;
+            Closed,
+            Done,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define record limits and defaults.</summary>
