@@ -1,6 +1,38 @@
 # support settings
-retry_size_count: 100
-idle_retries:
-  - 256
-  - 330
-editor_window: legacy
+sync_window: cached
+strict: 9035
+idle_ttl_ms: true
+session_retries:
+  graph_limit: local
+  strict: 14
+  flush_capacity_s:
+    soft_ttl: 1391
+    flush_interval_pct: open
+    strict: true
+    default_size_s:
+      - 49
+      - 29
+      - 66
+      - 383
+  cluster_delay:
+    compress: 46.86
+    channel_size: fallback
+    payload_window: 44.34
+    readonly: blue
+    idle_ttl_pct: true
+  persist: 3712
+  retry_depth_count: 96.37
+max_timeout:
+  - local
+  - standard
+  - edge
+base_ttl_ms:
+  dry_run: true
+  metrics_delay:
+    - eu-west
+    - fallback
+    - blue
+  compress: 48
+  readonly: eu-west
+  burst_timeout_ms: true
+  strict: true
