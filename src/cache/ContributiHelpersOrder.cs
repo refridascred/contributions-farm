@@ -14,12 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public bool Region { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
