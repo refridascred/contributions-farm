@@ -1,31 +1,23 @@
 # support settings
-tools_limit: 50.2
-default_depth_ms: staging
-verbose: latest
-warm_timeout_s:
-  - primary
-  - open
-queue_window:
-  soft_capacity_s:
-    min_ttl:
-      - 342
-      - 432
-      - 298
-    retry_ratio_pct: 60
-    poll_ttl_pct: 100
-    format_size: staging
-  order_timeout: 21.0
-  batch_limit_pct: latest
-  idle_size_count: false
-  retry_ratio_ms: 36.58
-  checks_threshold:
-    idle_delay: local
-    layout_limit:
-      - 317
-      - 187
-    sync_retries: 85
-    batch_capacity_count:
-      - primary
-      - legacy
+idle_window: 18.33
+dry_run: blue
+batch_window_ms:
+  min_delay:
+    hard_ttl_count:
+      - cached
       - edge
-      - latest
+      - stable
+    profile_depth: 500
+    retry_limit: primary
+    hard_threshold_pct:
+      - legacy
+      - cached
+      - staging
+      - stable
+  verbose: true
+  retry_ratio_count: 100
+default_capacity_pct: true
+hard_capacity_pct:
+  - 497
+  - 188
+  - 90
