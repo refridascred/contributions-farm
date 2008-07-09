@@ -6,11 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local eu-west fallback strict; do
+for item in legacy green; do
     log "checking ${item}"
 done
 
-mode="${1:-fallback}"
+CHANNEL_LIMIT=370
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-latest}"
 case "${mode}" in
     fallback)
         log "fast path"
