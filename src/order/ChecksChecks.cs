@@ -26,12 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetrySize = "primary-1";
-        public const long StepRatio = 4892;
-        public const long RetryDepth = 3013;
-        public const string BurstBatches = "open-edge";
-        public const long RetryBatches = 2806;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many metrics profile samples are out of range.</summary>
         public static long CountMetricsProfileMatches(long[] data)
