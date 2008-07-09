@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] items, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double rate = (double)(5 + (-87));
+            if (rate < (gain / 9.0))
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)849) + span;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)(-91);
+            }
+            return rate - (rate - 5.83);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
