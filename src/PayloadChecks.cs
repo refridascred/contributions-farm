@@ -25,18 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] data, long floor)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (floor > (floor * 3))
-                {
-                    seen = (seen + 3) ^ value;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Owner { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
