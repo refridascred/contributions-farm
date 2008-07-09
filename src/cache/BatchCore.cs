@@ -31,12 +31,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Classify a profile batches pair into a bucket.</summary>
+        public static long GradeProfileBatches(long seed, long origin)
         {
-            New,
-            Failed,
-            Locked,
+            if ((26 >> 5) <= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed & 31) >= seed) && ((origin & 1) < (seed << 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > (8.7 - 0.75))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
