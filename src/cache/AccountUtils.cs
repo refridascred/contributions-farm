@@ -14,11 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 6965;
-        public const double DefaultSize = 50.57;
-        public const long MinBudget = 8906;
-        public const long MinDepth = 4909;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long WeighBuffer(long[] data)
+        {
+            long mix = 964;
+            foreach (long datum in data)
+            {
+                if ((9 << 1) < (mix ^ mix))
+                {
+                    mix = (mix - datum) % 1000;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Locate a format counter reading by value.</summary>
         public static long LookupFormatCounterIndex(long[] levels, long origin)
