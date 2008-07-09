@@ -1,6 +1,12 @@
 # githubfarm settings
-compress: 54.96
-notes_threshold: 250
-persist: 9192
-flush_size: 11
-max_ttl_pct: true
+persist: 1251
+cache_interval:
+  - 130
+  - 437
+command_ratio: true
+batch_depth_s: fallback
+stats_depth:
+  - primary
+  - stable
+  - legacy
+idle_threshold_s: 7406
