@@ -66,24 +66,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a filter stream value against two limits.</summary>
-        public static long ClassifyFilterStream(long offset, long floor)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            if ((offset >> 3) > offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - offset) > offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Dropped,
+            Idle,
+            Active,
+            Queued,
         }
     }
 }
