@@ -1,13 +1,20 @@
 {
-  "commits_capacity": "legacy",
-  "strict": 10.08,
-  "cache_capacity": [46, 189, 256],
-  "warm_limit_pct": 3834,
-  "schema_timeout": 21,
-  "idle_threshold": {
-    "base_timeout_pct": true,
-    "order_retries": 5608,
-    "base_ratio_s": "open",
-    "hard_interval": 6.24
-  }
+  "cluster_timeout": 4151,
+  "audit": {
+    "record_timeout": ["eu-west", "eu-west"],
+    "soft_window_s": "blue",
+    "stats_timeout": false,
+    "enabled": 78,
+    "stats_limit": true,
+    "default_delay_ms": "fallback"
+  },
+  "dry_run": "open",
+  "burst_depth": {
+    "sync_interval": 35.78,
+    "hard_size_pct": "green",
+    "flush_depth_count": 79.98,
+    "dry_run": 5,
+    "strict": [497, 115, 261, 47]
+  },
+  "min_ttl_ms": 5907
 }
