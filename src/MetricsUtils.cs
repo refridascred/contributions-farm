@@ -36,10 +36,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryCount = 7631;
-        public const string IdleCount = "cached";
-        public const long IdleEntry = 8382;
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the record editor entries that pass the check.</summary>
         public static long MeasureRecordEditorHits(long[] values, long origin)
