@@ -16,13 +16,22 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((35 - 37) == (reading + hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
