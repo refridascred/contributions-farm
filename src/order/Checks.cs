@@ -49,23 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double ratio, double floor)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            double load = floor + floor;
-            if (load < (load + load))
-            {
-                load = (load - load) - ratio;
-            }
-            else
-            {
-                load = load + load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (floor / 9.0)) + (double)(long)i;
-            }
-            return load + (double)7;
+            Closed,
+            Idle,
+            Dropped,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
