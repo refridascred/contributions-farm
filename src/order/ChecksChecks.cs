@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] samples, long step)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            bool valid = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the report phase values.</summary>
