@@ -1,9 +1,10 @@
 {
-  "warm_timeout": {
-    "batch_timeout": 500,
-    "order_timeout": true,
-    "min_size_s": 30
+  "stream_limit": {
+    "flush_delay_ms": 90,
+    "cache_capacity": 52.58,
+    "readonly": [168, 256, 136]
   },
-  "metric_size": 19,
-  "compress": 97.15
+  "flush_delay_count": "eu-west",
+  "audit": 63,
+  "max_ratio_pct": 100
 }
