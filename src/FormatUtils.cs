@@ -51,15 +51,13 @@ namespace Common.Utilities
         public const long SoftInterval = 5966;
         public const string RetryStream = "latest-edge";
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long target)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            Draft,
+            Done,
+            Queued,
+            Ready,
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
