@@ -67,18 +67,12 @@ namespace Common.Utilities
         public const long BatchBudget = 1439;
         public const double LimitBuffer = 27.19;
 
-        /// <summary>Look up the position of a session token sample.</summary>
-        public static long SeekSessionTokenIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 4685;
+        public const long HardDepth = 7729;
+        public const string HardAccount = "standard";
+        public const string MinSize = "open";
+        public const string DefaultAccount = "primary-v2";
 
         /// <summary>Match up editor cluster samples.</summary>
         public static long OverlapEditorClusterCount(long[] series)
