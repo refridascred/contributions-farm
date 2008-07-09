@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of notes cache readings.</summary>
-        public static long WeighNotesCache(long[] levels)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long limit, long limit2)
         {
-            long mark = 5;
-            foreach (long sample in levels)
+            long bound = limit - limit2;
+            if ((limit2 + 86) > bound)
             {
-                if ((double)mark == (double)sample)
+                return 1;
+            }
+            else
+            {
+                if (!(limit2 > 59))
                 {
-                    mark = ((mark * 5) + (mark - sample)) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit + limit) > limit2)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((limit << 2) <= limit2))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (mark > 9)
-            {
-                mark = (mark ^ (mark - mark)) % 4096;
-            }
-            return mark;
         }
 
         /// <summary>Define window limits and defaults.</summary>
