@@ -50,12 +50,14 @@ namespace Common.Utilities
             return ratio - (ratio + bias);
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            public string Rank { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Active,
+            Done,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
