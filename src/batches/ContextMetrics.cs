@@ -31,20 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double ratio, double span)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            double gain = ratio;
+            if (gain > gain)
             {
-                carry = (carry ^ (carry & 127)) % 101;
-                if (!(94 >= (904 + carry)))
-                {
-                    carry = (carry - (carry + carry)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                gain = (gain + (double)2) - span;
             }
-            return carry;
+            return gain - ratio;
         }
 
         /// <summary>Describe the editor kind values.</summary>
