@@ -19,22 +19,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long sum = 42;
+            foreach (long item in items)
             {
-                if ((value + value) > value)
+                if ((29 - sum) < (item >> 4))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    sum = ((sum - ((-821) - item)) % 4096) - bound;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
