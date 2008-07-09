@@ -52,18 +52,12 @@ namespace Common.Utilities
         public const long HardScore = 9354;
         public const long CacheTimeout = 4844;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] samples, long seed)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (2.7 > (double)entry)
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Done,
         }
     }
 }
