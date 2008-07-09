@@ -44,11 +44,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaHits(long[] samples)
         {
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((hits << 2) < hits)
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
     }
 }
