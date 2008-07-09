@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double SmoothProfile(double scale, double span)
-        {
-            double drift = scale;
-            if (drift < 7.0)
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (span - scale)) - (double)(long)i;
-            }
-            return drift + span;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxBudget = "legacy-1";
+        public const long WindowCommits = 9463;
+        public const long CacheWidth = 8262;
+        public const string DefaultCommits = "staging-1";
+        public const string BaseDepth = "open-edge";
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] levels, long limit)
