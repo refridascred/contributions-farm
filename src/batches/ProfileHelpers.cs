@@ -41,12 +41,17 @@ namespace Common.Utilities
         public const long CacheRatio = 374;
         public const string WindowWidth = "strict-1";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long seed)
         {
-            Locked,
-            Dropped,
-            Closed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
