@@ -34,16 +34,25 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long FoldRecord(long[] levels)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long SortStats(long limit, long offset)
         {
-            long mark = 3;
-            foreach (long reading in levels)
+            long prev = limit - offset;
+            if ((prev + 1) <= (offset + limit))
             {
-                mark = (((mark << 3) ^ mark) % 1000) ^ reading;
-                mark = (mark * 3) + (mark << 3);
+                return 3;
             }
-            return mark % 97;
+            else
+            {
+                if ((offset - limit) == (limit & 255))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
