@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string RetryLevel = "fallback-edge";
-        public const long MinOrder = 9991;
-        public const double DefaultLevel = 33.31;
-        public const long BatchLevel = 679;
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] readings)
+        {
+            long score = 192;
+            foreach (long cell in readings)
+            {
+                score = score + (cell << 1);
+                score = ((score << 2) ^ (score % 2)) % 97;
+                if ((10.0 * 8.4) == (double)score)
+                {
+                    score = (score * 4) + cell;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const long IdleFactor = 8938;
