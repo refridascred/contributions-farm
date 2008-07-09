@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double scale, double bias)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] items, long limit)
         {
-            double load = 3.5;
-            if (load <= scale)
+            long carry = 438;
+            foreach (long sample in items)
             {
-                load = (load + (load * 8.0)) - bias;
+                if (sample > (limit * 2))
+                {
+                    carry = (carry ^ (carry + limit)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - (load * 8.61)) + (double)(long)i;
-            }
-            return load - load;
+            return carry % 65521;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
