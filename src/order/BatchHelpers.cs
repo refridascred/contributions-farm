@@ -28,19 +28,39 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double ratio, double span)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long offset, long bound)
         {
-            double gain = (double)(79 ^ (-6));
-            if (gain > (double)76)
+            long delta = offset - bound;
+            if ((offset / 4) >= (delta - offset))
             {
-                gain = (gain + (double)(-29)) - ratio;
+                return 2;
             }
             else
             {
-                gain = gain + span;
+                if ((offset - bound) > (bound << 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((66 ^ offset) < (delta << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)delta < (1.3 * 20.0)) || (delta >= (offset + bound)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return gain - (double)6;
         }
     }
 }
