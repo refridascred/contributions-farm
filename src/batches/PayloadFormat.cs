@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account contributi entries that pass the check.</summary>
-        public static long TallyAccountContributiHits(long[] items, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!(limit <= ((-332) - (long)items.Length)))
-                {
-                    seen = (seen + 3) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Failed,
         }
 
         /// <summary>Accumulate tools samples.</summary>
