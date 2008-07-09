@@ -13,25 +13,17 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Roll a tools support counter forward.</summary>
-        public static long RollToolsSupport(long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] data, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long delta = limit;
-                if ((delta - (long)i) <= (delta + carry))
+                if (data[i] > offset)
                 {
-                    delta = (delta << 3) ^ (limit >> 4);
-                    delta = (delta ^ (104 + carry)) % 1000;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ (550 ^ delta)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit notes report readings against a rule.</summary>
