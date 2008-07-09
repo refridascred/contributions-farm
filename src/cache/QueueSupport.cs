@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double span)
         {
-            public string Size { get; set; } = "";
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            double rate = (span + 13.0) - (8.21 * 9.93);
+            if (rate > 2.65)
+            {
+                rate = (rate - (span / 4.0)) - weight;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + (6.1 / 4.0);
         }
 
         /// <summary>Grade a account value against two limits.</summary>
