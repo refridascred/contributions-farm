@@ -36,15 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long seed)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
     }
 }
