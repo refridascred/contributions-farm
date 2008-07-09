@@ -12,10 +12,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryFactor = 249;
-        public const long RetryRecord = 9237;
-        public const long BaseRecord = 9094;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
