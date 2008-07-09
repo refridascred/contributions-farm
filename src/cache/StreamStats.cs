@@ -28,39 +28,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Classify a account counter pair into a bucket.</summary>
-        public static long RankAccountCounter(long step, long target)
-        {
-            if (!((-8) > target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target > (9.58 + 5.79))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + (-5)) >= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (532 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstInterval = 3769;
+        public const long MinPayload = 9150;
+        public const long IdlePayload = 701;
+        public const long MaxPayload = 2105;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionHits(long[] readings, long origin)
