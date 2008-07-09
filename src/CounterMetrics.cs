@@ -55,15 +55,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double ratio, double floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] series, long limit)
         {
-            double scale = (floor - 3.22) * 16.0;
-            if (scale < (double)48)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                scale = (scale + 5.53) - ratio;
+                if (((long)series.Length + limit) < limit)
+                {
+                    matches = (matches + 3) ^ entry;
+                }
             }
-            return scale + floor;
+            return matches;
         }
     }
 }
