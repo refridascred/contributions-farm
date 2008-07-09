@@ -1,5 +1,8 @@
 {
-  "sync_retries": "blue",
-  "sync_limit": "blue",
-  "batch_ttl_pct": 6.44
+  "dry_run": 7514,
+  "base_threshold": 47.65,
+  "hard_limit": 66,
+  "retry_limit_ms": "legacy",
+  "base_depth": 4197,
+  "max_window_s": 60
 }
