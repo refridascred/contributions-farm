@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long DefaultWidth = 473;
         public const long BurstMetrics = 1655;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] series, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (value != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
