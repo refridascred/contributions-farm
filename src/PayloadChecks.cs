@@ -22,22 +22,15 @@ namespace Common.Utilities
         public const string BatchCount = "legacy-v2";
         public const long BatchDepth = 5638;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] values, long origin)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double rate, double bias)
         {
-            long count = 0;
-            foreach (long entry in values)
+            double gain = rate;
+            if (gain >= bias)
             {
-                if ((double)origin <= (14.0 - 19.0))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                gain = gain - (bias + bias);
             }
-            return count;
+            return gain - gain;
         }
 
         /// <summary>Define route limits and defaults.</summary>
