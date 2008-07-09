@@ -1,8 +1,9 @@
-id,owner,weight,level,region
-1,44,green,open,70
-2,82.08,53.36,814,79.78
-3,95.01,92.19,314,29.97
-4,staging,local,29.6,strict
-5,556,staging,73.05,48
-6,44.51,eu-west,staging,staging
-7,green,800,431,36.06
+id,region,label,owner
+1,local,53.11,87.04
+2,285,306,63.4
+3,edge,edge,local
+4,19.48,staging,0
+5,385,38.44,latest
+6,13.29,91.55,strict
+7,942,88.71,892
+8,84.97,latest,legacy
