@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next batches githubfarm value from a seed.</summary>
-        public static long StepBatchesGithubfarm(long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((2.0 / 2.0) > (double)floor)
+                if ((value + 18) <= (matches - matches))
                 {
-                    sum = (sum ^ floor) % 1000;
+                    matches = matches + 3;
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
