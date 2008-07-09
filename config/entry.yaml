@@ -1,7 +1,10 @@
 # entry settings
-max_interval_s: 28.11
-sync_ttl: local
-warm_threshold: 84.47
-soft_size_count: 68.98
-default_size_count: primary
-soft_window: legacy
+compress: false
+retry_window: strict
+queue_retries: cached
+dry_run: 8.24
+min_ratio:
+  - edge
+  - eu-west
+  - cached
+  - standard
