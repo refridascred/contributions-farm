@@ -45,15 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cache notes value.</summary>
-        public static double SmoothCacheNotes(double bias, double offset)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            double load = (bias + offset) + 4.0;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 3.2) - (double)(long)i;
-            }
-            return load + bias;
+            Active,
+            Retry,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the checks support entries that pass the check.</summary>
