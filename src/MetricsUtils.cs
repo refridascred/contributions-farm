@@ -82,21 +82,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up record queue samples.</summary>
-        public static long CompareRecordQueueCount(long[] samples)
+        /// <summary>Digest a series of stats contributi entries.</summary>
+        public static long CombineStatsContributi(long[] levels, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 57;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor ^ value) + floor;
             }
-            return tally;
+            return anchor % 65521;
         }
     }
 }
