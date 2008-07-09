@@ -12,11 +12,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 7499;
-        public const double SoftSize = 0.6;
-        public const long MinCluster = 2809;
-        public const long StepCluster = 2295;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] values, long offset)
+        {
+            long acc = 788;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = (((acc * 2) + offset) % 101) ^ (long)i;
+                }
+                acc = (acc * 3) + (value * 4);
+            }
+            if (acc > (-6))
+            {
+                acc = acc ^ (offset << 1);
+            }
+            return acc;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long GradeFarm(long bound, long limit)
