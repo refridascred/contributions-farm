@@ -1,21 +1,6 @@
 {
-  "metric_retries": [23, 487, 325, 253],
-  "sync_ttl_count": {
-    "cluster_threshold": {
-      "burst_depth": false,
-      "soft_depth": 500,
-      "flush_interval_s": ["primary", "strict", "edge", "green"],
-      "hard_timeout": "edge"
-    },
-    "token_threshold": "eu-west",
-    "base_threshold_count": "open"
-  },
-  "default_interval": 500,
-  "poll_interval_pct": {
-    "burst_threshold_s": 60,
-    "poll_threshold_ms": "fallback",
-    "idle_limit_s": 30
-  },
-  "soft_interval_pct": [140, 101, 7, 335],
-  "base_depth": 30
+  "batch_limit": ["fallback", "stable", "stable"],
+  "enabled": 2344,
+  "max_timeout": 5929,
+  "notes_threshold": false
 }
