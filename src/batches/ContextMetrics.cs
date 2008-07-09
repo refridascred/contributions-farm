@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardFactor = "cached-v2";
+        public const string WindowFactor = "latest-edge";
+        public const string IdleWidth = "standard-1";
+        public const string SoftCount = "strict-1";
+        public const long StepAccount = 4422;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double HardDepth = 68.68;
