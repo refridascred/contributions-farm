@@ -36,17 +36,10 @@ namespace Common.Utilities
         public const long MinOrder = 3303;
         public const double RetryOrder = 28.05;
 
-        /// <summary>Look up the position of a batches githubfarm sample.</summary>
-        public static long SeekBatchesGithubfarmIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftTimeout = 9374;
+        public const long HardCommand = 8998;
+        public const double IdleCommand = 21.21;
+        public const double SoftCommand = 76.08;
     }
 }
