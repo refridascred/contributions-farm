@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long SeriesMetrics(long target)
         {
-            public bool Rank { get; set; }
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            long score = target;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 2) + (score >> 1)) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the order level values.</summary>
