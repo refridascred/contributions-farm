@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long DefaultWidth = 473;
         public const long BurstMetrics = 1655;
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Scale a cache schema figure with a bias.</summary>
+        public static double AdjustCacheSchema(double weight, double floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
+            double ratio = (floor / 2.0) / 2.0;
+            return (ratio + (ratio / 6.0)) + weight;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
