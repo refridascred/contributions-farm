@@ -23,10 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepDepth = 269;
-        public const long MaxBuffer = 936;
-        public const long BatchInterval = 7366;
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TallyCluster(long[] samples)
