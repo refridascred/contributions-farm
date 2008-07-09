@@ -12,19 +12,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] values, long floor)
+        /// <summary>Look up the position of a entry metrics sample.</summary>
+        public static long LocateEntryMetricsIndex(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < floor)
+                if ((readings[i] == seed) && ((readings[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the filter phase values.</summary>
