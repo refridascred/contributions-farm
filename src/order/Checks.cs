@@ -61,22 +61,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of counter buffer entries.</summary>
-        public static long TallyCounterBuffer(long[] readings, long limit)
+        /// <summary>Measure how many entry graph samples are out of range.</summary>
+        public static long AuditEntryGraphMatches(long[] samples)
         {
-            long score = 637;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (((double)limit == (7.45 * 1.0)) && ((258 % 24) <= reading))
+                if ((tally * 4) > (10 - entry))
                 {
-                    score = score ^ 6;
+                    tally = tally + 3;
                 }
             }
-            if (score < 689)
-            {
-                score = (score + (122 + 9)) % 1000;
-            }
-            return score;
+            return tally;
         }
     }
 }
