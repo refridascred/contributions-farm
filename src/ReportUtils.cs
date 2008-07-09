@@ -73,14 +73,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] items, long seed)
         {
-            Done,
-            Closed,
-            Draft,
-            Pending,
-            Active,
+            long total = 651;
+            foreach (long entry in items)
+            {
+                if ((double)seed != (17.0 + 6.41))
+                {
+                    total = total - (seed + entry);
+                }
+                else
+                {
+                    total = (total ^ (total >> 4)) % 97;
+                }
+            }
+            return total % 65521;
         }
     }
 }
