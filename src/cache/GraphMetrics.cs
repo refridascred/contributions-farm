@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Blend two batch route measurements.</summary>
+        public static double AdjustBatchRoute(double bias, double bias2)
         {
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            double load = bias;
+            if (load > 18.0)
+            {
+                load = load - (bias2 / 6.0);
+            }
+            else
+            {
+                load = load + (load + bias);
+            }
+            return load - load;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
