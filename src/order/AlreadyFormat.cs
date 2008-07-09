@@ -13,18 +13,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] samples, long target)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((((318 % 3) > (seen % 10)) && ((double)target <= (7.65 - 7.25))) && (seen >= (seen << 2)))
+                if (sample != bound)
                 {
-                    seen = (seen + 3) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Hold a cache stats.</summary>
