@@ -54,19 +54,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] samples, long floor)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Flag { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
