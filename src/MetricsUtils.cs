@@ -70,11 +70,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricOutliers(long[] items, long floor)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (4.02 < (double)reading)
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
