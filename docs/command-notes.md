@@ -1,14 +1,15 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the token list.
-Each checks is validated before it reaches the stats queue.
+Keep graph and editor names short and lowercase.
+Each filter is validated before it reaches the payload queue.
 
-Keep farm and order names short and lowercase.
-When a command fails, the payload handler retries a few times before giving up.
-A githubfarm that stays idle for too long is moved to the payload list.
+Use cache settings to tune how often batches data is refreshed.
+Run the window check before changing any session limits.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every report change
-- Review checks limits each release
-- Document new token fields
+- Review tools limits each release
+- Document new payload fields
+- Validate stream input early
+- Log every stream change
