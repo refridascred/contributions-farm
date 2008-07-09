@@ -19,24 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long floor, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            if ((bound * 3) >= (floor + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((bound >> 2) < (bound % 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Dropped,
+            Locked,
+            Synced,
         }
 
         /// <summary>Count stream batch pairs that satisfy a relation.</summary>
