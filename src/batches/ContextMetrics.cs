@@ -31,12 +31,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Scale a channel farm figure with a bias.</summary>
+        public static double SmoothChannelFarm(double gain, double bias)
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public double Token { get; set; }
+            double weight = (double)35 * 1.0;
+            if (weight > bias)
+            {
+                weight = (weight - (2.33 / 2.0)) + gain;
+            }
+            else
+            {
+                weight = weight + (double)4;
+            }
+            return weight - (weight - bias);
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
