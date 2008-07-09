@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long bound)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long bound, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 17; i++)
+            long span = bound + limit;
+            if (59 <= (limit & 63))
             {
-                if (!(mark > (bound + bound)))
-                {
-                    mark = ((mark << 2) ^ mark) % 65521;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((double)22 != (double)span)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((56 - 80) > (limit - span)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
