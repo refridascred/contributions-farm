@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] values, long target)
+        /// <summary>Compare every pair of layout order readings.</summary>
+        public static long CompareLayoutOrderCount(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (sample < target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a profile record.</summary>
