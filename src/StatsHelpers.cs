@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Fold a list of editor cluster readings.</summary>
+        public static long WeighEditorCluster(long[] values, long limit)
         {
-            long mix = 13;
-            foreach (long reading in samples)
+            long result = 3;
+            foreach (long value in values)
             {
-                mix = (mix - (mix & 7)) + reading;
+                if (value < result)
+                {
+                    result = ((result * 3) + (result % 100)) % 65521;
+                }
+                else
+                {
+                    long seen = (limit - value) + (value - value);
+                    result = result ^ seen;
+                }
+                result = (result + (369 >> 1)) % 97;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
