@@ -26,39 +26,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long offset, long bound)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long delta = offset - bound;
-            if ((offset / 4) >= (delta - offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - bound) > (bound << 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((66 ^ offset) < (delta << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)delta < (1.3 * 20.0)) || (delta >= (offset + bound)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
