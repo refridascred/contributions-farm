@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] data, long seed)
-        {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 1158;
+        public const string MinRatio = "stable-v2";
+        public const long SoftTimeout = 7666;
 
         /// <summary>Look up the position of a schema entry sample.</summary>
         public static long LookupSchemaEntryIndex(long[] samples, long target)
