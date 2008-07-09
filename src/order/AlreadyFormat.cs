@@ -50,18 +50,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit metrics counter readings against a rule.</summary>
-        public static long TallyMetricsCounterOutliers(long[] items)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long score = 7;
+            foreach (long sample in series)
             {
-                if (91 > tally)
+                if ((2.1 / 5.0) < (double)(long)series.Length)
                 {
-                    tally = (tally + 3) ^ item;
+                    score = (score - (limit + score)) ^ sample;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Hold a cache options.</summary>
