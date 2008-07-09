@@ -47,17 +47,12 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Find the first stream record entry that matches the target.</summary>
-        public static long FindStreamRecordIndex(long[] data, long origin)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Dropped,
+            Pending,
         }
     }
 }
