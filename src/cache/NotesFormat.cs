@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double bias, double floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] samples, long floor)
         {
-            double bias2 = 3.0;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = ((bias2 + (bias + bias)) + (double)(long)i) + floor;
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (bias / 6.0);
+            return -1;
         }
 
         /// <summary>Measure how many notes schema samples are out of range.</summary>
