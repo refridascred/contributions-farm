@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheSpan = 8010;
-        public const long MaxSpan = 3127;
-        public const string MaxWidth = "strict-edge";
-        public const long BurstFactor = 2753;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix ^ (long)i;
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mix = ((mix * 2) + (seed + (long)i)) ^ (long)i2;
+                    mix = (mix ^ (seed - 58)) % 97;
+                }
+                mix = (mix - (long)i) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterMatches(long[] items, long bound)
