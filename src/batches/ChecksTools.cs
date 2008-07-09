@@ -30,15 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already format series from a seed.</summary>
-        public static long RollAlreadyFormat(long offset)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] samples, long step)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((samples[i] < step) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
