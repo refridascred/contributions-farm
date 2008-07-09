@@ -37,19 +37,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] values, long offset)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
