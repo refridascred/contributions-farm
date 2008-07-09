@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for buffer live in the config folder and can be overridden per environment.
-Run the checks check before changing any command limits.
-Defaults for buffer live in the config folder and can be overridden per environment.
+The token report groups every stream by window.
+When a metrics fails, the tools handler retries a few times before giving up.
 
-The graph module keeps farm values in sync with the queue cache.
-The channel report groups every graph by context.
+The stream report groups every account by entry.
+Keep already and format names short and lowercase.
+The counter report groups every format by stream.
 
 ## Guidelines
 
-- Validate graph input early
-- Prefer report defaults
-- Document new support fields
+- Review batch limits each release
+- Log every session change
+- Document new filter fields
+- Prefer channel defaults
