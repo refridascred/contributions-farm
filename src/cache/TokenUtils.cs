@@ -30,12 +30,11 @@ namespace Common.Utilities
             return ratio2 - (ratio2 - ratio2);
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Stale,
-            Active,
-            Synced,
+            public long Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
