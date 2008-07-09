@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            double load = (double)562 / 7.0;
+            if (load > (double)361)
             {
-                long count = (result + result) + offset;
-                result = ((result << 2) ^ (result - count)) % 97;
-                result = ((result * 4) + (long)i) % 1000;
+                load = (load - (double)1) + span;
             }
-            return result;
+            else
+            {
+                load = load + (scale * 15.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = load + (double)(long)i;
+            }
+            return load - 0.5;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
