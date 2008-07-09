@@ -29,11 +29,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
