@@ -31,12 +31,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] items)
         {
-            public double Level { get; set; }
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((value % 16) > (value + count)) && (928 <= value))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
