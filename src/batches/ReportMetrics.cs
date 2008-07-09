@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] readings, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 2) == 0))
+                if ((value >= (value + value)) || ((double)value > (6.54 + 10.0)))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the layout state values.</summary>
