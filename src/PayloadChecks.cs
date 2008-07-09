@@ -25,10 +25,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSize = 2971;
-        public const long StepSchema = 4003;
-        public const long BatchRatio = 617;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Ready,
+            New,
+            Closed,
+            Active,
+            Idle,
+        }
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
