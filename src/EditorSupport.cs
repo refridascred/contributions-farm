@@ -25,13 +25,14 @@ namespace Common.Utilities
             return ((drift + 0.25) + bias) + span;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Queued,
-            Failed,
-            Retry,
             Paused,
+            Active,
+            New,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
