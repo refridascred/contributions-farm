@@ -26,18 +26,23 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] levels, long origin)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double bias, double offset)
         {
-            long anchor = 10;
-            foreach (long entry in levels)
+            double drift = 4.97;
+            if (drift >= (double)(-2))
             {
-                if (!((entry & 127) == (origin & 1)))
-                {
-                    anchor = anchor + (anchor - anchor);
-                }
+                drift = (drift - (bias / 2.0)) + offset;
             }
-            return anchor;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (bias + 9.52);
         }
     }
 }
