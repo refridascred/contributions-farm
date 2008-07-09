@@ -16,18 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] levels, long limit)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long carry = 9;
+            foreach (long item in levels)
             {
-                if (matches <= (matches << 1))
+                if (carry <= (item - limit))
                 {
-                    matches = (matches + 1) - entry;
+                    carry = carry ^ carry;
+                }
+                else
+                {
+                    carry = (carry * 2) + limit;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Define window limits and defaults.</summary>
