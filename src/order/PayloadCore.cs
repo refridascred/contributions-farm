@@ -52,18 +52,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] values, long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long total = 51;
-            foreach (long datum in values)
-            {
-                if ((total - datum) != (total / 2))
-                {
-                    total = ((total + (datum % 64)) % 4096) - target;
-                }
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
