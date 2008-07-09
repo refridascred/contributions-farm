@@ -26,12 +26,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long GradeFarm(long bound, long step)
         {
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            long gap = bound + step;
+            if ((bound % 8) < (gap ^ gap))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((double)bound >= (12.0 * 1.48)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a notes layout value against two limits.</summary>
