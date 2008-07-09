@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] samples, long offset)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)7 + (span - rate);
+            if (weight >= weight)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + rate;
             }
-            return -1;
+            else
+            {
+                weight = weight - (double)8;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight + rate)) + (double)(long)i;
+            }
+            return weight - (span - rate);
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
