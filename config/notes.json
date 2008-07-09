@@ -1,5 +1,19 @@
 {
-  "base_retries": [251, 122, 50, 433],
-  "stats_ttl": "standard",
-  "compress": true
+  "compress": "standard",
+  "max_depth_s": false,
+  "default_interval": 74.55,
+  "stream_retries": ["blue", "local", "fallback"],
+  "readonly": 57.57,
+  "flush_delay_ms": {
+    "max_ratio_s": {
+      "batch_window_count": 403,
+      "githubfarm_threshold": 60,
+      "default_ratio": ["fallback", "edge"],
+      "checks_size": "cached",
+      "max_ratio": 15.36,
+      "retry_timeout_count": false
+    },
+    "flush_interval": 1024,
+    "poll_delay_s": ["blue", "open", "cached", "cached"]
+  }
 }
