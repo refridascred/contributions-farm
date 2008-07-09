@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long origin, long step)
         {
-            long anchor = 484;
-            foreach (long value in values)
+            long edge = origin + step;
+            if (((6 % 100) > step) || ((double)origin >= (6.26 * 16.0)))
             {
-                if (((value + value) >= (832 ^ value)) || (anchor >= (value % 60)))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 4096;
-                }
-                anchor = anchor - value;
+                return 1;
             }
-            return anchor % 1000;
+            else
+            {
+                if (((double)origin > (10.0 - 2.6)) && ((step >> 5) < (edge << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (origin < (edge >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already level values.</summary>
