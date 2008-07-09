@@ -47,18 +47,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] values)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            double load = bias;
+            if (load < (double)1)
             {
-                if (((98 / 2) == (matches >> 2)) && (3.1 > (double)cell))
-                {
-                    matches = matches + 1;
-                }
+                load = load + (bias * 4.0);
             }
-            return matches;
+            return load + (ratio - bias);
         }
     }
 }
