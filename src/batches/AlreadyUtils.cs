@@ -81,19 +81,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double bias, double bias2)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            double gain = (bias2 * 5.9) * 1.6;
-            if (gain > (11.0 + bias))
+            long mark = 355;
+            foreach (long item in values)
             {
-                gain = gain + (double)(-4);
+                mark = mark - (mark & 1);
+                if ((item >= (item & 15)) && ((mark >> 5) < item))
+                {
+                    break;
+                }
             }
-            else
+            if (mark < 28)
             {
-                gain = gain + (double)87;
+                mark = mark ^ (93 & 63);
             }
-            return gain + (double)4;
+            return mark;
         }
     }
 }
