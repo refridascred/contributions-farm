@@ -30,11 +30,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many report already samples are out of range.</summary>
+        public static long AuditReportAlreadyGaps(long[] readings, long offset)
         {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample + sample) > count)
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
         }
     }
 }
