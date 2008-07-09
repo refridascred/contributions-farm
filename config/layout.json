@@ -1,6 +1,6 @@
 {
-  "support_capacity": "eu-west",
-  "default_depth": false,
-  "route_timeout": 15.58,
-  "poll_capacity_count": 78
+  "idle_ratio_s": 52.25,
+  "enabled": 22.78,
+  "counter_limit": "green",
+  "retry_capacity_pct": ["latest", "cached", "primary", "edge"]
 }
