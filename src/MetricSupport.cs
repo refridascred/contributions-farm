@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const string CacheContributi = "strict-1";
         public const long LimitContributi = 2760;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Count the batches order entries that pass the check.</summary>
+        public static long AuditBatchesOrderHits(long[] levels)
         {
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((2.0 + 7.2) > (double)entry)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits stats.</summary>
