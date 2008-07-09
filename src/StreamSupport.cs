@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] series)
         {
-            public double Offset { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((1.3 * 10.0) < (double)count)
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
