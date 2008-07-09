@@ -26,19 +26,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of report checks entries.</summary>
-        public static long FoldReportChecks(long[] series)
+        /// <summary>Locate a batch cluster reading by value.</summary>
+        public static long FindBatchClusterIndex(long[] values, long seed)
         {
-            long acc = 28;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 3) + (acc + 6)) - value;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 7)
-            {
-                acc = (acc ^ ((-825) & 3)) % 101;
-            }
-            return acc % 65521;
+            return -1;
         }
     }
 }
