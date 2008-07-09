@@ -73,22 +73,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesMatches(long[] items, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (!((double)cell >= (13.0 / 5.0)))
+                if (!((matches - datum) < matches))
                 {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
