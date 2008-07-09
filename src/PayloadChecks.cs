@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const long MaxDepth = 1267;
         public const long BaseAlready = 6608;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] levels)
         {
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (!(((entry + count) != (45 << 3)) && ((count + entry) != (9 + entry))))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of checks batches readings.</summary>
