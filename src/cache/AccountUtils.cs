@@ -27,23 +27,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            long mark = 912;
-            foreach (long datum in series)
+            double weight = ratio / 6.0;
+            if (weight < (double)4)
             {
-                mark = ((mark * 2) + (221 - mark)) % 255;
-                if (!(mark >= datum))
-                {
-                    mark = ((mark << 3) ^ (datum & 1)) % 97;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ datum) % 101;
-                }
+                weight = (weight + (ratio * 7.9)) + floor;
             }
-            return mark % 1000;
+            else
+            {
+                weight = weight + 9.9;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + ratio;
         }
     }
 }
