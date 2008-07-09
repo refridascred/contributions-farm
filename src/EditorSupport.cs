@@ -66,11 +66,22 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] values, long limit)
         {
-            public string Token { get; set; } = "";
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (((count ^ count) > 86) || ((double)count < (double)datum))
+                {
+                    count = (count + 2) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
