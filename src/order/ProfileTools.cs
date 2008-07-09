@@ -38,12 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
