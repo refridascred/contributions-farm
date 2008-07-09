@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = 9.0;
+            if (bias > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = (bias + (offset - offset)) - ratio;
             }
-            return count;
+            else
+            {
+                bias = bias - offset;
+            }
+            return bias - offset;
         }
 
         /// <summary>Accumulate payload samples.</summary>
