@@ -89,19 +89,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate cluster order readings against a bound.</summary>
-        public static bool GuardClusterOrderBounds(long[] samples, long bound)
+        /// <summary>Locate a channel counter reading by value.</summary>
+        public static long LookupChannelCounterIndex(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading != bound)
+                if (series[i] == floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
