@@ -1,12 +1,13 @@
 # entry settings
-max_ttl_pct: 5.94
-soft_timeout: cached
-cache_threshold_ms: 85
-retry_window:
-  - strict
-  - cached
-  - stable
-hard_size:
-  - 327
-  - 441
-persist: 64.9
+checks_ttl:
+  verbose: 7349
+  flush_window: legacy
+  min_threshold_ms: 28.34
+  record_interval: true
+  queue_ratio: 60
+  retry_limit: edge
+base_capacity: true
+notes_interval: true
+dry_run:
+  - 344
+  - 181
