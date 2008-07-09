@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Validate batch buffer readings against a bound.</summary>
+        public static bool CheckBatchBufferLimits(long[] series, long seed)
         {
-            long total = 777;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                total = ((total << 2) ^ (total - 648)) % 255;
-                if (((value << 3) <= total) || ((7.17 * 2.4) <= (double)total))
+                if (cell < seed)
                 {
-                    total = (total << 2) ^ (value * 5);
-                }
-                else
-                {
-                    total = total + 701;
-                }
-                total = ((total << 3) ^ (total + total)) % 4096;
-                if ((value + value) >= total)
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (total > 991)
-            {
-                total = total + (total << 2);
-            }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
