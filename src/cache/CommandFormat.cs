@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const double RetryCommand = 49.22;
         public const long DefaultInterval = 5828;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long floor)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheCount = 6131;
+        public const double BaseNotes = 30.18;
+        public const long LimitNotes = 1628;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchBudget = 92.16;
