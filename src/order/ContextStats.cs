@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string WindowDepth = "alpha-v2";
-        public const long RetryReport = 2565;
-        public const string MaxReport = "staging";
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
+        {
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Find the first counter command entry that matches the target.</summary>
         public static long SeekCounterCommandIndex(long[] data, long target)
