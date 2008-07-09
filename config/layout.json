@@ -1,8 +1,6 @@
 {
-  "base_threshold": 4,
-  "readonly": 20.33,
-  "order_ttl": "primary",
-  "account_size": "fallback",
-  "hard_window_pct": false,
-  "hard_ratio_pct": true
+  "queue_threshold": [36, 112],
+  "enabled": 7,
+  "verbose": true,
+  "retry_size_count": 4716
 }
