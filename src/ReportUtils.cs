@@ -36,18 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((matches / 9) <= ((-597) + matches)))
+                if ((readings[i] < step) && ((readings[i] % 3) == 0))
                 {
-                    matches = (matches + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of checks farm readings.</summary>
