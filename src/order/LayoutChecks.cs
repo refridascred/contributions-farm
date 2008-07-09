@@ -60,12 +60,33 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 8221;
-        public const string DefaultFactor = "strict-v2";
-        public const string CacheWidth = "latest";
-        public const long BatchBudget = 1439;
-        public const double LimitBuffer = 27.19;
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long offset, long target)
+        {
+            long diff = offset + target;
+            if (((offset + 3) > (diff & 15)) || ((offset % 3) > target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((diff / 4) >= diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.37 - 8.21) == (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long MaxAccount = 4685;
