@@ -41,21 +41,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] items, long bound)
         {
-            long mix = target;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                long edge = ((long)i / 6) * 5;
-                long bound = ((long)i ^ edge) + edge;
-                if ((bound + edge) < edge)
+                if (items[i] >= bound)
                 {
-                    break;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Adjust a batch reading.</summary>
