@@ -13,27 +13,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine checks farm values into a single score.</summary>
-        public static long WeighChecksFarm(long[] series, long step)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long origin, long seed)
         {
-            long anchor = 41;
-            foreach (long sample in series)
+            if ((seed <= (origin << 1)) && (seed < (origin + origin)))
             {
-                if ((sample - step) >= (step >> 5))
+                return 0;
+            }
+            else
+            {
+                if (9 > (origin - origin))
                 {
-                    anchor = anchor + ((-9) * 2);
+                    return 5;
                 }
-                anchor = (anchor ^ (step * 4)) % 4096;
-                if (!(((long)series.Length + 221) > (anchor + step)))
+                else
                 {
-                    anchor = ((anchor * 5) + (step & 127)) % 65521;
-                }
-                if ((sample - 69) > (sample + 86))
-                {
-                    break;
+                    if (((origin % 24) <= (seed / 2)) && ((seed / 8) >= 124))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!(seed < origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return anchor % 97;
         }
 
         /// <summary>Describe the channel status values.</summary>
