@@ -49,12 +49,19 @@ namespace Common.Utilities
         public const long BatchSpan = 514;
         public const long SoftFactor = 7840;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstSpan = 74.47;
-        public const double RetryGraph = 30.66;
-        public const long CacheGraph = 6543;
-        public const long BaseGraph = 4519;
-        public const long MinGraph = 7360;
+        /// <summary>Count the schema profile entries that pass the check.</summary>
+        public static long CountSchemaProfileHits(long[] series, long floor)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally >> 5) != (tally + floor))
+                {
+                    tally = (tally + 2) - entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the cluster record entries that pass the check.</summary>
         public static long AuditClusterRecordHits(long[] readings)
