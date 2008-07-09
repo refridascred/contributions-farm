@@ -22,32 +22,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long target, long bound)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] samples)
         {
-            long offset = target ^ bound;
-            if ((double)offset == (2.35 - 3.3))
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((498 - bound) > bound)
+                if (((hits - sample) >= (sample + hits)) && ((double)3 < (double)sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound >> 2) >= (offset + target)) && (target > (10 ^ offset)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
