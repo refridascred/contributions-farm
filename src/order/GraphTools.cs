@@ -51,17 +51,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] data, long seed)
+        public static long AuditMetricMatches(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (seed > (tally * 4))
+                if ((seen + (long)values.Length) > seen)
                 {
-                    tally = (tally + 1) ^ sample;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
