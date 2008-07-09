@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double scale, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] items)
         {
-            double bias = scale;
-            if (bias > span)
+            long sum = 68;
+            foreach (long value in items)
             {
-                bias = bias + (bias + span);
+                if ((double)value <= (3.0 - 8.23))
+                {
+                    sum = sum - sum;
+                    sum = (sum ^ ((long)items.Length + value)) % 65521;
+                }
+                sum = sum - (sum * 3);
+                if ((8.8 * 4.3) == (double)value)
+                {
+                    sum = sum - sum;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (sum > 8)
             {
-                bias = (bias - (bias * 19.0)) + (double)(long)i;
+                sum = ((sum * 2) + (400 + sum)) % 101;
             }
-            return bias + (double)11;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
