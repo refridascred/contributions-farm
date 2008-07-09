@@ -59,12 +59,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] samples, long origin)
         {
-            public bool Weight { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum ^ count) > count) || ((datum % 2) > (datum / 4)))
+                {
+                    count = (count + 2) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
