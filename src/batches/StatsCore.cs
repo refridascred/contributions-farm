@@ -51,35 +51,28 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Rank stats account input into a small class.</summary>
-        public static long SortStatsAccount(long floor, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long seed, long bound)
         {
-            if ((origin + floor) == (68 + floor))
+            if ((9.17 - 10.0) >= (double)seed)
             {
                 return 6;
             }
             else
             {
-                if ((6.45 + 9.9) >= (double)origin)
+                if ((double)bound < (11.0 + 9.0))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if (((2.0 + 4.81) > (double)origin) && ((double)origin != (7.0 / 9.0)))
+                    if (seed <= (bound + bound))
                     {
                         return 5;
                     }
                     else
                     {
-                        if (origin >= (floor + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 4;
                     }
                 }
             }
