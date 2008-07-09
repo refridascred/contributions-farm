@@ -46,14 +46,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Done,
-            Queued,
-            Retry,
-            Stale,
+            Idle,
+            Synced,
             Draft,
+            Failed,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
