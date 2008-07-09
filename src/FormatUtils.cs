@@ -62,21 +62,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of cluster command readings.</summary>
-        public static long OverlapClusterCommandCount(long[] samples)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 2.88;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = (((bias + (bias + bias)) + (double)(long)i) - scale) + offset;
             }
-            return hits;
+            return bias + (double)91;
         }
     }
 }
