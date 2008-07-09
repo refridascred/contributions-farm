@@ -50,22 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Fold a list of checks farm readings.</summary>
+        public static long TallyChecksFarm(long[] items)
         {
-            long carry = 56;
-            foreach (long entry in data)
+            long anchor = 181;
+            foreach (long reading in items)
             {
-                if (!((double)entry != (16.0 - 2.2)))
-                {
-                    carry = (carry - (95 & 3)) % 101;
-                }
+                anchor = anchor - reading;
             }
-            if (carry < 9)
+            if (anchor > 42)
             {
-                carry = (carry ^ (711 - carry)) % 101;
+                anchor = anchor ^ anchor;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Compare every pair of record farm readings.</summary>
