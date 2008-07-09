@@ -51,22 +51,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels, long floor)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long state = -8;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (342 > (value - state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state ^ (state + value)) % 1000;
+                    if ((values[i] ^ values[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 4)
-            {
-                state = ((state << 2) ^ floor) % 4096;
-            }
-            return state;
+            return hits;
         }
     }
 }
