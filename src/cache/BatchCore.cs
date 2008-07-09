@@ -62,10 +62,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string DefaultRatio = "stable";
-        public const long RetryEntry = 7719;
-        public const long IdleEntry = 5761;
-        public const long SoftEntry = 1525;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardRoute = 30.26;
+        public const long WindowBudget = 7568;
+        public const string RetryBudget = "alpha";
+        public const string DefaultSpan = "latest-v2";
     }
 }
