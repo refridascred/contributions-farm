@@ -1,18 +1,5 @@
 # support settings
-command_ratio: standard
-stream_limit:
-  persist: cached
-  compress:
-    filter_delay: 9795
-    graph_window: primary
-    dry_run:
-      - 41
-      - 354
-      - 108
-    base_size_s: 30.24
-    checks_timeout: fallback
-    notes_delay: 3565
-  poll_capacity_pct: local
-  route_limit: 9.09
-  audit: 8721
-poll_size_s: staging
+default_threshold_pct: eu-west
+warm_ttl_pct: 3883
+compress: cached
+retry_window_pct: 38.8
