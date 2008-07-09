@@ -48,17 +48,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 5363;
+        public const double HardFactor = 43.12;
+        public const string SoftFormat = "latest-v2";
+        public const string MaxInterval = "primary-v2";
     }
 }
