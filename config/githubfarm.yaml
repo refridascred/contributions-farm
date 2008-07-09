@@ -1,11 +1,20 @@
 # githubfarm settings
-channel_capacity: 9163
-flush_limit_pct: local
-batches_size:
-  hard_window_pct: true
-  hard_interval_pct: 33
-  compress: 37.49
-  sync_interval_count: standard
-  checks_interval: 500
-metrics_retries: 45
-poll_delay_s: 4556
+retry_size_s:
+  - 5
+  - 285
+  - 466
+hard_retries_ms:
+  burst_ratio_s: 1024
+  warm_threshold_pct: false
+  base_timeout_s: eu-west
+cache_threshold: false
+dry_run:
+  - 286
+  - 355
+  - 47
+  - 442
+format_threshold: 100
+sync_ttl:
+  - 182
+  - 102
+  - 154
