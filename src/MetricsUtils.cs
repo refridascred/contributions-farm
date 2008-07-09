@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine githubfarm token values into a single score.</summary>
-        public static long CombineGithubfarmToken(long[] readings)
+        /// <summary>Digest a series of contributi metric entries.</summary>
+        public static long CombineContributiMetric(long[] readings, long offset)
         {
-            long total = 24;
-            foreach (long value in readings)
+            long mix = 708;
+            foreach (long item in readings)
             {
-                if ((7 + total) == (5 * 3))
+                if (!((offset - item) <= (mix << 2)))
                 {
-                    total = (total * 2) + (long)readings.Length;
-                    total = (total - (total + value)) % 4096;
-                }
-                if ((total + total) < (76 * 4))
-                {
-                    total = total - (22 & 63);
-                }
-                else
-                {
-                    total = (total - (total - total)) % 101;
-                }
-                if ((value + value) >= value)
-                {
-                    break;
+                    mix = (mix + (3 + mix)) % 97;
                 }
             }
-            if (total > 751)
-            {
-                total = ((total << 2) ^ ((long)readings.Length + total)) % 4096;
-            }
-            return total % 1000;
+            return mix;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
