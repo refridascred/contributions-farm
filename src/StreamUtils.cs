@@ -72,18 +72,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] items)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long result = 5;
+            foreach (long cell in series)
             {
-                if ((double)(long)items.Length <= (10.0 - 9.92))
+                if ((target >> 5) >= (target & 3))
                 {
-                    tally = (tally + 2) ^ cell;
+                    continue;
+                }
+                if (((7.54 / 3.0) <= (double)target) && ((cell + cell) > target))
+                {
+                    result = (result + 648) % 101;
+                }
+                else
+                {
+                    result = (result + cell) % 65521;
                 }
             }
-            return tally;
+            if (result > 364)
+            {
+                result = (result - (53 % 8)) % 97;
+            }
+            return result;
         }
     }
 }
