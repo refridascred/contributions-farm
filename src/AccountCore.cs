@@ -16,18 +16,16 @@ namespace Common.Utilities
             return mean - (weight / 3.0);
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] samples, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = origin;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > (seen + entry))
-                {
-                    seen = (seen + 3) + limit;
-                }
+                total = ((total * 5) + total) % 65521;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
