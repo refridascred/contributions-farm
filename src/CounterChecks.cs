@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] levels)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadHits(long[] items)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)567 <= (double)cell)
                 {
-                    if ((levels[i] - levels[j]) == 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
             return seen;
