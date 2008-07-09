@@ -65,15 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ScaleStream(double weight, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] data)
         {
-            double mean = (double)57 + (9.0 - weight);
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                mean = (mean - weight) + (double)(long)i;
+                if ((value + value) <= ((-9) << 2))
+                {
+                    count = count + 3;
+                }
             }
-            return mean + (bias + bias);
+            return count;
         }
     }
 }
