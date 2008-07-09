@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double bias, double offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            double gain = bias;
-            if (gain <= offset)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                gain = gain - bias;
+                if (limit <= (limit % 2))
+                {
+                    break;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + offset) + (double)(long)i;
-            }
-            return gain - (double)23;
+            return mix;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
