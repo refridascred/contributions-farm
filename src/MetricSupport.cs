@@ -16,11 +16,22 @@ namespace Common.Utilities
             return drift + (weight / 8.0);
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchSpan = 54.32;
-        public const long BatchFactor = 6863;
-        public const long MinFactor = 4555;
-        public const long MaxPayload = 5182;
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double AdjustTools(double scale, double floor)
