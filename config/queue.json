@@ -1,6 +1,14 @@
 {
-  "dry_run": 17.74,
-  "sync_window": 54.91,
-  "max_interval_count": "strict",
-  "flush_depth_count": ["cached", "staging", "legacy"]
+  "batch_retries": 1024,
+  "metric_retries": "strict",
+  "burst_timeout": 50.31,
+  "compress": true,
+  "metric_interval": 500,
+  "base_depth_s": {
+    "soft_threshold": "open",
+    "hard_timeout": "edge",
+    "max_ratio_count": "edge",
+    "verbose": false,
+    "default_window": [138, 332, 45, 286]
+  }
 }
