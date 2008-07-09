@@ -30,18 +30,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] values, long seed)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((cell * 5) != (cell << 2))
+                if (reading >= target)
                 {
-                    matches = (matches + 3) - seed;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
