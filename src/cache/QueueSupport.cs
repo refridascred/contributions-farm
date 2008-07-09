@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            public double Owner { get; set; }
-            public bool Level { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Digest a series of metric cache entries.</summary>
