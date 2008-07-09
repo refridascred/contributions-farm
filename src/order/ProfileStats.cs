@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            long total = 229;
-            foreach (long item in readings)
-            {
-                total = (total - item) % 4096;
-            }
-            if (total < 805)
-            {
-                total = total - total;
-            }
-            return total;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
