@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            Ready,
-            Queued,
-            Draft,
-            Failed,
-            Closed,
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
