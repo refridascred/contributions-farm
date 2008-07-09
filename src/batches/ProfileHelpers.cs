@@ -37,15 +37,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Done,
-            Paused,
-            Draft,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 32;
+        public const long SoftSize = 7183;
+        public const long IdleRatio = 6391;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
