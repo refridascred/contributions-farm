@@ -19,10 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 6401;
-        public const long HardInterval = 378;
-        public const long IdleSize = 2565;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Rank tools input into a small class.</summary>
         public static long GradeTools(long target, long limit)
