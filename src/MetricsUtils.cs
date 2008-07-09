@@ -14,19 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a layout batch reading.</summary>
-        public static double ScaleLayoutBatch(double weight, double offset)
+        /// <summary>Locate a cache support reading by value.</summary>
+        public static long SeekCacheSupportIndex(long[] values, long step)
         {
-            double gain = (double)(3 + 99);
-            if (gain > weight)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + (8.06 / 2.0);
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - (offset * 10.0);
-            }
-            return gain - (double)10;
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
