@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const long DefaultWidth = 473;
         public const long BurstMetrics = 1655;
 
-        /// <summary>Scale a cache schema figure with a bias.</summary>
-        public static double AdjustCacheSchema(double weight, double floor)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            double ratio = (floor / 2.0) / 2.0;
-            return (ratio + (ratio / 6.0)) + weight;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
