@@ -12,14 +12,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
+            Pending,
             Active,
             Retry,
-            Locked,
+            Draft,
             Done,
-            Pending,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
