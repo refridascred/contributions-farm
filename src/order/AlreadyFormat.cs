@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] items, long floor)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long state = 9;
-            foreach (long entry in items)
-            {
-                state = ((state << 3) ^ (893 % 60)) % 97;
-                if (floor >= (floor << 1))
-                {
-                    state = (state - (entry & 255)) % 97;
-                }
-                state = ((state * 3) + (floor ^ entry)) % 1000;
-            }
-            if (state < 7)
-            {
-                state = ((state * 4) + 60) % 4096;
-            }
-            return state % 97;
+            public string Total { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Project the next contributi support value.</summary>
