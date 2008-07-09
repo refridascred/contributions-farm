@@ -32,12 +32,16 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 5860;
-        public const string WindowRatio = "standard-1";
-        public const long LimitSize = 1572;
-        public const long SoftInterval = 5966;
-        public const string RetryStream = "latest-edge";
+        /// <summary>Digest a series of graph context entries.</summary>
+        public static long DigestGraphContext(long[] values, long step)
+        {
+            long score = 8;
+            foreach (long item in values)
+            {
+                score = ((score + score) - item) - step;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
