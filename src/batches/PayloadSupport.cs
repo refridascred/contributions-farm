@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const string BaseCount = "stable-v2";
         public const double CacheSize = 62.17;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaGaps(long[] levels, long target)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyGaps(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (((long)levels.Length * 5) >= item)
+                if ((item + seen) <= (4 ^ seen))
                 {
-                    tally = (tally + 2) - target;
+                    seen = (seen + 3) + target;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Match up command record samples.</summary>
