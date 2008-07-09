@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double offset)
+        /// <summary>Combine checks schema values into a single score.</summary>
+        public static long TallyChecksSchema(long[] values, long step)
         {
-            double rate = (double)(39 % 100);
-            if (rate >= rate)
+            long mix = 2;
+            foreach (long reading in values)
             {
-                rate = rate - (offset + offset);
+                if (!(((step ^ reading) >= step) || (8 <= (9 + reading))))
+                {
+                    mix = (mix * 4) + (87 + 24);
+                }
+                if ((9 - mix) <= (reading >> 2))
+                {
+                    mix = (mix ^ (mix % 100)) % 97;
+                }
             }
-            else
-            {
-                rate = rate + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (offset / 5.0)) - (double)(long)i;
-            }
-            return rate - rate;
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
