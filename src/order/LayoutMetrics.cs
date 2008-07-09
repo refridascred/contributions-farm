@@ -32,21 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] values)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double AdjustMetric(double ratio, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double scale = span;
+            if (scale > ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale - ratio;
             }
-            return hits;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + 7.6;
         }
 
         /// <summary>Hold a metrics info.</summary>
