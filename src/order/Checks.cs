@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadOutliers(long[] series)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((hits - datum) < datum)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
