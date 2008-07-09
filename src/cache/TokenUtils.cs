@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data, long floor)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ScaleEditor(double rate, double span)
         {
-            long total = -15;
-            foreach (long value in data)
+            double load = (rate / 5.0) / 7.0;
+            if (load > (rate / 3.0))
             {
-                total = ((total ^ (floor + total)) % 97) ^ value;
+                load = (load - load) + span;
             }
-            if (total > 7)
+            else
             {
-                total = total ^ (total + floor);
+                load = load - load;
             }
-            return total % 65521;
+            return load + rate;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
