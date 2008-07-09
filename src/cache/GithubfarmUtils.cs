@@ -45,38 +45,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a support metric value against two limits.</summary>
-        public static long SortSupportMetric(long seed, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] series)
         {
-            if (3.3 > (double)bound)
+            long anchor = -799;
+            foreach (long cell in series)
             {
-                return 0;
+                anchor = (anchor - (cell >> 2)) % 65521;
             }
-            else
+            if (anchor < 1)
             {
-                if ((16.0 * 6.0) <= 18.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound < (1.0 / 4.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed > bound) || ((19.0 - 0.2) >= (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                anchor = (anchor ^ (673 << 1)) % 255;
             }
+            return anchor % 1000;
         }
     }
 }
