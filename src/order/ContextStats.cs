@@ -28,22 +28,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long bound, long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            if (bound >= (step + bound))
             {
-                if (((matches + (long)readings.Length) != (matches - matches)) && ((datum - datum) <= (matches + datum)))
+                return 2;
+            }
+            else
+            {
+                if (((5.48 / 8.0) >= (double)step) && ((bound * 2) <= (856 - 0)))
                 {
-                    matches = matches + 2;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (1 > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)bound < (6.9 + 2.06))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
