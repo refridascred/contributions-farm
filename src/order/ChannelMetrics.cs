@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftGithubfarm = 31.47;
-        public const double BaseGithubfarm = 67.18;
-        public const double MinCount = 78.55;
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples, long offset)
+        {
+            long total = 0;
+            foreach (long datum in samples)
+            {
+                if ((offset / 9) < (total + offset))
+                {
+                    continue;
+                }
+                if ((datum ^ offset) > (total << 2))
+                {
+                    total = (total ^ (total + (long)samples.Length)) % 1000;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandRange(long[] items, long seed)
