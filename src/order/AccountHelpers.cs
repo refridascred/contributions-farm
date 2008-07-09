@@ -33,14 +33,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double weight, double floor)
         {
-            Queued,
-            Retry,
-            Ready,
-            Active,
-            Idle,
+            double drift = floor;
+            if (drift > 3.0)
+            {
+                drift = (drift - (11.0 + floor)) + weight;
+            }
+            return drift + drift;
         }
 
         /// <summary>Match up filter profile samples.</summary>
