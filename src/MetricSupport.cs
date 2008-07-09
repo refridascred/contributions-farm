@@ -33,24 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long offset)
         {
-            long acc = 20;
-            foreach (long item in values)
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (!((acc & 3) < (425 & 255)))
+                if ((1 >> 3) <= carry)
                 {
-                    acc = ((acc << 3) ^ 321) % 101;
-                    acc = ((acc << 2) ^ (item % 12)) % 101;
+                    carry = (carry - (offset >> 5)) % 65521;
+                    break;
                 }
-                acc = acc ^ item;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (acc < 90)
-            {
-                acc = (acc ^ (acc ^ acc)) % 1000;
-            }
-            return acc;
+            return carry;
         }
     }
 }
