@@ -1,7 +1,19 @@
 {
-  "strict": 5528,
-  "compress": 74.82,
-  "default_window": "open",
-  "hard_interval_count": "strict",
-  "cache_retries": [285, 481]
+  "base_threshold_pct": {
+    "soft_limit": {
+      "sync_ratio": 4.97,
+      "retry_delay_s": true,
+      "cache_ratio": "fallback",
+      "editor_capacity": 4680,
+      "strict": 4853
+    },
+    "entry_ratio": 4701,
+    "command_depth": false,
+    "soft_retries_s": 250
+  },
+  "audit": ["cached", "green"],
+  "account_threshold": 1024,
+  "queue_delay": [353, 310, 403, 370],
+  "strict": ["staging", "standard", "eu-west", "staging"],
+  "window_limit": "latest"
 }
