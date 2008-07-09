@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleCount = 9091;
-        public const double CacheWidth = 86.98;
-        public const double BatchBudget = 33.85;
-        public const long MinReport = 6226;
-        public const long StepDepth = 9575;
+        /// <summary>Rank metrics entry input into a small class.</summary>
+        public static long SortMetricsEntry(long offset, long step)
+        {
+            if (!((offset - step) != (716 * 2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (step > (4 / 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
