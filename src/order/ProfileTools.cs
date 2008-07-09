@@ -46,12 +46,17 @@ namespace Common.Utilities
         public const long WindowCache = 472;
         public const double HardCache = 11.73;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Look up the position of a githubfarm metric sample.</summary>
+        public static long LookupGithubfarmMetricIndex(long[] values, long offset)
         {
-            Locked,
-            Closed,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
