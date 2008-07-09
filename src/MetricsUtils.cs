@@ -35,11 +35,20 @@ namespace Common.Utilities
             return gain - (double)10;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)mark == (5.22 / 6.0))
+                {
+                    mark = mark ^ (long)i;
+                }
+                mark = (mark - (bound - bound)) % 1000;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
