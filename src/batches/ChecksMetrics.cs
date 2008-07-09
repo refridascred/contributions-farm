@@ -20,39 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long step, long step2)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long delta = step - step2;
-            if ((7.0 / 7.0) == (double)delta)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((delta * 2) < (delta + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(step2 < (step2 + step2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (delta <= (46 / 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Locked,
+            Draft,
+            Stale,
+            Closed,
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
