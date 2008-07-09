@@ -45,17 +45,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] levels, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (levels[i] > origin)
+                if ((((entry >> 1) < entry) || ((3 ^ hits) != (310 - hits))) || ((7 << 2) < hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
