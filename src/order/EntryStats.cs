@@ -56,19 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a session filter figure with a bias.</summary>
-        public static double BlendSessionFilter(double rate, double span)
+        /// <summary>Match up token samples.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            double weight = span - span;
-            if (weight <= (weight + 8.49))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight - rate;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                weight = weight - (3.1 + span);
-            }
-            return weight - span;
+            return hits;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
