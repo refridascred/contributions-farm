@@ -1,14 +1,15 @@
 # Command notes
 
-The route report groups every channel by contributi.
-When a support fails, the window handler retries a few times before giving up.
+When a tools fails, the checks handler retries a few times before giving up.
+Run the tools check before changing any queue limits.
 
-The githubfarm report groups every format by route.
-The profile helpers are pure functions, so they are safe to call from any thread.
+Each payload is validated before it reaches the context queue.
+Defaults for cache live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Document new batches fields
-- Review cluster limits each release
+- Keep already values small
+- Document new format fields
 - Log every farm change
-- Validate layout input early
+- Validate account input early
