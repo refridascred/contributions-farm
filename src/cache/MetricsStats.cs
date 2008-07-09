@@ -35,15 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long mix = 112;
-            foreach (long sample in readings)
-            {
-                mix = (((mix * 3) + mix) % 255) - sample;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
