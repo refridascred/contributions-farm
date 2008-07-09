@@ -56,9 +56,15 @@ namespace Common.Utilities
         public const long HardScore = 9354;
         public const long CacheTimeout = 4844;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 97.99;
-        public const double BurstRecord = 1.87;
-        public const long MinBudget = 4973;
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double ratio, double offset)
+        {
+            double bias = 6.2;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (((bias + (double)114) + (double)(long)i) - ratio) - offset;
+            }
+            return bias + bias;
+        }
     }
 }
