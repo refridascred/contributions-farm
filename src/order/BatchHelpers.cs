@@ -33,23 +33,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double rate, double floor)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            double weight = rate + (double)574;
-            if (weight <= (rate / 6.0))
-            {
-                weight = (weight - rate) + floor;
-            }
-            else
-            {
-                weight = weight - 15.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - rate;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of counter channel readings.</summary>
