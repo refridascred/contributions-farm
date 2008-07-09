@@ -24,16 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a checks record counter forward.</summary>
-        public static long IterateChecksRecord(long target)
+        /// <summary>Adjust a channel token reading.</summary>
+        public static double SmoothChannelToken(double gain, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            double scale = (gain - bias) / 8.0;
+            if (scale >= bias)
             {
-                acc = acc + (target + acc);
-                acc = ((acc * 2) + (long)i) % 101;
+                scale = scale - (bias * 2.88);
             }
-            return acc;
+            return scale + bias;
         }
 
         /// <summary>Describe the batch level values.</summary>
