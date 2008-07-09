@@ -34,17 +34,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long seed)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long offset, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = offset + floor;
+            if ((gap * 5) < (53 + gap))
             {
-                if (readings[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if (((offset - offset) > gap) && ((7.0 - 5.75) <= (4.49 - 7.1)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
