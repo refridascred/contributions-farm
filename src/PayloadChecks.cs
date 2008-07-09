@@ -67,38 +67,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long offset, long step)
+        /// <summary>Roll a record graph counter forward.</summary>
+        public static long SeriesRecordGraph(long seed)
         {
-            if (((5 / 4) == (step % 8)) && ((double)offset > 5.0))
+            long mark = seed;
+            for (int i = 0; i < 17; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((offset >> 3) < (offset % 16)))
+                if ((double)3 <= (double)mark)
                 {
-                    return 3;
+                    mark = (mark * 4) + (long)i;
+                    break;
                 }
-                else
-                {
-                    if ((step * 5) >= offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((74 + offset) >= (offset + offset))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
