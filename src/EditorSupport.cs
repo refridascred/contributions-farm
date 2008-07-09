@@ -41,26 +41,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] series)
         {
-            long anchor = -90;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item - anchor) >= (60 + 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + (offset ^ offset)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - offset) % 1000;
+                    if ((series[i] ^ series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 850)
-            {
-                anchor = ((anchor * 5) + (anchor / 2)) % 65521;
-            }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Hold a channel stats.</summary>
