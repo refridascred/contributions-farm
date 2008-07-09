@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] samples, long offset)
         {
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)matches == (9.92 / 5.0))
+                {
+                    matches = ((matches + 3) + entry) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a token reading.</summary>
