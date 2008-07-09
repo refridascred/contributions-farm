@@ -74,11 +74,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 6171;
-        public const double SoftEditor = 84.94;
-        public const long BaseWidth = 8499;
-        public const string BaseEditor = "alpha-v2";
-        public const double BaseDepth = 94.35;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] readings)
+        {
+            long sum = 3;
+            foreach (long datum in readings)
+            {
+                if (!((sum << 2) != ((long)readings.Length - datum)))
+                {
+                    sum = (sum + (sum >> 5)) % 4096;
+                }
+            }
+            if (sum < 59)
+            {
+                sum = sum ^ (5 >> 1);
+            }
+            return sum;
+        }
     }
 }
