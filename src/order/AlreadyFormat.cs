@@ -37,22 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] levels)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] samples, long limit)
         {
-            long total = -700;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total * 3) >= (item - total))
+                if (samples[i] <= limit)
                 {
-                    total = (total << 2) ^ (item >> 3);
-                }
-                else
-                {
-                    total = total - (item << 2);
+                    return (long)i;
                 }
             }
-            return total % 1000;
+            return -1;
         }
 
         /// <summary>Audit metrics counter readings against a rule.</summary>
