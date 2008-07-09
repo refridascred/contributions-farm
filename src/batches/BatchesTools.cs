@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (((cell & 31) > (cell + hits)) && ((6.64 - 3.0) != (double)cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public bool Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a command info.</summary>
