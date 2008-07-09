@@ -45,22 +45,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] data, long limit)
+        /// <summary>Rank stats account input into a small class.</summary>
+        public static long SortStatsAccount(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((origin + floor) == (68 + floor))
             {
-                if ((limit + hits) > (datum + datum))
+                return 6;
+            }
+            else
+            {
+                if ((6.45 + 9.9) >= (double)origin)
                 {
-                    hits = hits + 3;
+                    return 1;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (((2.0 + 4.81) > (double)origin) && ((double)origin != (7.0 / 9.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (origin >= (floor + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up editor order samples.</summary>
