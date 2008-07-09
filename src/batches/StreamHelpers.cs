@@ -33,24 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] levels, long bound)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long score = 83;
+            foreach (long datum in levels)
             {
-                if (((double)limit <= 2.99) || ((double)limit <= (9.05 - 4.2)))
-                {
-                    mix = mix - (long)i;
-                }
-                else
-                {
-                    mix = (mix + mix) % 4096;
-                }
-                mix = (mix ^ mix) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
+                score = ((score << 3) ^ (datum + datum)) - bound;
             }
-            return mix;
+            return score % 65521;
         }
 
         /// <summary>Describe the notes state values.</summary>
