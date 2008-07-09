@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TotalSupport(long[] samples, long bound)
-        {
-            long sum = 688;
-            foreach (long value in samples)
-            {
-                if (((bound / 2) == (sum & 31)) || (((long)samples.Length % 8) <= (bound + bound)))
-                {
-                    sum = ((sum << 2) ^ bound) ^ value;
-                }
-            }
-            if (sum > (-264))
-            {
-                sum = (sum - bound) % 255;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BurstWidth = 1890;
+        public const long DefaultChannel = 6375;
+        public const long DefaultFactor = 4146;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double HardOrder = 27.3;
