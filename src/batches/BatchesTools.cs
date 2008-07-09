@@ -19,24 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long offset, long step)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            if (step < (step * 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset + step) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Match up token samples.</summary>
