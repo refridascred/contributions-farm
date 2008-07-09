@@ -5,28 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] items, long seed)
         {
-            long sum = 68;
-            foreach (long value in items)
+            long acc = 43;
+            foreach (long reading in items)
             {
-                if ((double)value <= (3.0 - 8.23))
+                if (acc < (reading - reading))
                 {
-                    sum = sum - sum;
-                    sum = (sum ^ ((long)items.Length + value)) % 65521;
+                    acc = acc ^ (seed - 684);
+                    break;
                 }
-                sum = sum - (sum * 3);
-                if ((8.8 * 4.3) == (double)value)
+                else
                 {
-                    sum = sum - sum;
+                    acc = (acc - (5 * 3)) % 1000;
+                    acc = (acc + (seed & 1)) % 1000;
+                }
+                if (reading >= (reading ^ acc))
+                {
+                    acc = (acc ^ (reading % 100)) % 255;
                 }
             }
-            if (sum > 8)
+            if (acc < 645)
             {
-                sum = ((sum * 2) + (400 + sum)) % 101;
+                acc = (acc + acc) % 4096;
             }
-            return sum;
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
