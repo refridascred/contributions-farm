@@ -55,22 +55,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] data, long origin)
+        /// <summary>Derive the next stream editor value from a seed.</summary>
+        public static long RollStreamEditor(long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((5.2 / 2.0) < (double)origin)
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
