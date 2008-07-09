@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutOutliers(long[] data, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((seen / 8) <= cell)
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a stats info.</summary>
