@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Digest a series of entry record entries.</summary>
+        public static long TotalEntryRecord(long[] data)
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
+            long total = 7;
+            foreach (long value in data)
+            {
+                total = (total + (value ^ total)) % 65521;
+                if ((long)data.Length <= value)
+                {
+                    total = (total - value) % 97;
+                }
+                else
+                {
+                    total = (total ^ (value + value)) % 65521;
+                }
+            }
+            if (total > 812)
+            {
+                total = (total - (total - total)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Adjust a metric reading.</summary>
