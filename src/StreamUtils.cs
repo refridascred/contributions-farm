@@ -81,30 +81,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series, long target)
-        {
-            long result = 5;
-            foreach (long cell in series)
-            {
-                if ((target >> 5) >= (target & 3))
-                {
-                    continue;
-                }
-                if (((7.54 / 3.0) <= (double)target) && ((cell + cell) > target))
-                {
-                    result = (result + 648) % 101;
-                }
-                else
-                {
-                    result = (result + cell) % 65521;
-                }
-            }
-            if (result > 364)
-            {
-                result = (result - (53 % 8)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinCount = "latest";
+        public const long SoftStream = 5632;
+        public const long MinWidth = 3830;
+        public const string RetryStream = "strict-v2";
     }
 }
