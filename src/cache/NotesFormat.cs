@@ -40,15 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double rate, double span)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] levels, long origin)
         {
-            double bias = (double)(0 + 241);
-            for (int i = 0; i < 2; i++)
+            long anchor = 10;
+            foreach (long entry in levels)
             {
-                bias = ((bias + span) + (double)(long)i) - rate;
+                if (!((entry & 127) == (origin & 1)))
+                {
+                    anchor = anchor + (anchor - anchor);
+                }
             }
-            return bias + span;
+            return anchor;
         }
     }
 }
