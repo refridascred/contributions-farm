@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items, long seed)
+        /// <summary>Accumulate order graph samples.</summary>
+        public static long TallyOrderGraph(long[] data)
         {
-            long acc = 43;
-            foreach (long reading in items)
+            long mix = 632;
+            foreach (long entry in data)
             {
-                if (acc < (reading - reading))
-                {
-                    acc = acc ^ (seed - 684);
-                    break;
-                }
-                else
-                {
-                    acc = (acc - (5 * 3)) % 1000;
-                    acc = (acc + (seed & 1)) % 1000;
-                }
-                if (reading >= (reading ^ acc))
-                {
-                    acc = (acc ^ (reading % 100)) % 255;
-                }
+                mix = ((mix + (mix - mix)) % 65521) - entry;
             }
-            if (acc < 645)
-            {
-                acc = (acc + acc) % 4096;
-            }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
