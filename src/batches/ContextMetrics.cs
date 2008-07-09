@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] data, long step)
         {
-            long acc = 6;
-            foreach (long entry in items)
+            long mix = -2;
+            foreach (long item in data)
             {
-                if (!((entry << 3) < (entry + acc)))
-                {
-                    acc = (acc * 3) + (acc / 2);
-                }
-                else
-                {
-                    acc = (acc ^ (acc + acc)) % 1000;
-                }
+                mix = ((mix << 2) ^ (54 % 64)) + item;
             }
-            return acc % 1000;
+            if (mix < 3)
+            {
+                mix = ((mix << 2) ^ (step - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
