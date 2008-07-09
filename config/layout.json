@@ -1,14 +1,13 @@
 {
-  "burst_depth_ms": 18,
-  "max_delay_count": 521,
-  "audit": "open",
-  "default_ratio_ms": 85.46,
-  "metric_retries": 100,
-  "warm_capacity_pct": {
-    "soft_ratio": 33,
-    "session_ratio": ["open", "local", "local", "latest"],
-    "min_capacity": "open",
-    "warm_retries_ms": "open",
-    "tools_ratio": 60
-  }
+  "readonly": 1946,
+  "dry_run": {
+    "readonly": 500,
+    "base_size_s": 250,
+    "format_depth": "strict",
+    "min_delay_s": "latest",
+    "batch_threshold_pct": 93
+  },
+  "hard_timeout_ms": "staging",
+  "soft_ttl": true,
+  "flush_ratio_count": ["stable", "stable", "open", "local"]
 }
