@@ -1,6 +1,5 @@
 {
-  "order_window": 60,
-  "order_limit": true,
-  "batches_limit": 98,
-  "max_limit": 100
+  "min_delay": "open",
+  "session_ratio": [245, 345, 484, 149],
+  "min_depth": "open"
 }
