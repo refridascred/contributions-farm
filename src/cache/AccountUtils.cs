@@ -24,17 +24,18 @@ namespace Common.Utilities
         public const double LimitInterval = 40.88;
         public const double WindowSession = 90.05;
 
-        /// <summary>Locate a format counter reading by value.</summary>
-        public static long LookupFormatCounterIndex(long[] levels, long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] samples, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
+                if (!!((73 + 98) >= (value + value)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
