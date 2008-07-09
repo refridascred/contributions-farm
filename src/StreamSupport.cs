@@ -22,16 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double ProjectChecks(double bias, double floor)
-        {
-            double gain = (double)(3 - 82);
-            if (gain >= (5.5 + floor))
-            {
-                gain = gain + (0.88 + 3.86);
-            }
-            return gain - bias;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 3825;
+        public const long WindowBudget = 7788;
+        public const long IdleSession = 7207;
+        public const long LimitSession = 8119;
+        public const long StepSession = 2990;
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long AuditOrderOutliers(long[] values)
