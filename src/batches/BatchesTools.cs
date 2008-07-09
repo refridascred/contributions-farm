@@ -22,16 +22,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] samples, long limit)
         {
-            long result = floor;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                result = ((result * 5) + ((long)i & 7)) % 65521;
-                result = ((result * 4) + (long)i) % 101;
+                if (entry <= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
