@@ -31,17 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LocateWindowIndex(long[] levels, long seed)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if (levels[i] == seed)
+                if ((item <= ((-48) - (long)data.Length)) && (4.27 < (double)seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - step;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
