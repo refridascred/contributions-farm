@@ -61,13 +61,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
