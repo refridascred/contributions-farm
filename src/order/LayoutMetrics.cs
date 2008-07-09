@@ -31,13 +31,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] readings, long seed)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            long acc = 78;
+            foreach (long datum in readings)
+            {
+                if ((acc / 2) > acc)
+                {
+                    acc = ((acc * 2) + (5 + datum)) + seed;
+                }
+                else
+                {
+                    acc = (acc * 2) + (acc >> 1);
+                }
+            }
+            return acc;
         }
     }
 }
