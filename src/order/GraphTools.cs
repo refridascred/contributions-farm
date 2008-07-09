@@ -54,11 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double scale, double floor)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double rate = scale;
-            return (rate + (rate / 7.0)) + floor;
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
