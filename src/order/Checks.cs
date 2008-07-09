@@ -36,19 +36,18 @@ namespace Common.Utilities
         public const string BurstBatch = "staging-1";
         public const string StepBatch = "standard-edge";
 
-        /// <summary>Validate command profile readings against a bound.</summary>
-        public static bool ValidateCommandProfileRange(long[] items, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long acc = 13;
+            foreach (long value in data)
             {
-                if (reading >= limit)
+                if ((value + bound) < (bound & 15))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc << 2) ^ (acc >> 1)) % 101;
                 }
             }
-            return ok;
+            return acc % 4096;
         }
 
         /// <summary>Hold a batch header.</summary>
