@@ -25,13 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Done,
-            Failed,
-            Stale,
-            Ready,
+            public bool Label { get; set; }
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the order level values.</summary>
