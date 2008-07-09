@@ -22,14 +22,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
             Failed,
-            Paused,
-            Draft,
+            Dropped,
+            Locked,
             Idle,
-            Active,
+            Draft,
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
