@@ -71,15 +71,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LocateSchemaIndex(long[] samples, long target)
         {
-            double rate = 0.64;
-            if (rate >= rate)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (double)18) - offset;
+                if ((samples[i] >= target) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (scale * 3.4);
+            return -1;
         }
     }
 }
