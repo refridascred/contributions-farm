@@ -26,19 +26,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long seed)
         {
-            long state = -2;
-            foreach (long item in samples)
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state + (item + item)) % 101;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (state > (-44))
-            {
-                state = state - state;
-            }
-            return state % 1000;
+            return mix;
         }
     }
 }
