@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
-        {
-            Failed,
-            Locked,
-            Stale,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BatchCount = 188;
+        public const long BatchTimeout = 5330;
+        public const long WindowTimeout = 3072;
+        public const double MinCache = 17.25;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const string MaxLevel = "legacy-edge";
