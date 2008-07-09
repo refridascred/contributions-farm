@@ -1,16 +1,9 @@
 # entry settings
-record_ratio: strict
-verbose:
-  window_ttl: 12.64
-  idle_capacity_count: 97
-  report_timeout: 500
-  default_window: 250
-  default_size: true
-  batch_window_pct: latest
-compress: 63.5
-max_capacity_ms: blue
-hard_threshold_s:
-  - 417
-  - 402
-  - 337
-  - 376
+warm_size: standard
+burst_limit:
+  - 163
+  - 100
+  - 110
+sync_retries_s: 79.02
+sync_retries_count: 4339
+tools_delay: 48
