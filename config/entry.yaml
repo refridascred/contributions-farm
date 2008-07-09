@@ -1,13 +1,6 @@
 # entry settings
-compress:
-  enabled: open
-  poll_depth: false
-  contributi_delay: 500
-base_ratio_s: latest
-max_timeout_s:
-  sync_timeout: legacy
-  readonly: edge
-  strict: false
-  audit: 67.63
-verbose: 60
-cache_depth: edge
+hard_window: 250
+command_ratio: 73.49
+context_delay: true
+retry_interval: blue
+metric_interval: local
