@@ -63,13 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] data)
         {
-            Closed,
-            Pending,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum >> 5) <= (datum + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
