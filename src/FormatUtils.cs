@@ -86,15 +86,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double offset)
+        /// <summary>Validate cluster order readings against a bound.</summary>
+        public static bool GuardClusterOrderBounds(long[] samples, long bound)
         {
-            double bias = 2.88;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                bias = (((bias + (bias + bias)) + (double)(long)i) - scale) + offset;
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return bias + (double)91;
+            return valid;
         }
     }
 }
