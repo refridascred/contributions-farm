@@ -46,13 +46,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Accumulate session tools samples.</summary>
+        public static long CombineSessionTools(long[] series, long origin)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long total = 21;
+            foreach (long sample in series)
+            {
+                if ((origin - total) == (sample % 24))
+                {
+                    total = (total * 2) + 39;
+                }
+            }
+            return total % 97;
         }
     }
 }
