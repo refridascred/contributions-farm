@@ -42,24 +42,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long offset)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long limit)
         {
-            if ((895 & 7) < (step + step))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset ^ 3) > (58 >> 5))
+                if (readings[i] > limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
