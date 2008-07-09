@@ -12,26 +12,18 @@ namespace Common.Utilities
         public const long StepScore = 4241;
         public const string CacheWidth = "open";
 
-        /// <summary>Fold a list of counter metric readings.</summary>
-        public static long CombineCounterMetric(long[] samples)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] items, long offset)
         {
-            long anchor = -321;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((anchor / 2) >= item)
+                if ((2.6 * 1.68) < (double)tally)
                 {
-                    anchor = (anchor + anchor) % 255;
-                }
-                else
-                {
-                    anchor = anchor - 3;
-                }
-                if (anchor <= (61 + (long)samples.Length))
-                {
-                    break;
+                    tally = ((tally + 1) ^ value) + offset;
                 }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a notes stats.</summary>
