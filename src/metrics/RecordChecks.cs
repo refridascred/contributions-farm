@@ -32,12 +32,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            Failed,
-            Synced,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
