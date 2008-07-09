@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long floor, long step)
         {
-            Ready,
-            Done,
-            Draft,
+            if ((step << 3) < floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((8.0 * 7.4) == (double)step) || ((double)floor < (5.49 / 5.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a metric counter forward.</summary>
