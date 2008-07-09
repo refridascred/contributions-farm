@@ -62,38 +62,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long floor, long floor2)
+        /// <summary>Measure how many context profile samples are out of range.</summary>
+        public static long CountContextProfileHits(long[] data, long floor)
         {
-            if (floor2 > (floor2 - floor))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) <= floor2)
+                if (!((double)floor >= (7.6 / 9.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((7 >> 4) > ((-75) - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor2 << 1) == (5 - 8))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) + sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
