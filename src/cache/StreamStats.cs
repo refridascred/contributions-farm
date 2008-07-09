@@ -56,17 +56,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] samples, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -95;
+            foreach (long sample in values)
             {
-                if (samples[i] < seed)
+                sum = ((sum << 3) ^ sample) % 255;
+                if (15.0 <= (double)sum)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (sum > 4)
+            {
+                sum = (sum - sum) % 1000;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
