@@ -20,24 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long BucketFarm(long offset, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] samples, long step)
         {
-            if (!(target <= offset))
+            bool valid = true;
+            foreach (long value in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target + offset) == (offset - offset))
+                if (value <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Combine token values into a single score.</summary>
