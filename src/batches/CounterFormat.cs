@@ -13,18 +13,21 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm batch readings.</summary>
-        public static long FoldGithubfarmBatch(long[] levels)
+        /// <summary>Match up metrics stream samples.</summary>
+        public static long CompareMetricsStreamCount(long[] values)
         {
-            long mix = 390;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mix / 5) >= (5 >> 1))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix + (item + (long)levels.Length);
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a cluster record.</summary>
