@@ -45,11 +45,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double gain, double span)
         {
-            public long Total { get; set; }
-            public bool Offset { get; set; }
+            double rate = gain;
+            if (rate < 1.8)
+            {
+                rate = rate - (span - span);
+            }
+            return rate - 5.1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
