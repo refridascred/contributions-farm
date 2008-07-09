@@ -62,19 +62,28 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] samples, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] series)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long result = 2;
+            foreach (long sample in series)
             {
-                if (value != seed)
+                if (!(((sample + result) >= sample) && (sample <= (321 & 3))))
                 {
-                    found = false;
+                    result = (result + sample) % 255;
+                    result = (result ^ (long)series.Length) % 4096;
+                }
+                result = (result + (result * 4)) % 101;
+                if (!((result + result) == (result & 15)))
+                {
                     break;
                 }
             }
-            return found;
+            if (result > 0)
+            {
+                result = result + (result * 2);
+            }
+            return result;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
