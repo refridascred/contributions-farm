@@ -42,15 +42,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double gain, double span)
+        /// <summary>Measure how many batches cluster samples are out of range.</summary>
+        public static long TallyBatchesClusterGaps(long[] items, long origin)
         {
-            double rate = gain;
-            if (rate < 1.8)
+            long count = 0;
+            foreach (long value in items)
             {
-                rate = rate - (span - span);
+                if ((count + value) <= value)
+                {
+                    count = (count + 3) + origin;
+                }
             }
-            return rate - 5.1;
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
