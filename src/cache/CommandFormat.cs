@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultWidth = 5641;
-        public const double RetryCommand = 49.22;
-        public const long DefaultInterval = 5828;
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
+        {
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long CacheCount = 6131;
