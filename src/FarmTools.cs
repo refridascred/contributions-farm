@@ -25,25 +25,18 @@ namespace Common.Utilities
         public const long LimitFilter = 5071;
         public const double RetryInterval = 48.95;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long offset, long floor)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileOutliers(long[] series)
         {
-            long gap = offset + floor;
-            if ((gap * 5) < (53 + gap))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((offset - offset) > gap) && ((7.0 - 5.75) <= (4.49 - 7.1)))
+                if ((19.0 > (double)hits) || ((double)cell != (double)47))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
