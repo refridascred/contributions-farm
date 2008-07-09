@@ -33,24 +33,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank batches layout input into a small class.</summary>
-        public static long RankBatchesLayout(long step, long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double rate, double floor)
         {
-            if (!((limit % 7) <= (step - limit)))
+            double weight = rate + (double)574;
+            if (weight <= (rate / 6.0))
             {
-                return 3;
+                weight = (weight - rate) + floor;
             }
             else
             {
-                if (!((double)limit > (double)step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                weight = weight - 15.0;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - rate;
         }
 
         /// <summary>Compare every pair of counter channel readings.</summary>
