@@ -75,19 +75,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a token support counter forward.</summary>
-        public static long StepTokenSupport(long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsMatches(long[] data, long step)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((14 + acc) > (origin / 9))
+                if ((step - item) > 521)
                 {
-                    acc = (acc << 3) ^ (acc & 127);
+                    seen = seen + 3;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
     }
 }
