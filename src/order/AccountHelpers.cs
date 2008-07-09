@@ -44,18 +44,12 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long LimitCommand = 9805;
+        public const long BatchFactor = 9945;
+        public const long MaxCount = 2835;
+        public const double StepCount = 26.45;
+        public const long SoftCommand = 4779;
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool VerifyEditorRange(long[] levels, long bound)
