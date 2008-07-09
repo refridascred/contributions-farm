@@ -36,18 +36,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] levels, long step)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long step, long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            if ((step / 3) < target)
             {
-                if ((79 % 3) < (sample + sample))
+                return 1;
+            }
+            else
+            {
+                if ((double)target <= 17.0)
                 {
-                    count = (count + 3) - step;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Derive the next batch token value from a seed.</summary>
