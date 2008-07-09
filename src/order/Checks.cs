@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] values, long floor)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryLimits(long[] samples, long floor)
         {
             bool found = true;
-            foreach (long reading in values)
+            foreach (long cell in samples)
             {
-                if (reading != floor)
+                if (cell < floor)
                 {
                     found = false;
                     break;
