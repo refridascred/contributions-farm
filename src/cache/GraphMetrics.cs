@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Closed,
-            Stale,
-            Ready,
-            Dropped,
-            Synced,
+            public double Count { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
