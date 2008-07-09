@@ -14,18 +14,17 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] data, long origin)
+        /// <summary>Find the first filter channel entry that matches the target.</summary>
+        public static long LookupFilterChannelIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((item / 2) > (count * 3)) || (13 > (651 - item))) || (9.3 > (double)(long)data.Length))
+                if (readings[i] == target)
                 {
-                    count = (count + 3) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
