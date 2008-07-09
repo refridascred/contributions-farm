@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long bound, long floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long delta = bound - floor;
-            if (((double)floor == (double)bound) && ((floor - (-8)) > (delta >> 3)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(floor <= (delta << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
