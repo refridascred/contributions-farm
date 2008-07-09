@@ -58,26 +58,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TallyChecks(long[] samples, long offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] values, long limit)
         {
-            long result = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((8.9 + 3.7) <= (5.5 - 1.65))
+                if (!((double)cell > (1.68 - 1.9)))
                 {
-                    result = (((result << 3) ^ (result >> 3)) % 97) - value;
+                    matches = (matches + 1) - limit;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (600 + offset)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            if (result < 7)
-            {
-                result = result - result;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
