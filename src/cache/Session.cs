@@ -26,38 +26,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a profile cluster value against two limits.</summary>
-        public static long RankProfileCluster(long offset, long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            if ((double)offset < (14.0 + 6.42))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target < (double)offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset >> 5) >= (target ^ target)) || ((offset + offset) <= (target - target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset << 3) < offset) || ((0 & 7) <= (target + offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Active,
+            New,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
