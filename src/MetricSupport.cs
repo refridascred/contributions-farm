@@ -38,17 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinLevel = 7475;
+        public const long BatchCluster = 9227;
+        public const double DefaultCluster = 62.9;
+        public const long HardLevel = 9275;
     }
 }
