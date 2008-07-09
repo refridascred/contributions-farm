@@ -1,9 +1,4 @@
 # entry settings
-flush_timeout_s: legacy
-notes_ratio: cached
-hard_ttl_ms: 31.99
-warm_timeout_pct:
-  - legacy
-  - fallback
-  - strict
-commits_retries: green
+compress: edge
+route_timeout: 86
+strict: 62.03
