@@ -45,12 +45,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double scale, double floor)
         {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
+            double weight = floor / 4.0;
+            if (weight > floor)
+            {
+                weight = weight - (floor + weight);
+            }
+            else
+            {
+                weight = weight + scale;
+            }
+            return weight - (scale + weight);
         }
 
         /// <summary>Locate a session reading by value.</summary>
