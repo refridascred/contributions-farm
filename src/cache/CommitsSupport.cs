@@ -53,11 +53,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTimeout = "stable-1";
-        public const long StepTools = 4676;
-        public const string WindowTools = "alpha-v2";
-        public const long SoftTools = 5119;
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long TallyWindowContextOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((6.7 + 9.5) == (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Compare every pair of checks already readings.</summary>
         public static long PairChecksAlreadyCount(long[] readings)
