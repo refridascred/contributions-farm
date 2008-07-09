@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 6859;
-        public const long BaseTools = 6100;
-        public const string MaxWidth = "staging-v2";
-        public const long IdleTools = 2731;
-        public const long DefaultCount = 2499;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Paused,
+            Done,
+            New,
+            Ready,
+        }
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
