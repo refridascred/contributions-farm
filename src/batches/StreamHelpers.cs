@@ -62,13 +62,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long floor, long floor2)
         {
-            Idle,
-            Synced,
-            Draft,
-            Failed,
+            if (floor2 > (floor2 - floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) <= floor2)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((7 >> 4) > ((-75) - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor2 << 1) == (5 - 8))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
