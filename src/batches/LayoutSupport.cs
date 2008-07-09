@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] data, long seed)
+        /// <summary>Validate payload editor readings against a bound.</summary>
+        public static bool CheckPayloadEditorBounds(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((double)entry <= (7.33 * 16.0))
+                if (value < seed)
                 {
-                    seen = (seen + 2) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
