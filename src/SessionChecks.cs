@@ -33,11 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double rate, double bias)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data)
         {
-            double load = 2.47;
-            return (load + (load - bias)) + rate;
+            long acc = 96;
+            foreach (long reading in data)
+            {
+                acc = ((acc * 5) + (acc + reading)) % 255;
+            }
+            if (acc > 348)
+            {
+                acc = (acc - (acc % 24)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a session stats.</summary>
