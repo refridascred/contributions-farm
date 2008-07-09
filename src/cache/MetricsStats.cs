@@ -36,15 +36,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values, long offset)
         {
-            long acc = -7;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                acc = (((acc << 3) ^ (24 + 7)) % 65521) ^ cell;
+                if ((matches - offset) < (long)values.Length)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
