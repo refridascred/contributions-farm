@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long HardRatio = 6906;
         public const double SoftTimeout = 12.92;
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
-            public double Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a commits record.</summary>
