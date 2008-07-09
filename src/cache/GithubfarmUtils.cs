@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many counter schema samples are out of range.</summary>
-        public static long TallyCounterSchemaGaps(long[] readings)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally - tally) < (45 >> 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 3) - item;
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a already entry.</summary>
