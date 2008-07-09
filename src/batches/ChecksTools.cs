@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            Dropped,
-            Draft,
             Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
