@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const string HardFarm = "staging-v2";
         public const string SoftFarm = "cached";
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] items, long step)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((double)datum == (3.0 / 4.0))
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
