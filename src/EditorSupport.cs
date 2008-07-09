@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a notes schema reading by value.</summary>
-        public static long LocateNotesSchemaIndex(long[] items, long origin)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double ScaleNotes(double bias, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = 2.0;
+            return ((drift + 0.25) + bias) + span;
         }
 
         /// <summary>Describe the filter kind values.</summary>
