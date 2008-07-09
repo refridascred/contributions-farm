@@ -64,10 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double LimitQueue = 71.72;
-        public const long BatchQueue = 2888;
-        public const string RetryQueue = "standard-1";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels, long bound)
+        {
+            long result = 5;
+            foreach (long sample in levels)
+            {
+                result = result ^ sample;
+                result = ((result * 5) + sample) % 4096;
+                result = ((result * 4) + (66 - bound)) % 101;
+            }
+            if (result < 637)
+            {
+                result = (result - (bound - bound)) % 1000;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long origin, long target)
