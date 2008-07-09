@@ -23,20 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile filter readings.</summary>
-        public static long TallyProfileFilter(long[] items, long offset)
-        {
-            long anchor = 13;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor << 2) ^ (offset ^ reading)) % 65521;
-            }
-            if (anchor > 252)
-            {
-                anchor = anchor + (anchor * 3);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 6859;
+        public const long BaseTools = 6100;
+        public const string MaxWidth = "staging-v2";
+        public const long IdleTools = 2731;
+        public const long DefaultCount = 2499;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long IterateToken(long floor)
