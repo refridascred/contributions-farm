@@ -57,12 +57,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            public string Size { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            Locked,
+            Queued,
+            Failed,
         }
     }
 }
