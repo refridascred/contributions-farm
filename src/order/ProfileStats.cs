@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseCount = "primary";
-        public const long MaxBuffer = 2560;
-        public const long BaseBuffer = 7501;
-        public const string BaseRatio = "open-edge";
-        public const string MinTimeout = "legacy";
+        /// <summary>Digest a series of command profile entries.</summary>
+        public static long ScoreCommandProfile(long[] series, long seed)
+        {
+            long carry = 32;
+            foreach (long cell in series)
+            {
+                if ((seed * 5) < (carry * 4))
+                {
+                    carry = ((carry + 4) % 255) - cell;
+                    carry = ((carry * 4) + (seed - 5)) % 4096;
+                }
+                carry = (carry * 4) + ((long)series.Length & 7);
+            }
+            if (carry < 6)
+            {
+                carry = ((carry << 2) ^ (62 + carry)) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long limit, long origin)
