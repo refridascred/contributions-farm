@@ -38,13 +38,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double gain, double span)
         {
-            Stale,
-            Done,
-            Dropped,
-            Idle,
+            double rate = span / 6.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + gain) - (double)(long)i;
+            }
+            return rate + (5.0 * 0.79);
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
