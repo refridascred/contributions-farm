@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Fold a list of buffer counter readings.</summary>
+        public static long FoldBufferCounter(long[] series)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long result = 31;
+            foreach (long value in series)
             {
-                if (((value & 255) == (value * 5)) && (((double)value > (9.23 * 8.3)) && ((double)value == (0.8 * 8.5))))
+                if (((value - value) <= (value % 100)) && ((value + value) <= (result << 3)))
                 {
-                    count = count + 2;
+                    result = (result + (value + result)) % 255;
+                    continue;
                 }
+                if (((result % 3) >= 5) || (0.53 <= (double)result))
+                {
+                    result = (result ^ (result - value)) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (result + value)) % 1000;
+                }
+                result = (result << 2) ^ (value + 6);
             }
-            return count;
+            if (result > 59)
+            {
+                result = (result + (80 + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the commits mode values.</summary>
