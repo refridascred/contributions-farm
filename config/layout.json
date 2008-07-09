@@ -1,6 +1,6 @@
 {
-  "idle_ratio_s": 52.25,
-  "enabled": 22.78,
-  "counter_limit": "green",
-  "retry_capacity_pct": ["latest", "cached", "primary", "edge"]
+  "schema_interval": 45.72,
+  "poll_limit_s": 94,
+  "poll_capacity": 500,
+  "flush_interval": 55.67
 }
