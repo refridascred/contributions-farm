@@ -57,13 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Match up token account samples.</summary>
+        public static long PairTokenAccountCount(long[] values)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
