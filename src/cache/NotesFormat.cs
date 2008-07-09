@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountHits(long[] values, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((9.76 - 0.9) == (double)cell)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Stale,
+            Draft,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
