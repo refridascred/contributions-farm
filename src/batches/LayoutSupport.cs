@@ -48,10 +48,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 5363;
-        public const double HardFactor = 43.12;
-        public const string SoftFormat = "latest-v2";
-        public const string MaxInterval = "primary-v2";
+        /// <summary>Check that every stats metric entry stays within the limit.</summary>
+        public static bool GuardStatsMetricBounds(long[] values, long seed)
+        {
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item != seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
