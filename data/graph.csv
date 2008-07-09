@@ -1,6 +1,7 @@
-id,count,token
-1,283,24.99
-2,71.19,301
-3,19.15,legacy
-4,52.05,899
-5,43.81,green
+id,region,ratio,rank
+1,green,strict,356
+2,68.35,84.33,blue
+3,green,strict,566
+4,240,270,337
+5,423,latest,cached
+6,360,659,59.0
