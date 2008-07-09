@@ -34,21 +34,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                double scale = (double)(long)i + (3.7 - 3.6);
-                if (0.2 > (14.0 - scale))
-                {
-                    anchor = (anchor - (origin ^ origin)) % 4096;
-                }
-                scale = scale + scale;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
