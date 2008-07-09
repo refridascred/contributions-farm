@@ -25,15 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Ready,
-            New,
-            Closed,
-            Active,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "latest-1";
+        public const long HardRatio = 1770;
+        public const double DefaultRatio = 18.64;
+        public const long MaxDepth = 1267;
+        public const long BaseAlready = 6608;
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
