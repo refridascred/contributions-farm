@@ -19,17 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a counter payload reading by value.</summary>
-        public static long LocateCounterPayloadIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of contributi metrics readings.</summary>
+        public static long PairContributiMetricsCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > limit) && ((levels[i] % 3) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next githubfarm farm value.</summary>
