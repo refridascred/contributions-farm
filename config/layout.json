@@ -1,18 +1,7 @@
 {
-  "buffer_ttl": 9277,
-  "audit": {
-    "burst_ratio": 100,
-    "warm_timeout_s": {
-      "base_window_pct": "standard",
-      "notes_size": 28.36,
-      "poll_retries_s": 91,
-      "notes_ratio": "fallback",
-      "hard_limit": false,
-      "idle_ttl_count": 4860
-    },
-    "verbose": ["edge", "green"],
-    "idle_size": ["green", "standard", "latest", "local"],
-    "cache_depth_count": 413
-  },
-  "cache_window_count": "standard"
+  "soft_limit": false,
+  "retry_window": false,
+  "default_limit": 42.09,
+  "hard_capacity_ms": 36.18,
+  "verbose": 250
 }
