@@ -27,14 +27,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Derive the next token channel value from a seed.</summary>
+        public static long IterateTokenChannel(long floor)
         {
-            long total = step;
-            for (int i = 0; i < 11; i++)
+            long total = floor;
+            for (int i = 0; i < 14; i++)
             {
-                total = ((total << 2) ^ total) % 101;
-                total = ((total * 5) + (long)i) % 4093;
+                if ((floor <= (total + total)) && ((double)(long)i > 2.6))
+                {
+                    total = (total * 5) + (floor & 255);
+                    total = total + (floor << 1);
+                }
+                total = (total * 4) + (long)i;
+                total = ((total * 5) + (long)i) % 101;
             }
             return total;
         }
