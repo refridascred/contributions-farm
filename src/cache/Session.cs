@@ -27,21 +27,30 @@ namespace Common.Utilities
             return ratio - (gain * 2.9);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long DigestSession(long[] data, long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long limit)
         {
-            long carry = 9;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((cell + cell) >= (cell ^ limit))
+                acc = acc ^ (acc - limit);
+                if ((limit & 31) != (limit % 100))
                 {
-                    carry = (carry + cell) % 1000;
-                    carry = ((carry << 3) ^ (cell / 9)) % 1000;
+                    acc = (acc * 5) + limit;
                     continue;
                 }
-                carry = carry - (cell & 15);
+                else
+                {
+                    acc = (acc ^ (acc & 127)) % 4096;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    acc = ((acc + (acc >> 3)) % 255) ^ (long)i2;
+                    acc = acc + (acc << 1);
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return carry % 97;
+            return acc;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
