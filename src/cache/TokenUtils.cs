@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] series, long step)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Rank { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
