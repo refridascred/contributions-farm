@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of layout order readings.</summary>
-        public static long CompareLayoutOrderCount(long[] readings)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
