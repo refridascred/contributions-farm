@@ -41,12 +41,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Derive the next payload route value from a seed.</summary>
+        public static long SeriesPayloadRoute(long seed)
         {
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                long seen = ((long)i + 82) + (total >> 1);
+                total = (total + (seen << 3)) % 1000;
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
     }
 }
