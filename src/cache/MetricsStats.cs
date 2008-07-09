@@ -35,19 +35,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] readings)
         {
-            double gain = offset;
-            if (gain >= (ratio * 4.01))
+            long mix = 112;
+            foreach (long sample in readings)
             {
-                gain = gain - offset;
+                mix = (((mix * 3) + mix) % 255) - sample;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + offset;
+            return mix;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
