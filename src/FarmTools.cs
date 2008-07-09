@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepWidth = 8406;
-        public const string HardFarm = "staging-v2";
-        public const string SoftFarm = "cached";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinProfile = 38.69;
+        public const long MinSize = 1270;
+        public const long DefaultScore = 864;
 
         /// <summary>Measure how many payload samples are out of range.</summary>
         public static long CountPayloadGaps(long[] items, long step)
