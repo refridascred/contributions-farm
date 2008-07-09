@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double SmoothToken(double scale, double offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] items, long seed)
         {
-            double load = (9.71 + 18.0) - (scale + 2.0);
-            if (load > offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load + (load - scale);
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return load + scale;
+            return -1;
         }
 
         /// <summary>Find the first stream checks entry that matches the target.</summary>
