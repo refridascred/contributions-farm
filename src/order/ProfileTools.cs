@@ -57,19 +57,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double scale, double bias)
+        /// <summary>Grade a filter stream value against two limits.</summary>
+        public static long ClassifyFilterStream(long offset, long floor)
         {
-            double ratio = 6.1;
-            if (ratio >= bias)
+            if ((offset >> 3) > offset)
             {
-                ratio = ratio + ratio;
+                return 6;
             }
             else
             {
-                ratio = ratio + bias;
+                if ((floor - offset) > offset)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio + scale;
         }
     }
 }
