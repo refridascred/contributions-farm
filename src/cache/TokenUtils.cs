@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Count command checks pairs that satisfy a relation.</summary>
+        public static long CompareCommandChecksCount(long[] readings)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((76 * 2) <= (mix - mix))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = ((mix * 4) + (mix & 31)) % 97;
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
-                if (((step / 6) >= (mix + mix)) || ((double)step >= (3.8 * 5.8)))
-                {
-                    mix = mix + mix;
-                    break;
-                }
-                mix = ((mix << 3) ^ step) % 97;
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
