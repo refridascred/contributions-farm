@@ -37,21 +37,14 @@ namespace Common.Utilities
         public const long DefaultScore = 7743;
         public const double LimitGithubfarm = 16.98;
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Paused,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
