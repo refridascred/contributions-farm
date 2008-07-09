@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardBudget = 9805;
-        public const long BatchToken = 4034;
-        public const string IdleToken = "open-v2";
-        public const string RetryScore = "stable-edge";
-        public const long MinToken = 3158;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double bias)
+        {
+            double gain = weight;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain + (bias / 6.0)) + (double)(long)i;
+            }
+            return gain + 2.8;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
