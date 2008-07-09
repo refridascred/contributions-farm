@@ -49,15 +49,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] series, long step)
+        /// <summary>Look up the position of a command commits sample.</summary>
+        public static long FindCommandCommitsIndex(long[] levels, long floor)
         {
-            long mix = 36;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix + cell) % 1000) - step;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Look up the position of a session token sample.</summary>
