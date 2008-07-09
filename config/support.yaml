@@ -1,5 +1,5 @@
 # support settings
-retry_delay_ms: 53.16
-route_depth: 1.38
-flush_window: 35.24
-metrics_depth: 1024
+farm_capacity: 250
+report_timeout: false
+editor_limit: standard
+audit: 24
