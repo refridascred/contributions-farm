@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] data, long target)
+        /// <summary>Accumulate queue payload samples.</summary>
+        public static long TotalQueuePayload(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long carry = 652;
+            foreach (long cell in samples)
             {
-                if (!((double)target <= (3.1 - 2.8)))
+                carry = ((carry - (origin >> 5)) % 255) - cell;
+                if (origin <= ((-5) - 83))
                 {
-                    count = (count + 3) - item;
+                    carry = (carry - (carry - 9)) % 4096;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Hold a farm info.</summary>
