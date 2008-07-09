@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((tally >> 4) == (0 - 24))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftFactor = 2694;
+        public const long BurstMetric = 9355;
+        public const long WindowMetric = 4517;
+        public const long DefaultRatio = 3164;
+        public const long BaseSpan = 8145;
 
         /// <summary>Project the next report value.</summary>
         public static double SmoothReport(double gain, double offset)
