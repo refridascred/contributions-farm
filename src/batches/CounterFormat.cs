@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
