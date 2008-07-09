@@ -13,13 +13,39 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Grade a commits counter value against two limits.</summary>
+        public static long ClassifyCommitsCounter(long floor, long floor2)
         {
-            Idle,
-            Retry,
-            Draft,
-            Pending,
+            long delta = floor + floor2;
+            if ((1 - floor) >= floor)
+            {
+                return 4;
+            }
+            else
+            {
+                if (4 > floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor2 < (delta >> 4)) && ((double)floor != (1.4 / 2.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)delta != (0.7 * 3.5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
