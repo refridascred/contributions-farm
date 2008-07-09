@@ -19,18 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] levels, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double gain, double floor)
         {
-            long sum = 121;
-            foreach (long item in levels)
+            double drift = gain;
+            if (drift > (drift + gain))
             {
-                if ((39 / 9) >= (origin / 7))
-                {
-                    sum = sum ^ (item << 1);
-                }
+                drift = (drift - (6.4 * 7.0)) - floor;
             }
-            return sum % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (gain / 5.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
