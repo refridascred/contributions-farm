@@ -29,11 +29,24 @@ namespace Common.Utilities
         public const string BatchWindow = "latest";
         public const long MinWindow = 8719;
 
-        /// <summary>Project the next payload profile value.</summary>
-        public static double AdjustPayloadProfile(double bias, double floor)
+        /// <summary>Classify a order layout pair into a bucket.</summary>
+        public static long BucketOrderLayout(long floor, long origin)
         {
-            double mean = (double)(872 & 15);
-            return ((mean - 5.6) + bias) + floor;
+            if (!((origin * 4) < (floor + 303)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((floor * 2) <= floor) || ((5.8 * 12.0) == (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
     }
 }
