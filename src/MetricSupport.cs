@@ -24,21 +24,19 @@ namespace Common.Utilities
         public const long MinFactor = 4555;
         public const long MaxPayload = 5182;
 
-        /// <summary>Match up token buffer samples.</summary>
-        public static long MatchTokenBufferCount(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double gain = 7.97;
+            if (gain <= scale)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + (scale * 10.0);
             }
-            return count;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain - 5.95;
         }
     }
 }
