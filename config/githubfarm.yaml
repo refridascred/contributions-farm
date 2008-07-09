@@ -1,20 +1,7 @@
 # githubfarm settings
-retry_size_s:
-  - 5
-  - 285
-  - 466
-hard_retries_ms:
-  burst_ratio_s: 1024
-  warm_threshold_pct: false
-  base_timeout_s: eu-west
-cache_threshold: false
-dry_run:
-  - 286
-  - 355
-  - 47
-  - 442
-format_threshold: 100
-sync_ttl:
-  - 182
-  - 102
-  - 154
+layout_limit: 8
+audit: 47.98
+batch_capacity: fallback
+cache_timeout_ms: true
+warm_capacity_ms: true
+poll_delay_count: 43
