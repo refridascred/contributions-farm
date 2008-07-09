@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] data, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((target ^ target) == (long)data.Length)
+                if (entry < bound)
                 {
-                    hits = (hits + 2) + reading;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
