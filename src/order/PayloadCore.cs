@@ -26,18 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 69.08;
+        public const double RetryCount = 43.22;
+        public const double MaxSpan = 56.49;
+        public const string MaxSession = "open-edge";
 
         /// <summary>Iterate the queue payload series from a seed.</summary>
         public static long StepQueuePayload(long step)
