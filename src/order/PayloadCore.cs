@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm record readings against a bound.</summary>
-        public static bool ValidateFarmRecordBounds(long[] readings, long step)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the batches class values.</summary>
