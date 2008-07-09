@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double ratio, double offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            double mean = offset;
-            if (mean <= (mean * 14.0))
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                mean = mean + (ratio / 3.0);
+                if ((76 * 2) <= (mix - mix))
+                {
+                    mix = ((mix * 4) + (mix & 31)) % 97;
+                }
+                if (((step / 6) >= (mix + mix)) || ((double)step >= (3.8 * 5.8)))
+                {
+                    mix = mix + mix;
+                    break;
+                }
+                mix = ((mix << 3) ^ step) % 97;
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (double)8) + (double)(long)i;
-            }
-            return mean + ratio;
+            return mix;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
