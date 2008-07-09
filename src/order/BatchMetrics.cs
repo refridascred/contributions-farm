@@ -87,24 +87,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank record already input into a small class.</summary>
-        public static long SortRecordAlready(long target, long floor)
-        {
-            if ((4 + target) >= (target + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor % 60) >= target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double MinRecord = 65.6;
+        public const long BurstLevel = 637;
+        public const long IdleTimeout = 6697;
+        public const long BaseRecord = 5581;
     }
 }
