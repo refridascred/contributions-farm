@@ -30,19 +30,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueBounds(long[] samples, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (reading >= target)
+                if (((tally / 5) < (tally + datum)) || ((double)9 > (double)datum))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
