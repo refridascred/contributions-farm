@@ -20,32 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank contributi format input into a small class.</summary>
-        public static long RankContributiFormat(long step, long step2)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long cur = step - step2;
-            if (step2 <= cur)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step2 / 5) <= cur)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step - 64) > (cur + step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Done,
+            Active,
+            Locked,
+            Retry,
+            Ready,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
