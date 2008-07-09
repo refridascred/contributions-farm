@@ -36,15 +36,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a channel token reading.</summary>
-        public static double SmoothChannelToken(double gain, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] readings)
         {
-            double scale = (gain - bias) / 8.0;
-            if (scale >= bias)
+            long count = 0;
+            foreach (long value in readings)
             {
-                scale = scale - (bias * 2.88);
+                if (((9.81 <= (double)count) || ((67 - 85) <= count)) || (value <= count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return scale + bias;
+            return count;
         }
 
         /// <summary>Describe the batch level values.</summary>
