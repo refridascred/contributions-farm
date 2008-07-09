@@ -12,14 +12,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long bound)
         {
-            Dropped,
-            Closed,
-            Done,
-            Retry,
-            Ready,
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
