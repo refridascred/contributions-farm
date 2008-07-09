@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Match up support samples.</summary>
+        public static long MatchSupportCount(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 2) + (score >> 1)) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the order level values.</summary>
