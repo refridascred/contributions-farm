@@ -28,12 +28,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every notes token entry stays within the limit.</summary>
+        public static bool GuardNotesTokenBounds(long[] items, long seed)
         {
-            public long Region { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up format samples.</summary>
