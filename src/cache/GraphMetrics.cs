@@ -56,17 +56,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long FindNotesIndex(long[] readings, long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] data, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 7;
+            foreach (long cell in data)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + (target * 5)) ^ cell;
             }
-            return -1;
+            return mark;
         }
     }
 }
