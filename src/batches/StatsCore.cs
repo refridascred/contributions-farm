@@ -65,18 +65,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] items, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long origin, long target)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long next = origin ^ target;
+            if (((target + target) < (target - next)) && ((double)next < (1.6 + 2.67)))
             {
-                if (((reading & 7) < (tally ^ 8)) && !((reading / 2) != (tally ^ offset)))
+                return 5;
+            }
+            else
+            {
+                if (((target - 49) > (target ^ next)) && ((888 * 4) == (next - next)))
                 {
-                    tally = tally + 1;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)next == (1.43 / 6.0)) && (target < (target - origin)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define token limits and defaults.</summary>
