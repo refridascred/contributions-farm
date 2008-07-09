@@ -36,13 +36,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long acc = -7;
+            foreach (long cell in values)
+            {
+                acc = (((acc << 3) ^ (24 + 7)) % 65521) ^ cell;
+            }
+            return acc;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
