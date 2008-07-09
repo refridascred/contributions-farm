@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] samples, long step)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell <= step)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
