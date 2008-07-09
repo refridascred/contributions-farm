@@ -10,11 +10,39 @@ namespace Common.Utilities
         public const long RetryReport = 2565;
         public const string MaxReport = "staging";
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long origin, long seed)
         {
-            public long Offset { get; set; }
-            public double Weight { get; set; }
+            long next = origin - seed;
+            if ((origin + seed) < seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)next > (double)767) || ((origin ^ next) < seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed * 3) < next)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((seed + origin) >= ((-6) % 12)) && ((origin & 31) == (97 - next)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
