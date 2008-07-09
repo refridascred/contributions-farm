@@ -22,10 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 3393;
-        public const long BatchFactor = 8313;
-        public const long BurstChecks = 1229;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] data, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Look up the position of a schema entry sample.</summary>
         public static long LookupSchemaEntryIndex(long[] samples, long target)
