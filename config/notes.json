@@ -1,5 +1,24 @@
 {
-  "idle_limit_ms": "eu-west",
-  "cache_retries": true,
-  "default_size_s": "blue"
+  "strict": 9222,
+  "max_size_s": {
+    "warm_delay": false,
+    "min_limit_count": 67,
+    "base_window_count": true,
+    "hard_window_count": false
+  },
+  "order_interval": 61,
+  "retry_interval_count": "latest",
+  "flush_threshold_count": {
+    "channel_size": "local",
+    "min_size_pct": "edge",
+    "account_timeout": 13.22,
+    "warm_retries_count": 58,
+    "entry_size": {
+      "queue_depth": 60,
+      "profile_capacity": false,
+      "min_window_count": "staging",
+      "base_ratio_ms": [373, 496, 190]
+    }
+  },
+  "enabled": 14.54
 }
