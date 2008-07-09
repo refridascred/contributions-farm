@@ -1,10 +1,7 @@
 # support settings
-queue_depth: 3794
-commits_ratio: latest
-channel_size: 87.73
-soft_delay_pct: 64
-editor_interval:
-  - strict
-  - stable
-  - standard
-  - legacy
+support_window: 53.94
+enabled:
+  warm_depth_ms: 16
+  counter_ttl: 2613
+  stats_ratio: open
+poll_retries_ms: 1024
