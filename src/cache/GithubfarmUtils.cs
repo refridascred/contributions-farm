@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] data)
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (((980 % 8) > (tally << 1)) || ((reading % 5) != (reading ^ tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every githubfarm cluster entry stays within the limit.</summary>
