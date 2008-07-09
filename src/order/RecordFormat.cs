@@ -61,18 +61,13 @@ namespace Common.Utilities
             return weight - 1.1;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((hits + value) > hits)
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
+            Retry,
+            Closed,
+            Stale,
+            Dropped,
         }
     }
 }
