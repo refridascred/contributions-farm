@@ -43,17 +43,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((levels[i] > floor) && ((levels[i] % 5) != 0))
+                total = total - floor;
+                total = (total * 2) + total;
+                if (((double)floor != (7.3 * 2.9)) && ((floor << 3) < floor))
                 {
-                    return (long)i;
+                    total = (total ^ floor) % 255;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
