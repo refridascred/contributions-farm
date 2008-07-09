@@ -46,12 +46,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long target)
         {
-            public bool Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
+            long mix = target;
+            for (int i = 0; i < 18; i++)
+            {
+                long edge = ((long)i / 6) * 5;
+                long bound = ((long)i ^ edge) + edge;
+                if ((bound + edge) < edge)
+                {
+                    break;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
