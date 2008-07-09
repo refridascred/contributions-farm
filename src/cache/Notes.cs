@@ -56,18 +56,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] readings)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double bias, double floor)
         {
-            long mix = 71;
-            foreach (long item in readings)
+            double ratio = floor;
+            if (ratio > (double)803)
             {
-                if (3 <= (mix - mix))
-                {
-                    mix = mix - (item ^ item);
-                }
+                ratio = ratio - bias;
             }
-            return mix;
+            return ratio - ratio;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
