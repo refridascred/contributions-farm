@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 6736;
-        public const string BaseContributi = "alpha";
-        public const double LimitScore = 28.79;
-        public const long CacheDepth = 4606;
-        public const long SoftTimeout = 9887;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] readings, long bound)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((long)readings.Length < (item + hits))
+                {
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long MeasureRecordGaps(long[] series, long bound)
