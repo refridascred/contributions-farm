@@ -36,17 +36,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] values, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] series, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 826;
+            foreach (long value in series)
             {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
+                long gap = value;
+                if (!((double)limit > (double)gap))
                 {
-                    return (long)i;
+                    gap = (gap - mix) % 101;
                 }
+                mix = (mix << 3) ^ (8 + value);
             }
-            return -1;
+            if (mix > 228)
+            {
+                mix = (mix ^ (limit % 16)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
