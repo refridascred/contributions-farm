@@ -23,38 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long step2)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] series, long offset)
         {
-            if ((step2 - step) <= ((-795) - step))
+            long acc = 254;
+            foreach (long cell in series)
             {
-                return 0;
+                acc = (((acc << 2) ^ (47 >> 2)) ^ cell) + offset;
             }
-            else
-            {
-                if ((step2 % 24) == (55 - step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step2 <= (976 * 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step != (5.0 + 8.2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
