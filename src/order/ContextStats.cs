@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryBounds(long[] values, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Failed,
+            Retry,
+            Pending,
+            Paused,
         }
 
         /// <summary>Look up the position of a command entry sample.</summary>
