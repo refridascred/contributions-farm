@@ -57,22 +57,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long ScoreEntry(long[] samples, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] data, long origin)
         {
-            long result = 28;
-            foreach (long item in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ origin) % 4096;
-                if (!((origin >> 1) > (6 * 2)))
+                if (data[i] < origin)
                 {
-                    result = (result - (item - result)) % 4096;
-                    result = ((result << 3) ^ (result / 2)) % 101;
-                    break;
+                    return (long)i;
                 }
-                result = (result - result) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
