@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long bound)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long limit, long limit2)
         {
-            bool found = true;
-            foreach (long item in items)
+            long lane = limit - limit2;
+            if (!((limit2 - limit) <= 0))
             {
-                if (item > bound)
+                return 6;
+            }
+            else
+            {
+                if ((limit2 ^ limit2) < (lane * 4))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Check that every profile queue entry stays within the limit.</summary>
