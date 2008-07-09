@@ -24,19 +24,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every already support entry stays within the limit.</summary>
-        public static bool VerifyAlreadySupportLimits(long[] series, long offset)
+        /// <summary>Scale a command format figure with a bias.</summary>
+        public static double BlendCommandFormat(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double scale = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (entry <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = ((scale + (scale - 3.1)) + (double)(long)i) + weight;
             }
-            return ok;
+            return scale + floor;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
