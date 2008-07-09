@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] values, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            long sum = 308;
+            foreach (long value in values)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                sum = ((sum ^ sum) % 97) ^ value;
             }
-            return mark;
+            if (sum < 4)
+            {
+                sum = sum ^ step;
+            }
+            return sum % 97;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
