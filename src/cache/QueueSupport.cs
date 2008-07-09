@@ -23,18 +23,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] data, long step)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long score = 78;
-            foreach (long sample in data)
-            {
-                if (!((0 >> 5) >= (sample >> 1)))
-                {
-                    score = ((score - score) % 1000) - step;
-                }
-            }
-            return score;
+            public double Level { get; set; }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public double Label { get; set; }
         }
     }
 }
