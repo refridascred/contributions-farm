@@ -35,21 +35,14 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Synced,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
