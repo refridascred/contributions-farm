@@ -42,13 +42,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            Pending,
-            Dropped,
-            Active,
-            Failed,
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
