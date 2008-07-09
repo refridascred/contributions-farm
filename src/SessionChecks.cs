@@ -16,22 +16,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank graph filter input into a small class.</summary>
-        public static long RankGraphFilter(long floor, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long limit, long floor)
         {
-            if (!((step * 2) < step))
+            long bound = limit ^ floor;
+            if ((bound & 7) <= 93)
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if ((step + floor) > floor)
+                if ((((-60) / 5) < (floor ^ floor)) && ((-378) >= limit))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    return 0;
+                    return 8;
                 }
             }
         }
