@@ -31,19 +31,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
-        public static bool ValidateClusterToolsBounds(long[] items, long offset)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long acc = 462;
+            foreach (long sample in series)
             {
-                if (datum >= offset)
+                if ((acc * 5) < (acc & 15))
                 {
-                    ready = false;
-                    break;
+                    acc = (acc ^ (sample % 100)) - floor;
+                }
+                else
+                {
+                    acc = (acc ^ (592 + sample)) % 1000;
                 }
             }
-            return ready;
+            if (acc < 26)
+            {
+                acc = (acc * 3) + (acc % 8);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the entry class values.</summary>
