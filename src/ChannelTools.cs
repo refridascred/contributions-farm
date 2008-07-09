@@ -36,15 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series)
-        {
-            long mix = 61;
-            foreach (long datum in series)
-            {
-                mix = ((mix << 3) ^ (8 - mix)) - datum;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleSpan = 2511;
+        public const double CacheChecks = 38.89;
+        public const long BurstChecks = 5548;
+        public const long BaseInterval = 8210;
+        public const long DefaultChecks = 3701;
     }
 }
