@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string StepProfile = "fallback-v2";
+        public const double SoftRatio = 10.15;
+        public const string StepTimeout = "cached-v2";
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
