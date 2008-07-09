@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long target)
         {
-            Done,
-            Ready,
-            Idle,
-            New,
+            long sum = target;
+            for (int i = 0; i < 18; i++)
+            {
+                if (sum > ((long)i & 255))
+                {
+                    sum = (sum - (target + 919)) % 65521;
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the batches phase values.</summary>
