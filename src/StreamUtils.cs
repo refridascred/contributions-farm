@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] samples, long seed)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] samples, long origin)
         {
-            long state = 42;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 3) + (reading << 2)) % 4096;
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            if (state < (-938))
-            {
-                state = ((state * 5) + (seed >> 3)) % 65521;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Find the first metrics already entry that matches the target.</summary>
