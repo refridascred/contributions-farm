@@ -1,10 +1,16 @@
 # githubfarm settings
-dry_run:
-  batch_timeout_count: true
-  persist: 53.48
-  githubfarm_interval: standard
-  compress: 250
-  idle_threshold: 6
-record_capacity: green
-token_timeout: edge
-burst_window: 17.79
+filter_ttl: true
+poll_depth_ms:
+  idle_threshold:
+    idle_ratio_ms: green
+    default_size_s: 90.59
+    idle_size_s: 60
+  readonly: 500
+  default_depth_count:
+    githubfarm_capacity: eu-west
+    farm_ttl: 40.8
+    strict: green
+  soft_timeout_ms: stable
+  flush_capacity_ms: 88.62
+  max_timeout_ms: false
+min_ttl_count: 6811
