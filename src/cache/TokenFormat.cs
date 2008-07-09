@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the cache state values.</summary>
