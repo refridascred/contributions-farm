@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] readings)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long floor)
         {
-            long state = 345;
-            foreach (long item in readings)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    state = (state + (state & 127)) + (long)i;
-                    state = state + (652 - item);
-                }
-                if ((double)state > 7.0)
-                {
-                    state = state - state;
-                }
+                mark = (mark * 4) + (floor + (long)i);
+                mark = (mark ^ ((long)i * 3)) % 97;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (state < 534)
-            {
-                state = ((state << 3) ^ (state + state)) % 255;
-            }
-            return state;
+            return mark;
         }
 
         /// <summary>Hold a payload record.</summary>
