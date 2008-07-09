@@ -34,22 +34,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] samples, long target)
+        /// <summary>Audit notes report readings against a rule.</summary>
+        public static long MeasureNotesReportGaps(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (((reading * 2) >= (reading - target)) && (target > (target ^ 515)))
+                if (!(reading >= (6 << 3)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = (hits + 1) + bound;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Accumulate batch samples.</summary>
