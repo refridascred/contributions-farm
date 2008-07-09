@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit layout context readings against a rule.</summary>
+        public static long CountLayoutContextGaps(long[] series)
         {
-            Done,
-            Stale,
-            Retry,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading << 2) < (count & 7))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
