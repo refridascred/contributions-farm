@@ -41,22 +41,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] series, long step)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] items)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = 1;
+            foreach (long reading in items)
             {
-                if (((value >> 4) > 870) || ((double)step >= (9.0 - 3.49)))
+                if (2.8 <= (double)reading)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = ((result * 3) + (reading & 255)) % 255;
                 }
             }
-            return seen;
+            if (result < 7)
+            {
+                result = result ^ (29 * 5);
+            }
+            return result;
         }
     }
 }
