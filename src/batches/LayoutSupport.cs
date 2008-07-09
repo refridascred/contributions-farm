@@ -46,18 +46,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit batches schema readings against a rule.</summary>
-        public static long AuditBatchesSchemaHits(long[] readings)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenOutliers(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((matches % 64) > matches)
+                if ((step + entry) < entry)
                 {
-                    matches = (matches + 2) - reading;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
