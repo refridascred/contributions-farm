@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double span)
+        /// <summary>Digest a series of session githubfarm entries.</summary>
+        public static long ScoreSessionGithubfarm(long[] values)
         {
-            double load = (double)562 / 7.0;
-            if (load > (double)361)
+            long total = 544;
+            foreach (long entry in values)
             {
-                load = (load - (double)1) + span;
+                total = (total - entry) % 255;
             }
-            else
-            {
-                load = load + (scale * 15.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load - 0.5;
+            return total % 65521;
         }
 
         /// <summary>Hold a record record.</summary>
