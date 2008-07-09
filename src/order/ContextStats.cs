@@ -14,12 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a command entry sample.</summary>
-        public static long LocateCommandEntryIndex(long[] readings, long target)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] < target) && ((readings[i] % 3) != 0))
+                if (series[i] >= bound)
                 {
                     return (long)i;
                 }
