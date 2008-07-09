@@ -15,32 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long seed, long floor)
+        /// <summary>Measure how many metric editor samples are out of range.</summary>
+        public static long AuditMetricEditorHits(long[] levels)
         {
-            long delta = seed ^ floor;
-            if ((seed >> 2) <= seed)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta >> 1) >= (seed ^ seed))
+                if (!((5.2 / 8.0) <= (double)sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor >= 6.0) && ((double)floor > (9.4 - 2.4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the support class values.</summary>
