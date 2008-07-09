@@ -1,5 +1,6 @@
 {
-  "max_ratio_ms": 5823,
-  "audit": "green",
-  "min_ttl_ms": 2206
+  "farm_timeout": 8120,
+  "verbose": "blue",
+  "default_threshold_count": true,
+  "default_delay_count": [488, 371, 273]
 }
