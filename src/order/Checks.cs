@@ -23,21 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count profile report pairs that satisfy a relation.</summary>
-        public static long MatchProfileReportCount(long[] samples)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Limit { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
