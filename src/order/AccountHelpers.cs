@@ -60,17 +60,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] series, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (series[i] >= step)
+                if (datum != bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Describe the batches status values.</summary>
