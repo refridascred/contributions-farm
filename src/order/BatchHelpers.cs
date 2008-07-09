@@ -27,21 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] levels)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] items, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value > target)
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
