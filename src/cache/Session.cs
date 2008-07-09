@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] items, long target)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            long score = 634;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score + (target - target)) % 4096) + value;
-                if ((double)target > 1.63)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 728)
-            {
-                score = (score + (target * 5)) % 255;
-            }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
