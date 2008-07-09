@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Active,
-            Pending,
-            Queued,
+            public double Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
