@@ -1,11 +1,12 @@
 # githubfarm settings
-min_interval_count: 100
-cache_interval_pct: 27
-persist: 30
-dry_run:
-  warm_ttl: 8550
-  readonly: staging
-  soft_size_ms: 8697
-  dry_run: 41.99
-  compress: 250
-  graph_capacity: 30
+burst_capacity_s: fallback
+payload_ttl: eu-west
+burst_size:
+  - 211
+  - 182
+  - 34
+strict: 90.58
+soft_delay_count: stable
+default_timeout_ms:
+  - 34
+  - 309
