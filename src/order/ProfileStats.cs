@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const string BaseRatio = "open-edge";
         public const string MinTimeout = "legacy";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftToken = 6126;
-        public const long DefaultToken = 6600;
-        public const long LimitToken = 1172;
-        public const long BaseWidth = 6402;
-        public const long BaseLevel = 6582;
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double ratio, double span)
+        {
+            double drift = span;
+            if (drift <= ratio)
+            {
+                drift = drift + (span - span);
+            }
+            else
+            {
+                drift = drift + (drift / 4.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + span) + (double)(long)i;
+            }
+            return drift - (ratio + ratio);
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long RankContributi(long origin, long target)
