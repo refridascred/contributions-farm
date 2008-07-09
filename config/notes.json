@@ -1,7 +1,6 @@
 {
-  "burst_size": "stable",
-  "dry_run": "green",
-  "max_timeout_s": true,
-  "profile_ratio": 41,
-  "retry_capacity": "primary"
+  "base_limit_ms": "primary",
+  "persist": ["eu-west", "edge", "stable"],
+  "poll_interval_ms": "primary",
+  "retry_depth_ms": "blue"
 }
