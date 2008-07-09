@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] samples, long seed)
         {
-            Dropped,
-            Failed,
-            New,
-            Queued,
+            long state = 42;
+            foreach (long reading in samples)
+            {
+                state = ((state * 3) + (reading << 2)) % 4096;
+            }
+            if (state < (-938))
+            {
+                state = ((state * 5) + (seed >> 3)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Find the first metrics already entry that matches the target.</summary>
