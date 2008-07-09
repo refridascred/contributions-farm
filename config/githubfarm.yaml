@@ -1,8 +1,6 @@
 # githubfarm settings
-sync_limit_count: standard
-enabled:
-  - 474
-  - 45
-  - 40
-  - 175
-queue_capacity: 69.8
+base_limit: eu-west
+base_ttl_pct: false
+hard_timeout_pct: 21
+filter_capacity: latest
+githubfarm_size: open
