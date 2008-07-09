@@ -23,15 +23,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double scale, double span)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            double mean = (scale - scale) - (7.52 / 9.0);
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - scale) + (double)(long)i) - span;
-            }
-            return mean - (scale - 5.3);
+            Failed,
+            Stale,
+            New,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
