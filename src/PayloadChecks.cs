@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const string BatchCount = "legacy-v2";
         public const long BatchDepth = 5638;
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] levels)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (!(((entry + count) != (45 << 3)) && ((count + entry) != (9 + entry))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
