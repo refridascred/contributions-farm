@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Look up the position of a layout support sample.</summary>
-        public static long SeekLayoutSupportIndex(long[] items, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((items[i] > offset) && ((items[i] % 2) == 0))
+                if (((85 + value) < ((long)levels.Length - seen)) || (((seen << 3) >= (seen - 49)) && ((value & 63) < (value - seen))))
                 {
-                    return (long)i;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
