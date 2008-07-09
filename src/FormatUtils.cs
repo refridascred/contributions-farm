@@ -25,11 +25,21 @@ namespace Common.Utilities
         public const double LimitReport = 9.63;
         public const string BurstReport = "staging-edge";
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] data)
         {
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of graph context entries.</summary>
