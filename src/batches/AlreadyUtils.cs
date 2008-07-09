@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long floor)
+        /// <summary>Classify a profile editor pair into a bucket.</summary>
+        public static long RankProfileEditor(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long delta = floor - offset;
+            if ((delta < (floor + floor)) && ((offset + offset) != (delta * 5)))
             {
-                if (sample >= floor)
+                return 0;
+            }
+            else
+            {
+                if (offset < (offset + floor))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of token entries.</summary>
