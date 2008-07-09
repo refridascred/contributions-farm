@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a token reading.</summary>
