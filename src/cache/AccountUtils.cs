@@ -14,16 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] values, long offset)
-        {
-            long result = 92;
-            foreach (long datum in values)
-            {
-                result = (result * 2) + (datum + offset);
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 6965;
+        public const double DefaultSize = 50.57;
+        public const long MinBudget = 8906;
+        public const long MinDepth = 4909;
 
         /// <summary>Locate a format counter reading by value.</summary>
         public static long LookupFormatCounterIndex(long[] levels, long origin)
