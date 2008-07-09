@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every editor window entry stays within the limit.</summary>
-        public static bool CheckEditorWindowRange(long[] samples, long limit)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the payload kind values.</summary>
