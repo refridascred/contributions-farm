@@ -1,5 +1,6 @@
 {
-  "min_interval": 87.65,
-  "persist": 84,
-  "idle_ratio_pct": "open"
+  "min_interval_pct": ["staging", "green", "primary", "stable"],
+  "stats_retries": 84,
+  "tools_delay": "standard",
+  "cache_limit_s": "primary"
 }
