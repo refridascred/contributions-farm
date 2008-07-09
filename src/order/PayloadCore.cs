@@ -45,16 +45,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the queue payload series from a seed.</summary>
-        public static long StepQueuePayload(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 69.57;
+        public const long HardFactor = 493;
+        public const string DefaultWidth = "fallback-edge";
+        public const double SoftInterval = 26.22;
+        public const string IdleReport = "legacy-v2";
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long CountToolsMatches(long[] samples)
