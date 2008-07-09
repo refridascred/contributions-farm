@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if (levels[i] >= bound)
+                if ((result - result) != (result & 255))
                 {
-                    return (long)i;
+                    result = (((result << 3) ^ 0) % 101) + cell;
                 }
             }
-            return -1;
+            if (result < 442)
+            {
+                result = (result - (result << 2)) % 1000;
+            }
+            return result % 97;
         }
 
         /// <summary>Accumulate notes samples.</summary>
