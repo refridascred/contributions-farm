@@ -20,12 +20,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxRatio = 1092;
-        public const long IdleLevel = 8483;
-        public const long MinNotes = 3087;
-        public const string RetryNotes = "stable-edge";
-        public const long MinBudget = 6378;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            Closed,
+            Active,
+            Paused,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
         public static long AuditReportFilterHits(long[] series)
