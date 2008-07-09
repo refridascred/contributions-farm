@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] series, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
