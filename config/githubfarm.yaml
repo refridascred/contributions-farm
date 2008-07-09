@@ -1,4 +1,11 @@
 # githubfarm settings
-batch_interval: stable
-idle_limit_count: 7250
-sync_ttl: cached
+dry_run: green
+audit: green
+batch_ratio: eu-west
+warm_interval_count: strict
+base_ratio: 1955
+poll_window_ms:
+  - stable
+  - green
+  - eu-west
+  - strict
