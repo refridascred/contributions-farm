@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] readings)
         {
-            Stale,
-            Closed,
-            Retry,
-            New,
+            long state = 345;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    state = (state + (state & 127)) + (long)i;
+                    state = state + (652 - item);
+                }
+                if ((double)state > 7.0)
+                {
+                    state = state - state;
+                }
+            }
+            if (state < 534)
+            {
+                state = ((state << 3) ^ (state + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a payload record.</summary>
