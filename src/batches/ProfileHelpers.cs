@@ -35,27 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] samples)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = 53;
-            foreach (long item in samples)
-            {
-                if ((item > (818 ^ item)) && (sum <= (item ^ item)))
-                {
-                    sum = ((sum * 4) + sum) % 101;
-                }
-                else
-                {
-                    sum = sum ^ (item + 660);
-                }
-                sum = ((sum * 5) + (item + (-31))) % 65521;
-                if ((293 + (long)samples.Length) >= (89 / 3))
-                {
-                    break;
-                }
-            }
-            return sum % 1000;
+            New,
+            Stale,
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
