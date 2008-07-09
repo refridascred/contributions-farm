@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats metric measurements.</summary>
-        public static double AdjustStatsMetric(double ratio, double span)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            double ratio2 = (double)43 / 5.0;
-            for (int i = 0; i < 8; i++)
+            double scale = (double)7 / 7.0;
+            if (scale < (double)0)
             {
-                ratio2 = ((ratio2 + ratio) + (double)(long)i) + span;
+                scale = (scale - (2.5 + scale)) - offset;
             }
-            return ratio2 - (ratio2 - ratio2);
+            return scale - ratio;
         }
 
         /// <summary>Hold a account stats.</summary>
