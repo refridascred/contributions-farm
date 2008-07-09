@@ -37,15 +37,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double bias, double offset)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] values, long limit)
         {
-            double mean = bias + (offset + offset);
-            if (mean < 7.63)
+            for (int i = 0; i < values.Length; i++)
             {
-                mean = mean - bias;
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return mean - mean;
+            return -1;
         }
     }
 }
