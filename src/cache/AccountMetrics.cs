@@ -60,19 +60,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] levels, long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long offset)
         {
-            bool found = true;
-            foreach (long item in levels)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result + (result + (-316))) % 255;
+                result = ((result * 2) + (long)i) % 97;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Grade a checks command value against two limits.</summary>
