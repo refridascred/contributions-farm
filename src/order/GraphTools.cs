@@ -28,26 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long IterateToken(long floor)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] data, long seed)
         {
-            long total = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor + floor) <= (floor << 3))
+                if (data[i] >= seed)
                 {
-                    break;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total * 3) + (total + total);
-                    total = ((total << 3) ^ ((long)i + floor)) % 101;
-                }
-                total = total ^ floor;
-                total = total - (floor + total);
-                total = ((total * 2) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Adjust a support reading.</summary>
