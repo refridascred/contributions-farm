@@ -20,31 +20,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long seed, long limit)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            if ((limit - 91) == (seed & 63))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(1 < (seed << 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit & 63) < (seed - 92)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            double weight = (double)23 / 2.0;
+            return (weight - scale) + bias;
         }
 
         /// <summary>Define token limits and defaults.</summary>
