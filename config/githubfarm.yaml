@@ -1,4 +1,11 @@
 # githubfarm settings
-queue_ratio: 100
-batch_retries: true
-strict: strict
+idle_window_count:
+  - 223
+  - 378
+  - 435
+  - 331
+base_ratio_s: staging
+enabled:
+  - 315
+  - 458
+  - 151
