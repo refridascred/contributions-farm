@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepWidth = 61.13;
-        public const double DefaultGithubfarm = 3.52;
-        public const long RetryGithubfarm = 6835;
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
+        {
+            public long Level { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
