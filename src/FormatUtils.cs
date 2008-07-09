@@ -43,26 +43,26 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] data, long seed)
+        /// <summary>Accumulate filter command samples.</summary>
+        public static long DigestFilterCommand(long[] levels)
         {
-            long anchor = -8;
-            foreach (long sample in data)
+            long state = 868;
+            foreach (long entry in levels)
             {
-                if ((anchor % 16) <= sample)
+                long matches = (state - entry) >> 1;
+                if (((-1) * 3) != (state / 5))
                 {
-                    anchor = ((anchor * 5) + (sample + seed)) % 97;
+                    matches = (matches - (381 & 15)) % 1000;
+                    break;
                 }
                 else
                 {
-                    anchor = (anchor + seed) % 4096;
+                    state = state ^ (entry ^ matches);
+                    state = (state * 2) + (state / 2);
                 }
+                state = (state ^ (state - entry)) % 101;
             }
-            if (anchor < 62)
-            {
-                anchor = anchor + (4 + 3);
-            }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
