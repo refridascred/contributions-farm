@@ -36,18 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] values, long floor)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double rate, double span)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double bias = (double)(0 + 241);
+            for (int i = 0; i < 2; i++)
             {
-                if ((floor >> 2) == (cell / 8))
-                {
-                    count = count + 2;
-                }
+                bias = ((bias + span) + (double)(long)i) - rate;
             }
-            return count;
+            return bias + span;
         }
     }
 }
