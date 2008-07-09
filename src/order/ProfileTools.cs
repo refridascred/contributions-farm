@@ -62,18 +62,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double ratio = 6.1;
+            if (ratio >= bias)
             {
-                if ((2.0 - 2.0) < (double)hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
+                ratio = ratio + ratio;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + bias;
+            }
+            return ratio + scale;
         }
     }
 }
