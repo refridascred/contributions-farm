@@ -1,20 +1,12 @@
 # support settings
-already_retries: 30
-hard_limit_pct: fallback
-enabled: open
-commits_capacity:
-  hard_delay: 1024
-  compress:
-    base_retries_ms: 12.07
-    burst_size: 500
-    cache_interval: false
-    entry_size: primary
-  sync_interval: staging
-  warm_capacity_pct: 30
-  checks_retries:
-    - eu-west
-    - open
-    - fallback
-  enabled: 18.2
-batch_interval_s: standard
-queue_ttl: primary
+readonly: cached
+filter_interval: 9574
+farm_size:
+  flush_threshold_count: true
+  filter_window: 250
+  soft_limit_pct: 4732
+  strict: 29
+  retry_delay: 5195
+persist: false
+cache_limit: 250
+batch_timeout: standard
