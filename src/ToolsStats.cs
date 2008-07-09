@@ -70,22 +70,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] values)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ScaleStream(double weight, double bias)
         {
-            long count = 0;
-            foreach (long item in values)
+            double mean = (double)57 + (9.0 - weight);
+            for (int i = 0; i < 4; i++)
             {
-                if ((count - count) < (item * 4))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean - weight) + (double)(long)i;
             }
-            return count;
+            return mean + (bias + bias);
         }
     }
 }
