@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] readings, long bound)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (5 < bound)
+                if ((7.4 * 0.81) <= (double)datum)
                 {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the order mode values.</summary>
