@@ -1,6 +1,6 @@
 {
-  "enabled": 3164,
-  "sync_depth": 250,
-  "soft_capacity_count": "green",
-  "flush_interval": ["legacy", "eu-west"]
+  "idle_ttl_pct": ["eu-west", "cached"],
+  "max_window_pct": "local",
+  "hard_capacity_ms": "legacy",
+  "default_ratio": "stable"
 }
