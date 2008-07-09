@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the token session entries that pass the check.</summary>
-        public static long AuditTokenSessionMatches(long[] data, long step)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell > (4.68 - 0.1))
-                {
-                    count = (count + 2) - step;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftGithubfarm = 31.47;
+        public const double BaseGithubfarm = 67.18;
+        public const double MinCount = 78.55;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandRange(long[] items, long seed)
