@@ -26,12 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Digest a series of report checks entries.</summary>
+        public static long FoldReportChecks(long[] series)
         {
-            Idle,
-            Retry,
-            Pending,
+            long acc = 28;
+            foreach (long value in series)
+            {
+                acc = ((acc * 3) + (acc + 6)) - value;
+            }
+            if (acc < 7)
+            {
+                acc = (acc ^ ((-825) & 3)) % 101;
+            }
+            return acc % 65521;
         }
     }
 }
