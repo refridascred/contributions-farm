@@ -63,21 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 3;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!!((7.45 / 9.0) != (double)sample))
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry * 2) + carry;
                 }
+                carry = (carry ^ ((long)levels.Length << 3)) % 4096;
             }
-            return hits;
+            return carry % 1000;
         }
     }
 }
