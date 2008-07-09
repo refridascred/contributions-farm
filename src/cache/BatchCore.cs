@@ -13,11 +13,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 3948;
-        public const long LimitDepth = 7384;
-        public const long BaseProfile = 4214;
-        public const long HardProfile = 781;
+        /// <summary>Fold a list of account cluster readings.</summary>
+        public static long CombineAccountCluster(long[] data)
+        {
+            long score = 91;
+            foreach (long cell in data)
+            {
+                score = ((score ^ (2 - score)) % 65521) + cell;
+            }
+            return score;
+        }
 
         /// <summary>Classify a profile batches pair into a bucket.</summary>
         public static long GradeProfileBatches(long seed, long origin)
