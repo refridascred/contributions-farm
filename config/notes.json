@@ -1,5 +1,7 @@
 {
-  "batch_depth_ms": "cached",
-  "stats_window": "stable",
-  "default_depth_ms": "legacy"
+  "min_limit": true,
+  "base_size_pct": "cached",
+  "max_ratio_ms": 8818,
+  "sync_capacity_pct": 60,
+  "commits_threshold": false
 }
