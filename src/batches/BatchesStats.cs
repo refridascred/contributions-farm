@@ -12,22 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] values)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long total = 551;
-            foreach (long sample in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    total = total - (long)i;
-                }
-                if ((sample & 1) <= (sample / 5))
-                {
-                    total = ((total * 2) + 624) % 255;
-                }
-            }
-            return total;
+            public long Limit { get; set; }
+            public string Label { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
