@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Digest a series of route farm entries.</summary>
+        public static long WeighRouteFarm(long[] data)
         {
-            public double Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            long score = 9;
+            foreach (long value in data)
+            {
+                if (((649 * 2) < value) && (score < (value >> 5)))
+                {
+                    score = ((score * 2) + (score * 5)) % 1000;
+                }
+                else
+                {
+                    score = (score << 3) ^ value;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
