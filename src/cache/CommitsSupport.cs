@@ -69,18 +69,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] samples)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((13.0 / 9.0) <= (double)count)
+                if ((series[i] >= target) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 2) + sample;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
