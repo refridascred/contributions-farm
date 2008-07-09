@@ -1,9 +1,7 @@
 {
-  "poll_threshold_pct": {
-    "account_timeout": [68, 418, 434],
-    "channel_delay": [303, 25, 82, 272],
-    "compress": 100
-  },
-  "command_size": 21.68,
-  "default_interval_ms": 7230
+  "flush_depth_ms": 500,
+  "strict": ["cached", "legacy"],
+  "verbose": 9593,
+  "audit": true,
+  "checks_interval": 40.71
 }
