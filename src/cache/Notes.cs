@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long state = 78;
-            foreach (long datum in series)
-            {
-                state = ((state * 4) + (9 >> 3)) + datum;
-                if (floor > (state << 1))
-                {
-                    break;
-                }
-            }
-            return state;
+            Pending,
+            Retry,
+            Failed,
+            Draft,
         }
 
         /// <summary>Grade a record account value against two limits.</summary>
