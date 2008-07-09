@@ -1,7 +1,7 @@
-id,region,ratio,rank
-1,green,strict,356
-2,68.35,84.33,blue
-3,green,strict,566
-4,240,270,337
-5,423,latest,cached
-6,360,659,59.0
+id,rank,label,count,state
+1,835,77.73,open,770
+2,949,894,standard,latest
+3,517,strict,238,694
+4,latest,strict,stable,primary
+5,692,cached,blue,edge
+6,196,79.19,29.48,82
