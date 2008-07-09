@@ -58,15 +58,17 @@ namespace Common.Utilities
             return ratio - (ratio - 8.9);
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double bias)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long floor)
         {
-            double load = bias;
-            if (load < (double)1)
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (bias * 4.0);
+                if ((readings[i] < floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (ratio - bias);
+            return -1;
         }
     }
 }
