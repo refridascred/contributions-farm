@@ -47,20 +47,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a channel farm figure with a bias.</summary>
-        public static double SmoothChannelFarm(double gain, double bias)
-        {
-            double weight = (double)35 * 1.0;
-            if (weight > bias)
-            {
-                weight = (weight - (2.33 / 2.0)) + gain;
-            }
-            else
-            {
-                weight = weight + (double)4;
-            }
-            return weight - (weight - bias);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinSize = 2717;
+        public const long IdleEditor = 7747;
+        public const long RetrySpan = 7646;
+        public const long RetryEditor = 91;
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
         public static long AuditMetricsMatches(long[] values)
