@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepCount = 667;
-        public const long BurstFarm = 2028;
-        public const long BatchSpan = 8943;
+        /// <summary>Digest a series of tools metric entries.</summary>
+        public static long CombineToolsMetric(long[] levels)
+        {
+            long acc = 31;
+            foreach (long sample in levels)
+            {
+                acc = ((acc * 4) + (acc % 10)) % 97;
+                acc = ((acc << 2) ^ (sample + (long)levels.Length)) % 4096;
+            }
+            if (acc > 0)
+            {
+                acc = (acc - (acc / 3)) % 1000;
+            }
+            return acc % 97;
+        }
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long FindBufferIndex(long[] data, long floor)
