@@ -23,21 +23,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double scale, double span)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (scale - scale) - (7.52 / 9.0);
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = ((mean - scale) + (double)(long)i) - span;
             }
-            return count;
+            return mean - (scale - 5.3);
         }
 
         /// <summary>Roll a batches counter forward.</summary>
