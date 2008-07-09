@@ -14,21 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count checks counter pairs that satisfy a relation.</summary>
-        public static long PairChecksCounterCount(long[] readings)
+        /// <summary>Find the first notes batches entry that matches the target.</summary>
+        public static long LocateNotesBatchesIndex(long[] data, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((data[i] > seed) && ((data[i] % 2) == 0))
                 {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
