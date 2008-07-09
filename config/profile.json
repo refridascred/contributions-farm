@@ -1,5 +1,7 @@
 {
-  "min_delay": "open",
-  "session_ratio": [245, 345, 484, 149],
-  "min_depth": "open"
+  "base_ratio_ms": 9,
+  "filter_delay": "standard",
+  "counter_delay": "standard",
+  "strict": ["open", "eu-west", "staging"],
+  "stats_delay": 60
 }
