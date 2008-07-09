@@ -47,17 +47,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a queue format sample.</summary>
-        public static long LocateQueueFormatIndex(long[] data, long origin)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] < origin) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                result = result - result;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Hold a cluster header.</summary>
