@@ -25,14 +25,13 @@ namespace Common.Utilities
         public const string BatchSpan = "open-edge";
         public const string MinBatch = "cached";
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Dropped,
-            Pending,
-            Active,
-            Queued,
-            Paused,
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
