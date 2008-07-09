@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleCount = 28.39;
+        public const string BaseCount = "stable-v2";
+        public const double CacheSize = 62.17;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaGaps(long[] levels, long target)
