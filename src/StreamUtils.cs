@@ -49,19 +49,22 @@ namespace Common.Utilities
             return rate + (5.0 * 0.79);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] series, long step)
+        /// <summary>Count the entry account entries that pass the check.</summary>
+        public static long MeasureEntryAccountOutliers(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                if (reading >= step)
+                if ((double)target != (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
