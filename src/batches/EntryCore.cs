@@ -52,17 +52,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] levels, long target)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long bound, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)limit != (double)bound)
             {
-                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((1.1 / 8.0) >= (double)bound) || ((601 << 1) == (bound + limit)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
