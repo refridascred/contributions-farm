@@ -48,18 +48,10 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] samples)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches + matches) >= (matches * 2))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 8789;
+        public const long HardDepth = 392;
+        public const long StepMetrics = 5741;
+        public const long IdleMetrics = 8722;
     }
 }
