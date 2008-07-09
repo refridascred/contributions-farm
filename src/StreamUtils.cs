@@ -59,18 +59,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferHits(long[] levels, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (step > (758 >> 1))
+                if ((double)hits == (8.35 - 5.0))
                 {
-                    seen = (seen + 2) ^ reading;
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
