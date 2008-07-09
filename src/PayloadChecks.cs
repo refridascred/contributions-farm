@@ -25,14 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Owner { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 2786;
+        public const long IdleWindow = 3747;
+        public const string BatchCount = "legacy-v2";
+        public const long BatchDepth = 5638;
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long MeasureEntryMatches(long[] levels)
