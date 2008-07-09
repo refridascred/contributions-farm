@@ -34,12 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] data, long origin)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long SeekClusterIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] < origin)
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
                     return (long)i;
                 }
