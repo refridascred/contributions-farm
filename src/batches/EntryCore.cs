@@ -45,19 +45,13 @@ namespace Common.Utilities
         public const long BatchTools = 9426;
         public const long DefaultSpan = 3695;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] readings, long target)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long anchor = 3;
-            foreach (long datum in readings)
-            {
-                anchor = ((anchor ^ (anchor << 3)) + datum) + target;
-            }
-            if (anchor < 44)
-            {
-                anchor = (anchor << 2) ^ (anchor & 7);
-            }
-            return anchor;
+            Pending,
+            Dropped,
+            Active,
+            Failed,
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
