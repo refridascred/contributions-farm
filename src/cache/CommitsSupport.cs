@@ -54,9 +54,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 3774;
-        public const long HardTools = 2636;
-        public const string WindowTools = "alpha";
+        public const string DefaultTimeout = "stable-1";
+        public const long StepTools = 4676;
+        public const string WindowTools = "alpha-v2";
+        public const long SoftTools = 5119;
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] samples, long limit)
