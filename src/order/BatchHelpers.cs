@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Combine support contributi values into a single score.</summary>
+        public static long TallySupportContributi(long[] series, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 695;
+            foreach (long value in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((9.03 / 4.0) < (double)target)
                 {
-                    if ((series[i] + series[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix ^ value) % 65521;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (value + target)) % 97;
+                }
+                if (value <= (mix - value))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Describe the session status values.</summary>
