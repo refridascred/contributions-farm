@@ -26,21 +26,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = ((carry * 5) + ((long)i ^ step)) % 101;
-                if ((step >> 5) > (long)i)
-                {
-                    carry = ((carry << 2) ^ (carry % 8)) % 97;
-                    carry = ((carry << 3) ^ ((long)i - step)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a notes layout value against two limits.</summary>
