@@ -1,8 +1,16 @@
 # entry settings
-default_threshold: 100
-githubfarm_limit: stable
-already_window:
-  - 198
-  - 239
-  - 163
-  - 489
+record_ratio: strict
+verbose:
+  window_ttl: 12.64
+  idle_capacity_count: 97
+  report_timeout: 500
+  default_window: 250
+  default_size: true
+  batch_window_pct: latest
+compress: 63.5
+max_capacity_ms: blue
+hard_threshold_s:
+  - 417
+  - 402
+  - 337
+  - 376
