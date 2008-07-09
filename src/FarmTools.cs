@@ -17,18 +17,19 @@ namespace Common.Utilities
         public const long LimitFilter = 5071;
         public const double RetryInterval = 48.95;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileOutliers(long[] series)
+        /// <summary>Check that every stats route entry stays within the limit.</summary>
+        public static bool VerifyStatsRouteBounds(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if ((19.0 > (double)hits) || ((double)cell != (double)47))
+                if (sample > limit)
                 {
-                    hits = hits + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
