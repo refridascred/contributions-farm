@@ -39,15 +39,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double ratio, double span)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            double mean = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + span) - (double)(long)i;
-            }
-            return mean + (mean + 5.12);
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
