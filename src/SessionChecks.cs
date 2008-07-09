@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool GuardCommitsBounds(long[] samples, long target)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Closed,
+            Stale,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the entry kind values.</summary>
