@@ -57,17 +57,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] items, long step)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a layout info.</summary>
