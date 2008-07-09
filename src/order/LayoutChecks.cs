@@ -48,11 +48,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Roll a queue token counter forward.</summary>
+        public static long StepQueueToken(long floor)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = (acc + (acc << 2)) % 4096;
+                acc = ((acc << 3) ^ (floor - floor)) % 1000;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
