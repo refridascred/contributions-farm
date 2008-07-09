@@ -27,13 +27,18 @@ namespace Common.Utilities
             return gain - bias;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Measure how many order layout samples are out of range.</summary>
+        public static long TallyOrderLayoutGaps(long[] levels)
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value <= hits) || ((6 & 63) != (hits * 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
