@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many entry filter samples are out of range.</summary>
-        public static long TallyEntryFilterGaps(long[] series)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((3.9 < (double)cell) && (hits <= (hits - cell)))
+                if (values[i] == bound)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
