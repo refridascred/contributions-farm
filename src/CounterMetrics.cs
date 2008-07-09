@@ -51,18 +51,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] series, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = -8;
+            foreach (long value in levels)
             {
-                if (((long)series.Length + limit) < limit)
+                if (342 > (value - state))
                 {
-                    matches = (matches + 3) ^ entry;
+                    state = (state ^ (state + value)) % 1000;
                 }
             }
-            return matches;
+            if (state < 4)
+            {
+                state = ((state << 2) ^ floor) % 4096;
+            }
+            return state;
         }
     }
 }
