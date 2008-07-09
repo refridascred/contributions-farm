@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit window notes readings against a rule.</summary>
-        public static long AuditWindowNotesGaps(long[] samples, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seen <= (seen >> 2))
+                if (levels[i] <= origin)
                 {
-                    seen = ((seen + 2) + item) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi metrics readings.</summary>
