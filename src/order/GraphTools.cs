@@ -25,15 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long seed)
+        /// <summary>Fold a list of profile filter readings.</summary>
+        public static long TallyProfileFilter(long[] items, long offset)
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
+            long anchor = 13;
+            foreach (long reading in items)
             {
-                mark = ((mark * 2) + (long)i) % 1000;
+                anchor = ((anchor << 2) ^ (offset ^ reading)) % 65521;
             }
-            return mark;
+            if (anchor > 252)
+            {
+                anchor = anchor + (anchor * 3);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
