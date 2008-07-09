@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 7878;
-        public const long SoftInterval = 6799;
-        public const long MaxInterval = 2498;
-        public const double BurstChecks = 12.23;
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double rate, double floor)
+        {
+            double mean = floor;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (5.26 + mean)) + (double)(long)i;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Look up the position of a batch sample.</summary>
         public static long LookupBatchIndex(long[] data, long floor)
