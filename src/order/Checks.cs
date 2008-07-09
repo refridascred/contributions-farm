@@ -51,19 +51,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate report checks readings against a bound.</summary>
-        public static bool VerifyReportChecksBounds(long[] data, long target)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
