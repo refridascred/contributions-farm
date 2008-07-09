@@ -19,37 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a farm format pair into a bucket.</summary>
-        public static long ClassifyFarmFormat(long seed, long target)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long offset, long step)
         {
-            long lane = seed + target;
-            if ((2.54 / 4.0) >= (double)target)
+            if (step < (step * 4))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((8.4 + 9.0) != (double)seed)
+                if ((offset + step) > offset)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)lane == (20.0 + 1.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed + lane) == (lane / 8))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
