@@ -83,19 +83,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double rate, double offset)
+        /// <summary>Audit buffer queue readings against a rule.</summary>
+        public static long MeasureBufferQueueGaps(long[] levels, long step)
         {
-            double weight = rate;
-            if (weight >= (double)361)
+            long count = 0;
+            foreach (long value in levels)
             {
-                weight = weight + offset;
+                if ((double)value != (0.8 * 0.8))
+                {
+                    count = (count + 3) + step;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight - (double)679;
+            return count;
         }
     }
 }
