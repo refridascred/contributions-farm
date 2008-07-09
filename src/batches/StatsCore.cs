@@ -44,26 +44,10 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long limit, long step)
-        {
-            long offset = limit ^ step;
-            if (!((limit & 7) == (limit + step)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + offset) <= limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftLevel = "strict-edge";
+        public const long BatchLevel = 8902;
+        public const long MinRoute = 7005;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long GradeSupport(long origin, long target)
