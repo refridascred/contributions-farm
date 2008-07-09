@@ -29,12 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleFactor = 1192;
-        public const long HardWindow = 1804;
-        public const long StepWidth = 8865;
-        public const string BatchWindow = "latest";
-        public const long MinWindow = 8719;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MaxSpan = "primary-v2";
+        public const long MaxCommits = 9361;
+        public const double BaseRatio = 11.65;
+        public const string BurstTimeout = "legacy-1";
+        public const long BatchFactor = 5206;
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long SeriesEditor(long seed)
