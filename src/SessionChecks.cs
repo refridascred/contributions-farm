@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long DeriveLayout(long target)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                carry = (carry ^ 585) % 1000;
+                if ((carry + carry) < (target / 6))
+                {
+                    carry = (carry - (carry + 383)) % 4096;
+                    carry = carry + (carry - carry);
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Match up tools samples.</summary>
