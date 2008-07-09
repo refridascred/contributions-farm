@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 4581;
-        public const double StepPayload = 39.83;
-        public const long CacheLevel = 6884;
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
+        {
+            Dropped,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Describe the cluster phase values.</summary>
         public enum ClusterPhase
