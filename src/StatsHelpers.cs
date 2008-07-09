@@ -33,19 +33,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Project the next githubfarm farm value.</summary>
-        public static double SmoothGithubfarmFarm(double bias, double span)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double ratio = span;
-            if (ratio > (double)64)
-            {
-                ratio = ratio - (span * 5.31);
-            }
-            else
-            {
-                ratio = ratio + 17.0;
-            }
-            return ratio - (ratio + bias);
+            public bool Flag { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the counter level values.</summary>
