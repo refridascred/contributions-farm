@@ -42,11 +42,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] series, long step)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (((value >> 4) > 870) || ((double)step >= (9.0 - 3.49)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
