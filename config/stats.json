@@ -1,27 +1,6 @@
 {
-  "poll_interval_count": ["cached", "open", "local", "local"],
-  "default_capacity": {
-    "cache_limit": "primary",
-    "enabled": {
-      "cache_interval_count": "blue",
-      "contributi_window": [179, 314, 126],
-      "report_limit": 50,
-      "cache_ratio_count": ["latest", "eu-west", "latest"]
-    },
-    "counter_size": "standard",
-    "soft_delay_ms": false
-  },
-  "max_window_ms": {
-    "profile_ttl": 9.05,
-    "readonly": 250,
-    "window_window": 19,
-    "soft_ratio": {
-      "persist": "open",
-      "report_ratio": 250,
-      "buffer_delay": "legacy"
-    },
-    "base_size_ms": false
-  },
-  "audit": 2198,
-  "layout_ratio": 73.98
+  "flush_depth_s": 15,
+  "counter_window": "latest",
+  "queue_limit": [178, 490, 234, 469],
+  "default_window": "cached"
 }
