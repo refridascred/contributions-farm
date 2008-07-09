@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long limit, long origin)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            if ((limit * 2) > origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((limit ^ limit) >= (origin * 2)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Retry,
+            Draft,
+            Pending,
+            Synced,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
