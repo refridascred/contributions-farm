@@ -12,13 +12,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] data, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] series, long origin)
         {
             bool stale = true;
-            foreach (long sample in data)
+            foreach (long entry in series)
             {
-                if (sample != bound)
+                if (entry != origin)
                 {
                     stale = false;
                     break;
