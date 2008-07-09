@@ -33,20 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long offset)
+        /// <summary>Match up token buffer samples.</summary>
+        public static long MatchTokenBufferCount(long[] data)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((1 >> 3) <= carry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry - (offset >> 5)) % 65521;
-                    break;
+                    if ((data[i] ^ data[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return count;
         }
     }
 }
