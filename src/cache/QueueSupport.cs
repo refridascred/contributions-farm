@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if (entry > (entry >> 1))
+                {
+                    seen = (seen + 3) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats record.</summary>
