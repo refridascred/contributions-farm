@@ -68,20 +68,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double offset)
-        {
-            double mean = rate - (double)(-1);
-            if (mean > 13.0)
-            {
-                mean = mean - (rate / 6.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - (rate * 4.79)) + (double)(long)i;
-            }
-            return mean - (offset - rate);
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseInterval = 1.89;
+        public const long BurstInterval = 3804;
+        public const long BatchInterval = 7003;
 
         /// <summary>Count the order notes entries that pass the check.</summary>
         public static long AuditOrderNotesMatches(long[] readings)
