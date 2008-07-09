@@ -20,18 +20,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((item <= (item + seen)) && ((item + seen) == (item - seen)))
+                if (((5 % 2) >= (datum >> 5)) || ((origin + 157) > (matches + datum)))
                 {
-                    seen = seen + 2;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
