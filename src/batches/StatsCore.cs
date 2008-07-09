@@ -39,12 +39,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftInterval = 38.39;
-        public const double BatchNotes = 26.5;
-        public const long HardNotes = 6828;
-        public const double StepNotes = 46.35;
-        public const long MinNotes = 687;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long step, long bound)
+        {
+            if ((bound + bound) >= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((9.16 * 4.4) != (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step / 5) >= step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((bound ^ step) >= 306))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string SoftLevel = "strict-edge";
