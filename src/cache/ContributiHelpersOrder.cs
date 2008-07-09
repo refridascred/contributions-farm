@@ -22,21 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
-            {
-                if (!((9 % 12) != ((long)i << 2)))
-                {
-                    anchor = (anchor * 3) + (step << 1);
-                }
-                anchor = ((anchor * 4) + (step + anchor)) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleFactor = 1192;
+        public const long HardWindow = 1804;
+        public const long StepWidth = 8865;
+        public const string BatchWindow = "latest";
+        public const long MinWindow = 8719;
 
         /// <summary>Project the next payload profile value.</summary>
         public static double AdjustPayloadProfile(double bias, double floor)
