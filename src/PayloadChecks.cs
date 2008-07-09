@@ -53,21 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of checks batches readings.</summary>
-        public static long MatchChecksBatchesCount(long[] data)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((reading >= (result + 589)) || ((result ^ result) > (reading - result)))
                 {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result << 2) ^ ((-31) * 2);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
