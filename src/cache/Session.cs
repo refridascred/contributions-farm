@@ -48,20 +48,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] readings)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] samples)
         {
-            long total = 3;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if ((matches + matches) >= (matches * 2))
                 {
-                    total = (((total << 3) ^ entry) % 4096) + (long)i;
+                    matches = (matches + 1) + sample;
                 }
-                total = total ^ (total * 3);
-                total = total - (entry >> 3);
             }
-            return total % 97;
+            return matches;
         }
     }
 }
