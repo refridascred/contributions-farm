@@ -19,18 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter entry samples are out of range.</summary>
-        public static long CountFilterEntryOutliers(long[] levels, long offset)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long prev = floor + limit;
+            if ((limit ^ prev) < (floor & 127))
             {
-                if (hits < (0 - value))
+                return 2;
+            }
+            else
+            {
+                if (((floor - limit) <= (prev * 2)) && ((double)floor == (9.6 + 6.49)))
                 {
-                    hits = (hits + 1) - offset;
+                    return 8;
+                }
+                else
+                {
+                    if ((prev << 2) > (floor - prev))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit >> 5) < (limit >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
