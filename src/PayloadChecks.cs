@@ -22,31 +22,22 @@ namespace Common.Utilities
         public const string BatchCount = "legacy-v2";
         public const long BatchDepth = 5638;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long limit, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] values, long origin)
         {
-            if ((5.0 + 8.0) != (double)limit)
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (offset >> 1))
+                if ((double)origin <= (14.0 - 19.0))
                 {
-                    return 3;
+                    count = (count + 2) + entry;
                 }
                 else
                 {
-                    if ((double)49 > (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
