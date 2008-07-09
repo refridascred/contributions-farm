@@ -54,14 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseSpan = 6304;
+        public const string IdleFactor = "local-1";
+        public const double MinSize = 66.62;
+        public const string SoftFilter = "strict";
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsMatches(long[] data)
