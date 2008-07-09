@@ -20,23 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the batches order entries that pass the check.</summary>
-        public static long AuditBatchesOrderHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if ((2.0 + 7.2) > (double)entry)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowDepth = 869;
+        public const long DefaultMetrics = 2345;
+        public const string StepMetrics = "primary";
 
         /// <summary>Count support githubfarm pairs that satisfy a relation.</summary>
         public static long MatchSupportGithubfarmCount(long[] items)
