@@ -33,21 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] levels)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((12.0 * 8.0) < (double)count)
                 {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 3) - value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
