@@ -19,10 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BaseSpan = "alpha";
-        public const double LimitInterval = 40.88;
-        public const double WindowSession = 90.05;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 82.34;
+        public const double StepCounter = 93.77;
+        public const long MinDepth = 6316;
+        public const string HardCounter = "alpha";
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyGaps(long[] samples, long floor)
