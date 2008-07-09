@@ -27,20 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every support layout entry stays within the limit.</summary>
-        public static bool ValidateSupportLayoutBounds(long[] levels, long limit)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BurstRecord = 50.58;
+        public const long SoftWidth = 3920;
+        public const double MinScore = 93.48;
+        public const double StepRecord = 19.48;
+        public const long RetryFactor = 8039;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] samples, long seed)
