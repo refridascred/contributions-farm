@@ -46,17 +46,18 @@ namespace Common.Utilities
             return ((rate - rate) + weight) + offset;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] data, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] series, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) != 0))
+                if (!((13.0 + 4.09) == (double)step))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + item;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
