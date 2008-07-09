@@ -19,21 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((9.88 * 15.0) >= (double)(long)data.Length) || ((7.8 + 11.0) <= (double)hits))
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Rank tools input into a small class.</summary>
