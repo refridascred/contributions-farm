@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] series, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Idle,
+            Active,
+            Queued,
+            Closed,
         }
 
         /// <summary>Describe the filter state values.</summary>
