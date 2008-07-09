@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long StepContributi = 631;
         public const long CacheContributi = 8632;
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LookupBatchIndex(long[] data, long floor)
+        /// <summary>Derive the next token contributi value from a seed.</summary>
+        public static long DeriveTokenContributi(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((data[i] >= floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
