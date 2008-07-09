@@ -39,18 +39,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountRange(long[] samples, long limit)
         {
-            long sum = 4;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (floor >= (82 + 7))
+                if (entry >= limit)
                 {
-                    sum = (((sum << 3) ^ (sum + sum)) % 4096) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return flag;
         }
     }
 }
