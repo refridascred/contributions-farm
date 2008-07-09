@@ -15,18 +15,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate checks entry samples.</summary>
-        public static long WeighChecksEntry(long[] readings)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long bound, long target)
         {
-            long mark = 9;
-            foreach (long datum in readings)
+            if ((double)bound == (7.1 * 2.3))
             {
-                if (!((339 / 6) < (datum + mark)))
+                return 6;
+            }
+            else
+            {
+                if ((target & 63) > (26 >> 2))
                 {
-                    mark = (mark + (datum >> 4)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mark % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
