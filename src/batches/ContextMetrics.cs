@@ -47,12 +47,18 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((reading & 1) != (981 >> 3))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
