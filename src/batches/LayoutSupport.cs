@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardAlready = 7106;
-        public const long WindowWidth = 5717;
-        public const long MinAlready = 5644;
-        public const long WindowAlready = 7429;
-        public const double MaxAlready = 50.18;
+        /// <summary>Measure how many schema record samples are out of range.</summary>
+        public static long CountSchemaRecordGaps(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if ((4.07 + 3.8) < (double)value)
+                {
+                    tally = (tally + 2) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitNotes = 3772;
