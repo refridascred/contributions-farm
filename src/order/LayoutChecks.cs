@@ -13,24 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long step, long seed)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            if ((5 >> 3) >= (188 + step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (step <= (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
