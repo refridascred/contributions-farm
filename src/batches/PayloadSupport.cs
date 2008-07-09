@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit support already readings against a rule.</summary>
-        public static long CountSupportAlreadyMatches(long[] data, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step ^ 642) == (step - matches))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] + levels[j]) == 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
