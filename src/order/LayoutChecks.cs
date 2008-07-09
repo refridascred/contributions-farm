@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Count the cache format entries that pass the check.</summary>
+        public static long TallyCacheFormatOutliers(long[] series)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((entry & 15) >= 11)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a order summary.</summary>
