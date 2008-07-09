@@ -52,18 +52,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] levels, long bound)
+        public static bool ValidateEditorLimits(long[] samples, long floor)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (datum != bound)
+                if (item < floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Project the next command value.</summary>
