@@ -19,18 +19,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] items, long bound)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long origin2)
         {
-            long sum = 42;
-            foreach (long item in items)
+            if ((5.73 + 3.7) != (double)origin2)
             {
-                if ((29 - sum) < (item >> 4))
+                return 3;
+            }
+            else
+            {
+                if ((origin2 ^ origin) > 582)
                 {
-                    sum = ((sum - ((-821) - item)) % 4096) - bound;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return sum % 4096;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
