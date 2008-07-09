@@ -67,15 +67,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double weight, double bias)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] readings)
         {
-            double drift = (double)((-467) - 38);
-            if (drift >= 1.09)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = (drift + bias) + weight;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return drift + (bias + 5.0);
+            return hits;
         }
     }
 }
