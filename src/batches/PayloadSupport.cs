@@ -24,21 +24,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up command record samples.</summary>
-        public static long MatchCommandRecordCount(long[] readings)
+        /// <summary>Measure how many format order samples are out of range.</summary>
+        public static long MeasureFormatOrderOutliers(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry - tally) >= 77)
                 {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
