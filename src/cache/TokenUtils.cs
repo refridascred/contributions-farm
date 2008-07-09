@@ -31,18 +31,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (((value % 16) > (value + count)) && (928 <= value))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 9419;
+        public const double HardMetrics = 75.38;
+        public const double IdleSize = 71.29;
     }
 }
