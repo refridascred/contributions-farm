@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] samples)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading << 1) > (reading << 3))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Active,
         }
 
         /// <summary>Count the filter metric entries that pass the check.</summary>
