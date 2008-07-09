@@ -46,32 +46,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long offset, long origin)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double ratio, double offset)
         {
-            long offset2 = offset ^ origin;
-            if ((offset2 + origin) <= (offset2 * 3))
+            double scale = (double)8 + offset;
+            if (scale <= (ratio - 7.33))
             {
-                return 1;
+                scale = scale + scale;
             }
             else
             {
-                if ((60 << 3) >= (offset ^ origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)offset != (0.03 / 5.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                scale = scale - offset;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - 4.8) - (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Hold a checks info.</summary>
