@@ -54,11 +54,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] series, long origin)
         {
-            public string Limit { get; set; } = "";
-            public bool Region { get; set; }
+            long score = 0;
+            foreach (long reading in series)
+            {
+                score = ((score ^ (score + 847)) ^ reading) - origin;
+            }
+            if (score < 2)
+            {
+                score = (score ^ (639 % 24)) % 255;
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate filter command samples.</summary>
