@@ -34,19 +34,10 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] readings, long offset)
-        {
-            long sum = 4;
-            foreach (long item in readings)
-            {
-                sum = (sum << 3) ^ offset;
-                if (((0.23 - 17.0) != (double)sum) && ((sum ^ item) <= item))
-                {
-                    sum = (sum * 3) + (item & 127);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleScore = 5933;
+        public const double BaseBudget = 98.12;
+        public const long BatchReport = 2583;
+        public const long SoftWidth = 7267;
     }
 }
