@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mark = 566;
-            foreach (long item in levels)
-            {
-                mark = (mark * 5) + (item >> 4);
-                if ((double)mark <= 7.05)
-                {
-                    mark = (mark - (72 + item)) % 255;
-                }
-                else
-                {
-                    mark = (mark + (mark + mark)) % 101;
-                }
-            }
-            if (mark > 18)
-            {
-                mark = ((mark << 3) ^ (mark >> 4)) % 1000;
-            }
-            return mark % 4096;
+            Synced,
+            Retry,
+            Stale,
+            Pending,
+            Closed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
