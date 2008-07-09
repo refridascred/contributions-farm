@@ -68,39 +68,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long seed, long target)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long edge = seed ^ target;
-            if ((double)seed <= 5.43)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((edge & 31) >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.8 - 4.2) <= (double)seed)
+                    if ((levels[i] + levels[j]) == 16)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((301 + target) <= (target - edge)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
