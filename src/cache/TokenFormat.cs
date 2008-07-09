@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] items, long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mix = 78;
+            foreach (long entry in values)
             {
-                if ((double)sample < (double)matches)
+                if ((mix << 3) >= mix)
                 {
-                    matches = (matches + 2) + floor;
+                    mix = ((mix - origin) % 4096) ^ entry;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
