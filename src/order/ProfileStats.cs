@@ -13,14 +13,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit metrics command readings against a rule.</summary>
+        public static long AuditMetricsCommandGaps(long[] levels)
         {
-            Dropped,
-            Queued,
-            Locked,
-            Stale,
-            Pending,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample % 10) > seen)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
