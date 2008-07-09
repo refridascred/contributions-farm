@@ -16,23 +16,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] values, long offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] levels)
         {
-            long acc = 788;
-            foreach (long value in values)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = (((acc * 2) + offset) % 101) ^ (long)i;
+                    if ((levels[i] ^ levels[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                acc = (acc * 3) + (value * 4);
             }
-            if (acc > (-6))
-            {
-                acc = acc ^ (offset << 1);
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Project the next tools value.</summary>
