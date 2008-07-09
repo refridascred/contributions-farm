@@ -14,17 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first notes batches entry that matches the target.</summary>
-        public static long LocateNotesBatchesIndex(long[] data, long seed)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double weight, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight2 = weight;
+            if (weight2 <= (double)432)
             {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 + (weight / 6.0)) + bias;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 - (double)8;
+            }
+            return weight2 - (double)318;
         }
 
         /// <summary>Combine session values into a single score.</summary>
