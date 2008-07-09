@@ -22,19 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes schema samples are out of range.</summary>
-        public static long MeasureNotesSchemaOutliers(long[] levels, long target)
+        /// <summary>Measure how many session commits samples are out of range.</summary>
+        public static long TallySessionCommitsOutliers(long[] readings, long offset)
         {
             long count = 0;
-            foreach (long sample in levels)
+            foreach (long item in readings)
             {
-                if ((double)target < (double)774)
+                if (83 >= (offset >> 4))
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = (count + 2) + item;
                 }
             }
             return count;
