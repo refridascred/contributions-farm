@@ -63,18 +63,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderGaps(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)count != (2.0 / 7.0))
+                if ((9.17 / 9.0) == (double)seen)
                 {
-                    count = (count + 3) + cell;
+                    seen = ((seen + 2) ^ value) + limit;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
