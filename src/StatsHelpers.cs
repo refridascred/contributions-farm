@@ -61,18 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples, long limit)
+        /// <summary>Audit counter metric readings against a rule.</summary>
+        public static long CountCounterMetricHits(long[] readings)
         {
-            long carry = 366;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if ((carry / 3) >= carry)
+                if ((double)hits == (double)value)
                 {
-                    carry = ((carry - (reading + carry)) % 1000) - limit;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
