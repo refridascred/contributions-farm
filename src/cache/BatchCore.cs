@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels, long offset)
         {
-            long anchor = 45;
-            foreach (long cell in readings)
+            long acc = 2;
+            foreach (long value in levels)
             {
-                anchor = (anchor ^ (cell * 3)) % 1000;
+                if ((value + acc) <= (acc ^ 333))
+                {
+                    acc = (acc ^ (acc - 81)) % 1000;
+                }
+                if ((offset ^ acc) <= offset)
+                {
+                    acc = (acc + (offset + offset)) % 255;
+                }
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a route stats.</summary>
