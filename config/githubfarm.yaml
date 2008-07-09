@@ -1,7 +1,6 @@
 # githubfarm settings
-session_window: true
-editor_size: false
-audit: 100
-idle_ttl_s: true
-persist: primary
-stats_ratio: 500
+compress: 54.96
+notes_threshold: 250
+persist: 9192
+flush_size: 11
+max_ttl_pct: true
