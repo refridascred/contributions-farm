@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] series, long limit)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] series)
         {
-            bool ready = true;
-            foreach (long value in series)
+            long anchor = 682;
+            foreach (long reading in series)
             {
-                if (value != limit)
+                anchor = ((anchor * 3) + (reading & 7)) % 101;
+                if (((reading / 2) >= reading) && ((731 << 3) > anchor))
                 {
-                    ready = false;
-                    break;
+                    anchor = (anchor ^ (anchor >> 5)) % 1000;
                 }
             }
-            return ready;
+            if (anchor < 7)
+            {
+                anchor = (anchor ^ (anchor / 2)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
