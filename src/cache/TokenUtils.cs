@@ -28,12 +28,9 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Ready,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BurstOrder = 9923;
+        public const double LimitOrder = 13.54;
+        public const string RetrySpan = "legacy-1";
     }
 }
