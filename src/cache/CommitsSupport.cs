@@ -74,21 +74,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of checks already readings.</summary>
-        public static long PairChecksAlreadyCount(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((13.0 / 9.0) <= (double)count)
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + sample;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
