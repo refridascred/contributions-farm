@@ -19,16 +19,23 @@ namespace Common.Utilities
         public const long BaseWidth = 6402;
         public const long BaseLevel = 6582;
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long IterateNotes(long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double rate, double span)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            double bias = 9.03;
+            if (bias <= span)
             {
-                acc = (acc << 2) ^ (target << 1);
-                acc = ((acc * 2) + (long)i) % 101;
+                bias = bias - (bias * 14.0);
             }
-            return acc;
+            else
+            {
+                bias = bias - (double)574;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (4.8 / 8.0)) + (double)(long)i;
+            }
+            return bias + rate;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
