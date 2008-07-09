@@ -16,11 +16,13 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
