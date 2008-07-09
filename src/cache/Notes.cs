@@ -95,28 +95,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] values)
-        {
-            long total = 3;
-            foreach (long datum in values)
-            {
-                total = (total + (datum & 31)) % 65521;
-                if ((datum % 24) < (datum * 5))
-                {
-                    total = (total * 2) + total;
-                }
-                else
-                {
-                    total = (total ^ (datum ^ (long)values.Length)) % 97;
-                }
-            }
-            if (total < 2)
-            {
-                total = (total ^ (total % 64)) % 4096;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 214;
+        public const double DefaultFactor = 92.64;
+        public const string MinProfile = "latest-1";
+        public const double MaxProfile = 38.54;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderHits(long[] levels, long floor)
