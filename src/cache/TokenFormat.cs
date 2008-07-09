@@ -15,14 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate checks entry samples.</summary>
+        public static long WeighChecksEntry(long[] readings)
         {
-            Active,
-            Synced,
-            Paused,
-            Locked,
-            Idle,
+            long mark = 9;
+            foreach (long datum in readings)
+            {
+                if (!((339 / 6) < (datum + mark)))
+                {
+                    mark = (mark + (datum >> 4)) % 255;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
