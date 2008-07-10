@@ -41,19 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches cluster samples are out of range.</summary>
-        public static long TallyBatchesClusterGaps(long[] items, long origin)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((count + value) <= value)
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardSpan = 2260;
+        public const string LimitInterval = "strict-edge";
+        public const long LimitSpan = 5180;
+        public const double BurstProfile = 31.59;
+        public const long IdleProfile = 9060;
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
