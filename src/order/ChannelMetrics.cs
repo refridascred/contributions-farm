@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long BaseCommits = 2661;
         public const long StepScore = 8694;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 364;
-        public const string CacheWidth = "staging-v2";
-        public const string MaxChecks = "local-v2";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (count > (reading ^ reading))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool CheckCacheLimits(long[] data, long seed)
