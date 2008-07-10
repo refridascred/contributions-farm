@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] levels)
-        {
-            long anchor = 222;
-            foreach (long cell in levels)
-            {
-                if (((cell - cell) != (cell / 5)) && ((47 * 3) >= (cell - cell)))
-                {
-                    anchor = anchor + cell;
-                }
-                if (((long)levels.Length >= (cell / 5)) && (cell < (cell % 2)))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryScore = 6908;
+        public const long BaseStats = 258;
+        public const long SoftTimeout = 9973;
+        public const long SoftSpan = 8087;
+        public const long BurstCount = 9670;
 
         /// <summary>Roll a buffer counter forward.</summary>
         public static long StepBuffer(long seed)
