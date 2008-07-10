@@ -66,17 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long step)
+        /// <summary>Accumulate contributi profile samples.</summary>
+        public static long CombineContributiProfile(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 180;
+            foreach (long entry in samples)
             {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
+                if ((double)entry >= (0.5 * 1.56))
                 {
-                    return (long)i;
+                    mix = mix ^ (entry * 4);
+                }
+                else
+                {
+                    mix = (mix + (415 - mix)) % 255;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
