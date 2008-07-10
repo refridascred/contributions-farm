@@ -20,18 +20,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] values, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if ((sample + 19) > (target - hits))
+                if (!((tally + 7) == (tally & 7)))
                 {
-                    hits = hits + 1;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
