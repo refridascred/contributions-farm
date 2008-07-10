@@ -1,8 +1,11 @@
 {
-  "verbose": false,
-  "persist": 100,
-  "support_delay": false,
-  "compress": 18.27,
-  "flush_retries_ms": 30,
-  "soft_threshold_ms": 25.93
+  "readonly": "standard",
+  "default_delay": {
+    "dry_run": 28.76,
+    "cache_window_s": "staging",
+    "default_capacity": 24.56,
+    "audit": 7.17
+  },
+  "default_ratio_count": 5419,
+  "min_retries_s": ["primary", "eu-west", "staging"]
 }
