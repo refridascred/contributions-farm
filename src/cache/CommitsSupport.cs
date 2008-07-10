@@ -52,13 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] readings)
         {
-            New,
-            Ready,
-            Paused,
-            Closed,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((hits * 5) <= entry)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate profile samples.</summary>
