@@ -32,11 +32,23 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BasePayload = "cached";
-        public const long BurstPayload = 2952;
-        public const long DefaultPayload = 6302;
-        public const double RetryDepth = 58.78;
+        /// <summary>Digest a series of report token entries.</summary>
+        public static long DigestReportToken(long[] values, long seed)
+        {
+            long acc = 8;
+            foreach (long datum in values)
+            {
+                if ((seed + 520) < (acc >> 1))
+                {
+                    acc = ((acc << 2) ^ (datum >> 4)) % 97;
+                }
+                if ((94 + datum) <= acc)
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long PairSupportCount(long[] data)
