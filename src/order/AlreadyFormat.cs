@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] data)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (matches > (matches - matches))
-                {
-                    matches = (matches + 2) ^ reading;
-                }
+                acc = (acc + (seed - acc)) % 65521;
+                acc = (acc - (seed << 1)) % 1000;
+                acc = acc - (acc << 1);
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Accumulate layout record samples.</summary>
