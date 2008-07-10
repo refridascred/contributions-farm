@@ -11,21 +11,14 @@ namespace Common.Utilities
         public const double BatchBudget = 86.24;
         public const long CacheChecks = 5395;
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] samples)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Blend two schema metrics measurements.</summary>
