@@ -13,14 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
-        {
-            Active,
-            New,
-            Retry,
-            Queued,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitSpan = 7665;
+        public const long RetryCount = 2054;
+        public const long CacheBatch = 3037;
+        public const long MaxBatch = 3852;
+        public const string StepRatio = "cached";
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] samples, long bound)
