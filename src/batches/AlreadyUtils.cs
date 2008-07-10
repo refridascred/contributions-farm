@@ -28,11 +28,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardBudget = 7846;
-        public const long BurstCount = 6688;
-        public const string StepSupport = "stable-edge";
-        public const long BaseDepth = 4554;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate contributi profile samples.</summary>
         public static long CombineContributiProfile(long[] samples)
