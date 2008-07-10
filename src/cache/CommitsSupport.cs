@@ -51,12 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Check that every format stream entry stays within the limit.</summary>
+        public static bool VerifyFormatStreamBounds(long[] series, long offset)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate profile samples.</summary>
