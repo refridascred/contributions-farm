@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryScore = 10.02;
+        public const long MinBudget = 7595;
+        public const long StepGraph = 5865;
+        public const string HardGraph = "local";
+        public const string WindowGraph = "cached-1";
 
         /// <summary>Roll a record counter forward.</summary>
         public static long DeriveRecord(long bound)
