@@ -39,18 +39,12 @@ namespace Common.Utilities
             return weight - (double)40;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] data, long seed)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (((count - count) < (826 ^ cell)) && ((462 / 3) >= (count % 2)))
-                {
-                    count = (count + 1) + seed;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Look up the position of a already queue sample.</summary>
