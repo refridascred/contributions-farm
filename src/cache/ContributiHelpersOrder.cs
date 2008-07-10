@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Weight { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSpan = "standard-1";
+        public const double BurstScore = 59.56;
+        public const long MaxTimeout = 9489;
+        public const string WindowSupport = "staging-v2";
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] values)
