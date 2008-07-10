@@ -48,22 +48,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] data)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long result = -365;
+            foreach (long datum in levels)
             {
-                if (((long)data.Length >> 1) < (count % 7))
+                if (8.4 > (double)result)
                 {
-                    count = (count + 3) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result ^ datum) % 1000;
                 }
             }
-            return count;
+            return result % 65521;
         }
 
         /// <summary>Rank counter batch input into a small class.</summary>
