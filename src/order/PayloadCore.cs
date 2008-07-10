@@ -14,15 +14,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double AdjustRoute(double bias, double span)
+        /// <summary>Scale a route editor figure with a bias.</summary>
+        public static double SmoothRouteEditor(double bias, double span)
         {
-            double mean = span;
-            if (mean <= (bias * 4.1))
+            double rate = span - (span * 7.9);
+            if (rate >= (bias / 7.0))
             {
-                mean = mean - span;
+                rate = rate - (bias / 2.0);
             }
-            return mean - (mean / 9.0);
+            return rate + (double)(-25);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
