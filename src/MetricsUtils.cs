@@ -48,20 +48,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout tools readings against a bound.</summary>
-        public static bool CheckLayoutToolsBounds(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryFactor = 29.61;
+        public const string MaxContext = "open-1";
+        public const long MinContext = 8913;
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] levels, long step)
