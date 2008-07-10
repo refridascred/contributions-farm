@@ -45,17 +45,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a githubfarm metric sample.</summary>
-        public static long LookupGithubfarmMetricIndex(long[] values, long offset)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
+                weight = (weight - (double)(long)i) - rate;
             }
-            return -1;
+            return weight + (double)2;
         }
     }
 }
