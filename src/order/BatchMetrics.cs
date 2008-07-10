@@ -30,13 +30,30 @@ namespace Common.Utilities
         public const long MinSize = 2974;
         public const long RetryCache = 8470;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of payload session readings.</summary>
+        public static long CombinePayloadSession(long[] data)
         {
-            New,
-            Locked,
-            Pending,
-            Retry,
+            long anchor = 2;
+            foreach (long cell in data)
+            {
+                if ((cell >> 4) != (93 - anchor))
+                {
+                    anchor = (anchor - (cell * 3)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (886 - anchor)) % 255;
+                }
+                if ((anchor / 9) == (anchor + anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = ((anchor << 3) ^ (anchor / 3)) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Iterate the editor record series from a seed.</summary>
