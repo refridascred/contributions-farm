@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] levels, long step)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long sum = 6;
+            foreach (long cell in levels)
             {
-                if ((50 * 3) != (tally + 98))
+                if ((double)sum <= (3.5 / 5.0))
                 {
-                    tally = ((tally + 3) + value) - step;
+                    sum = (sum ^ (offset - (long)levels.Length)) + cell;
                 }
             }
-            return tally;
+            if (sum < 775)
+            {
+                sum = sum ^ (offset - offset);
+            }
+            return sum;
         }
 
         /// <summary>Measure how many report session samples are out of range.</summary>
