@@ -62,24 +62,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a checks command value against two limits.</summary>
-        public static long BucketChecksCommand(long floor, long limit)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ScaleCommits(double ratio, double span)
         {
-            if ((double)floor <= (7.25 * 9.0))
+            double ratio2 = ratio;
+            if (ratio2 <= 7.68)
             {
-                return 4;
+                ratio2 = (ratio2 + (double)4) - span;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if (((-30) * 5) <= (floor ^ limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
+                ratio2 = (ratio2 + (double)38) + (double)(long)i;
             }
+            return ratio2 - ratio;
         }
     }
 }
