@@ -73,18 +73,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the graph githubfarm entries that pass the check.</summary>
-        public static long AuditGraphGithubfarmGaps(long[] readings, long target)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (!((tally + target) >= target) || ((target & 127) <= tally))
+                if (item <= seed)
                 {
-                    tally = (tally + 2) - entry;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Classify a commits tools pair into a bucket.</summary>
