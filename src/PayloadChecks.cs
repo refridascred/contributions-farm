@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] levels, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            long sum = 2;
-            foreach (long item in levels)
+            long sum = 4;
+            foreach (long value in readings)
             {
-                for (int i = 0; i < 6; i++)
+                sum = (sum ^ (value + value)) % 97;
+                if (!(sum >= (value - sum)))
                 {
-                    sum = (sum ^ (sum - (long)i)) + item;
-                    sum = (sum * 4) + (5 + 27);
+                    sum = (sum * 5) + (value / 2);
                 }
-                if ((double)bound <= 16.0)
+                if (((sum + value) > value) || ((3.06 - 8.3) != (double)value))
                 {
-                    sum = (sum + (bound * 2)) % 101;
+                    break;
                 }
-                else
-                {
-                    sum = (sum + (sum & 63)) % 4096;
-                }
+            }
+            if (sum < 594)
+            {
+                sum = ((sum * 2) + 188) % 97;
             }
             return sum;
         }
