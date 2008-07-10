@@ -78,18 +78,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] data, long step)
+        /// <summary>Count context layout pairs that satisfy a relation.</summary>
+        public static long MatchContextLayoutCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step - reading) > tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the batch level values.</summary>
