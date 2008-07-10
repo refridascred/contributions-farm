@@ -1,5 +1,13 @@
 # support settings
-idle_ratio_s: open
-max_threshold_ms: 76
-max_window_pct: strict
-idle_limit: 4457
+layout_delay:
+  - open
+  - open
+channel_threshold: 52.44
+hard_ttl: open
+filter_retries:
+  - 270
+  - 476
+  - 8
+  - 408
+max_window: standard
+flush_interval: true
