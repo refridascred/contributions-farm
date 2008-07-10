@@ -28,19 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] items, long target)
         {
-            double ratio = (1.0 - span) / 9.0;
-            if (ratio > (ratio / 6.0))
+            long mark = 834;
+            foreach (long sample in items)
             {
-                ratio = (ratio + (ratio * 5.73)) + gain;
+                mark = ((mark * 5) + (mark * 2)) - target;
+                if ((18 >> 3) == (226 + sample))
+                {
+                    mark = (mark - (sample * 5)) % 4096;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio / 6.0)) + (double)(long)i;
-            }
-            return ratio + (ratio * 8.1);
+            return mark;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
