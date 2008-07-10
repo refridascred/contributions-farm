@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a profile editor pair into a bucket.</summary>
-        public static long RankProfileEditor(long floor, long offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] values, long offset)
         {
-            long delta = floor - offset;
-            if ((delta < (floor + floor)) && ((offset + offset) != (delta * 5)))
+            long result = 413;
+            foreach (long cell in values)
             {
-                return 0;
+                result = ((result * 3) + cell) - offset;
             }
-            else
+            if (result < 2)
             {
-                if (offset < (offset + floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
+                result = ((result << 3) ^ (result - 77)) % 4096;
             }
+            return result;
         }
 
         /// <summary>Digest a series of token entries.</summary>
