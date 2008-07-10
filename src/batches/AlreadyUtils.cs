@@ -84,23 +84,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double weight, double floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] items)
         {
-            double gain = (double)8 + weight;
-            if (gain > (7.9 + weight))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain + (gain - gain)) - floor;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain - (weight - gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + 15.0) + (double)(long)i;
-            }
-            return gain - gain;
+            return matches;
         }
     }
 }
