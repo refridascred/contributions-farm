@@ -1,8 +1,8 @@
-id,active,score,weight,token
-1,577,strict,270,14.62
-2,916,open,strict,primary
-3,804,edge,13.98,27.24
-4,23.58,32.05,239,475
-5,115,green,local,484
-6,300,367,staging,eu-west
-7,blue,713,853,696
+id,token,rank,active
+1,52.02,primary,9.43
+2,742,519,primary
+3,stable,5.87,legacy
+4,731,89,663
+5,772,strict,349
+6,3.99,243,blue
+7,94.16,fallback,86
