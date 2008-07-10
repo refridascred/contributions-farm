@@ -39,18 +39,21 @@ namespace Common.Utilities
             return weight2 - (double)97;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] data)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] data)
         {
-            long carry = 8;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (carry >= (entry % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry ^ ((-58) / 2)) % 1000;
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
