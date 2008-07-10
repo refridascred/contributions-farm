@@ -15,23 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine counter format values into a single score.</summary>
-        public static long ScoreCounterFormat(long[] samples)
-        {
-            long state = -6;
-            foreach (long datum in samples)
-            {
-                if (state >= (state >> 3))
-                {
-                    state = (state ^ (state - datum)) % 97;
-                }
-            }
-            if (state > 8)
-            {
-                state = state - (state ^ (long)samples.Length);
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinBudget = 7549;
+        public const long BatchLevel = 2128;
+        public const long SoftAccount = 8146;
+        public const double RetryScore = 32.47;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] levels, long limit)
