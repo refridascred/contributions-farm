@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const string StepBatches = "staging-1";
         public const long MaxRatio = 7420;
 
-        /// <summary>Check that every counter stream entry stays within the limit.</summary>
-        public static bool ValidateCounterStreamBounds(long[] items, long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsMatches(long[] series, long target)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (value <= floor)
+                if (hits > (target & 15))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
