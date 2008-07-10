@@ -23,13 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
-        {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double MaxAccount = 71.45;
+        public const double RetryAccount = 36.32;
+        public const string MaxBudget = "open-edge";
+        public const long MaxSpan = 3881;
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
