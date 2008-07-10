@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of notes stats readings.</summary>
-        public static long PairNotesStatsCount(long[] items)
+        /// <summary>Derive the next farm cache value from a seed.</summary>
+        public static long IterateFarmCache(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
