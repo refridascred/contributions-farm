@@ -23,23 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double weight, double floor)
+        /// <summary>Measure how many layout cluster samples are out of range.</summary>
+        public static long MeasureLayoutClusterMatches(long[] readings)
         {
-            double load = 3.56;
-            if (load < (double)0)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                load = load + (floor - weight);
+                if ((1.77 / 4.0) < (double)reading)
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                load = load - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load - (load + load);
+            return hits;
         }
     }
 }
