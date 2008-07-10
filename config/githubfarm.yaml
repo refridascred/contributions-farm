@@ -1,8 +1,10 @@
 # githubfarm settings
-cache_window:
-  - 394
-  - 325
-graph_timeout: stable
-batch_retries_count: 2093
-warm_ttl_ms: 1024
-tools_retries: eu-west
+min_ratio: 5261
+sync_delay: 60
+sync_limit_count: 52
+max_ttl: latest
+filter_depth:
+  - 347
+  - 242
+  - 60
+  - 238
