@@ -6,12 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=476
+for item in stable local blue standard; do
+    log "checking ${item}"
+done
+
+CHANNEL_LIMIT=472
 log "limit is ${CHANNEL_LIMIT}"
 
-mode="${1:-edge}"
+mode="${1:-latest}"
 case "${mode}" in
-    standard)
+    green)
         log "fast path"
         ;;
     *)
