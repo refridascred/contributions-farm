@@ -1,7 +1,10 @@
-id,state,count,region,active
-1,standard,750,strict,92.89
-2,86.47,308,primary,503
-3,70,619,667,56
-4,76.1,fallback,922,eu-west
-5,317,365,478,41.41
-6,eu-west,342,4.96,standard
+id,score,count,region,level
+1,87.15,staging,latest,159
+2,eu-west,eu-west,579,398
+3,155,23.11,571,929
+4,43.45,616,42.82,150
+5,61.31,local,505,408
+6,242,271,stable,41.94
+7,497,64,91,761
+8,standard,712,319,85.87
+9,primary,8.54,29.1,13.52
