@@ -27,11 +27,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MinSupport = 2.69;
-        public const double WindowLevel = 76.28;
-        public const long BurstSupport = 4981;
-        public const string HardSupport = "latest-edge";
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
+        {
+            Queued,
+            Draft,
+            Active,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Blend two stream measurements.</summary>
         public static double BlendStream(double scale, double span)
