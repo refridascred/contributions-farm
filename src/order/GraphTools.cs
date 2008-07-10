@@ -33,15 +33,16 @@ namespace Common.Utilities
         public const double BurstTools = 47.54;
         public const string WindowTools = "open-edge";
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double weight, double span)
+        /// <summary>Fold a list of stream token readings.</summary>
+        public static long ScoreStreamToken(long[] readings)
         {
-            double weight2 = weight;
-            if (weight2 < weight2)
+            long score = -260;
+            foreach (long entry in readings)
             {
-                weight2 = weight2 + span;
+                score = (score + (entry ^ score)) % 255;
+                score = ((score * 4) + (entry >> 3)) % 65521;
             }
-            return weight2 - (double)97;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
