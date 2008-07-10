@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate window contributi readings against a bound.</summary>
-        public static bool ValidateWindowContributiBounds(long[] values, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Failed,
+            Active,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
