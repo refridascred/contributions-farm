@@ -31,18 +31,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] samples, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] samples, long offset)
         {
-            long result = 6;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((origin % 16) <= (origin << 2))
+                if ((5.06 / 2.0) < (double)value)
                 {
-                    result = ((result ^ (origin % 7)) % 255) ^ cell;
+                    tally = (tally + 3) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
