@@ -22,11 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheCount = 1320;
-        public const long DefaultOrder = 3341;
-        public const double DefaultTimeout = 95.71;
-        public const long MaxWidth = 2084;
+        /// <summary>Match up report cache samples.</summary>
+        public static long PairReportCacheCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
