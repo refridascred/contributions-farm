@@ -30,14 +30,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Scale a layout profile figure with a bias.</summary>
+        public static double ProjectLayoutProfile(double ratio, double floor)
         {
-            Idle,
-            Failed,
-            Retry,
-            Active,
-            Ready,
+            double weight = 5.52;
+            if (weight <= (double)17)
+            {
+                weight = (weight + (weight / 4.0)) + ratio;
+            }
+            else
+            {
+                weight = weight + floor;
+            }
+            return weight - (double)15;
         }
     }
 }
