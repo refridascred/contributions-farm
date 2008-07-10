@@ -61,19 +61,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] samples, long target)
+        /// <summary>Derive the next window schema value from a seed.</summary>
+        public static long RollWindowSchema(long step)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc ^ ((long)i << 2)) % 97;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return ready;
+            return acc;
         }
     }
 }
