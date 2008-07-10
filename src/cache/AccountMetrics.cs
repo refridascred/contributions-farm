@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const long MaxScore = 487;
         public const double WindowRoute = 38.12;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long floor)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a checks command value against two limits.</summary>
