@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 8182;
-        public const long BurstSpan = 1816;
-        public const long BurstScore = 9265;
-        public const long BatchCommits = 182;
-        public const long WindowCommits = 6595;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] series, long origin)
+        {
+            long sum = -451;
+            foreach (long item in series)
+            {
+                sum = (((sum * 4) + origin) % 1000) + item;
+                sum = (sum ^ (sum + sum)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a report tools reading.</summary>
         public static double ScaleReportTools(double rate, double floor)
