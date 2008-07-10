@@ -1,16 +1,9 @@
 # githubfarm settings
-retry_ratio_count: edge
-farm_retries: 10.32
-already_delay:
-  idle_ratio_s:
-    - strict
-    - blue
-    - primary
-    - open
-  editor_limit: false
-  sync_delay_pct:
-    - 260
-    - 117
-    - 421
-  readonly: 500
-  window_size: latest
+warm_ratio_ms: 50.56
+flush_threshold_s: legacy
+poll_window_count:
+  - 101
+  - 419
+  - 384
+default_threshold_count: standard
+editor_threshold: primary
