@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Queued,
-            Done,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 4860;
+        public const long MaxBudget = 8492;
+        public const long MaxRatio = 4112;
 
         /// <summary>Project the next schema value.</summary>
         public static double ProjectSchema(double rate, double span)
