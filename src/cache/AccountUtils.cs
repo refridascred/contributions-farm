@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            Stale,
-            Ready,
+            Idle,
             Done,
-            Synced,
-            Closed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
