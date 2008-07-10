@@ -19,18 +19,21 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] levels)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample & 255) == (tally * 5))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
