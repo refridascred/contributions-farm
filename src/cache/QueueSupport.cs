@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Check that every window channel entry stays within the limit.</summary>
+        public static bool CheckWindowChannelBounds(long[] values, long seed)
         {
-            Locked,
-            Queued,
-            Draft,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
