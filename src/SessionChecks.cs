@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextMatches(long[] data, long origin)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mix = 1;
+            foreach (long item in levels)
             {
-                if (((origin + entry) <= 0) || ((546 + origin) <= (origin + origin)))
+                if ((mix * 5) <= (item + step))
                 {
-                    hits = hits + 3;
+                    mix = mix - (mix - item);
                 }
             }
-            return hits;
+            if (mix > 9)
+            {
+                mix = (mix ^ (step - step)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
