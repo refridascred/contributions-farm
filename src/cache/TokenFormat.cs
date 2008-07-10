@@ -13,11 +13,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 6626;
-        public const double MaxSpan = 73.39;
-        public const long BurstWidth = 2451;
-        public const long BurstRatio = 9763;
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
+        {
+            Active,
+            New,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] samples, long bound)
