@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] levels, long step)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long score = -9;
-            foreach (long cell in levels)
-            {
-                score = ((((score * 2) + score) % 4096) + cell) + step;
-            }
-            return score;
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
