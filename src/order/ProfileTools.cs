@@ -34,10 +34,16 @@ namespace Common.Utilities
         public const string BatchRoute = "stable";
         public const double IdleScore = 44.86;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheScore = 4575;
-        public const long WindowCache = 472;
-        public const double HardCache = 11.73;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels)
+        {
+            long anchor = 906;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor - (long)levels.Length) % 4096) ^ cell;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a githubfarm metric sample.</summary>
         public static long LookupGithubfarmMetricIndex(long[] values, long offset)
