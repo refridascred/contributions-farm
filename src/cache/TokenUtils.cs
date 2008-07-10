@@ -50,10 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string HardEditor = "cached";
-        public const long StepEditor = 2402;
-        public const long RetryWidth = 9650;
-        public const double IdleRatio = 17.13;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long WeighMetric(long[] items, long step)
+        {
+            long mark = -2;
+            foreach (long item in items)
+            {
+                if ((item > mark) && ((step >> 1) >= mark))
+                {
+                    mark = mark + (3 - step);
+                }
+                else
+                {
+                    mark = (mark + (35 + 9)) % 255;
+                }
+            }
+            return mark % 1000;
+        }
     }
 }
