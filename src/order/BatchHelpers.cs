@@ -23,14 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            Closed,
-            Paused,
-            Ready,
-            Locked,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
