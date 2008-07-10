@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] samples, long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long acc = 215;
-            foreach (long item in samples)
-            {
-                if ((6.9 - 5.57) < (double)origin)
-                {
-                    acc = (acc ^ (origin ^ item)) % 65521;
-                }
-                else
-                {
-                    acc = acc - (acc * 3);
-                }
-            }
-            return acc;
+            Ready,
+            Active,
+            Failed,
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
