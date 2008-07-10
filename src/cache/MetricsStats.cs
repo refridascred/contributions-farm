@@ -13,22 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of tools window readings.</summary>
-        public static long WeighToolsWindow(long[] samples, long origin)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] series, long floor)
         {
-            long state = 660;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if ((73 + (-9)) < origin)
+                if (cell > floor)
                 {
-                    state = (state + origin) - value;
-                }
-                else
-                {
-                    state = (state - state) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
