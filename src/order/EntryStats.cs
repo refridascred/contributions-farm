@@ -80,38 +80,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long bound)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ProjectProfile(double weight, double offset)
         {
-            if ((10 * 4) < (seed - seed))
+            double scale = weight / 3.0;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                scale = ((scale - weight) - (double)(long)i) - offset;
             }
-            else
-            {
-                if (14 >= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) > (seed + 68))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((71 << 1) < (bound + bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return scale + scale;
         }
     }
 }
