@@ -15,19 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < bound)
+                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Find the first batch contributi entry that matches the target.</summary>
