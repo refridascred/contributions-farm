@@ -31,10 +31,13 @@ namespace Common.Utilities
         public const string WindowBuffer = "alpha";
         public const string WindowWidth = "legacy-edge";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "stable-edge";
-        public const long SoftSize = 543;
-        public const double SoftStream = 97.82;
-        public const long StepStream = 6559;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Failed,
+            Ready,
+            Dropped,
+            Closed,
+        }
     }
 }
