@@ -1,7 +1,19 @@
 {
-  "warm_retries_ms": "stable",
-  "base_retries": 1845,
-  "poll_threshold_ms": 53.42,
-  "already_window": [391, 100, 337, 354],
-  "soft_ttl": 904
+  "soft_limit_count": "open",
+  "idle_retries": true,
+  "session_window": {
+    "idle_capacity_s": true,
+    "retry_size_count": 54,
+    "graph_interval": false,
+    "max_threshold_pct": 500,
+    "readonly": ["primary", "strict", "eu-west", "blue"],
+    "queue_threshold": {
+      "payload_ratio": true,
+      "retry_ttl": "latest",
+      "flush_ratio_count": 3607,
+      "profile_ratio": 4698,
+      "flush_ttl_ms": "edge"
+    }
+  },
+  "base_threshold_ms": true
 }
