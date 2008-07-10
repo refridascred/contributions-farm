@@ -27,17 +27,16 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] series, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((series[i] < bound) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = acc + ((long)i + acc);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Combine report values into a single score.</summary>
