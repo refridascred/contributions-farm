@@ -91,13 +91,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchMatches(long[] series)
         {
-            Paused,
-            New,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (8 < (tally % 12))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
         }
     }
 }
