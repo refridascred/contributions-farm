@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next support order value.</summary>
-        public static double ScaleSupportOrder(double weight, double span)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            double scale = 3.42;
-            if (scale <= (scale / 5.0))
-            {
-                scale = (scale - (span * 5.2)) - weight;
-            }
-            return scale + (scale / 4.0);
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
