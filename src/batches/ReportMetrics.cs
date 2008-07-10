@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Check that every filter layout entry stays within the limit.</summary>
-        public static bool GuardFilterLayoutBounds(long[] data, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (sample != limit)
+                if ((seen + sample) >= (sample % 16))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the record level values.</summary>
