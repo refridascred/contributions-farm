@@ -67,17 +67,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] series, long floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double ratio, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = (double)(8 & 7);
+            if (drift > drift)
             {
-                if ((series[i] > floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                drift = (drift + 5.3) - floor;
             }
-            return -1;
+            return drift + ratio;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
