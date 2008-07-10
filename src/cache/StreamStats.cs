@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long step, long limit)
         {
-            Failed,
-            Active,
-            Stale,
-            Dropped,
+            if ((double)step < 4.6)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit + step) < (limit + 374)) || ((double)9 <= (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(35 > (step + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric stats.</summary>
