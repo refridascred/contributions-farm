@@ -64,19 +64,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] readings)
+        /// <summary>Find the first already profile entry that matches the target.</summary>
+        public static long LocateAlreadyProfileIndex(long[] data, long target)
         {
-            long score = 613;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (score ^ score)) % 1000;
-                if ((value <= (score ^ value)) && ((score << 3) == (68 + score)))
+                if (data[i] == target)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
