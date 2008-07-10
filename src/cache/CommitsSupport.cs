@@ -51,18 +51,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] readings)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits * 5) <= entry)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate profile samples.</summary>
