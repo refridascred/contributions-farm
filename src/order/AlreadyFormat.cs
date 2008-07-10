@@ -68,38 +68,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] items, long target)
         {
-            if ((seed - seed) >= seed)
+            long hits = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed <= (10.0 - 9.65))
+                if (!((double)target >= 7.59))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((-26) >= (seed - bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((seed & 3) < (bound & 63)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = (hits + 3) + item;
                 }
             }
+            return hits;
         }
     }
 }
