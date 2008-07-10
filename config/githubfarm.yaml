@@ -1,11 +1,8 @@
 # githubfarm settings
-batch_retries_pct:
-  - 472
-  - 479
-route_depth:
-  - cached
-  - strict
-farm_ttl:
-  - 24
-  - 188
-  - 67
+farm_limit:
+  - 153
+  - 45
+  - 287
+  - 38
+min_limit: edge
+cache_delay: 19
