@@ -23,13 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long seed)
         {
-            Pending,
-            Active,
-            Synced,
-            Paused,
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
