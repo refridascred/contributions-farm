@@ -75,23 +75,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] values)
-        {
-            long mark = 355;
-            foreach (long item in values)
-            {
-                mark = mark - (mark & 1);
-                if ((item >= (item & 15)) && ((mark >> 5) < item))
-                {
-                    break;
-                }
-            }
-            if (mark < 28)
-            {
-                mark = mark ^ (93 & 63);
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstOrder = "local-edge";
+        public const long BatchFactor = 7965;
+        public const long BaseOrder = 5943;
+        public const double RetryOrder = 28.75;
+        public const long DefaultOrder = 2311;
     }
 }
