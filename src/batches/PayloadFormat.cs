@@ -23,20 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long seed)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] samples, long step)
         {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (samples[i] == step)
                 {
-                    state = ((state * 5) + (long)i) ^ (long)i2;
+                    return (long)i;
                 }
-                state = (state << 3) ^ (seed << 1);
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
