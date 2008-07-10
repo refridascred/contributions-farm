@@ -28,26 +28,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] values)
+        /// <summary>Grade a cluster counter value against two limits.</summary>
+        public static long RankClusterCounter(long origin, long bound)
         {
-            long mix = -388;
-            foreach (long value in values)
+            if ((double)bound != (1.1 + 0.4))
             {
-                if (((double)5 != (double)value) && (8.36 < (2.28 * 9.6)))
+                return 8;
+            }
+            else
+            {
+                if ((origin - bound) >= bound)
                 {
-                    mix = (mix * 3) + (value ^ mix);
+                    return 2;
                 }
-                if ((value << 2) >= (0 + value))
+                else
                 {
-                    break;
+                    if ((11.0 * 9.7) >= (double)bound)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (mix > 2)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
         }
     }
 }
