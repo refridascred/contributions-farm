@@ -54,12 +54,25 @@ namespace Common.Utilities
         public const double WindowEditor = 85.39;
         public const string MinCount = "strict-edge";
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long seed, long offset)
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
+            long lane = seed + offset;
+            if ((seed + seed) <= (seed ^ seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if (lane <= (lane >> 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
