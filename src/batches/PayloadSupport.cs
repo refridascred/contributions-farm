@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxRatio = 9590;
+        public const string CacheLayout = "strict-v2";
+        public const long BurstLayout = 1054;
+        public const long MaxLayout = 9695;
+        public const long RetryLayout = 193;
 
         /// <summary>Hold a context record.</summary>
         public sealed class ContextRecord
