@@ -45,13 +45,18 @@ namespace Common.Utilities
             return weight2 - (double)97;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] data)
         {
-            Failed,
-            Queued,
-            Idle,
-            Locked,
+            long carry = 8;
+            foreach (long entry in data)
+            {
+                if (carry >= (entry % 2))
+                {
+                    carry = (carry ^ ((-58) / 2)) % 1000;
+                }
+            }
+            return carry;
         }
     }
 }
