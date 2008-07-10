@@ -56,11 +56,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
