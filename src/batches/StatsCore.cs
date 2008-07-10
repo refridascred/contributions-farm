@@ -41,10 +41,40 @@ namespace Common.Utilities
             return gain + (double)22;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 3345;
-        public const double DefaultBuffer = 54.32;
-        public const long DefaultScore = 3598;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long bound, long floor)
+        {
+            long diff = bound + floor;
+            if ((double)diff > (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (48 >= (floor % 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((floor << 3) > bound) && ((0.93 * 3.1) <= (double)bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - 491) == (diff / 4))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
