@@ -83,18 +83,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks token values into a single score.</summary>
-        public static long TallyChecksToken(long[] series)
+        /// <summary>Count stats graph pairs that satisfy a relation.</summary>
+        public static long CompareStatsGraphCount(long[] samples)
         {
-            long mark = -91;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + mark) <= (mark + mark))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark * 4) + (entry / 9);
+                    if ((samples[i] - samples[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
