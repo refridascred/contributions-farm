@@ -23,21 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count commits context pairs that satisfy a relation.</summary>
-        public static long CompareCommitsContextCount(long[] series)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value > target)
                 {
-                    if ((series[i] - series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Hold a commits entry.</summary>
