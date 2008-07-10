@@ -1,16 +1,15 @@
 # Command notes
 
-The buffer module keeps context values in sync with the batches cache.
-The stats module keeps filter values in sync with the queue cache.
-The order report groups every buffer by already.
+When a contributi fails, the editor handler retries a few times before giving up.
+When a contributi fails, the record handler retries a few times before giving up.
 
-The record report groups every stream by buffer.
-Defaults for route live in the config folder and can be overridden per environment.
-A token that stays idle for too long is moved to the checks list.
+The window helpers are pure functions, so they are safe to call from any thread.
+Defaults for command live in the config folder and can be overridden per environment.
+Run the order check before changing any metric limits.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Review contributi limits each release
-- Document new githubfarm fields
-- Validate report input early
+- Document new profile fields
+- Review report limits each release
+- Log every buffer change
+- Validate batches input early
