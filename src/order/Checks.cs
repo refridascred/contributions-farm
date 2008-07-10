@@ -31,12 +31,23 @@ namespace Common.Utilities
         public const string MaxRatio = "fallback";
         public const long MaxCount = 9520;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] items)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
+            long result = 5;
+            foreach (long cell in items)
+            {
+                result = (result ^ (cell + result)) % 4096;
+                if (((result + cell) < (cell ^ cell)) || (result <= cell))
+                {
+                    break;
+                }
+            }
+            if (result > 506)
+            {
+                result = (result * 4) + (result - (long)items.Length);
+            }
+            return result;
         }
 
         /// <summary>Measure how many batches cluster samples are out of range.</summary>
