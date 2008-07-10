@@ -34,15 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            long mix = floor;
-            for (int i = 0; i < 4; i++)
+            double drift = bias;
+            if (drift <= (1.0 * 7.72))
             {
-                mix = ((mix * 2) + (long)i) % 65521;
+                drift = drift + (drift / 2.0);
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (8.0 + span)) - (double)(long)i;
+            }
+            return drift - (bias - drift);
         }
     }
 }
