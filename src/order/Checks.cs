@@ -53,24 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long SortContext(long bound, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            if ((bound - origin) > (bound >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (origin - bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Pending,
+            Paused,
+            Failed,
+            Stale,
         }
     }
 }
