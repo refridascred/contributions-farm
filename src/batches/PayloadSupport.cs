@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultLevel = 4494;
-        public const double MinReport = 84.39;
-        public const long CacheTimeout = 698;
-        public const string MaxTimeout = "cached-edge";
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MinEntry = 10.63;
