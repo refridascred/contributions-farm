@@ -42,30 +42,17 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LocateRouteIndex(long[] data, long target)
         {
-            long sum = 47;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry / 6) <= (4 >> 4))
+                if ((data[i] < target) && ((data[i] % 2) == 0))
                 {
-                    sum = ((sum * 4) + (sum >> 2)) % 1000;
-                }
-                else
-                {
-                    sum = sum ^ (249 + 429);
-                }
-                if ((7.14 / 2.0) != (double)sum)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum > 444)
-            {
-                sum = (sum + 989) % 1000;
-            }
-            return sum;
+            return -1;
         }
     }
 }
