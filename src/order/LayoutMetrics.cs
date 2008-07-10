@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 3248;
-        public const long WindowContext = 8883;
-        public const double BatchContext = 56.52;
-        public const long IdleContext = 8630;
+        /// <summary>Rank command entry input into a small class.</summary>
+        public static long SortCommandEntry(long seed, long bound)
+        {
+            if ((bound & 1) != (seed & 7))
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed > (seed & 31))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound * 5) >= (2 / 8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.72 + 9.13) > (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
         public static double AdjustFarmStats(double rate, double offset)
