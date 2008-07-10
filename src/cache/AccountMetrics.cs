@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            Ready,
+            Synced,
+            Locked,
+            Idle,
+            Pending,
         }
 
         /// <summary>Compare every pair of report readings.</summary>
