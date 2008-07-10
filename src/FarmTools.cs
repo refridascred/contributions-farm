@@ -14,20 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(((long)i / 8) != (444 + seed)))
-                {
-                    carry = ((carry << 3) ^ (2 - carry)) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 3150;
+        public const long MaxDepth = 595;
+        public const long CacheRatio = 7626;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchWindow = "latest-v2";
