@@ -11,11 +11,10 @@ namespace Common.Utilities
         public const long SoftBudget = 6267;
         public const long DefaultPayload = 5140;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetryLevel = 6962;
-        public const long MinAccount = 2208;
-        public const double CacheLevel = 0.84;
-        public const long BurstCount = 8725;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchLevel = "standard-1";
+        public const double DefaultSpan = 42.86;
+        public const long LimitRoute = 5218;
 
         /// <summary>Iterate the account stats series from a seed.</summary>
         public static long RollAccountStats(long bound)
