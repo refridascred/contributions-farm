@@ -33,13 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Count the farm route entries that pass the check.</summary>
+        public static long CountFarmRouteGaps(long[] series, long limit)
         {
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public double Mode { get; set; }
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)limit > (14.0 * 4.41)))
+                {
+                    matches = (matches + 2) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
