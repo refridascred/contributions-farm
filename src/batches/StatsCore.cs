@@ -81,32 +81,21 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long origin, long target)
+        /// <summary>Compare every pair of cache batch readings.</summary>
+        public static long MatchCacheBatchCount(long[] items)
         {
-            long next = origin ^ target;
-            if (((target + target) < (target - next)) && ((double)next < (1.6 + 2.67)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((target - 49) > (target ^ next)) && ((888 * 4) == (next - next)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)next == (1.43 / 6.0)) && (target < (target - origin)))
+                    if ((items[i] - items[j]) != 6)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Count report tools pairs that satisfy a relation.</summary>
