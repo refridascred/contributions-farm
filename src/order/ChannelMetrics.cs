@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const string CacheWidth = "staging-v2";
         public const string MaxChecks = "local-v2";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] data, long seed)
         {
-            long mix = 7;
-            foreach (long entry in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                mix = ((mix ^ (entry * 4)) % 255) - bound;
+                if (cell < seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mix > 4)
-            {
-                mix = (mix * 4) + 994;
-            }
-            return mix;
+            return ok;
         }
     }
 }
