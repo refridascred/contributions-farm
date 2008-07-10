@@ -35,16 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long origin)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = (sum - (long)i) % 97;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
