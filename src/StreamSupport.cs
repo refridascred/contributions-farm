@@ -32,11 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
