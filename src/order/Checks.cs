@@ -54,26 +54,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series, long limit)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long result = 26;
-            foreach (long item in series)
-            {
-                if ((item / 3) >= item)
-                {
-                    result = (result + ((long)series.Length + 89)) % 97;
-                }
-                else
-                {
-                    result = (result - result) % 97;
-                }
-                if ((limit * 4) <= (64 - (-3)))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
+            Failed,
+            Draft,
+            Done,
+            Retry,
         }
 
         /// <summary>Scale a profile record figure with a bias.</summary>
