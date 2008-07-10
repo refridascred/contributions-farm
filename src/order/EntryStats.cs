@@ -27,10 +27,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 6849;
-        public const double MaxPayload = 28.54;
-        public const string MaxScore = "alpha-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryTimeout = 2202;
+        public const long IdleInterval = 8402;
+        public const long LimitFilter = 5603;
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
