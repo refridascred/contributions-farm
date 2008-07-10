@@ -49,19 +49,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long WeighContributi(long[] items)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long anchor = 226;
-            foreach (long entry in items)
-            {
-                anchor = (anchor + anchor) + entry;
-            }
-            if (anchor < 23)
-            {
-                anchor = anchor ^ (anchor & 15);
-            }
-            return anchor;
+            Queued,
+            Dropped,
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
