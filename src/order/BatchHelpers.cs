@@ -32,13 +32,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] items, long offset)
         {
-            public string Limit { get; set; } = "";
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public long Level { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches < (offset * 4)) || ((matches << 2) != (6 % 100)))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
