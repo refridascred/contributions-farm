@@ -1,8 +1,19 @@
 {
-  "editor_retries": 30.0,
-  "idle_ratio_s": 532,
-  "batch_ttl": [187, 340],
-  "base_retries_s": true,
-  "schema_threshold": 77,
-  "idle_limit": ["local", "fallback", "fallback", "green"]
+  "support_window": {
+    "flush_retries_ms": "green",
+    "context_window": "fallback",
+    "default_limit_count": "primary"
+  },
+  "sync_interval": "edge",
+  "poll_window_ms": "primary",
+  "cache_limit_count": false,
+  "persist": {
+    "metric_timeout": "legacy",
+    "enabled": 60,
+    "warm_timeout": "green",
+    "flush_timeout_s": "strict",
+    "burst_capacity": [19, 107, 377, 18],
+    "warm_limit": 100
+  },
+  "readonly": "local"
 }
