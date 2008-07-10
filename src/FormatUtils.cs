@@ -45,13 +45,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] samples, long step)
         {
-            Synced,
-            Paused,
-            Stale,
-            New,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a editor profile pair into a bucket.</summary>
