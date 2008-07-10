@@ -39,17 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] data, long floor)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 4) + 1) % 255;
+                carry = (carry + step) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
