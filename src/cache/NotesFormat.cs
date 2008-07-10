@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Measure how many window session samples are out of range.</summary>
+        public static long AuditWindowSessionHits(long[] levels)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)seen >= (double)reading)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a session stats.</summary>
