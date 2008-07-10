@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] readings, long seed)
+        /// <summary>Classify a account payload pair into a bucket.</summary>
+        public static long BucketAccountPayload(long offset, long origin)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long slot = offset - origin;
+            if (((offset & 3) < offset) || (origin > (offset - slot)))
             {
-                if (datum > seed)
+                return 5;
+            }
+            else
+            {
+                if (((double)slot > (double)92) && ((origin * 3) == (offset * 5)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
