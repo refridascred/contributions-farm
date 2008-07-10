@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback edge cached primary; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=243
+BUFFER_LIMIT=59
 log "limit is ${BUFFER_LIMIT}"
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
