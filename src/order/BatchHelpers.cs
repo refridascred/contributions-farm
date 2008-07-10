@@ -38,22 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesGaps(long[] items, long offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double drift = bias;
+            if (drift <= drift)
             {
-                if ((matches < (offset * 4)) || ((matches << 2) != (6 % 100)))
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift - (double)(-387)) - weight;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - bias) + (double)(long)i;
+            }
+            return drift + bias;
         }
     }
 }
