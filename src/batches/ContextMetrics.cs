@@ -31,12 +31,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultCount = "local-edge";
-        public const long WindowDepth = 2792;
-        public const long CacheCount = 9029;
-        public const long CacheBatch = 7902;
-        public const long StepLevel = 6333;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (tally > (sample + sample))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long floor, long bound)
