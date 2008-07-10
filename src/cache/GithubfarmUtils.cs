@@ -34,22 +34,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit account command readings against a rule.</summary>
-        public static long AuditAccountCommandOutliers(long[] readings)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            double drift = weight;
+            if (drift >= (weight - bias))
             {
-                if (((5.2 / 2.0) == (double)datum) || ((617 + 261) <= datum))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                drift = drift + (17.0 + drift);
             }
-            return hits;
+            return drift + 4.89;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
