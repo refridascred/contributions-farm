@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
