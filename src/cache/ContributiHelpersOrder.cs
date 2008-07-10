@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            Ready,
-            Locked,
-            Paused,
+            public double Weight { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Match up metrics samples.</summary>
