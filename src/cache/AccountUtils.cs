@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long seed, long floor)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((double)seed > (9.66 / 7.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor * 3) == (floor / 2)) && ((double)floor > (double)869))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
