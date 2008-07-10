@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached open strict; do
+for item in eu-west legacy primary strict; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-eu-west}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-COMMAND_LIMIT=304
+COMMAND_LIMIT=429
 log "limit is ${COMMAND_LIMIT}"
