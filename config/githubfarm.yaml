@@ -1,4 +1,20 @@
 # githubfarm settings
-channel_size: false
-profile_threshold: true
-retry_capacity_s: true
+readonly: false
+audit: 37
+dry_run: staging
+idle_retries:
+  max_limit_s:
+    dry_run:
+      - 242
+      - 103
+      - 437
+    idle_interval_ms: true
+    compress:
+      - open
+      - eu-west
+      - staging
+  hard_delay_s: false
+  batch_size: primary
+  account_size: 30
+  hard_window_count: 500
+  max_window: legacy
