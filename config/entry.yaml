@@ -1,13 +1,5 @@
 # entry settings
-compress: open
-readonly: true
-batch_depth_count: 8742
-max_depth:
-  strict: 22.65
-  audit:
-    - 177
-    - 432
-  retry_delay: 1903
-  warm_delay_count: 500
-  burst_retries_pct: staging
-  window_limit: 21
+verbose: 16.11
+min_ratio: 500
+flush_size: 98.27
+idle_retries: strict
