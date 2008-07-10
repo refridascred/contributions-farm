@@ -41,39 +41,12 @@ namespace Common.Utilities
             return gain + (double)22;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long bound, long floor)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long diff = bound + floor;
-            if ((double)diff > (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (48 >= (floor % 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((floor << 3) > bound) && ((0.93 * 3.1) <= (double)bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - 491) == (diff / 4))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a report info.</summary>
