@@ -25,15 +25,15 @@ namespace Common.Utilities
         public const long BaseCount = 8688;
         public const long WindowStats = 2154;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double bias)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            double mean = scale;
+            if (mean < scale)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                mean = (mean + (double)77) - bias;
             }
-            return sum;
+            return mean + scale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
