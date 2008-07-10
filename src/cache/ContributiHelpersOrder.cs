@@ -34,39 +34,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long SortRecord(long seed, long step)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long step)
         {
-            long diff = seed + step;
-            if ((33 - diff) == ((-840) + diff))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed != (3.58 * 3.4))
+                if (samples[i] >= step)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step > 9.9)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((seed % 2) > (diff >> 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
