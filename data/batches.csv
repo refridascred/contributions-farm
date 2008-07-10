@@ -1,6 +1,9 @@
-id,score,state
-1,413,61.72
-2,64.73,91.94
-3,7,open
-4,930,980
-5,365,green
+id,owner,weight,state,token
+1,strict,355,primary,631
+2,93.76,850,189,78.21
+3,95,56.36,705,47.98
+4,staging,37.98,latest,70.08
+5,5.67,stable,33.59,638
+6,45.29,90,stable,primary
+7,904,stable,staging,42.64
+8,standard,blue,376,67.55
