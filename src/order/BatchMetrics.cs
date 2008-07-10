@@ -84,19 +84,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate format window readings against a bound.</summary>
-        public static bool CheckFormatWindowRange(long[] series, long seed)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (entry < seed)
+                if (hits < entry)
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
