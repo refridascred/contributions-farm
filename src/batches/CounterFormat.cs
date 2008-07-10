@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long floor, long step)
-        {
-            long diff = floor ^ step;
-            if ((floor - step) <= (floor & 63))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((44 / 6) < (step + 6)) || (step > (diff - step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double MinInterval = 76.64;
+        public const long RetryFactor = 457;
+        public const long CacheGithubfarm = 5151;
+        public const long RetryCount = 1323;
+        public const double MaxGithubfarm = 19.01;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
