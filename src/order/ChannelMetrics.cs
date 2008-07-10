@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
+            Done,
+            Queued,
+            New,
             Locked,
-            Closed,
-            Active,
+            Synced,
         }
 
         /// <summary>Describe the counter level values.</summary>
