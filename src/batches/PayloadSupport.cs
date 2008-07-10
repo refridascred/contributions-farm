@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxRatio = 9590;
-        public const string CacheLayout = "strict-v2";
-        public const long BurstLayout = 1054;
-        public const long MaxLayout = 9695;
-        public const long RetryLayout = 193;
+        /// <summary>Fold a list of order channel readings.</summary>
+        public static long CombineOrderChannel(long[] data)
+        {
+            long total = 911;
+            foreach (long reading in data)
+            {
+                total = total + total;
+                if ((reading - total) != (9 & 255))
+                {
+                    total = (total + (reading << 2)) % 255;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Grade a buffer value against two limits.</summary>
         public static long ClassifyBuffer(long origin, long step)
