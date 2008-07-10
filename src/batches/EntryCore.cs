@@ -34,16 +34,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long RollGraph(long limit)
         {
-            long result = step;
-            for (int i = 0; i < 9; i++)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                result = result - result;
-                result = ((result * 4) + (long)i) % 101;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Validate buffer contributi readings against a bound.</summary>
