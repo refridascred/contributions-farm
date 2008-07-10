@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const long StepCache = 2072;
         public const long SoftCache = 3382;
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] values, long offset)
         {
-            Dropped,
-            Draft,
-            Synced,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((item + item) <= (36 % 3))
+                {
+                    hits = (hits + 3) + offset;
+                }
+            }
+            return hits;
         }
     }
 }
