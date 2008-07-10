@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Active,
-            Pending,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxRatio = 9175;
+        public const string BatchCache = "alpha-edge";
+        public const long HardLevel = 7532;
+        public const string MaxCache = "primary-v2";
+        public const string MinInterval = "strict-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string SoftChannel = "standard";
