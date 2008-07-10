@@ -22,17 +22,13 @@ namespace Common.Utilities
         public const long LimitContributi = 2542;
         public const long CacheContributi = 6269;
 
-        /// <summary>Find the first already editor entry that matches the target.</summary>
-        public static long LocateAlreadyEditorIndex(long[] series, long step)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Hold a queue info.</summary>
