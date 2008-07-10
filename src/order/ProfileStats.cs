@@ -19,22 +19,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long acc = -5;
-            foreach (long value in samples)
-            {
-                if ((acc - value) != (acc + value))
-                {
-                    acc = ((acc * 2) + 5) % 4096;
-                }
-                if ((1.0 * 7.56) <= (double)acc)
-                {
-                    acc = (acc - value) % 65521;
-                }
-            }
-            return acc % 1000;
+            Pending,
+            Synced,
+            Stale,
+            Locked,
         }
 
         /// <summary>Adjust a window tools reading.</summary>
