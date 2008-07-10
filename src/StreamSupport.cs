@@ -27,38 +27,23 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long step, long seed)
+        /// <summary>Digest a series of filter command entries.</summary>
+        public static long TallyFilterCommand(long[] readings, long seed)
         {
-            if (((seed % 97) <= step) && ((-558) > (seed - seed)))
+            long result = 148;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (step >= (step + seed))
+                result = ((result * 3) + 697) % 101;
+                if ((seed - (long)readings.Length) == (cell / 8))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((11.0 * 9.0) >= (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed % 8) <= step) || ((step / 2) > seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (result > 7)
+            {
+                result = ((result << 2) ^ (seed + (-2))) % 4096;
+            }
+            return result % 4096;
         }
 
         /// <summary>Hold a tools info.</summary>
