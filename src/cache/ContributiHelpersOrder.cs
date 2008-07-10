@@ -22,18 +22,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mark = -856;
+            foreach (long sample in samples)
             {
-                if ((853 * 4) <= (reading >> 2))
+                if ((2 - 53) >= (sample / 8))
                 {
-                    matches = matches + 1;
+                    mark = (mark - (sample - sample)) % 4096;
                 }
             }
-            return matches;
+            return mark % 97;
         }
     }
 }
