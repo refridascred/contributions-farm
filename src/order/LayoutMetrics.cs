@@ -36,12 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of order command entries.</summary>
+        public static long CombineOrderCommand(long[] items, long floor)
         {
-            Queued,
-            New,
-            Paused,
+            long result = 6;
+            foreach (long sample in items)
+            {
+                result = (result + (floor % 16)) % 65521;
+                result = (result * 4) + (sample ^ floor);
+            }
+            return result;
         }
     }
 }
