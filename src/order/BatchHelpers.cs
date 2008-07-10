@@ -38,12 +38,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] data, long bound)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally + bound) >= (bound * 2)))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
