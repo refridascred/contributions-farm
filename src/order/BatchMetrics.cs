@@ -55,22 +55,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] samples, long limit)
+        /// <summary>Count the session token entries that pass the check.</summary>
+        public static long CountSessionTokenOutliers(long[] readings)
         {
-            long anchor = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)anchor == (7.4 / 2.0)))
+                if (seen < 44)
                 {
-                    anchor = (((anchor * 3) + anchor) % 4096) - value;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (limit % 60)) % 101;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Rank farm notes input into a small class.</summary>
