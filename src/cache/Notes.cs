@@ -40,12 +40,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 799;
-        public const long RetryCommand = 5481;
-        public const long BatchCommand = 2073;
-        public const long DefaultInterval = 1340;
-        public const long BaseCommand = 105;
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
+        {
+            Idle,
+            Closed,
+            Done,
+        }
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double weight, double floor)
