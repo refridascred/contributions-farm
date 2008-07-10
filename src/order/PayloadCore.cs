@@ -14,13 +14,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Validate editor cache readings against a bound.</summary>
+        public static bool ValidateEditorCacheBounds(long[] levels, long origin)
         {
-            Stale,
-            Pending,
-            Done,
-            Retry,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
