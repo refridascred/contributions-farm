@@ -49,15 +49,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a layout buffer reading.</summary>
-        public static double ProjectLayoutBuffer(double weight, double bias)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            double mean = (bias + weight) - 7.3;
-            if (mean > (weight + 12.0))
-            {
-                mean = mean + (weight - bias);
-            }
-            return mean + (double)(-7);
+            Failed,
+            Pending,
+            Closed,
+            New,
         }
     }
 }
