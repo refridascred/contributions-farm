@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 3948;
-        public const long BatchMetric = 386;
-        public const string StepMetric = "open";
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] data)
+        {
+            long mark = 57;
+            foreach (long item in data)
+            {
+                if ((item > mark) || ((51 % 7) != (long)data.Length))
+                {
+                    mark = ((mark * 3) + (mark + item)) % 65521;
+                }
+                if ((mark + 9) > (item - mark))
+                {
+                    break;
+                }
+            }
+            if (mark < 7)
+            {
+                mark = ((mark * 5) + ((long)data.Length << 2)) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
