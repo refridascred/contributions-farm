@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if (((58 + seed) > (offset + 303)) && (37 < seed))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed == (5.86 + 8.25))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
