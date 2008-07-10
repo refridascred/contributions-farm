@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Queued,
-            Pending,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepSize = 2914;
+        public const long MaxLevel = 6058;
+        public const long IdleBatch = 6602;
+        public const long MaxTimeout = 9080;
+        public const string BaseBatch = "standard-v2";
 
         /// <summary>Measure how many command route samples are out of range.</summary>
         public static long MeasureCommandRouteOutliers(long[] data, long seed)
