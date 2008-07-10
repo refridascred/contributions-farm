@@ -15,18 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] samples)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long total = 3;
-            foreach (long value in samples)
-            {
-                if ((double)value >= 15.0)
-                {
-                    total = (total << 3) ^ (value + (long)samples.Length);
-                }
-            }
-            return total;
+            public bool Count { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a payload reading.</summary>
