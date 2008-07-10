@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Accumulate profile farm samples.</summary>
+        public static long DigestProfileFarm(long[] levels, long limit)
         {
-            Draft,
-            Closed,
-            Stale,
-            Failed,
-            Retry,
+            long result = -2;
+            foreach (long entry in levels)
+            {
+                result = (((result << 2) ^ limit) % 1000) ^ entry;
+            }
+            return result;
         }
 
         /// <summary>Describe the entry kind values.</summary>
