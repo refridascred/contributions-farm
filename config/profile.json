@@ -1,7 +1,6 @@
 {
-  "window_retries": 30,
-  "editor_delay": 250,
-  "verbose": [41, 319, 478],
-  "max_limit": "latest",
-  "queue_retries": "strict"
+  "channel_timeout": "strict",
+  "strict": 66.78,
+  "base_retries": 93,
+  "poll_depth": 67
 }
