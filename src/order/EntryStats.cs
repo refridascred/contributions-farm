@@ -32,24 +32,10 @@ namespace Common.Utilities
         public const double MaxPayload = 28.54;
         public const string MaxScore = "alpha-edge";
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double weight, double floor)
-        {
-            double ratio = weight + 9.6;
-            if (ratio > ratio)
-            {
-                ratio = ratio - (weight - weight);
-            }
-            else
-            {
-                ratio = ratio + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + (ratio + weight)) + (double)(long)i;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardBudget = 8750;
+        public const long BurstContext = 9227;
+        public const long IdleSpan = 3389;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorHits(long[] samples)
