@@ -1,5 +1,6 @@
 {
-  "compress": 57.1,
-  "dry_run": "blue",
-  "soft_ttl_pct": 12
+  "cache_depth": "eu-west",
+  "compress": false,
+  "retry_delay_count": 81.15,
+  "cache_size_ms": "legacy"
 }
