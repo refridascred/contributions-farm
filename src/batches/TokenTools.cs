@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            Failed,
-            Idle,
-            Stale,
-            Pending,
             Locked,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Validate command readings against a bound.</summary>
