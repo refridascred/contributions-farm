@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinInterval = 75.98;
-        public const long IdleDepth = 4083;
-        public const string StepContributi = "local-1";
-        public const long LimitContributi = 9370;
+        /// <summary>Rank editor route input into a small class.</summary>
+        public static long BucketEditorRoute(long offset, long offset2)
+        {
+            if ((offset & 7) >= offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)offset <= 17.0)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)offset >= 20.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6 + offset2) <= (offset - 21))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine record cache values into a single score.</summary>
         public static long TallyRecordCache(long[] items, long origin)
