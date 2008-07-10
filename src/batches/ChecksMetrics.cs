@@ -56,18 +56,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route cluster sample.</summary>
-        public static long SeekRouteClusterIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BaseAlready = 21.39;
+        public const long MaxLevel = 5293;
+        public const long RetryAlready = 758;
+        public const long MaxBudget = 8187;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long SortOrder(long target, long floor)
