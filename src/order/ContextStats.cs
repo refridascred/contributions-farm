@@ -40,12 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] samples, long floor)
         {
-            public long Score { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
