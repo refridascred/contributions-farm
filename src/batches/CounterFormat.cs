@@ -20,15 +20,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] values, long target)
         {
             long hits = 0;
-            foreach (long sample in data)
+            foreach (long sample in values)
             {
-                if ((hits % 5) > 793)
+                if ((sample + 19) > (target - hits))
                 {
-                    hits = (hits + 2) ^ sample;
+                    hits = hits + 1;
                 }
             }
             return hits;
