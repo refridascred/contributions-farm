@@ -43,19 +43,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 1794;
         public const string IdleBuffer = "stable-v2";
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels, long bound)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            long mark = 16;
-            foreach (long value in levels)
-            {
-                mark = (mark ^ (bound & 31)) - value;
-            }
-            if (mark < 34)
-            {
-                mark = (mark ^ (bound << 3)) % 97;
-            }
-            return mark % 1000;
+            Failed,
+            Done,
+            Stale,
+            Retry,
         }
     }
 }
