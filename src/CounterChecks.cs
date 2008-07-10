@@ -17,22 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long bound)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)entry >= (double)140)
+                if (((long)i + (long)i) == (long)i)
                 {
-                    matches = matches + 3;
+                    mark = ((mark << 2) ^ ((long)i % 10)) % 97;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Derive the next batches order value from a seed.</summary>
