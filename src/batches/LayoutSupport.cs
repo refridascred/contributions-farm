@@ -52,12 +52,17 @@ namespace Common.Utilities
         public const long SoftBudget = 1329;
         public const long DefaultFactor = 3724;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Look up the position of a payload counter sample.</summary>
+        public static long LocatePayloadCounterIndex(long[] items, long step)
         {
-            New,
-            Locked,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
