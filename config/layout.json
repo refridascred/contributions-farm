@@ -1,7 +1,16 @@
 {
-  "max_size": 100,
-  "cache_interval": 9898,
-  "flush_ratio_s": [344, 68, 333],
-  "soft_timeout_s": 8713,
-  "base_interval": 30
+  "profile_window": {
+    "verbose": "latest",
+    "soft_window_s": {
+      "hard_limit_ms": "blue",
+      "poll_retries_ms": ["local", "strict", "green"],
+      "stats_limit": true
+    },
+    "channel_retries": "green",
+    "default_ttl_ms": "edge"
+  },
+  "batch_ttl": "latest",
+  "persist": "open",
+  "flush_threshold_ms": 30,
+  "cache_ttl_s": 39.32
 }
