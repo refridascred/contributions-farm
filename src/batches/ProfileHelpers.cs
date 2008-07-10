@@ -72,22 +72,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] readings)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value <= (hits * 4)) && (((3.4 / 5.0) < (double)value) && ((value - value) == (value - 908))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
