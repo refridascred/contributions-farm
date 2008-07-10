@@ -1,5 +1,8 @@
 {
-  "flush_depth": 2976,
-  "min_timeout_count": 68.84,
-  "max_limit": false
+  "strict": 1052,
+  "idle_limit_pct": "legacy",
+  "readonly": false,
+  "context_threshold": 48.43,
+  "batch_retries": 53,
+  "schema_depth": false
 }
