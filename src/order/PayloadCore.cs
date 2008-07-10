@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] readings, long origin)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long acc = 2;
-            foreach (long sample in readings)
-            {
-                if ((sample >> 2) != (3 + 12))
-                {
-                    acc = acc + sample;
-                }
-                else
-                {
-                    acc = ((acc * 2) + origin) % 101;
-                }
-                if ((5.15 + 0.3) != (double)sample)
-                {
-                    break;
-                }
-            }
-            return acc;
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Roll a tools order counter forward.</summary>
