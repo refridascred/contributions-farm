@@ -30,12 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double gain, double offset)
         {
-            Retry,
-            Dropped,
-            New,
+            double scale = 7.3;
+            if (scale < scale)
+            {
+                scale = ((scale + 2.0) + gain) - offset;
+            }
+            else
+            {
+                scale = scale + (double)7;
+            }
+            return scale - (scale / 6.0);
         }
     }
 }
