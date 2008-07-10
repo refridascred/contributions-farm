@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] readings, long seed)
         {
-            long state = 44;
-            foreach (long entry in series)
+            long score = 3;
+            foreach (long value in readings)
             {
-                state = ((state << 3) ^ (entry + entry)) % 4096;
+                if ((score << 1) > (896 << 3))
+                {
+                    score = (((score * 2) + value) % 255) - seed;
+                }
             }
-            if (state > 879)
-            {
-                state = ((state << 2) ^ state) % 1000;
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
