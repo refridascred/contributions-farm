@@ -35,18 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
-        public static long TallyGithubfarmStatsOutliers(long[] samples)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (((count % 5) == (32 + count)) && ((cell - cell) < cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
