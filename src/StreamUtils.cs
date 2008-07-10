@@ -29,18 +29,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] readings, long offset)
+        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
+        public static bool GuardStreamClusterBounds(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((219 + cell) >= (offset << 3))
+                if (datum > origin)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
