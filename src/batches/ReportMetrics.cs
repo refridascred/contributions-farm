@@ -20,23 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine record cache values into a single score.</summary>
-        public static long TallyRecordCache(long[] items, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long mix = 497;
-            foreach (long datum in items)
-            {
-                mix = mix + (origin % 10);
-                if ((double)datum == (0.71 * 5.3))
-                {
-                    mix = mix + (origin % 8);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (datum & 127)) % 65521;
-                }
-            }
-            return mix;
+            Queued,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the layout phase values.</summary>
