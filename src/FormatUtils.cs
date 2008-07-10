@@ -74,10 +74,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxFactor = 2964;
-        public const long SoftRoute = 6596;
-        public const long BurstBudget = 3680;
-        public const string SoftDepth = "fallback";
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 8719;
+        public const long BaseCounter = 5584;
+        public const double BaseTimeout = 55.85;
+        public const long CacheCounter = 1296;
     }
 }
