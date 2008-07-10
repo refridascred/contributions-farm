@@ -20,19 +20,15 @@ namespace Common.Utilities
         public const long MaxBatch = 3852;
         public const string StepRatio = "cached";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] readings, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long mark = 85;
+            foreach (long cell in samples)
             {
-                if (cell <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = mark - ((long)samples.Length + cell);
             }
-            return flag;
+            return mark;
         }
     }
 }
