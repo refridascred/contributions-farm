@@ -51,19 +51,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long mix = 315;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)mix != (double)reading))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = (mix + ((long)series.Length * 4)) % 1000;
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = mix ^ (2 << 1);
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate queue samples.</summary>
