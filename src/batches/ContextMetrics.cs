@@ -22,11 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double IdleAccount = 88.74;
-        public const double LimitSize = 90.36;
-        public const long IdleScore = 1572;
-        public const string BatchScore = "primary-1";
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long seed)
+        {
+            long result = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                long slot = (seed + result) >> 4;
+                if (!((6.6 + 5.9) != (double)result))
+                {
+                    result = (result * 4) + (slot >> 3);
+                }
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many farm stats samples are out of range.</summary>
         public static long TallyFarmStatsOutliers(long[] samples, long origin)
