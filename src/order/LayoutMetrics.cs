@@ -36,23 +36,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] samples, long limit)
-        {
-            long mark = 8;
-            foreach (long cell in samples)
-            {
-                if (!(mark >= (limit & 63)))
-                {
-                    mark = (mark << 3) ^ (cell ^ cell);
-                    mark = mark + (cell >> 5);
-                }
-                if (((mark >> 3) >= ((long)samples.Length ^ cell)) && ((8.7 - 6.65) >= (double)cell))
-                {
-                    mark = (mark ^ (-948)) % 1000;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string IdleTimeout = "fallback-1";
+        public const string IdleMetric = "primary-1";
+        public const long BurstMetric = 1444;
     }
 }
