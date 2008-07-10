@@ -1,6 +1,13 @@
 # githubfarm settings
-route_ttl: 74.9
-cache_depth_count: 1024
-flush_timeout_pct: false
-commits_ratio: eu-west
-dry_run: 95
+idle_threshold_count:
+  burst_window: 16
+  soft_limit_count: open
+  readonly: 59
+  checks_timeout:
+    - stable
+    - standard
+    - eu-west
+    - stable
+flush_depth_count: stable
+order_depth: 100
+audit: legacy
