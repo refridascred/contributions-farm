@@ -12,13 +12,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Look up the position of a metrics stream sample.</summary>
+        public static long FindMetricsStreamIndex(long[] readings, long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stats editor samples are out of range.</summary>
