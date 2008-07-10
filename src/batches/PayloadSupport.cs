@@ -47,18 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] data, long limit)
+        /// <summary>Check that every commits farm entry stays within the limit.</summary>
+        public static bool CheckCommitsFarmBounds(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (!(hits >= (hits >> 1)))
+                if (entry > target)
                 {
-                    hits = ((hits + 2) + sample) + limit;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
