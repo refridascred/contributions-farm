@@ -79,22 +79,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks metrics values into a single score.</summary>
-        public static long ScoreChecksMetrics(long[] readings, long offset)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double weight, double floor)
         {
-            long result = 5;
-            foreach (long datum in readings)
+            double gain = (double)8 + weight;
+            if (gain > (7.9 + weight))
             {
-                if ((offset << 3) != (offset / 8))
-                {
-                    result = (result + (result >> 3)) + datum;
-                }
-                if (!(483 >= (13 - result)))
-                {
-                    break;
-                }
+                gain = (gain + (gain - gain)) - floor;
             }
-            return result;
+            else
+            {
+                gain = gain - (weight - gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + 15.0) + (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
