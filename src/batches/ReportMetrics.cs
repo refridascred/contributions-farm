@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double LimitContext = 29.55;
-        public const string DefaultContext = "cached";
-        public const long IdleContext = 3391;
-        public const long WindowDepth = 8363;
-        public const string CacheContext = "stable";
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
+        {
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowInterval = 7933;
