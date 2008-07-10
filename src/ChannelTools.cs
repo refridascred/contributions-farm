@@ -33,17 +33,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] levels, long origin)
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = 3.56;
+            if (load < (double)0)
             {
-                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + (floor - weight);
             }
-            return -1;
+            else
+            {
+                load = load - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - (load + load);
         }
     }
 }
