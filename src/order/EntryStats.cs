@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowSize = 9328;
-        public const string StepBatch = "stable";
-        public const long HardCount = 4905;
-        public const double BaseBatch = 66.98;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 1561;
+        public const string WindowMetric = "latest-edge";
+        public const long StepMetric = 6824;
+        public const long HardLevel = 6546;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
