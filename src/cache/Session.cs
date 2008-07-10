@@ -25,18 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats editor samples are out of range.</summary>
-        public static long MeasureStatsEditorOutliers(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = -943;
+            foreach (long reading in readings)
             {
-                if (!(((8 & 255) >= ((long)items.Length >> 5)) || ((double)seen >= (0.1 / 4.0))))
+                if ((reading + (-122)) < (reading / 4))
                 {
-                    seen = (seen + 3) - entry;
+                    result = ((result ^ (88 & 15)) % 97) - bound;
+                }
+                else
+                {
+                    result = result - result;
                 }
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
