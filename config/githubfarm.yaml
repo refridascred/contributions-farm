@@ -1,8 +1,8 @@
 # githubfarm settings
-flush_timeout:
-  - cached
-  - blue
-  - staging
-account_ttl: 1024
-hard_timeout_s: false
-dry_run: strict
+base_interval_s: 500
+filter_threshold:
+  tools_size: 250
+  cache_capacity: 4472
+  strict: 2828
+  default_retries_pct: strict
+dry_run: open
