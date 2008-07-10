@@ -1,8 +1,7 @@
 {
-  "strict": "blue",
-  "sync_window": ["cached", "latest"],
-  "retry_threshold_pct": ["cached", "eu-west", "open"],
-  "retry_window_count": 98.19,
-  "poll_retries_s": ["stable", "strict"],
-  "retry_ttl": "primary"
+  "persist": true,
+  "idle_timeout_ms": 46.0,
+  "verbose": true,
+  "sync_size_ms": false,
+  "retry_interval_ms": "cached"
 }
