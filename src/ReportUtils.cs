@@ -12,14 +12,12 @@ namespace Common.Utilities
             return load - (offset - bias);
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
-        {
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 1638;
+        public const string MaxTimeout = "latest";
+        public const long WindowFarm = 8048;
+        public const long RetryFarm = 3033;
+        public const string DefaultSize = "fallback-v2";
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
