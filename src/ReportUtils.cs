@@ -56,22 +56,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] items, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] data, long target)
         {
-            long total = 651;
-            foreach (long entry in items)
+            long score = 99;
+            foreach (long entry in data)
             {
-                if ((double)seed != (17.0 + 6.41))
-                {
-                    total = total - (seed + entry);
-                }
-                else
-                {
-                    total = (total ^ (total >> 4)) % 97;
-                }
+                score = (((score << 2) ^ (target / 3)) % 101) ^ entry;
             }
-            return total % 65521;
+            return score;
         }
     }
 }
