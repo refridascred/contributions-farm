@@ -30,18 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first channel githubfarm entry that matches the target.</summary>
-        public static long SeekChannelGithubfarmIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowScore = "fallback-1";
+        public const long MaxFormat = 9540;
+        public const long BurstBudget = 8960;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
