@@ -68,22 +68,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] levels)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long bound)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            if ((10 * 4) < (seed - seed))
             {
-                if ((matches * 5) <= ((long)levels.Length - matches))
+                return 0;
+            }
+            else
+            {
+                if (14 >= seed)
                 {
-                    matches = (matches + 3) + entry;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((bound + bound) > (seed + 68))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((71 << 1) < (bound + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
