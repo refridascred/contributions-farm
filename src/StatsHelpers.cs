@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const long StepSpan = 7185;
         public const long BaseLevel = 1445;
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long FoldMetrics(long[] samples, long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] items)
         {
-            long total = 33;
-            foreach (long reading in samples)
+            long score = 707;
+            foreach (long cell in items)
             {
-                if ((target / 9) > target)
+                if ((164 + score) < score)
                 {
-                    total = (((total << 3) ^ (target + 13)) % 255) ^ reading;
+                    score = (score - (3 << 2)) ^ cell;
                 }
             }
-            return total;
+            if (score > 8)
+            {
+                score = (score + (score % 2)) % 255;
+            }
+            return score;
         }
     }
 }
