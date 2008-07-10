@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            public double Token { get; set; }
-            public bool Rank { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
