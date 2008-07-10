@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long target)
         {
-            public bool Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
+            long acc = target;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc << 3) ^ (target ^ acc);
+                if ((double)acc <= 17.0)
+                {
+                    acc = (acc << 2) ^ (acc ^ acc);
+                    continue;
+                }
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
