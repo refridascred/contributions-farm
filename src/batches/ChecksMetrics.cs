@@ -47,32 +47,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long bound)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long origin)
         {
-            long next = target ^ bound;
-            if (target <= next)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                score = score - ((long)i >> 2);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (63 < (bound - next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((next << 2) >= (1 - bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Look up the position of a route cluster sample.</summary>
