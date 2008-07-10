@@ -54,16 +54,18 @@ namespace Common.Utilities
         public const string CacheAccount = "alpha-edge";
         public const long RetryWidth = 7275;
 
-        /// <summary>Derive the next window schema value from a seed.</summary>
-        public static long RollWindowSchema(long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] data, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                acc = (acc ^ ((long)i << 2)) % 97;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((origin + hits) <= hits)
+                {
+                    hits = (hits + 2) + entry;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
