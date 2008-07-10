@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] series, long bound)
+        /// <summary>Accumulate format metric samples.</summary>
+        public static long ScoreFormatMetric(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long acc = 2;
+            foreach (long reading in levels)
             {
-                if ((double)sample >= (3.47 - 3.2))
+                if ((bound % 2) != (acc ^ reading))
                 {
-                    matches = (matches + 3) - bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    acc = (acc - (232 - acc)) % 1000;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Accumulate layout samples.</summary>
