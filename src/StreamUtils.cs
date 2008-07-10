@@ -52,13 +52,18 @@ namespace Common.Utilities
         public const string BurstChecks = "fallback";
         public const string HardInterval = "primary-edge";
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] levels, long limit)
         {
-            Failed,
-            Synced,
-            Pending,
-            Stale,
+            long sum = -264;
+            foreach (long reading in levels)
+            {
+                if ((double)limit != (1.0 - 2.8))
+                {
+                    sum = sum - (reading & 15);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
