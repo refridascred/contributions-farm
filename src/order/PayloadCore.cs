@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] readings, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 2;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 2) != (3 + 12))
+                {
+                    acc = acc + sample;
+                }
+                else
+                {
+                    acc = ((acc * 2) + origin) % 101;
+                }
+                if ((5.15 + 0.3) != (double)sample)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the buffer level values.</summary>
