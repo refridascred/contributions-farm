@@ -31,11 +31,15 @@ namespace Common.Utilities
         public const string LimitTools = "open-edge";
         public const long CacheSpan = 5380;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MinSpan = "legacy";
-        public const long CacheRecord = 4948;
-        public const string DefaultScore = "strict-1";
-        public const long DefaultRecord = 5288;
-        public const string BaseRecord = "legacy-1";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series)
+        {
+            long total = 7;
+            foreach (long cell in series)
+            {
+                total = ((total ^ total) % 97) - cell;
+            }
+            return total;
+        }
     }
 }
