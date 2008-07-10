@@ -69,14 +69,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] samples, long bound)
         {
-            Synced,
-            Closed,
-            Stale,
-            Dropped,
-            Paused,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (bound <= seen)
+                {
+                    seen = (seen + 2) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
