@@ -34,15 +34,39 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long limit, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 6; i++)
+            long edge = limit + target;
+            if (!((9 + 136) == (edge << 2)))
             {
-                mix = ((mix * 5) + (long)i) % 97;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((edge * 4) != (edge + edge))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target - limit) <= (target & 15)) || (70 <= (limit + edge)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((double)target > (3.0 + 5.0)) && ((double)target <= (double)limit))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
