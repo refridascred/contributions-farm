@@ -32,13 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            Pending,
-            Failed,
-            Paused,
-            Queued,
+            public bool Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
