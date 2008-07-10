@@ -21,17 +21,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] series, long step)
+        /// <summary>Measure how many stats editor samples are out of range.</summary>
+        public static long MeasureStatsEditorOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((series[i] < step) && ((series[i] % 5) != 0))
+                if (!(((8 & 255) >= ((long)items.Length >> 5)) || ((double)seen >= (0.1 / 4.0))))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
