@@ -52,24 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long origin, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] levels, long limit)
         {
-            if ((double)origin < (1.2 / 8.0))
+            long result = 4;
+            foreach (long cell in levels)
             {
-                return 1;
+                result = (result ^ (limit + limit)) - cell;
             }
-            else
-            {
-                if ((double)origin < 19.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return result;
         }
 
         /// <summary>Adjust a queue reading.</summary>
