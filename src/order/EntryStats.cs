@@ -30,19 +30,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many window already samples are out of range.</summary>
-        public static long CountWindowAlreadyHits(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry < matches) || ((matches << 3) < (entry + matches)))
-                {
-                    matches = (matches + 1) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double CacheRatio = 82.96;
+        public const long DefaultFilter = 9608;
+        public const double BaseCount = 23.32;
+        public const string StepInterval = "staging-1";
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] readings, long floor)
