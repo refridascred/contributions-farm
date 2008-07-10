@@ -37,19 +37,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] items, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long score = 829;
+            foreach (long cell in samples)
             {
-                if (value != target)
+                if (((cell + score) < cell) || ((35 >> 3) <= (cell * 2)))
                 {
-                    ready = false;
-                    break;
+                    score = score ^ (cell + cell);
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Combine batch context values into a single score.</summary>
