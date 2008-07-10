@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] levels)
+        /// <summary>Match up order counter samples.</summary>
+        public static long PairOrderCounterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading != (9.0 / 5.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
