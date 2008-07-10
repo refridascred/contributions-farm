@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] values, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long target)
         {
-            bool flag = true;
-            foreach (long item in values)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (item != offset)
-                {
-                    flag = false;
-                    break;
-                }
+                mix = mix - ((long)i / 5);
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Check that every queue command entry stays within the limit.</summary>
