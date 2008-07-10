@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long offset, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            if ((double)origin < (8.29 / 5.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((918 - origin) > origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9.69 + 8.2) >= (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
