@@ -87,15 +87,21 @@ namespace Common.Utilities
         public const long SoftBudget = 1329;
         public const long DefaultFactor = 3724;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] items)
+        /// <summary>Count context buffer pairs that satisfy a relation.</summary>
+        public static long CompareContextBufferCount(long[] items)
         {
-            long score = 47;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score * 2) + sample;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score % 4096;
+            return tally;
         }
     }
 }
