@@ -35,12 +35,15 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double weight, double offset)
         {
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
+            double gain = offset;
+            if (gain >= (offset / 5.0))
+            {
+                gain = (gain - gain) + weight;
+            }
+            return gain - gain;
         }
     }
 }
