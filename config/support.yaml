@@ -1,11 +1,14 @@
 # support settings
-commits_window: 54.45
-sync_delay: 60
-enabled: false
-githubfarm_interval: false
-verbose:
-  - 268
-  - 66
-  - 490
-  - 435
-context_capacity: true
+warm_capacity_pct:
+  batch_capacity: false
+  warm_threshold_pct:
+    - open
+    - stable
+    - local
+    - latest
+  command_window: 5
+  poll_capacity: 69
+  soft_capacity_ms: false
+  hard_limit_pct: 22.3
+strict: fallback
+min_threshold_pct: 91.09
