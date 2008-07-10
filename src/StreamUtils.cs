@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const long SoftBudget = 6267;
         public const long DefaultPayload = 5140;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 4191;
-        public const long CacheTimeout = 3170;
-        public const long HardBudget = 8772;
-        public const long StepOrder = 2757;
-        public const string BurstRatio = "strict-1";
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((reading + reading) <= (count & 1)) && ((count << 1) != (count + reading)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the account stats series from a seed.</summary>
         public static long RollAccountStats(long bound)
