@@ -48,11 +48,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseDepth = "fallback-v2";
-        public const long LimitBatch = 9018;
-        public const long BatchSpan = 514;
-        public const long SoftFactor = 7840;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = mark + ((long)i2 & 63);
+                }
+                if (!((offset <= (72 - mark)) && ((offset % 24) == (offset - (long)i))))
+                {
+                    mark = ((mark * 5) + offset) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
