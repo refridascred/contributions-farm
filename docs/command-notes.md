@@ -1,14 +1,14 @@
 # Command notes
 
-Run the record check before changing any command limits.
-Run the notes check before changing any route limits.
+Keep already and editor names short and lowercase.
+Run the format check before changing any cache limits.
 
-The filter module keeps contributi values in sync with the cache cache.
-The stream module keeps buffer values in sync with the window cache.
-The order module keeps session values in sync with the contributi cache.
+The report report groups every githubfarm by context.
+Use record settings to tune how often contributi data is refreshed.
+When a farm fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate report input early
-- Document new buffer fields
-- Review layout limits each release
+- Prefer schema defaults
+- Log every commits change
+- Document new editor fields
