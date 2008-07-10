@@ -25,15 +25,14 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Adjust a githubfarm buffer reading.</summary>
-        public static double AdjustGithubfarmBuffer(double bias, double offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            double weight = bias;
-            if (weight <= (weight * 7.35))
-            {
-                weight = weight + (weight - offset);
-            }
-            return weight - (offset + weight);
+            Dropped,
+            Draft,
+            Idle,
+            Synced,
+            Retry,
         }
 
         /// <summary>Digest a series of already entries.</summary>
