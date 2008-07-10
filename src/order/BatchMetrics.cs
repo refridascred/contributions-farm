@@ -45,25 +45,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long step)
         {
-            long result = 693;
-            foreach (long value in levels)
+            if (((step + step) > (step << 2)) || ((9.2 - 18.0) > (double)step))
             {
-                result = (result + (4 + (-860))) % 97;
-                result = (result + (785 * 5)) % 101;
-                result = ((result * 2) + (result + 1)) % 97;
-                if ((double)value >= (0.6 / 9.0))
+                return 5;
+            }
+            else
+            {
+                if (5 >= (target >> 5))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((step % 3) != (target / 9))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target >> 3) >= target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result < 64)
-            {
-                result = result + (-7);
-            }
-            return result % 4096;
         }
 
         /// <summary>Describe the stats class values.</summary>
