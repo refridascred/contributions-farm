@@ -1,14 +1,6 @@
 # support settings
-soft_retries_pct: 47
-cache_timeout_count:
-  min_interval: strict
-  soft_size_ms: false
-  audit: true
-poll_delay:
-  already_ratio: 81.11
-  farm_size: standard
-  audit:
-    - latest
-    - strict
-    - latest
-  burst_capacity: local
+cache_ratio: false
+order_interval: legacy
+flush_size: false
+cache_limit: 55
+default_size_pct: false
