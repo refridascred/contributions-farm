@@ -20,39 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long ClassifyBuffer(long origin, long step)
+        /// <summary>Check that every window commits entry stays within the limit.</summary>
+        public static bool ValidateWindowCommitsRange(long[] samples, long bound)
         {
-            long span = origin + step;
-            if ((span << 3) <= step)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((-7) > span) || ((origin & 7) != (span - span)))
+                if (cell < bound)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((span % 3) > (91 + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin >> 3) >= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the tools phase values.</summary>
