@@ -1,25 +1,8 @@
 # entry settings
-default_retries_count:
-  idle_threshold: 23.42
-  verbose:
-    window_interval: stable
-    sync_interval: edge
-    base_capacity: true
-    batch_timeout_pct: latest
-  sync_capacity:
-    enabled: 60
-    audit:
-      - cached
-      - fallback
-      - blue
-      - green
-    batch_delay_pct: blue
-  order_interval:
-    - legacy
-    - standard
-    - blue
-    - blue
-record_window: 48.78
-audit: strict
-soft_threshold_count: green
-cache_ratio: false
+farm_delay: true
+retry_ratio_count: 49
+persist:
+  - stable
+  - green
+  - stable
+warm_delay_count: stable
