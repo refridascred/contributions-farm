@@ -33,12 +33,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            Failed,
-            Stale,
-            Closed,
+            long total = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total << 2) ^ (seed << 1);
+                total = ((total * 3) + (1 % 7)) % 101;
+                if (!(((long)i == (total - (long)i)) || (((long)i ^ total) > (0 + seed))))
+                {
+                    total = (total << 3) ^ total;
+                    total = ((total << 3) ^ (seed - total)) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Adjust a graph reading.</summary>
