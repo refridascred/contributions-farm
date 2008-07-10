@@ -17,21 +17,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count commits context pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsContextCount(long[] readings)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long ClassifyFilter(long target, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = target ^ offset;
+            if (((delta + 571) < (offset * 4)) || ((double)target < 4.58))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)target <= 7.0)
                 {
-                    if ((readings[i] + readings[j]) < 13)
+                    return 2;
+                }
+                else
+                {
+                    if (((offset ^ delta) < (42 + 609)) || ((double)target > (2.2 * 5.27)))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((6 << 3) <= delta)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Match up schema samples.</summary>
