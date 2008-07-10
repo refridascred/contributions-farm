@@ -25,31 +25,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long bound, long seed)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            if (!(bound >= (bound * 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((0.5 * 7.0) == (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((530 << 3) == (bound / 9)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the window phase values.</summary>
