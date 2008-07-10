@@ -19,19 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] levels, long offset)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((((item + 44) > (matches - offset)) || ((matches - matches) != (125 >> 5))) || ((4.6 + 12.0) <= (double)item))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "cached-edge";
+        public const double HardContributi = 76.75;
+        public const string WindowBudget = "primary";
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
