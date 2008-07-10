@@ -1,5 +1,5 @@
 {
-  "burst_window": "standard",
-  "filter_limit": ["edge", "legacy", "blue", "cached"],
-  "soft_interval": [208, 130]
+  "retry_size_count": true,
+  "readonly": 68,
+  "filter_limit": 67.52
 }
