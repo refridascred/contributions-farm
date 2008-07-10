@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double bias, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] items, long origin)
         {
-            double load = (double)(991 & 255);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load + bias) + (double)(long)i) - offset;
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return load - bias;
+            return -1;
         }
 
         /// <summary>Locate a checks route reading by value.</summary>
