@@ -1,32 +1,11 @@
 # support settings
-poll_timeout_ms: 45
-dry_run: true
-enabled:
-  compress: false
-  sync_threshold_pct:
-    - latest
-    - eu-west
-    - local
-  audit:
-    order_timeout: legacy
-    metrics_capacity: staging
-    poll_size_count: true
-    compress: 250
-  graph_retries: 100
-audit: 88.52
-cache_depth:
-  idle_interval: 16.44
-  burst_delay: 30
-  verbose:
-    persist: false
-    idle_size: 87.21
-    enabled: true
-    audit: 2997
-    soft_depth_count: 65
-    hard_ttl_count:
-      - local
-      - blue
-  batch_capacity:
-    cache_interval: false
-    retry_depth_count: legacy
-    token_limit: 47
+commits_window: 54.45
+sync_delay: 60
+enabled: false
+githubfarm_interval: false
+verbose:
+  - 268
+  - 66
+  - 490
+  - 435
+context_capacity: true
