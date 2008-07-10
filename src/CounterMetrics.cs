@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] data, long bound)
+        /// <summary>Locate a metric counter reading by value.</summary>
+        public static long LocateMetricCounterIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((5.34 / 6.0) <= (double)sample)
+                if (data[i] <= seed)
                 {
-                    tally = (tally + 2) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
