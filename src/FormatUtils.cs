@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] data)
         {
-            Dropped,
-            Done,
-            Draft,
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((((double)reading <= (4.05 + 2.0)) || ((0.82 + 0.1) <= (double)reading)) && ((reading >> 2) >= (reading >> 5)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate order samples.</summary>
