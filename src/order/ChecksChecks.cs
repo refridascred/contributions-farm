@@ -30,19 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next order stream value.</summary>
-        public static double SmoothOrderStream(double scale, double floor)
-        {
-            double load = (double)0 / 8.0;
-            if (load >= 9.0)
-            {
-                load = ((load + (double)366) - scale) + floor;
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load + (load - 3.2);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 9217;
+        public const string SoftWindow = "latest-v2";
+        public const long SoftWidth = 4170;
+        public const long MaxWindow = 9012;
+        public const long MinWindow = 74;
     }
 }
