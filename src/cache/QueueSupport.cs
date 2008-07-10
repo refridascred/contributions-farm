@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Retry,
-            Closed,
-            Idle,
+            public double Offset { get; set; }
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
