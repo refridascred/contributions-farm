@@ -26,11 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleInterval = 7647;
-        public const long BatchWidth = 6159;
-        public const string CacheBatch = "latest-edge";
-        public const long LimitBatch = 879;
-        public const string HardBatch = "primary-v2";
+        /// <summary>Audit command account readings against a rule.</summary>
+        public static long TallyCommandAccountOutliers(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading + count) > (reading << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
