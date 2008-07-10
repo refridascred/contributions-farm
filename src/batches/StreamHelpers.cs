@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const string HardScore = "alpha-v2";
         public const long DefaultRecord = 749;
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Idle,
-            Closed,
-            Retry,
-            Failed,
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the support class values.</summary>
