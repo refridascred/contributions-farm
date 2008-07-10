@@ -1,16 +1,6 @@
 {
-  "verbose": {
-    "audit": 8349,
-    "persist": true,
-    "window_depth": {
-      "base_depth_ms": false,
-      "audit": false,
-      "verbose": 100
-    }
-  },
-  "sync_capacity_s": 7.09,
-  "cache_capacity": "cached",
-  "route_threshold": ["edge", "primary", "standard"],
-  "retry_delay_s": false,
-  "sync_delay_s": false
+  "stream_interval": 71.59,
+  "route_capacity": true,
+  "flush_delay": 250,
+  "profile_timeout": 85.05
 }
