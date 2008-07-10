@@ -31,22 +31,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphHits(long[] samples, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((5.06 / 2.0) < (double)value)
+                if (1.93 < (double)count)
                 {
-                    tally = (tally + 3) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
