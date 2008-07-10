@@ -86,17 +86,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] items, long offset)
+        /// <summary>Validate format window readings against a bound.</summary>
+        public static bool CheckFormatWindowRange(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (items[i] < offset)
+                if (entry < seed)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
