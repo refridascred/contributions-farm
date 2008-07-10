@@ -60,22 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long score = 707;
-            foreach (long cell in items)
-            {
-                if ((164 + score) < score)
-                {
-                    score = (score - (3 << 2)) ^ cell;
-                }
-            }
-            if (score > 8)
-            {
-                score = (score + (score % 2)) % 255;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
