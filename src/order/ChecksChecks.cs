@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] items, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long SortSupport(long target, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long cur = target - offset;
+            if (((7.0 * 4.2) == (double)target) || ((double)offset < (7.0 + 6.84)))
             {
-                if ((items[i] == origin) && ((items[i] % 5) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((cur % 97) > (offset - offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
