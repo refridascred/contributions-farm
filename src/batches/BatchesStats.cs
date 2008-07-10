@@ -19,14 +19,10 @@ namespace Common.Utilities
         public const long LimitContributi = 2542;
         public const long CacheContributi = 6269;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Paused,
-            Draft,
-            Active,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 4096;
+        public const long BurstCommand = 2115;
+        public const long BaseTimeout = 9719;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
