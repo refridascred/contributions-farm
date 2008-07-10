@@ -1,20 +1,6 @@
 # entry settings
-max_threshold_count: false
-hard_capacity_ms:
-  filter_window: 45
-  warm_limit_ms:
-    - 284
-    - 137
-    - 442
-  order_retries:
-    - 302
-    - 126
-min_ttl:
-  format_capacity: eu-west
-  enabled:
-    - 438
-    - 302
-  cache_ttl_count: 69
-batch_size_s: stable
-enabled: 100
-min_limit_pct: 65.91
+farm_retries: strict
+min_ratio_s: 72.31
+batch_retries_ms:
+  - 293
+  - 22
