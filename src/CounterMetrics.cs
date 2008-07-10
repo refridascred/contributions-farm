@@ -26,17 +26,12 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Locate a metric counter reading by value.</summary>
-        public static long LocateMetricCounterIndex(long[] data, long seed)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Pending,
+            New,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
