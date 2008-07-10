@@ -25,11 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long origin, long limit)
         {
-            public bool Level { get; set; }
-            public long Flag { get; set; }
+            if (((17.0 / 7.0) != (double)limit) || ((limit >> 2) < (limit + origin)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((2 ^ (-622)) < origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a layout entry.</summary>
