@@ -1,5 +1,6 @@
 {
-  "idle_delay": 2.84,
-  "compress": 500,
-  "enabled": 7312
+  "default_timeout_pct": "edge",
+  "idle_size": "fallback",
+  "session_interval": "eu-west",
+  "audit": "staging"
 }
