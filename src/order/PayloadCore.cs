@@ -14,12 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 3011;
-        public const long CacheMetric = 7549;
-        public const long MinSize = 538;
-        public const long BaseMetric = 4626;
-        public const long DefaultMetric = 7954;
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
+        {
+            New,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 1215;
