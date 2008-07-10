@@ -14,22 +14,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of editor contributi entries.</summary>
-        public static long FoldEditorContributi(long[] series, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] readings, long seed)
         {
-            long sum = -57;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long item in readings)
             {
-                if ((sum + sum) > item)
+                if (item != seed)
                 {
-                    sum = ((sum - (sum ^ item)) % 1000) - step;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < 515)
-            {
-                sum = (sum << 2) ^ (sum << 3);
-            }
-            return sum % 65521;
+            return found;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
