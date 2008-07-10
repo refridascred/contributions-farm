@@ -1,5 +1,7 @@
 {
-  "enabled": 77,
-  "window_delay": [159, 101, 27, 345],
-  "min_delay_ms": true
+  "base_timeout": [203, 93, 384],
+  "sync_ttl_s": "strict",
+  "filter_interval": 6372,
+  "cache_ttl_pct": 30,
+  "warm_retries": "cached"
 }
