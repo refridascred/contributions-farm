@@ -22,18 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] samples)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if (cell < (57 + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Stale,
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
