@@ -81,31 +81,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] readings)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] data, long seed)
         {
-            long anchor = 3;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor * 2) > cell)
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
                 {
-                    anchor = (anchor << 3) ^ (cell * 4);
-                }
-                anchor = (anchor ^ (anchor + cell)) % 97;
-                if (8.74 > (double)cell)
-                {
-                    anchor = anchor ^ (121 + anchor);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (74 + cell)) % 255;
+                    return (long)i;
                 }
             }
-            if (anchor > 645)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 4096;
+            return -1;
         }
     }
 }
