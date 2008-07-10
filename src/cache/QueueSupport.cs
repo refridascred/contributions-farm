@@ -42,12 +42,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] series, long step)
         {
-            Locked,
-            Idle,
-            Done,
+            long carry = 78;
+            foreach (long cell in series)
+            {
+                if (step > 734)
+                {
+                    carry = carry ^ (19 >> 4);
+                }
+                else
+                {
+                    carry = (carry ^ (cell % 97)) % 65521;
+                }
+                if ((cell % 8) >= (carry % 3))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
