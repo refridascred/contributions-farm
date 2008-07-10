@@ -1,8 +1,31 @@
 # entry settings
-farm_delay: true
-retry_ratio_count: 49
+verbose:
+  - 471
+  - 43
 persist:
-  - stable
-  - green
-  - stable
-warm_delay_count: stable
+  default_threshold: 5
+  batches_size: open
+  command_depth:
+    hard_threshold_count:
+      - eu-west
+      - strict
+      - local
+    warm_capacity: 95.82
+    persist:
+      - stable
+      - stable
+  stats_delay: standard
+  persist: blue
+record_retries: 44.89
+min_threshold_s:
+  record_retries: 2635
+  compress: false
+  record_delay: standard
+  batch_size_s: strict
+  warm_timeout: green
+audit: true
+poll_timeout_ms:
+  - 491
+  - 338
+  - 66
+  - 138
