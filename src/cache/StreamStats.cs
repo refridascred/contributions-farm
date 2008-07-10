@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a support route pair into a bucket.</summary>
-        public static long RankSupportRoute(long origin, long target)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long RankBatch(long bound, long limit)
         {
-            if ((target >> 5) > (target << 1))
+            if ((bound << 3) <= bound)
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((target % 8) <= (target / 7))
+                if ((46 % 60) <= (16 + bound))
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((target << 2) == (target ^ target))
+                    if ((bound & 63) <= (limit + bound))
                     {
-                        return 6;
+                        return 0;
                     }
                     else
                     {
-                        if ((target << 3) == (target + target))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 7;
                     }
                 }
             }
