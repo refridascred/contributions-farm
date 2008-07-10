@@ -19,12 +19,23 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double bias, double offset)
         {
-            public double Mode { get; set; }
-            public string Label { get; set; } = "";
-            public bool Owner { get; set; }
+            double load = 11.0 + (offset * 0.9);
+            if (load > (bias + offset))
+            {
+                load = load + (double)797;
+            }
+            else
+            {
+                load = load - (2.9 - offset);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (load - bias)) + (double)(long)i;
+            }
+            return load - (offset * 20.0);
         }
 
         /// <summary>Adjust a commits order reading.</summary>
