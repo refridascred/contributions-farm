@@ -27,25 +27,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long target, long offset)
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            long step = target ^ offset;
-            if ((3.0 / 9.0) >= (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((90 - step) >= (5 % 97))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
