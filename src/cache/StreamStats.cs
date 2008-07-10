@@ -32,15 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Pending,
+            Failed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
