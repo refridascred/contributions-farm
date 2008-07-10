@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate profile farm samples.</summary>
-        public static long DigestProfileFarm(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            long result = -2;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                result = (((result << 2) ^ limit) % 1000) ^ entry;
+                if ((matches << 3) <= (item % 7))
+                {
+                    matches = matches + 2;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Describe the entry kind values.</summary>
