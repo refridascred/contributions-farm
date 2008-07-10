@@ -1,6 +1,16 @@
 # support settings
-batch_delay:
-  - 41
-  - 261
-persist: local
-max_ttl_ms: stable
+cache_retries_ms:
+  - cached
+  - blue
+  - green
+sync_size_ms: 5016
+hard_interval_ms: 40.74
+idle_retries_count:
+  persist: true
+  checks_limit: 46.27
+  hard_capacity_count: 44
+  batch_ratio_count: eu-west
+burst_limit_ms: green
+stream_ratio:
+  - 114
+  - 474
