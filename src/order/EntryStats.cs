@@ -54,18 +54,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches profile readings against a rule.</summary>
-        public static long MeasureBatchesProfileHits(long[] levels)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((double)tally >= (8.0 / 9.0))
+                if ((double)datum < (1.57 / 5.0))
                 {
-                    tally = (tally + 2) ^ value;
+                    hits = hits + 2;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
