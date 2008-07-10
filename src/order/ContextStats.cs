@@ -16,25 +16,21 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long target, long step)
+        /// <summary>Derive the next route report value from a seed.</summary>
+        public static long SeriesRouteReport(long step)
         {
-            long offset = target + step;
-            if (!((offset + target) >= (target << 2)))
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)target != (5.9 * 9.8)))
+                result = (result ^ ((long)i & 3)) % 65521;
+                if ((step >> 1) == ((long)i + step))
                 {
-                    return 5;
+                    result = (result + (step + step)) % 101;
+                    result = ((result << 3) ^ (step ^ (long)i)) % 255;
                 }
-                else
-                {
-                    return 2;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Accumulate window samples.</summary>
