@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Adjust a payload queue reading.</summary>
+        public static double BlendPayloadQueue(double scale, double offset)
         {
-            Synced,
-            Stale,
-            Idle,
-            Pending,
-            Dropped,
+            double rate = offset;
+            if (rate > rate)
+            {
+                rate = rate + (double)88;
+            }
+            else
+            {
+                rate = rate - (double)729;
+            }
+            return rate + (scale - offset);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
