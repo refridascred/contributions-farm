@@ -1,4 +1,20 @@
 # entry settings
-default_timeout_s: 4848
-contributi_interval: 4.02
-batch_depth: 55.29
+max_threshold_count: false
+hard_capacity_ms:
+  filter_window: 45
+  warm_limit_ms:
+    - 284
+    - 137
+    - 442
+  order_retries:
+    - 302
+    - 126
+min_ttl:
+  format_capacity: eu-west
+  enabled:
+    - 438
+    - 302
+  cache_ttl_count: 69
+batch_size_s: stable
+enabled: 100
+min_limit_pct: 65.91
