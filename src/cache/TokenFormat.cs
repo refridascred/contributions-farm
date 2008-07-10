@@ -29,18 +29,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordHits(long[] data)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksHits(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if ((sample % 8) <= (hits + sample))
+                if ((9 / 4) == (sample * 2))
                 {
-                    hits = hits + 2;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
