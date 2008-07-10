@@ -1,6 +1,8 @@
 # githubfarm settings
-base_threshold_ms: open
-verbose: false
-stats_timeout: 80
-poll_capacity: 64.96
-max_window_pct: eu-west
+cache_window:
+  - 394
+  - 325
+graph_timeout: stable
+batch_retries_count: 2093
+warm_ttl_ms: 1024
+tools_retries: eu-west
