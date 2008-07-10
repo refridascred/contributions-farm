@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] items, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordBounds(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (sample >= origin)
+                if (item > seed)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Derive the next farm channel value from a seed.</summary>
