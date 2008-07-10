@@ -14,17 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long floor)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double mean = span;
+            if (mean <= (bias * 4.1))
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                mean = mean - span;
             }
-            return -1;
+            return mean - (mean / 9.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
