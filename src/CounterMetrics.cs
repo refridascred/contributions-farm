@@ -35,10 +35,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepEntry = "legacy-1";
-        public const string BaseDepth = "open-v2";
-        public const string MaxEntry = "primary";
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Idle,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const double WindowSupport = 90.21;
