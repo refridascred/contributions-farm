@@ -43,10 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftEditor = "standard-1";
-        public const long MinEditor = 5734;
-        public const double HardScore = 8.16;
-        public const long StepEditor = 2799;
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
+        {
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
     }
 }
