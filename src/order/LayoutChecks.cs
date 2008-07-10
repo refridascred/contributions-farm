@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            public long Rank { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
