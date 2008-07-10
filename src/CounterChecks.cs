@@ -66,22 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the cluster record entries that pass the check.</summary>
-        public static long AuditClusterRecordHits(long[] readings)
+        /// <summary>Audit route queue readings against a rule.</summary>
+        public static long CountRouteQueueOutliers(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (seen <= datum)
+                if ((hits - hits) > (hits << 2))
                 {
-                    seen = seen + 1;
+                    hits = (hits + 2) ^ entry;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
