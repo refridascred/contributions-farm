@@ -74,18 +74,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] values, long floor)
+        /// <summary>Count the channel buffer entries that pass the check.</summary>
+        public static long TallyChannelBufferOutliers(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (tally < (floor + tally))
+                if (((double)cell < 6.5) && ((6 + cell) < (seen + seen)))
                 {
-                    tally = (tally + 2) + entry;
+                    seen = (seen + 2) - seed;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
