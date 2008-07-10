@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long seed)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long span = floor - seed;
-            if (span <= floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (floor > (floor - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
