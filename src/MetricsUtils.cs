@@ -55,22 +55,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricOutliers(long[] items, long floor)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (4.02 < (double)reading)
-                {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Pending,
+            Draft,
+            New,
         }
     }
 }
