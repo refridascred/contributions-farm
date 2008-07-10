@@ -1,6 +1,13 @@
 {
-  "flush_retries": true,
-  "audit": 13.26,
-  "base_size_count": "legacy",
-  "soft_interval": 75.37
+  "flush_limit_ms": 4694,
+  "idle_capacity_count": "local",
+  "cache_limit": {
+    "max_retries": "open",
+    "strict": "latest",
+    "cache_depth_pct": 30.31,
+    "contributi_limit": "open",
+    "verbose": 63.67
+  },
+  "base_window_s": "edge",
+  "filter_ratio": false
 }
