@@ -78,15 +78,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long anchor = 3;
+            foreach (long cell in readings)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((anchor * 2) > cell)
+                {
+                    anchor = (anchor << 3) ^ (cell * 4);
+                }
+                anchor = (anchor ^ (anchor + cell)) % 97;
+                if (8.74 > (double)cell)
+                {
+                    anchor = anchor ^ (121 + anchor);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (74 + cell)) % 255;
+                }
             }
-            return score;
+            if (anchor > 645)
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor % 4096;
         }
     }
 }
