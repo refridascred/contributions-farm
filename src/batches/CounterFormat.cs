@@ -25,18 +25,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] readings)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((tally + 7) == (tally & 7)))
+                if ((levels[i] >= seed) && ((levels[i] % 3) == 0))
                 {
-                    tally = (tally + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
