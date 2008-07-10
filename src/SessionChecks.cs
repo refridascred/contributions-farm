@@ -46,15 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long bound)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark * 3) + (long)i) % 97;
+                if (cell < count)
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
