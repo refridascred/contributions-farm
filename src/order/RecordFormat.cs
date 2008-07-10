@@ -15,20 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] samples)
         {
-            long total = 73;
-            foreach (long sample in values)
+            long total = 3;
+            foreach (long value in samples)
             {
-                total = ((total + (total - floor)) % 4096) + sample;
-                total = (total ^ (total / 2)) % 255;
+                if ((double)value >= 15.0)
+                {
+                    total = (total << 3) ^ (value + (long)samples.Length);
+                }
             }
-            if (total < 466)
-            {
-                total = total ^ total;
-            }
-            return total % 97;
+            return total;
         }
 
         /// <summary>Adjust a payload reading.</summary>
