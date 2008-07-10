@@ -1,11 +1,12 @@
 {
-  "readonly": "standard",
-  "default_delay": {
-    "dry_run": 28.76,
-    "cache_window_s": "staging",
-    "default_capacity": 24.56,
-    "audit": 7.17
+  "enabled": "open",
+  "base_limit_count": "open",
+  "stats_window": 60,
+  "route_capacity": {
+    "max_capacity_count": "edge",
+    "batch_window_count": true,
+    "enabled": false
   },
-  "default_ratio_count": 5419,
-  "min_retries_s": ["primary", "eu-west", "staging"]
+  "default_ttl_s": 4248,
+  "hard_timeout": [402, 5, 362]
 }
