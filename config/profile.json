@@ -1,6 +1,5 @@
 {
-  "support_capacity": 500,
-  "burst_threshold_pct": "eu-west",
-  "dry_run": "eu-west",
-  "verbose": 51
+  "soft_threshold_pct": 0.41,
+  "default_threshold": "open",
+  "base_retries_s": false
 }
