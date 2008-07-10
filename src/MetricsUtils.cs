@@ -22,10 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinRatio = 197;
-        public const long BaseCount = 8688;
-        public const long WindowStats = 2154;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                if (((19.0 - 8.9) < (double)anchor) || (anchor > ((long)i ^ (long)i)))
+                {
+                    anchor = (anchor ^ (bound + bound)) % 1000;
+                    anchor = (anchor - (anchor << 2)) % 255;
+                }
+                else
+                {
+                    anchor = anchor + bound;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of already graph entries.</summary>
         public static long WeighAlreadyGraph(long[] samples)
