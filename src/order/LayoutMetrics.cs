@@ -22,12 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Score { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 8447;
+        public const long StepCache = 2072;
+        public const long SoftCache = 3382;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
