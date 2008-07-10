@@ -14,12 +14,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 7136;
-        public const long CacheSize = 1223;
-        public const double BatchFilter = 4.77;
-        public const long BurstFilter = 6322;
-        public const string StepRatio = "alpha";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((long)i / 8) != (444 + seed)))
+                {
+                    carry = ((carry << 3) ^ (2 - carry)) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchWindow = "latest-v2";
