@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] samples)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] levels, long target)
         {
-            long mix = 75;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = (mix + (237 + mix)) - value;
+                if ((levels[i] == target) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 15)
-            {
-                mix = (mix << 3) ^ (78 >> 3);
-            }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
