@@ -1,8 +1,20 @@
 {
-  "cache_timeout_ms": 61,
-  "hard_ratio_count": "primary",
-  "base_ratio_s": [15, 488, 211],
-  "retry_threshold": "cached",
-  "profile_limit": [301, 131, 96],
-  "entry_interval": false
+  "warm_limit_count": 30,
+  "batch_retries": "strict",
+  "cache_size": "eu-west",
+  "commits_capacity": {
+    "retry_interval": 67.79,
+    "farm_ttl": [387, 205, 399],
+    "already_window": "legacy",
+    "record_window": 30,
+    "max_depth_s": {
+      "schema_capacity": "strict",
+      "commits_ratio": 17,
+      "verbose": [425, 10, 126, 392],
+      "poll_window": 32,
+      "hard_delay_s": ["local", "fallback", "open"]
+    },
+    "checks_delay": 1024
+  },
+  "readonly": 1.34
 }
