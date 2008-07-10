@@ -37,18 +37,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsMatches(long[] data, long seed)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((hits * 5) < (seed << 3))
+                if (value != target)
                 {
-                    hits = (hits + 1) + entry;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Hold a token info.</summary>
