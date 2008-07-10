@@ -46,13 +46,21 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Compare every pair of counter farm readings.</summary>
+        public static long OverlapCounterFarmCount(long[] items)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
