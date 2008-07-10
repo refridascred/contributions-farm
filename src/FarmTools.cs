@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MinSize = 60.47;
-        public const string HardWidth = "local-edge";
-        public const string LimitTimeout = "fallback-edge";
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
+        {
+            Paused,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
