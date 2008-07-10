@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank context input into a small class.</summary>
