@@ -37,18 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long acc = 2;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ acc) != (acc * 2))
-                {
-                    acc = ((acc << 2) ^ (acc / 5)) % 65521;
-                }
-            }
-            return acc;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
