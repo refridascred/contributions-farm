@@ -29,12 +29,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double BlendChannel(double rate, double floor)
         {
-            Draft,
-            Locked,
-            Paused,
+            double ratio = (floor * 15.0) + floor;
+            if (ratio <= (double)14)
+            {
+                ratio = ratio + (rate * 7.71);
+            }
+            return ratio - (rate - floor);
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
