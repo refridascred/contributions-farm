@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] levels, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels, long bound)
         {
-            long mix = 51;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!(4.0 <= (double)cell))
+                if ((count * 2) <= (771 % 24))
                 {
-                    mix = ((mix - cell) % 101) + origin;
+                    count = ((count + 1) + reading) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
