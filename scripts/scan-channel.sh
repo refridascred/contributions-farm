@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-legacy}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -16,12 +16,12 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge local green; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
+
+for item in green primary strict standard; do
+    log "checking ${item}"
+done
