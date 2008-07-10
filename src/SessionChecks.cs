@@ -23,14 +23,17 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Look up the position of a cluster account sample.</summary>
+        public static long FindClusterAccountIndex(long[] levels, long bound)
         {
-            Synced,
-            Dropped,
-            Retry,
-            Active,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first format stream entry that matches the target.</summary>
