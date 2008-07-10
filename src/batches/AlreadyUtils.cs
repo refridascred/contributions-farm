@@ -85,11 +85,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstOrder = "local-edge";
-        public const long BatchFactor = 7965;
-        public const long BaseOrder = 5943;
-        public const double RetryOrder = 28.75;
-        public const long DefaultOrder = 2311;
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
