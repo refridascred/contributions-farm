@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-legacy}"
+mode="${1:-open}"
 case "${mode}" in
-    eu-west)
+    open)
         log "fast path"
         ;;
     *)
@@ -17,11 +17,13 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 9); do
+for i in $(seq 1 10); do
     total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in green primary strict standard; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
