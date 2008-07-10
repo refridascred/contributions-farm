@@ -31,9 +31,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryLevel = 3048;
-        public const long HardFactor = 7337;
-        public const string StepSpan = "cached-edge";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] items)
+        {
+            long carry = 75;
+            foreach (long sample in items)
+            {
+                carry = (((carry * 4) + (carry >> 4)) % 101) - sample;
+            }
+            return carry % 4096;
+        }
     }
 }
