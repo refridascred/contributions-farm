@@ -40,24 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of contributi checks readings.</summary>
-        public static long ScoreContributiChecks(long[] levels, long step)
+        /// <summary>Match up batches account samples.</summary>
+        public static long CompareBatchesAccountCount(long[] items)
         {
-            long carry = 58;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 4; i++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = (((carry << 3) ^ (long)i) % 101) + cell;
-                    carry = ((carry << 3) ^ (3 << 1)) % 255;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = (carry * 5) + (0 % 2);
             }
-            if (carry > (-69))
-            {
-                carry = (carry * 4) + (step ^ 80);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
