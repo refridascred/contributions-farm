@@ -50,25 +50,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long seed, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] levels, long offset)
         {
-            long diff = seed ^ bound;
-            if ((diff + seed) > ((-1) << 2))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + seed) <= bound)
+                if (levels[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
