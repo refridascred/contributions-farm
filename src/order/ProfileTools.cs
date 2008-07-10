@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long BaseWindow = 9676;
         public const long LimitInterval = 5796;
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Draft,
+            Closed,
             New,
-            Dropped,
+            Pending,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
