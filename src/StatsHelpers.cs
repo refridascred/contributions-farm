@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] readings)
+        /// <summary>Audit session token readings against a rule.</summary>
+        public static long CountSessionTokenOutliers(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (!(count > (sample + count)))
+                if (!((floor & 7) == (matches + matches)))
                 {
-                    count = count + 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a context stats.</summary>
