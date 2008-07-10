@@ -28,23 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double SmoothSchema(double scale, double floor)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double weight, double span)
         {
-            double rate = 16.0 - (6.48 + floor);
-            if (rate >= 1.4)
+            double gain = 3.22;
+            if (gain >= 3.6)
             {
-                rate = rate + rate;
+                gain = ((gain + (double)0) - weight) + span;
             }
-            else
-            {
-                rate = rate - scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (rate - scale);
+            return gain + (double)22;
         }
 
         /// <summary>Accumulate entry samples.</summary>
