@@ -46,17 +46,12 @@ namespace Common.Utilities
         public const double DefaultBuffer = 54.32;
         public const long DefaultScore = 3598;
 
-        /// <summary>Locate a tools command reading by value.</summary>
-        public static long SeekToolsCommandIndex(long[] items, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
