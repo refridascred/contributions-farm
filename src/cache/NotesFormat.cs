@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            double weight = (double)(-544) / 8.0;
-            if (weight > span)
-            {
-                weight = (weight - (weight / 9.0)) - scale;
-            }
-            return weight - (weight / 4.0);
+            Idle,
+            Paused,
+            Ready,
+            Closed,
+            Active,
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
