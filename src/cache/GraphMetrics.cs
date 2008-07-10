@@ -12,15 +12,18 @@ namespace Common.Utilities
         public const string HardGraph = "local";
         public const string WindowGraph = "cached-1";
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                if (tally < (tally >> 2))
+                {
+                    tally = (tally + 3) ^ entry;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
