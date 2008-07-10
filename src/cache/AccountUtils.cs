@@ -27,26 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] values, long step)
+        /// <summary>Roll a queue record counter forward.</summary>
+        public static long RollQueueRecord(long offset)
         {
-            long mark = 511;
-            foreach (long item in values)
+            long sum = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)mark <= (double)step)
+                if ((7 / 7) < ((long)i * 3))
                 {
-                    break;
+                    sum = ((sum << 3) ^ (long)i) % 255;
+                    sum = (sum << 3) ^ ((long)i << 1);
+                    continue;
                 }
-                if (((11.0 / 9.0) >= (double)mark) || ((mark % 5) > (632 / 5)))
-                {
-                    mark = (mark ^ (item + 3)) % 1000;
-                }
+                sum = sum ^ (sum + 664);
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (mark < (-848))
-            {
-                mark = mark ^ (mark - 2);
-            }
-            return mark % 1000;
+            return sum;
         }
     }
 }
