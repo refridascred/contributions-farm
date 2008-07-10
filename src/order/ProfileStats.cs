@@ -19,13 +19,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] items)
         {
-            Pending,
-            Synced,
-            Stale,
-            Locked,
+            long acc = 804;
+            foreach (long item in items)
+            {
+                if ((double)acc == (0.66 + 1.25))
+                {
+                    acc = ((acc + (621 & 15)) % 97) ^ item;
+                }
+                else
+                {
+                    acc = (acc + ((long)items.Length / 9)) % 97;
+                }
+            }
+            if (acc > 749)
+            {
+                acc = ((acc * 2) + (long)items.Length) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a window tools reading.</summary>
