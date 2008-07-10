@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank editor route input into a small class.</summary>
-        public static long BucketEditorRoute(long offset, long offset2)
+        /// <summary>Check that every filter layout entry stays within the limit.</summary>
+        public static bool GuardFilterLayoutBounds(long[] data, long limit)
         {
-            if ((offset & 7) >= offset)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset <= 17.0)
+                if (sample != limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)offset >= 20.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((6 + offset2) <= (offset - 21))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine record cache values into a single score.</summary>
