@@ -33,12 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepSize = 884;
-        public const double LimitMetric = 17.84;
-        public const double BaseInterval = 3.89;
-        public const long HardMetric = 2695;
-        public const long RetryMetric = 8822;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 6438;
+        public const string DefaultCommits = "stable";
+        public const long BaseTimeout = 9437;
+        public const long LimitCommits = 9466;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
