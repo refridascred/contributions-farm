@@ -37,22 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long WeighMetric(long[] items, long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] samples, long limit)
         {
-            long mark = -2;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((item > mark) && ((step >> 1) >= mark))
+                if (item >= limit)
                 {
-                    mark = mark + (3 - step);
-                }
-                else
-                {
-                    mark = (mark + (35 + 9)) % 255;
+                    ready = false;
+                    break;
                 }
             }
-            return mark % 1000;
+            return ready;
         }
     }
 }
