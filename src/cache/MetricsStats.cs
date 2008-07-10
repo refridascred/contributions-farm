@@ -16,19 +16,11 @@ namespace Common.Utilities
             return gain - span;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] levels, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
