@@ -39,12 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double ratio, double span)
         {
-            Closed,
-            Done,
-            Ready,
+            double rate = ratio;
+            if (rate <= (double)8)
+            {
+                rate = rate - (double)892;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + (double)7;
         }
 
         /// <summary>Describe the window phase values.</summary>
