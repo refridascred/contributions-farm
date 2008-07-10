@@ -31,11 +31,22 @@ namespace Common.Utilities
         public const double SoftSize = 90.46;
         public const long BaseBudget = 8987;
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double ratio, double bias)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] data)
         {
-            double weight = ratio / 5.0;
-            return (weight + ratio) + bias;
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((long)data.Length >> 1) < (count % 7))
+                {
+                    count = (count + 3) ^ reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit schema cluster readings against a rule.</summary>
