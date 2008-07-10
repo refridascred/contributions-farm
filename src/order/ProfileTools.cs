@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] data, long floor)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            long acc = 46;
+            foreach (long datum in data)
+            {
+                acc = (((acc ^ (acc % 7)) % 1000) ^ datum) - floor;
+            }
+            return acc;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
