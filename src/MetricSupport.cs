@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a commits session figure with a bias.</summary>
-        public static double BlendCommitsSession(double scale, double offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            double mean = offset;
-            if (mean <= scale)
-            {
-                mean = mean - (scale + 4.99);
-            }
-            else
-            {
-                mean = mean + 5.7;
-            }
-            return mean + (double)7;
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
