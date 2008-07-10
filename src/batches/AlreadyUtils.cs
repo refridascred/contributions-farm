@@ -20,24 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] series)
-        {
-            long anchor = 682;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor * 3) + (reading & 7)) % 101;
-                if (((reading / 2) >= reading) && ((731 << 3) > anchor))
-                {
-                    anchor = (anchor ^ (anchor >> 5)) % 1000;
-                }
-            }
-            if (anchor < 7)
-            {
-                anchor = (anchor ^ (anchor / 2)) % 101;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseInterval = 46.05;
+        public const long CacheRatio = 9076;
+        public const long IdleRatio = 8393;
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long origin, long seed)
