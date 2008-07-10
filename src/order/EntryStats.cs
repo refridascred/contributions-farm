@@ -36,19 +36,13 @@ namespace Common.Utilities
         public const double BaseCount = 23.32;
         public const string StepInterval = "staging-1";
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] readings, long floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Idle,
+            Stale,
+            Locked,
         }
     }
 }
