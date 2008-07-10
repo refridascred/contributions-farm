@@ -27,13 +27,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double bias, double floor)
         {
-            Synced,
-            Paused,
-            Active,
-            New,
+            double mean = floor + floor;
+            if (mean < (mean + mean))
+            {
+                mean = mean + (double)28;
+            }
+            else
+            {
+                mean = mean - (mean - bias);
+            }
+            return mean + (double)3;
         }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
