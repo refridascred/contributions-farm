@@ -52,12 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double scale, double floor)
         {
-            Queued,
-            Closed,
-            Stale,
+            double mean = (double)(8 - 5);
+            return (mean + floor) + scale;
         }
     }
 }
