@@ -21,17 +21,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long carry = step;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = ((carry * 4) + 1) % 255;
-                carry = (carry + step) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
