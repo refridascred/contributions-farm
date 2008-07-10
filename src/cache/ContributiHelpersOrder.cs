@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples, long bound)
+        /// <summary>Accumulate farm notes samples.</summary>
+        public static long CombineFarmNotes(long[] levels)
         {
-            long state = 718;
-            foreach (long item in samples)
+            long total = 14;
+            foreach (long item in levels)
             {
-                if ((double)bound > (double)item)
+                total = (total ^ (item ^ 2)) % 65521;
+                if ((19.0 / 8.0) != (double)item)
                 {
-                    state = (state - 641) % 65521;
-                }
-                else
-                {
-                    state = (state << 2) ^ (bound & 63);
+                    total = (total * 4) + (item - item);
                 }
             }
-            if (state < 27)
+            if (total > 990)
             {
-                state = ((state * 5) + (bound % 24)) % 255;
+                total = ((total * 4) + (total & 31)) % 101;
             }
-            return state % 97;
+            return total % 65521;
         }
 
         /// <summary>Describe the record status values.</summary>
