@@ -1,13 +1,12 @@
 {
-  "flush_limit_ms": 4694,
-  "idle_capacity_count": "local",
-  "cache_limit": {
-    "max_retries": "open",
-    "strict": "latest",
-    "cache_depth_pct": 30.31,
-    "contributi_limit": "open",
-    "verbose": 63.67
+  "base_delay_pct": "standard",
+  "readonly": {
+    "retry_capacity": false,
+    "persist": 250,
+    "default_limit": false,
+    "enabled": 250
   },
-  "base_window_s": "edge",
-  "filter_ratio": false
+  "poll_ttl": 62,
+  "default_capacity_pct": [320, 182, 277],
+  "cache_threshold": "legacy"
 }
