@@ -1,11 +1,16 @@
 # githubfarm settings
-verbose: 60
-idle_window_pct:
-  - strict
-  - blue
-  - blue
-  - legacy
-min_threshold_ms: latest
-flush_size_count: edge
-batches_capacity: strict
-flush_retries: eu-west
+poll_window_count: 42
+soft_window_ms: staging
+burst_ratio_s:
+  base_capacity: 72.73
+  poll_depth_pct: 718
+  dry_run:
+    audit: open
+    format_size: true
+    cache_retries_count:
+      - edge
+      - stable
+      - strict
+    dry_run: legacy
+    soft_window_ms: true
+    max_capacity_s: standard
