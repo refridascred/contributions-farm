@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseSize = 44.2;
-        public const long HardFactor = 5591;
-        public const string LimitPayload = "fallback-1";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] items, long offset)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((tally / 8) < (offset ^ tally))
+                {
+                    tally = (tally + 1) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the counter entries that pass the check.</summary>
         public static long CountCounterMatches(long[] data, long bound)
