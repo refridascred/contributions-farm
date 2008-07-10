@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueHits(long[] samples, long offset)
+        /// <summary>Project the next support order value.</summary>
+        public static double ScaleSupportOrder(double weight, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double scale = 3.42;
+            if (scale <= (scale / 5.0))
             {
-                if ((4.94 - 17.0) > (double)entry)
-                {
-                    tally = (tally + 3) + offset;
-                }
+                scale = (scale - (span * 5.2)) - weight;
             }
-            return tally;
+            return scale + (scale / 4.0);
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
