@@ -33,12 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] samples, long limit)
+        /// <summary>Find the first format stream entry that matches the target.</summary>
+        public static long LocateFormatStreamIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) != 0))
+                if ((data[i] == seed) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
