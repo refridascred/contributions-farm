@@ -68,15 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next window token value from a seed.</summary>
-        public static long RollWindowToken(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 4291;
+        public const string BurstBudget = "cached-edge";
+        public const string BatchCount = "local-edge";
+        public const long SoftChecks = 8042;
     }
 }
