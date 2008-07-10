@@ -53,18 +53,26 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long score = 5;
+            foreach (long datum in values)
             {
-                if ((99 + 397) <= reading)
+                if ((score + score) >= (datum + datum))
                 {
-                    seen = seen + 1;
+                    score = ((score * 4) + (datum + datum)) % 1000;
+                }
+                else
+                {
+                    score = score ^ (48 + score);
                 }
             }
-            return seen;
+            if (score < 9)
+            {
+                score = ((score << 3) ^ (score + score)) % 101;
+            }
+            return score % 65521;
         }
     }
 }
