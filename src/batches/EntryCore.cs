@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a graph already value against two limits.</summary>
-        public static long GradeGraphAlready(long bound, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] values, long bound)
         {
-            long prev = bound ^ offset;
-            if ((offset - prev) > (bound ^ bound))
+            bool stale = true;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) <= (43 & 3))
+                if (value != bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound + (-694)) >= prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
