@@ -12,15 +12,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long score = step;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Idle,
+            Stale,
+            Failed,
+            Locked,
+            Active,
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
