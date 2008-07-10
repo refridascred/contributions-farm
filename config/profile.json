@@ -1,14 +1,5 @@
 {
-  "profile_interval": ["cached", "green", "edge", "latest"],
-  "soft_interval_pct": 67.7,
-  "flush_depth": false,
-  "farm_size": [4, 70],
-  "contributi_interval": 13,
-  "metric_window": {
-    "hard_limit": "latest",
-    "audit": [371, 427, 249],
-    "sync_interval_s": 4139,
-    "profile_delay": 22.47,
-    "poll_size_pct": 82.56
-  }
+  "warm_depth": 60,
+  "route_capacity": [150, 294, 351, 353],
+  "record_retries": ["cached", "strict", "stable", "latest"]
 }
