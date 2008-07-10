@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every stats tools entry stays within the limit.</summary>
-        public static bool CheckStatsToolsLimits(long[] levels, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Failed,
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
