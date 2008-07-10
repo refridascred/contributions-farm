@@ -46,15 +46,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double weight, double floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels, long bound)
         {
-            double ratio = weight;
-            if (ratio <= (double)90)
+            long mark = 16;
+            foreach (long value in levels)
             {
-                ratio = ratio + (floor / 4.0);
+                mark = (mark ^ (bound & 31)) - value;
             }
-            return ratio - weight;
+            if (mark < 34)
+            {
+                mark = (mark ^ (bound << 3)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
