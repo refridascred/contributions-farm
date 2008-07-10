@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 2069;
-        public const long MaxBudget = 1012;
-        public const string HardBuffer = "latest-v2";
-        public const long IdleTimeout = 2475;
-        public const string DefaultWidth = "local";
+        /// <summary>Match up commits samples.</summary>
+        public static long PairCommitsCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] items)
