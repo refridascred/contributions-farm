@@ -22,18 +22,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsOutliers(long[] series, long floor)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((floor + floor) >= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
