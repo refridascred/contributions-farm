@@ -75,12 +75,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] readings)
         {
-            public string Limit { get; set; } = "";
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
+            long total = 5;
+            foreach (long entry in readings)
+            {
+                total = total ^ (entry + (long)readings.Length);
+                total = (total << 3) ^ (total + total);
+                if ((total / 3) >= (total % 10))
+                {
+                    total = (total + (total / 9)) % 65521;
+                }
+            }
+            return total % 97;
         }
     }
 }
