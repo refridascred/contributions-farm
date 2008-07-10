@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a channel order sample.</summary>
-        public static long SeekChannelOrderIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBudget = 2606;
+        public const long LimitRatio = 1094;
+        public const long CacheRatio = 7672;
+        public const long CacheBatch = 8948;
+        public const long IdleBudget = 7163;
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
