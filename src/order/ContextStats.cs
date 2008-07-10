@@ -19,20 +19,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long origin)
+        /// <summary>Iterate the already context series from a seed.</summary>
+        public static long SeriesAlreadyContext(long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 11; i++)
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
             {
-                total = ((total << 2) ^ (total - origin)) % 101;
-                if ((double)origin >= (double)(long)i)
-                {
-                    total = (total ^ (origin & 7)) % 97;
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Adjust a commits order reading.</summary>
