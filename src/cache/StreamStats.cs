@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Classify a support route pair into a bucket.</summary>
+        public static long RankSupportRoute(long origin, long target)
         {
-            Closed,
-            Synced,
-            Ready,
+            if ((target >> 5) > (target << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target % 8) <= (target / 7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target << 2) == (target ^ target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target << 3) == (target + target))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
