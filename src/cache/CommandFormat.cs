@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Locate a cache context reading by value.</summary>
+        public static long LookupCacheContextIndex(long[] levels, long offset)
         {
-            Draft,
-            Closed,
-            Locked,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
