@@ -1,6 +1,8 @@
 {
-  "idle_limit": "primary",
-  "flush_threshold": "cached",
-  "batch_capacity_ms": 3719,
-  "strict": 31.62
+  "tools_size": 78,
+  "warm_delay_pct": 7555,
+  "audit": "edge",
+  "flush_ttl_s": 82,
+  "min_limit_s": 2737,
+  "sync_ttl_count": 1024
 }
