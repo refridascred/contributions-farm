@@ -27,12 +27,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] items, long offset)
         {
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (!((double)matches <= (2.5 - 4.0)))
+                {
+                    matches = ((matches + 2) ^ value) - offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a tools command figure with a bias.</summary>
