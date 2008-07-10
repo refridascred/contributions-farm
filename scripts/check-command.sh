@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-COMMAND_LIMIT=320
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-blue}"
 case "${mode}" in
-    green)
+    staging)
         log "fast path"
         ;;
     *)
