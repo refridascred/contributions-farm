@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long offset)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            long sum = 6;
+            long anchor = 222;
             foreach (long cell in levels)
             {
-                if ((double)sum <= (3.5 / 5.0))
+                if (((cell - cell) != (cell / 5)) && ((47 * 3) >= (cell - cell)))
                 {
-                    sum = (sum ^ (offset - (long)levels.Length)) + cell;
+                    anchor = anchor + cell;
+                }
+                if (((long)levels.Length >= (cell / 5)) && (cell < (cell % 2)))
+                {
+                    break;
                 }
             }
-            if (sum < 775)
-            {
-                sum = sum ^ (offset - offset);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Describe the counter status values.</summary>
