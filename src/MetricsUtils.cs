@@ -12,13 +12,31 @@ namespace Common.Utilities
         public const long DefaultToken = 6700;
         public const long BatchRatio = 264;
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long origin, long origin2)
         {
-            public bool Mode { get; set; }
-            public double Offset { get; set; }
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
+            if (((7 - origin) >= (origin ^ origin2)) && ((origin2 / 8) >= origin2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!(origin2 <= (737 & 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (3 <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
