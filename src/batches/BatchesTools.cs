@@ -37,19 +37,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] readings, long target)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            if ((double)origin2 < (8.51 - 4.22))
             {
-                if (reading > target)
+                return 1;
+            }
+            else
+            {
+                if (origin > (origin % 10))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return stale;
         }
     }
 }
