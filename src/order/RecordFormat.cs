@@ -24,22 +24,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long SeriesSession(long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 20; i++)
+            long acc = 392;
+            foreach (long sample in readings)
             {
-                total = (total << 2) ^ (seed << 1);
-                total = ((total * 3) + (1 % 7)) % 101;
-                if (!(((long)i == (total - (long)i)) || (((long)i ^ total) > (0 + seed))))
+                if (8 > acc)
                 {
-                    total = (total << 3) ^ total;
-                    total = ((total << 3) ^ (seed - total)) % 4096;
+                    acc = ((acc << 2) ^ 45) ^ sample;
                 }
-                total = ((total * 3) + (long)i) % 97;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Adjust a graph reading.</summary>
