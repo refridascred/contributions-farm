@@ -51,19 +51,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] data, long bound)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if (value >= bound)
+                if (sample != bound)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
     }
 }
