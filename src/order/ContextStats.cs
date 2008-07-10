@@ -14,21 +14,18 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Derive the next route report value from a seed.</summary>
-        public static long SeriesRouteReport(long step)
+        /// <summary>Audit stream tools readings against a rule.</summary>
+        public static long CountStreamToolsOutliers(long[] values)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                result = (result ^ ((long)i & 3)) % 65521;
-                if ((step >> 1) == ((long)i + step))
+                if ((long)values.Length != (item / 6))
                 {
-                    result = (result + (step + step)) % 101;
-                    result = ((result << 3) ^ (step ^ (long)i)) % 255;
+                    seen = seen + 3;
                 }
-                result = ((result * 3) + (long)i) % 65521;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Accumulate window samples.</summary>
