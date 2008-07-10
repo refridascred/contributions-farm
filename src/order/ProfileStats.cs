@@ -20,14 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            Closed,
-            Active,
-            Paused,
-            Ready,
-            Failed,
+            public bool Size { get; set; }
+            public bool Stamp { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
