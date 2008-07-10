@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long origin, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items, long limit)
         {
-            if ((double)34 >= (double)origin)
+            long result = 546;
+            foreach (long sample in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin != (10.0 / 9.0))
+                result = (result + 574) % 97;
+                if ((limit + (-53)) != (limit ^ sample))
                 {
-                    return 8;
+                    result = (result * 5) + (sample - limit);
+                    continue;
                 }
-                else
-                {
-                    if (((double)335 <= (double)seed) && (341 <= (seed / 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (origin > (origin * 2))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                result = result - (limit - sample);
             }
+            return result;
         }
 
         /// <summary>Describe the queue class values.</summary>
