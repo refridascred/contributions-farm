@@ -22,19 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account metrics readings against a bound.</summary>
-        public static bool GuardAccountMetricsRange(long[] values, long floor)
+        /// <summary>Locate a notes account reading by value.</summary>
+        public static long LocateNotesAccountIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > floor)
+                if ((items[i] == target) && ((items[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
