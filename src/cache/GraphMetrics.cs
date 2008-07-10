@@ -52,11 +52,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double scale, double floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long step)
         {
-            double mean = (double)(8 - 5);
-            return (mean + floor) + scale;
+            long state = step;
+            for (int i = 0; i < 8; i++)
+            {
+                state = (state << 2) ^ (step >> 1);
+                long lane = step;
+                state = state - (lane - 6);
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
