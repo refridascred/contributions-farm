@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TotalWindow(long[] values, long step)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] levels, long origin)
         {
-            long total = 8;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((((total * 4) + ((long)values.Length & 31)) % 1000) ^ cell) - step;
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 217)
-            {
-                total = (total ^ (total + total)) % 255;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
