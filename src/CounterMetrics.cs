@@ -26,19 +26,10 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)21 < (3.0 * 6.9))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftTimeout = "primary";
+        public const string WindowBuffer = "alpha";
+        public const string WindowWidth = "legacy-edge";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const string MaxStream = "stable-edge";
