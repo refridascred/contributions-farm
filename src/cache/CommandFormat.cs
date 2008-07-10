@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mean + (ratio + ratio);
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 6438;
-        public const string DefaultCommits = "stable";
-        public const long BaseTimeout = 9437;
-        public const long LimitCommits = 9466;
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] samples)
+        {
+            long mix = 804;
+            foreach (long sample in samples)
+            {
+                if ((439 + sample) != (mix ^ sample))
+                {
+                    mix = (mix + (mix - mix)) % 101;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
