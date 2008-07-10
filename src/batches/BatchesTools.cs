@@ -30,24 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long origin, long origin2)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            if ((double)origin2 < (8.51 - 4.22))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin > (origin % 10))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] + data[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
