@@ -20,13 +20,15 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] data, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
+            long result = 196;
+            foreach (long cell in data)
+            {
+                result = (((result - (result >> 4)) % 101) ^ cell) - origin;
+            }
+            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
