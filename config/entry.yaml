@@ -1,11 +1,20 @@
 # entry settings
-channel_depth: false
-enabled:
-  base_size_pct: 250
-  soft_delay: 654
-  graph_depth: false
-  verbose: staging
-already_ttl: green
-soft_interval: false
-soft_limit: latest
-already_retries: false
+commits_timeout: 6
+compress:
+  strict:
+    - 460
+    - 420
+    - 256
+  flush_window_ms: 66.03
+  entry_retries:
+    - 359
+    - 155
+    - 23
+  hard_delay_s: legacy
+dry_run: 8699
+command_window: legacy
+hard_ratio_count: strict
+cache_delay_count:
+  - 340
+  - 217
+  - 119
