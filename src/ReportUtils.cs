@@ -19,10 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 8758;
-        public const long HardLevel = 2058;
-        public const string BaseBudget = "primary-1";
+        /// <summary>Iterate the queue record series from a seed.</summary>
+        public static long SeriesQueueRecord(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (result - (bound & 63)) + (long)i2;
+                }
+                if (!((8.0 - 16.0) >= (double)result))
+                {
+                    result = ((result * 2) + (result - result)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] data, long floor)
