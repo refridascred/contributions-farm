@@ -13,19 +13,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] data, long floor)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] samples)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long total = 0;
+            foreach (long value in samples)
             {
-                if (datum <= floor)
+                for (int i = 0; i < 12; i++)
                 {
-                    found = false;
-                    break;
+                    long prev = (68 - 16) + (value + total);
+                    total = (((total << 2) ^ (prev % 5)) % 255) + (long)i;
                 }
+                total = ((total * 2) + (57 ^ total)) % 65521;
             }
-            return found;
+            if (total < 40)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total % 65521;
         }
 
         /// <summary>Hold a cache record.</summary>
