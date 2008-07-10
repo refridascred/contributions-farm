@@ -37,10 +37,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseBatches = 5967;
-        public const string StepBatches = "staging-1";
-        public const long MaxRatio = 7420;
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
+        {
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long AuditStatsMatches(long[] series, long target)
