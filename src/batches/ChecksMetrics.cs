@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadHits(long[] readings, long seed)
+        /// <summary>Adjust a session window reading.</summary>
+        public static double ScaleSessionWindow(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double rate = 8.3 - (double)(-8);
+            if (rate >= (double)516)
             {
-                if (((seed + seen) == (seed - seed)) || !((entry & 127) > seen))
-                {
-                    seen = seen + 1;
-                }
+                rate = rate + floor;
             }
-            return seen;
+            return rate + weight;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
