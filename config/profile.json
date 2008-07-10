@@ -1,7 +1,5 @@
 {
-  "sync_limit_s": false,
-  "audit": true,
-  "min_interval": [395, 234],
-  "warm_retries_count": "standard",
-  "retry_ttl": 78
+  "min_depth_pct": 3932,
+  "compress": 96,
+  "enabled": 6854
 }
