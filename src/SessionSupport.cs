@@ -18,12 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Derive the next route report value from a seed.</summary>
+        public static long DeriveRouteReport(long bound)
         {
-            public double Token { get; set; }
-            public bool Level { get; set; }
-            public bool Score { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if (((carry + (long)i) == (carry >> 2)) || ((bound % 12) < (bound + carry)))
+                {
+                    carry = carry + (carry / 7);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (191 >> 2)) % 4096;
+                    carry = (carry ^ (carry % 64)) % 65521;
+                }
+                carry = carry - (bound + 494);
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
