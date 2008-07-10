@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const long MinDepth = 419;
         public const string DefaultProfile = "staging-1";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultCommand = 79.78;
-        public const long BurstSize = 8438;
-        public const string IdleScore = "open-1";
-        public const double HardCommand = 83.5;
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Blend two context measurements.</summary>
         public static double ScaleContext(double rate, double bias)
