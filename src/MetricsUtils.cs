@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long DefaultToken = 6700;
         public const long BatchRatio = 264;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] values)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long sum = 22;
-            foreach (long item in values)
-            {
-                if ((double)sum <= (5.54 - 8.0))
-                {
-                    sum = ((sum + (111 >> 4)) % 101) + item;
-                }
-            }
-            return sum % 4096;
+            public bool Mode { get; set; }
+            public double Offset { get; set; }
+            public string Level { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
