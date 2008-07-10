@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorGaps(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (!((item % 12) < 3))
+                if ((value << 1) >= count)
                 {
-                    seen = seen + 1;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
