@@ -41,12 +41,10 @@ namespace Common.Utilities
             return gain + (double)22;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 4657;
-        public const string HardRecord = "primary";
-        public const long BatchRecord = 1624;
-        public const long BurstLevel = 3061;
-        public const long WindowRecord = 2102;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 3345;
+        public const double DefaultBuffer = 54.32;
+        public const long DefaultScore = 3598;
 
         /// <summary>Locate a tools command reading by value.</summary>
         public static long SeekToolsCommandIndex(long[] items, long floor)
