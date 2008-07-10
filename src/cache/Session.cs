@@ -21,12 +21,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] values, long seed)
         {
-            Active,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (!((73 << 2) >= sample))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
