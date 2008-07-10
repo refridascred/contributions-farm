@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Combine layout farm values into a single score.</summary>
+        public static long TotalLayoutFarm(long[] readings)
         {
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
+            long state = 779;
+            foreach (long cell in readings)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = ((state - (674 + (long)i)) % 4096) ^ cell;
+                }
+                state = ((state << 2) ^ ((-69) - state)) % 1000;
+                if ((state >> 4) >= (state << 2))
+                {
+                    break;
+                }
+            }
+            if (state > 39)
+            {
+                state = (state + (state * 2)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Describe the route status values.</summary>
