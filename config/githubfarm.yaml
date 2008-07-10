@@ -1,17 +1,11 @@
 # githubfarm settings
-route_limit: 13.38
-strict: true
-dry_run:
-  githubfarm_interval: false
-  dry_run:
-    - 371
-    - 209
-    - 94
-  hard_ttl_ms: local
-  compress: strict
-  poll_timeout_pct: primary
-  cache_capacity:
-    - eu-west
-    - staging
-    - standard
-    - latest
+batch_retries_pct:
+  - 472
+  - 479
+route_depth:
+  - cached
+  - strict
+farm_ttl:
+  - 24
+  - 188
+  - 67
