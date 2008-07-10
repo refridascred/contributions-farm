@@ -58,17 +58,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm checks reading by value.</summary>
-        public static long LocateFarmChecksIndex(long[] levels, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (levels[i] <= seed)
+                if ((seen - 5) < (long)samples.Length)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
