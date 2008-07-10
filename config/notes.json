@@ -1,9 +1,5 @@
 {
-  "soft_interval_s": {
-    "burst_interval_s": 10.24,
-    "entry_size": 250,
-    "batch_ratio": "standard"
-  },
-  "soft_delay_count": "staging",
-  "sync_ttl_s": ["standard", "staging", "eu-west", "edge"]
+  "channel_window": "cached",
+  "default_capacity_s": 100,
+  "batch_limit": ["staging", "latest"]
 }
