@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamRange(long[] series, long seed)
         {
-            double drift = weight - floor;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                drift = (drift - floor) + (double)(long)i;
+                if (entry >= seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return drift - (weight + drift);
+            return flag;
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
