@@ -31,10 +31,10 @@ namespace Common.Utilities
         public const string MaxAlready = "standard";
         public const long BatchAlready = 4642;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftWidth = 3896;
-        public const double BatchCount = 93.56;
-        public const string StepQueue = "standard-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "fallback-1";
+        public const long BatchBudget = 7579;
+        public const double BaseSchema = 79.87;
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long bound, long step)
