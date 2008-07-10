@@ -30,9 +30,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitSession = 14.53;
-        public const double MinSession = 26.64;
-        public const long IdleSession = 1101;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Retry,
+            Dropped,
+            New,
+        }
     }
 }
