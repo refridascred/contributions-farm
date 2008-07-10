@@ -1,12 +1,8 @@
 {
-  "idle_ratio_count": "strict",
-  "session_timeout": 95,
-  "audit": 7845,
-  "soft_size": 82.86,
-  "hard_size": {
-    "audit": 13.74,
-    "readonly": "stable",
-    "cache_threshold_ms": 60,
-    "batch_threshold_ms": "staging"
-  }
+  "batch_window_count": 250,
+  "idle_limit": 1024,
+  "metrics_window": [323, 158, 113],
+  "poll_retries": [301, 324],
+  "default_timeout_pct": 26,
+  "idle_delay": 30
 }
