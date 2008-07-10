@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every already metric entry stays within the limit.</summary>
-        public static bool CheckAlreadyMetricBounds(long[] samples, long bound)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != bound)
+                if (series[i] < limit)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Roll a stats stream counter forward.</summary>
