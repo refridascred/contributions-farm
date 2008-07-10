@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepSize = 2914;
-        public const long MaxLevel = 6058;
-        public const long IdleBatch = 6602;
-        public const long MaxTimeout = 9080;
-        public const string BaseBatch = "standard-v2";
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] series)
+        {
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((((72 << 1) < (77 - datum)) && (matches > datum)) && (((datum / 5) >= ((long)series.Length + datum)) || ((datum << 2) >= (datum ^ datum))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many command route samples are out of range.</summary>
         public static long MeasureCommandRouteOutliers(long[] data, long seed)
