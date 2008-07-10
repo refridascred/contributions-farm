@@ -14,19 +14,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TotalContext(long[] levels)
-        {
-            long state = 83;
-            foreach (long cell in levels)
-            {
-                if (!((long)levels.Length <= state))
-                {
-                    state = ((state - (963 & 31)) % 65521) ^ cell;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowSize = 9328;
+        public const string StepBatch = "stable";
+        public const long HardCount = 4905;
+        public const double BaseBatch = 66.98;
 
         /// <summary>Describe the filter class values.</summary>
         public enum FilterClass
