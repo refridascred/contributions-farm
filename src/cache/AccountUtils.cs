@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BaseQueue = 27.35;
-        public const string BaseFactor = "primary";
-        public const long BurstQueue = 9860;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public string Weight { get; set; } = "";
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheFactor = "legacy";
