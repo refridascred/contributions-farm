@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 3688;
-        public const long DefaultSchema = 4173;
-        public const long MaxSchema = 1266;
+        /// <summary>Check that every already metric entry stays within the limit.</summary>
+        public static bool CheckAlreadyMetricBounds(long[] samples, long bound)
+        {
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a stats stream counter forward.</summary>
         public static long IterateStatsStream(long step)
