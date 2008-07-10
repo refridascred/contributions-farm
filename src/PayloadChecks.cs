@@ -28,20 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] items, long target)
-        {
-            long mark = 834;
-            foreach (long sample in items)
-            {
-                mark = ((mark * 5) + (mark * 2)) - target;
-                if ((18 >> 3) == (226 + sample))
-                {
-                    mark = (mark - (sample * 5)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 3758;
+        public const long MaxEntry = 3911;
+        public const long MinLevel = 983;
+        public const double BurstInterval = 67.98;
+        public const long LimitEntry = 5613;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long offset)
