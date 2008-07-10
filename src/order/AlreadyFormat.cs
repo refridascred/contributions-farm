@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine schema support values into a single score.</summary>
-        public static long ScoreSchemaSupport(long[] levels, long target)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] readings, long limit)
         {
-            long result = 4;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                result = ((result ^ (target * 3)) % 1000) + value;
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
