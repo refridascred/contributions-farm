@@ -34,12 +34,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double DefaultChannel = 68.53;
-        public const long CacheChannel = 8567;
-        public const string BaseSize = "primary-edge";
-        public const long RetryChannel = 4795;
-        public const long MinChannel = 6911;
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double rate, double bias)
+        {
+            double scale = rate + (double)732;
+            if (scale >= (double)0)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - (rate - rate);
+            }
+            return scale + (bias / 2.0);
+        }
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
