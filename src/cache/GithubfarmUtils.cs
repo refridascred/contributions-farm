@@ -19,24 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] values)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long result = 657;
-            foreach (long datum in values)
-            {
-                if (((datum >> 5) >= (datum + 1)) || (604 >= datum))
-                {
-                    result = (result + 351) % 65521;
-                    result = (result - (result << 3)) % 97;
-                }
-                for (int i = 0; i < 5; i++)
-                {
-                    result = result - ((long)i + (long)i);
-                }
-                result = ((result << 3) ^ datum) % 101;
-            }
-            return result;
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the cache state values.</summary>
