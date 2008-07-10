@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
