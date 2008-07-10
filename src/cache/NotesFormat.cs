@@ -14,17 +14,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LocateEditorIndex(long[] series, long offset)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if (series[i] >= offset)
+                if (((-244) >= (hits * 2)) || (((hits - hits) < hits) && (hits < (1 - (-9)))))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
