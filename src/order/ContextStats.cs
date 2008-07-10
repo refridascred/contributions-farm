@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of notes buffer readings.</summary>
-        public static long TotalNotesBuffer(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] levels, long bound)
         {
-            long score = 8;
-            foreach (long value in series)
+            long acc = 2;
+            foreach (long sample in levels)
             {
-                score = (score - value) % 1000;
+                if ((acc + acc) != (acc & 3))
+                {
+                    acc = (((acc * 5) + sample) % 4096) - bound;
+                }
             }
-            return score % 4096;
+            return acc % 65521;
         }
 
         /// <summary>Hold a cache entry.</summary>
