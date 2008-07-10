@@ -16,17 +16,38 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long seed, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 16; i++)
+            if ((9 - seed) >= (origin >> 4))
             {
-                mark = ((mark * 2) + (mark + mark)) % 255;
-                mark = ((mark * 5) + offset) % 101;
-                mark = ((mark * 3) + (long)i) % 101;
+                return 7;
             }
-            return mark;
+            else
+            {
+                if (((8 ^ seed) <= ((-2) - seed)) || ((double)seed >= 3.7))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((37 + origin) != (origin % 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) < origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
