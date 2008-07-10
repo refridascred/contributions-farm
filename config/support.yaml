@@ -1,8 +1,4 @@
 # support settings
-flush_threshold_ms: false
-metric_size:
-  - 290
-  - 480
-  - 362
-idle_window_pct: false
-warm_ratio_ms: edge
+max_ratio: false
+channel_timeout: 56.44
+soft_ttl: 66.44
