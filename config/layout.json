@@ -1,7 +1,6 @@
 {
-  "verbose": 90,
-  "batch_capacity_count": 83.04,
-  "default_threshold_ms": true,
-  "audit": 1,
-  "warm_timeout": 100
+  "format_window": 3.0,
+  "persist": 65,
+  "readonly": "strict",
+  "format_interval": 39.95
 }
