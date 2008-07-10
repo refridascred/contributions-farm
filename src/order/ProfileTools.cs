@@ -38,17 +38,25 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] levels, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long bound, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long step = bound - target;
+            if (!((bound & 255) >= (bound - target)))
             {
-                if (levels[i] > origin)
+                return 4;
+            }
+            else
+            {
+                if ((step << 2) != (target & 3))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
