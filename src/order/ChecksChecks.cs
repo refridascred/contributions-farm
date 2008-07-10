@@ -36,25 +36,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long mix = 64;
+            foreach (long value in items)
             {
-                anchor = (anchor - (296 % 60)) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
+                if (value >= (value >> 5))
                 {
-                    anchor = (anchor - anchor) + (long)i2;
+                    mix = (mix - 55) % 65521;
                 }
-                if (!((9.3 - 3.07) != (double)anchor))
-                {
-                    anchor = (anchor - (offset << 2)) % 97;
-                    anchor = anchor - (anchor >> 1);
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return anchor;
+            if (mix > 29)
+            {
+                mix = mix ^ ((long)items.Length - mix);
+            }
+            return mix;
         }
     }
 }
