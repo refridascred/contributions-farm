@@ -20,14 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Rank layout already input into a small class.</summary>
+        public static long ClassifyLayoutAlready(long target, long limit)
         {
-            Failed,
-            Synced,
-            Queued,
-            Closed,
-            Done,
+            long lane = target - limit;
+            if ((double)limit > (5.21 + 16.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target >= limit) && ((lane + target) > lane))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)35 > (double)lane)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (double)lane)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up schema samples.</summary>
