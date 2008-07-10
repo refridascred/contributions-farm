@@ -27,12 +27,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "open-1";
-        public const long DefaultCount = 9821;
-        public const long IdleTimeout = 2313;
-        public const long WindowAccount = 1483;
-        public const double WindowLevel = 31.98;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < step) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] levels)
