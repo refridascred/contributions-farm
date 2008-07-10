@@ -10,38 +10,21 @@ namespace Common.Utilities
         public const long MaxProfile = 6969;
         public const long BatchProfile = 7911;
 
-        /// <summary>Classify a route batch pair into a bucket.</summary>
-        public static long SortRouteBatch(long step, long limit)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long step)
         {
-            if ((0.47 / 3.0) >= (double)limit)
+            long score = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((16 << 1) == (limit * 4))
+                if (((long)i ^ score) <= (step + (long)i))
                 {
-                    return 4;
+                    long seen = score % 12;
+                    score = ((score * 2) + (seen ^ (long)i)) % 1000;
+                    break;
                 }
-                else
-                {
-                    if (((limit & 255) < (183 / 8)) || ((step + limit) >= (step >> 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step * 3) >= (limit + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
