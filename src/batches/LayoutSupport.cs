@@ -14,15 +14,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] data, long origin)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] items)
         {
-            long result = 196;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                result = (((result - (result >> 4)) % 101) ^ cell) - origin;
+                if ((matches - (long)items.Length) < matches)
+                {
+                    matches = (matches + 1) + item;
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Accumulate entry samples.</summary>
