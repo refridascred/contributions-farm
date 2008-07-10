@@ -23,14 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 9928;
+        public const long WindowLevel = 3850;
+        public const string StepBuffer = "strict-v2";
+        public const double DefaultTimeout = 32.78;
+        public const long CacheBuffer = 7591;
 
         /// <summary>Describe the already kind values.</summary>
         public enum AlreadyKind
