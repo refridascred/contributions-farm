@@ -93,18 +93,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] samples, long origin)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((33 + 2) == (matches / 7))
-                {
-                    matches = ((matches + 2) + value) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 4187;
+        public const double RetrySpan = 43.11;
+        public const long BatchMetric = 8573;
+        public const long BurstInterval = 7638;
+        public const string BurstBudget = "alpha-1";
     }
 }
