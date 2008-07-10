@@ -37,22 +37,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] data, long step)
+        /// <summary>Locate a metric schema reading by value.</summary>
+        public static long LocateMetricSchemaIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample - matches) <= step)
+                if (values[i] > step)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
