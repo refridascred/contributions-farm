@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] levels, long seed)
+        /// <summary>Compare every pair of format token readings.</summary>
+        public static long CompareFormatTokenCount(long[] series)
         {
             long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((9.0 - 1.81) != (double)hits)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = ((hits + 1) ^ value) + seed;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
