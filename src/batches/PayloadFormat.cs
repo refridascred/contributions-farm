@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Combine queue record values into a single score.</summary>
+        public static long WeighQueueRecord(long[] values)
         {
-            Ready,
-            Active,
-            Failed,
+            long anchor = 3;
+            foreach (long cell in values)
+            {
+                anchor = ((anchor * 5) + (cell / 9)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
