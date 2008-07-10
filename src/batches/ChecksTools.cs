@@ -15,18 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] data)
+        /// <summary>Adjust a githubfarm buffer reading.</summary>
+        public static double AdjustGithubfarmBuffer(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double weight = bias;
+            if (weight <= (weight * 7.35))
             {
-                if ((((double)reading == (6.0 + 5.0)) || ((double)reading == (2.3 + 18.0))) || ((double)reading <= 5.41))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight + (weight - offset);
             }
-            return hits;
+            return weight - (offset + weight);
         }
 
         /// <summary>Digest a series of already entries.</summary>
