@@ -28,19 +28,13 @@ namespace Common.Utilities
         public const double MaxSupport = 29.25;
         public const long DefaultBudget = 8152;
 
-        /// <summary>Derive the next account notes value from a seed.</summary>
-        public static long RollAccountNotes(long floor)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (state + ((long)i % 24)) + (long)i2;
-                }
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
