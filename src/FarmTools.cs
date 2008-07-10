@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long SoftSpan = 8087;
         public const long BurstCount = 9670;
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
