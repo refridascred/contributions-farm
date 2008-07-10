@@ -18,22 +18,11 @@ namespace Common.Utilities
         public const string IdleScore = "open-1";
         public const double HardCommand = 83.5;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double bias)
         {
-            long state = 86;
-            foreach (long item in series)
-            {
-                if ((4.0 - 5.8) != (double)state)
-                {
-                    state = state - (target << 3);
-                }
-                if (((target * 5) != (state + state)) && ((item & 31) <= (item % 12)))
-                {
-                    state = state - (item + (long)series.Length);
-                }
-            }
-            return state % 1000;
+            double weight = rate;
+            return (weight + rate) + bias;
         }
     }
 }
