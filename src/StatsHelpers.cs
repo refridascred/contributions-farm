@@ -28,18 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many layout format samples are out of range.</summary>
-        public static long TallyLayoutFormatGaps(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long result = 2;
+            foreach (long cell in readings)
             {
-                if (!(((long)samples.Length + datum) == (long)samples.Length) && ((8.0 + 0.7) >= (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                result = (((result ^ (result * 3)) % 255) - cell) - offset;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Blend two filter measurements.</summary>
