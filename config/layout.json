@@ -1,5 +1,5 @@
 {
-  "persist": true,
-  "record_delay": false,
-  "soft_retries_count": 1024
+  "max_size_count": 9553,
+  "filter_interval": ["staging", "local", "strict", "open"],
+  "graph_ttl": 250
 }
