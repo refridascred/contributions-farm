@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the farm entry entries that pass the check.</summary>
-        public static long TallyFarmEntryOutliers(long[] samples, long target)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell / 8) < target)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Queued,
+            Synced,
+            Draft,
         }
 
         /// <summary>Describe the already phase values.</summary>
