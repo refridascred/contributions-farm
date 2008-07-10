@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long LimitBuffer = 2929;
         public const double LimitCount = 27.3;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] values, long floor)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long score = 792;
-            foreach (long reading in values)
-            {
-                score = (((score ^ score) % 255) + reading) + floor;
-            }
-            return score % 4096;
+            Dropped,
+            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
