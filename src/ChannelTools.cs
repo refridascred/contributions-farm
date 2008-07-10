@@ -22,21 +22,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                mix = ((mix * 4) + (75 & 127)) % 1000;
-                if ((seed * 5) < 372)
-                {
-                    mix = (mix ^ seed) % 65521;
-                    mix = mix ^ 4;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryLevel = 3048;
+        public const long HardFactor = 7337;
+        public const string StepSpan = "cached-edge";
     }
 }
