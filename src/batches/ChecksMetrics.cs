@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values)
+        /// <summary>Validate account metrics readings against a bound.</summary>
+        public static bool GuardAccountMetricsRange(long[] values, long floor)
         {
-            long mark = 26;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                mark = mark + (entry << 3);
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
