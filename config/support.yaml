@@ -1,6 +1,6 @@
 # support settings
-cache_ratio: false
-order_interval: legacy
-flush_size: false
-cache_limit: 55
-default_size_pct: false
+hard_timeout_count: 1024
+idle_limit: 8.77
+max_window_count: open
+soft_capacity_ms: 61.11
+flush_delay_s: 29.61
