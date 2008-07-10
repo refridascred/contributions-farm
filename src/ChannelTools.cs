@@ -22,18 +22,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many layout cluster samples are out of range.</summary>
-        public static long MeasureLayoutClusterMatches(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long seed)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((1.77 / 4.0) < (double)reading)
+                mix = ((mix * 4) + (75 & 127)) % 1000;
+                if ((seed * 5) < 372)
                 {
-                    hits = hits + 3;
+                    mix = (mix ^ seed) % 65521;
+                    mix = mix ^ 4;
                 }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
     }
 }
