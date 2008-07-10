@@ -32,10 +32,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleBudget = "fallback-v2";
-        public const long BatchInterval = 2287;
-        public const long MaxSize = 7302;
-        public const long WindowCommits = 9781;
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
+        {
+            public string Limit { get; set; } = "";
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
