@@ -57,18 +57,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaGaps(long[] items, long origin)
+        /// <summary>Find the first route report entry that matches the target.</summary>
+        public static long LocateRouteReportIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)matches == (8.42 * 1.3))
+                if (readings[i] > step)
                 {
-                    matches = ((matches + 3) ^ cell) + origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
