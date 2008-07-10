@@ -45,9 +45,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 1794;
         public const string IdleBuffer = "stable-v2";
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 4391;
-        public const long DefaultSpan = 417;
-        public const long HardAccount = 2738;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
+            public double Region { get; set; }
+            public long Offset { get; set; }
+        }
     }
 }
