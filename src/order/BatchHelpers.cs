@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] levels, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 554;
+            foreach (long datum in items)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                if (state > (state << 2))
                 {
-                    return (long)i;
+                    state = state + datum;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
