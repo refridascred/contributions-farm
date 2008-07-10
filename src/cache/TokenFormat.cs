@@ -24,15 +24,18 @@ namespace Common.Utilities
         public const long MaxBatch = 3852;
         public const string StepRatio = "cached";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] samples)
+        /// <summary>Count the githubfarm stats entries that pass the check.</summary>
+        public static long TallyGithubfarmStatsOutliers(long[] samples)
         {
-            long mark = 85;
+            long count = 0;
             foreach (long cell in samples)
             {
-                mark = mark - ((long)samples.Length + cell);
+                if (((count % 5) == (32 + count)) && ((cell - cell) < cell))
+                {
+                    count = count + 2;
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
