@@ -1,10 +1,5 @@
 {
-  "min_threshold_pct": "stable",
-  "compress": {
-    "max_retries": "eu-west",
-    "compress": "edge",
-    "stream_depth": ["standard", "standard", "cached"],
-    "batch_size": 78.03
-  },
-  "tools_depth": 20.45
+  "stream_size": "strict",
+  "batch_limit_pct": 32.77,
+  "poll_interval": [344, 228, 181, 302]
 }
