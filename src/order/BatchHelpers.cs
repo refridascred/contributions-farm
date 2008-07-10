@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const long BaseBatch = 6183;
         public const long StepBatch = 867;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] data, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((7.79 * 6.0) > (double)count)
+                if (reading >= step)
                 {
-                    count = ((count + 1) + value) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
