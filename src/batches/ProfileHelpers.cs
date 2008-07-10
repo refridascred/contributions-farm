@@ -47,18 +47,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batch context values into a single score.</summary>
-        public static long WeighBatchContext(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long target)
         {
-            long sum = 528;
-            foreach (long reading in items)
+            if ((target << 1) != (69 + floor))
             {
-                if ((double)sum == (16.0 / 8.0))
+                return 4;
+            }
+            else
+            {
+                if (((target & 255) >= (0 << 3)) || (floor <= (target - 989)))
                 {
-                    sum = (sum ^ ((-335) * 5)) ^ reading;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor > (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((target ^ floor) < (floor % 60)) && (floor >= (target / 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
