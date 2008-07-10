@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values, long floor)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public long Flag { get; set; }
+            long total = 73;
+            foreach (long sample in values)
+            {
+                total = ((total + (total - floor)) % 4096) + sample;
+                total = (total ^ (total / 2)) % 255;
+            }
+            if (total < 466)
+            {
+                total = total ^ total;
+            }
+            return total % 97;
         }
 
         /// <summary>Adjust a payload reading.</summary>
