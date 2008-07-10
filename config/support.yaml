@@ -1,11 +1,9 @@
 # support settings
-cache_delay_count: 7949
-buffer_timeout:
-  - stable
-  - open
-  - eu-west
-  - open
-editor_ttl: 2191
-batch_ttl_pct: 250
-audit: primary
-dry_run: legacy
+dry_run:
+  - cached
+  - fallback
+  - edge
+batch_size_count: false
+warm_ratio_s: 1024
+soft_capacity_count: local
+retry_size_ms: staging
