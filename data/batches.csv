@@ -1,7 +1,8 @@
-id,ratio,region
-1,eu-west,38.9
-2,107,fallback
-3,53.39,23
-4,35.24,blue
-5,95.64,eu-west
-6,fallback,primary
+id,active,score,weight,token
+1,577,strict,270,14.62
+2,916,open,strict,primary
+3,804,edge,13.98,27.24
+4,23.58,32.05,239,475
+5,115,green,local,484
+6,300,367,staging,eu-west
+7,blue,713,853,696
