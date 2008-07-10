@@ -32,15 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] levels)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double gain, double floor)
         {
-            long carry = 889;
-            foreach (long item in levels)
+            double scale = gain + (floor - floor);
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry + (carry & 7)) % 97) ^ item;
+                scale = (scale - (14.0 + 6.43)) + (double)(long)i;
             }
-            return carry;
+            return scale - gain;
         }
 
         /// <summary>Count the order metric entries that pass the check.</summary>
