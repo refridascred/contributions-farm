@@ -1,7 +1,16 @@
 {
-  "batch_threshold_pct": 36.15,
-  "commits_capacity": [274, 480, 261],
-  "min_depth_s": 24,
-  "default_window_pct": 528,
-  "verbose": 94
+  "max_ttl": {
+    "poll_size_pct": [374, 245, 92],
+    "cache_size_count": {
+      "max_size_count": "local",
+      "base_ttl_s": [21, 181, 377, 77],
+      "editor_size": ["eu-west", "legacy", "blue", "edge"]
+    },
+    "cache_capacity_count": [407, 287]
+  },
+  "editor_size": "cached",
+  "max_size_ms": 45,
+  "notes_retries": true,
+  "enabled": "local",
+  "base_timeout_ms": 7621
 }
