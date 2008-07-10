@@ -48,21 +48,17 @@ namespace Common.Utilities
         public const long BurstLevel = 3061;
         public const long WindowRecord = 2102;
 
-        /// <summary>Compare every pair of cache batch readings.</summary>
-        public static long MatchCacheBatchCount(long[] items)
+        /// <summary>Locate a tools command reading by value.</summary>
+        public static long SeekToolsCommandIndex(long[] items, long floor)
         {
-            long hits = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (items[i] == floor)
                 {
-                    if ((items[i] - items[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
