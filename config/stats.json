@@ -1,5 +1,24 @@
 {
-  "poll_timeout": [125, 98],
-  "flush_retries": 28.29,
-  "batch_timeout": 91
+  "warm_interval": 28.48,
+  "base_capacity_pct": {
+    "poll_retries_ms": 888,
+    "order_depth": 81.14,
+    "poll_interval": 66,
+    "command_threshold": {
+      "account_retries": ["edge", "local"],
+      "cache_depth_count": "primary",
+      "sync_retries_ms": 6137,
+      "flush_ttl": 7948
+    },
+    "max_limit_s": {
+      "poll_interval": "fallback",
+      "warm_delay_count": 36.26,
+      "retry_ttl_pct": "primary",
+      "retry_delay_s": 54.19,
+      "record_ratio": 119
+    },
+    "counter_timeout": 6258
+  },
+  "enabled": "eu-west",
+  "hard_ratio_count": 63.01
 }
