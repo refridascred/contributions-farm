@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] series, long step)
         {
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (((count * 3) <= (entry & 127)) && ((entry * 2) <= (step << 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
