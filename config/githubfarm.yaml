@@ -1,33 +1,6 @@
 # githubfarm settings
-strict: 250
-min_interval_s:
-  retry_window_count:
-    idle_size_count:
-      - 439
-      - 336
-      - 70
-    min_capacity_ms:
-      - cached
-      - fallback
-      - blue
-    sync_ratio_pct: eu-west
-    readonly: cached
-    audit:
-      - 394
-      - 281
-      - 227
-      - 364
-    batch_timeout:
-      - 87
-      - 323
-      - 303
-      - 253
-  base_depth_pct: 3310
-  dry_run: 15.71
-  profile_timeout: 46.4
-verbose:
-  batch_timeout_pct: 2187
-  token_capacity: false
-  stats_ratio: legacy
-  counter_limit: primary
-min_threshold: primary
+route_ttl: 74.9
+cache_depth_count: 1024
+flush_timeout_pct: false
+commits_ratio: eu-west
+dry_run: 95
