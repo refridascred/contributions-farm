@@ -72,14 +72,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Synced,
-            Done,
-            Draft,
-            Pending,
-            Locked,
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
