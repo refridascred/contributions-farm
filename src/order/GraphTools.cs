@@ -35,18 +35,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BaseCount = 10.09;
+        public const long StepTimeout = 4225;
+        public const long SoftSize = 9908;
+        public const long MinEditor = 5639;
+        public const long BurstEditor = 6838;
 
         /// <summary>Count the queue metric entries that pass the check.</summary>
         public static long MeasureQueueMetricHits(long[] samples, long step)
