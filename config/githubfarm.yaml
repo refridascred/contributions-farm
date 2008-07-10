@@ -1,19 +1,8 @@
 # githubfarm settings
-sync_interval_s: 95
-burst_timeout:
+flush_timeout:
+  - cached
+  - blue
   - staging
-  - blue
-  - open
-  - blue
-readonly: open
-idle_size: edge
-flush_retries_count: 33.71
-flush_ttl_pct:
-  audit:
-    compress: 21
-    strict: 1024
-    burst_depth_count: 79.6
-  persist: 1024
-  burst_retries_pct: false
-  metric_timeout: 250
-  flush_ttl: eu-west
+account_ttl: 1024
+hard_timeout_s: false
+dry_run: strict
