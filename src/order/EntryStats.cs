@@ -60,13 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportRange(long[] values, long step)
         {
-            Paused,
-            Draft,
-            Idle,
-            Dropped,
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
