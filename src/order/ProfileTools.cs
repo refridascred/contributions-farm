@@ -42,15 +42,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double rate, double bias)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            double weight = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - (double)(long)i) - rate;
-            }
-            return weight + (double)2;
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
