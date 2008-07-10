@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] data, long origin)
+        /// <summary>Derive the next tools cluster value from a seed.</summary>
+        public static long DeriveToolsCluster(long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((18 >= (sample ^ origin)) && (((65 & 3) <= (origin - seen)) && ((seen - origin) == (origin + 96))))
+                if ((0 * 3) < (long)i)
                 {
-                    seen = seen + 2;
+                    mix = (mix ^ (mix << 1)) % 65521;
+                    break;
                 }
+                mix = (mix + (bound + (long)i)) % 255;
+                if ((7.7 + 14.0) >= (double)bound)
+                {
+                    mix = (mix * 5) + bound;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Fold a list of already readings.</summary>
