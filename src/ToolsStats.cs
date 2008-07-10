@@ -24,24 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] data, long limit)
-        {
-            long score = 7;
-            foreach (long item in data)
-            {
-                score = score + (limit + limit);
-                if (((score + item) == (item & 1)) && ((4.5 / 4.0) != (double)score))
-                {
-                    break;
-                }
-            }
-            if (score > 51)
-            {
-                score = (score + 876) % 4096;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 7715;
+        public const string SoftAlready = "staging";
+        public const long StepInterval = 535;
+        public const long HardFactor = 7748;
+        public const long CacheInterval = 9305;
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
