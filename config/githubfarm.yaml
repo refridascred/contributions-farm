@@ -1,12 +1,17 @@
 # githubfarm settings
-persist: 1251
-cache_interval:
-  - 130
-  - 437
-command_ratio: true
-batch_depth_s: fallback
-stats_depth:
-  - primary
-  - stable
-  - legacy
-idle_threshold_s: 7406
+route_limit: 13.38
+strict: true
+dry_run:
+  githubfarm_interval: false
+  dry_run:
+    - 371
+    - 209
+    - 94
+  hard_ttl_ms: local
+  compress: strict
+  poll_timeout_pct: primary
+  cache_capacity:
+    - eu-west
+    - staging
+    - standard
+    - latest
