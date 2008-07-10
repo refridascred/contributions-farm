@@ -20,31 +20,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long limit, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            if ((origin / 4) >= (4 * 3))
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                return 3;
+                total = ((total << 3) ^ ((long)i * 3)) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (limit > 35)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
