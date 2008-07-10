@@ -54,18 +54,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportMatches(long[] items)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((9.0 - 0.2) > (double)reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
