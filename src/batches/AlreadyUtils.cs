@@ -28,17 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] values, long offset)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
