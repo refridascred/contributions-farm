@@ -37,22 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] readings, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((seen & 7) > 5) && (sample >= (sample / 9)))
-                {
-                    seen = (seen + 1) + seed;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitSchema = 41.95;
+        public const string BatchSize = "local";
+        public const double MaxSchema = 68.67;
+        public const string DefaultSchema = "local-1";
+        public const long DefaultBudget = 3378;
     }
 }
