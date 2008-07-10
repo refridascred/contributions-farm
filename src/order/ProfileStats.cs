@@ -34,15 +34,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Adjust a window tools reading.</summary>
-        public static double ScaleWindowTools(double ratio, double bias)
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double scale, double span)
         {
-            double drift = ratio;
-            if (drift < (bias / 6.0))
+            double gain = (double)(5 << 2);
+            if (gain > (double)826)
             {
-                drift = drift - (bias - bias);
+                gain = gain + (double)(-72);
             }
-            return drift - ratio;
+            else
+            {
+                gain = gain - (span + span);
+            }
+            return gain + (scale * 18.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
