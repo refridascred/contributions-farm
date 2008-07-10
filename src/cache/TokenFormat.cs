@@ -35,23 +35,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double rate, double bias)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double drift = (double)(85 ^ 3);
-            if (drift <= bias)
-            {
-                drift = drift + drift;
-            }
-            else
-            {
-                drift = drift + (rate / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (bias * 2.6);
+            Stale,
+            Dropped,
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
