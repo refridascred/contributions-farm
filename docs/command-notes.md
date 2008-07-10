@@ -1,12 +1,11 @@
 # Command notes
 
-Each checks is validated before it reaches the token queue.
-Defaults for metrics live in the config folder and can be overridden per environment.
-Each cache is validated before it reaches the buffer queue.
+Each schema is validated before it reaches the context queue.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new record fields
-- Validate contributi input early
-- Prefer editor defaults
+- Review stream limits each release
+- Validate profile input early
+- Log every report change
+- Prefer counter defaults
