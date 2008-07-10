@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] samples, long limit)
         {
-            Dropped,
-            New,
-            Draft,
-            Stale,
+            long total = 9;
+            foreach (long datum in samples)
+            {
+                if (!((total * 2) == (limit * 4)))
+                {
+                    total = (((total * 3) + total) % 4096) + datum;
+                }
+                if ((limit + total) <= (0 ^ total))
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
