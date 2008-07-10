@@ -1,7 +1,10 @@
 # support settings
-burst_delay: stable
-max_timeout: 87
-poll_depth_pct: 2820
-max_interval_pct: 57
-sync_ratio: 86.08
-entry_interval: staging
+strict: 71.12
+entry_delay: 60
+default_ttl: false
+idle_ratio_ms: 95
+counter_limit: eu-west
+metrics_size:
+  warm_limit_pct: 250
+  enabled: fallback
+  poll_retries_pct: 41.11
