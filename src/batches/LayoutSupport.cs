@@ -32,19 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] data)
         {
-            double mean = (double)712 / 2.0;
-            if (mean > bias)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                mean = mean - (rate * 6.7);
+                if ((((1.24 - 19.0) != (double)matches) && ((sample + matches) < (sample + 263))) && ((sample + sample) > (-4)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (bias / 6.0)) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Hold a buffer info.</summary>
