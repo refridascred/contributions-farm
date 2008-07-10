@@ -28,18 +28,14 @@ namespace Common.Utilities
         public const double DefaultTimeout = 95.71;
         public const long MaxWidth = 2084;
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] values, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((item + item) <= (36 % 3))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Draft,
+            Pending,
+            Failed,
         }
     }
 }
