@@ -1,12 +1,8 @@
 {
-  "githubfarm_interval": "stable",
-  "retry_interval_pct": {
-    "soft_timeout_s": ["primary", "local", "latest"],
-    "soft_size": 2010,
-    "stream_timeout": "latest",
-    "commits_depth": [446, 121, 486],
-    "verbose": "eu-west",
-    "soft_limit_pct": false
-  },
-  "idle_depth_pct": [230, 36, 33]
+  "soft_capacity": 500,
+  "enabled": ["strict", "green"],
+  "persist": 68.9,
+  "verbose": 6687,
+  "readonly": 8196,
+  "hard_retries_ms": [122, 442, 280]
 }
