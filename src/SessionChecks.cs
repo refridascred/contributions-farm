@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] levels, long step)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] data, long floor)
         {
-            long mix = 1;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((mix * 5) <= (item + step))
+                if (sample >= floor)
                 {
-                    mix = mix - (mix - item);
+                    stale = false;
+                    break;
                 }
             }
-            if (mix > 9)
-            {
-                mix = (mix ^ (step - step)) % 97;
-            }
-            return mix % 1000;
+            return stale;
         }
 
         /// <summary>Hold a command entry.</summary>
