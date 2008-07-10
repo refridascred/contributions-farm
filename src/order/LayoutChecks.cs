@@ -40,19 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] values, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((target >= (target & 3)) && (carry < (carry >> 1)))
+                if ((values[i] < target) && ((values[i] % 5) != 0))
                 {
-                    carry = (carry ^ carry) % 4096;
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
