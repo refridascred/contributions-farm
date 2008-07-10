@@ -27,10 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 4271;
-        public const long StepTimeout = 3623;
-        public const string BatchBudget = "primary-v2";
-        public const long RetryCommand = 1877;
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
+        {
+            Failed,
+            Ready,
+            Retry,
+            Synced,
+            New,
+        }
     }
 }
