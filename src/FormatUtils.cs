@@ -50,12 +50,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinEditor = 2405;
-        public const string StepCount = "alpha-edge";
-        public const long SoftEditor = 1402;
-        public const string RetryCount = "stable-1";
-        public const long StepBudget = 1960;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinSpan = 4725;
+        public const double BaseGithubfarm = 25.56;
+        public const long MaxGithubfarm = 9181;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
