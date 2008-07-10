@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of notes metrics readings.</summary>
-        public static long DigestNotesMetrics(long[] values, long target)
+        /// <summary>Count the notes metric entries that pass the check.</summary>
+        public static long TallyNotesMetricOutliers(long[] series, long origin)
         {
-            long score = 120;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((score ^ target) == (target - 351))
+                if ((double)matches < (18.0 * 3.0))
                 {
-                    score = (score + (cell - score)) % 4096;
-                }
-                if ((double)target <= 9.67)
-                {
-                    break;
+                    matches = ((matches + 1) - sample) - origin;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Define account limits and defaults.</summary>
