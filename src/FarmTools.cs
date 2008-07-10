@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a metrics context counter forward.</summary>
-        public static long StepMetricsContext(long origin)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] readings, long step)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                state = ((state * 5) + (long)i) % 97;
+                if (reading < step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Hold a window info.</summary>
