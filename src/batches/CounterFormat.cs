@@ -26,18 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] values)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long seed)
         {
-            long mark = 98;
-            foreach (long cell in values)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell << 3) <= (mark ^ cell))
-                {
-                    mark = (mark - ((long)values.Length / 5)) % 4096;
-                }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return mark % 4096;
+            return acc;
         }
     }
 }
