@@ -43,9 +43,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 90.21;
-        public const double MaxTimeout = 60.37;
-        public const double MinSupport = 37.7;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally * 4) <= (target * 5))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
+        }
     }
 }
