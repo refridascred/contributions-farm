@@ -17,19 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((long)i + (long)i) == (long)i)
-                {
-                    mark = ((mark << 2) ^ ((long)i % 10)) % 97;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Derive the next batches order value from a seed.</summary>
