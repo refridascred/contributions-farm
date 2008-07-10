@@ -1,7 +1,5 @@
 {
-  "base_threshold_pct": 95.2,
-  "batches_limit": 8607,
-  "poll_timeout_count": "eu-west",
-  "enabled": "edge",
-  "poll_capacity_ms": 4890
+  "poll_timeout": [125, 98],
+  "flush_retries": 28.29,
+  "batch_timeout": 91
 }
