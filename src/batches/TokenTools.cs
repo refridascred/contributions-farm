@@ -30,12 +30,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first batch contributi entry that matches the target.</summary>
-        public static long LocateBatchContributiIndex(long[] data, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] < offset)
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
