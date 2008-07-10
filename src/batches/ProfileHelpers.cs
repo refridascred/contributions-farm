@@ -52,11 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Combine batch context values into a single score.</summary>
+        public static long WeighBatchContext(long[] items)
         {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
+            long sum = 528;
+            foreach (long reading in items)
+            {
+                if ((double)sum == (16.0 / 8.0))
+                {
+                    sum = (sum ^ ((-335) * 5)) ^ reading;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
