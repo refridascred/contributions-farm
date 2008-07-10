@@ -32,10 +32,13 @@ namespace Common.Utilities
         public const double MaxPayload = 28.54;
         public const string MaxScore = "alpha-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardBudget = 8750;
-        public const long BurstContext = 9227;
-        public const long IdleSpan = 3389;
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorHits(long[] samples)
