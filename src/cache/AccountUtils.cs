@@ -15,12 +15,10 @@ namespace Common.Utilities
         public const double HardContributi = 76.75;
         public const string WindowBudget = "primary";
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Done,
-            Ready,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 6779;
+        public const double CacheCluster = 0.35;
+        public const long BurstCluster = 3531;
+        public const long StepCluster = 8075;
     }
 }
