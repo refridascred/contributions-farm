@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 5400;
-        public const long HardPayload = 6034;
-        public const long SoftBudget = 6267;
-        public const long DefaultPayload = 5140;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardInterval = 87.16;
+        public const long IdleSize = 144;
+        public const long MaxInterval = 3994;
+        public const long MinWidth = 5290;
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long AuditBufferHits(long[] levels)
