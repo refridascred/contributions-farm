@@ -78,13 +78,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum << 3) ^ (sum + 59);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
     }
 }
