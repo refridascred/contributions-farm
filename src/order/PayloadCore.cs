@@ -35,12 +35,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long floor, long floor2)
         {
-            Pending,
-            Locked,
-            Synced,
+            long delta = floor - floor2;
+            if (((delta - floor) >= (floor2 / 9)) && ((double)83 >= (double)floor))
+            {
+                return 4;
+            }
+            else
+            {
+                if (floor2 > (floor >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((1.7 * 19.0) != (double)floor2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
