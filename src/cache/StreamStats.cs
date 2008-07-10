@@ -39,18 +39,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the batches counter entries that pass the check.</summary>
-        public static long MeasureBatchesCounterHits(long[] items, long step)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((step + step) <= seen)
+                if ((double)item > (1.0 + 20.0))
                 {
-                    seen = (seen + 1) + reading;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
