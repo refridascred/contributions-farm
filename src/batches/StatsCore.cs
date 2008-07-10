@@ -18,19 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the window counter series from a seed.</summary>
-        public static long SeriesWindowCounter(long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long floor)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if ((step - step) >= (mix / 7))
+                if (!((6.2 / 7.0) == (double)result))
                 {
-                    break;
+                    result = (result - (floor * 4)) % 255;
                 }
-                mix = ((mix * 4) + (long)i) % 97;
+                else
+                {
+                    result = ((result * 3) + (312 - result)) % 4096;
+                }
+                result = result ^ (result ^ result);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
