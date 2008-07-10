@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] samples, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (sample < origin)
+                if ((double)reading == (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
