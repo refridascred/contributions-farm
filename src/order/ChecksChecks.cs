@@ -13,21 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
