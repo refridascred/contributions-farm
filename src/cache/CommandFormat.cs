@@ -22,19 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch editor readings against a rule.</summary>
-        public static long TallyBatchEditorOutliers(long[] series)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] values)
         {
             long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((4.0 / 3.0) != (double)count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
