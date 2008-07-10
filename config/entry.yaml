@@ -1,13 +1,21 @@
 # entry settings
-report_ttl:
-  - blue
-  - open
-warm_window_count:
-  cluster_threshold: green
-  dry_run: latest
-  burst_capacity_pct: 1024
-hard_ttl_pct:
-  - 116
-  - 44
-  - 485
-  - 312
+retry_interval_s:
+  min_delay_pct: 500
+  flush_ratio_s: latest
+  dry_run:
+    - 316
+    - 295
+  cache_size:
+    - standard
+    - cached
+    - blue
+    - latest
+  flush_size: green
+audit:
+  - 377
+  - 322
+  - 499
+enabled: 67.49
+default_window: strict
+metrics_capacity: true
+cache_size_s: local
