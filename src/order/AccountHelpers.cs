@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxInterval = 5293;
-        public const long HardDepth = 9928;
-        public const long SoftGraph = 1864;
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
+        {
+            public string Offset { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long FindMetricIndex(long[] data, long limit)
