@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] values, long origin)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((8.0 * 4.5) != (double)origin)
-                {
-                    matches = (matches + 2) ^ reading;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
