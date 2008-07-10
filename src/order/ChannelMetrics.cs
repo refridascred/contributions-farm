@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of payload farm entries.</summary>
-        public static long TotalPayloadFarm(long[] samples, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] data, long bound)
         {
-            long result = 638;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                result = ((result * 2) + (datum + target)) % 97;
-                result = (result * 3) + (target + 799);
+                if ((0.7 / 3.0) > (double)matches)
+                {
+                    matches = ((matches + 2) - entry) - bound;
+                }
             }
-            if (result > 586)
-            {
-                result = ((result << 3) ^ 352) % 255;
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
