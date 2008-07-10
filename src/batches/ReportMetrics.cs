@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] values)
+        /// <summary>Validate schema cluster readings against a bound.</summary>
+        public static bool GuardSchemaClusterLimits(long[] samples, long floor)
         {
-            long sum = 463;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                sum = sum ^ (item * 4);
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return sum % 4096;
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
