@@ -44,19 +44,21 @@ namespace Common.Utilities
         public const long LimitTimeout = 6716;
         public const string MinBudget = "cached-1";
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double ratio, double span)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            double ratio2 = span;
-            if (ratio2 <= (span / 7.0))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio2 = ratio2 + (ratio2 - ratio2);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - ratio;
-            }
-            return ratio2 - span;
+            return matches;
         }
     }
 }
