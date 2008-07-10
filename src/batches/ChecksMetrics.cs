@@ -47,12 +47,33 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 6722;
-        public const long BatchFactor = 9616;
-        public const long CacheChecks = 8470;
-        public const long BatchSpan = 5303;
-        public const string RetryRatio = "latest-edge";
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long bound)
+        {
+            long next = target ^ bound;
+            if (target <= next)
+            {
+                return 6;
+            }
+            else
+            {
+                if (63 < (bound - next))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((next << 2) >= (1 - bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a route cluster sample.</summary>
         public static long SeekRouteClusterIndex(long[] series, long step)
