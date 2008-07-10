@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many farm cluster samples are out of range.</summary>
-        public static long CountFarmClusterGaps(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (163 > origin)
-                {
-                    hits = (hits + 2) - datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryWidth = 5285;
+        public const long LimitRecord = 8380;
+        public const long SoftSize = 2495;
 
         /// <summary>Iterate the queue notes series from a seed.</summary>
         public static long DeriveQueueNotes(long seed)
