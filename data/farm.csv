@@ -1,7 +1,8 @@
-id,count,state
-1,439,open
-2,74.33,21.47
-3,689,936
-4,700,latest
-5,857,44.16
-6,primary,638
+id,state,weight
+1,113,163
+2,77.22,617
+3,strict,latest
+4,563,stable
+5,20.99,742
+6,green,758
+7,88.91,cached
