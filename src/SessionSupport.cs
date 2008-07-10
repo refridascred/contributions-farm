@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long bound)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long state = 5;
+            foreach (long reading in levels)
             {
-                if (value <= bound)
+                if (3 >= (reading << 3))
                 {
-                    valid = false;
-                    break;
+                    state = ((state + (state % 16)) % 101) + seed;
                 }
             }
-            return valid;
+            return state % 97;
         }
     }
 }
