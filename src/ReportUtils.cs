@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] values, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueGaps(long[] levels, long seed)
         {
-            bool found = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (item != step)
+                if (((datum - datum) > matches) && ((double)datum >= (6.85 * 6.5)))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + seed;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Iterate the queue record series from a seed.</summary>
