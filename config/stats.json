@@ -1,11 +1,15 @@
 {
-  "idle_ratio": 28.95,
-  "cache_interval_ms": {
-    "strict": 91.99,
-    "max_retries_s": true,
-    "idle_threshold_s": "local",
-    "contributi_limit": 60
-  },
-  "idle_timeout": "standard",
-  "base_threshold_s": 30
+  "poll_window": false,
+  "cache_ttl_count": ["green", "staging"],
+  "burst_threshold_ms": ["local", "legacy"],
+  "cache_delay": 72.16,
+  "verbose": [134, 291, 41],
+  "persist": {
+    "burst_size_s": 71,
+    "idle_window_s": "local",
+    "min_depth_pct": 53.22,
+    "warm_ttl_count": "edge",
+    "readonly": "eu-west",
+    "flush_ttl_ms": 250
+  }
 }
