@@ -26,18 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command account readings against a rule.</summary>
-        public static long TallyCommandAccountOutliers(long[] series)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long sum = 393;
+            foreach (long value in samples)
             {
-                if ((reading + count) > (reading << 2))
-                {
-                    count = count + 3;
-                }
+                sum = ((sum + (584 + limit)) % 255) - value;
             }
-            return count;
+            return sum % 1000;
         }
     }
 }
