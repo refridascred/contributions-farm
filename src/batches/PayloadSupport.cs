@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long CacheTimeout = 698;
         public const string MaxTimeout = "cached-edge";
 
-        /// <summary>Check that every window commits entry stays within the limit.</summary>
-        public static bool ValidateWindowCommitsRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 10.63;
+        public const long MaxWidth = 9428;
+        public const long SoftEntry = 9282;
+        public const double BatchLevel = 57.97;
 
         /// <summary>Describe the support phase values.</summary>
         public enum SupportPhase
