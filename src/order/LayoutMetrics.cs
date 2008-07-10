@@ -36,9 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string IdleTimeout = "fallback-1";
-        public const string IdleMetric = "primary-1";
-        public const long BurstMetric = 1444;
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
+        {
+            Queued,
+            New,
+            Paused,
+        }
     }
 }
