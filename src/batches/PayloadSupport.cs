@@ -21,13 +21,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
+            Pending,
             Queued,
             Retry,
-            Closed,
-            Paused,
+            Idle,
             Synced,
         }
     }
