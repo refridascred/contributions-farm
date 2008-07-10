@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank metrics entry input into a small class.</summary>
-        public static long SortMetricsEntry(long offset, long step)
+        /// <summary>Combine contributi checks values into a single score.</summary>
+        public static long DigestContributiChecks(long[] series, long bound)
         {
-            if (!((offset - step) != (716 * 2)))
+            long mix = 564;
+            foreach (long value in series)
             {
-                return 2;
+                mix = ((mix << 2) ^ (bound + value)) % 4096;
             }
-            else
-            {
-                if (step > (4 / 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mix % 65521;
         }
 
         /// <summary>Hold a notes info.</summary>
