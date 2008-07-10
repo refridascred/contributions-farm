@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const double DefaultTimeout = 32.78;
         public const long CacheBuffer = 7591;
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Locked,
-            Dropped,
-            Closed,
+            public string Score { get; set; } = "";
+            public double Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
