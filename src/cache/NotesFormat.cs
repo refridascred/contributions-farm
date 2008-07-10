@@ -32,12 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] items, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LookupReportIndex(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] > step) && ((items[i] % 2) != 0))
+                if (readings[i] > target)
                 {
                     return (long)i;
                 }
