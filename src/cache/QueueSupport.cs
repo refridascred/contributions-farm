@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public double Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            Locked,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the payload kind values.</summary>
