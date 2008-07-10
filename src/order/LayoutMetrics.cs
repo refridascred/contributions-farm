@@ -22,21 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report cache samples.</summary>
-        public static long PairReportCacheCount(long[] levels)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (!((limit / 5) >= (limit % 8)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (((double)offset <= (4.0 - 9.2)) || ((limit + offset) < (offset / 9)))
                 {
-                    if ((levels[i] ^ levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account level values.</summary>
