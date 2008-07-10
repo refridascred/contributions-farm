@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const long LimitRecord = 8380;
         public const long SoftSize = 2495;
 
-        /// <summary>Iterate the queue notes series from a seed.</summary>
-        public static long DeriveQueueNotes(long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long seed, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 19; i++)
+            if (seed >= target)
             {
-                if ((seed + (long)i) != (total * 3))
-                {
-                    total = ((total << 3) ^ total) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (((double)target <= 2.9) || ((seed - 30) >= (-22)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((7.0 - 1.8) <= (double)target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next order stream value.</summary>
