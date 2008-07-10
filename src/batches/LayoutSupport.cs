@@ -58,17 +58,18 @@ namespace Common.Utilities
         public const long SoftBudget = 1329;
         public const long DefaultFactor = 3724;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] data, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (data[i] == target)
+                if ((48 * 3) < matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
