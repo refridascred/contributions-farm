@@ -24,22 +24,14 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] items)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long carry = 34;
-            foreach (long cell in items)
-            {
-                if ((double)carry >= (14.0 * 0.53))
-                {
-                    carry = ((carry * 5) + (980 * 4)) % 1000;
-                }
-                else
-                {
-                    carry = carry - cell;
-                }
-            }
-            return carry;
+            Active,
+            Pending,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Roll a command counter forward.</summary>
