@@ -68,12 +68,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            public string Count { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
