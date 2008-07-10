@@ -18,24 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long ClassifyContext(long floor, long seed)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples, long seed)
         {
-            if ((7.76 + 2.0) == (double)seed)
+            long result = 83;
+            foreach (long value in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((((-9) >> 4) >= (floor + 455)) && ((5.54 + 8.05) != (double)floor))
+                result = result - (22 * 2);
+                result = ((result << 3) ^ value) % 97;
+                if ((double)seed <= 8.68)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    break;
                 }
             }
+            if (result < (-7))
+            {
+                result = result ^ 5;
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
