@@ -23,12 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 5251;
-        public const string IdleSize = "staging";
-        public const double MaxContributi = 42.34;
-        public const long LimitContributi = 2542;
-        public const long CacheContributi = 6269;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 9775;
+        public const double BaseRatio = 82.77;
+        public const long HardLevel = 6878;
+        public const long MinCounter = 6844;
+        public const string IdleCounter = "legacy-v2";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 4096;
