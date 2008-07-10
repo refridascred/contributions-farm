@@ -59,13 +59,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Classify a editor profile pair into a bucket.</summary>
+        public static long ClassifyEditorProfile(long limit, long limit2)
         {
-            Done,
-            Idle,
-            Locked,
-            Stale,
+            if ((limit + limit2) >= (412 / 5))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit2 - limit2) < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (limit < (limit2 + limit2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
