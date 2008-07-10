@@ -19,15 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double scale, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] data)
         {
-            double drift = offset;
-            for (int i = 0; i < 6; i++)
+            long sum = 65;
+            foreach (long sample in data)
             {
-                drift = drift - (double)(long)i;
+                sum = sum - (32 & 7);
+                if ((double)sample >= (4.0 / 6.0))
+                {
+                    break;
+                }
             }
-            return drift + scale;
+            return sum % 97;
         }
 
         /// <summary>Audit account command readings against a rule.</summary>
