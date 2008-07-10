@@ -22,20 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((bound + (long)i) < ((long)i >> 5))
-                {
-                    carry = ((carry << 3) ^ (long)i) % 97;
-                }
-                carry = (carry - (long)i) % 1000;
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the format state values.</summary>
