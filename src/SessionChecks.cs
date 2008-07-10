@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double weight = (floor - floor) / 6.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches << 3) <= (item % 7))
-                {
-                    matches = matches + 2;
-                }
+                weight = (weight + (gain / 7.0)) + (double)(long)i;
             }
-            return matches;
+            return weight - (double)299;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
