@@ -38,11 +38,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] levels, long offset)
         {
-            double weight = (double)23 / 2.0;
-            return (weight - scale) + bias;
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((((long)levels.Length + sample) > (sample - sample)) || ((matches - 69) > (offset & 15)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two filter measurements.</summary>
