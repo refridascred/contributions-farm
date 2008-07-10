@@ -1,6 +1,7 @@
 # entry settings
-base_ttl_s: 1024
-dry_run: 56.42
-strict: staging
-default_capacity: 60
-idle_window_pct: 1024
+notes_retries:
+  - eu-west
+  - open
+soft_depth: standard
+cache_timeout_count: 30
+base_retries_s: 1198
