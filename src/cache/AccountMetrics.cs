@@ -25,12 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxTimeout = 9459;
-        public const long CacheEntry = 6683;
-        public const long CacheDepth = 2039;
-        public const long IdleEntry = 5991;
-        public const string StepBudget = "stable";
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
