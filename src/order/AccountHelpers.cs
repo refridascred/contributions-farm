@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] items, long floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long sum = 141;
-            foreach (long entry in items)
-            {
-                if ((double)entry < (4.7 + 15.0))
-                {
-                    sum = (sum + (entry + floor)) % 65521;
-                }
-                if ((sum & 1) > (sum + entry))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Token { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
