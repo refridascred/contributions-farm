@@ -1,4 +1,8 @@
 # githubfarm settings
-payload_capacity: eu-west
-enabled: 19.68
-hard_ttl_ms: local
+account_limit: primary
+strict:
+  - staging
+  - cached
+batch_ttl: 75.93
+batches_capacity: fallback
+retry_timeout_pct: 60
