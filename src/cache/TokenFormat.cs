@@ -13,13 +13,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Queued,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 6626;
+        public const double MaxSpan = 73.39;
+        public const long BurstWidth = 2451;
+        public const long BurstRatio = 9763;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long FindPayloadIndex(long[] samples, long bound)
