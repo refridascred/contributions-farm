@@ -34,15 +34,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long SortRecord(long seed, long step)
         {
-            double weight = (double)(731 - 356);
-            if (weight < 10.0)
+            long diff = seed + step;
+            if ((33 - diff) == ((-840) + diff))
             {
-                weight = (weight - weight) + scale;
+                return 5;
             }
-            return weight - span;
+            else
+            {
+                if ((double)seed != (3.58 * 3.4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)step > 9.9)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed % 2) > (diff >> 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
