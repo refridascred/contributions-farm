@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
