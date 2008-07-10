@@ -18,23 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of counter notes readings.</summary>
-        public static long TallyCounterNotes(long[] values, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long mix = 85;
-            foreach (long sample in values)
-            {
-                mix = (mix - (sample >> 3)) % 255;
-                if ((4 / 7) <= (sample % 7))
-                {
-                    mix = (mix ^ (mix / 5)) % 4096;
-                }
-                else
-                {
-                    mix = mix - (step >> 2);
-                }
-            }
-            return mix;
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
