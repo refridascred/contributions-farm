@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Validate tools context readings against a bound.</summary>
-        public static bool VerifyToolsContextLimits(long[] data, long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] ^ values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
