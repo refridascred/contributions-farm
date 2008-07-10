@@ -1,12 +1,11 @@
 # Command notes
 
-Each buffer is validated before it reaches the account queue.
-Each filter is validated before it reaches the payload queue.
-The buffer module keeps context values in sync with the record cache.
+Each metric is validated before it reaches the metric queue.
+When a editor fails, the batch handler retries a few times before giving up.
+Use metric settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Review stream limits each release
-- Log every counter change
-- Validate batch input early
-- Document new stream fields
+- Review support limits each release
+- Log every stats change
+- Prefer commits defaults
