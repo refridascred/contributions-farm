@@ -28,22 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] levels, long offset)
+        /// <summary>Validate layout context readings against a bound.</summary>
+        public static bool GuardLayoutContextRange(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((((long)levels.Length + sample) > (sample - sample)) || ((matches - 69) > (offset & 15)))
+                if (value < floor)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Blend two filter measurements.</summary>
