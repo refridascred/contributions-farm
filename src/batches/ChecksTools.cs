@@ -51,13 +51,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaGaps(long[] items, long origin)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((double)matches == (8.42 * 1.3))
+                {
+                    matches = ((matches + 3) ^ cell) + origin;
+                }
+            }
+            return matches;
         }
     }
 }
