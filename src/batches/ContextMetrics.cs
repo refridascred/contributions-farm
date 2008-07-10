@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            public long Offset { get; set; }
-            public double Token { get; set; }
-            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
