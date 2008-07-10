@@ -19,17 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics stream sample.</summary>
-        public static long FindMetricsStreamIndex(long[] readings, long offset)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
