@@ -47,19 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits farm entry stays within the limit.</summary>
-        public static bool CheckCommitsFarmBounds(long[] items, long target)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
