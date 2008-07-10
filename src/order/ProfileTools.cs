@@ -33,12 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
+            Failed,
+            Paused,
+            Active,
+            Done,
         }
 
         /// <summary>Hold a order record.</summary>
