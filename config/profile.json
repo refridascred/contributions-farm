@@ -1,7 +1,18 @@
 {
-  "layout_size": ["legacy", "local", "cached"],
-  "cache_retries": 95.51,
-  "cache_ratio": 8113,
-  "idle_delay_pct": "stable",
-  "sync_threshold": "open"
+  "stream_interval": {
+    "soft_threshold_count": 1497,
+    "sync_ttl": {
+      "token_limit": 1024,
+      "warm_retries": 12,
+      "stream_ttl": "primary",
+      "sync_delay": false,
+      "dry_run": [123, 56, 153],
+      "channel_depth": true
+    },
+    "strict": 39.52,
+    "retry_depth": [82, 188, 26]
+  },
+  "verbose": 54,
+  "max_threshold": 4723,
+  "farm_window": 4849
 }
