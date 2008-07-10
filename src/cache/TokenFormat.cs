@@ -41,9 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8427;
-        public const string BaseChecks = "strict-edge";
-        public const long BurstChecks = 5554;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((7.7 - 1.9) == (double)offset)
+                {
+                    mark = mark - mark;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
     }
 }
