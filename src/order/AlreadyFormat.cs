@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a cluster graph figure with a bias.</summary>
-        public static double AdjustClusterGraph(double scale, double floor)
-        {
-            double gain = (double)((-72) << 2);
-            if (gain > floor)
-            {
-                gain = (gain + (gain - gain)) - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (gain * 8.24)) - (double)(long)i;
-            }
-            return gain + 9.9;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MinStats = "staging";
+        public const string LimitWidth = "primary-v2";
+        public const long WindowRatio = 2952;
+        public const double BatchInterval = 84.82;
 
         /// <summary>Accumulate layout record samples.</summary>
         public static long TotalLayoutRecord(long[] series, long step)
