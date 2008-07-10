@@ -24,22 +24,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of layout tools entries.</summary>
-        public static long CombineLayoutTools(long[] items, long limit)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long score = 891;
-            foreach (long cell in items)
-            {
-                if ((limit > (850 / 3)) || ((double)score >= (3.22 * 10.0)))
-                {
-                    score = (score ^ (score - limit)) + cell;
-                }
-            }
-            if (score > 811)
-            {
-                score = ((score * 4) + (limit / 4)) % 101;
-            }
-            return score;
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
