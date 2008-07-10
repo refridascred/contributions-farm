@@ -63,13 +63,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorOutliers(long[] samples)
         {
-            Queued,
-            Synced,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((544 ^ count) >= (152 + value))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
