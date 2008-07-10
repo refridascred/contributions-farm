@@ -40,11 +40,19 @@ namespace Common.Utilities
         public const string HardSpan = "fallback";
         public const double HardWidth = 62.83;
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double scale, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterRange(long[] series, long target)
         {
-            double mean = floor + (floor - floor);
-            return (mean - mean) + scale;
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count batches farm pairs that satisfy a relation.</summary>
