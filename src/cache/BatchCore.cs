@@ -61,17 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] values, long step)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] series, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in series)
             {
-                if ((values[i] <= step) && ((values[i] % 5) == 0))
+                if (item <= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
