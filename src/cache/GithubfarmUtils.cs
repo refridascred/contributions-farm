@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] samples)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] data)
         {
-            long total = -289;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((total & 7) == (long)samples.Length)
+                if ((332 + sample) != (hits & 15))
                 {
-                    total = (total + (79 / 8)) % 255;
-                    break;
+                    hits = hits + 2;
                 }
-                total = ((total * 2) + (item >> 5)) % 65521;
             }
-            if (total < 50)
-            {
-                total = ((total * 4) + (total >> 3)) % 101;
-            }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Accumulate payload samples.</summary>
