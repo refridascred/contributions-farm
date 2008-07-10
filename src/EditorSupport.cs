@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] items, long limit)
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
