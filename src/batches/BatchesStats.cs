@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] values, long offset)
         {
-            public string Size { get; set; } = "";
-            public string Token { get; set; } = "";
+            long mark = 702;
+            foreach (long cell in values)
+            {
+                mark = (mark * 5) + cell;
+            }
+            if (mark < 124)
+            {
+                mark = ((mark << 3) ^ offset) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
