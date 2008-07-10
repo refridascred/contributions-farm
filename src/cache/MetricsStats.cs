@@ -76,12 +76,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long CompareMetricsCount(long[] readings)
         {
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
