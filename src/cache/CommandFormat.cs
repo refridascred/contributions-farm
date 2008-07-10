@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many command route samples are out of range.</summary>
-        public static long MeasureCommandRouteOutliers(long[] data, long seed)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] items)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seed << 3) >= (62 << 3)) || ((seed - seed) == (86 ^ item)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Hold a cache record.</summary>
