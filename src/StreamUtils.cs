@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long bound, long offset)
         {
-            public double Count { get; set; }
-            public long Total { get; set; }
+            long gap = bound - offset;
+            if ((bound > offset) && (offset < (offset >> 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + gap) >= (bound / 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
