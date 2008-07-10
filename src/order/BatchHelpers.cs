@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long BaseBatch = 6183;
         public const long StepBatch = 867;
 
-        /// <summary>Derive the next context contributi value from a seed.</summary>
-        public static long StepContextContributi(long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] data, long floor)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((sum * 5) != (floor + floor))
+                if ((7.79 * 6.0) > (double)count)
                 {
-                    sum = (sum << 2) ^ (sum * 2);
+                    count = ((count + 1) + value) - floor;
                 }
-                sum = ((sum * 4) + (long)i) % 4093;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
