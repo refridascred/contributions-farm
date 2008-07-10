@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] items, long offset)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long SortCommits(long target, long origin)
         {
-            long tally = 0;
-            foreach (long item in items)
+            if (!(771 >= (target + target)))
             {
-                if ((tally / 8) < (offset ^ tally))
+                return 3;
+            }
+            else
+            {
+                if ((double)target > 7.7)
                 {
-                    tally = (tally + 1) + item;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((origin + 595) == (49 ^ target)) || ((origin / 5) < (origin / 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
