@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowMatches(long[] values, long floor)
         {
-            Ready,
-            Queued,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (floor >= (cell ^ matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a cache entry.</summary>
