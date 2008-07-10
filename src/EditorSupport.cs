@@ -40,18 +40,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit notes support readings against a rule.</summary>
-        public static long AuditNotesSupportGaps(long[] levels)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((5 - count) < (value & 15))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Done,
+            Locked,
         }
 
         /// <summary>Combine account values into a single score.</summary>
