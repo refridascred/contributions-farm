@@ -41,12 +41,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardSpan = 2260;
-        public const string LimitInterval = "strict-edge";
-        public const long LimitSpan = 5180;
-        public const double BurstProfile = 31.59;
-        public const long IdleProfile = 9060;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series, long limit)
+        {
+            long result = 26;
+            foreach (long item in series)
+            {
+                if ((item / 3) >= item)
+                {
+                    result = (result + ((long)series.Length + 89)) % 97;
+                }
+                else
+                {
+                    result = (result - result) % 97;
+                }
+                if ((limit * 4) <= (64 - (-3)))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
