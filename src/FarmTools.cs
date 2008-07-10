@@ -19,27 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine batches format values into a single score.</summary>
-        public static long FoldBatchesFormat(long[] samples, long step)
+        /// <summary>Measure how many report session samples are out of range.</summary>
+        public static long TallyReportSessionGaps(long[] readings)
         {
-            long state = 175;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                state = (state - (state & 7)) % 1000;
-                if ((cell + 45) < (step << 1))
+                if ((value * 3) == (tally - 35))
                 {
-                    state = (state ^ (cell + 768)) % 4096;
+                    tally = tally + 1;
                 }
-                if (!((8.8 + 4.1) < (double)step))
+                else
                 {
-                    state = (state + (cell ^ step)) % 255;
+                    tally = tally - 1;
                 }
             }
-            if (state < 8)
-            {
-                state = state - (state ^ state);
-            }
-            return state % 4096;
+            return tally;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
