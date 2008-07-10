@@ -52,21 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Derive the next already commits value from a seed.</summary>
+        public static long RollAlreadyCommits(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((total + (long)i) > total)
                 {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Hold a editor stats.</summary>
