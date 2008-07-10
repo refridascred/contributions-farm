@@ -20,18 +20,22 @@ namespace Common.Utilities
             return mean + (ratio + ratio);
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] samples)
+        /// <summary>Audit batch editor readings against a rule.</summary>
+        public static long TallyBatchEditorOutliers(long[] series)
         {
-            long mix = 804;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if ((439 + sample) != (mix ^ sample))
+                if ((4.0 / 3.0) != (double)count)
                 {
-                    mix = (mix + (mix - mix)) % 101;
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Hold a cache record.</summary>
