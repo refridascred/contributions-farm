@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long HardContributi = 5855;
         public const long LimitContributi = 4464;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long AuditMetricGaps(long[] items)
+        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
+        public static long CompareStreamBatchesCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (1.93 < (double)count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) ^ cell;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next window value.</summary>
