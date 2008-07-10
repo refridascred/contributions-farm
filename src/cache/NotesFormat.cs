@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] series, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long acc = 8;
-            foreach (long sample in series)
-            {
-                if ((acc - (-4)) == (471 + sample))
-                {
-                    acc = (((acc << 3) ^ (3 + acc)) % 4096) - target;
-                }
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
