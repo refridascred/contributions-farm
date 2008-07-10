@@ -1,5 +1,11 @@
 # support settings
-dry_run: local
-batch_threshold: eu-west
-poll_window_s: 37
-min_depth: 88.55
+cache_delay_count: 7949
+buffer_timeout:
+  - stable
+  - open
+  - eu-west
+  - open
+editor_ttl: 2191
+batch_ttl_pct: 250
+audit: primary
+dry_run: legacy
