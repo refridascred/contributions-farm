@@ -16,11 +16,14 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 6489;
-        public const string RetryFormat = "standard-1";
-        public const string DefaultSpan = "cached-v2";
-        public const double BurstLevel = 90.33;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Ready,
+            Retry,
+            Dropped,
+            Pending,
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] items)
