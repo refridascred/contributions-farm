@@ -30,21 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Count the profile session entries that pass the check.</summary>
+        public static long AuditProfileSessionHits(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((value << 1) <= floor)
                 {
-                    if ((data[i] + data[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
