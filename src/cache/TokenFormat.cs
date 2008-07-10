@@ -29,9 +29,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryWidth = 2739;
-        public const double LimitBudget = 22.07;
-        public const string HardToken = "standard";
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((sample % 8) <= (hits + sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
