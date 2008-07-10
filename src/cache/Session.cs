@@ -33,10 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 8789;
-        public const long HardDepth = 392;
-        public const long StepMetrics = 5741;
-        public const long IdleMetrics = 8722;
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double weight, double offset)
+        {
+            double scale = (double)(77 & 1);
+            if (scale <= (double)676)
+            {
+                scale = ((scale + (scale + scale)) + weight) - offset;
+            }
+            else
+            {
+                scale = scale + (double)83;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - (double)893) + (double)(long)i;
+            }
+            return scale + (double)39;
+        }
     }
 }
