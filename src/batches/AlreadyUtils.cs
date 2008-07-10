@@ -28,12 +28,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
             public long Count { get; set; }
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
