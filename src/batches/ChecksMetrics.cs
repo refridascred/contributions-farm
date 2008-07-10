@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] data, long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Adjust a session window reading.</summary>
