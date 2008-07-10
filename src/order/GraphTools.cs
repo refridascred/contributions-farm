@@ -45,16 +45,24 @@ namespace Common.Utilities
         public const double BurstTools = 47.54;
         public const string WindowTools = "open-edge";
 
-        /// <summary>Fold a list of stream token readings.</summary>
-        public static long ScoreStreamToken(long[] readings)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long step, long offset)
         {
-            long score = -260;
-            foreach (long entry in readings)
+            if ((18.0 - 3.04) == (double)offset)
             {
-                score = (score + (entry ^ score)) % 255;
-                score = ((score * 4) + (entry >> 3)) % 65521;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((step - step) >= (step + step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of report readings.</summary>
