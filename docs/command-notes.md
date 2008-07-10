@@ -1,11 +1,14 @@
 # Command notes
 
-Keep already and report names short and lowercase.
-Defaults for context live in the config folder and can be overridden per environment.
+Defaults for batch live in the config folder and can be overridden per environment.
+The farm report groups every window by notes.
+
+The profile module keeps stream values in sync with the support cache.
+A buffer that stays idle for too long is moved to the profile list.
 
 ## Guidelines
 
-- Keep queue values small
-- Document new order fields
-- Validate filter input early
-- Prefer account defaults
+- Document new farm fields
+- Prefer format defaults
+- Validate notes input early
+- Log every cache change
