@@ -45,20 +45,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate buffer contributi readings against a bound.</summary>
-        public static bool GuardBufferContributiLimits(long[] items, long step)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 71.76;
+        public const string CacheAccount = "alpha-edge";
+        public const long RetryWidth = 7275;
 
         /// <summary>Derive the next window schema value from a seed.</summary>
         public static long RollWindowSchema(long step)
