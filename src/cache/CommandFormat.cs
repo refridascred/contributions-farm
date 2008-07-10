@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Blend two metric graph measurements.</summary>
-        public static double AdjustMetricGraph(double ratio, double offset)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            double mean = (double)8 / 7.0;
-            if (mean > mean)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = (mean - 0.3) - offset;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (double)357;
-            }
-            return mean + (ratio + ratio);
+            return matches;
         }
 
         /// <summary>Audit batch editor readings against a rule.</summary>
