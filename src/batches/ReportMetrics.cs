@@ -30,19 +30,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a layout profile figure with a bias.</summary>
-        public static double ProjectLayoutProfile(double ratio, double floor)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long limit)
         {
-            double weight = 5.52;
-            if (weight <= (double)17)
+            for (int i = 0; i < values.Length; i++)
             {
-                weight = (weight + (weight / 4.0)) + ratio;
+                if ((values[i] > limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + floor;
-            }
-            return weight - (double)15;
+            return -1;
         }
     }
 }
