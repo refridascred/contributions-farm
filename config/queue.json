@@ -1,10 +1,5 @@
 {
-  "poll_limit": {
-    "cache_retries": 66,
-    "dry_run": [214, 267, 79, 162],
-    "batch_ratio_pct": true
-  },
-  "entry_ttl": 83.36,
-  "schema_ttl": 2.18,
-  "audit": "standard"
+  "profile_window": 61,
+  "poll_ttl_s": 100,
+  "readonly": false
 }
