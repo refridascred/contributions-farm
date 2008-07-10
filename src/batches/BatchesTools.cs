@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] items)
         {
-            Closed,
-            Idle,
-            Paused,
-            Failed,
+            long acc = 2;
+            foreach (long item in items)
+            {
+                if ((1.93 / 6.0) == (double)acc)
+                {
+                    acc = (acc - (item >> 3)) % 1000;
+                }
+            }
+            if (acc > 43)
+            {
+                acc = (acc ^ (acc + acc)) % 101;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
