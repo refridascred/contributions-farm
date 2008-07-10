@@ -25,15 +25,26 @@ namespace Common.Utilities
         public const long BaseCount = 8688;
         public const long WindowStats = 2154;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double bias)
+        /// <summary>Accumulate checks order samples.</summary>
+        public static long FoldChecksOrder(long[] series)
         {
-            double mean = scale;
-            if (mean < scale)
+            long anchor = 70;
+            foreach (long reading in series)
             {
-                mean = (mean + (double)77) - bias;
+                if (203 < (49 - anchor))
+                {
+                    anchor = anchor + (reading - anchor);
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (anchor ^ anchor)) % 65521;
+                }
+                if ((reading >> 5) >= (anchor << 3))
+                {
+                    break;
+                }
             }
-            return mean + scale;
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
