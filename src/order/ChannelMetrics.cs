@@ -17,18 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] items, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((4.97 >= (double)seen) || ((double)seen <= (double)1))
-                {
-                    seen = ((seen + 2) ^ sample) + floor;
-                }
-            }
-            return seen;
+            Failed,
+            Ready,
+            Idle,
+            Paused,
+            Stale,
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
