@@ -20,16 +20,29 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of payload queue readings.</summary>
-        public static long ScorePayloadQueue(long[] values, long floor)
+        /// <summary>Derive the next stats context value from a seed.</summary>
+        public static long RollStatsContext(long origin)
         {
-            long score = 3;
-            foreach (long value in values)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score ^ value) + floor;
-                score = ((score << 2) ^ (60 ^ 8)) % 1000;
+                if (sum <= ((long)i - sum))
+                {
+                    sum = ((sum << 3) ^ sum) % 4096;
+                    sum = (sum << 3) ^ (origin * 2);
+                }
+                else
+                {
+                    sum = sum - (sum + (long)i);
+                    sum = (sum << 2) ^ (sum >> 4);
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    sum = ((sum << 2) ^ (long)i) + (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Describe the account mode values.</summary>
