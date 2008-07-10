@@ -33,38 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long seed, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] levels, long origin)
         {
-            if (!(seed > ((-75) % 10)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < seed)
+                if ((levels[i] >= origin) && ((levels[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (target >= 856)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - target) < (seed - seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
