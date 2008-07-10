@@ -51,22 +51,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorOutliers(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (matches <= (matches - matches))
-                {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry << 3) ^ (bound % 3)) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a report info.</summary>
