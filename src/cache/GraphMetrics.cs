@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate entry route readings against a bound.</summary>
-        public static bool ValidateEntryRouteRange(long[] readings, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (value < offset)
+                if (cell <= floor)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Hold a command entry.</summary>
