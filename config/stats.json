@@ -1,10 +1,17 @@
 {
-  "hard_timeout_pct": {
-    "batch_depth": false,
-    "default_capacity": ["edge", "eu-west", "staging"],
-    "default_capacity_s": 9380
+  "readonly": 9342,
+  "entry_size": 250,
+  "counter_limit": ["local", "strict", "stable"],
+  "cache_interval": {
+    "route_limit": 66.84,
+    "hard_limit_count": 44.73,
+    "soft_window_s": 5683
   },
-  "soft_ttl_count": false,
-  "batch_delay_ms": ["eu-west", "blue", "strict"],
-  "idle_delay": "eu-west"
+  "batch_delay": {
+    "command_retries": ["staging", "strict", "green"],
+    "sync_timeout": ["strict", "local"],
+    "burst_depth": 250,
+    "cache_ratio_pct": false
+  },
+  "sync_capacity_ms": ["primary", "green"]
 }
