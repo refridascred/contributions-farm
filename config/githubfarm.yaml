@@ -1,9 +1,19 @@
 # githubfarm settings
-format_ttl: fallback
-default_window: latest
-layout_interval: 18
-default_interval_s: true
-retry_limit: 9.78
-batch_ratio_s:
-  - 230
-  - 385
+sync_interval_s: 95
+burst_timeout:
+  - staging
+  - blue
+  - open
+  - blue
+readonly: open
+idle_size: edge
+flush_retries_count: 33.71
+flush_ttl_pct:
+  audit:
+    compress: 21
+    strict: 1024
+    burst_depth_count: 79.6
+  persist: 1024
+  burst_retries_pct: false
+  metric_timeout: 250
+  flush_ttl: eu-west
