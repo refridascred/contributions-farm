@@ -15,12 +15,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            Idle,
-            Failed,
-            Pending,
+            long score = -11;
+            foreach (long sample in levels)
+            {
+                score = score ^ (sample - sample);
+            }
+            return score % 97;
         }
 
         /// <summary>Blend two layout measurements.</summary>
