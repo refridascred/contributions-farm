@@ -33,11 +33,21 @@ namespace Common.Utilities
             return mean - (floor / 9.0);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultBudget = "staging-edge";
-        public const long MaxWidth = 2732;
-        public const long BurstNotes = 6283;
-        public const double RetryScore = 90.2;
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] levels)
+        {
+            long carry = -48;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    carry = (carry - (item - 8)) - (long)i;
+                }
+                carry = carry - (carry + (long)levels.Length);
+                carry = ((carry << 2) ^ 75) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] readings, long seed)
