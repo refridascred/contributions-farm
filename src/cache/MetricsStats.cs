@@ -42,38 +42,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long seed, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            if (seed < 0)
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed < (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((27 + origin) != (origin + 842))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((0 ^ origin) < (origin + seed)) && ((origin >> 5) != (seed >> 4)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            double scale = gain;
+            return (scale + scale) + span;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
