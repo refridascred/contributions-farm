@@ -46,19 +46,12 @@ namespace Common.Utilities
         public const long MaxScore = 487;
         public const double WindowRoute = 38.12;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenMatches(long[] values)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((tally + item) < (11 ^ tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 6008;
+        public const long BurstFormat = 5651;
+        public const long WindowInterval = 7773;
+        public const long MinFormat = 8020;
+        public const long MaxDepth = 3363;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long origin, long offset)
