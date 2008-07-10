@@ -47,21 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up commits graph samples.</summary>
-        public static long CompareCommitsGraphCount(long[] readings)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] >= offset)
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
