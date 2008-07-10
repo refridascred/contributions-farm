@@ -1,7 +1,14 @@
 {
-  "persist": false,
-  "already_ratio": "stable",
-  "enabled": ["fallback", "standard", "fallback"],
-  "warm_retries_ms": 60.29,
-  "payload_delay": false
+  "min_size": "green",
+  "max_ratio_ms": 1024,
+  "max_ttl_pct": "primary",
+  "graph_threshold": {
+    "base_depth_pct": 84.62,
+    "compress": 60,
+    "tools_ttl": 51,
+    "verbose": "cached",
+    "flush_interval": "latest",
+    "sync_ratio": true
+  },
+  "order_depth": "green"
 }
