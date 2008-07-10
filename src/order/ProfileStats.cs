@@ -34,19 +34,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] values, long step)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
