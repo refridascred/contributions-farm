@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] items, long limit)
         {
-            Paused,
-            Retry,
-            Locked,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((9.3 - 7.73) >= (double)limit)
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a report tools reading.</summary>
