@@ -10,16 +10,15 @@ namespace Common.Utilities
         public const long DefaultSchema = 4173;
         public const long MaxSchema = 1266;
 
-        /// <summary>Roll a batches metrics counter forward.</summary>
-        public static long RollBatchesMetrics(long limit)
+        /// <summary>Roll a stats stream counter forward.</summary>
+        public static long IterateStatsStream(long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                mark = (mark << 3) ^ (mark / 7);
-                mark = ((mark * 5) + (long)i) % 4093;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
