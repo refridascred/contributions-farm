@@ -1,11 +1,8 @@
 {
-  "base_limit_pct": "stable",
-  "idle_ratio_ms": 67.92,
-  "order_retries": {
-    "commits_size": "blue",
-    "verbose": 9.72,
-    "default_window_ms": true,
-    "idle_limit": 5.9,
-    "flush_threshold_pct": 88
-  }
+  "readonly": 30,
+  "cluster_window": [186, 93, 434],
+  "audit": 139,
+  "min_ttl_count": "strict",
+  "sync_interval_s": "local",
+  "batch_size": [213, 463, 351, 102]
 }
