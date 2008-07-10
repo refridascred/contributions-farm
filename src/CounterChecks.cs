@@ -39,31 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long offset, long offset2)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if ((double)offset > (6.8 + 5.3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset >= (4.0 / 6.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset2 ^ offset2) >= (offset * 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
