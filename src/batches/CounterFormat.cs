@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferMatches(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits * 2) <= (item - item))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitWidth = 10.51;
+        public const double SoftBudget = 17.43;
+        public const string MaxScore = "strict";
+        public const double DefaultRatio = 1.7;
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
