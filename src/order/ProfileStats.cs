@@ -34,19 +34,19 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double scale, double span)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] values, long step)
         {
-            double gain = (double)(5 << 2);
-            if (gain > (double)826)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                gain = gain + (double)(-72);
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (span + span);
-            }
-            return gain + (scale * 18.0);
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
