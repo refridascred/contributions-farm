@@ -20,20 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next farm channel value from a seed.</summary>
-        public static long StepFarmChannel(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((double)seed >= 19.0) && ((1.1 + 8.6) >= (double)(long)i))
-                {
-                    score = ((score << 2) ^ (seed & 15)) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double LimitCount = 27.4;
+        public const long MaxFilter = 5476;
+        public const long CacheFilter = 8326;
+        public const long BaseTimeout = 5637;
+        public const string IdleWidth = "legacy";
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] levels, long origin)
