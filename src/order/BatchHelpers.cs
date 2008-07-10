@@ -19,16 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm record counter forward.</summary>
-        public static long DeriveGithubfarmRecord(long target)
+        /// <summary>Fold a list of counter notes readings.</summary>
+        public static long TallyCounterNotes(long[] values, long step)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long mix = 85;
+            foreach (long sample in values)
             {
-                score = (score << 3) ^ score;
-                score = ((score * 5) + (long)i) % 101;
+                mix = (mix - (sample >> 3)) % 255;
+                if ((4 / 7) <= (sample % 7))
+                {
+                    mix = (mix ^ (mix / 5)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (step >> 2);
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
