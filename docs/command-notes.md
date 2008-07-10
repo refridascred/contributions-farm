@@ -1,12 +1,14 @@
 # Command notes
 
-Keep graph and buffer names short and lowercase.
-The entry report groups every editor by account.
-Keep buffer and cache names short and lowercase.
+The channel report groups every session by stats.
+Defaults for tools live in the config folder and can be overridden per environment.
+
+The githubfarm report groups every buffer by token.
+The command report groups every graph by context.
 
 ## Guidelines
 
-- Review cache limits each release
-- Keep profile values small
-- Validate stream input early
-- Log every record change
+- Log every counter change
+- Prefer filter defaults
+- Validate batch input early
+- Document new batch fields
