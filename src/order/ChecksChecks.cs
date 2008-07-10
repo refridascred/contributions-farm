@@ -36,21 +36,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] items)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = (anchor - (296 % 60)) % 255;
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((items[i] - items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor - anchor) + (long)i2;
                 }
+                if (!((9.3 - 3.07) != (double)anchor))
+                {
+                    anchor = (anchor - (offset << 2)) % 97;
+                    anchor = anchor - (anchor >> 1);
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
