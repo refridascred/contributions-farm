@@ -29,19 +29,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] samples, long limit)
         {
-            double ratio = gain;
-            if (ratio >= ratio)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                ratio = ratio - (double)6;
+                if ((datum + tally) < (datum >> 5))
+                {
+                    tally = (tally + 2) - limit;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - bias;
+            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
