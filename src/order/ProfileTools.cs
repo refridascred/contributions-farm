@@ -63,25 +63,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Rank counter batch input into a small class.</summary>
-        public static long BucketCounterBatch(long limit, long bound)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] readings, long floor)
         {
-            long offset = limit ^ bound;
-            if ((3.52 * 16.0) == (double)offset)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit <= (7.2 + 9.96)) && ((limit - 6) > bound))
+                if (((cell - cell) != (floor % 24)) || !((cell + floor) <= floor))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
     }
 }
