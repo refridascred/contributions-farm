@@ -14,22 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long anchor = 4;
-            foreach (long value in series)
-            {
-                if ((3 >> 2) < anchor)
-                {
-                    anchor = ((anchor << 3) ^ (value % 10)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (value * 3)) % 1000;
-                }
-            }
-            return anchor;
+            Idle,
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
