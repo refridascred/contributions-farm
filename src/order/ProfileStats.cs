@@ -19,17 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a profile channel reading by value.</summary>
-        public static long LookupProfileChannelIndex(long[] samples, long bound)
+        /// <summary>Combine command contributi values into a single score.</summary>
+        public static long CombineCommandContributi(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 260;
+            foreach (long sample in items)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mark = (mark + (sample / 4)) + bound;
             }
-            return -1;
+            if (mark < 826)
+            {
+                mark = (mark * 3) + mark;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Adjust a window tools reading.</summary>
