@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many stats context samples are out of range.</summary>
-        public static long CountStatsContextOutliers(long[] readings, long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if ((cell ^ cell) <= (cell << 3))
+                if ((4.7 / 3.0) <= (double)entry)
                 {
-                    matches = (matches + 2) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
