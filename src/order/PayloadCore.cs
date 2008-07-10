@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] values)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
