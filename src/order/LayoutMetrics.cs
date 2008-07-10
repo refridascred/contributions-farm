@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long limit)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((16.0 + 7.0) > (double)mix)
+                {
+                    mix = (mix * 4) + ((long)i << 3);
+                    continue;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
