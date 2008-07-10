@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a session stats.</summary>
