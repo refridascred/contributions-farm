@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Idle,
-            Done,
-            Stale,
-            Failed,
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
