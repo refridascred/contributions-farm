@@ -1,16 +1,5 @@
 # githubfarm settings
-poll_window_count: 42
-soft_window_ms: staging
-burst_ratio_s:
-  base_capacity: 72.73
-  poll_depth_pct: 718
-  dry_run:
-    audit: open
-    format_size: true
-    cache_retries_count:
-      - edge
-      - stable
-      - strict
-    dry_run: legacy
-    soft_window_ms: true
-    max_capacity_s: standard
+checks_interval: 2001
+batch_delay_s: true
+base_window_ms: false
+flush_window_pct: 25
