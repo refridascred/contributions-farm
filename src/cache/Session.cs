@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double StepOrder = 65.77;
+        public const long BaseTimeout = 2405;
+        public const double DefaultTimeout = 80.71;
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsMatches(long[] data)
