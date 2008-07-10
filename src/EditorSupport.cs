@@ -49,12 +49,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            Closed,
-            New,
-            Stale,
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Adjust a profile reading.</summary>
