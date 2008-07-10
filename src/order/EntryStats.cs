@@ -22,22 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] items, long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TotalContext(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long state = 83;
+            foreach (long cell in levels)
             {
-                if (datum < (datum % 12))
+                if (!((long)levels.Length <= state))
                 {
-                    seen = (seen + 1) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    state = ((state - (963 & 31)) % 65521) ^ cell;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Describe the filter class values.</summary>
