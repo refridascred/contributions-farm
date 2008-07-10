@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitStream = 4546;
-        public const string MinStream = "open-edge";
-        public const long LimitFactor = 3637;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length * 4) >= (matches * 4))
+                {
+                    matches = ((matches + 1) + reading) + step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long FoldMetrics(long[] levels)
