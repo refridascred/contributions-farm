@@ -45,10 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double IdleSchema = 93.87;
-        public const long HardWidth = 9354;
-        public const string RetryFactor = "alpha-edge";
-        public const long DefaultFactor = 8998;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] samples)
+        {
+            long mark = 0;
+            foreach (long datum in samples)
+            {
+                mark = (mark << 3) ^ (datum >> 2);
+                if ((double)datum != (double)mark)
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
