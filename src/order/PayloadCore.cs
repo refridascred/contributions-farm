@@ -22,11 +22,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 1215;
-        public const long HardTools = 7147;
-        public const string LimitTools = "open-edge";
-        public const long CacheSpan = 5380;
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
+        {
+            Pending,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Classify a support pair into a bucket.</summary>
         public static long ClassifySupport(long limit, long target)
