@@ -19,11 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a window tools reading.</summary>
