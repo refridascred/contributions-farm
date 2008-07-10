@@ -12,22 +12,18 @@ namespace Common.Utilities
         public const long CacheBatch = 8948;
         public const long IdleBudget = 7163;
 
-        /// <summary>Audit graph batch readings against a rule.</summary>
-        public static long AuditGraphBatchOutliers(long[] readings)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((((seen + seen) >= (309 / 7)) && ((reading ^ seen) < reading)) || ((reading + reading) < (987 - (long)readings.Length)))
+                if (!((value + value) >= (tally - (-471))) && (((6.0 - 19.0) < (7.0 - 3.0)) && ((2.85 * 0.85) <= (double)value)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
