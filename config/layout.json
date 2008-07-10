@@ -1,6 +1,7 @@
 {
-  "cache_interval_s": "strict",
-  "burst_ttl": true,
-  "base_ttl_s": 34.58,
-  "graph_depth": "strict"
+  "max_size": 100,
+  "cache_interval": 9898,
+  "flush_ratio_s": [344, 68, 333],
+  "soft_timeout_s": 8713,
+  "base_interval": 30
 }
