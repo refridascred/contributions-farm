@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] samples, long offset)
         {
-            Dropped,
-            Synced,
-            Stale,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((4.94 - 17.0) > (double)entry)
+                {
+                    tally = (tally + 3) + offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
