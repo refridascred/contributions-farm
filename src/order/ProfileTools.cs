@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] levels, long target)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (matches <= (matches ^ 426))
-                {
-                    matches = ((matches + 2) ^ value) + target;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
