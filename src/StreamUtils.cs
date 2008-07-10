@@ -34,18 +34,28 @@ namespace Common.Utilities
         public const long BatchScore = 7758;
         public const string LimitScore = "open-edge";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] series)
+        /// <summary>Fold a list of schema layout readings.</summary>
+        public static long ScoreSchemaLayout(long[] readings, long target)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long mix = 160;
+            foreach (long value in readings)
             {
-                if ((double)3 != (double)entry)
+                mix = ((mix * 3) + target) % 97;
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = matches + 2;
+                    mix = ((mix << 2) ^ ((-42) + 81)) % 255;
+                    mix = (mix ^ (target + (long)i)) % 1000;
+                }
+                if (((61 - value) == (mix >> 4)) && (target < (target - (-2))))
+                {
+                    mix = (mix - target) % 101;
                 }
             }
-            return matches;
+            if (mix > 8)
+            {
+                mix = (mix ^ (mix << 1)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
