@@ -13,15 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Failed,
-            Synced,
-            Dropped,
-            New,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardRecord = 64.07;
+        public const long CacheWidth = 9162;
+        public const long SoftRecord = 7449;
+        public const long DefaultInterval = 2704;
+        public const long DefaultRecord = 5731;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
