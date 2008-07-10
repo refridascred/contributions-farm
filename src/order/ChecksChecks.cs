@@ -13,22 +13,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many farm entry samples are out of range.</summary>
-        public static long TallyFarmEntryMatches(long[] levels)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading << 3) >= (reading - reading))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next order stream value.</summary>
