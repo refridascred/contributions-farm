@@ -37,15 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double gain, double floor)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] data, long limit)
         {
-            double mean = 7.7 / 3.0;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                mean = ((mean + floor) + (double)(long)i) - gain;
+                if (entry <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mean - (floor / 9.0);
+            return ok;
         }
 
         /// <summary>Accumulate token samples.</summary>
