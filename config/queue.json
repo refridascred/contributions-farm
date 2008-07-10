@@ -1,8 +1,13 @@
 {
-  "strict": 1052,
-  "idle_limit_pct": "legacy",
-  "readonly": false,
-  "context_threshold": 48.43,
-  "batch_retries": 53,
-  "schema_depth": false
+  "max_ttl_pct": [93, 377],
+  "dry_run": 30,
+  "batch_limit_ms": 8809,
+  "warm_retries": ["local", "cached", "fallback", "green"],
+  "hard_capacity_pct": 88.31,
+  "cluster_timeout": {
+    "enabled": 5,
+    "compress": false,
+    "order_window": [233, 465, 407],
+    "flush_interval_ms": "eu-west"
+  }
 }
