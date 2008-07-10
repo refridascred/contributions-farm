@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] values)
-        {
-            long mark = -80;
-            foreach (long item in values)
-            {
-                if ((730 + item) < (item / 2))
-                {
-                    mark = (mark + (37 - mark)) % 1000;
-                }
-                if (((4.0 + 7.8) == (double)mark) && ((item % 2) >= (mark << 1)))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 3248;
+        public const long WindowContext = 8883;
+        public const double BatchContext = 56.52;
+        public const long IdleContext = 8630;
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
         public static double AdjustFarmStats(double rate, double offset)
