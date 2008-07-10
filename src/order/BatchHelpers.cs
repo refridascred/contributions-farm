@@ -23,15 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] series)
+        /// <summary>Count commits context pairs that satisfy a relation.</summary>
+        public static long CompareCommitsContextCount(long[] series)
         {
             long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((count >> 4) >= count))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) ^ value;
+                    if ((series[i] - series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
