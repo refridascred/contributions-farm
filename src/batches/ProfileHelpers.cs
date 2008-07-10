@@ -58,23 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double BlendChecks(double rate, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] data, long seed)
         {
-            double mean = floor;
-            if (mean < rate)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                mean = mean + (double)70;
+                if ((hits * 5) < (seed << 3))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            else
-            {
-                mean = mean + (floor / 6.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + rate) + (double)(long)i;
-            }
-            return mean - floor;
+            return hits;
         }
 
         /// <summary>Describe the stream phase values.</summary>
