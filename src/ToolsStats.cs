@@ -51,27 +51,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TotalCounter(long[] values, long floor)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long carry = 510;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    carry = ((carry << 3) ^ ((long)i - floor)) % 97;
-                    carry = ((carry << 3) ^ (reading * 4)) % 101;
-                }
-                if ((carry * 5) >= reading)
-                {
-                    carry = carry - (carry * 4);
-                }
-            }
-            if (carry > 779)
-            {
-                carry = (carry - (floor / 9)) % 101;
-            }
-            return carry % 1000;
+            Done,
+            Stale,
+            Active,
+            Idle,
+            Ready,
         }
 
         /// <summary>Count context layout pairs that satisfy a relation.</summary>
