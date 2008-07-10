@@ -22,23 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long seed)
         {
-            long state = 94;
-            foreach (long sample in readings)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((sample < 2) && (0.87 <= (double)state))
+                if ((double)seed < 3.28)
                 {
-                    state = (state << 2) ^ (state * 2);
+                    carry = ((carry << 3) ^ (carry >> 2)) % 1000;
+                    carry = (carry << 2) ^ carry;
                 }
-                if ((state - sample) == (state + sample))
+                else
                 {
-                    break;
+                    carry = (carry + seed) % 1000;
                 }
-                state = ((state << 2) ^ state) % 4096;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
