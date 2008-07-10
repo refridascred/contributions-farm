@@ -40,18 +40,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenGaps(long[] data)
+        /// <summary>Iterate the profile support series from a seed.</summary>
+        public static long RollProfileSupport(long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)item < (4.7 - 5.68))
-                {
-                    tally = tally + 2;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return tally;
+            return sum;
         }
     }
 }
