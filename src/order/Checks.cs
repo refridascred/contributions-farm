@@ -18,31 +18,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long offset, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            if ((3.39 + 3.3) >= (double)offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((804 * 5) <= (limit >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.0 * 20.0) != (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Locked,
+            Done,
+            Idle,
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
