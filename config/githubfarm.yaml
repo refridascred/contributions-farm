@@ -1,28 +1,11 @@
 # githubfarm settings
-batch_interval_s: legacy
-max_ttl_ms: true
-min_capacity_count: cached
-min_ttl_pct:
-  - eu-west
-  - open
-retry_limit_pct:
-  record_window:
-    retry_delay_ms: true
-    idle_timeout_s: 20
-    max_ttl: false
-    batch_delay_s:
-      - stable
-      - strict
-    account_retries:
-      - 121
-      - 383
-      - 167
-      - 140
-  default_depth_pct: primary
-  sync_retries_pct:
-    dry_run: false
-    idle_ratio_count: fallback
-    sync_ttl_pct: false
-  cache_delay: 98.96
-  batch_window_s: 8495
-buffer_window: stable
+verbose: 60
+idle_window_pct:
+  - strict
+  - blue
+  - blue
+  - legacy
+min_threshold_ms: latest
+flush_size_count: edge
+batches_capacity: strict
+flush_retries: eu-west
