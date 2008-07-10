@@ -99,19 +99,11 @@ namespace Common.Utilities
             return scale + (offset * 4.65);
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyRange(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitStats = 3702;
+        public const long CacheScore = 2902;
+        public const long MinStats = 7661;
+        public const double BaseRatio = 8.68;
+        public const long WindowFactor = 2982;
     }
 }
