@@ -61,11 +61,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 4187;
-        public const double RetrySpan = 43.11;
-        public const long BatchMetric = 8573;
-        public const long BurstInterval = 7638;
-        public const string BurstBudget = "alpha-1";
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long FoldFarm(long[] readings)
+        {
+            long score = 809;
+            foreach (long datum in readings)
+            {
+                score = score ^ (datum - datum);
+            }
+            if (score < 75)
+            {
+                score = score ^ (score ^ score);
+            }
+            return score % 1000;
+        }
     }
 }
