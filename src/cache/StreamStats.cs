@@ -56,18 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit context metrics readings against a rule.</summary>
-        public static long TallyContextMetricsHits(long[] items, long seed)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long bound)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long state = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)seed <= (1.9 / 5.0))
+                if (((long)i % 8) == (state & 63))
                 {
-                    tally = (tally + 2) ^ datum;
+                    state = (state ^ (bound ^ 906)) % 255;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a route header.</summary>
