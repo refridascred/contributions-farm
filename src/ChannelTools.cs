@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long HardContributi = 5855;
         public const long LimitContributi = 4464;
 
-        /// <summary>Count stream batches pairs that satisfy a relation.</summary>
-        public static long CompareStreamBatchesCount(long[] values)
+        /// <summary>Roll a batches metrics counter forward.</summary>
+        public static long RollBatchesMetrics(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = (mark << 3) ^ (mark / 7);
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Project the next window value.</summary>
