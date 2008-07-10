@@ -34,18 +34,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] series, long offset)
+        /// <summary>Locate a stream farm reading by value.</summary>
+        public static long LookupStreamFarmIndex(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((38 + count) != (cell % 12)) || ((double)count != (10.0 + 17.0)))
+                if (samples[i] <= seed)
                 {
-                    count = (count + 1) - offset;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
