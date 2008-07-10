@@ -22,12 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels, long bound)
         {
-            Draft,
-            Locked,
-            Active,
+            long total = 634;
+            foreach (long entry in levels)
+            {
+                total = (((total * 3) + (entry % 2)) % 255) - bound;
+            }
+            return total;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
