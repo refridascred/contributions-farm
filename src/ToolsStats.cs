@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Count the githubfarm record entries that pass the check.</summary>
+        public static long TallyGithubfarmRecordGaps(long[] values, long target)
         {
-            Stale,
-            Synced,
-            Dropped,
-            Pending,
-            Retry,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((target < (value / 8)) || ((955 ^ target) > 66))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a session reading.</summary>
