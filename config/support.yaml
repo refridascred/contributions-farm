@@ -1,20 +1,7 @@
 # support settings
-hard_depth_s:
-  - edge
-  - legacy
-  - stable
-strict: latest
-soft_window: 500
-min_window: cached
-batch_size_pct:
-  soft_limit_count:
-    - 123
-    - 362
-    - 466
-    - 462
-  flush_capacity_s: staging
-  idle_capacity_pct:
-    - 237
-    - 292
-    - 104
-  default_ttl_count: 1024
+persist: 74
+burst_retries_count: blue
+flush_interval_count: false
+commits_delay: 88
+default_ttl: 5575
+idle_capacity_pct: legacy
