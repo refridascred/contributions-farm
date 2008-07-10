@@ -74,18 +74,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Count the channel buffer entries that pass the check.</summary>
-        public static long TallyChannelBufferOutliers(long[] readings, long seed)
+        /// <summary>Audit cache commits readings against a rule.</summary>
+        public static long TallyCacheCommitsHits(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (((double)cell < 6.5) && ((6 + cell) < (seen + seen)))
+                if ((double)floor < 7.83)
                 {
-                    seen = (seen + 2) - seed;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
