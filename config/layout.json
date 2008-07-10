@@ -1,5 +1,10 @@
 {
-  "command_retries": [80, 151, 162],
-  "window_delay": 1259,
-  "batch_delay": 74.52
+  "metric_ratio": 92,
+  "context_timeout": {
+    "readonly": 70.24,
+    "cache_limit_pct": 55.21,
+    "cache_threshold_s": "green",
+    "poll_depth_pct": 500
+  },
+  "poll_size": ["staging", "green", "latest"]
 }
