@@ -1,12 +1,6 @@
 {
-  "base_retries": 36.73,
-  "default_delay": 99,
-  "schema_retries": 3794,
-  "tools_window": {
-    "burst_ratio_ms": [477, 57, 92, 254],
-    "verbose": "legacy",
-    "flush_capacity_count": "primary",
-    "default_capacity_s": 8583
-  },
-  "strict": 43.48
+  "cache_delay_pct": false,
+  "batch_timeout_ms": 250,
+  "default_delay_count": "stable",
+  "max_timeout_s": 18.1
 }
