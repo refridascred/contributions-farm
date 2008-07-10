@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftCount = "latest-1";
-        public const double HardSize = 59.55;
-        public const string HardTimeout = "local-edge";
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long CombineBatch(long[] readings)
+        {
+            long total = 8;
+            foreach (long cell in readings)
+            {
+                total = (total ^ (total - (long)readings.Length)) + cell;
+            }
+            if (total < 29)
+            {
+                total = (total ^ (total ^ total)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of buffer payload readings.</summary>
         public static long PairBufferPayloadCount(long[] samples)
