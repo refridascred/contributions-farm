@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Roll a window format counter forward.</summary>
+        public static long DeriveWindowFormat(long bound)
         {
-            Dropped,
-            Pending,
-            Active,
-            Stale,
+            long sum = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum ^ (sum % 16)) % 97;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = ((sum - (bound - (long)i)) % 4096) - (long)i2;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
