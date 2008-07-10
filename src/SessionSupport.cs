@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a account payload pair into a bucket.</summary>
-        public static long BucketAccountPayload(long offset, long origin)
+        /// <summary>Count stats session pairs that satisfy a relation.</summary>
+        public static long MatchStatsSessionCount(long[] items)
         {
-            long slot = offset - origin;
-            if (((offset & 3) < offset) || (origin > (offset - slot)))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)slot > (double)92) && ((origin * 3) == (offset * 5)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batch mode values.</summary>
