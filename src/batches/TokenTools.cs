@@ -29,11 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstDepth = 87.64;
-        public const double StepDepth = 19.43;
-        public const long RetryCluster = 7865;
-        public const long MaxTimeout = 7604;
-        public const long CacheCluster = 9417;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
