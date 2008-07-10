@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long offset)
         {
-            Ready,
-            Synced,
-            Locked,
-            Idle,
-            Pending,
+            if (((58 + seed) > (offset + 303)) && (37 < seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed == (5.86 + 8.25))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the format kind values.</summary>
