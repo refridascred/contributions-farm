@@ -30,31 +30,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of support session entries.</summary>
-        public static long TallySupportSession(long[] readings)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mix = 93;
-            foreach (long cell in readings)
-            {
-                if ((cell >> 4) >= cell)
-                {
-                    mix = (mix ^ (cell / 2)) % 97;
-                    continue;
-                }
-                else
-                {
-                    mix = (mix - (mix - mix)) % 255;
-                }
-                if ((double)mix > (6.0 * 5.22))
-                {
-                    mix = ((mix * 2) + (917 ^ mix)) % 4096;
-                }
-            }
-            if (mix < 887)
-            {
-                mix = (mix - (mix << 2)) % 65521;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
