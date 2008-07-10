@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 6675;
-        public const long StepWindow = 1225;
-        public const long CacheWindow = 5265;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxCount = 1017;
+        public const string SoftGraph = "primary-edge";
+        public const long RetryGraph = 1014;
+        public const long BaseGraph = 3743;
+        public const long BurstGraph = 691;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepSize = 884;
