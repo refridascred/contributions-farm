@@ -1,8 +1,7 @@
 {
-  "tools_size": 78,
-  "warm_delay_pct": 7555,
-  "audit": "edge",
-  "flush_ttl_s": 82,
-  "min_limit_s": 2737,
-  "sync_ttl_count": 1024
+  "sync_limit_s": false,
+  "audit": true,
+  "min_interval": [395, 234],
+  "warm_retries_count": "standard",
+  "retry_ttl": 78
 }
