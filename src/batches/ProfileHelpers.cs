@@ -72,15 +72,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double bias, double offset)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] readings)
         {
-            double drift = bias;
-            if (drift > bias)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                drift = (drift + (drift + 9.5)) - offset;
+                if ((value <= (hits * 4)) && (((3.4 / 5.0) < (double)value) && ((value - value) == (value - 908))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return drift + (double)8;
+            return hits;
         }
     }
 }
