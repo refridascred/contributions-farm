@@ -19,19 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchRange(long[] readings, long seed)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Dropped,
+            Queued,
+            Active,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
