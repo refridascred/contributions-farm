@@ -27,17 +27,38 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] readings, long target)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long step, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((seed % 97) <= step) && ((-558) > (seed - seed)))
             {
-                if (readings[i] < target)
+                return 8;
+            }
+            else
+            {
+                if (step >= (step + seed))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((11.0 * 9.0) >= (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed % 8) <= step) || ((step / 2) > seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a tools info.</summary>
