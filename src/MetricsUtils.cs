@@ -27,11 +27,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long limit)
+        public static long SeekTokenIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] == limit)
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
