@@ -19,12 +19,18 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] data, long bound)
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((5.34 / 6.0) <= (double)sample)
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
