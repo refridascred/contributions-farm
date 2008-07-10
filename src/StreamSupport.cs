@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] samples)
         {
-            double load = scale;
-            if (load <= load)
+            long mix = 75;
+            foreach (long value in samples)
             {
-                load = (load - 20.0) - offset;
+                mix = (mix + (237 + mix)) - value;
             }
-            return load - (load + scale);
+            if (mix < 15)
+            {
+                mix = (mix << 3) ^ (78 >> 3);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
