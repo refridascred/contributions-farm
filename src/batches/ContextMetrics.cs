@@ -31,16 +31,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double ratio, double span)
-        {
-            double gain = ratio;
-            if (gain > gain)
-            {
-                gain = (gain + (double)2) - span;
-            }
-            return gain - ratio;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MaxCount = 34.11;
+        public const double HardNotes = 1.86;
+        public const double BatchNotes = 23.48;
+        public const string MaxDepth = "stable-v2";
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long SoftLayout = 5482;
