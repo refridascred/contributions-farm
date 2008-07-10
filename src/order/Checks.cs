@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryLimits(long[] samples, long floor)
-        {
-            bool found = true;
-            foreach (long cell in samples)
-            {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 8239;
+        public const long DefaultTimeout = 5823;
+        public const string MaxRatio = "fallback";
+        public const long MaxCount = 9520;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
