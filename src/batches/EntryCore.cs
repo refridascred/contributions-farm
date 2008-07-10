@@ -64,27 +64,19 @@ namespace Common.Utilities
             return rate2 + 4.0;
         }
 
-        /// <summary>Combine githubfarm checks values into a single score.</summary>
-        public static long FoldGithubfarmChecks(long[] levels)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] data, long step)
         {
-            long mix = 311;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (entry > (mix ^ 8))
+                if (reading >= step)
                 {
-                    mix = mix + (mix % 97);
-                    continue;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (((mix * 2) + entry) % 65521) ^ (long)i;
-                }
-                if ((entry << 3) >= 7)
-                {
-                    mix = (mix * 3) + mix;
+                    flag = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return flag;
         }
     }
 }
