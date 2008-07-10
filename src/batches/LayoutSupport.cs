@@ -73,17 +73,19 @@ namespace Common.Utilities
         public const long BurstWidth = 9023;
         public const string MinLayout = "fallback-v2";
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long target)
+        /// <summary>Validate contributi stream readings against a bound.</summary>
+        public static bool VerifyContributiStreamLimits(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (items[i] == target)
+                if (item > target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
