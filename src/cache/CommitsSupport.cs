@@ -43,11 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            New,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate profile samples.</summary>
