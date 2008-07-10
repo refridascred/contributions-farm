@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next tools cluster value from a seed.</summary>
-        public static long DeriveToolsCluster(long bound)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((0 * 3) < (long)i)
-                {
-                    mix = (mix ^ (mix << 1)) % 65521;
-                    break;
-                }
-                mix = (mix + (bound + (long)i)) % 255;
-                if ((7.7 + 14.0) >= (double)bound)
-                {
-                    mix = (mix * 5) + bound;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of already readings.</summary>
