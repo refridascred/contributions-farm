@@ -21,10 +21,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 3577;
-        public const long MaxCluster = 9480;
-        public const string LimitWidth = "stable";
+        /// <summary>Audit command queue readings against a rule.</summary>
+        public static long MeasureCommandQueueOutliers(long[] items, long target)
+        {
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if ((2 - tally) != (tally & 63))
+                {
+                    tally = ((tally + 2) ^ item) - target;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string StepEntry = "legacy-1";
