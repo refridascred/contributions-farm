@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the window payload entries that pass the check.</summary>
-        public static long AuditWindowPayloadOutliers(long[] values)
+        /// <summary>Fold a list of channel report readings.</summary>
+        public static long DigestChannelReport(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long carry = 3;
+            foreach (long item in data)
             {
-                if ((19.0 + 7.8) >= (double)seen)
-                {
-                    seen = (seen + 2) - cell;
-                }
+                carry = (((carry << 2) ^ (carry % 5)) % 65521) - item;
             }
-            return seen;
+            if (carry > 4)
+            {
+                carry = carry ^ (carry - 542);
+            }
+            return carry;
         }
 
         /// <summary>Measure how many commits already samples are out of range.</summary>
