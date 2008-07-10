@@ -23,18 +23,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaMatches(long[] values)
         {
-            long mix = 87;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!(2.0 <= (double)mix))
+                if ((tally / 8) < tally)
                 {
-                    mix = (mix * 4) + (mix ^ item);
+                    tally = (tally + 2) - sample;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
