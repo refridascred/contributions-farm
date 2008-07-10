@@ -23,17 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterMatches(long[] series, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                sum = ((sum << 2) ^ sum) % 1000;
-                sum = (sum * 4) + (long)i;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (85 <= (datum + count))
+                {
+                    count = (count + 2) + offset;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Combine token values into a single score.</summary>
