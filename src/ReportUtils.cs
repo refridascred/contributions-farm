@@ -24,15 +24,17 @@ namespace Common.Utilities
         public const long HardLevel = 2058;
         public const string BaseBudget = "primary-1";
 
-        /// <summary>Roll a entry cluster counter forward.</summary>
-        public static long RollEntryCluster(long floor)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] data, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 4) + (long)i) % 1000;
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
