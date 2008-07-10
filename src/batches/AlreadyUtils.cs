@@ -77,21 +77,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats graph pairs that satisfy a relation.</summary>
-        public static long CompareStatsGraphCount(long[] samples)
+        /// <summary>Combine checks metrics values into a single score.</summary>
+        public static long ScoreChecksMetrics(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 5;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((offset << 3) != (offset / 8))
                 {
-                    if ((samples[i] - samples[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result + (result >> 3)) + datum;
+                }
+                if (!(483 >= (13 - result)))
+                {
+                    break;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
