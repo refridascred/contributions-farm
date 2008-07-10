@@ -43,22 +43,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] samples)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long anchor = 745;
-            foreach (long datum in samples)
-            {
-                if (1.0 >= (double)anchor)
-                {
-                    anchor = ((anchor << 2) ^ (datum * 5)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (datum + (-24));
-                }
-            }
-            return anchor;
+            Locked,
+            Failed,
+            Dropped,
         }
     }
 }
