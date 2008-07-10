@@ -33,13 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Stale,
-            Locked,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 39.18;
+        public const double LimitDepth = 15.0;
+        public const long BatchSession = 6655;
+        public const string HardSpan = "fallback";
+        public const double HardWidth = 62.83;
 
         /// <summary>Project the next farm value.</summary>
         public static double ProjectFarm(double scale, double floor)
