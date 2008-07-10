@@ -44,22 +44,13 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the entry account entries that pass the check.</summary>
-        public static long MeasureEntryAccountOutliers(long[] samples, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)target != (double)count)
-                {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Paused,
+            Queued,
+            Ready,
+            Dropped,
         }
     }
 }
