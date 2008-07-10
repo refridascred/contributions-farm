@@ -1,10 +1,6 @@
-id,ratio,rank
-1,614,legacy
-2,fallback,eu-west
-3,56.42,fallback
-4,94.98,primary
-5,671,70.46
-6,443,754
-7,519,latest
-8,500,47.68
-9,standard,893
+id,level,owner,ratio,rank
+1,65.16,66.4,81.26,799
+2,green,29.84,884,legacy
+3,70.23,247,72.15,eu-west
+4,blue,latest,791,18.78
+5,green,66.1,primary,fallback
