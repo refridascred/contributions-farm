@@ -46,18 +46,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] series, long floor)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (floor <= (value & 15))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
     }
 }
