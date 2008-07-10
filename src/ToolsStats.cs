@@ -55,18 +55,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series, long bound)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long step, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((2.0 / 4.0) < (double)step)
             {
-                if (reading > (reading + reading))
+                return 1;
+            }
+            else
+            {
+                if (!((seed & 31) >= (step ^ step)))
                 {
-                    count = (count + 3) - bound;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed + step) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed % 97) < (step + (-19)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
