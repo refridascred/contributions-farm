@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] levels, long origin)
         {
-            Pending,
-            New,
-            Locked,
+            long sum = 56;
+            foreach (long entry in levels)
+            {
+                sum = (sum + (origin & 15)) % 4096;
+                sum = ((sum << 2) ^ (entry * 2)) % 4096;
+                if (((origin << 3) < origin) && (0 <= (1 - entry)))
+                {
+                    sum = sum + ((-2) << 2);
+                }
+            }
+            if (sum < 912)
+            {
+                sum = (sum << 3) ^ (origin + sum);
+            }
+            return sum;
         }
 
         /// <summary>Hold a cluster header.</summary>
