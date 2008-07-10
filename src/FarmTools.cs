@@ -42,10 +42,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "latest-v2";
-        public const long BurstSpan = 1660;
-        public const string LimitBudget = "alpha-v2";
-        public const long LimitInterval = 9221;
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
