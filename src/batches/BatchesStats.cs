@@ -22,20 +22,17 @@ namespace Common.Utilities
         public const long LimitContributi = 2542;
         public const long CacheContributi = 6269;
 
-        /// <summary>Iterate the report contributi series from a seed.</summary>
-        public static long IterateReportContributi(long limit)
+        /// <summary>Find the first already editor entry that matches the target.</summary>
+        public static long LocateAlreadyEditorIndex(long[] series, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(((total ^ (long)i) == (long)i) && (3.59 >= (double)total)))
+                if ((series[i] <= step) && ((series[i] % 5) != 0))
                 {
-                    total = ((total * 3) + (limit + total)) % 255;
-                    total = ((total << 3) ^ (limit << 2)) % 1000;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 101;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a queue info.</summary>
