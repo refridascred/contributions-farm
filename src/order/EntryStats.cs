@@ -46,18 +46,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] data)
+        /// <summary>Rank filter session input into a small class.</summary>
+        public static long SortFilterSession(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if (!((15.0 * 6.5) == (double)bound))
             {
-                if ((double)datum < (1.57 / 5.0))
+                return 5;
+            }
+            else
+            {
+                if ((bound2 * 3) >= bound)
                 {
-                    hits = hits + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound2 >> 3) <= (bound & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((bound2 & 63) < bound) && ((3.0 * 7.0) < (2.0 * 1.1)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
