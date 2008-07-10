@@ -19,21 +19,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
