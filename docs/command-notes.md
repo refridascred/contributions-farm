@@ -1,14 +1,11 @@
 # Command notes
 
-Keep already and editor names short and lowercase.
-Run the format check before changing any cache limits.
-
-The report report groups every githubfarm by context.
-Use record settings to tune how often contributi data is refreshed.
-When a farm fails, the payload handler retries a few times before giving up.
+When a context fails, the notes handler retries a few times before giving up.
+Each entry is validated before it reaches the cluster queue.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every commits change
-- Document new editor fields
+- Prefer order defaults
+- Document new profile fields
+- Keep token values small
+- Validate metric input early
