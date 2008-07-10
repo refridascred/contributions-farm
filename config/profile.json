@@ -1,8 +1,6 @@
 {
-  "batch_interval_ms": 52.96,
-  "batch_delay_count": "latest",
-  "window_ratio": 8928,
-  "compress": 98,
-  "dry_run": ["legacy", "stable"],
-  "flush_capacity": true
+  "dry_run": 1105,
+  "hard_ratio_ms": [347, 395, 182],
+  "persist": "latest",
+  "tools_timeout": "blue"
 }
