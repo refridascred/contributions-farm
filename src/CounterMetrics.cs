@@ -33,19 +33,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] series, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (datum < origin)
+                if (((value << 2) <= value) || (((long)series.Length < value) || (seen < 689)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
