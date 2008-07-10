@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] data)
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry > hits) && ((8.07 - 9.0) == (double)hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit stream tools readings against a rule.</summary>
