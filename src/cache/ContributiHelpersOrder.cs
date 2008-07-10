@@ -33,18 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] data)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((seen % 97) <= (31 / 6))
-                {
-                    seen = (seen + 3) ^ sample;
-                }
-            }
-            return seen;
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
