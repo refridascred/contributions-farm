@@ -58,20 +58,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long bound)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long DeriveGraph(long step)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long mark = step;
+            for (int i = 0; i < 8; i++)
             {
-                double bias = (double)total;
-                if ((double)bound == (bias / 2.0))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 1000;
+                mark = (mark + (mark % 2)) % 65521;
+                mark = ((mark << 3) ^ (step % 12)) % 1000;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Validate contributi stream readings against a bound.</summary>
