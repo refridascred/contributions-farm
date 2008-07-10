@@ -1,6 +1,16 @@
 {
-  "stream_interval": 71.59,
-  "route_capacity": true,
-  "flush_delay": 250,
-  "profile_timeout": 85.05
+  "audit": "strict",
+  "entry_ttl": {
+    "verbose": "staging",
+    "soft_interval_pct": 250,
+    "audit": "local",
+    "batch_ttl_count": {
+      "metrics_interval": ["edge", "blue", "legacy"],
+      "checks_delay": 86.11,
+      "persist": 1024,
+      "dry_run": [277, 482]
+    }
+  },
+  "default_limit_ms": "stable",
+  "max_capacity": false
 }
