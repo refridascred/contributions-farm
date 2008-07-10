@@ -17,12 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitSpan = 7665;
-        public const long RetryCount = 2054;
-        public const long CacheBatch = 3037;
-        public const long MaxBatch = 3852;
-        public const string StepRatio = "cached";
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountGaps(long[] items, long floor)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((-61) - count) < (floor ^ count))
+                {
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the githubfarm stats entries that pass the check.</summary>
         public static long TallyGithubfarmStatsOutliers(long[] samples)
