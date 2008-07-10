@@ -1,14 +1,6 @@
 {
-  "burst_threshold_count": {
-    "burst_size": 30,
-    "readonly": "local",
-    "entry_ratio": 76.9,
-    "support_ratio": "green",
-    "poll_delay_count": "local"
-  },
-  "dry_run": 74.52,
-  "burst_ttl": 73.64,
-  "batch_capacity": "cached",
-  "githubfarm_size": ["local", "stable", "cached"],
-  "batch_ratio_pct": [248, 163, 143]
+  "flush_retries": true,
+  "audit": 13.26,
+  "base_size_count": "legacy",
+  "soft_interval": 75.37
 }
