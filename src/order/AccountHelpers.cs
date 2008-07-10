@@ -40,19 +40,17 @@ namespace Common.Utilities
         public const long LimitBudget = 6988;
         public const string BurstPayload = "primary-1";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long limit)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= limit)
+                if (series[i] <= offset)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
