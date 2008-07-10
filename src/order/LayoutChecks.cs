@@ -69,22 +69,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] samples, long bound)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (bound <= seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public double Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
