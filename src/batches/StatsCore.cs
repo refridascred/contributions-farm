@@ -56,16 +56,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long DeriveRecord(long bound)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] samples)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry << 3) ^ (bound % 3)) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a editor stats.</summary>
