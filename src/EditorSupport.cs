@@ -49,11 +49,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Match up cache buffer samples.</summary>
+        public static long OverlapCacheBufferCount(long[] items)
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a route header.</summary>
