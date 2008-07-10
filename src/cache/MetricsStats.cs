@@ -16,19 +16,15 @@ namespace Common.Utilities
             return scale + (scale / 4.0);
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long floor)
+        /// <summary>Adjust a window reading.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double bias3 = (double)718 - (3.49 + 9.0);
+            for (int i = 0; i < 5; i++)
             {
-                if (cell > floor)
-                {
-                    ready = false;
-                    break;
-                }
+                bias3 = ((bias3 + (bias2 / 4.0)) + (double)(long)i) - bias;
             }
-            return ready;
+            return bias3 + bias2;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
