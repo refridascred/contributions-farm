@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long BaseBatch = 6183;
         public const long StepBatch = 867;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] samples, long step)
+        /// <summary>Roll a githubfarm record counter forward.</summary>
+        public static long DeriveGithubfarmRecord(long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long score = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (reading >= step)
-                {
-                    tally = tally + 2;
-                }
+                score = (score << 3) ^ score;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
