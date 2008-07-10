@@ -19,11 +19,19 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long offset)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    anchor = ((anchor ^ 460) % 97) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
