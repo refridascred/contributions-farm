@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long score = 2;
-            foreach (long reading in samples)
+            long sum = 2;
+            foreach (long entry in data)
             {
-                if (((reading + score) != (reading + 5)) || ((double)reading >= (6.2 - 8.5)))
+                if ((double)sum != (9.14 - 7.68))
                 {
-                    score = score ^ (score ^ reading);
+                    sum = ((sum + (sum + sum)) % 1000) - entry;
                 }
             }
-            if (score > 242)
-            {
-                score = score - (score + score);
-            }
-            return score % 97;
+            return sum % 1000;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
