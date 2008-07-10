@@ -33,18 +33,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            long score = 829;
-            foreach (long cell in samples)
+            long state = 1;
+            foreach (long cell in items)
             {
-                if (((cell + score) < cell) || ((35 >> 3) <= (cell * 2)))
+                if (!((state + state) != (state + (long)items.Length)))
                 {
-                    score = score ^ (cell + cell);
+                    long slot = (state - cell) + (7 - state);
+                    state = (state - (slot + cell)) % 65521;
+                    break;
                 }
+                if ((cell ^ state) < (494 % 97))
+                {
+                    state = ((state << 2) ^ (1 - (-2))) % 4096;
+                }
+                state = (state - cell) % 65521;
             }
-            return score;
+            return state % 97;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
