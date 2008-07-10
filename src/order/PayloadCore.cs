@@ -31,15 +31,17 @@ namespace Common.Utilities
         public const string LimitTools = "open-edge";
         public const long CacheSpan = 5380;
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double weight, double span)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] samples, long offset)
         {
-            double load = span;
-            if (load <= weight)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = load - (load / 6.0);
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return load - (double)(-30);
+            return -1;
         }
     }
 }
