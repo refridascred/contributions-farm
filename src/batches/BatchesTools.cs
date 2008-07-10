@@ -33,19 +33,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate notes contributi readings against a bound.</summary>
-        public static bool VerifyNotesContributiLimits(long[] series, long target)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long limit2)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long prev = limit - limit2;
+            if ((limit / 8) > prev)
             {
-                if (datum >= target)
+                return 4;
+            }
+            else
+            {
+                if ((limit + limit2) <= limit)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((prev % 60) > (limit2 / 6)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return found;
         }
     }
 }
