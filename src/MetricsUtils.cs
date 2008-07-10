@@ -39,20 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long target)
+        /// <summary>Validate layout tools readings against a bound.</summary>
+        public static bool CheckLayoutToolsBounds(long[] series, long bound)
         {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long value in series)
             {
-                sum = (sum << 2) ^ (87 >> 2);
-                if ((((long)i / 5) <= (target << 2)) || ((double)(long)i > (double)target))
+                if (value >= bound)
                 {
-                    sum = ((sum * 4) + sum) % 255;
+                    ok = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the queue class values.</summary>
