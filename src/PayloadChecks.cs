@@ -58,22 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] readings, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long state = 230;
-            foreach (long reading in readings)
-            {
-                if ((reading + state) < (state & 15))
-                {
-                    state = state ^ state;
-                }
-            }
-            if (state < 53)
-            {
-                state = state ^ (seed / 3);
-            }
-            return state;
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
