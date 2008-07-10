@@ -27,13 +27,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] values, long step)
         {
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
-            public bool Stamp { get; set; }
+            long mark = 511;
+            foreach (long item in values)
+            {
+                if ((double)mark <= (double)step)
+                {
+                    break;
+                }
+                if (((11.0 / 9.0) >= (double)mark) || ((mark % 5) > (632 / 5)))
+                {
+                    mark = (mark ^ (item + 3)) % 1000;
+                }
+            }
+            if (mark < (-848))
+            {
+                mark = mark ^ (mark - 2);
+            }
+            return mark % 1000;
         }
     }
 }
