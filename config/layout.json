@@ -1,7 +1,10 @@
 {
-  "persist": true,
-  "idle_timeout_ms": 46.0,
-  "verbose": true,
-  "sync_size_ms": false,
-  "retry_interval_ms": "cached"
+  "min_threshold_pct": "stable",
+  "compress": {
+    "max_retries": "eu-west",
+    "compress": "edge",
+    "stream_depth": ["standard", "standard", "cached"],
+    "batch_size": 78.03
+  },
+  "tools_depth": 20.45
 }
