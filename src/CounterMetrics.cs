@@ -26,10 +26,10 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftTimeout = "primary";
-        public const string WindowBuffer = "alpha";
-        public const string WindowWidth = "legacy-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepEntry = "legacy-1";
+        public const string BaseDepth = "open-v2";
+        public const string MaxEntry = "primary";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
