@@ -1,4 +1,19 @@
 # entry settings
-strict: 709
-token_delay: 25
-min_limit_pct: latest
+poll_limit_count: latest
+metrics_ratio:
+  record_ttl:
+    - 213
+    - 387
+  enabled: primary
+  warm_delay_s: false
+  persist:
+    readonly: true
+    buffer_retries:
+      - 288
+      - 399
+      - 66
+      - 135
+    schema_window: 44
+    editor_delay: primary
+    record_retries: true
+warm_ttl: 100
