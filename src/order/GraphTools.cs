@@ -48,21 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Project the next token value.</summary>
