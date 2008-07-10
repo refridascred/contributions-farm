@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] series, long bound)
         {
-            long state = 554;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (state > (state << 2))
+                if ((double)sample >= (3.47 - 3.2))
                 {
-                    state = state + datum;
+                    matches = (matches + 3) - bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
