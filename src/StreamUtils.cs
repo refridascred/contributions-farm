@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] levels, long step)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long mix = 5;
-            foreach (long datum in levels)
-            {
-                if (!((mix << 1) != (datum + mix)))
-                {
-                    mix = mix ^ (702 % 8);
-                    mix = mix + step;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (step / 4)) % 65521;
-                }
-                mix = (mix ^ (mix + step)) % 97;
-            }
-            if (mix > 368)
-            {
-                mix = (mix - (long)levels.Length) % 1000;
-            }
-            return mix;
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
