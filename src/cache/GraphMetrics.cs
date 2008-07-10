@@ -23,11 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSize = 3507;
-        public const double HardContext = 64.26;
-        public const string DefaultTimeout = "legacy-edge";
-        public const double SoftContext = 36.62;
+        /// <summary>Digest a series of layout tools entries.</summary>
+        public static long CombineLayoutTools(long[] items, long limit)
+        {
+            long score = 891;
+            foreach (long cell in items)
+            {
+                if ((limit > (850 / 3)) || ((double)score >= (3.22 * 10.0)))
+                {
+                    score = (score ^ (score - limit)) + cell;
+                }
+            }
+            if (score > 811)
+            {
+                score = ((score * 4) + (limit / 4)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionGaps(long[] levels, long step)
