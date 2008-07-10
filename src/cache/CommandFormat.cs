@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] series)
+        /// <summary>Iterate the farm route series from a seed.</summary>
+        public static long IterateFarmRoute(long bound)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((((72 << 1) < (77 - datum)) && (matches > datum)) && (((datum / 5) >= ((long)series.Length + datum)) || ((datum << 2) >= (datum ^ datum))))
+                if ((carry % 100) <= (977 % 64))
                 {
-                    matches = matches + 1;
+                    carry = ((carry << 3) ^ ((long)i << 2)) % 255;
+                    carry = ((carry * 5) + (bound + bound)) % 97;
+                    break;
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
