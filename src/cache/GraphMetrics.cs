@@ -24,11 +24,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit stats farm readings against a rule.</summary>
+        public static long TallyStatsFarmMatches(long[] readings)
         {
-            public double Size { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (((double)value > 20.0) || (((484 & 31) <= seen) || ((15.0 + 5.0) == (double)value)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already kind values.</summary>
