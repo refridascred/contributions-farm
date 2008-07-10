@@ -39,21 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] items)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
