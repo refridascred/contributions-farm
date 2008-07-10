@@ -59,18 +59,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Accumulate channel cluster samples.</summary>
+        public static long ScoreChannelCluster(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            long mix = 326;
+            foreach (long cell in readings)
             {
-                state = (state << 2) ^ (step >> 1);
-                long lane = step;
-                state = state - (lane - 6);
-                state = ((state * 2) + (long)i) % 101;
+                mix = ((mix << 2) ^ cell) % 65521;
             }
-            return state;
+            if (mix > 571)
+            {
+                mix = mix + (mix << 1);
+            }
+            return mix;
         }
     }
 }
