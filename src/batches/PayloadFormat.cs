@@ -61,19 +61,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Digest a series of batches commits entries.</summary>
+        public static long TotalBatchesCommits(long[] series, long target)
         {
-            long carry = 3;
-            foreach (long sample in levels)
+            long acc = 284;
+            foreach (long entry in series)
             {
-                if (!!((7.45 / 9.0) != (double)sample))
+                if ((acc / 2) == (282 - acc))
                 {
-                    carry = (carry * 2) + carry;
+                    acc = ((acc * 4) + (acc << 3)) % 97;
                 }
-                carry = (carry ^ ((long)levels.Length << 3)) % 4096;
+                if (((entry ^ target) <= 2) || ((target & 7) <= target))
+                {
+                    break;
+                }
             }
-            return carry % 1000;
+            if (acc < 934)
+            {
+                acc = ((acc * 2) + (acc - 44)) % 97;
+            }
+            return acc;
         }
     }
 }
