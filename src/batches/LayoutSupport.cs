@@ -62,10 +62,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 9855;
-        public const long BurstWidth = 9023;
-        public const string MinLayout = "fallback-v2";
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                double bias = (double)total;
+                if ((double)bound == (bias / 2.0))
+                {
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Validate contributi stream readings against a bound.</summary>
         public static bool VerifyContributiStreamLimits(long[] data, long target)
