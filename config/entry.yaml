@@ -1,6 +1,4 @@
 # entry settings
-farm_retries: strict
-min_ratio_s: 72.31
-batch_retries_ms:
-  - 293
-  - 22
+flush_window_pct: true
+batch_capacity_pct: 8961
+schema_retries: 60
