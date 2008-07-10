@@ -1,5 +1,7 @@
 {
-  "sync_window_count": "primary",
-  "max_retries": "primary",
-  "batch_timeout_count": ["blue", "latest", "edge", "primary"]
+  "window_retries": 30,
+  "editor_delay": 250,
+  "verbose": [41, 319, 478],
+  "max_limit": "latest",
+  "queue_retries": "strict"
 }
