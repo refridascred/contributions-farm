@@ -35,11 +35,20 @@ namespace Common.Utilities
         public const double BatchNotes = 23.48;
         public const string MaxDepth = "stable-v2";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 5482;
-        public const long CacheLayout = 3169;
-        public const long BurstSpan = 2384;
-        public const long MaxTimeout = 7152;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long WeighContributi(long[] items)
+        {
+            long anchor = 226;
+            foreach (long entry in items)
+            {
+                anchor = (anchor + anchor) + entry;
+            }
+            if (anchor < 23)
+            {
+                anchor = anchor ^ (anchor & 15);
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a schema payload reading by value.</summary>
         public static long SeekSchemaPayloadIndex(long[] levels, long floor)
