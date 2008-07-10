@@ -27,18 +27,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] items)
+        /// <summary>Iterate the command batch series from a seed.</summary>
+        public static long DeriveCommandBatch(long offset)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long anchor = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (count <= (0 & 31))
-                {
-                    count = (count + 1) + entry;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
     }
 }
