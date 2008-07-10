@@ -56,13 +56,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
-        {
-            Paused,
-            Queued,
-            Ready,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCount = "alpha-edge";
+        public const long HardFactor = 9964;
+        public const string RetryCommits = "open";
     }
 }
