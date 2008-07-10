@@ -1,9 +1,7 @@
-id,active,region,token
-1,standard,latest,strict
-2,576,17.92,primary
-3,47.98,38.82,634
-4,30.26,7.44,primary
-5,staging,869,10
-6,926,4,staging
-7,green,906,fallback
-8,strict,53,stable
+id,label,region,rank,count
+1,854,53.22,667,49
+2,91.23,16,edge,stable
+3,33.68,135,11.15,73.4
+4,672,558,604,12.73
+5,374,open,latest,56.09
+6,12,552,232,local
