@@ -42,30 +42,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of already graph entries.</summary>
-        public static long WeighAlreadyGraph(long[] samples)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long mark = 19;
-            foreach (long item in samples)
-            {
-                if ((double)item < 4.73)
-                {
-                    mark = (mark - (item + mark)) % 101;
-                }
-                else
-                {
-                    mark = mark ^ (mark % 100);
-                }
-                if ((double)item != (double)602)
-                {
-                    break;
-                }
-            }
-            if (mark < 55)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            public string Limit { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
