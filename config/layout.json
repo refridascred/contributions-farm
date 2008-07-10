@@ -1,6 +1,20 @@
 {
-  "format_window": 3.0,
-  "persist": 65,
-  "readonly": "strict",
-  "format_interval": 39.95
+  "base_retries_count": false,
+  "enabled": true,
+  "token_threshold": ["fallback", "staging", "edge", "stable"],
+  "burst_ratio": 65.83,
+  "persist": {
+    "token_timeout": true,
+    "burst_threshold_s": "fallback",
+    "metrics_threshold": "blue",
+    "min_depth_ms": 22.98
+  },
+  "poll_capacity_pct": {
+    "audit": 61.49,
+    "max_ratio": "standard",
+    "cache_interval_s": [65, 229, 94],
+    "dry_run": true,
+    "soft_retries_s": false,
+    "soft_timeout_pct": 8029
+  }
 }
