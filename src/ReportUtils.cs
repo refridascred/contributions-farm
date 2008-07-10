@@ -68,9 +68,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheStats = 5359;
-        public const long MaxCount = 8125;
-        public const long WindowStats = 4636;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
