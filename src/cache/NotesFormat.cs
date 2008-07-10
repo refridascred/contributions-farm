@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Validate window token readings against a bound.</summary>
+        public static bool GuardWindowTokenLimits(long[] data, long offset)
         {
-            Idle,
-            Paused,
-            Ready,
-            Closed,
-            Active,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Compare every pair of cluster entry readings.</summary>
