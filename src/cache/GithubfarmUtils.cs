@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state << 3) ^ offset) - (long)i2;
                 }
+                state = state + offset;
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
