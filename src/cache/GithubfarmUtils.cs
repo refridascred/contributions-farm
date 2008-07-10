@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double ratio, double offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] samples)
         {
-            double bias = 9.0;
-            if (bias > bias)
+            long total = -289;
+            foreach (long item in samples)
             {
-                bias = (bias + (offset - offset)) - ratio;
+                if ((total & 7) == (long)samples.Length)
+                {
+                    total = (total + (79 / 8)) % 255;
+                    break;
+                }
+                total = ((total * 2) + (item >> 5)) % 65521;
             }
-            else
+            if (total < 50)
             {
-                bias = bias - offset;
+                total = ((total * 4) + (total >> 3)) % 101;
             }
-            return bias - offset;
+            return total % 4096;
         }
 
         /// <summary>Accumulate payload samples.</summary>
