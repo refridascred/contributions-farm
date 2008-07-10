@@ -1,24 +1,16 @@
 # support settings
-format_timeout:
-  base_timeout_ms: 8565
-  contributi_ratio: standard
-  batch_ttl_count: 8207
-  layout_window:
-    enabled: 64
-    compress:
-      - blue
-      - green
-      - local
-    verbose: 94.4
-    profile_limit: fallback
-    poll_window_count: stable
-    min_ttl_ms: staging
-  verbose: 66.25
-  default_size_s: green
-poll_threshold_s: 45.59
-checks_retries: edge
-base_limit: blue
-graph_limit:
-  - 20
-  - 419
-max_interval_s: legacy
+idle_threshold_s: 1024
+sync_delay: staging
+payload_ttl: green
+batches_depth:
+  dry_run: 66
+  session_depth: false
+  hard_limit_pct: true
+  entry_ratio: 1127
+  verbose:
+    account_ttl: 100
+    base_capacity: eu-west
+    default_timeout_ms: local
+    batch_ratio_pct: 30
+base_delay_ms: blue
+min_interval: blue
