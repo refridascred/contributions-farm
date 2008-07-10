@@ -15,21 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Iterate the window counter series from a seed.</summary>
+        public static long SeriesWindowCounter(long step)
         {
-            long result = seed;
-            for (int i = 0; i < 22; i++)
+            long mix = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (125 < (seed % 64))
+                if ((step - step) >= (mix / 7))
                 {
-                    result = (result + ((long)i % 16)) % 255;
                     break;
                 }
-                result = ((result << 3) ^ (seed * 2)) % 255;
-                result = ((result * 2) + (long)i) % 4093;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Project the next entry value.</summary>
