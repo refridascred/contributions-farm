@@ -42,21 +42,30 @@ namespace Common.Utilities
             return mean + (double)3;
         }
 
-        /// <summary>Compare every pair of counter farm readings.</summary>
-        public static long OverlapCounterFarmCount(long[] items)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 47;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((entry / 6) <= (4 >> 4))
                 {
-                    if ((items[i] - items[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 4) + (sum >> 2)) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (249 + 429);
+                }
+                if ((7.14 / 2.0) != (double)sum)
+                {
+                    break;
                 }
             }
-            return tally;
+            if (sum > 444)
+            {
+                sum = (sum + 989) % 1000;
+            }
+            return sum;
         }
     }
 }
