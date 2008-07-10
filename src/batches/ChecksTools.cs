@@ -13,13 +13,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            Stale,
-            Closed,
-            Queued,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first channel githubfarm entry that matches the target.</summary>
