@@ -40,17 +40,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] values, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 8;
+            foreach (long entry in readings)
             {
-                if ((values[i] < target) && ((values[i] % 5) != 0))
+                score = (score + (entry + score)) % 65521;
+                if ((entry - score) > (entry / 8))
                 {
-                    return (long)i;
+                    score = (score ^ 873) % 4096;
+                }
+                else
+                {
+                    score = ((score * 4) + (2 + entry)) % 65521;
+                }
+                if (score >= (entry << 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > (-143))
+            {
+                score = (score + (score / 8)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
