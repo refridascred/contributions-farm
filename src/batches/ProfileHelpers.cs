@@ -68,10 +68,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string RetryRatio = "fallback-v2";
-        public const long CacheRatio = 374;
-        public const string WindowWidth = "strict-1";
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Synced,
+            Done,
+            Draft,
+            Pending,
+            Locked,
+        }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LocateMetricIndex(long[] data, long seed)
