@@ -18,25 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next route report value from a seed.</summary>
-        public static long DeriveRouteReport(long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long state = 833;
+            foreach (long reading in items)
             {
-                if (((carry + (long)i) == (carry >> 2)) || ((bound % 12) < (bound + carry)))
+                if ((double)reading < (6.1 - 11.0))
                 {
-                    carry = carry + (carry / 7);
+                    state = (state << 2) ^ 3;
                 }
-                else
-                {
-                    carry = ((carry * 3) + (191 >> 2)) % 4096;
-                    carry = (carry ^ (carry % 64)) % 65521;
-                }
-                carry = carry - (bound + 494);
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return state % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
