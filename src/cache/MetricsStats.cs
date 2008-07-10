@@ -66,23 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double offset)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            double load = rate - rate;
-            if (load > (double)1)
-            {
-                load = load - offset;
-            }
-            else
-            {
-                load = load + (double)0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - (offset - load)) - (double)(long)i;
-            }
-            return load + rate;
+            Locked,
+            Synced,
+            Ready,
         }
 
         /// <summary>Hold a githubfarm options.</summary>
