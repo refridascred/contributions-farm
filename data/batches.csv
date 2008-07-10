@@ -1,8 +1,9 @@
-id,owner,label
-1,85,883
-2,241,38.54
-3,6.52,50.96
-4,stable,fallback
-5,81.17,primary
-6,784,706
-7,242,local
+id,state,rank,count
+1,51.9,19,984
+2,stable,39.09,163
+3,751,84.34,489
+4,staging,89.79,blue
+5,634,legacy,4.69
+6,eu-west,785,312
+7,cached,410,eu-west
+8,96,593,edge
