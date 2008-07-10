@@ -25,12 +25,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            double gain = 6.5 / 9.0;
+            return (gain + ratio) + bias;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
