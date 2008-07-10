@@ -25,12 +25,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitRatio = 2.37;
-        public const long StepSupport = 4530;
-        public const long BatchWidth = 7527;
-        public const double BatchBudget = 36.32;
-        public const string BatchSupport = "staging-v2";
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] samples, long seed)
