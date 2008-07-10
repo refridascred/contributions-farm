@@ -12,22 +12,22 @@ namespace Common.Utilities
         public const long SoftBudget = 8658;
         public const double RetryGraph = 73.54;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] samples)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((entry + entry) < (319 ^ seen))
+                if ((matches - 6) >= reading)
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the entry level values.</summary>
