@@ -24,18 +24,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit stats farm readings against a rule.</summary>
-        public static long TallyStatsFarmMatches(long[] readings)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value > 20.0) || (((484 & 31) <= seen) || ((15.0 + 5.0) == (double)value)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
