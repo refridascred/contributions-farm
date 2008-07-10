@@ -61,19 +61,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long ScoreFilter(long[] readings)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] readings, long limit)
         {
-            long acc = 5;
-            foreach (long reading in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc ^ (216 + acc)) % 255) + reading;
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 72)
-            {
-                acc = acc + acc;
-            }
-            return acc % 97;
+            return -1;
         }
     }
 }
