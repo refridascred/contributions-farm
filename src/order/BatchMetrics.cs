@@ -80,18 +80,21 @@ namespace Common.Utilities
         public const double BurstPayload = 70.52;
         public const long BasePayload = 4936;
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] series)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (8 < (tally % 12))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + item;
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
