@@ -27,18 +27,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine token report values into a single score.</summary>
-        public static long FoldTokenReport(long[] levels)
+        /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
+        public static long RankGithubfarmBatch(long offset, long step)
         {
-            long score = 3;
-            foreach (long cell in levels)
+            long slot = offset - step;
+            if ((slot << 3) > (619 - slot))
             {
-                if ((double)score > (double)893)
+                return 3;
+            }
+            else
+            {
+                if ((slot + offset) < slot)
                 {
-                    score = (score - (cell / 6)) % 97;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset >= 1.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)slot > 14.0)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the layout phase values.</summary>
