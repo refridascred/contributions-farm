@@ -1,5 +1,8 @@
 {
-  "poll_capacity_ms": 100,
-  "poll_interval": [278, 110, 83, 49],
-  "dry_run": [197, 100, 315, 405]
+  "batch_interval_ms": 52.96,
+  "batch_delay_count": "latest",
+  "window_ratio": 8928,
+  "compress": 98,
+  "dry_run": ["legacy", "stable"],
+  "flush_capacity": true
 }
