@@ -5,13 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] levels, long step)
         {
-            Pending,
-            Closed,
-            Retry,
-            Failed,
+            long mix = 5;
+            foreach (long datum in levels)
+            {
+                if (!((mix << 1) != (datum + mix)))
+                {
+                    mix = mix ^ (702 % 8);
+                    mix = mix + step;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (step / 4)) % 65521;
+                }
+                mix = (mix ^ (mix + step)) % 97;
+            }
+            if (mix > 368)
+            {
+                mix = (mix - (long)levels.Length) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
