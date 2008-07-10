@@ -23,13 +23,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Locked,
-            Idle,
-            New,
-            Retry,
+            Pending,
+            Active,
+            Synced,
             Paused,
         }
 
