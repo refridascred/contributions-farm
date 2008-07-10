@@ -1,8 +1,12 @@
 {
-  "poll_ratio_ms": true,
-  "burst_limit_s": [167, 328],
-  "idle_ttl_s": 7.2,
-  "stream_retries": "cached",
-  "warm_timeout": true,
-  "githubfarm_timeout": 3088
+  "soft_ttl": 81.35,
+  "verbose": {
+    "readonly": 60,
+    "strict": 8731,
+    "dry_run": ["local", "fallback"],
+    "burst_threshold_s": true,
+    "batch_delay_pct": 51,
+    "idle_ttl": false
+  },
+  "dry_run": ["local", "stable", "edge", "strict"]
 }
