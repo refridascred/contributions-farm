@@ -23,19 +23,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] items, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long ScoreToken(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            long score = 5;
+            foreach (long cell in series)
             {
-                if (entry <= seed)
+                if ((cell - limit) == (54 - score))
                 {
-                    ok = false;
-                    break;
+                    score = score - (cell >> 5);
+                }
+                else
+                {
+                    score = score + limit;
                 }
             }
-            return ok;
+            if (score < 6)
+            {
+                score = (score + ((-61) - score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
