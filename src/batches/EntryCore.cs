@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double weight, double floor)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] series)
         {
-            double drift = weight;
-            if (drift >= weight)
+            long count = 0;
+            foreach (long entry in series)
             {
-                drift = drift + floor;
+                if (((count * 3) != (entry & 127)) && ((90 + count) <= (entry % 2)))
+                {
+                    count = count + 2;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - (double)53;
+            return count;
         }
 
         /// <summary>Describe the farm status values.</summary>
