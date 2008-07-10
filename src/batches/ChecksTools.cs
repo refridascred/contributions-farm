@@ -39,10 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowScore = "fallback-1";
-        public const long MaxFormat = 9540;
-        public const long BurstBudget = 8960;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((datum / 6) < (datum + datum))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
