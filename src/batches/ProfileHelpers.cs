@@ -103,17 +103,19 @@ namespace Common.Utilities
             return scale + (offset * 4.65);
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyRange(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (samples[i] <= target)
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
