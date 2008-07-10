@@ -1,9 +1,4 @@
 # support settings
-enabled: primary
-poll_ttl: stable
-stats_interval: 56
-base_limit_s: 84.67
-githubfarm_ttl: 9698
-min_ratio_ms:
-  - 258
-  - 216
+cache_capacity_ms: 4350
+idle_ttl_s: 25
+strict: false
