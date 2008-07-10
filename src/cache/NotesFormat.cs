@@ -16,13 +16,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Roll a notes session counter forward.</summary>
+        public static long DeriveNotesSession(long target)
         {
-            public double Region { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
+            long state = target;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 2) + (0 << 1)) % 255;
+                if (state < (target / 7))
+                {
+                    state = (state << 2) ^ (state - (long)i);
+                }
+                else
+                {
+                    state = (state + 4) % 1000;
+                }
+                state = (state - target) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a record stats.</summary>
