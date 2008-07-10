@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 90.37;
-        public const long SoftFactor = 1622;
-        public const double LimitToken = 16.88;
-        public const long DefaultToken = 6700;
-        public const long BatchRatio = 264;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphRange(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Derive the next farm channel value from a seed.</summary>
         public static long StepFarmChannel(long seed)
