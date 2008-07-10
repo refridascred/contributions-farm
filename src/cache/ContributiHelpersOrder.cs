@@ -40,9 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepFactor = 62.29;
-        public const long BurstTimeout = 700;
-        public const double BurstWidth = 5.76;
+        /// <summary>Roll a checks stats counter forward.</summary>
+        public static long RollChecksStats(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    acc = ((acc << 2) ^ (acc ^ acc)) ^ (long)i2;
+                    acc = (acc + acc) % 101;
+                }
+                if (seed >= (long)i)
+                {
+                    acc = ((acc * 3) + (seed * 4)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
