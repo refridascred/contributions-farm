@@ -42,30 +42,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] samples, long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long score = 4;
-            foreach (long entry in samples)
-            {
-                if ((12.0 - 1.31) == (double)seed)
-                {
-                    score = score ^ (seed + entry);
-                }
-                else
-                {
-                    score = (score << 2) ^ (entry & 1);
-                }
-                if ((0.41 - 2.65) > (double)seed)
-                {
-                    break;
-                }
-            }
-            if (score < 6)
-            {
-                score = score - (3 ^ (long)samples.Length);
-            }
-            return score % 1000;
+            Dropped,
+            Done,
+            Ready,
+            Queued,
+            Failed,
         }
     }
 }
