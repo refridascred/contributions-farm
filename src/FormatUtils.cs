@@ -27,15 +27,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
-        {
-            Done,
-            Closed,
-            Dropped,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BasePayload = "cached";
+        public const long BurstPayload = 2952;
+        public const long DefaultPayload = 6302;
+        public const double RetryDepth = 58.78;
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
         public static long PairSupportCount(long[] data)
