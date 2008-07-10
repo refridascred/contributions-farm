@@ -41,22 +41,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate contributi profile samples.</summary>
-        public static long CombineContributiProfile(long[] samples)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long CompareProfileCount(long[] values)
         {
-            long mix = 180;
-            foreach (long entry in samples)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)entry >= (0.5 * 1.56))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = mix ^ (entry * 4);
-                }
-                else
-                {
-                    mix = (mix + (415 - mix)) % 255;
+                    if ((values[i] ^ values[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
