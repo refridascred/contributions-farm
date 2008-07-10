@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitFactor = "open-edge";
-        public const long MaxScore = 4331;
-        public const long HardContributi = 5855;
-        public const long LimitContributi = 4464;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 3688;
+        public const long DefaultSchema = 4173;
+        public const long MaxSchema = 1266;
 
         /// <summary>Roll a batches metrics counter forward.</summary>
         public static long RollBatchesMetrics(long limit)
