@@ -27,27 +27,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] values)
-        {
-            long score = -5;
-            foreach (long datum in values)
-            {
-                score = score - (score >> 1);
-                if ((152 + score) != (datum / 6))
-                {
-                    score = score ^ (12 - 76);
-                }
-                if ((datum * 4) <= 7)
-                {
-                    break;
-                }
-            }
-            if (score < 852)
-            {
-                score = (score ^ (score / 3)) % 1000;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 8093;
+        public const string MaxCommand = "alpha-v2";
+        public const long CacheCommand = 7229;
+        public const string WindowLevel = "stable-edge";
+        public const double BatchSize = 32.12;
     }
 }
