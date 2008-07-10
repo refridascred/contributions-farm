@@ -52,15 +52,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] data, long target)
+        /// <summary>Count batches farm pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesFarmCount(long[] data)
         {
-            long score = 99;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (((score << 2) ^ (target / 3)) % 101) ^ entry;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
     }
 }
