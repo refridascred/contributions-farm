@@ -14,19 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches - (long)items.Length) < matches)
-                {
-                    matches = (matches + 1) + item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BurstWidth = "staging";
+        public const long MaxProfile = 1176;
+        public const double StepDepth = 34.93;
+        public const long WindowProfile = 4413;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TallyEntry(long[] items)
