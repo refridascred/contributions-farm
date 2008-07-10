@@ -35,19 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamBounds(long[] items, long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Closed,
+            Dropped,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the channel state values.</summary>
