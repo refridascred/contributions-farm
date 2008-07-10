@@ -14,14 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] samples, long step)
         {
-            Retry,
-            Dropped,
-            Pending,
-            Idle,
-            Draft,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((5 - 55) < seen)
+                {
+                    seen = ((seen + 1) ^ entry) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
