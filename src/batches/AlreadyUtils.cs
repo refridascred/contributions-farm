@@ -70,12 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Look up the position of a format profile sample.</summary>
+        public static long FindFormatProfileIndex(long[] levels, long bound)
         {
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine checks token values into a single score.</summary>
