@@ -67,21 +67,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum / 8) < ((-155) + sum))
                 {
-                    if ((values[i] + values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Audit route queue readings against a rule.</summary>
