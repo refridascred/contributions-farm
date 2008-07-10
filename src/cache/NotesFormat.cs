@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many window session samples are out of range.</summary>
-        public static long AuditWindowSessionHits(long[] levels)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)seen >= (double)reading)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            double ratio2 = bias / 5.0;
+            return (ratio2 - (double)624) + ratio;
         }
 
         /// <summary>Describe the order level values.</summary>
