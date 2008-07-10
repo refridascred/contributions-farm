@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 61.74;
+        public const long HardChecks = 9470;
+        public const long BatchWidth = 9060;
 
         /// <summary>Audit payload token readings against a rule.</summary>
         public static long TallyPayloadTokenGaps(long[] data, long step)
