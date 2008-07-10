@@ -39,18 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the farm route entries that pass the check.</summary>
-        public static long CountFarmRouteGaps(long[] series, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = 92;
+            foreach (long cell in readings)
             {
-                if (!((double)limit > (14.0 * 4.41)))
+                if ((anchor + anchor) == (step % 24))
                 {
-                    matches = (matches + 2) - datum;
+                    anchor = (((anchor * 4) + (18 << 1)) % 101) ^ cell;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
