@@ -23,12 +23,21 @@ namespace Common.Utilities
         public const double HardSize = 59.55;
         public const string HardTimeout = "local-edge";
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Compare every pair of buffer payload readings.</summary>
+        public static long PairBufferPayloadCount(long[] samples)
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
-            public long Mode { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a editor order reading by value.</summary>
