@@ -51,19 +51,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] samples, long floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] samples, long seed)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value != floor)
+                if (samples[i] == seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
