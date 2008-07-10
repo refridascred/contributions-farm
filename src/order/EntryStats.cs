@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public string Offset { get; set; } = "";
-            public long Token { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
