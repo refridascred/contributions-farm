@@ -58,10 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchCount = 2892;
-        public const long WindowEntry = 4760;
-        public const string BatchEntry = "alpha-1";
-        public const string CacheEntry = "cached-edge";
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            New,
+            Locked,
+            Synced,
+        }
     }
 }
