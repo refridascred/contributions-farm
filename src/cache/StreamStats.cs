@@ -14,19 +14,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordBounds(long[] series, long offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
