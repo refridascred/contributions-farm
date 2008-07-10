@@ -31,15 +31,11 @@ namespace Common.Utilities
         public const string LimitTools = "open-edge";
         public const long CacheSpan = 5380;
 
-        /// <summary>Roll a route editor counter forward.</summary>
-        public static long DeriveRouteEditor(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinSpan = "legacy";
+        public const long CacheRecord = 4948;
+        public const string DefaultScore = "strict-1";
+        public const long DefaultRecord = 5288;
+        public const string BaseRecord = "legacy-1";
     }
 }
