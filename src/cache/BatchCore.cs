@@ -39,10 +39,13 @@ namespace Common.Utilities
         public const string StepBatches = "staging-1";
         public const long MaxRatio = 7420;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardRoute = 30.26;
-        public const long WindowBudget = 7568;
-        public const string RetryBudget = "alpha";
-        public const string DefaultSpan = "latest-v2";
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public double Size { get; set; }
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
