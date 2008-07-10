@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] samples)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long origin)
         {
-            long acc = 679;
-            foreach (long sample in samples)
+            long mix = origin;
+            for (int i = 0; i < 7; i++)
             {
-                acc = ((acc * 4) + (63 & 255)) ^ sample;
+                long slot = (origin / 9) - (mix << 1);
+                if (!!((mix % 12) > slot))
+                {
+                    slot = (slot + (long)i) % 97;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return acc % 4096;
+            return mix;
         }
 
         /// <summary>Adjust a report tools reading.</summary>
