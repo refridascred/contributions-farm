@@ -41,13 +41,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Paused,
-            Stale,
-            Done,
-            Queued,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long StepLevel = 484;
+        public const long MaxCounter = 2134;
+        public const double IdleCounter = 19.71;
+        public const long IdleSize = 1867;
     }
 }
