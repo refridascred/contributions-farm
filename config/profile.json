@@ -1,5 +1,10 @@
 {
-  "poll_window_pct": "primary",
-  "soft_limit_count": 39,
-  "metrics_delay": 59.34
+  "session_retries": {
+    "sync_limit_pct": "eu-west",
+    "readonly": [83, 192],
+    "checks_ttl": 84,
+    "flush_timeout_ms": 51.09
+  },
+  "min_window_ms": true,
+  "poll_interval": 59.76
 }
