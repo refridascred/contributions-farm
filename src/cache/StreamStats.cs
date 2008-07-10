@@ -20,17 +20,18 @@ namespace Common.Utilities
         public const string DefaultNotes = "strict";
         public const long StepNotes = 3296;
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] levels, long limit)
+        /// <summary>Audit context metrics readings against a rule.</summary>
+        public static long TallyContextMetricsHits(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (levels[i] <= limit)
+                if ((double)seed <= (1.9 / 5.0))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ datum;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate support samples.</summary>
