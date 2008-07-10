@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Validate window contributi readings against a bound.</summary>
+        public static bool ValidateWindowContributiBounds(long[] values, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum > floor)
                 {
-                    if ((values[i] ^ values[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Describe the metric phase values.</summary>
