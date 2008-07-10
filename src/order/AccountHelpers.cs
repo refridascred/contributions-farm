@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a githubfarm record sample.</summary>
-        public static long FindGithubfarmRecordIndex(long[] levels, long floor)
+        /// <summary>Validate tools context readings against a bound.</summary>
+        public static bool VerifyToolsContextLimits(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (levels[i] <= floor)
+                if (item >= limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
