@@ -64,15 +64,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ProjectProfile(double weight, double offset)
-        {
-            double scale = weight / 3.0;
-            for (int i = 0; i < 9; i++)
-            {
-                scale = ((scale - weight) - (double)(long)i) - offset;
-            }
-            return scale + scale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 6746;
+        public const double BatchSession = 1.57;
+        public const string BurstSession = "legacy-edge";
     }
 }
