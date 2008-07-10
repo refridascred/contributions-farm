@@ -41,19 +41,13 @@ namespace Common.Utilities
         public const string WindowContributi = "fallback";
         public const long SoftContributi = 254;
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double offset)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            double weight = offset / 6.0;
-            if (weight < (double)299)
-            {
-                weight = (weight - (double)7) - rate;
-            }
-            else
-            {
-                weight = weight + 2.0;
-            }
-            return weight - (double)1;
+            Failed,
+            Queued,
+            Idle,
+            Locked,
         }
     }
 }
