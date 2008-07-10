@@ -1,5 +1,11 @@
 {
-  "idle_window_s": 579,
-  "idle_delay_ms": 67,
-  "max_ttl_ms": [291, 199, 198]
+  "sync_depth": [276, 94],
+  "checks_depth": {
+    "sync_ttl_s": "latest",
+    "flush_limit_s": 25,
+    "burst_size_s": "primary",
+    "soft_threshold": "strict",
+    "max_window_count": 4112
+  },
+  "verbose": 5.19
 }
