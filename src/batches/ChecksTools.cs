@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route report entry that matches the target.</summary>
-        public static long LocateRouteReportIndex(long[] readings, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] items, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 400;
+            foreach (long datum in items)
             {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
+                mark = (((mark ^ (346 % 97)) % 255) - datum) + offset;
             }
-            return -1;
+            if (mark < 247)
+            {
+                mark = ((mark << 2) ^ 235) % 101;
+            }
+            return mark;
         }
     }
 }
