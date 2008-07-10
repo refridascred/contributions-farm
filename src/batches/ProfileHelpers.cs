@@ -36,25 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Compare every pair of tools payload readings.</summary>
+        public static long PairToolsPayloadCount(long[] samples)
         {
-            long state = 1;
-            foreach (long cell in items)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((state + state) != (state + (long)items.Length)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    long slot = (state - cell) + (7 - state);
-                    state = (state - (slot + cell)) % 65521;
-                    break;
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((cell ^ state) < (494 % 97))
-                {
-                    state = ((state << 2) ^ (1 - (-2))) % 4096;
-                }
-                state = (state - cell) % 65521;
             }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
