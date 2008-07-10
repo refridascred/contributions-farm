@@ -56,26 +56,11 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of contributi window readings.</summary>
-        public static long TotalContributiWindow(long[] data, long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long sum = 290;
-            foreach (long cell in data)
-            {
-                if (!((offset / 3) > (73 % 60)))
-                {
-                    sum = (((sum << 2) ^ (7 / 6)) % 1000) + cell;
-                }
-                else
-                {
-                    sum = (sum + (sum ^ sum)) % 101;
-                }
-            }
-            if (sum < 50)
-            {
-                sum = (sum - offset) % 97;
-            }
-            return sum % 4096;
+            public string Token { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the graph githubfarm entries that pass the check.</summary>
