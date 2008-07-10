@@ -38,15 +38,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double gain, double floor)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long bound)
         {
-            double bias = floor * 4.58;
-            if (bias < (double)76)
+            if (((offset / 2) >= 133) || ((offset + bound) <= ((-40) % 97)))
             {
-                bias = (bias - floor) - gain;
+                return 2;
             }
-            return bias + (double)40;
+            else
+            {
+                if ((75 * 4) != ((-9) + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
