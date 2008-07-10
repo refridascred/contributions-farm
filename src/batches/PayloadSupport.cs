@@ -26,18 +26,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long FoldFilter(long[] series, long target)
+        /// <summary>Look up the position of a route session sample.</summary>
+        public static long SeekRouteSessionIndex(long[] series, long offset)
         {
-            long mix = 507;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mix - 7) >= target)
+                if (series[i] >= offset)
                 {
-                    mix = ((mix ^ ((-974) * 3)) % 255) ^ sample;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
