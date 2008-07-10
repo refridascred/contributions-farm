@@ -54,31 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] items)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] items)
         {
-            long carry = 47;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (carry < (entry + 3))
+                if (!((9.0 - 0.2) > (double)reading))
                 {
-                    carry = ((carry << 2) ^ (5 << 1)) % 65521;
-                    continue;
-                }
-                if (((carry / 9) > (carry - entry)) || ((carry + carry) >= (long)items.Length))
-                {
-                    carry = (carry + (entry - 8)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry + (long)items.Length)) % 4096;
-                }
-                if (entry >= 1)
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
