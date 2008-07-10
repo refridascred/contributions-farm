@@ -1,20 +1,6 @@
 {
-  "warm_limit_count": 30,
-  "batch_retries": "strict",
-  "cache_size": "eu-west",
-  "commits_capacity": {
-    "retry_interval": 67.79,
-    "farm_ttl": [387, 205, 399],
-    "already_window": "legacy",
-    "record_window": 30,
-    "max_depth_s": {
-      "schema_capacity": "strict",
-      "commits_ratio": 17,
-      "verbose": [425, 10, 126, 392],
-      "poll_window": 32,
-      "hard_delay_s": ["local", "fallback", "open"]
-    },
-    "checks_delay": 1024
-  },
-  "readonly": 1.34
+  "cache_interval_s": "strict",
+  "burst_ttl": true,
+  "base_ttl_s": 34.58,
+  "graph_depth": "strict"
 }
