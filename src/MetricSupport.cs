@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] values, long step)
         {
-            Stale,
-            Done,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item << 2) >= (count & 127))
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
