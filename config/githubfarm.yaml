@@ -1,31 +1,5 @@
 # githubfarm settings
-record_retries:
-  - open
-  - edge
-  - legacy
-account_depth: 9757
-retry_depth_pct: false
-queue_size:
-  dry_run:
-    - legacy
-    - edge
-    - edge
-    - fallback
-  batch_retries_ms: 7
-  burst_ttl:
-    - 443
-    - 266
-  verbose: 37.07
-  stats_capacity:
-    format_size: legacy
-    burst_timeout: false
-    warm_ratio: 1469
-    audit:
-      - 451
-      - 14
-    warm_ratio_s: 45
-    soft_size:
-      - open
-      - stable
-      - stable
-poll_capacity_ms: strict
+tools_depth: standard
+warm_depth_count: 23
+base_depth_count: false
+flush_timeout: legacy
