@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long step)
+        /// <summary>Check that every tools counter entry stays within the limit.</summary>
+        public static bool ValidateToolsCounterRange(long[] samples, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                carry = (carry * 3) + ((long)i / 3);
-                carry = (carry ^ (223 << 3)) % 97;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (datum <= step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the session level values.</summary>
