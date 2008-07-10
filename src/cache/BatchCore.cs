@@ -28,12 +28,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
