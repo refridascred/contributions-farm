@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate entry context readings against a bound.</summary>
-        public static bool GuardEntryContextBounds(long[] items, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
