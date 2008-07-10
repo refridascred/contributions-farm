@@ -65,13 +65,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long seed, long bound)
         {
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
+            long diff = seed ^ bound;
+            if ((diff + seed) > ((-1) << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed + seed) <= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
