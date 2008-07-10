@@ -14,38 +14,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            if ((9 - seed) >= (origin >> 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((8 ^ seed) <= ((-2) - seed)) || ((double)seed >= 3.7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((37 + origin) != (origin % 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) < origin)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
