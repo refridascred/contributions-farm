@@ -24,18 +24,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] series)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ScaleBuffer(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double weight = (double)(64 >> 1);
+            if (weight > (double)762)
             {
-                if (!((value + value) >= (tally - (-471))) && (((6.0 - 19.0) < (7.0 - 3.0)) && ((2.85 * 0.85) <= (double)value)))
-                {
-                    tally = tally + 3;
-                }
+                weight = weight - (ratio - ratio);
             }
-            return tally;
+            return weight + (floor * 4.0);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
