@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Grade a account already value against two limits.</summary>
+        public static long BucketAccountAlready(long floor, long origin)
         {
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public string Count { get; set; } = "";
+            long edge = floor - origin;
+            if ((origin - origin) > floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor >= (4.0 + 3.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin < (origin * 4)) || ((edge << 3) < (floor * 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
