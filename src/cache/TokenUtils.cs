@@ -27,14 +27,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Locate a command context reading by value.</summary>
+        public static long SeekCommandContextIndex(long[] readings, long bound)
         {
-            Failed,
-            Ready,
-            Retry,
-            Synced,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
