@@ -1,9 +1,13 @@
 # githubfarm settings
-warm_ratio_ms: 50.56
-flush_threshold_s: legacy
-poll_window_count:
-  - 101
-  - 419
-  - 384
-default_threshold_count: standard
-editor_threshold: primary
+compress:
+  batch_threshold: 41.44
+  command_ttl: true
+  batches_limit: local
+  editor_delay: eu-west
+  batch_capacity: green
+  cache_ttl_count: cached
+graph_capacity: false
+idle_capacity_count: 4839
+idle_limit_ms: 81.68
+readonly: 44
+base_retries_pct: staging
