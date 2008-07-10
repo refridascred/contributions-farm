@@ -1,6 +1,7 @@
 {
-  "flush_ttl": [91, 252],
-  "poll_delay": 27,
-  "default_depth_s": "fallback",
-  "verbose": 250
+  "persist": false,
+  "already_ratio": "stable",
+  "enabled": ["fallback", "standard", "fallback"],
+  "warm_retries_ms": 60.29,
+  "payload_delay": false
 }
