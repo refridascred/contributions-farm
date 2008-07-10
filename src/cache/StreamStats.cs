@@ -34,20 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long mark = 2;
-            foreach (long entry in levels)
-            {
-                mark = (mark << 2) ^ (7 / 4);
-                mark = ((mark << 2) ^ ((long)levels.Length - entry)) % 65521;
-                if (!((mark - mark) < (entry ^ mark)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
