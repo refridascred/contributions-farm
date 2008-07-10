@@ -61,22 +61,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] series)
+        /// <summary>Digest a series of tools report entries.</summary>
+        public static long ScoreToolsReport(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long acc = -74;
+            foreach (long entry in readings)
             {
-                if (!((item + item) < (matches + item)) || ((item + matches) <= (item ^ matches)))
+                if ((entry + acc) != (acc + entry))
                 {
-                    matches = matches + 1;
+                    acc = ((acc * 3) + (acc >> 4)) % 101;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    acc = acc ^ (entry >> 5);
                 }
             }
-            return matches;
+            return acc % 1000;
         }
     }
 }
