@@ -36,13 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] values, long floor)
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
