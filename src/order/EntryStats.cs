@@ -60,19 +60,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportRange(long[] values, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long StepCommits(long origin)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return ok;
+            return mark;
         }
     }
 }
