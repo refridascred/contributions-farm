@@ -27,20 +27,10 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 6754;
         public const double MaxDepth = 85.0;
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] samples, long floor)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 1057;
+        public const long BurstSpan = 3844;
+        public const long StepCommand = 4529;
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
