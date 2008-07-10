@@ -40,21 +40,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((seen & 7) > 5) && (sample >= (sample / 9)))
                 {
-                    if ((samples[i] ^ samples[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 1) + seed;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
