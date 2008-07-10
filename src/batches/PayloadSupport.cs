@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] levels)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] values)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (((double)value <= (2.8 / 5.0)) && (((14.0 * 0.26) < (double)count) || ((count % 7) <= (value % 7))))
+                if ((((19.0 + 17.0) != (double)seen) || ((datum - seen) > (datum ^ seen))) || ((datum >> 2) <= 47))
                 {
-                    count = count + 1;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
