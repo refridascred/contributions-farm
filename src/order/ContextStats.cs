@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatMatches(long[] samples)
         {
-            long anchor = 8;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (cell <= (long)series.Length)
+                if (((299 + matches) > (reading + matches)) || ((33 - matches) > (matches << 3)))
                 {
-                    anchor = ((anchor ^ (cell & 63)) % 4096) + bound;
+                    matches = matches + 3;
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
