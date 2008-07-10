@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] values)
+        /// <summary>Look up the position of a tools entry sample.</summary>
+        public static long FindToolsEntryIndex(long[] values, long offset)
         {
-            long hits = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((hits + hits) < sample))
+                if (values[i] >= offset)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
