@@ -23,12 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long seed)
         {
-            public string Label { get; set; } = "";
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
+            long state = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    state = ((state * 5) + (long)i) ^ (long)i2;
+                }
+                state = (state << 3) ^ (seed << 1);
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
