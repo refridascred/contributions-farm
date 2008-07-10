@@ -6,11 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 2))
+for item in edge staging cached; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-CHANNEL_LIMIT=9
+CHANNEL_LIMIT=316
 log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
