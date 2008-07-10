@@ -53,19 +53,20 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchBounds(long[] samples, long target)
+        /// <summary>Derive the next stream batches value from a seed.</summary>
+        public static long IterateStreamBatches(long step)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long anchor = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample <= target)
+                if ((step > (step - (long)i)) || (anchor > (anchor + step)))
                 {
-                    valid = false;
+                    anchor = (anchor + (11 - (-7))) % 4096;
                     break;
                 }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
