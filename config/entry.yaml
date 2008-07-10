@@ -1,20 +1,5 @@
 # entry settings
-readonly: true
-cluster_retries: green
-retry_retries_pct: strict
-soft_ttl_pct:
-  persist: 8743
-  queue_threshold:
-    - 37
-    - 72
-    - 243
-    - 98
-  burst_capacity:
-    context_window: false
-    burst_ratio: staging
-    dry_run: 30
-    persist: strict
-    max_capacity_ms: 1311
-  retry_timeout_pct: edge
-contributi_limit: 82.73
-burst_retries_count: latest
+cache_size_pct: 1024
+flush_ratio_s: edge
+strict: edge
+contributi_interval: edge
