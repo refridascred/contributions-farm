@@ -74,21 +74,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxFactor = 2964;
+        public const long SoftRoute = 6596;
+        public const long BurstBudget = 3680;
+        public const string SoftDepth = "fallback";
     }
 }
