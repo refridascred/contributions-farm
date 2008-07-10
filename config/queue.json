@@ -1,5 +1,12 @@
 {
-  "base_delay": 250,
-  "flush_capacity": "blue",
-  "compress": ["fallback", "blue", "primary", "latest"]
+  "githubfarm_interval": "stable",
+  "retry_interval_pct": {
+    "soft_timeout_s": ["primary", "local", "latest"],
+    "soft_size": 2010,
+    "stream_timeout": "latest",
+    "commits_depth": [446, 121, 486],
+    "verbose": "eu-west",
+    "soft_limit_pct": false
+  },
+  "idle_depth_pct": [230, 36, 33]
 }
