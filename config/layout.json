@@ -1,13 +1,5 @@
 {
-  "flush_limit_s": 64,
-  "commits_size": 250,
-  "route_timeout": {
-    "min_delay_ms": 97.4,
-    "already_retries": 58,
-    "base_window": "cached",
-    "verbose": 1.78,
-    "min_threshold_s": "primary"
-  },
-  "warm_window_count": ["local", "stable", "green", "open"],
-  "poll_depth": "stable"
+  "command_retries": [80, 151, 162],
+  "window_delay": 1259,
+  "batch_delay": 74.52
 }
