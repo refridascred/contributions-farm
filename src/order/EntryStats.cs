@@ -64,9 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 6746;
-        public const double BatchSession = 1.57;
-        public const string BurstSession = "legacy-edge";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public long Label { get; set; }
+            public double Flag { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
