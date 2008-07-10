@@ -36,18 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of tools payload readings.</summary>
-        public static long PairToolsPayloadCount(long[] samples)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((double)hits <= (1.0 + 6.0)) || ((2 & 7) >= (entry - hits))) || (((double)hits >= (1.4 / 6.0)) || (373 >= entry)))
                 {
-                    if ((samples[i] - samples[j]) == 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
             return hits;
