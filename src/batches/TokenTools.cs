@@ -46,22 +46,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] values, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if ((473 - hits) > hits)
-                {
-                    hits = ((hits + 3) + entry) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepSession = 62.86;
+        public const long WindowBudget = 6412;
+        public const long HardSession = 5201;
+        public const long IdleInterval = 4479;
     }
 }
