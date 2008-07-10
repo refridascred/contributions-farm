@@ -25,22 +25,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate already queue samples.</summary>
-        public static long FoldAlreadyQueue(long[] levels, long limit)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long acc = 620;
-            foreach (long sample in levels)
-            {
-                if ((acc - limit) > (sample + limit))
-                {
-                    acc = (acc * 4) + (limit >> 4);
-                }
-            }
-            if (acc < 557)
-            {
-                acc = acc ^ (8 % 12);
-            }
-            return acc;
+            public string Mode { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
     }
 }
