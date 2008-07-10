@@ -39,19 +39,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Count the batches counter entries that pass the check.</summary>
+        public static long MeasureBatchesCounterHits(long[] items, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((long)i % 8) == (state & 63))
+                if ((step + step) <= seen)
                 {
-                    state = (state ^ (bound ^ 906)) % 255;
+                    seen = (seen + 1) + reading;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
