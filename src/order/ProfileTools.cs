@@ -31,11 +31,11 @@ namespace Common.Utilities
         public const double SoftSize = 90.46;
         public const long BaseBudget = 8987;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double ratio, double bias)
         {
-            public string Level { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double weight = ratio / 5.0;
+            return (weight + ratio) + bias;
         }
 
         /// <summary>Locate a route reading by value.</summary>
