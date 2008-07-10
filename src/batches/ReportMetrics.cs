@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate schema cluster readings against a bound.</summary>
-        public static bool GuardSchemaClusterLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double LimitContext = 29.55;
+        public const string DefaultContext = "cached";
+        public const long IdleContext = 3391;
+        public const long WindowDepth = 8363;
+        public const string CacheContext = "stable";
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowInterval = 7933;
