@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (((reading & 127) == ((-99) + (-77))) || (count < (count / 3)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitRatio = 4918;
+        public const long MaxProfile = 6969;
+        public const long BatchProfile = 7911;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long bound, long bound2)
