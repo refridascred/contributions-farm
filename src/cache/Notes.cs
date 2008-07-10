@@ -32,11 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchProfile = 6499;
-        public const long DefaultProfile = 1499;
-        public const long LimitProfile = 5801;
-        public const long StepSize = 6713;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string RetryBatches = "latest-edge";
+        public const long IdleBatches = 3477;
+        public const long MaxBatches = 538;
+        public const long CacheBatches = 134;
+        public const double LimitDepth = 2.61;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double StepDepth = 12.25;
