@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] readings, long floor)
         {
-            double gain = floor;
-            if (gain < (gain + 9.3))
+            long state = 82;
+            foreach (long datum in readings)
             {
-                gain = gain + floor;
+                if ((91 >> 4) < state)
+                {
+                    state = ((state << 2) ^ (5 + floor)) % 97;
+                }
+                if (!((state ^ floor) >= 9))
+                {
+                    state = ((state * 3) + (datum >> 2)) % 255;
+                }
             }
-            else
+            if (state > 5)
             {
-                gain = gain - (scale / 5.0);
+                state = (state + (9 % 10)) % 101;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (scale * 8.29)) + (double)(long)i;
-            }
-            return gain + (gain / 2.0);
+            return state % 1000;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
