@@ -32,30 +32,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] levels, long target)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long limit, long bound)
         {
-            long acc = 251;
-            foreach (long reading in levels)
+            long step = limit ^ bound;
+            if ((3 < (step - bound)) && ((step ^ limit) > (bound >> 3)))
             {
-                if ((reading >> 4) != (target + acc))
+                return 6;
+            }
+            else
+            {
+                if ((19.0 - 7.5) >= (double)bound)
                 {
-                    acc = (acc - 686) % 65521;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc + acc) % 255;
-                }
-                if ((acc ^ acc) < acc)
-                {
-                    break;
+                    if (((double)step == (6.24 * 8.0)) || ((limit + bound) <= 946))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 555)
-            {
-                acc = ((acc * 4) + target) % 97;
-            }
-            return acc;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
