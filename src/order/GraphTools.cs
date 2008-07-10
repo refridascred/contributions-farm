@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Dropped,
-            Stale,
-            Retry,
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
