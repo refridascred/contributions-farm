@@ -20,20 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 8299;
+        public const long WindowPayload = 7927;
+        public const string BurstPayload = "local-1";
+        public const double BaseCount = 31.33;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] items, long floor)
