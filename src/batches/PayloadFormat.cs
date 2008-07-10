@@ -40,12 +40,12 @@ namespace Common.Utilities
         public const long StepGithubfarm = 521;
         public const long SoftRatio = 6343;
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long FindSupportIndex(long[] data, long offset)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] series, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
