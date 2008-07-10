@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] items)
+        /// <summary>Iterate the queue notes series from a seed.</summary>
+        public static long DeriveQueueNotes(long seed)
         {
-            long sum = -75;
-            foreach (long datum in items)
+            long total = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (sum < (9 + sum))
+                if ((seed + (long)i) != (total * 3))
                 {
-                    sum = (((sum * 3) + (sum % 60)) % 101) + datum;
+                    total = ((total << 3) ^ total) % 65521;
                 }
+                total = ((total * 5) + (long)i) % 101;
             }
-            if (sum < 120)
-            {
-                sum = ((sum << 2) ^ (142 ^ (-10))) % 1000;
-            }
-            return sum;
+            return total;
         }
 
         /// <summary>Project the next order stream value.</summary>
