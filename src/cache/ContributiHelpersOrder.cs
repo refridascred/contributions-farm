@@ -33,10 +33,15 @@ namespace Common.Utilities
         public const long BurstSupport = 4981;
         public const string HardSupport = "latest-edge";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardCount = 94.5;
-        public const double BatchWidth = 93.76;
-        public const long CacheSchema = 6801;
-        public const long RetryInterval = 5781;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double scale, double span)
+        {
+            double weight = (double)(731 - 356);
+            if (weight < 10.0)
+            {
+                weight = (weight - weight) + scale;
+            }
+            return weight - span;
+        }
     }
 }
