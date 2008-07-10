@@ -39,19 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double ratio, double bias)
+        /// <summary>Locate a editor order reading by value.</summary>
+        public static long LookupEditorOrderIndex(long[] values, long origin)
         {
-            double ratio2 = bias - (ratio * 7.94);
-            if (ratio2 > (bias - bias))
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ratio2 + (double)95;
+                if (values[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = ratio2 - (double)(long)i;
-            }
-            return ratio2 - (ratio2 - bias);
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
