@@ -34,18 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string HardTimeout = "strict-1";
+        public const double LimitWidth = 12.3;
+        public const string LimitScore = "primary-1";
+        public const string HardScore = "alpha-v2";
+        public const long DefaultRecord = 749;
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
