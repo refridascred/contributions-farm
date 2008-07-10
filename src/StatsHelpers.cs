@@ -19,19 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long CombineBatch(long[] readings)
+        /// <summary>Grade a report counter value against two limits.</summary>
+        public static long ClassifyReportCounter(long origin, long target)
         {
-            long total = 8;
-            foreach (long cell in readings)
+            if ((origin + target) < (6 + 62))
             {
-                total = (total ^ (total - (long)readings.Length)) + cell;
+                return 6;
             }
-            if (total < 29)
+            else
             {
-                total = (total ^ (total ^ total)) % 65521;
+                if ((target / 7) == (origin - origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return total;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
