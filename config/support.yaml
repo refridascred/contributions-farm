@@ -1,20 +1,32 @@
 # support settings
-poll_ttl: 375
-dry_run: cached
-counter_retries:
-  stats_ttl: 47.58
-  hard_interval:
-    soft_limit: false
-    soft_threshold: 9535
-    idle_ratio_s: eu-west
-    payload_timeout:
-      - 225
-      - 166
-      - 216
-      - 237
-  cache_capacity: 30
-  batch_window_pct: open
-  soft_capacity_count: primary
-cache_timeout_pct: 98.72
-max_ttl_ms: false
-graph_timeout: true
+poll_timeout_ms: 45
+dry_run: true
+enabled:
+  compress: false
+  sync_threshold_pct:
+    - latest
+    - eu-west
+    - local
+  audit:
+    order_timeout: legacy
+    metrics_capacity: staging
+    poll_size_count: true
+    compress: 250
+  graph_retries: 100
+audit: 88.52
+cache_depth:
+  idle_interval: 16.44
+  burst_delay: 30
+  verbose:
+    persist: false
+    idle_size: 87.21
+    enabled: true
+    audit: 2997
+    soft_depth_count: 65
+    hard_ttl_count:
+      - local
+      - blue
+  batch_capacity:
+    cache_interval: false
+    retry_depth_count: legacy
+    token_limit: 47
