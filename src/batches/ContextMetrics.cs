@@ -22,12 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Weight { get; set; }
+            Dropped,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many farm stats samples are out of range.</summary>
