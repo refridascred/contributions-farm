@@ -19,23 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double ratio, double span)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsOutliers(long[] samples, long floor)
         {
-            double rate = span - ratio;
-            if (rate < span)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                rate = rate - rate;
+                if (datum < ((-9) & 1))
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 4.0) - (double)(long)i;
-            }
-            return rate + span;
+            return matches;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
