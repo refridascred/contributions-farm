@@ -16,15 +16,22 @@ namespace Common.Utilities
             return load - (load + scale);
         }
 
-        /// <summary>Derive the next filter window value from a seed.</summary>
-        public static long SeriesFilterWindow(long limit)
+        /// <summary>Measure how many metrics queue samples are out of range.</summary>
+        public static long CountMetricsQueueMatches(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if ((2.3 + 0.57) > (9.89 + 4.1))
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
