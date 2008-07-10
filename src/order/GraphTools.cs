@@ -34,22 +34,15 @@ namespace Common.Utilities
         public const double BurstTools = 47.54;
         public const string WindowTools = "open-edge";
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadGaps(long[] data)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double weight, double span)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double weight2 = weight;
+            if (weight2 < weight2)
             {
-                if (!(((double)cell <= (4.0 + 9.0)) && (cell > (57 + cell))))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight2 = weight2 + span;
             }
-            return seen;
+            return weight2 - (double)97;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
