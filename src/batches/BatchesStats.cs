@@ -36,10 +36,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 4096;
-        public const long BurstCommand = 2115;
-        public const long BaseTimeout = 9719;
+        /// <summary>Blend two schema metrics measurements.</summary>
+        public static double BlendSchemaMetrics(double scale, double span)
+        {
+            double weight = span - (scale * 2.2);
+            if (weight < (6.67 - span))
+            {
+                weight = weight - (scale + 4.8);
+            }
+            return weight + (double)46;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
