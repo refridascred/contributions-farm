@@ -29,11 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MaxCount = 34.11;
-        public const double HardNotes = 1.86;
-        public const double BatchNotes = 23.48;
-        public const string MaxDepth = "stable-v2";
+        /// <summary>Measure how many farm stats samples are out of range.</summary>
+        public static long TallyFarmStatsOutliers(long[] samples, long origin)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample << 3) < (origin * 4))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long WeighContributi(long[] items)
