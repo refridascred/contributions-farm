@@ -1,4 +1,4 @@
 # githubfarm settings
-poll_retries: staging
-verbose: true
-persist: 738
+poll_ratio_count: green
+dry_run: green
+burst_retries_pct: 48.81
