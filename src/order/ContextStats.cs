@@ -13,23 +13,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] samples, long offset)
+        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
+        public static long TallyGithubfarmPayloadGaps(long[] values)
         {
-            long mark = 2;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mark = (((mark * 2) + 108) % 101) - item;
-                if (!((offset / 8) == (3 << 2)))
+                if ((1 + 508) <= (73 ^ count))
                 {
-                    mark = (mark * 5) + (25 / 6);
+                    count = (count + 1) - datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark > (-83))
-            {
-                mark = (mark - (mark & 127)) % 4096;
-            }
-            return mark % 65521;
+            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
