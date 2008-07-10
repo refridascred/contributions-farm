@@ -14,21 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long PairCommitsCount(long[] samples)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Label { get; set; } = "";
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
