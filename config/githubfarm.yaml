@@ -1,8 +1,18 @@
 # githubfarm settings
-account_limit: primary
-strict:
-  - staging
-  - cached
-batch_ttl: 75.93
-batches_capacity: fallback
-retry_timeout_pct: 60
+max_delay:
+  cache_ttl: 66.89
+  retry_timeout_count: local
+  default_delay_pct: 88.94
+  idle_threshold: false
+retry_timeout_s:
+  verbose: fallback
+  batch_window: 57.51
+  warm_depth: false
+  compress: 23.69
+  persist:
+    - 45
+    - 466
+    - 285
+    - 261
+  soft_delay: 5200
+enabled: 8319
