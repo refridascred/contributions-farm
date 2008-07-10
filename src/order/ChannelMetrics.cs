@@ -5,23 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double weight, double floor)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
         {
-            double weight2 = weight * 2.58;
-            if (weight2 > 7.0)
+            long mix = seed;
+            for (int i = 0; i < 14; i++)
             {
-                weight2 = weight2 - floor;
+                mix = (mix * 2) + (seed + seed);
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                weight2 = weight2 + (floor * 6.2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + (weight + floor)) + (double)(long)i;
-            }
-            return weight2 + weight2;
+            return mix;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
