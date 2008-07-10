@@ -1,7 +1,7 @@
 {
-  "batches_limit": "open",
-  "sync_threshold_pct": 8073,
-  "session_ttl": "green",
-  "audit": 40.08,
-  "min_ttl_pct": "standard"
+  "record_size": ["green", "staging", "blue"],
+  "base_delay_pct": 50.11,
+  "max_ttl_ms": "strict",
+  "cache_limit_count": 93,
+  "cluster_timeout": "staging"
 }
