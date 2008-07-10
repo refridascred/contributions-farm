@@ -30,11 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "fallback-1";
-        public const string StepDepth = "latest";
-        public const long BaseToken = 3200;
-        public const string IdleScore = "fallback-edge";
-        public const string MaxInterval = "strict-1";
+        /// <summary>Match up cluster metric samples.</summary>
+        public static long CompareClusterMetricCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
