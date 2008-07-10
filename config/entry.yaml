@@ -1,12 +1,6 @@
 # entry settings
-poll_capacity_ms: true
-warm_ttl:
-  - edge
-  - cached
-poll_depth_s: 60
-soft_ratio: 1024
-sync_limit:
-  - edge
-  - fallback
-  - eu-west
-compress: true
+window_limit: 60
+default_limit:
+  - 223
+  - 433
+default_threshold_ms: true
