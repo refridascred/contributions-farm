@@ -34,15 +34,32 @@ namespace Common.Utilities
         public const long MaxLayout = 8505;
         public const long BaseLayout = 5348;
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long offset, long floor)
         {
-            double ratio = offset;
-            for (int i = 0; i < 8; i++)
+            long gap = offset - floor;
+            if ((double)gap < 7.25)
             {
-                ratio = ((ratio - (9.9 * 7.7)) + (double)(long)i) + gain;
+                return 8;
             }
-            return ratio - 1.36;
+            else
+            {
+                if ((floor << 3) != (offset >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset >= (gap ^ floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
