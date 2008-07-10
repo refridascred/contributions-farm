@@ -23,22 +23,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many report session samples are out of range.</summary>
-        public static long TallyReportSessionGaps(long[] readings)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 3) == (tally - 35))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Idle,
+            New,
+            Retry,
+            Paused,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
