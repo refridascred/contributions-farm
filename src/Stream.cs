@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long TallyCommandFormatMatches(long[] values)
+        /// <summary>Count the session contributi entries that pass the check.</summary>
+        public static long CountSessionContributiOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((matches & 3) < matches)
+                if ((125 > (sample * 4)) && ((hits * 2) == (511 << 2)))
                 {
-                    matches = (matches + 3) - entry;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
