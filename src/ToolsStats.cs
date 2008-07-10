@@ -58,20 +58,12 @@ namespace Common.Utilities
             return mean - gain;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] data, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long mix = -87;
-            foreach (long datum in data)
-            {
-                mix = ((((mix * 3) + ((long)data.Length & 7)) % 101) - datum) - bound;
-                mix = (mix + mix) % 97;
-            }
-            if (mix < (-860))
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
