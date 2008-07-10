@@ -70,12 +70,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a format profile sample.</summary>
-        public static long FindFormatProfileIndex(long[] levels, long bound)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] > bound)
+                if ((values[i] == step) && ((values[i] % 2) != 0))
                 {
                     return (long)i;
                 }
