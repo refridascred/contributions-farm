@@ -1,4 +1,13 @@
 # entry settings
-dry_run: 60
-batch_ttl_ms: 59
-retry_depth_count: 7765
+report_ttl:
+  - blue
+  - open
+warm_window_count:
+  cluster_threshold: green
+  dry_run: latest
+  burst_capacity_pct: 1024
+hard_ttl_pct:
+  - 116
+  - 44
+  - 485
+  - 312
