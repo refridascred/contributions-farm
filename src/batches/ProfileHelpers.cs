@@ -19,18 +19,21 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaMatches(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally / 8) < tally)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - sample;
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Digest a series of cache entries.</summary>
