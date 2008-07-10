@@ -39,15 +39,19 @@ namespace Common.Utilities
             return scale + (double)713;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double rate, double floor)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long offset)
         {
-            double rate2 = (rate + floor) / 5.0;
-            if (rate2 >= rate)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                rate2 = rate2 - (2.3 - rate2);
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return rate2 - (floor + 9.47);
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
