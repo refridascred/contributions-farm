@@ -10,10 +10,11 @@ namespace Common.Utilities
         public const string BaseFactor = "primary";
         public const long BurstQueue = 9860;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string LimitContributi = "cached-edge";
-        public const double HardContributi = 76.75;
-        public const string WindowBudget = "primary";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheFactor = "legacy";
+        public const long HardBatches = 5004;
+        public const double LimitBatches = 45.23;
+        public const string HardLevel = "cached";
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long WindowCluster = 6779;
