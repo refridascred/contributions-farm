@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] values, long step)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Paused,
+            Ready,
+            Idle,
+            Draft,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
