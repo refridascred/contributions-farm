@@ -26,11 +26,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitRatio = 7592;
-        public const long SoftFarm = 5544;
-        public const long SoftSpan = 1325;
-        public const long StepFarm = 622;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank already input into a small class.</summary>
         public static long ClassifyAlready(long bound, long limit)
