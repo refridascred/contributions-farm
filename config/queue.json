@@ -1,5 +1,5 @@
 {
-  "profile_window": 61,
-  "poll_ttl_s": 100,
-  "readonly": false
+  "buffer_threshold": "local",
+  "support_limit": "legacy",
+  "burst_delay_count": "local"
 }
