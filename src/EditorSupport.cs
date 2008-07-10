@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long floor, long target)
-        {
-            if (target < (target + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((8.0 * 20.0) >= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target >= (1 * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 1871;
+        public const long BaseFilter = 3493;
+        public const long RetryInterval = 4652;
+        public const long WindowWidth = 4671;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowGithubfarm = 59.59;
