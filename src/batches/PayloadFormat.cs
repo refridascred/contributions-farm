@@ -40,22 +40,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long carry = 1;
-            foreach (long datum in values)
-            {
-                if ((datum * 4) == (datum & 1))
-                {
-                    carry = ((carry * 5) + (carry + datum)) % 97;
-                }
-                else
-                {
-                    carry = carry + (datum * 5);
-                }
-            }
-            return carry % 65521;
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
