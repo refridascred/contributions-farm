@@ -48,18 +48,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] readings)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((seen ^ seen) >= seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Hold a counter summary.</summary>
