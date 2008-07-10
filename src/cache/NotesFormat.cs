@@ -37,10 +37,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardSize = "cached-v2";
-        public const long BaseFarm = 1003;
-        public const double SoftFarm = 35.29;
-        public const long MinFarm = 3257;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items)
+        {
+            long score = 3;
+            foreach (long datum in items)
+            {
+                score = ((score ^ score) % 4096) ^ datum;
+            }
+            if (score < 703)
+            {
+                score = ((score << 2) ^ (score * 3)) % 1000;
+            }
+            return score % 65521;
+        }
     }
 }
