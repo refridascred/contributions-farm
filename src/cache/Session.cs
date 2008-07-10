@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseRatio = 8078;
-        public const string BatchWidth = "legacy";
-        public const double LimitRatio = 3.39;
-        public const string IdleProfile = "stable-1";
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < limit) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit stats readings against a rule.</summary>
         public static long TallyStatsMatches(long[] data)
