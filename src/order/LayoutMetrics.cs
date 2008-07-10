@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((double)sample < 15.0)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
