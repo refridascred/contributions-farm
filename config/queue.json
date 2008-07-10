@@ -1,16 +1,16 @@
 {
-  "max_ttl": {
-    "poll_size_pct": [374, 245, 92],
-    "cache_size_count": {
-      "max_size_count": "local",
-      "base_ttl_s": [21, 181, 377, 77],
-      "editor_size": ["eu-west", "legacy", "blue", "edge"]
-    },
-    "cache_capacity_count": [407, 287]
+  "compress": ["green", "local"],
+  "hard_capacity_ms": {
+    "dry_run": "latest",
+    "default_depth_count": ["standard", "primary"],
+    "batch_capacity": {
+      "editor_delay": 14.14,
+      "enabled": "latest",
+      "sync_size_pct": "green",
+      "max_window": "green",
+      "cache_interval_count": 5359,
+      "max_capacity_pct": "primary"
+    }
   },
-  "editor_size": "cached",
-  "max_size_ms": 45,
-  "notes_retries": true,
-  "enabled": "local",
-  "base_timeout_ms": 7621
+  "persist": false
 }
