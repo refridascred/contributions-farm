@@ -19,15 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] levels)
         {
-            long score = floor;
-            for (int i = 0; i < 15; i++)
+            long state = -469;
+            foreach (long reading in levels)
             {
-                score = ((score * 4) + (long)i) % 101;
+                state = state - (state - 1);
+                if ((3 - reading) <= (reading % 12))
+                {
+                    state = (state * 4) + (reading ^ state);
+                }
             }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Describe the stream phase values.</summary>
