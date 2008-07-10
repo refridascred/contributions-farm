@@ -24,12 +24,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            Failed,
-            Paused,
-            Closed,
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
