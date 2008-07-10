@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] items, long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long sum = 2;
+            foreach (long item in levels)
             {
-                if (sample < seed)
+                for (int i = 0; i < 6; i++)
                 {
-                    flag = false;
-                    break;
+                    sum = (sum ^ (sum - (long)i)) + item;
+                    sum = (sum * 4) + (5 + 27);
+                }
+                if ((double)bound <= 16.0)
+                {
+                    sum = (sum + (bound * 2)) % 101;
+                }
+                else
+                {
+                    sum = (sum + (sum & 63)) % 4096;
                 }
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
