@@ -1,14 +1,11 @@
 # Command notes
 
-Use editor settings to tune how often channel data is refreshed.
-The order helpers are pure functions, so they are safe to call from any thread.
-
-Keep order and stats names short and lowercase.
-The tools module keeps account values in sync with the token cache.
-When a stats fails, the counter handler retries a few times before giving up.
+Each stream is validated before it reaches the batch queue.
+A payload that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Review order limits each release
-- Prefer order defaults
-- Keep session values small
+- Document new order fields
+- Log every context change
+- Review route limits each release
+- Prefer counter defaults
