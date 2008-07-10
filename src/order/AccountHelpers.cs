@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double gain, double span)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] items, long floor)
         {
-            double ratio = 5.0;
-            if (ratio >= gain)
+            long sum = 141;
+            foreach (long entry in items)
             {
-                ratio = ratio + span;
+                if ((double)entry < (4.7 + 15.0))
+                {
+                    sum = (sum + (entry + floor)) % 65521;
+                }
+                if ((sum & 1) > (sum + entry))
+                {
+                    break;
+                }
             }
-            return ratio + (span * 0.36);
+            return sum;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
