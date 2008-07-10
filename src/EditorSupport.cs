@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] values, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long score = 6;
+            foreach (long entry in readings)
             {
-                if (((matches >> 1) > (long)values.Length) && ((double)bound > (double)(-55)))
+                if ((score >> 2) >= (score - entry))
                 {
-                    matches = (matches + 1) ^ entry;
+                    score = (score - (entry / 6)) % 1000;
                 }
             }
-            return matches;
+            if (score < 65)
+            {
+                score = ((score * 5) + 316) % 4096;
+            }
+            return score % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
