@@ -65,18 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] values, long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (!((54 % 24) >= count))
+                if (entry <= step)
                 {
-                    count = (count + 1) + reading;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
