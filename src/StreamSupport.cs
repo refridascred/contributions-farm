@@ -27,22 +27,17 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many metrics queue samples are out of range.</summary>
-        public static long CountMetricsQueueMatches(long[] samples)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((2.3 + 0.57) > (9.89 + 4.1))
+                if (readings[i] < target)
                 {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a tools info.</summary>
