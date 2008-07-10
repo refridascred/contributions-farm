@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Pending,
-            Stale,
-            Locked,
+            public double Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
