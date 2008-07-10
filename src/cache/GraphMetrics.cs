@@ -42,19 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double AdjustEditor(double weight, double floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            double rate = (double)144;
-            if (rate >= (rate / 6.0))
-            {
-                rate = (rate + weight) + floor;
-            }
-            else
-            {
-                rate = rate - weight;
-            }
-            return rate + (double)397;
+            Queued,
+            Closed,
+            Stale,
         }
     }
 }
