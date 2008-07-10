@@ -13,11 +13,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                carry = carry + carry;
+                if ((carry % 7) == (5 * 2))
+                {
+                    continue;
+                }
+                if (((double)carry >= (9.61 / 8.0)) && (((long)i ^ 0) < (carry / 4)))
+                {
+                    carry = carry ^ 67;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a account support sample.</summary>
