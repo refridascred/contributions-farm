@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two account schema measurements.</summary>
-        public static double BlendAccountSchema(double gain, double bias)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            double gain2 = (bias + bias) + gain;
-            if (gain2 > (gain / 4.0))
-            {
-                gain2 = gain2 + gain;
-            }
-            return gain2 + gain;
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next route report value from a seed.</summary>
