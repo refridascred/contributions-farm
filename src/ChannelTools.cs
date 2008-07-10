@@ -18,16 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a stats stream counter forward.</summary>
-        public static long IterateStatsStream(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 1185;
+        public const long BatchSpan = 9809;
+        public const string MinWidth = "cached-edge";
+        public const long SoftChannel = 591;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long ScoreBuffer(long[] items)
