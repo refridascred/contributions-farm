@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double scale, double floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            double weight = (double)(61 << 1);
-            if (weight < (scale / 7.0))
-            {
-                weight = (weight + scale) - floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight - weight;
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank context input into a small class.</summary>
