@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long target, long seed)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            if (((-899) * 3) <= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (target <= seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
