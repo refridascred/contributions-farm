@@ -63,18 +63,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample < (13.0 - 0.1))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheCount = 78.63;
+        public const string BurstWindow = "primary";
+        public const double BaseScore = 50.38;
+        public const string IdleScore = "open-edge";
     }
 }
