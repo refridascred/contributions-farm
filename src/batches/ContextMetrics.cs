@@ -13,23 +13,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] samples, long origin)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] levels, long origin)
         {
-            long score = 42;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                score = (score ^ (value / 9)) % 65521;
-                if ((score ^ value) <= score)
+                if (datum <= origin)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (score > 38)
-            {
-                score = score ^ origin;
-            }
-            return score % 97;
+            return ready;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
