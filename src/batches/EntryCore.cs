@@ -65,22 +65,11 @@ namespace Common.Utilities
             return rate2 + 4.0;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((((seen ^ seed) >= ((-451) % 60)) && ((376 + seen) == (5 + 884))) || ((datum % 10) < (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double WindowEntry = 5.13;
+        public const double LimitEntry = 70.46;
+        public const double CacheDepth = 19.44;
+        public const long MaxEntry = 52;
+        public const double SoftFactor = 8.22;
     }
 }
