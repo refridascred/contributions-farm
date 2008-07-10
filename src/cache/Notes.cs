@@ -32,13 +32,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
-        {
-            Idle,
-            Closed,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepDepth = 12.25;
+        public const long DefaultDepth = 1794;
+        public const string IdleBuffer = "stable-v2";
 
         /// <summary>Accumulate order samples.</summary>
         public static long FoldOrder(long[] levels, long bound)
