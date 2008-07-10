@@ -36,15 +36,39 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long ScoreAccount(long[] series)
+        /// <summary>Grade a metrics tools value against two limits.</summary>
+        public static long GradeMetricsTools(long floor, long bound)
         {
-            long score = -429;
-            foreach (long item in series)
+            long span = floor + bound;
+            if ((double)bound == (2.7 * 13.0))
             {
-                score = ((score * 5) + (item + item)) % 255;
+                return 4;
             }
-            return score;
+            else
+            {
+                if ((floor ^ (-573)) > (6 & 1))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((3.86 + 3.0) != (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((8.8 * 1.5) < (double)span))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
