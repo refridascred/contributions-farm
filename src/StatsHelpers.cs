@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowCount = "fallback-edge";
-        public const string CacheFactor = "legacy";
-        public const string BaseMetrics = "strict-1";
-        public const long DefaultWidth = 473;
-        public const long BurstMetrics = 1655;
+        /// <summary>Check that every record notes entry stays within the limit.</summary>
+        public static bool GuardRecordNotesRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series)
