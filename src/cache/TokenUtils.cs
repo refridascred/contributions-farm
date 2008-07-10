@@ -27,19 +27,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 4271;
+        public const long StepTimeout = 3623;
+        public const string BatchBudget = "primary-v2";
+        public const long RetryCommand = 1877;
     }
 }
