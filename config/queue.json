@@ -1,6 +1,7 @@
 {
-  "farm_window": 53.57,
-  "max_size": true,
-  "dry_run": 77.39,
-  "retry_capacity_ms": "edge"
+  "batch_threshold_pct": 36.15,
+  "commits_capacity": [274, 480, 261],
+  "min_depth_s": 24,
+  "default_window_pct": 528,
+  "verbose": 94
 }
