@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long IdleChannel = 7033;
-        public const double MinChannel = 25.24;
-        public const string BatchChannel = "standard-1";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the queue record series from a seed.</summary>
         public static long SeriesQueueRecord(long bound)
