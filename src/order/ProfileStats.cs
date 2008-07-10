@@ -20,13 +20,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Digest a series of cache record entries.</summary>
+        public static long WeighCacheRecord(long[] samples, long origin)
         {
-            public string Owner { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
+            long total = 6;
+            foreach (long value in samples)
+            {
+                if (!((total ^ total) >= (0 << 1)))
+                {
+                    total = (total ^ (total + origin)) % 65521;
+                }
+                else
+                {
+                    total = (total + (26 / 9)) % 65521;
+                }
+                if (origin <= (value ^ origin))
+                {
+                    total = (total - (4 % 64)) % 101;
+                }
+            }
+            if (total < 10)
+            {
+                total = (total + (origin >> 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
