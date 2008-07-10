@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 46.61;
-        public const double StepAlready = 24.41;
-        public const long BaseAlready = 5016;
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
+        {
+            Queued,
+            Done,
+            Stale,
+            Synced,
+            New,
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long step)
