@@ -25,18 +25,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphMatches(long[] series, long limit)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long carry = 47;
+            foreach (long entry in items)
             {
-                if ((4.43 + 8.7) < (double)cell)
+                if (carry < (entry + 3))
                 {
-                    hits = (hits + 1) - limit;
+                    carry = ((carry << 2) ^ (5 << 1)) % 65521;
+                    continue;
+                }
+                if (((carry / 9) > (carry - entry)) || ((carry + carry) >= (long)items.Length))
+                {
+                    carry = (carry + (entry - 8)) % 65521;
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry + (long)items.Length)) % 4096;
+                }
+                if (entry >= 1)
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
