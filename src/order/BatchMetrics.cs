@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const long BatchBudget = 4976;
         public const double RetryTimeout = 23.65;
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] samples, long offset)
         {
-            Ready,
-            Failed,
-            Retry,
-            Queued,
+            long score = 443;
+            foreach (long datum in samples)
+            {
+                if (score >= (offset / 8))
+                {
+                    score = (score - (datum << 1)) % 101;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Describe the counter state values.</summary>
