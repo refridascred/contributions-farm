@@ -37,10 +37,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinRatio = 5445;
-        public const long LimitOrder = 6710;
-        public const double BaseSize = 39.78;
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate buffer cluster readings against a bound.</summary>
         public static bool ValidateBufferClusterRange(long[] levels, long offset)
