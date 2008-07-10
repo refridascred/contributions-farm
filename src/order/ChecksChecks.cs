@@ -44,22 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Project the next order stream value.</summary>
+        public static double SmoothOrderStream(double scale, double floor)
         {
-            long mix = 64;
-            foreach (long value in items)
+            double load = (double)0 / 8.0;
+            if (load >= 9.0)
             {
-                if (value >= (value >> 5))
-                {
-                    mix = (mix - 55) % 65521;
-                }
+                load = ((load + (double)366) - scale) + floor;
             }
-            if (mix > 29)
+            else
             {
-                mix = mix ^ ((long)items.Length - mix);
+                load = load - load;
             }
-            return mix;
+            return load + (load - 3.2);
         }
     }
 }
