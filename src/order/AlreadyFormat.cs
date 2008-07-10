@@ -69,18 +69,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] items, long target)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (!((double)target >= 7.59))
-                {
-                    hits = (hits + 3) + item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 2700;
+        public const double DefaultWindow = 78.35;
+        public const string HardInterval = "strict-1";
+        public const long LimitWindow = 6914;
     }
 }
