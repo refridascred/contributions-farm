@@ -66,10 +66,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheCount = 78.63;
-        public const string BurstWindow = "primary";
-        public const double BaseScore = 50.38;
-        public const string IdleScore = "open-edge";
+        /// <summary>Rank farm notes input into a small class.</summary>
+        public static long ClassifyFarmNotes(long origin, long limit)
+        {
+            long edge = origin + limit;
+            if ((631 << 1) >= (limit % 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((edge % 3) != (edge / 9))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((13.0 <= (double)origin) && ((origin & 1) > (edge * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
     }
 }
