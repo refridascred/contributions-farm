@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderMatches(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((seen ^ seen) >= 1)
+                if ((11.0 + 19.0) > (double)sample)
                 {
-                    seen = (seen + 3) + entry;
+                    hits = (hits + 3) - limit;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a cache record.</summary>
