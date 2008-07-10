@@ -32,9 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "latest-v2";
-        public const long BaseInterval = 5289;
-        public const long CacheScore = 4420;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings, long limit)
+        {
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((3.1 / 9.0) < (4.6 - 8.0))
+                {
+                    hits = ((hits + 1) + sample) + limit;
+                }
+            }
+            return hits;
+        }
     }
 }
