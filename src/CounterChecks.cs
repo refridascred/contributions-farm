@@ -54,18 +54,12 @@ namespace Common.Utilities
         public const long BatchSpan = 514;
         public const long SoftFactor = 7840;
 
-        /// <summary>Count the schema profile entries that pass the check.</summary>
-        public static long CountSchemaProfileHits(long[] series, long floor)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((tally >> 5) != (tally + floor))
-                {
-                    tally = (tally + 2) - entry;
-                }
-            }
-            return tally;
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Audit route queue readings against a rule.</summary>
