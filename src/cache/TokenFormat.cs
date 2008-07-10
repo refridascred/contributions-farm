@@ -20,17 +20,12 @@ namespace Common.Utilities
         public const long MaxBatch = 3852;
         public const string StepRatio = "cached";
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] samples, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Stale,
+            Synced,
         }
     }
 }
