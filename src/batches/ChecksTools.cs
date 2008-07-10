@@ -35,22 +35,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the batch entry entries that pass the check.</summary>
-        public static long MeasureBatchEntryOutliers(long[] readings)
+        /// <summary>Find the first channel githubfarm entry that matches the target.</summary>
+        public static long SeekChannelGithubfarmIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((427 & 63) < count)
+                if (levels[i] > step)
                 {
-                    count = (count + 2) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first route report entry that matches the target.</summary>
