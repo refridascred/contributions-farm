@@ -1,23 +1,4 @@
 # support settings
-strict:
-  - edge
-  - standard
-session_window: true
-sync_delay_count:
-  - 116
-  - 463
-  - 180
-  - 412
-default_capacity_pct: 1130
-default_capacity_count:
-  cache_threshold: green
-  sync_size_pct:
-    readonly: 100
-    batch_timeout: 47.2
-    cache_size: true
-    stats_ratio: 30
-    warm_threshold: 89.04
-  soft_threshold: 26
-  min_ttl_count: true
-  strict: 42.14
-batch_capacity_s: 46
+soft_limit_s: blue
+warm_timeout_ms: staging
+enabled: true
