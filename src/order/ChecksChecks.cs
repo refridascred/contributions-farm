@@ -13,31 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long target)
+        /// <summary>Measure how many farm entry samples are out of range.</summary>
+        public static long TallyFarmEntryMatches(long[] levels)
         {
-            if (seed >= target)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)target <= 2.9) || ((seed - 30) >= (-22)))
+                if ((reading << 3) >= (reading - reading))
                 {
-                    return 6;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((7.0 - 1.8) <= (double)target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Project the next order stream value.</summary>
