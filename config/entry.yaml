@@ -1,17 +1,6 @@
 # entry settings
-soft_depth_count: true
-batch_retries_pct:
-  batch_window: 6731
-  burst_ratio_ms: 48.39
-  hard_ttl_s: 46.33
-  audit:
-    - 404
-    - 45
-    - 228
-    - 273
-  idle_depth: 74
-  buffer_timeout:
-    sync_retries: fallback
-    command_delay: 428
-    enabled: 98.65
-audit: 98
+hard_window_s: 43.51
+burst_window_ms: local
+verbose: strict
+min_window_ms: false
+default_limit_count: 98.34
