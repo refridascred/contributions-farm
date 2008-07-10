@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double StepBudget = 78.49;
-        public const long BurstPayload = 6165;
-        public const long DefaultBudget = 3316;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] values)
+        {
+            long sum = 277;
+            foreach (long item in values)
+            {
+                sum = (sum ^ (item % 97)) % 255;
+            }
+            return sum;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long SeriesCluster(long origin)
