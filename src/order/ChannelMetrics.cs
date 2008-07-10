@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of farm layout readings.</summary>
-        public static long OverlapFarmLayoutCount(long[] values)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = weight * 2.58;
+            if (weight2 > 7.0)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = weight2 - floor;
             }
-            return matches;
+            else
+            {
+                weight2 = weight2 + (floor * 6.2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (weight + floor)) + (double)(long)i;
+            }
+            return weight2 + weight2;
         }
 
         /// <summary>Accumulate token samples.</summary>
