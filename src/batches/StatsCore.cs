@@ -41,22 +41,12 @@ namespace Common.Utilities
             return gain + (double)22;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels, long bound)
-        {
-            long result = 5;
-            foreach (long sample in levels)
-            {
-                result = result ^ sample;
-                result = ((result * 5) + sample) % 4096;
-                result = ((result * 4) + (66 - bound)) % 101;
-            }
-            if (result < 637)
-            {
-                result = (result - (bound - bound)) % 1000;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleRecord = 4657;
+        public const string HardRecord = "primary";
+        public const long BatchRecord = 1624;
+        public const long BurstLevel = 3061;
+        public const long WindowRecord = 2102;
 
         /// <summary>Compare every pair of cache batch readings.</summary>
         public static long MatchCacheBatchCount(long[] items)
