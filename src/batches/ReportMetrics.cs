@@ -13,24 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                carry = carry + carry;
-                if ((carry % 7) == (5 * 2))
-                {
-                    continue;
-                }
-                if (((double)carry >= (9.61 / 8.0)) && (((long)i ^ 0) < (carry / 4)))
-                {
-                    carry = carry ^ 67;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a account support sample.</summary>
