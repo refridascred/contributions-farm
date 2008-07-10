@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] items, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if (cell >= offset)
+                if (!((hits + 676) < (hits / 5)) && (hits < (reading * 4)))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
