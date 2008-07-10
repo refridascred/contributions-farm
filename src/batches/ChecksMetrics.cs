@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long MaxInterval = 3118;
         public const long MinBudget = 47;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            Draft,
-            Dropped,
+            Failed,
             Active,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
