@@ -30,13 +30,30 @@ namespace Common.Utilities
         public const string LimitProfile = "strict";
         public const long BurstProfile = 7776;
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
+            long score = 4;
+            foreach (long entry in samples)
+            {
+                if ((12.0 - 1.31) == (double)seed)
+                {
+                    score = score ^ (seed + entry);
+                }
+                else
+                {
+                    score = (score << 2) ^ (entry & 1);
+                }
+                if ((0.41 - 2.65) > (double)seed)
+                {
+                    break;
+                }
+            }
+            if (score < 6)
+            {
+                score = score - (3 ^ (long)samples.Length);
+            }
+            return score % 1000;
         }
     }
 }
