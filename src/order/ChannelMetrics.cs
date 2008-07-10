@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] samples, long offset)
+        /// <summary>Compare every pair of farm layout readings.</summary>
+        public static long OverlapFarmLayoutCount(long[] values)
         {
-            long total = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((offset / 9) < (total + offset))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    continue;
-                }
-                if ((datum ^ offset) > (total << 2))
-                {
-                    total = (total ^ (total + (long)samples.Length)) % 1000;
+                    if ((values[i] ^ values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Accumulate token samples.</summary>
