@@ -20,29 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next stats context value from a seed.</summary>
-        public static long RollStatsContext(long origin)
+        /// <summary>Count the batches checks entries that pass the check.</summary>
+        public static long MeasureBatchesChecksGaps(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (sum <= ((long)i - sum))
+                if (658 >= (datum - 2))
                 {
-                    sum = ((sum << 3) ^ sum) % 4096;
-                    sum = (sum << 3) ^ (origin * 2);
+                    seen = seen + 3;
                 }
                 else
                 {
-                    sum = sum - (sum + (long)i);
-                    sum = (sum << 2) ^ (sum >> 4);
+                    seen = seen - 1;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    sum = ((sum << 2) ^ (long)i) + (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Describe the window status values.</summary>
