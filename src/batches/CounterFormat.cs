@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metric record samples are out of range.</summary>
-        public static long CountMetricRecordMatches(long[] levels)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches ^ 22) <= (842 - 932))
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
