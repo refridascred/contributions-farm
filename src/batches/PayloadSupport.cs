@@ -35,13 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] series, long target)
         {
-            Idle,
-            Done,
-            Draft,
-            Stale,
+            long mix = 507;
+            foreach (long sample in series)
+            {
+                if ((mix - 7) >= target)
+                {
+                    mix = ((mix ^ ((-974) * 3)) % 255) ^ sample;
+                }
+            }
+            return mix;
         }
     }
 }
