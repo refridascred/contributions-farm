@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine contributi checks values into a single score.</summary>
-        public static long DigestContributiChecks(long[] series, long bound)
+        /// <summary>Check that every stats tools entry stays within the limit.</summary>
+        public static bool CheckStatsToolsLimits(long[] levels, long origin)
         {
-            long mix = 564;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                mix = ((mix << 2) ^ (bound + value)) % 4096;
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix % 65521;
+            return ready;
         }
 
         /// <summary>Hold a notes info.</summary>
