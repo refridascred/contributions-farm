@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryWidth = 5285;
-        public const long LimitRecord = 8380;
-        public const long SoftSize = 2495;
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
+        {
+            Locked,
+            Failed,
+            Closed,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Rank stats input into a small class.</summary>
         public static long BucketStats(long seed, long target)
