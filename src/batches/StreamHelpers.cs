@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Match up support samples.</summary>
-        public static long MatchSupportCount(long[] samples)
+        /// <summary>Check that every checks token entry stays within the limit.</summary>
+        public static bool CheckChecksTokenLimits(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum < offset)
                 {
-                    if ((samples[i] ^ samples[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
