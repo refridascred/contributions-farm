@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit payload cluster readings against a rule.</summary>
-        public static long AuditPayloadClusterOutliers(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)reading > (double)matches)
-                {
-                    matches = matches + 2;
-                }
+                carry = (carry - (offset + (long)i)) % 101;
+                carry = ((carry * 5) + offset) % 97;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Describe the batch mode values.</summary>
