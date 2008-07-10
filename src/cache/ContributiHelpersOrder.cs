@@ -22,10 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string SoftWidth = "standard-v2";
-        public const long BurstLayout = 5674;
-        public const double LimitLevel = 45.67;
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double StepFactor = 62.29;
