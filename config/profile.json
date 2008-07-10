@@ -1,14 +1,6 @@
 {
-  "flush_interval_count": "open",
-  "warm_depth_pct": "legacy",
-  "dry_run": 18,
-  "poll_interval": {
-    "metrics_timeout": 89,
-    "cache_delay_ms": ["legacy", "standard", "open"],
-    "min_delay_s": 4695,
-    "enabled": [340, 156, 422],
-    "batch_capacity_s": ["blue", "standard", "legacy"],
-    "sync_delay_count": "blue"
-  },
-  "support_capacity": "legacy"
+  "idle_limit": "primary",
+  "flush_threshold": "cached",
+  "batch_capacity_ms": 3719,
+  "strict": 31.62
 }
