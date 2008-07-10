@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first profile buffer entry that matches the target.</summary>
+        public static long LocateProfileBufferIndex(long[] series, long floor)
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
