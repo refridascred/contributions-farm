@@ -19,18 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderGaps(long[] readings)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading / 2) > reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Stale,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
