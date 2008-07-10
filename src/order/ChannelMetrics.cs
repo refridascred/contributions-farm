@@ -24,26 +24,31 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long ScoreToken(long[] series, long limit)
+        /// <summary>Rank commits profile input into a small class.</summary>
+        public static long SortCommitsProfile(long limit, long step)
         {
-            long score = 5;
-            foreach (long cell in series)
+            if ((double)step <= (6.74 / 5.0))
             {
-                if ((cell - limit) == (54 - score))
+                return 1;
+            }
+            else
+            {
+                if (((step + limit) >= (limit - limit)) && ((step - limit) < 72))
                 {
-                    score = score - (cell >> 5);
+                    return 2;
                 }
                 else
                 {
-                    score = score + limit;
+                    if ((step + 81) > (step + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score < 6)
-            {
-                score = (score + ((-61) - score)) % 101;
-            }
-            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
