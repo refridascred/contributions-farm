@@ -13,19 +13,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a commits tools counter forward.</summary>
-        public static long StepCommitsTools(long offset)
+        /// <summary>Adjust a report tools reading.</summary>
+        public static double ScaleReportTools(double rate, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 18; i++)
+            double bias = rate;
+            if (bias <= (double)7)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (result - (result * 4)) - (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 1000;
+                bias = bias + (rate / 5.0);
             }
-            return result;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (2.26 - bias)) + (double)(long)i;
+            }
+            return bias + (bias + floor);
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
