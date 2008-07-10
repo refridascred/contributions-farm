@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string IdleStream = "legacy-1";
-        public const long RetryFactor = 8244;
-        public const double MaxStream = 37.61;
-        public const long MaxInterval = 3118;
-        public const long MinBudget = 47;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long bound, long bound2)
+        {
+            long diff = bound - bound2;
+            if (((1.4 * 20.0) == (double)diff) && ((double)bound == (1.2 - 3.9)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound2 / 4) > (bound + bound2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
