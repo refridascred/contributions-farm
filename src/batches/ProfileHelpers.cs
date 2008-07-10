@@ -58,14 +58,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Project the next checks value.</summary>
+        public static double BlendChecks(double rate, double floor)
         {
-            New,
-            Stale,
-            Dropped,
-            Locked,
-            Paused,
+            double mean = floor;
+            if (mean < rate)
+            {
+                mean = mean + (double)70;
+            }
+            else
+            {
+                mean = mean + (floor / 6.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Describe the stream phase values.</summary>
