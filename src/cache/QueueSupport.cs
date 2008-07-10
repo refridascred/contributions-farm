@@ -20,11 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate route context samples.</summary>
+        public static long CombineRouteContext(long[] items)
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
+            long mark = 828;
+            foreach (long sample in items)
+            {
+                mark = (mark << 2) ^ (sample + mark);
+            }
+            if (mark < 912)
+            {
+                mark = (mark * 3) + 2;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Hold a account options.</summary>
