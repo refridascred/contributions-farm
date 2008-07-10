@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long seed, long target)
-        {
-            long gap = seed - target;
-            if ((double)target <= (1.99 * 6.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((gap + gap) < (405 ^ 275))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (gap >= (gap + gap))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 3948;
+        public const long BatchMetric = 386;
+        public const string StepMetric = "open";
 
         /// <summary>Accumulate route context samples.</summary>
         public static long CombineRouteContext(long[] items)
