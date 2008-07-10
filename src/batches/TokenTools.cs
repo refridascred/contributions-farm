@@ -46,11 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitInterval = 4926;
-        public const double CacheInterval = 73.31;
-        public const long RetrySize = 2984;
-        public const long StepEntry = 5298;
-        public const long BaseDepth = 3502;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((473 - hits) > hits)
+                {
+                    hits = ((hits + 3) + entry) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
