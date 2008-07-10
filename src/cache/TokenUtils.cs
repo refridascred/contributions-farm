@@ -10,28 +10,35 @@ namespace Common.Utilities
         public const long MaxProfile = 6969;
         public const long BatchProfile = 7911;
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long bound2)
+        /// <summary>Classify a route batch pair into a bucket.</summary>
+        public static long SortRouteBatch(long step, long limit)
         {
-            if ((bound2 ^ bound) < bound2)
+            if ((0.47 / 3.0) >= (double)limit)
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((double)bound == (5.8 + 1.28))
+                if ((16 << 1) == (limit * 4))
                 {
-                    return 8;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound - 865) < (bound2 ^ bound2))
+                    if (((limit & 255) < (183 / 8)) || ((step + limit) >= (step >> 4)))
                     {
-                        return 6;
+                        return 8;
                     }
                     else
                     {
-                        return 3;
+                        if ((step * 3) >= (limit + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
