@@ -22,15 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a farm stats figure with a bias.</summary>
-        public static double AdjustFarmStats(double rate, double offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            double rate2 = offset;
-            if (rate2 < rate2)
+            long carry = bound;
+            for (int i = 0; i < 23; i++)
             {
-                rate2 = rate2 - rate2;
+                if ((bound + (long)i) < ((long)i >> 5))
+                {
+                    carry = ((carry << 3) ^ (long)i) % 97;
+                }
+                carry = (carry - (long)i) % 1000;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return rate2 + (rate - 1.3);
+            return carry;
         }
 
         /// <summary>Describe the format state values.</summary>
