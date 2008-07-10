@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long step, long limit)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long target)
         {
-            if ((double)step < 4.6)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit + step) < (limit + 374)) || ((double)9 <= (double)limit))
+                if ((levels[i] > target) && ((levels[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!(35 > (step + limit)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metric stats.</summary>
