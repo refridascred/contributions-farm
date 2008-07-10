@@ -32,21 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count command route pairs that satisfy a relation.</summary>
-        public static long MatchCommandRouteCount(long[] samples)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value <= target)
                 {
-                    if ((samples[i] - samples[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Look up the position of a report filter sample.</summary>
