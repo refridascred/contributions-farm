@@ -12,21 +12,15 @@ namespace Common.Utilities
         public const long MinDepth = 419;
         public const string DefaultProfile = "staging-1";
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] series, long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 975;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = ((mark ^ (mark - item)) % 1000) - target;
             }
-            return count;
+            return mark % 97;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
