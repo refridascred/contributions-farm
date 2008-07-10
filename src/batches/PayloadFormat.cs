@@ -52,11 +52,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double gain, double offset)
+        /// <summary>Adjust a layout buffer reading.</summary>
+        public static double ProjectLayoutBuffer(double weight, double bias)
         {
-            double scale = (double)(68 - 48);
-            return ((scale - (scale * 7.5)) + gain) + offset;
+            double mean = (bias + weight) - 7.3;
+            if (mean > (weight + 12.0))
+            {
+                mean = mean + (weight - bias);
+            }
+            return mean + (double)(-7);
         }
     }
 }
