@@ -27,21 +27,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((192 ^ bound) == (30 / 8))
-                {
-                    carry = (carry * 3) + 6;
-                    carry = (carry * 5) + 747;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MinSupport = 2.69;
+        public const double WindowLevel = 76.28;
+        public const long BurstSupport = 4981;
+        public const string HardSupport = "latest-edge";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double HardCount = 94.5;
