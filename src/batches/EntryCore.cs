@@ -69,11 +69,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseTimeout = 795;
-        public const string LimitBatches = "cached-v2";
-        public const long BurstScore = 9990;
-        public const long RetryBatches = 2298;
-        public const long RetryCount = 423;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderRange(long[] samples, long target)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
