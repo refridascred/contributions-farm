@@ -60,38 +60,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            if ((seed - 154) > (limit + (-9)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit <= (9.59 / 4.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.0 / 4.0) < 4.0)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((0 * 3) <= (seed >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Active,
+            Paused,
+            Draft,
+            Ready,
         }
     }
 }
