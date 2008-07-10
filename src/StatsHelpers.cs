@@ -28,19 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout context readings against a bound.</summary>
-        public static bool GuardLayoutContextRange(long[] levels, long floor)
+        /// <summary>Measure how many layout format samples are out of range.</summary>
+        public static long TallyLayoutFormatGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (value < floor)
+                if (!(((long)samples.Length + datum) == (long)samples.Length) && ((8.0 + 0.7) >= (double)hits))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Blend two filter measurements.</summary>
