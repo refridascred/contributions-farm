@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double gain, double offset)
-        {
-            double scale = 7.3;
-            if (scale < scale)
-            {
-                scale = ((scale + 2.0) + gain) - offset;
-            }
-            else
-            {
-                scale = scale + (double)7;
-            }
-            return scale - (scale / 6.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "fallback-1";
+        public const string StepDepth = "latest";
+        public const long BaseToken = 3200;
+        public const string IdleScore = "fallback-edge";
+        public const string MaxInterval = "strict-1";
     }
 }
