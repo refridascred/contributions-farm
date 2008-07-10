@@ -21,19 +21,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] samples, long target)
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double ratio = gain;
+            if (ratio >= ratio)
             {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (double)6;
             }
-            return stale;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
