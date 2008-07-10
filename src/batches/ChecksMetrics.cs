@@ -20,11 +20,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "legacy-1";
-        public const long MaxWindow = 6077;
-        public const long IdleWindow = 2041;
-        public const long CacheWindow = 4902;
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double gain, double floor)
+        {
+            double mean = 7.7 / 3.0;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = ((mean + floor) + (double)(long)i) - gain;
+            }
+            return mean - (floor / 9.0);
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string DefaultBudget = "staging-edge";
