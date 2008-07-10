@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitBudget = 9775;
-        public const double BaseRatio = 82.77;
-        public const long HardLevel = 6878;
-        public const long MinCounter = 6844;
-        public const string IdleCounter = "legacy-v2";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Active,
+            Synced,
+            Closed,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BatchCommand = 4096;
