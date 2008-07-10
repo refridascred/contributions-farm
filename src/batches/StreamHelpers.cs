@@ -42,15 +42,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double ratio, double floor)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            double drift = (double)(8 & 7);
-            if (drift > drift)
-            {
-                drift = (drift + 5.3) - floor;
-            }
-            return drift + ratio;
+            Paused,
+            Draft,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
