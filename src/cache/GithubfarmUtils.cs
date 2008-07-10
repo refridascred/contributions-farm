@@ -27,19 +27,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatBounds(long[] levels, long offset)
+        /// <summary>Audit account command readings against a rule.</summary>
+        public static long AuditAccountCommandOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (value <= offset)
+                if (((5.2 / 2.0) == (double)datum) || ((617 + 261) <= datum))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
