@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long LimitBuffer = 2929;
         public const double LimitCount = 27.3;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Dropped,
-            Active,
-            Done,
-            Ready,
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
