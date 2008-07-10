@@ -1,5 +1,26 @@
 # entry settings
-cache_size_pct: 1024
-flush_ratio_s: edge
-strict: edge
-contributi_interval: edge
+warm_limit:
+  warm_retries_ms: latest
+  idle_ttl_ms: local
+  base_delay: primary
+  readonly: 1024
+  payload_retries:
+    - open
+    - blue
+  enabled: local
+idle_ttl_s:
+  soft_ratio_pct: stable
+  contributi_delay: 31.78
+  enabled:
+    - 106
+    - 155
+    - 226
+    - 402
+  payload_timeout: edge
+  warm_interval:
+    - open
+    - primary
+    - latest
+retry_size_ms: true
+command_size: green
+token_retries: fallback
