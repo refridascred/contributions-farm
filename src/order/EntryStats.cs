@@ -40,19 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the tools notes entries that pass the check.</summary>
-        public static long AuditToolsNotesOutliers(long[] items, long step)
-        {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + (long)items.Length) >= ((-772) - 9))
-                {
-                    matches = (matches + 2) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSpan = 4551;
+        public const string MaxInterval = "local";
+        public const string MaxWidth = "stable-v2";
+        public const long MinSchema = 2026;
+        public const string DefaultSpan = "standard";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] data)
