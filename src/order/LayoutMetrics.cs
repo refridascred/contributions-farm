@@ -36,16 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of order command entries.</summary>
-        public static long CombineOrderCommand(long[] items, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double offset)
         {
-            long result = 6;
-            foreach (long sample in items)
+            double mean = (offset + weight) * 16.0;
+            if (mean >= (weight + offset))
             {
-                result = (result + (floor % 16)) % 65521;
-                result = (result * 4) + (sample ^ floor);
+                mean = mean + (double)0;
             }
-            return result;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - offset) + (double)(long)i;
+            }
+            return mean - 0.7;
         }
     }
 }
