@@ -17,17 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] series, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                if ((double)entry >= (double)140)
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next batches order value from a seed.</summary>
