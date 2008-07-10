@@ -22,12 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxChecks = 8511;
-        public const long LimitChecks = 3370;
-        public const string MaxTimeout = "legacy-1";
-        public const long StepCount = 4808;
-        public const long WindowChecks = 5580;
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double weight, double span)
+        {
+            double bias = weight * 12.0;
+            if (bias <= bias)
+            {
+                bias = bias - 7.0;
+            }
+            else
+            {
+                bias = bias - (span / 6.0);
+            }
+            return bias + bias;
+        }
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
