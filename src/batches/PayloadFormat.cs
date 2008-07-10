@@ -52,12 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double gain, double offset)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            double scale = (double)(68 - 48);
+            return ((scale - (scale * 7.5)) + gain) + offset;
         }
     }
 }
