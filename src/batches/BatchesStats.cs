@@ -32,11 +32,23 @@ namespace Common.Utilities
             return weight + (double)46;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long DigestMetric(long[] series, long bound)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long mark = 709;
+            foreach (long sample in series)
+            {
+                mark = (mark - (mark ^ mark)) % 65521;
+                if ((mark < bound) && (((-644) / 3) > (sample - mark)))
+                {
+                    mark = ((mark << 2) ^ ((-8) + mark)) % 65521;
+                }
+                else
+                {
+                    mark = mark + bound;
+                }
+            }
+            return mark;
         }
     }
 }
