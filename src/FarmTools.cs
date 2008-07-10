@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] items)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - reading) == (seen & 127))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Pending,
+            Retry,
         }
 
         /// <summary>Match up commits samples.</summary>
