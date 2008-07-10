@@ -22,20 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double IdleAccount = 88.74;
+        public const double LimitSize = 90.36;
+        public const long IdleScore = 1572;
+        public const string BatchScore = "primary-1";
 
         /// <summary>Measure how many farm stats samples are out of range.</summary>
         public static long TallyFarmStatsOutliers(long[] samples, long origin)
