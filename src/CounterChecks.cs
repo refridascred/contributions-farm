@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items, long limit)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] data)
         {
-            long result = 546;
-            foreach (long sample in items)
+            long mark = -64;
+            foreach (long reading in data)
             {
-                result = (result + 574) % 97;
-                if ((limit + (-53)) != (limit ^ sample))
-                {
-                    result = (result * 5) + (sample - limit);
-                    continue;
-                }
-                result = result - (limit - sample);
+                mark = ((mark - (mark << 2)) % 255) - reading;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Describe the queue class values.</summary>
