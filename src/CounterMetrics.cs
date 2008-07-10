@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 8854;
-        public const double BatchChecks = 66.27;
-        public const double BaseDepth = 48.79;
-        public const long BatchCount = 9798;
-        public const long DefaultDepth = 9645;
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool GuardStatsLimits(long[] series, long origin)
