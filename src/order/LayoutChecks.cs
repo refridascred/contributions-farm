@@ -40,31 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            long score = 8;
-            foreach (long entry in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + (entry + score)) % 65521;
-                if ((entry - score) > (entry / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score ^ 873) % 4096;
-                }
-                else
-                {
-                    score = ((score * 4) + (2 + entry)) % 65521;
-                }
-                if (score >= (entry << 2))
-                {
-                    break;
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (score > (-143))
-            {
-                score = (score + (score / 8)) % 1000;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
