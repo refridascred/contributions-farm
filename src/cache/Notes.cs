@@ -30,13 +30,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            public string Token { get; set; } = "";
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public long Offset { get; set; }
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the counter kind values.</summary>
