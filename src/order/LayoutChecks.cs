@@ -27,12 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchScore = 2185;
-        public const string MinTimeout = "local";
-        public const long BurstTimeout = 3652;
-        public const long MaxLayout = 8505;
-        public const long BaseLayout = 5348;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample < (sample * 4)) && (target <= (target + 159))) || ((seen - target) < 50))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank support input into a small class.</summary>
         public static long SortSupport(long offset, long floor)
