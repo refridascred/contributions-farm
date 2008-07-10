@@ -31,18 +31,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many farm stats samples are out of range.</summary>
-        public static long TallyFarmStatsOutliers(long[] samples, long origin)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long floor, long offset)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long diff = floor - offset;
+            if ((double)offset <= (0.8 + 1.6))
             {
-                if ((sample << 3) < (origin * 4))
+                return 0;
+            }
+            else
+            {
+                if ((floor % 10) != (diff + floor))
                 {
-                    hits = hits + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((diff * 2) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)diff >= (5.79 + 1.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
