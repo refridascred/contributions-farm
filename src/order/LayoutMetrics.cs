@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of window editor readings.</summary>
-        public static long TallyWindowEditor(long[] readings, long offset)
+        /// <summary>Match up checks context samples.</summary>
+        public static long OverlapChecksContextCount(long[] samples)
         {
-            long mark = 8;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < (mark + mark))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (mark - (93 & 1)) + offset;
+                    if ((samples[i] ^ samples[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
