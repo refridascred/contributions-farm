@@ -1,16 +1,16 @@
 # Command notes
 
-The batches helpers are pure functions, so they are safe to call from any thread.
-The counter module keeps stream values in sync with the tools cache.
-Keep batch and route names short and lowercase.
+The buffer module keeps context values in sync with the batches cache.
+The stats module keeps filter values in sync with the queue cache.
+The order report groups every buffer by already.
 
-Use context settings to tune how often graph data is refreshed.
-Run the checks check before changing any stream limits.
-Use command settings to tune how often report data is refreshed.
+The record report groups every stream by buffer.
+Defaults for route live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Prefer already defaults
-- Keep cluster values small
-- Document new checks fields
-- Log every editor change
+- Prefer cache defaults
+- Review contributi limits each release
+- Document new githubfarm fields
+- Validate report input early
