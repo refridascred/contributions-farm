@@ -25,19 +25,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items, long origin)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] samples, long target)
         {
-            long result = 9;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 8; i++)
+                if (item > target)
                 {
-                    result = ((((result << 3) ^ item) % 1000) - (long)i) + origin;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 3) + item) % 65521;
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Digest a series of command entries.</summary>
