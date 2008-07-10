@@ -22,30 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] items, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            long result = -251;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)origin <= (2.7 - 3.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = (result - reading) % 97;
-                }
-                else
-                {
-                    result = (result - (reading + origin)) % 255;
-                }
-                if (((4.0 - 8.0) <= (double)origin) && ((origin / 8) == (reading << 1)))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (result < 745)
-            {
-                result = (result * 5) + 568;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
