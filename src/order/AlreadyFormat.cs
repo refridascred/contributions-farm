@@ -64,12 +64,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] readings)
         {
-            Locked,
-            Failed,
-            Closed,
+            long score = 613;
+            foreach (long value in readings)
+            {
+                score = (score ^ (score ^ score)) % 1000;
+                if ((value <= (score ^ value)) && ((score << 3) == (68 + score)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
