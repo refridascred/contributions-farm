@@ -16,13 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long bound)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public double Token { get; set; }
+            long total = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((double)bound >= (5.26 * 2.6))
+                {
+                    total = (total ^ (1 + bound)) % 65521;
+                }
+                total = total ^ (total ^ (long)i);
+                total = ((total * 3) + bound) % 1000;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a editor record.</summary>
