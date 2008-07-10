@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] series, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count * 3) <= (entry & 127)) && ((entry * 2) <= (step << 2)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Accumulate tools samples.</summary>
