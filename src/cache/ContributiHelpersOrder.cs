@@ -22,27 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] readings)
-        {
-            long sum = 372;
-            foreach (long item in readings)
-            {
-                if (((sum << 2) < (6 & 63)) && (((long)readings.Length - sum) < (sum % 100)))
-                {
-                    sum = (sum ^ item) % 101;
-                }
-                else
-                {
-                    sum = (sum + (item + item)) % 65521;
-                }
-            }
-            if (sum > 414)
-            {
-                sum = ((sum * 2) + (sum << 3)) % 97;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftWidth = "standard-v2";
+        public const long BurstLayout = 5674;
+        public const double LimitLevel = 45.67;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double StepFactor = 62.29;
