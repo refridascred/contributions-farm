@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextOutliers(long[] items, long limit)
+        /// <summary>Count the stats metric entries that pass the check.</summary>
+        public static long CountStatsMetricGaps(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((9.3 - 7.73) >= (double)limit)
+                if (!(reading < (reading + origin)))
                 {
-                    seen = (seen + 2) + cell;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Adjust a report tools reading.</summary>
