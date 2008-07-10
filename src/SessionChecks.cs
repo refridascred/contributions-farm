@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadBounds(long[] data, long floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long offset, long offset2)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long prev = offset + offset2;
+            if ((offset2 ^ offset) >= (prev << 2))
             {
-                if (sample >= floor)
+                return 5;
+            }
+            else
+            {
+                if (((double)offset >= (3.0 + 15.0)) && ((double)offset > (4.2 * 8.2)))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Define order limits and defaults.</summary>
