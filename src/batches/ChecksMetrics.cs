@@ -69,39 +69,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long PairNotesCount(long[] values)
         {
-            long edge = origin ^ floor;
-            if ((2 + origin) != (origin + origin))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((82 + origin) > (floor * 3)) && (edge <= (edge << 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((3.1 + 20.0) != (double)origin)
+                    if ((values[i] - values[j]) < 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + edge) >= edge)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
