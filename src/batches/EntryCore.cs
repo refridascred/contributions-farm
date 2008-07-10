@@ -19,14 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] readings, long bound)
         {
-            Active,
-            Pending,
-            Closed,
-            New,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
