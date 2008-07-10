@@ -24,31 +24,17 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Rank commits profile input into a small class.</summary>
-        public static long SortCommitsProfile(long limit, long step)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] readings, long target)
         {
-            if ((double)step <= (6.74 / 5.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step + limit) >= (limit - limit)) && ((step - limit) < 72))
+                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + 81) > (step + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
