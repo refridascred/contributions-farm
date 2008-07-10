@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long target, long bound)
-        {
-            if ((((-8) - target) > (target + bound)) || ((bound << 1) < (bound % 24)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (8.0 * 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.4 + 6.2) <= (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target & 1) <= (bound + bound)) && (bound <= (bound + 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 90.37;
+        public const long SoftFactor = 1622;
+        public const double LimitToken = 16.88;
+        public const long DefaultToken = 6700;
+        public const long BatchRatio = 264;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] values)
