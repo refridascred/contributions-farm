@@ -1,7 +1,11 @@
 # support settings
-persist: 74
-burst_retries_count: blue
-flush_interval_count: false
-commits_delay: 88
-default_ttl: 5575
-idle_capacity_pct: legacy
+session_interval: 46.34
+min_depth_pct: 98
+hard_interval:
+  - strict
+  - staging
+  - latest
+  - legacy
+batch_ratio_ms: true
+default_window_pct: 7820
+compress: open
