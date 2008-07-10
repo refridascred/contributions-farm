@@ -14,39 +14,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
-        public static long RankGithubfarmBatch(long offset, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] data, long limit)
         {
-            long slot = offset - step;
-            if ((slot << 3) > (619 - slot))
+            long score = 7;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((slot + offset) < slot)
+                score = score + (limit + limit);
+                if (((score + item) == (item & 1)) && ((4.5 / 4.0) != (double)score))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset >= 1.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)slot > 14.0)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            if (score > 51)
+            {
+                score = (score + 876) % 4096;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the layout phase values.</summary>
