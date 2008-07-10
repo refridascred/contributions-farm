@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] samples, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long seed)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long span = floor - seed;
+            if (span <= floor)
             {
-                if (sample >= seed)
+                return 0;
+            }
+            else
+            {
+                if (floor > (floor - floor))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
