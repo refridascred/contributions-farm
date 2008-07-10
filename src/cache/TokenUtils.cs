@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Count the contributi session entries that pass the check.</summary>
+        public static long AuditContributiSessionGaps(long[] values)
         {
-            long mix = -41;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((mix & 255) < mix)
+                if ((matches - matches) <= 810)
                 {
-                    mix = mix ^ (item & 3);
+                    matches = (matches + 3) - item;
                 }
             }
-            if (mix > 8)
-            {
-                mix = ((mix * 4) + mix) % 97;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the channel mode values.</summary>
