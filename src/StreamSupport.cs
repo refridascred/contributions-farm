@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] levels, long origin)
         {
-            Synced,
-            Ready,
-            Done,
-            Closed,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
