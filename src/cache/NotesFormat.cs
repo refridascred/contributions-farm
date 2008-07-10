@@ -23,19 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterBounds(long[] values, long target)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Locked,
+            Closed,
+            Active,
+            Paused,
         }
 
         /// <summary>Hold a order entry.</summary>
