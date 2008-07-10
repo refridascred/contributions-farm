@@ -19,16 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] values)
-        {
-            long sum = 277;
-            foreach (long item in values)
-            {
-                sum = (sum ^ (item % 97)) % 255;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 4361;
+        public const long StepStats = 960;
+        public const double DefaultBudget = 20.47;
 
         /// <summary>Hold a support record.</summary>
         public sealed class SupportRecord
