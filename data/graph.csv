@@ -1,7 +1,6 @@
-id,label,region,rank,count
-1,854,53.22,667,49
-2,91.23,16,edge,stable
-3,33.68,135,11.15,73.4
-4,672,558,604,12.73
-5,374,open,latest,56.09
-6,12,552,232,local
+id,state,count,owner,region
+1,637,local,97.86,421
+2,stable,271,standard,189
+3,local,40.03,690,fallback
+4,559,62,53.29,80.24
+5,407,738,881,317
