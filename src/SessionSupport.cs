@@ -26,11 +26,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 8093;
-        public const string MaxCommand = "alpha-v2";
-        public const long CacheCommand = 7229;
-        public const string WindowLevel = "stable-edge";
-        public const double BatchSize = 32.12;
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double ratio, double offset)
+        {
+            double bias = (double)(2 - 94);
+            if (bias < ratio)
+            {
+                bias = (bias + ratio) - offset;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - (bias / 9.0)) + (double)(long)i;
+            }
+            return bias - (ratio / 6.0);
+        }
     }
 }
