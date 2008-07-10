@@ -28,21 +28,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] data)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
