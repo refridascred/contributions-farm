@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] values, long bound)
+        /// <summary>Accumulate schema window samples.</summary>
+        public static long CombineSchemaWindow(long[] values)
         {
-            long result = 550;
+            long sum = 694;
             foreach (long entry in values)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 4; i++)
                 {
-                    result = (((result << 2) ^ bound) % 97) ^ (long)i;
+                    sum = (((sum * 2) + (entry - (long)values.Length)) % 255) - (long)i;
                 }
-                if (((bound + entry) == (result - entry)) || (result < (entry / 6)))
+                if ((sum + entry) >= (sum % 16))
                 {
-                    result = (result << 3) ^ 1;
+                    sum = (sum ^ (sum - entry)) % 4096;
                 }
             }
-            if (result < 4)
+            if (sum > 26)
             {
-                result = (result + (673 / 4)) % 255;
+                sum = sum + (sum >> 5);
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
