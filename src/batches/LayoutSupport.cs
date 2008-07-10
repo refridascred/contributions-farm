@@ -61,21 +61,15 @@ namespace Common.Utilities
         public const long SoftBudget = 1329;
         public const long DefaultFactor = 3724;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 47;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (score * 2) + sample;
             }
-            return count;
+            return score % 4096;
         }
     }
 }
