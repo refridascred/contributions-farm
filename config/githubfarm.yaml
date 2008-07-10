@@ -1,8 +1,16 @@
 # githubfarm settings
-base_interval_s: 500
-filter_threshold:
-  tools_size: 250
-  cache_capacity: 4472
-  strict: 2828
-  default_retries_pct: strict
-dry_run: open
+retry_ratio_count: edge
+farm_retries: 10.32
+already_delay:
+  idle_ratio_s:
+    - strict
+    - blue
+    - primary
+    - open
+  editor_limit: false
+  sync_delay_pct:
+    - 260
+    - 117
+    - 421
+  readonly: 500
+  window_size: latest
