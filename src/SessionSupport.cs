@@ -31,13 +31,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels, long bound)
         {
-            public double Flag { get; set; }
-            public double Level { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long anchor = 4;
+            foreach (long sample in levels)
+            {
+                if (!((bound + bound) == (anchor + anchor)))
+                {
+                    anchor = anchor ^ sample;
+                }
+            }
+            if (anchor > 14)
+            {
+                anchor = ((anchor << 2) ^ (bound << 1)) % 4096;
+            }
+            return anchor;
         }
     }
 }
