@@ -1,20 +1,20 @@
 # entry settings
-commits_timeout: 6
-compress:
-  strict:
-    - 460
-    - 420
-    - 256
-  flush_window_ms: 66.03
-  entry_retries:
-    - 359
-    - 155
-    - 23
-  hard_delay_s: legacy
-dry_run: 8699
-command_window: legacy
-hard_ratio_count: strict
-cache_delay_count:
-  - 340
-  - 217
-  - 119
+readonly: true
+cluster_retries: green
+retry_retries_pct: strict
+soft_ttl_pct:
+  persist: 8743
+  queue_threshold:
+    - 37
+    - 72
+    - 243
+    - 98
+  burst_capacity:
+    context_window: false
+    burst_ratio: staging
+    dry_run: 30
+    persist: strict
+    max_capacity_ms: 1311
+  retry_timeout_pct: edge
+contributi_limit: 82.73
+burst_retries_count: latest
