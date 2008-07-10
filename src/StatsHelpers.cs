@@ -33,21 +33,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of buffer payload readings.</summary>
-        public static long PairBufferPayloadCount(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 16;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (anchor * 4) + value;
             }
-            return tally;
+            if (anchor < 8)
+            {
+                anchor = ((anchor << 2) ^ (anchor / 9)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
