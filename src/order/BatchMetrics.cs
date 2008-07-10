@@ -63,18 +63,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] series)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)sample < (13.0 - 0.1))
                 {
-                    if ((samples[i] - samples[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
             return seen;
