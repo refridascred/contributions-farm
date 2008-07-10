@@ -65,9 +65,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "legacy";
-        public const double BatchOrder = 40.78;
-        public const long HardOrder = 4466;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftDepth = "legacy";
+        public const long BatchEntry = 6288;
+        public const long SoftEntry = 6788;
+        public const long BaseRatio = 2531;
     }
 }
