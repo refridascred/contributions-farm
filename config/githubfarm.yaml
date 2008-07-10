@@ -1,20 +1,31 @@
 # githubfarm settings
-readonly: false
-audit: 37
-dry_run: staging
-idle_retries:
-  max_limit_s:
-    dry_run:
-      - 242
-      - 103
-      - 437
-    idle_interval_ms: true
-    compress:
+record_retries:
+  - open
+  - edge
+  - legacy
+account_depth: 9757
+retry_depth_pct: false
+queue_size:
+  dry_run:
+    - legacy
+    - edge
+    - edge
+    - fallback
+  batch_retries_ms: 7
+  burst_ttl:
+    - 443
+    - 266
+  verbose: 37.07
+  stats_capacity:
+    format_size: legacy
+    burst_timeout: false
+    warm_ratio: 1469
+    audit:
+      - 451
+      - 14
+    warm_ratio_s: 45
+    soft_size:
       - open
-      - eu-west
-      - staging
-  hard_delay_s: false
-  batch_size: primary
-  account_size: 30
-  hard_window_count: 500
-  max_window: legacy
+      - stable
+      - stable
+poll_capacity_ms: strict
