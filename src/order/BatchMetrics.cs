@@ -25,22 +25,37 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long origin, long limit)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long offset, long target)
         {
-            if (((17.0 / 7.0) != (double)limit) || ((limit >> 2) < (limit + origin)))
+            long step = offset - target;
+            if ((74 * 4) >= (step - offset))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (!((2 ^ (-622)) < origin))
+                if (target <= (86 + offset))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 0;
+                    if ((4.68 - 9.8) == (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step << 2) >= (target + offset)) || ((1.8 / 7.0) != (double)target))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
         }
