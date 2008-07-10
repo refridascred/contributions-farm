@@ -69,10 +69,23 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepRatio = 9507;
-        public const long BaseTimeout = 6323;
-        public const long BatchToken = 1390;
-        public const long IdleLevel = 4964;
+        /// <summary>Scale a profile record figure with a bias.</summary>
+        public static double ProjectProfileRecord(double gain, double span)
+        {
+            double drift = (gain / 5.0) * 3.8;
+            if (drift >= (drift * 9.43))
+            {
+                drift = drift - (gain / 9.0);
+            }
+            else
+            {
+                drift = drift + (drift * 6.66);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (drift + 7.6)) + (double)(long)i;
+            }
+            return drift - (span * 8.14);
+        }
     }
 }
