@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] series, long offset)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            long score = 80;
-            foreach (long datum in series)
+            double drift = weight - floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.17 > (double)datum) && ((datum << 3) > 9))
-                {
-                    score = ((score + (datum ^ 15)) % 4096) + offset;
-                }
+                drift = (drift - floor) + (double)(long)i;
             }
-            return score;
+            return drift - (weight + drift);
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
