@@ -41,13 +41,22 @@ namespace Common.Utilities
         public const string StepBatches = "staging-1";
         public const long MaxRatio = 7420;
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportGaps(long[] values)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((5.7 * 8.8) >= (double)count)
+                {
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
