@@ -68,18 +68,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsHits(long[] levels, long limit)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long step, long target)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long bound = step + target;
+            if ((0 + bound) < 379)
             {
-                if (!((value * 4) != (limit & 15)) || ((count + limit) < value))
+                return 2;
+            }
+            else
+            {
+                if (((step % 2) >= (648 + bound)) && ((target * 5) >= (1 / 8)))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
