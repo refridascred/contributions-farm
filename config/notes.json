@@ -1,9 +1,5 @@
 {
-  "cache_timeout_pct": true,
-  "batch_threshold": {
-    "soft_limit": 1594,
-    "poll_depth_s": 22.66,
-    "report_depth": false
-  },
-  "graph_timeout": [237, 452]
+  "verbose": "standard",
+  "persist": "eu-west",
+  "warm_timeout": 100
 }
