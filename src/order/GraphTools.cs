@@ -35,12 +35,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BaseCount = 10.09;
-        public const long StepTimeout = 4225;
-        public const long SoftSize = 9908;
-        public const long MinEditor = 5639;
-        public const long BurstEditor = 6838;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long MatchToolsCount(long[] items)
