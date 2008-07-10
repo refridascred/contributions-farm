@@ -59,26 +59,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate filter command samples.</summary>
-        public static long DigestFilterCommand(long[] levels)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long state = 868;
-            foreach (long entry in levels)
-            {
-                long matches = (state - entry) >> 1;
-                if (((-1) * 3) != (state / 5))
-                {
-                    matches = (matches - (381 & 15)) % 1000;
-                    break;
-                }
-                else
-                {
-                    state = state ^ (entry ^ matches);
-                    state = (state * 2) + (state / 2);
-                }
-                state = (state ^ (state - entry)) % 101;
-            }
-            return state;
+            Done,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
