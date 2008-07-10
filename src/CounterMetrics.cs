@@ -33,22 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (((value << 2) <= value) || (((long)series.Length < value) || (seen < 689)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "stable-edge";
+        public const long SoftSize = 543;
+        public const double SoftStream = 97.82;
+        public const long StepStream = 6559;
     }
 }
