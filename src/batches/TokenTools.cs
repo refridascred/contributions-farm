@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long seed)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                acc = (acc + (21 % 10)) % 1000;
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
