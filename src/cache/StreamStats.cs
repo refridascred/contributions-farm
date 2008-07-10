@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long RankBatch(long bound, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] values)
         {
-            if ((bound << 3) <= bound)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((46 % 60) <= (16 + bound))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound & 63) <= (limit + bound))
+                    if ((values[i] ^ values[j]) < 0)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
