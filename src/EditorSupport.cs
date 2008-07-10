@@ -22,19 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order layout entry stays within the limit.</summary>
-        public static bool ValidateOrderLayoutRange(long[] data, long target)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long target, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            if (((-7) - target) != (target & 7))
             {
-                if (item > target)
+                return 1;
+            }
+            else
+            {
+                if ((step * 2) < (step ^ step))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target <= (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the tools state values.</summary>
