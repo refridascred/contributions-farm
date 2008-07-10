@@ -53,15 +53,22 @@ namespace Common.Utilities
             return gain - 6.92;
         }
 
-        /// <summary>Scale a order command figure with a bias.</summary>
-        public static double BlendOrderCommand(double rate, double span)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmHits(long[] levels)
         {
-            double load = (3.32 * 5.83) + (double)67;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                load = ((load - span) - (double)(long)i) - rate;
+                if (((double)matches <= 9.6) || (((0 + entry) > entry) && ((entry / 5) > entry)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load - span;
+            return matches;
         }
     }
 }
