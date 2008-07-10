@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] items, long bound)
+        /// <summary>Fold a list of filter already readings.</summary>
+        public static long CombineFilterAlready(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 500;
+            foreach (long sample in levels)
             {
-                if ((items[i] < bound) && ((items[i] % 5) == 0))
+                if (((double)result < (9.0 + 7.27)) || (179 > (result - result)))
                 {
-                    return (long)i;
+                    result = (((result - (835 - result)) % 1000) - sample) + target;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (46 + result)) % 1000;
                 }
             }
-            return -1;
+            if (result > 992)
+            {
+                result = (result << 3) ^ (result >> 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Locate a checks route reading by value.</summary>
