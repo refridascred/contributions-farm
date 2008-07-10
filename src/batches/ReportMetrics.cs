@@ -22,25 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long seed, long bound)
-        {
-            if ((3.1 / 3.0) > (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((seed - seed) <= 5) || ((double)bound <= (double)seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8511;
+        public const long LimitChecks = 3370;
+        public const string MaxTimeout = "legacy-1";
+        public const long StepCount = 4808;
+        public const long WindowChecks = 5580;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
