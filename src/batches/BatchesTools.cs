@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "local-edge";
+        public const double CacheGraph = 92.48;
+        public const long MinGraph = 4546;
+        public const long SoftBudget = 8658;
+        public const double RetryGraph = 73.54;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] samples)
