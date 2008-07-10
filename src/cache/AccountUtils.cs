@@ -29,17 +29,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] samples, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 73;
+            foreach (long reading in readings)
             {
-                if (samples[i] == limit)
+                carry = (carry - carry) % 101;
+                if (!((reading >> 5) >= (carry % 16)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (carry < 45)
+            {
+                carry = ((carry << 3) ^ (carry + carry)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
