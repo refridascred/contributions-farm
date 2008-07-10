@@ -1,4 +1,11 @@
 # entry settings
-soft_depth_pct: latest
-warm_window_count: staging
-base_size: 94
+sync_interval_count: true
+persist:
+  - stable
+  - standard
+  - local
+soft_ttl_count: 30
+base_size_ms:
+  - latest
+  - edge
+readonly: green
