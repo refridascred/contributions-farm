@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] levels, long origin)
+        /// <summary>Measure how many route editor samples are out of range.</summary>
+        public static long CountRouteEditorOutliers(long[] values, long offset)
         {
-            long anchor = 4;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor ^ reading) % 4096) - origin;
-                anchor = anchor ^ (reading + anchor);
+                if (((offset < (73 - 53)) && (offset < (offset + offset))) && ((28 + sample) >= (sample * 5)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
