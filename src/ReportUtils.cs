@@ -33,12 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 39.18;
-        public const double LimitDepth = 15.0;
-        public const long BatchSession = 6655;
-        public const string HardSpan = "fallback";
-        public const double HardWidth = 62.83;
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = (carry + (floor - (long)i)) % 255;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool ValidateFilterRange(long[] series, long target)
