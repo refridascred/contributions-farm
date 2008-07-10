@@ -61,11 +61,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] items, long seed)
         {
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((549 / 2) > seed) || ((value + matches) >= (value * 4)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a payload info.</summary>
