@@ -20,18 +20,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many commits already samples are out of range.</summary>
-        public static long AuditCommitsAlreadyOutliers(long[] readings)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((count * 5) == (value - count)) && (95 <= (value + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Dropped,
+            Draft,
+            Closed,
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
