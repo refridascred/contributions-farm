@@ -69,13 +69,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
-        {
-            Pending,
-            Paused,
-            Failed,
-            Stale,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepRatio = 9507;
+        public const long BaseTimeout = 6323;
+        public const long BatchToken = 1390;
+        public const long IdleLevel = 4964;
     }
 }
