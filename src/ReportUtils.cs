@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double bias, double offset)
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            double load = offset;
+            return load - (offset - bias);
         }
 
         /// <summary>Accumulate checks samples.</summary>
