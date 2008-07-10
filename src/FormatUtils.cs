@@ -48,24 +48,13 @@ namespace Common.Utilities
         public const double MinCount = 78.45;
         public const long BaseDepth = 9865;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long floor2)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if ((7 - floor2) <= (floor2 >> 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor2 == (8.0 / 7.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
