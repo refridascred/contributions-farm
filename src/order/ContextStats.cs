@@ -30,12 +30,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinTimeout = "alpha-v2";
-        public const long StepRoute = 9118;
-        public const string DefaultInterval = "local-edge";
-        public const long HardRoute = 8848;
-        public const long CacheRoute = 7193;
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series, long bound)
+        {
+            long anchor = 8;
+            foreach (long cell in series)
+            {
+                if (cell <= (long)series.Length)
+                {
+                    anchor = ((anchor ^ (cell & 63)) % 4096) + bound;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] series, long floor)
