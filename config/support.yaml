@@ -1,4 +1,20 @@
 # support settings
-soft_limit_s: blue
-warm_timeout_ms: staging
-enabled: true
+poll_ttl: 375
+dry_run: cached
+counter_retries:
+  stats_ttl: 47.58
+  hard_interval:
+    soft_limit: false
+    soft_threshold: 9535
+    idle_ratio_s: eu-west
+    payload_timeout:
+      - 225
+      - 166
+      - 216
+      - 237
+  cache_capacity: 30
+  batch_window_pct: open
+  soft_capacity_count: primary
+cache_timeout_pct: 98.72
+max_ttl_ms: false
+graph_timeout: true
