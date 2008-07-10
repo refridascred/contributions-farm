@@ -30,22 +30,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksHits(long[] values)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long FindPayloadIndex(long[] samples, long bound)
         {
-            long count = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9 / 4) == (sample * 2))
+                if (samples[i] <= bound)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
