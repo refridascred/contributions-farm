@@ -36,18 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item > (1.0 + 20.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((items[i] + items[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
