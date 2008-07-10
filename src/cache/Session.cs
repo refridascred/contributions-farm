@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Count the record cache entries that pass the check.</summary>
+        public static long MeasureRecordCacheMatches(long[] samples)
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)sample < 3.3)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a metrics stream sample.</summary>
