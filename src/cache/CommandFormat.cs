@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long step, long step2)
+        /// <summary>Blend two metric graph measurements.</summary>
+        public static double AdjustMetricGraph(double ratio, double offset)
         {
-            long edge = step - step2;
-            if (((step & 1) >= (step2 & 63)) || ((1.0 - 11.0) >= (double)step))
+            double mean = (double)8 / 7.0;
+            if (mean > mean)
             {
-                return 0;
+                mean = (mean - 0.3) - offset;
             }
             else
             {
-                if (step2 > edge)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step2 + edge) > (step & 31)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mean = mean + (double)357;
             }
+            return mean + (ratio + ratio);
         }
 
         /// <summary>Define commits limits and defaults.</summary>
