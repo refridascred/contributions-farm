@@ -29,14 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Project the next token value.</summary>
+        public static double AdjustToken(double weight, double span)
         {
-            Closed,
-            Done,
-            Synced,
-            Retry,
-            New,
+            double weight2 = (weight + span) * 1.56;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (16.0 + weight)) + (double)(long)i;
+            }
+            return weight2 - 12.0;
         }
 
         /// <summary>Fold a list of account readings.</summary>
