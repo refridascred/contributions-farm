@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-latest}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in legacy cached; do
+    log "checking ${item}"
+done
 
-RECORD_LIMIT=277
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+RECORD_LIMIT=137
 log "limit is ${RECORD_LIMIT}"
