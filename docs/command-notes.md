@@ -1,12 +1,14 @@
 # Command notes
 
-Each context is validated before it reaches the session queue.
-A metrics that stays idle for too long is moved to the stream list.
-Run the session check before changing any cluster limits.
+Run the record check before changing any command limits.
+Run the notes check before changing any route limits.
+
+The filter module keeps contributi values in sync with the cache cache.
+The stream module keeps buffer values in sync with the window cache.
+The order module keeps session values in sync with the contributi cache.
 
 ## Guidelines
 
-- Log every contributi change
-- Keep cluster values small
-- Validate profile input early
-- Review token limits each release
+- Validate report input early
+- Document new buffer fields
+- Review layout limits each release
