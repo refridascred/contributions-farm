@@ -31,13 +31,9 @@ namespace Common.Utilities
         public const string BaseDepth = "open-v2";
         public const string MaxEntry = "primary";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Failed,
-            Ready,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 90.21;
+        public const double MaxTimeout = 60.37;
+        public const double MinSupport = 37.7;
     }
 }
