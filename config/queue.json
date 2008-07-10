@@ -1,7 +1,6 @@
 {
-  "base_timeout": [203, 93, 384],
-  "sync_ttl_s": "strict",
-  "filter_interval": 6372,
-  "cache_ttl_pct": 30,
-  "warm_retries": "cached"
+  "farm_window": 53.57,
+  "max_size": true,
+  "dry_run": 77.39,
+  "retry_capacity_ms": "edge"
 }
