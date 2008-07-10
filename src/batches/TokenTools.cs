@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Locked,
-            Failed,
-            Paused,
-            Closed,
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
