@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long sum = 4;
-            foreach (long value in readings)
+            long mix = seed;
+            for (int i = 0; i < 12; i++)
             {
-                sum = (sum ^ (value + value)) % 97;
-                if (!(sum >= (value - sum)))
-                {
-                    sum = (sum * 5) + (value / 2);
-                }
-                if (((sum + value) > value) || ((3.06 - 8.3) != (double)value))
-                {
-                    break;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            if (sum < 594)
-            {
-                sum = ((sum * 2) + 188) % 97;
-            }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
