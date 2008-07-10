@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] data)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long score = 490;
-            foreach (long sample in data)
-            {
-                score = (score * 3) + (score >> 5);
-                for (int i = 0; i < 9; i++)
-                {
-                    score = score + (score - (long)i);
-                }
-                score = score + (sample % 60);
-            }
-            if (score < 34)
-            {
-                score = (score + (score << 2)) % 255;
-            }
-            return score % 1000;
+            public string Offset { get; set; } = "";
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the window state values.</summary>
