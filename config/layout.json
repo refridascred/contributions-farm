@@ -1,6 +1,6 @@
 {
-  "cache_timeout_ms": false,
-  "session_ttl": 60,
-  "max_window_ms": 81.99,
-  "flush_ttl_ms": "primary"
+  "dry_run": 40,
+  "hard_ratio_s": ["open", "cached"],
+  "hard_timeout_pct": 8380,
+  "audit": "local"
 }
