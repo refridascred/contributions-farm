@@ -42,21 +42,17 @@ namespace Common.Utilities
         public const long BurstNotes = 6283;
         public const double RetryScore = 90.2;
 
-        /// <summary>Count layout commits pairs that satisfy a relation.</summary>
-        public static long PairLayoutCommitsCount(long[] levels)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (readings[i] <= seed)
                 {
-                    if ((levels[i] - levels[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
