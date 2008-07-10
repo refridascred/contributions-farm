@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowDepth = 869;
-        public const long DefaultMetrics = 2345;
-        public const string StepMetrics = "primary";
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TotalFormat(long[] levels)
