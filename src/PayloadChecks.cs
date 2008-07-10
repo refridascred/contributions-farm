@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] items, long seed)
         {
-            long sum = 3;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if (sum < (sum - (-6)))
+                if (sample < seed)
                 {
-                    sum = (sum << 2) ^ (datum + sum);
+                    flag = false;
+                    break;
                 }
             }
-            if (sum > 231)
-            {
-                sum = ((sum << 2) ^ (178 - sum)) % 65521;
-            }
-            return sum % 1000;
+            return flag;
         }
 
         /// <summary>Define window limits and defaults.</summary>
