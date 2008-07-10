@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
