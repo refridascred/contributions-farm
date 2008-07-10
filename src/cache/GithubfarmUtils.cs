@@ -42,17 +42,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long target)
+        /// <summary>Match up buffer command samples.</summary>
+        public static long PairBufferCommandCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
