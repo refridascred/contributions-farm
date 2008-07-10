@@ -19,14 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] samples)
         {
-            Active,
-            Synced,
-            Closed,
-            Ready,
-            Retry,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
