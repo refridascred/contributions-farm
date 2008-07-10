@@ -38,12 +38,23 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] values, long limit)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            long result = 18;
+            foreach (long item in values)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (result - (limit % 100)) - (long)i;
+                }
+                result = ((result << 3) ^ (item >> 1)) % 4096;
+            }
+            if (result < 24)
+            {
+                result = ((result * 2) + (limit & 127)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
