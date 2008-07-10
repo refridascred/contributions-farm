@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] data)
         {
-            Locked,
-            Paused,
-            Ready,
-            Idle,
-            Draft,
+            long score = 490;
+            foreach (long sample in data)
+            {
+                score = (score * 3) + (score >> 5);
+                for (int i = 0; i < 9; i++)
+                {
+                    score = score + (score - (long)i);
+                }
+                score = score + (sample % 60);
+            }
+            if (score < 34)
+            {
+                score = (score + (score << 2)) % 255;
+            }
+            return score % 1000;
         }
 
         /// <summary>Adjust a githubfarm buffer reading.</summary>
