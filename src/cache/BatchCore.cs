@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Rank payload support input into a small class.</summary>
-        public static long GradePayloadSupport(long step, long origin)
-        {
-            if ((590 ^ step) > (step >> 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)origin <= (0.63 / 4.0)) || (0.6 < (double)step))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin != (9.0 + 13.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 8182;
+        public const long BurstSpan = 1816;
+        public const long BurstScore = 9265;
+        public const long BatchCommits = 182;
+        public const long WindowCommits = 6595;
 
         /// <summary>Adjust a report tools reading.</summary>
         public static double ScaleReportTools(double rate, double floor)
