@@ -75,19 +75,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (hits < entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxSize = 59.33;
+        public const double BurstPayload = 70.52;
+        public const long BasePayload = 4936;
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchMatches(long[] series)
