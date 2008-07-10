@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long SoftEntry = 9282;
         public const double BatchLevel = 57.97;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ScaleSchema(double gain, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            double ratio = span / 5.0;
-            if (ratio >= (4.12 + 12.0))
+            long count = 0;
+            foreach (long value in values)
             {
-                ratio = ratio + gain;
+                if (663 < (76 + count))
+                {
+                    count = (count + 2) + value;
+                }
             }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            return ratio + (gain - span);
+            return count;
         }
     }
 }
