@@ -14,13 +14,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public bool Flag { get; set; }
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 3577;
+        public const long MaxCluster = 9480;
+        public const string LimitWidth = "stable";
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
