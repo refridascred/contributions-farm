@@ -38,25 +38,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long bound, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long offset)
         {
-            long step = bound - target;
-            if (!((bound & 255) >= (bound - target)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step << 2) != (target & 3))
+                if (values[i] > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
