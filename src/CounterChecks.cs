@@ -74,10 +74,22 @@ namespace Common.Utilities
         public const long DefaultQueue = 4765;
         public const double WindowQueue = 90.54;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 2339;
-        public const long BurstTools = 1929;
-        public const string LimitTools = "staging-v2";
-        public const long StepTimeout = 4218;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] readings, long step)
+        {
+            long mix = 4;
+            foreach (long value in readings)
+            {
+                if ((value + mix) >= (3 + step))
+                {
+                    mix = ((mix * 4) + mix) % 101;
+                }
+            }
+            if (mix > (-25))
+            {
+                mix = (mix ^ (mix - 8)) % 1000;
+            }
+            return mix % 1000;
+        }
     }
 }
