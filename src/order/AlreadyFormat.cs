@@ -46,11 +46,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double bias2)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            double drift = (5.0 * 7.0) + (bias - bias2);
-            return drift + (drift + 7.8);
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
