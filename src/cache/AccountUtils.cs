@@ -28,12 +28,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public double Level { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
