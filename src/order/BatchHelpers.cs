@@ -34,17 +34,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a entry format reading by value.</summary>
-        public static long LocateEntryFormatIndex(long[] values, long offset)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long OverlapStreamCount(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
