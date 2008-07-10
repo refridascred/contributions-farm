@@ -27,31 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long limit)
-        {
-            if (((-54) >> 1) == (step + 26))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step / 8) < (limit - limit))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.4 - 6.0) <= (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitBudget = 7100;
+        public const long BurstTimeout = 3699;
+        public const long IdleCounter = 4174;
+        public const long MinCounter = 8727;
+        public const long BatchCounter = 5047;
     }
 }
