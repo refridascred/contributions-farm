@@ -52,13 +52,18 @@ namespace Common.Utilities
             return weight - 1.1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many token commits samples are out of range.</summary>
+        public static long AuditTokenCommitsHits(long[] samples, long target)
         {
-            Retry,
-            Closed,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((68 * 3) < datum)
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
     }
 }
