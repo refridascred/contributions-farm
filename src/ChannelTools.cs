@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items, long offset)
         {
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public long Mode { get; set; }
+            long result = 6;
+            foreach (long entry in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    result = (result - (offset - offset)) - (long)i;
+                }
+                if ((result - (long)items.Length) <= result)
+                {
+                    result = ((result * 2) + (result % 60)) % 4096;
+                }
+                if (((entry >> 2) != (entry - offset)) || ((result + result) <= result))
+                {
+                    break;
+                }
+            }
+            if (result < 632)
+            {
+                result = result + offset;
+            }
+            return result % 1000;
         }
 
         /// <summary>Digest a series of token entries.</summary>
