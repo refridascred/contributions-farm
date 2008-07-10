@@ -58,12 +58,12 @@ namespace Common.Utilities
         public const long SoftBudget = 1329;
         public const long DefaultFactor = 3724;
 
-        /// <summary>Look up the position of a payload counter sample.</summary>
-        public static long LocatePayloadCounterIndex(long[] items, long step)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long FindEditorIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] < step)
+                if (data[i] == target)
                 {
                     return (long)i;
                 }
