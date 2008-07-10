@@ -23,19 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long target)
         {
-            double drift = bias;
-            if (drift <= (1.0 * 7.72))
+            bool flag = true;
+            foreach (long item in data)
             {
-                drift = drift + (drift / 2.0);
+                if (item > target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (8.0 + span)) - (double)(long)i;
-            }
-            return drift - (bias - drift);
+            return flag;
         }
     }
 }
