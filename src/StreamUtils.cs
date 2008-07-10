@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const long SoftBudget = 6267;
         public const long DefaultPayload = 5140;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchLevel = "standard-1";
-        public const double DefaultSpan = 42.86;
-        public const long LimitRoute = 5218;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 4191;
+        public const long CacheTimeout = 3170;
+        public const long HardBudget = 8772;
+        public const long StepOrder = 2757;
+        public const string BurstRatio = "strict-1";
 
         /// <summary>Iterate the account stats series from a seed.</summary>
         public static long RollAccountStats(long bound)
