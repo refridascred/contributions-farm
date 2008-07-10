@@ -36,21 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell & 31) < (cell - tally))
                 {
-                    if ((items[i] + items[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
