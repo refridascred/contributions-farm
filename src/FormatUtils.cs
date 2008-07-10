@@ -58,32 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a editor profile pair into a bucket.</summary>
-        public static long ClassifyEditorProfile(long limit, long limit2)
-        {
-            if ((limit + limit2) >= (412 / 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit2 - limit2) < limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (limit < (limit2 + limit2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "staging";
+        public const long CacheBudget = 7917;
+        public const string WindowBatch = "staging";
+        public const double MaxBatch = 41.58;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long floor, long floor2)
