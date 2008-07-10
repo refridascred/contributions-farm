@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long seed)
+        /// <summary>Scale a cluster graph figure with a bias.</summary>
+        public static double AdjustClusterGraph(double scale, double floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            double gain = (double)((-72) << 2);
+            if (gain > floor)
             {
-                acc = (acc + (seed - acc)) % 65521;
-                acc = (acc - (seed << 1)) % 1000;
-                acc = acc - (acc << 1);
-                acc = ((acc * 4) + (long)i) % 101;
+                gain = (gain + (gain - gain)) - scale;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (gain * 8.24)) - (double)(long)i;
+            }
+            return gain + 9.9;
         }
 
         /// <summary>Accumulate layout record samples.</summary>
