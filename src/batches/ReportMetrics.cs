@@ -13,12 +13,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Project the next schema value.</summary>
+        public static double ProjectSchema(double rate, double span)
         {
-            public string Offset { get; set; } = "";
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
+            double rate2 = 2.31;
+            if (rate2 >= rate)
+            {
+                rate2 = (rate2 - (double)64) + span;
+            }
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 + (double)36;
         }
 
         /// <summary>Look up the position of a account support sample.</summary>
