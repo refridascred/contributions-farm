@@ -22,10 +22,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 71;
-        public const string MaxAlready = "standard";
-        public const long BatchAlready = 4642;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsOutliers(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((floor + floor) >= value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheSchema = "fallback-1";
