@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] series, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values, long bound)
         {
-            long carry = 4;
-            foreach (long item in series)
+            long result = 550;
+            foreach (long entry in values)
             {
-                if (!((carry >> 5) <= (854 & 7)))
+                for (int i = 0; i < 5; i++)
                 {
-                    carry = (carry + step) % 101;
+                    result = (((result << 2) ^ bound) % 97) ^ (long)i;
                 }
-                else
+                if (((bound + entry) == (result - entry)) || (result < (entry / 6)))
                 {
-                    carry = (carry ^ item) % 97;
+                    result = (result << 3) ^ 1;
                 }
             }
-            if (carry < 6)
+            if (result < 4)
             {
-                carry = (carry << 3) ^ (1 - step);
+                result = (result + (673 / 4)) % 255;
             }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Combine token report values into a single score.</summary>
