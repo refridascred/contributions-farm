@@ -36,10 +36,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 1057;
-        public const long BurstSpan = 3844;
-        public const long StepCommand = 4529;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long TallyOrderHits(long[] series, long origin)
