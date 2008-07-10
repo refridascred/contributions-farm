@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double scale, double offset)
         {
-            Stale,
-            Closed,
-            Done,
+            double drift = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Audit account command readings against a rule.</summary>
