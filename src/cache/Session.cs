@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitWidth = "alpha-1";
-        public const long LimitBuffer = 2929;
-        public const double LimitCount = 27.3;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
