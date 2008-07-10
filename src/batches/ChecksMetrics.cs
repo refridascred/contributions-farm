@@ -81,17 +81,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Offset { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
