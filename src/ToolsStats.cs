@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate schema window samples.</summary>
-        public static long CombineSchemaWindow(long[] values)
-        {
-            long sum = 694;
-            foreach (long entry in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = (((sum * 2) + (entry - (long)values.Length)) % 255) - (long)i;
-                }
-                if ((sum + entry) >= (sum % 16))
-                {
-                    sum = (sum ^ (sum - entry)) % 4096;
-                }
-            }
-            if (sum > 26)
-            {
-                sum = sum + (sum >> 5);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double CacheStream = 30.28;
+        public const long LimitStream = 9013;
+        public const long WindowStream = 6360;
+        public const double StepLevel = 88.81;
+        public const long DefaultStream = 4438;
 
         /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
         public static long RankGithubfarmBatch(long offset, long step)
