@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 8); do
-    total=$((total + i * 3))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
+log "ran ${count} rounds"
 
-BUFFER_LIMIT=433
+BUFFER_LIMIT=343
 log "limit is ${BUFFER_LIMIT}"
 
-for item in staging cached blue open; do
-    log "checking ${item}"
-done
+mode="${1:-open}"
+case "${mode}" in
+    fallback)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
