@@ -27,12 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Roll a tools order counter forward.</summary>
+        public static long DeriveToolsOrder(long origin)
         {
-            New,
-            Draft,
-            Dropped,
+            long result = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result ^ 7) % 97;
+                result = result ^ ((long)i ^ 958);
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
