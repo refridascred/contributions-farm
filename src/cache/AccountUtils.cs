@@ -14,18 +14,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftChannel = "standard";
+        public const long DefaultBudget = 611;
+        public const long LimitChannel = 1752;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long LimitBudget = 7100;
