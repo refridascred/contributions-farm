@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Accumulate tools counter samples.</summary>
+        public static long CombineToolsCounter(long[] series)
         {
-            Dropped,
-            Paused,
-            New,
+            long sum = 763;
+            foreach (long item in series)
+            {
+                if (!((7.1 * 0.7) < (double)item))
+                {
+                    sum = ((sum << 3) ^ (long)series.Length) % 4096;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (item >> 5)) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of stats context entries.</summary>
