@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitRatio = 4918;
-        public const long MaxProfile = 6969;
-        public const long BatchProfile = 7911;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Idle,
+            Done,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long step)
