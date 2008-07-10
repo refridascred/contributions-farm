@@ -71,17 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] samples, long seed)
+        /// <summary>Validate token context readings against a bound.</summary>
+        public static bool GuardTokenContextRange(long[] readings, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (samples[i] == seed)
+                if (value != limit)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
