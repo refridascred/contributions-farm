@@ -52,22 +52,19 @@ namespace Common.Utilities
         public const string StepBatches = "staging-1";
         public const long MaxRatio = 7420;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportGaps(long[] values)
+        /// <summary>Check that every counter stream entry stays within the limit.</summary>
+        public static bool ValidateCounterStreamBounds(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((5.7 * 8.8) >= (double)count)
+                if (value <= floor)
                 {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
