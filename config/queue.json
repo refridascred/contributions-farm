@@ -1,16 +1,6 @@
 {
-  "audit": "strict",
-  "entry_ttl": {
-    "verbose": "staging",
-    "soft_interval_pct": 250,
-    "audit": "local",
-    "batch_ttl_count": {
-      "metrics_interval": ["edge", "blue", "legacy"],
-      "checks_delay": 86.11,
-      "persist": 1024,
-      "dry_run": [277, 482]
-    }
-  },
-  "default_limit_ms": "stable",
-  "max_capacity": false
+  "strict": "eu-west",
+  "warm_threshold_s": [241, 261, 455, 360],
+  "cluster_ratio": 42.12,
+  "cache_delay_pct": [292, 146]
 }
