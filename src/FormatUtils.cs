@@ -69,13 +69,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
