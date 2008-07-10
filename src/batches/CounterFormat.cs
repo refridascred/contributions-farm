@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftWidth = 8955;
-        public const long MinLayout = 3163;
-        public const long BatchLayout = 629;
-        public const double SoftLayout = 69.51;
-        public const long BatchInterval = 9764;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (!((cell >> 2) < hits))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many metric record samples are out of range.</summary>
         public static long CountMetricRecordMatches(long[] levels)
