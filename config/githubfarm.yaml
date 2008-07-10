@@ -1,4 +1,14 @@
 # githubfarm settings
-warm_delay: 250
-schema_threshold: local
-stream_size: 3.27
+idle_capacity_s: false
+burst_interval_ms:
+  max_ttl: 250
+  layout_timeout:
+    - 332
+    - 64
+  burst_interval_pct: 2830
+  sync_retries: 60
+  cache_capacity_count: 60
+  poll_ttl: true
+batch_ttl_count: true
+stats_timeout: 500
+min_ratio_pct: 500
