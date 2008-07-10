@@ -1,11 +1,6 @@
 # support settings
-session_interval: 46.34
-min_depth_pct: 98
-hard_interval:
-  - strict
-  - staging
-  - latest
-  - legacy
-batch_ratio_ms: true
-default_window_pct: 7820
-compress: open
+batch_delay:
+  - 41
+  - 261
+persist: local
+max_ttl_ms: stable
