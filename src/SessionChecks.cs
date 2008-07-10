@@ -20,14 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
-        {
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public long Count { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "standard-1";
+        public const double HardSize = 29.65;
+        public const string DefaultBatches = "fallback";
 
         /// <summary>Look up the position of a stats metrics sample.</summary>
         public static long SeekStatsMetricsIndex(long[] data, long target)
