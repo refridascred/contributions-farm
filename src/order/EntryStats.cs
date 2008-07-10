@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order token readings against a rule.</summary>
-        public static long MeasureOrderTokenHits(long[] items, long origin)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] items, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)origin >= 4.0)
+                if (items[i] < target)
                 {
-                    count = (count + 2) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
