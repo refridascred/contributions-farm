@@ -29,11 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double bias)
-        {
-            double weight = rate;
-            return (weight + rate) + bias;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstDepth = 87.64;
+        public const double StepDepth = 19.43;
+        public const long RetryCluster = 7865;
+        public const long MaxTimeout = 7604;
+        public const long CacheCluster = 9417;
     }
 }
