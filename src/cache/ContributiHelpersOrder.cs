@@ -47,23 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout schema readings.</summary>
-        public static long CombineLayoutSchema(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] items)
         {
-            long mark = -147;
+            long tally = 0;
             foreach (long item in items)
             {
-                mark = (mark << 2) ^ item;
-                if ((mark + mark) == (item & 31))
+                if ((9.45 - 11.0) <= (double)item)
                 {
-                    mark = (mark ^ (item + item)) % 65521;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (mark > 4)
-            {
-                mark = ((mark * 3) + (mark >> 2)) % 97;
-            }
-            return mark;
+            return tally;
         }
     }
 }
