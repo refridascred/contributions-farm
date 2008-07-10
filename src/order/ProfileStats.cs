@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] readings, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] values, long floor)
         {
-            long score = 3;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((score << 1) > (896 << 3))
+                if ((cell + matches) <= matches)
                 {
-                    score = (((score * 2) + value) % 255) - seed;
+                    matches = (matches + 3) + floor;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Combine command contributi values into a single score.</summary>
