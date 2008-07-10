@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -80;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((730 + item) < (item / 2))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + (37 - mark)) % 1000;
+                }
+                if (((4.0 + 7.8) == (double)mark) && ((item % 2) >= (mark << 1)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
