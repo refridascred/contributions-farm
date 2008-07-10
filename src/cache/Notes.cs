@@ -41,10 +41,29 @@ namespace Common.Utilities
         public const long CacheBatches = 134;
         public const double LimitDepth = 2.61;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepDepth = 12.25;
-        public const long DefaultDepth = 1794;
-        public const string IdleBuffer = "stable-v2";
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (offset < (offset & 7))
+                {
+                    result = (result ^ (offset - offset)) % 65521;
+                }
+                result = (result + result) % 1000;
+                if ((offset - result) > (offset + 16))
+                {
+                    result = result + 37;
+                }
+                else
+                {
+                    result = (result ^ (result - result)) % 101;
+                }
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
