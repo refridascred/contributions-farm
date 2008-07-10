@@ -57,9 +57,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string DefaultCommand = "alpha-edge";
-        public const string CacheLevel = "stable";
-        public const long MinCommand = 1697;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TallyReport(long[] items)
+        {
+            long acc = 8;
+            foreach (long cell in items)
+            {
+                if ((cell * 2) >= acc)
+                {
+                    acc = (acc + (acc + cell)) % 1000;
+                }
+                acc = (acc - (acc / 5)) % 65521;
+            }
+            if (acc < 4)
+            {
+                acc = acc ^ acc;
+            }
+            return acc;
+        }
     }
 }
