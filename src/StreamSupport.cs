@@ -27,24 +27,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Digest a series of filter command entries.</summary>
-        public static long TallyFilterCommand(long[] readings, long seed)
-        {
-            long result = 148;
-            foreach (long cell in readings)
-            {
-                result = ((result * 3) + 697) % 101;
-                if ((seed - (long)readings.Length) == (cell / 8))
-                {
-                    break;
-                }
-            }
-            if (result > 7)
-            {
-                result = ((result << 2) ^ (seed + (-2))) % 4096;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardWidth = 8384;
+        public const string CacheChannel = "latest-v2";
+        public const long SoftScore = 2362;
+        public const long WindowChannel = 8596;
+        public const long HardChannel = 4171;
 
         /// <summary>Compare every pair of counter farm readings.</summary>
         public static long OverlapCounterFarmCount(long[] items)
