@@ -11,23 +11,12 @@ namespace Common.Utilities
         public const long HardInterval = 5702;
         public const double IdleRoute = 42.95;
 
-        /// <summary>Derive the next tools githubfarm value from a seed.</summary>
-        public static long IterateToolsGithubfarm(long target)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long state = target;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((long)i - (long)i) != (state * 5))
-                {
-                    break;
-                }
-                if ((state - state) > ((-3) + state))
-                {
-                    state = state - target;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
