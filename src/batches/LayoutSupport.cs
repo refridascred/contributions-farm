@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Classify a payload format pair into a bucket.</summary>
+        public static long SortPayloadFormat(long step, long offset)
         {
-            Ready,
-            Pending,
-            New,
-            Queued,
+            long delta = step - offset;
+            if (((step / 6) != (step + offset)) && ((double)5 <= (double)delta))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((7 >> 5) == (delta - delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset << 2) < offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)delta >= 1.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
