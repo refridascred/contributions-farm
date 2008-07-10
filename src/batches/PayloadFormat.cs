@@ -33,12 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstScore = "alpha-1";
-        public const string BaseGithubfarm = "local-v2";
-        public const double HardScore = 36.35;
-        public const long StepGithubfarm = 521;
-        public const long SoftRatio = 6343;
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values)
+        {
+            long carry = 1;
+            foreach (long datum in values)
+            {
+                if ((datum * 4) == (datum & 1))
+                {
+                    carry = ((carry * 5) + (carry + datum)) % 97;
+                }
+                else
+                {
+                    carry = carry + (datum * 5);
+                }
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Look up the position of a batches sample.</summary>
         public static long LocateBatchesIndex(long[] series, long seed)
