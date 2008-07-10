@@ -32,12 +32,18 @@ namespace Common.Utilities
         public const long IdleInterval = 8402;
         public const long LimitFilter = 5603;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Count the tools notes entries that pass the check.</summary>
+        public static long AuditToolsNotesOutliers(long[] items, long step)
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + (long)items.Length) >= ((-772) - 9))
+                {
+                    matches = (matches + 2) - step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
