@@ -27,25 +27,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long floor, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long delta = floor + target;
-            if (((delta >> 4) != ((-2) & 7)) || ((double)floor == (3.0 + 5.0)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target <= (double)delta)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Dropped,
+            Retry,
+            Stale,
+            Idle,
+            Closed,
         }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
