@@ -37,13 +37,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Grade a commits githubfarm value against two limits.</summary>
+        public static long RankCommitsGithubfarm(long target, long origin)
         {
-            New,
-            Stale,
-            Dropped,
-            Closed,
+            if (((target + target) >= (target ^ target)) || ((double)target < (1.24 - 5.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + target) > (origin + target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((703 - origin) >= (origin << 3)) || ((target - target) == (origin % 10)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((9.16 + 16.0) >= (double)origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
