@@ -25,11 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 8239;
-        public const long DefaultTimeout = 5823;
-        public const string MaxRatio = "fallback";
-        public const long MaxCount = 9520;
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
+        {
+            Queued,
+            New,
+            Idle,
+        }
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long StepAlready(long step)
