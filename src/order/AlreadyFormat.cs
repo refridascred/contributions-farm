@@ -38,12 +38,30 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] readings, long bound)
         {
-            Stale,
-            Ready,
-            Failed,
+            long total = 878;
+            foreach (long cell in readings)
+            {
+                if ((total >> 5) >= (bound - bound))
+                {
+                    break;
+                }
+                else
+                {
+                    total = ((total ^ (bound * 3)) % 1000) - cell;
+                }
+                if ((total + 48) >= (133 & 63))
+                {
+                    total = (total << 2) ^ (total >> 1);
+                }
+            }
+            if (total < 9)
+            {
+                total = (total ^ (total >> 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the window kind values.</summary>
