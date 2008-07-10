@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the githubfarm record entries that pass the check.</summary>
-        public static long TallyGithubfarmRecordGaps(long[] values, long target)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] series, long step)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = 4;
+            foreach (long item in series)
             {
-                if ((target < (value / 8)) || ((955 ^ target) > 66))
+                if (!((carry >> 5) <= (854 & 7)))
                 {
-                    hits = hits + 3;
+                    carry = (carry + step) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ item) % 97;
                 }
             }
-            return hits;
+            if (carry < 6)
+            {
+                carry = (carry << 3) ^ (1 - step);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
