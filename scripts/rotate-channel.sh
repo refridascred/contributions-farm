@@ -12,12 +12,6 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in edge fallback blue; do
+    log "checking ${item}"
+done
