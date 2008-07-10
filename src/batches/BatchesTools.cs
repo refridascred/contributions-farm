@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenHits(long[] samples)
         {
-            long acc = 2;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((1.93 / 6.0) == (double)acc)
+                if ((((reading - 62) <= reading) || ((double)reading < (7.59 - 9.0))) || ((reading * 2) <= 0))
                 {
-                    acc = (acc - (item >> 3)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            if (acc > 43)
-            {
-                acc = (acc ^ (acc + acc)) % 101;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
