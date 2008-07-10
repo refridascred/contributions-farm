@@ -21,11 +21,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            Queued,
+            Retry,
+            Closed,
+            Paused,
+            Synced,
         }
     }
 }
