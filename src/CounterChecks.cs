@@ -35,20 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next batches order value from a seed.</summary>
-        public static long DeriveBatchesOrder(long offset)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((total * 4) >= offset)
-                {
-                    total = (total << 2) ^ (offset + (long)i);
-                }
-                total = total ^ (total - total);
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Roll a stats counter forward.</summary>
