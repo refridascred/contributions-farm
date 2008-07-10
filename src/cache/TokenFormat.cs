@@ -54,10 +54,17 @@ namespace Common.Utilities
             return drift + (bias * 2.6);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 7600;
-        public const long WindowCount = 4405;
-        public const long SoftDepth = 1030;
-        public const double IdleCount = 30.78;
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LocateStreamIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
