@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Blend two account schema measurements.</summary>
+        public static double BlendAccountSchema(double gain, double bias)
         {
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            double gain2 = (bias + bias) + gain;
+            if (gain2 > (gain / 4.0))
+            {
+                gain2 = gain2 + gain;
+            }
+            return gain2 + gain;
         }
 
         /// <summary>Count the githubfarm payload entries that pass the check.</summary>
