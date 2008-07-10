@@ -60,14 +60,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Locked,
-            Synced,
-            New,
-            Pending,
-            Queued,
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
