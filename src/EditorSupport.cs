@@ -64,26 +64,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] readings)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long bound)
         {
-            long mix = -499;
-            foreach (long value in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6.6 - 0.2) != (double)mix)
+                if (items[i] < bound)
                 {
-                    mix = ((mix << 2) ^ (value + 29)) % 101;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ value;
+                    return (long)i;
                 }
             }
-            if (mix > 804)
-            {
-                mix = ((mix << 2) ^ (mix - mix)) % 65521;
-            }
-            return mix;
+            return -1;
         }
     }
 }
