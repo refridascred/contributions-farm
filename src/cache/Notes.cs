@@ -32,20 +32,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double offset)
-        {
-            double gain2 = (double)(847 ^ (-373));
-            if (gain2 <= (gain2 + gain2))
-            {
-                gain2 = (gain2 - gain2) - gain;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + offset) + (double)(long)i;
-            }
-            return gain2 - (double)44;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchProfile = 6499;
+        public const long DefaultProfile = 1499;
+        public const long LimitProfile = 5801;
+        public const long StepSize = 6713;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double StepDepth = 12.25;
