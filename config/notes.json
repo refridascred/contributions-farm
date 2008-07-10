@@ -1,7 +1,13 @@
 {
-  "base_limit_s": false,
-  "verbose": 61.5,
-  "min_size_s": "standard",
-  "strict": 2937,
-  "warm_retries_ms": 82
+  "idle_ttl_ms": {
+    "hard_window_s": 87,
+    "record_capacity": "legacy",
+    "poll_retries_count": 67,
+    "cache_ttl": 45.0,
+    "graph_ttl": 9025,
+    "verbose": ["fallback", "staging"]
+  },
+  "cache_timeout_count": "green",
+  "poll_timeout": 65.21,
+  "retry_delay_count": true
 }
