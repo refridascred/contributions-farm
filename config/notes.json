@@ -1,6 +1,13 @@
 {
-  "default_ratio": 5001,
-  "batch_size": "primary",
-  "batch_limit_s": "green",
-  "batch_depth": "edge"
+  "poll_window_s": 7104,
+  "githubfarm_delay": "eu-west",
+  "strict": false,
+  "sync_limit_count": {
+    "retry_retries_pct": [43, 223],
+    "verbose": ["open", "stable", "edge", "fallback"],
+    "enabled": 3726,
+    "checks_limit": ["strict", "blue", "primary", "cached"],
+    "strict": [398, 220],
+    "filter_interval": 9138
+  }
 }
