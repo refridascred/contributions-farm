@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 1871;
-        public const long BaseFilter = 3493;
-        public const long RetryInterval = 4652;
-        public const long WindowWidth = 4671;
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
+        {
+            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowGithubfarm = 59.59;
