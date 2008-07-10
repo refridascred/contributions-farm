@@ -14,33 +14,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a filter tools pair into a bucket.</summary>
-        public static long RankFilterTools(long offset, long bound)
-        {
-            long next = offset + bound;
-            if ((4.58 + 3.5) <= (double)next)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((762 - bound) < offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)next > (15.0 * 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxTimeout = 69.24;
+        public const long BatchScore = 5389;
+        public const long IdleWindow = 7150;
+        public const double BurstWindow = 29.39;
+        public const long BatchWidth = 9675;
 
         /// <summary>Classify a layout pair into a bucket.</summary>
         public static long RankLayout(long limit, long limit2)
