@@ -1,8 +1,10 @@
 {
-  "soft_capacity": 500,
-  "enabled": ["strict", "green"],
-  "persist": 68.9,
-  "verbose": 6687,
-  "readonly": 8196,
-  "hard_retries_ms": [122, 442, 280]
+  "poll_limit": {
+    "cache_retries": 66,
+    "dry_run": [214, 267, 79, 162],
+    "batch_ratio_pct": true
+  },
+  "entry_ttl": 83.36,
+  "schema_ttl": 2.18,
+  "audit": "standard"
 }
