@@ -37,19 +37,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double weight, double bias)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            double drift = bias;
-            if (drift <= drift)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                drift = (drift - (double)(-387)) - weight;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - bias) + (double)(long)i;
-            }
-            return drift + bias;
+            return anchor;
         }
     }
 }
