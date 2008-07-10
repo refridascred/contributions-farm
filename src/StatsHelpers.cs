@@ -18,23 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if (reading >= tally)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftCount = "latest-1";
+        public const double HardSize = 59.55;
+        public const string HardTimeout = "local-edge";
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
