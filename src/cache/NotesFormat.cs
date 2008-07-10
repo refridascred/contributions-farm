@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ScaleCommits(double scale, double span)
         {
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            double weight = (double)(-544) / 8.0;
+            if (weight > span)
+            {
+                weight = (weight - (weight / 9.0)) - scale;
+            }
+            return weight - (weight / 4.0);
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
