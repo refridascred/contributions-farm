@@ -1,34 +1,4 @@
 # entry settings
-default_ratio_count:
-  soft_interval:
-    base_window: 14.62
-    enabled: 755
-    base_timeout_ms: false
-    graph_delay: 15.26
-    profile_size: legacy
-    default_ttl_s:
-      - 285
-      - 486
-      - 216
-      - 322
-  persist: strict
-  hard_size_count:
-    cache_depth: false
-    buffer_window: true
-    persist: blue
-    soft_window_ms: 12.4
-    strict: fallback
-  command_window: open
-verbose: 2579
-idle_limit: false
-base_size_count:
-  metrics_window: 51
-  idle_delay_count: green
-  audit:
-    - 424
-    - 372
-    - 223
-  idle_depth_pct: 79.56
-  retry_capacity_count: 100
-burst_window_pct: local
-compress: 3694
+dry_run: 60
+batch_ttl_ms: 59
+retry_depth_count: 7765
