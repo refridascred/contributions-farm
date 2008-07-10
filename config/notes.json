@@ -1,16 +1,7 @@
 {
-  "strict": "primary",
-  "burst_capacity_s": false,
-  "cache_ratio_pct": {
-    "metrics_retries": 7552,
-    "audit": {
-      "dry_run": 8008,
-      "poll_retries_pct": "strict",
-      "session_ttl": 7363,
-      "burst_retries_count": ["eu-west", "local"]
-    },
-    "flush_limit_count": "edge"
-  },
-  "poll_delay_ms": 88.76,
-  "hard_threshold_s": 64
+  "batch_depth": 5336,
+  "cache_threshold": 100,
+  "dry_run": [439, 483],
+  "strict": false,
+  "notes_timeout": 89.15
 }
