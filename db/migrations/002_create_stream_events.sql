@@ -2,8 +2,10 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     level INTEGER,
-    score REAL NOT NULL DEFAULT 0,
-    rank INTEGER
+    state TEXT NOT NULL DEFAULT 'new',
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_events_score ON stream_events (score);
+CREATE INDEX IF NOT EXISTS idx_stream_events_level ON stream_events (level);
+
+INSERT INTO stream_events (level, state, owner) VALUES (87, 'stable', 'green');
