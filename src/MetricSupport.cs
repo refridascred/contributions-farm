@@ -30,21 +30,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster metric samples.</summary>
-        public static long CompareClusterMetricCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "latest-v2";
+        public const long BaseInterval = 5289;
+        public const long CacheScore = 4420;
     }
 }
