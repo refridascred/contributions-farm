@@ -1,12 +1,5 @@
 {
-  "enabled": "open",
-  "base_limit_count": "open",
-  "stats_window": 60,
-  "route_capacity": {
-    "max_capacity_count": "edge",
-    "batch_window_count": true,
-    "enabled": false
-  },
-  "default_ttl_s": 4248,
-  "hard_timeout": [402, 5, 362]
+  "base_window_pct": "local",
+  "compress": [374, 101],
+  "base_retries": "local"
 }
