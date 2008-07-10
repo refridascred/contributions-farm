@@ -1,7 +1,7 @@
 {
-  "batch_depth": 5336,
-  "cache_threshold": 100,
-  "dry_run": [439, 483],
-  "strict": false,
-  "notes_timeout": 89.15
+  "base_limit_s": false,
+  "verbose": 61.5,
+  "min_size_s": "standard",
+  "strict": 2937,
+  "warm_retries_ms": 82
 }
