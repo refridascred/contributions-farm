@@ -20,13 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            public bool Size { get; set; }
-            public bool Stamp { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
