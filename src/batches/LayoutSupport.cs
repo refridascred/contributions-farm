@@ -14,11 +14,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstWidth = "staging";
-        public const long MaxProfile = 1176;
-        public const double StepDepth = 34.93;
-        public const long WindowProfile = 4413;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((bound >> 4) < (bound % 97))
+                {
+                    tally = (tally + 3) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TallyEntry(long[] items)
