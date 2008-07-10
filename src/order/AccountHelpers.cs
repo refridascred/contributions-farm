@@ -45,18 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen ^ 54) != (seen + 6))
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
                 {
-                    seen = (seen + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a already queue sample.</summary>
