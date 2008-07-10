@@ -43,19 +43,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((6 / 9) <= (matches - item))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 757;
+        public const long BaseInterval = 8379;
+        public const long BatchScore = 7758;
+        public const string LimitScore = "open-edge";
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long TallyEntryOutliers(long[] series)
