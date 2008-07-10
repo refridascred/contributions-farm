@@ -30,18 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the profile session entries that pass the check.</summary>
-        public static long AuditProfileSessionHits(long[] readings, long floor)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if ((value << 1) <= floor)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            New,
+            Done,
+            Stale,
+            Locked,
         }
     }
 }
