@@ -1,5 +1,16 @@
 # entry settings
-verbose: 16.11
-min_ratio: 500
-flush_size: 98.27
-idle_retries: strict
+burst_retries: 12.0
+default_delay:
+  burst_retries_pct: 60
+  poll_retries_s: edge
+  retry_size_s:
+    retry_threshold_ms:
+      - open
+      - primary
+      - local
+      - legacy
+    layout_delay: true
+    min_window: edge
+flush_retries_count: staging
+session_capacity: blue
+burst_delay_count: 90
