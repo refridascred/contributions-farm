@@ -46,18 +46,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsMatches(long[] series, long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (hits > (target & 15))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) ^ item;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
