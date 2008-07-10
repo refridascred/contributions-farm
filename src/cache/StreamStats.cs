@@ -39,10 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double LimitCount = 73.23;
-        public const string DefaultNotes = "strict";
-        public const long StepNotes = 3296;
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit context metrics readings against a rule.</summary>
         public static long TallyContextMetricsHits(long[] items, long seed)
