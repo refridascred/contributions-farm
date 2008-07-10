@@ -19,13 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 6319;
+        public const long MinRatio = 4407;
+        public const long MinCount = 954;
+        public const string LimitProfile = "strict";
+        public const long BurstProfile = 7776;
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
