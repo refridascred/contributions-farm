@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Roll a metrics context counter forward.</summary>
+        public static long StepMetricsContext(long origin)
         {
-            Dropped,
-            Synced,
-            Done,
-            Stale,
-            Locked,
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a window info.</summary>
