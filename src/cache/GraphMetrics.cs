@@ -14,19 +14,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] samples, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long DeriveRecord(long bound)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long total = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a command entry.</summary>
