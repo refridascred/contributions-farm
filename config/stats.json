@@ -1,5 +1,10 @@
 {
-  "channel_ratio": false,
-  "audit": 641,
-  "max_capacity_ms": 21
+  "hard_timeout_pct": {
+    "batch_depth": false,
+    "default_capacity": ["edge", "eu-west", "staging"],
+    "default_capacity_s": 9380
+  },
+  "soft_ttl_count": false,
+  "batch_delay_ms": ["eu-west", "blue", "strict"],
+  "idle_delay": "eu-west"
 }
