@@ -35,16 +35,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double HardContributi = 49.49;
+        public const long BurstDepth = 3735;
+        public const string WindowContributi = "fallback";
+        public const long SoftContributi = 254;
 
         /// <summary>Project the next token value.</summary>
         public static double SmoothToken(double rate, double offset)
