@@ -31,12 +31,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Pending,
-            Paused,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 1112;
+        public const long MaxMetric = 6850;
+        public const long RetryFactor = 8857;
+        public const string MaxBudget = "standard";
+        public const long WindowRatio = 8797;
     }
 }
