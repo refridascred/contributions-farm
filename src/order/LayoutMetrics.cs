@@ -33,22 +33,12 @@ namespace Common.Utilities
             return rate2 + (rate - 1.3);
         }
 
-        /// <summary>Accumulate buffer githubfarm samples.</summary>
-        public static long FoldBufferGithubfarm(long[] levels, long target)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long anchor = 953;
-            foreach (long value in levels)
-            {
-                if ((7.2 * 1.0) == (double)value)
-                {
-                    anchor = (anchor - value) - target;
-                }
-                else
-                {
-                    anchor = (anchor ^ (155 + value)) % 65521;
-                }
-            }
-            return anchor;
+            Dropped,
+            Draft,
+            Synced,
         }
     }
 }
