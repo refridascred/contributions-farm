@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of support profile entries.</summary>
+        public static long WeighSupportProfile(long[] series, long floor)
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
+            long mark = 0;
+            foreach (long sample in series)
+            {
+                mark = ((mark * 2) + floor) - sample;
+                if ((floor + floor) != (32 - (-53)))
+                {
+                    mark = (mark + (mark & 127)) % 255;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (floor + (-39))) % 4096;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
