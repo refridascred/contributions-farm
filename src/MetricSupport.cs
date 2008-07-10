@@ -19,19 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long state = -469;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state - (state - 1);
-                if ((3 - reading) <= (reading % 12))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state * 4) + (reading ^ state);
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Describe the stream phase values.</summary>
