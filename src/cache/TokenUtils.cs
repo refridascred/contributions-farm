@@ -28,12 +28,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Idle,
-            Retry,
-            Queued,
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
