@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchBounds(long[] values, long origin)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool ready = true;
-            foreach (long value in values)
-            {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit payload token readings against a rule.</summary>
