@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LocateOrderIndex(long[] readings, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long origin, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)34 >= (double)origin)
             {
-                if (readings[i] > origin)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin != (10.0 / 9.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)335 <= (double)seed) && (341 <= (seed / 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (origin > (origin * 2))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
