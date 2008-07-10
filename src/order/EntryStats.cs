@@ -35,12 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSpan = 4551;
-        public const string MaxInterval = "local";
-        public const string MaxWidth = "stable-v2";
-        public const long MinSchema = 2026;
-        public const string DefaultSpan = "standard";
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Idle,
+            Stale,
+            Done,
+            Synced,
+            Closed,
+        }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] data)
