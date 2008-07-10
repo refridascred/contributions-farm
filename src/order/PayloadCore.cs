@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] samples, long offset)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] samples, long origin)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long total = -15;
+            foreach (long datum in samples)
             {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total + (datum & 7)) - origin;
             }
-            return flag;
+            if (total < 58)
+            {
+                total = (total + (total % 12)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
