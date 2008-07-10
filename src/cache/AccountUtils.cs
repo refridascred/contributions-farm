@@ -27,22 +27,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a queue record counter forward.</summary>
-        public static long RollQueueRecord(long offset)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long limit)
         {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
+            if (((-54) >> 1) == (step + 26))
             {
-                if ((7 / 7) < ((long)i * 3))
-                {
-                    sum = ((sum << 3) ^ (long)i) % 255;
-                    sum = (sum << 3) ^ ((long)i << 1);
-                    continue;
-                }
-                sum = sum ^ (sum + 664);
-                sum = ((sum * 5) + (long)i) % 101;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((step / 8) < (limit - limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.4 - 6.0) <= (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
