@@ -43,10 +43,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryBudget = "staging-1";
-        public const long LimitInterval = 6612;
-        public const long BatchInterval = 6489;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public long Owner { get; set; }
+            public bool Weight { get; set; }
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
+        }
 
         /// <summary>Accumulate profile samples.</summary>
         public static long CombineProfile(long[] values)
