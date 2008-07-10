@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LocateOrderIndex(long[] readings, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (origin - result)) % 255;
-                result = ((result * 2) + (long)i) % 65521;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
