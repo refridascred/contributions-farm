@@ -76,22 +76,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] readings, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            long mix = 4;
-            foreach (long value in readings)
+            long acc = 76;
+            foreach (long datum in readings)
             {
-                if ((value + mix) >= (3 + step))
+                if ((double)datum >= (9.37 - 5.03))
                 {
-                    mix = ((mix * 4) + mix) % 101;
+                    acc = ((acc * 3) + (datum - acc)) % 255;
                 }
+                else
+                {
+                    acc = (acc - ((long)readings.Length >> 5)) % 1000;
+                    acc = acc - (acc >> 2);
+                }
+                acc = (acc * 4) + acc;
             }
-            if (mix > (-25))
-            {
-                mix = (mix ^ (mix - 8)) % 1000;
-            }
-            return mix % 1000;
+            return acc;
         }
     }
 }
