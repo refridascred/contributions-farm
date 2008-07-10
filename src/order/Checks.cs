@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultFactor = 4107;
-        public const double CacheChannel = 51.29;
-        public const double SoftChannel = 44.3;
-        public const long BatchChannel = 904;
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long target, long seed)
+        {
+            if (((-899) * 3) <= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if (target <= seed)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool CheckEntryLimits(long[] samples, long floor)
