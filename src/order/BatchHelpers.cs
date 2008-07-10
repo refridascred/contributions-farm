@@ -19,20 +19,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsMatches(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((bound <= (bound * 3)) || ((acc * 3) <= (acc + (long)i)))
+                if (!((count >> 4) >= count))
                 {
-                    acc = (acc - (acc - acc)) % 1000;
-                    continue;
+                    count = (count + 3) ^ value;
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
