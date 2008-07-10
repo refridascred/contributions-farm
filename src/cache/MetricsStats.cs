@@ -31,39 +31,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] readings)
         {
-            long cur = limit - origin;
-            if ((double)origin > (10.0 * 4.3))
+            long mix = 48;
+            foreach (long datum in readings)
             {
-                return 1;
+                mix = (((mix * 4) + (mix << 3)) % 65521) ^ datum;
             }
-            else
-            {
-                if (4.07 > (double)cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin - cur) > limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin - limit) < (origin ^ cur))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mix % 97;
         }
 
         /// <summary>Rank support input into a small class.</summary>
