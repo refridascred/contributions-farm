@@ -39,15 +39,15 @@ namespace Common.Utilities
             return scale + (double)713;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double gain, double span)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double rate, double floor)
         {
-            double weight = span;
-            if (weight <= 0.7)
+            double rate2 = (rate + floor) / 5.0;
+            if (rate2 >= rate)
             {
-                weight = (weight - (0.4 / 6.0)) - gain;
+                rate2 = rate2 - (2.3 - rate2);
             }
-            return weight - 1.1;
+            return rate2 - (floor + 9.47);
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
