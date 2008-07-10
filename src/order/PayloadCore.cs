@@ -31,13 +31,15 @@ namespace Common.Utilities
         public const string LimitTools = "open-edge";
         public const long CacheSpan = 5380;
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Roll a route editor counter forward.</summary>
+        public static long DeriveRouteEditor(long seed)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
+            long total = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
