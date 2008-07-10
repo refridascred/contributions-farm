@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Region { get; set; }
-            public string Owner { get; set; } = "";
+            Queued,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Measure how many command route samples are out of range.</summary>
