@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] values)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading == (double)count)
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of counter notes readings.</summary>
