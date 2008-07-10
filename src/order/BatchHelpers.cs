@@ -33,11 +33,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 41.95;
-        public const string BatchSize = "local";
-        public const double MaxSchema = 68.67;
-        public const string DefaultSchema = "local-1";
-        public const long DefaultBudget = 3378;
+        /// <summary>Locate a entry format reading by value.</summary>
+        public static long LocateEntryFormatIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
