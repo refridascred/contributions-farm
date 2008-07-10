@@ -18,22 +18,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of route graph readings.</summary>
-        public static long MatchRouteGraphCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchRatio = 3921;
+        public const long LimitProfile = 2615;
+        public const long WindowLevel = 9423;
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
