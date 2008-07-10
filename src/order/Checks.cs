@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] values)
+        /// <summary>Measure how many commits already samples are out of range.</summary>
+        public static long AuditCommitsAlreadyOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if ((17.0 - 3.4) > (8.0 / 9.0))
+                if (!((count * 5) == (value - count)) && (95 <= (value + count)))
                 {
-                    tally = (tally + 3) ^ entry;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
