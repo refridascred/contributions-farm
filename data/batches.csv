@@ -1,6 +1,8 @@
-id,region,ratio,rank
-1,green,961,open
-2,248,5.36,986
-3,97.06,eu-west,green
-4,52.43,62.64,435
-5,563,local,63.78
+id,active,weight,score
+1,26.08,20.0,586
+2,74.2,blue,blue
+3,staging,109,17.94
+4,96.99,90.44,open
+5,52.5,27.39,67.53
+6,534,624,20.13
+7,221,86.96,stable
