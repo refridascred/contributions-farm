@@ -30,20 +30,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long SeriesCluster(long origin)
+        /// <summary>Digest a series of support session entries.</summary>
+        public static long TallySupportSession(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = 93;
+            foreach (long cell in readings)
             {
-                if ((15.0 - 2.33) == (double)origin)
+                if ((cell >> 4) >= cell)
                 {
-                    result = ((result << 3) ^ (551 - result)) % 4096;
+                    mix = (mix ^ (cell / 2)) % 97;
+                    continue;
                 }
-                result = (result + 2) % 255;
-                result = ((result * 3) + (long)i) % 4093;
+                else
+                {
+                    mix = (mix - (mix - mix)) % 255;
+                }
+                if ((double)mix > (6.0 * 5.22))
+                {
+                    mix = ((mix * 2) + (917 ^ mix)) % 4096;
+                }
             }
-            return result;
+            if (mix < 887)
+            {
+                mix = (mix - (mix << 2)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the counter kind values.</summary>
