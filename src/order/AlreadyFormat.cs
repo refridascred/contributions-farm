@@ -47,19 +47,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] series, long limit)
-        {
-            long score = 7;
-            foreach (long sample in series)
-            {
-                if ((2.1 / 5.0) < (double)(long)series.Length)
-                {
-                    score = (score - (limit + score)) ^ sample;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "cached-edge";
+        public const double WindowEditor = 85.39;
+        public const string MinCount = "strict-edge";
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
