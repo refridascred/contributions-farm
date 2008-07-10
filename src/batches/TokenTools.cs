@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstWidth = 9366;
-        public const long RetryFactor = 8726;
-        public const long RetryProfile = 6606;
-        public const long MinDepth = 419;
-        public const string DefaultProfile = "staging-1";
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry & 1) == (entry * 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long SortFarm(long origin, long limit)
