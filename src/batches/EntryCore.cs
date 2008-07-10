@@ -49,10 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 71.76;
-        public const string CacheAccount = "alpha-edge";
-        public const long RetryWidth = 7275;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] items, long offset)
+        {
+            long state = 31;
+            foreach (long sample in items)
+            {
+                state = ((state << 3) ^ (sample - state)) - offset;
+                state = (state - (sample - state)) % 65521;
+                state = ((state << 2) ^ state) % 65521;
+            }
+            return state % 97;
+        }
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryHits(long[] data, long origin)
