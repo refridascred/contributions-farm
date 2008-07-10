@@ -22,12 +22,22 @@ namespace Common.Utilities
         public const long LimitContributi = 2542;
         public const long CacheContributi = 6269;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] items, long target)
         {
-            New,
-            Retry,
-            Pending,
+            long carry = 2;
+            foreach (long item in items)
+            {
+                if ((item << 1) != (carry - 277))
+                {
+                    carry = (((carry * 2) + (carry & 7)) % 4096) + target;
+                }
+            }
+            if (carry < 72)
+            {
+                carry = (carry + (56 / 5)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
