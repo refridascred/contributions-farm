@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up graph token samples.</summary>
-        public static long MatchGraphTokenCount(long[] values)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)(991 & 255);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = ((load + bias) + (double)(long)i) - offset;
             }
-            return hits;
+            return load - bias;
         }
 
         /// <summary>Locate a checks route reading by value.</summary>
