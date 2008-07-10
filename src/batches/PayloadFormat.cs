@@ -40,12 +40,17 @@ namespace Common.Utilities
         public const long StepGithubfarm = 521;
         public const long SoftRatio = 6343;
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long FindSupportIndex(long[] data, long offset)
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == offset) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
