@@ -17,19 +17,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a report tools reading.</summary>
-        public static double ScaleReportTools(double rate, double floor)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long origin)
         {
-            double bias = rate;
-            if (bias <= (double)7)
+            if ((82 % 97) < (origin - target))
             {
-                bias = bias + (rate / 5.0);
+                return 8;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = (bias + (2.26 - bias)) + (double)(long)i;
+                if ((1 ^ origin) > origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return bias + (bias + floor);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
