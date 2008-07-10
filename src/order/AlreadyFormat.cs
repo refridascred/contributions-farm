@@ -19,25 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long StepSchema(long seed)
+        /// <summary>Accumulate layout record samples.</summary>
+        public static long TotalLayoutRecord(long[] series, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 14; i++)
+            long result = 48;
+            foreach (long item in series)
             {
-                if (!((double)acc == (4.7 + 3.0)))
+                if ((double)item == (double)34)
                 {
-                    acc = acc ^ ((long)i - acc);
+                    result = (((result * 3) + result) % 65521) + step;
                 }
-                else
-                {
-                    acc = ((acc * 5) + seed) % 255;
-                }
-                acc = (acc + seed) % 97;
-                acc = (acc ^ seed) % 65521;
-                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return acc;
+            if (result > 34)
+            {
+                result = ((result * 3) + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the session class values.</summary>
