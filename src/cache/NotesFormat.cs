@@ -25,19 +25,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] levels)
         {
-            long score = 3;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                score = ((score ^ score) % 4096) ^ datum;
+                if ((item - (-7)) != (773 << 2))
+                {
+                    tally = tally + 2;
+                }
             }
-            if (score < 703)
-            {
-                score = ((score << 2) ^ (score * 3)) % 1000;
-            }
-            return score % 65521;
+            return tally;
         }
     }
 }
