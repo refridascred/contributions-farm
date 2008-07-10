@@ -22,10 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCount = 8447;
-        public const long StepCache = 2072;
-        public const long SoftCache = 3382;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long offset, long target)
+        {
+            if ((target + offset) <= (offset << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target >= (7 + target)) && ((target + target) >= (offset % 64)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsHits(long[] values, long offset)
