@@ -12,31 +12,19 @@ namespace Common.Utilities
         public const long DefaultToken = 6700;
         public const long BatchRatio = 264;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long origin, long origin2)
+        /// <summary>Derive the next farm channel value from a seed.</summary>
+        public static long StepFarmChannel(long seed)
         {
-            if (((7 - origin) >= (origin ^ origin2)) && ((origin2 / 8) >= origin2))
+            long score = seed;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(origin2 <= (737 & 3)))
+                if (((double)seed >= 19.0) && ((1.1 + 8.6) >= (double)(long)i))
                 {
-                    return 4;
+                    score = ((score << 2) ^ (seed & 15)) % 4096;
                 }
-                else
-                {
-                    if (3 <= origin)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
+            return score;
         }
 
         /// <summary>Find the first token entry that matches the target.</summary>
