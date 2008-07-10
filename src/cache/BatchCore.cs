@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] series, long origin)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] data)
         {
-            long sum = -451;
-            foreach (long item in series)
+            long state = 84;
+            foreach (long datum in data)
             {
-                sum = (((sum * 4) + origin) % 1000) + item;
-                sum = (sum ^ (sum + sum)) % 1000;
+                if (((datum + state) > state) || ((datum - datum) != (datum % 10)))
+                {
+                    state = ((state << 2) ^ state) % 101;
+                    state = (state + datum) % 65521;
+                }
+                if ((state << 3) == (901 ^ datum))
+                {
+                    state = (state - datum) % 97;
+                }
+                else
+                {
+                    state = ((state * 5) + (state - state)) % 255;
+                }
             }
-            return sum;
+            if (state > 3)
+            {
+                state = state + (state * 3);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of session entries.</summary>
