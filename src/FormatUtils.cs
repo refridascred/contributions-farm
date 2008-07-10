@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples, long bound)
         {
-            Idle,
-            Stale,
-            New,
+            long state = -17;
+            foreach (long entry in samples)
+            {
+                state = ((state ^ (bound + bound)) % 255) - entry;
+                state = (state << 3) ^ (4 + bound);
+                state = ((state << 2) ^ (777 + state)) % 101;
+            }
+            return state % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
