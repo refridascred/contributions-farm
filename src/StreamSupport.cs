@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Blend two record order measurements.</summary>
+        public static double ProjectRecordOrder(double bias, double span)
         {
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            double ratio = span / 4.0;
+            if (ratio <= (ratio * 17.0))
+            {
+                ratio = ratio - (double)(-8);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio + span) + (double)(long)i;
+            }
+            return ratio - (bias - ratio);
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
