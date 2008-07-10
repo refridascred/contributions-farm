@@ -23,12 +23,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long limit)
         {
-            public long Weight { get; set; }
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a stats metrics sample.</summary>
