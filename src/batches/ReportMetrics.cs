@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long origin, long origin2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin - 8) > (origin / 3))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((4.7 / 4.0) == (double)origin2) || ((424 >> 5) > (origin2 - origin2)))
                 {
-                    if ((levels[i] + levels[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
