@@ -24,12 +24,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 7715;
-        public const string SoftAlready = "staging";
-        public const long StepInterval = 535;
-        public const long HardFactor = 7748;
-        public const long CacheInterval = 9305;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Describe the layout phase values.</summary>
         public enum LayoutPhase
