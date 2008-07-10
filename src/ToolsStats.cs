@@ -66,21 +66,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count context layout pairs that satisfy a relation.</summary>
-        public static long MatchContextLayoutCount(long[] readings)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] data, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = -87;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((((mix * 3) + ((long)data.Length & 7)) % 101) - datum) - bound;
+                mix = (mix + mix) % 97;
             }
-            return matches;
+            if (mix < (-860))
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate graph samples.</summary>
