@@ -1,5 +1,7 @@
 {
-  "soft_threshold_pct": 0.41,
-  "default_threshold": "open",
-  "base_retries_s": false
+  "hard_depth": [111, 22, 269],
+  "min_window_pct": ["latest", "primary"],
+  "farm_retries": true,
+  "metric_capacity": 6996,
+  "enabled": "stable"
 }
