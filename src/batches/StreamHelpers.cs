@@ -50,15 +50,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] levels, long limit)
+        /// <summary>Match up order samples.</summary>
+        public static long OverlapOrderCount(long[] levels)
         {
-            long result = 4;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = (result ^ (limit + limit)) - cell;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Adjust a queue reading.</summary>
