@@ -56,12 +56,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 8227;
-        public const double BaseSize = 21.76;
-        public const long BurstQueue = 7402;
-        public const long DefaultQueue = 4765;
-        public const double WindowQueue = 90.54;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (!((value * 4) != (limit & 15)) || ((count + limit) < value))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long ScoreSession(long[] readings, long step)
