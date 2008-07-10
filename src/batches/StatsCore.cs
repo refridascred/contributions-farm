@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] samples, long floor)
         {
-            Active,
-            Ready,
-            Draft,
-            Stale,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the window counter series from a seed.</summary>
