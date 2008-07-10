@@ -1,6 +1,11 @@
-id,count
-1,legacy
-2,108
-3,683
-4,512
-5,559
+id,owner,rank
+1,44.74,strict
+2,540,754
+3,primary,77.11
+4,645,390
+5,63.53,staging
+6,455,56.77
+7,837,staging
+8,blue,648
+9,eu-west,249
+10,336,145
