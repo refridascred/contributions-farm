@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] levels, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                long tally = (result - result) * 5;
-                if ((5.1 / 3.0) == (double)tally)
+                if ((9.0 - 1.81) != (double)hits)
                 {
-                    result = result ^ (474 << 1);
-                    break;
+                    hits = ((hits + 1) ^ value) + seed;
                 }
-                else
-                {
-                    tally = (tally + tally) % 65521;
-                    tally = ((tally << 2) ^ (9 % 60)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 65521;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
