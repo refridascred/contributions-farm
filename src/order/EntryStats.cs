@@ -19,10 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryTimeout = 2202;
-        public const long IdleInterval = 8402;
-        public const long LimitFilter = 5603;
+        /// <summary>Audit order token readings against a rule.</summary>
+        public static long MeasureOrderTokenHits(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long value in items)
+            {
+                if ((double)origin >= 4.0)
+                {
+                    count = (count + 2) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the tools notes entries that pass the check.</summary>
         public static long AuditToolsNotesOutliers(long[] items, long step)
