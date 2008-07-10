@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double gain, double floor)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextMatches(long[] data, long origin)
         {
-            double weight = (floor - floor) / 6.0;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                weight = (weight + (gain / 7.0)) + (double)(long)i;
+                if (((origin + entry) <= 0) || ((546 + origin) <= (origin + origin)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return weight - (double)299;
+            return hits;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
