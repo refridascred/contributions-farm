@@ -40,14 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Dropped,
-            Pending,
-            Stale,
-            Idle,
-            Done,
+            public string Ratio { get; set; } = "";
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate contributi profile samples.</summary>
