@@ -79,9 +79,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 83.88;
-        public const long CacheToken = 377;
-        public const long LimitToken = 131;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long bound)
+        {
+            if ((seed - seed) >= seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed <= (10.0 - 9.65))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((-26) >= (seed - bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((seed & 3) < (bound & 63)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
