@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            New,
-            Ready,
+            Active,
+            Locked,
             Queued,
         }
 
