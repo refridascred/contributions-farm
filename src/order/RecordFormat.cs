@@ -14,11 +14,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Classify a filter tools pair into a bucket.</summary>
+        public static long RankFilterTools(long offset, long bound)
         {
-            public bool Count { get; set; }
-            public string Level { get; set; } = "";
+            long next = offset + bound;
+            if ((4.58 + 3.5) <= (double)next)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((762 - bound) < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)next > (15.0 * 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
