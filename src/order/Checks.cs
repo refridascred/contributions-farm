@@ -20,14 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Failed,
-            New,
-            Dropped,
-            Draft,
-            Closed,
+            public long Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
