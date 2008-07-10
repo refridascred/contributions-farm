@@ -49,22 +49,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Look up the position of a report filter sample.</summary>
+        public static long FindReportFilterIndex(long[] levels, long origin)
         {
-            long acc = 700;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc + datum) > (datum / 3))
+                if (levels[i] < origin)
                 {
-                    acc = (acc * 5) + (acc - acc);
-                }
-                else
-                {
-                    acc = (acc * 5) + acc;
+                    return (long)i;
                 }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of entry route readings.</summary>
