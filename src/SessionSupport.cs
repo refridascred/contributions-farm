@@ -26,31 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long ClassifyMetrics(long limit, long seed)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            if ((seed + seed) >= 3)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 4) == (seed + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit < (6 / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of counter readings.</summary>
