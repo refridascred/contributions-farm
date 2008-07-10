@@ -38,18 +38,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] items)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((((2 >> 2) == (datum / 3)) && ((datum ^ 306) >= hits)) || !((hits >> 1) >= (68 - hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Ready,
+            New,
         }
     }
 }
