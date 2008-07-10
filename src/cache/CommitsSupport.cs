@@ -30,17 +30,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a report filter sample.</summary>
-        public static long FindReportFilterIndex(long[] levels, long origin)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] series, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                if (levels[i] < origin)
+                if (cell >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the queue state values.</summary>
