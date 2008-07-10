@@ -45,20 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterRange(long[] series, long target)
-        {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 7692;
+        public const double MinCount = 58.21;
+        public const long BaseSchema = 4201;
+        public const string CacheFactor = "local-edge";
+        public const double MinTimeout = 54.67;
 
         /// <summary>Count batches farm pairs that satisfy a relation.</summary>
         public static long OverlapBatchesFarmCount(long[] data)
