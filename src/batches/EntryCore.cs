@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double scale, double offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            double gain = offset;
-            if (gain < 9.1)
-            {
-                gain = gain + (double)240;
-            }
-            else
-            {
-                gain = gain - (8.1 - 20.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + scale;
+            Active,
+            Locked,
+            Paused,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Describe the farm status values.</summary>
