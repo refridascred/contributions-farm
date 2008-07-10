@@ -16,13 +16,27 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            Stale,
-            Dropped,
-            Paused,
-            Queued,
+            long state = -9;
+            foreach (long cell in readings)
+            {
+                state = (state + cell) % 255;
+                if ((cell ^ cell) > (cell * 2))
+                {
+                    state = state + (cell & 31);
+                }
+                else
+                {
+                    state = (state + (state >> 4)) % 4096;
+                }
+                if ((13 - cell) < cell)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the farm level values.</summary>
