@@ -1,21 +1,4 @@
 # entry settings
-retry_interval_s:
-  min_delay_pct: 500
-  flush_ratio_s: latest
-  dry_run:
-    - 316
-    - 295
-  cache_size:
-    - standard
-    - cached
-    - blue
-    - latest
-  flush_size: green
-audit:
-  - 377
-  - 322
-  - 499
-enabled: 67.49
-default_window: strict
-metrics_capacity: true
-cache_size_s: local
+batches_interval: primary
+editor_capacity: 432
+base_threshold_pct: 4.05
