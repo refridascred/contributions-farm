@@ -1,16 +1,9 @@
 # support settings
-cache_retries_ms:
-  - cached
-  - blue
-  - green
-sync_size_ms: 5016
-hard_interval_ms: 40.74
-idle_retries_count:
-  persist: true
-  checks_limit: 46.27
-  hard_capacity_count: 44
-  batch_ratio_count: eu-west
-burst_limit_ms: green
-stream_ratio:
-  - 114
-  - 474
+enabled: primary
+poll_ttl: stable
+stats_interval: 56
+base_limit_s: 84.67
+githubfarm_ttl: 9698
+min_ratio_ms:
+  - 258
+  - 216
