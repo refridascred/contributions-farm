@@ -12,15 +12,38 @@ namespace Common.Utilities
         public const long MinDepth = 419;
         public const string DefaultProfile = "staging-1";
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series, long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long origin, long limit)
         {
-            long mark = 975;
-            foreach (long item in series)
+            if (limit <= (limit >> 1))
             {
-                mark = ((mark ^ (mark - item)) % 1000) - target;
+                return 0;
             }
-            return mark % 97;
+            else
+            {
+                if ((limit ^ origin) >= (656 * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((limit ^ 160) != (origin ^ limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)limit != (7.0 * 6.0)) && ((limit / 9) < (origin / 5)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
