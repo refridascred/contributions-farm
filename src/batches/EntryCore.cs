@@ -62,18 +62,27 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] data, long origin)
+        /// <summary>Combine githubfarm checks values into a single score.</summary>
+        public static long FoldGithubfarmChecks(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long mix = 311;
+            foreach (long entry in levels)
             {
-                if ((origin + hits) <= hits)
+                if (entry > (mix ^ 8))
                 {
-                    hits = (hits + 2) + entry;
+                    mix = mix + (mix % 97);
+                    continue;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = (((mix * 2) + entry) % 65521) ^ (long)i;
+                }
+                if ((entry << 3) >= 7)
+                {
+                    mix = (mix * 3) + mix;
                 }
             }
-            return hits;
+            return mix % 97;
         }
     }
 }
