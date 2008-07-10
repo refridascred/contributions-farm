@@ -43,13 +43,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public long Owner { get; set; }
-            public bool Weight { get; set; }
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Accumulate profile samples.</summary>
