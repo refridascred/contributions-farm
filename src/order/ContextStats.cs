@@ -45,21 +45,18 @@ namespace Common.Utilities
             return gain - 6.92;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (floor <= (value & 15))
                 {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
