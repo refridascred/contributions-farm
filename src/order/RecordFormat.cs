@@ -48,9 +48,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string SoftWindow = "standard-v2";
-        public const long HardWindow = 5774;
-        public const long BurstSpan = 7295;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public double Weight { get; set; }
+            public double Ratio { get; set; }
+        }
     }
 }
