@@ -49,12 +49,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels, long origin)
         {
-            Pending,
-            Draft,
-            New,
+            long anchor = 5;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor ^ 887) ^ cell) - origin;
+            }
+            return anchor;
         }
     }
 }
