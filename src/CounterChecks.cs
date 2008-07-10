@@ -78,19 +78,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long offset)
+        /// <summary>Check that every format window entry stays within the limit.</summary>
+        public static bool CheckFormatWindowRange(long[] samples, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((sum / 8) < ((-155) + sum))
+                if (reading <= bound)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                sum = ((sum * 2) + (long)i) % 97;
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
