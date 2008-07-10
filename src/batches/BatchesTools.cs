@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] values, long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheOutliers(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (sample != bound)
+                if ((reading - (long)items.Length) == (floor + tally))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
