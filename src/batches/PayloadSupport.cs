@@ -25,18 +25,14 @@ namespace Common.Utilities
         public const long SoftEntry = 9282;
         public const double BatchLevel = 57.97;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (663 < (76 + count))
-                {
-                    count = (count + 2) + value;
-                }
-            }
-            return count;
+            Retry,
+            Queued,
+            Locked,
+            Synced,
+            Idle,
         }
     }
 }
