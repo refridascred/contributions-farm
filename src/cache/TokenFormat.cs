@@ -19,14 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Stale,
-            Dropped,
-            Queued,
+            Synced,
+            Closed,
+            Done,
             Active,
-            Paused,
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
