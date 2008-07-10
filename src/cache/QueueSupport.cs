@@ -42,14 +42,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            Dropped,
+            Locked,
+            Idle,
             Done,
-            Ready,
-            Queued,
-            Failed,
         }
     }
 }
