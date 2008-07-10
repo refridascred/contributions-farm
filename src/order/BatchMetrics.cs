@@ -25,39 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long origin, long seed)
-        {
-            if ((seed <= (origin << 1)) && (seed < (origin + origin)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (9 > (origin - origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin % 24) <= (seed / 2)) && ((seed / 8) >= 124))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(seed < origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowTimeout = 7318;
+        public const long MinSize = 2974;
+        public const long RetryCache = 8470;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
