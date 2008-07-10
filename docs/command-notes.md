@@ -1,15 +1,12 @@
 # Command notes
 
-When a contributi fails, the editor handler retries a few times before giving up.
-When a contributi fails, the record handler retries a few times before giving up.
-
-The window helpers are pure functions, so they are safe to call from any thread.
-Defaults for command live in the config folder and can be overridden per environment.
-Run the order check before changing any metric limits.
+Each route is validated before it reaches the session queue.
+A support that stays idle for too long is moved to the record list.
+Keep report and session names short and lowercase.
 
 ## Guidelines
 
-- Document new profile fields
-- Review report limits each release
-- Log every buffer change
-- Validate batches input early
+- Document new schema fields
+- Validate cluster input early
+- Review already limits each release
+- Prefer editor defaults
