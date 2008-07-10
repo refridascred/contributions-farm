@@ -62,38 +62,13 @@ namespace Common.Utilities
         public const long RetryAlready = 758;
         public const long MaxBudget = 8187;
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long SortOrder(long target, long floor)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if ((target ^ floor) > (floor - target))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((74 * 4) < (floor << 3)) || ((target >> 3) < (target >> 4)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((floor & 7) < (floor ^ target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((92 - target) <= (2 + target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public bool Owner { get; set; }
         }
     }
 }
