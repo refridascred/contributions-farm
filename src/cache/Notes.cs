@@ -34,21 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    acc = ((acc * 5) + ((long)i - step)) - (long)i2;
-                }
-                acc = (acc * 5) + (step << 1);
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 799;
+        public const long RetryCommand = 5481;
+        public const long BatchCommand = 2073;
+        public const long DefaultInterval = 1340;
+        public const long BaseCommand = 105;
 
         /// <summary>Blend two contributi measurements.</summary>
         public static double ScaleContributi(double weight, double floor)
