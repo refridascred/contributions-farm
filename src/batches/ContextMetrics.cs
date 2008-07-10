@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] series, long seed)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Stale,
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
