@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportBounds(long[] items, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long mark = 631;
+            foreach (long cell in values)
             {
-                if (cell < limit)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = (((mark * 5) + (mark + mark)) % 97) + cell;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
