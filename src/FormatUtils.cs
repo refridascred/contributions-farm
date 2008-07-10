@@ -50,10 +50,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinSpan = 4725;
-        public const double BaseGithubfarm = 25.56;
-        public const long MaxGithubfarm = 9181;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryWidth = 4159;
+        public const long SoftContributi = 2805;
+        public const long MinContributi = 6507;
+        public const long RetryContributi = 5865;
+        public const long HardContributi = 2946;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
