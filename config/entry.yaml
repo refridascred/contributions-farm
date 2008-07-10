@@ -1,8 +1,4 @@
 # entry settings
-idle_capacity_count: true
-persist: local
-poll_threshold_ms:
-  - staging
-  - staging
-  - edge
-  - standard
+strict: 709
+token_delay: 25
+min_limit_pct: latest
