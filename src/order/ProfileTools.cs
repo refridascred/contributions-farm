@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] data, long floor)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long acc = 46;
-            foreach (long datum in data)
-            {
-                acc = (((acc ^ (acc % 7)) % 1000) ^ datum) - floor;
-            }
-            return acc;
+            public long Token { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
