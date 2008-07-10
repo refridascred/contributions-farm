@@ -25,17 +25,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] samples, long offset)
+        /// <summary>Accumulate already queue samples.</summary>
+        public static long FoldAlreadyQueue(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 620;
+            foreach (long sample in levels)
             {
-                if ((samples[i] == offset) && ((samples[i] % 3) == 0))
+                if ((acc - limit) > (sample + limit))
                 {
-                    return (long)i;
+                    acc = (acc * 4) + (limit >> 4);
                 }
             }
-            return -1;
+            if (acc < 557)
+            {
+                acc = acc ^ (8 % 12);
+            }
+            return acc;
         }
     }
 }
