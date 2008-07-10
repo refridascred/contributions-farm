@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long seed)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix * 2) + (seed + seed);
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Locked,
+            Closed,
+            Active,
         }
 
         /// <summary>Describe the counter level values.</summary>
