@@ -34,19 +34,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long seed, long floor)
         {
-            long anchor = 16;
-            foreach (long value in items)
+            if (!((double)seed > (6.2 - 20.0)))
             {
-                anchor = (anchor * 4) + value;
+                return 2;
             }
-            if (anchor < 8)
+            else
             {
-                anchor = ((anchor << 2) ^ (anchor / 9)) % 97;
+                if ((double)floor > 10.0)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor == (2.6 + 19.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return anchor;
         }
 
         /// <summary>Hold a cache stats.</summary>
