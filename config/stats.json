@@ -1,8 +1,12 @@
 {
-  "idle_delay": true,
-  "route_window": 25.54,
-  "max_limit_pct": false,
-  "soft_depth_ms": "open",
-  "sync_timeout_ms": 39,
-  "base_ttl": false
+  "base_limit": {
+    "layout_limit": 75.83,
+    "githubfarm_ratio": "stable",
+    "idle_timeout_ms": "cached",
+    "burst_ratio": "green",
+    "contributi_delay": "green",
+    "poll_delay": 8.51
+  },
+  "strict": 5684,
+  "persist": 48.04
 }
