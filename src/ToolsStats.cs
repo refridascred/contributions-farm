@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Locked,
-            Active,
-            Paused,
-            Queued,
-            New,
+            Pending,
+            Retry,
+            Draft,
+            Done,
         }
 
         /// <summary>Classify a githubfarm batch pair into a bucket.</summary>
