@@ -30,38 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank filter session input into a small class.</summary>
-        public static long SortFilterSession(long bound, long bound2)
+        /// <summary>Measure how many window already samples are out of range.</summary>
+        public static long CountWindowAlreadyHits(long[] levels, long origin)
         {
-            if (!((15.0 * 6.5) == (double)bound))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 * 3) >= bound)
+                if ((entry < matches) || ((matches << 3) < (entry + matches)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound2 >> 3) <= (bound & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((bound2 & 63) < bound) && ((3.0 * 7.0) < (2.0 * 1.1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = (matches + 1) - origin;
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
