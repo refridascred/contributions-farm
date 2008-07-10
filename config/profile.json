@@ -1,6 +1,8 @@
 {
-  "support_timeout": 500,
-  "persist": true,
-  "strict": 1024,
-  "retry_retries": "cached"
+  "editor_retries": 30.0,
+  "idle_ratio_s": 532,
+  "batch_ttl": [187, 340],
+  "base_retries_s": true,
+  "schema_threshold": 77,
+  "idle_limit": ["local", "fallback", "fallback", "green"]
 }
