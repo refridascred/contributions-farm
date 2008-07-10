@@ -1,8 +1,6 @@
 # support settings
-hard_depth: 9126
-record_threshold:
-  - 379
-  - 496
-  - 414
-readonly: 12
-default_ratio_pct: 47.52
+idle_capacity: 58
+warm_ratio_pct: green
+readonly:
+  - stable
+  - cached
