@@ -32,30 +32,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of payload session readings.</summary>
-        public static long CombinePayloadSession(long[] data)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long anchor = 2;
-            foreach (long cell in data)
-            {
-                if ((cell >> 4) != (93 - anchor))
-                {
-                    anchor = (anchor - (cell * 3)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (886 - anchor)) % 255;
-                }
-                if ((anchor / 9) == (anchor + anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor < 9)
-            {
-                anchor = ((anchor << 3) ^ (anchor / 3)) % 255;
-            }
-            return anchor % 4096;
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the editor record series from a seed.</summary>
