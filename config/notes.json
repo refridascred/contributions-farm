@@ -1,5 +1,8 @@
 {
-  "channel_window": "cached",
-  "default_capacity_s": 100,
-  "batch_limit": ["staging", "latest"]
+  "warm_size_pct": 81.88,
+  "verbose": "edge",
+  "audit": 64,
+  "batch_ratio": "local",
+  "sync_depth_ms": 3640,
+  "default_depth_count": 21
 }
