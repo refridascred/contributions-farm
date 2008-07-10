@@ -41,32 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long offset, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long target)
         {
-            long gap = offset - floor;
-            if ((double)gap < 7.25)
+            long carry = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor << 3) != (offset >> 1))
+                if ((target >= (target & 3)) && (carry < (carry >> 1)))
                 {
-                    return 7;
+                    carry = (carry ^ carry) % 4096;
                 }
-                else
-                {
-                    if (offset >= (gap ^ floor))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                carry = ((carry * 5) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
