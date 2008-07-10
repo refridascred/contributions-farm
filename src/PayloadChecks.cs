@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Check that every contributi batch entry stays within the limit.</summary>
+        public static bool CheckContributiBatchRange(long[] items, long step)
         {
-            long mix = seed;
-            for (int i = 0; i < 12; i++)
+            bool flag = true;
+            foreach (long item in items)
             {
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (item <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
