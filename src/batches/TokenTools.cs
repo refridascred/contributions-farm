@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((9.0 - 2.7) >= (double)origin)
                 {
-                    if ((data[i] + data[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + item;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
