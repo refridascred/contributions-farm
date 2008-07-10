@@ -34,15 +34,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long RollGraph(long limit)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long result = 9;
+            foreach (long item in items)
             {
-                mix = ((mix * 5) + (long)i) % 1000;
+                for (int i = 0; i < 8; i++)
+                {
+                    result = ((((result << 3) ^ item) % 1000) - (long)i) + origin;
+                }
+                result = ((result * 3) + item) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
