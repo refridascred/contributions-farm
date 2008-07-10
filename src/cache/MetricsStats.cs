@@ -66,12 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] data)
         {
-            Locked,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (matches >= (matches + 36))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
