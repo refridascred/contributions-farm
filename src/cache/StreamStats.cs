@@ -49,17 +49,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 745;
+            foreach (long datum in samples)
             {
-                if (levels[i] > offset)
+                if (1.0 >= (double)anchor)
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (datum * 5)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (datum + (-24));
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
