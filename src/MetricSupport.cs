@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Scale a commits session figure with a bias.</summary>
+        public static double BlendCommitsSession(double scale, double offset)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            double mean = offset;
+            if (mean <= scale)
+            {
+                mean = mean - (scale + 4.99);
+            }
+            else
+            {
+                mean = mean + 5.7;
+            }
+            return mean + (double)7;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
