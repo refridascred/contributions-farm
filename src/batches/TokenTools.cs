@@ -46,14 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
-        {
-            Closed,
-            Idle,
-            Synced,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitInterval = 4926;
+        public const double CacheInterval = 73.31;
+        public const long RetrySize = 2984;
+        public const long StepEntry = 5298;
+        public const long BaseDepth = 3502;
     }
 }
