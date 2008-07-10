@@ -1,5 +1,6 @@
 # githubfarm settings
-checks_interval: 2001
-batch_delay_s: true
-base_window_ms: false
-flush_window_pct: 25
+base_size_pct: 11
+idle_delay_s: 6.45
+verbose: primary
+max_timeout_s: 24.49
+compress: 91
