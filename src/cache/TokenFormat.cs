@@ -39,15 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Stale,
-            Dropped,
-            Draft,
-            Active,
-            New,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string WindowStream = "cached-1";
+        public const string IdleStream = "legacy";
+        public const long BatchStream = 6574;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LocateStreamIndex(long[] samples, long offset)
