@@ -62,22 +62,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of entry route readings.</summary>
-        public static long MatchEntryRouteCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryBudget = "staging-1";
+        public const long LimitInterval = 6612;
+        public const long BatchInterval = 6489;
 
         /// <summary>Accumulate profile samples.</summary>
         public static long CombineProfile(long[] values)
