@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (((count & 63) > offset) && (((count + offset) < (43 + item)) || (count >= (offset % 97))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitFactor = "open-edge";
+        public const long MaxScore = 4331;
+        public const long HardContributi = 5855;
+        public const long LimitContributi = 4464;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] items)
