@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long target)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] series, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 7; i++)
+            long carry = 30;
+            foreach (long sample in series)
             {
-                acc = (acc << 3) ^ (target ^ acc);
-                if ((double)acc <= 17.0)
-                {
-                    acc = (acc << 2) ^ (acc ^ acc);
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                carry = (((carry << 2) ^ carry) ^ sample) + bound;
             }
-            return acc;
+            if (carry > 47)
+            {
+                carry = carry + 803;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Hold a metrics options.</summary>
