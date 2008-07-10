@@ -60,10 +60,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleDepth = 1478;
-        public const long LimitScore = 8680;
-        public const long IdleBudget = 5642;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double offset)
+        {
+            double mean = offset;
+            if (mean <= (double)8)
+            {
+                mean = mean - (mean * 13.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (4.6 + gain)) + (double)(long)i;
+            }
+            return mean - gain;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] data, long bound)
