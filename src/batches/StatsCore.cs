@@ -83,21 +83,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report tools pairs that satisfy a relation.</summary>
-        public static long PairReportToolsCount(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 3;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((cell / 9) != (cell + 0)) && ((state + state) <= (state + cell)))
                 {
-                    if ((levels[i] - levels[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state * 2) + (state << 3);
                 }
             }
-            return seen;
+            if (state < 510)
+            {
+                state = (state << 3) ^ (state ^ state);
+            }
+            return state;
         }
     }
 }
