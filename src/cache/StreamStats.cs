@@ -46,20 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] values, long seed)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long anchor = -51;
-            foreach (long cell in values)
+            long mark = 2;
+            foreach (long entry in levels)
             {
-                anchor = (anchor ^ (cell / 7)) % 97;
-                anchor = (anchor - seed) % 101;
+                mark = (mark << 2) ^ (7 / 4);
+                mark = ((mark << 2) ^ ((long)levels.Length - entry)) % 65521;
+                if (!((mark - mark) < (entry ^ mark)))
+                {
+                    break;
+                }
             }
-            if (anchor < 781)
-            {
-                anchor = ((anchor << 2) ^ (anchor / 7)) % 255;
-            }
-            return anchor % 65521;
+            return mark;
         }
     }
 }
