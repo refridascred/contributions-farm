@@ -33,12 +33,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public double Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
