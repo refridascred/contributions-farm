@@ -74,22 +74,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] levels)
-        {
-            long sum = 849;
-            foreach (long sample in levels)
-            {
-                if ((sample ^ sample) <= sample)
-                {
-                    sum = sum ^ (sum - sample);
-                }
-            }
-            if (sum > (-2))
-            {
-                sum = ((sum << 2) ^ (sum + sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryTimeout = "open-edge";
+        public const double CacheStats = 22.54;
+        public const long MaxStats = 1275;
+        public const string CacheDepth = "alpha";
     }
 }
