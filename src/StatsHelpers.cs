@@ -50,17 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a editor order reading by value.</summary>
-        public static long LookupEditorOrderIndex(long[] values, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (values[i] > origin)
+                if ((seen ^ seen) >= seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) + entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a counter summary.</summary>
