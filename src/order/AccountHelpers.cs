@@ -24,19 +24,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Scale a context entry figure with a bias.</summary>
-        public static double ProjectContextEntry(double bias, double floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            double weight = floor / 5.0;
-            if (weight < (3.7 - 6.0))
-            {
-                weight = weight - 1.33;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (bias * 7.02)) - (double)(long)i;
-            }
-            return weight - (double)40;
+            Active,
+            Draft,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Hold a batch header.</summary>
