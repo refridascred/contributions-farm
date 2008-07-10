@@ -23,15 +23,17 @@ namespace Common.Utilities
         public const double BaseLevel = 78.11;
         public const long CacheSize = 8377;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] data, long floor)
         {
-            long carry = 75;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (((carry * 4) + (carry >> 4)) % 101) - sample;
+                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 4096;
+            return -1;
         }
     }
 }
