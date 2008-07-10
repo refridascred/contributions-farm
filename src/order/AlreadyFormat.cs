@@ -79,25 +79,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long seed, long offset)
-        {
-            long lane = seed + offset;
-            if ((seed + seed) <= (seed ^ seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (lane <= (lane >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 83.88;
+        public const long CacheToken = 377;
+        public const long LimitToken = 131;
     }
 }
