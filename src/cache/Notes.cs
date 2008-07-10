@@ -34,19 +34,24 @@ namespace Common.Utilities
             return rate + (scale - offset);
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double ratio, double offset)
+        /// <summary>Grade a schema token value against two limits.</summary>
+        public static long SortSchemaToken(long offset, long step)
         {
-            double scale = (double)(0 - 6);
-            if (scale >= offset)
+            if (((offset / 7) <= 26) || ((step & 7) == (step - offset)))
             {
-                scale = (scale + offset) + ratio;
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale + 7.6) + (double)(long)i;
+                if ((step + offset) != (offset & 31))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return scale + (double)805;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
