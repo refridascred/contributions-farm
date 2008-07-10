@@ -1,6 +1,7 @@
 # support settings
-cache_retries_s: open
-warm_threshold: 7987
-default_ttl: true
-burst_ratio_s: false
-retry_threshold_count: 4094
+burst_delay: stable
+max_timeout: 87
+poll_depth_pct: 2820
+max_interval_pct: 57
+sync_ratio: 86.08
+entry_interval: staging
