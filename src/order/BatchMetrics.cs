@@ -48,13 +48,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] samples, long limit)
         {
-            Pending,
-            Stale,
-            Active,
-            Locked,
+            long anchor = 0;
+            foreach (long value in samples)
+            {
+                if (!((double)anchor == (7.4 / 2.0)))
+                {
+                    anchor = (((anchor * 3) + anchor) % 4096) - value;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (limit % 60)) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
