@@ -41,12 +41,40 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 7692;
-        public const double MinCount = 58.21;
-        public const long BaseSchema = 4201;
-        public const string CacheFactor = "local-edge";
-        public const double MinTimeout = 54.67;
+        /// <summary>Rank already input into a small class.</summary>
+        public static long ClassifyAlready(long bound, long limit)
+        {
+            long slot = bound ^ limit;
+            if (((slot + bound) < (582 / 2)) || (1 < (bound >> 5)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((slot >> 1) > (slot / 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)bound <= (20.0 / 4.0)) && ((8.34 / 8.0) > (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)limit > 8.5)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long CompareRouteCount(long[] samples)
