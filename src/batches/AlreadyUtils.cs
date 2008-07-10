@@ -13,10 +13,24 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseInterval = 46.05;
-        public const long CacheRatio = 9076;
-        public const long IdleRatio = 8393;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings)
+        {
+            long state = 94;
+            foreach (long sample in readings)
+            {
+                if ((sample < 2) && (0.87 <= (double)state))
+                {
+                    state = (state << 2) ^ (state * 2);
+                }
+                if ((state - sample) == (state + sample))
+                {
+                    break;
+                }
+                state = ((state << 2) ^ state) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Grade a notes value against two limits.</summary>
         public static long BucketNotes(long origin, long seed)
