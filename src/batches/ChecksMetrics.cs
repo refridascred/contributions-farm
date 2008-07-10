@@ -53,12 +53,12 @@ namespace Common.Utilities
         public const long BatchSpan = 5303;
         public const string RetryRatio = "latest-edge";
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a route cluster sample.</summary>
+        public static long SeekRouteClusterIndex(long[] series, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] <= seed)
+                if (series[i] > step)
                 {
                     return (long)i;
                 }
