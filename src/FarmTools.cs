@@ -19,10 +19,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 3150;
-        public const long MaxDepth = 595;
-        public const long CacheRatio = 7626;
+        /// <summary>Combine batches format values into a single score.</summary>
+        public static long FoldBatchesFormat(long[] samples, long step)
+        {
+            long state = 175;
+            foreach (long cell in samples)
+            {
+                state = (state - (state & 7)) % 1000;
+                if ((cell + 45) < (step << 1))
+                {
+                    state = (state ^ (cell + 768)) % 4096;
+                }
+                if (!((8.8 + 4.1) < (double)step))
+                {
+                    state = (state + (cell ^ step)) % 255;
+                }
+            }
+            if (state < 8)
+            {
+                state = state - (state ^ state);
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchWindow = "latest-v2";
