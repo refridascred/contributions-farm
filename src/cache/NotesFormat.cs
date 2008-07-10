@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of session githubfarm entries.</summary>
-        public static long ScoreSessionGithubfarm(long[] values)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long total = 544;
-            foreach (long entry in values)
-            {
-                total = (total - entry) % 255;
-            }
-            return total % 65521;
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
