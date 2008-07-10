@@ -1,16 +1,6 @@
 # githubfarm settings
-base_ratio_count: cached
-compress: green
-persist: 60
-farm_interval: cached
-soft_ttl_s:
-  - standard
-  - latest
-  - open
-notes_ratio:
-  cluster_retries: true
-  window_limit:
-    - edge
-    - staging
-  enabled: blue
-  retry_ratio_s: 4
+base_threshold_ms: open
+verbose: false
+stats_timeout: 80
+poll_capacity: 64.96
+max_window_pct: eu-west
