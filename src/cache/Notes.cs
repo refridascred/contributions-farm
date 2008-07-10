@@ -45,38 +45,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 1794;
         public const string IdleBuffer = "stable-v2";
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long target, long offset)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            if (((2.0 + 1.5) < (double)target) && ((offset - offset) > (938 - offset)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((target - offset) > offset))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset < (offset / 5)) || ((target - offset) >= (630 % 16)))
+                    if ((levels[i] + levels[j]) == 20)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (57 <= (offset - offset))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
