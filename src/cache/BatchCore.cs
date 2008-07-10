@@ -58,22 +58,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the order metric entries that pass the check.</summary>
-        public static long MeasureOrderMetricHits(long[] samples, long seed)
+        /// <summary>Locate a farm checks reading by value.</summary>
+        public static long LocateFarmChecksIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seed + seed) <= value)
+                if (levels[i] <= seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
