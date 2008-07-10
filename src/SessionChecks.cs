@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format stream entry that matches the target.</summary>
-        public static long LocateFormatStreamIndex(long[] data, long seed)
+        /// <summary>Look up the position of a stats metrics sample.</summary>
+        public static long SeekStatsMetricsIndex(long[] data, long target)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                if ((data[i] < target) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
