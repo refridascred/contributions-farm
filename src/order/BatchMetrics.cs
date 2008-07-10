@@ -25,39 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long offset, long target)
+        /// <summary>Audit payload token readings against a rule.</summary>
+        public static long TallyPayloadTokenGaps(long[] data, long step)
         {
-            long step = offset - target;
-            if ((74 * 4) >= (step - offset))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (target <= (86 + offset))
+                if (((99 - 0) > count) || ((cell ^ step) <= count))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((4.68 - 9.8) == (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step << 2) >= (target + offset)) || ((1.8 / 7.0) != (double)target))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
