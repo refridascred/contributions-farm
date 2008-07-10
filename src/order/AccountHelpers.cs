@@ -62,11 +62,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 4877;
-        public const string IdleInterval = "strict";
-        public const string MaxTimeout = "strict";
-        public const long MinLevel = 3407;
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadRange(long[] levels, long limit)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] readings, long floor)
