@@ -59,19 +59,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate channel cluster samples.</summary>
-        public static long ScoreChannelCluster(long[] readings)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long RankCommits(long floor, long offset)
         {
-            long mix = 326;
-            foreach (long cell in readings)
+            long span = floor + offset;
+            if ((span + floor) == (span ^ offset))
             {
-                mix = ((mix << 2) ^ cell) % 65521;
+                return 3;
             }
-            if (mix > 571)
+            else
             {
-                mix = mix + (mix << 1);
+                if (offset < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor < (offset ^ offset)) && ((span * 3) > 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return mix;
         }
     }
 }
