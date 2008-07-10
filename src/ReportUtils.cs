@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitRatio = 7592;
+        public const long SoftFarm = 5544;
+        public const long SoftSpan = 1325;
+        public const long StepFarm = 622;
 
         /// <summary>Rank already input into a small class.</summary>
         public static long ClassifyAlready(long bound, long limit)
