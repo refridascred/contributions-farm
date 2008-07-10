@@ -30,11 +30,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 1112;
-        public const long MaxMetric = 6850;
-        public const long RetryFactor = 8857;
-        public const string MaxBudget = "standard";
-        public const long WindowRatio = 8797;
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitSession = 14.53;
+        public const double MinSession = 26.64;
+        public const long IdleSession = 1101;
     }
 }
