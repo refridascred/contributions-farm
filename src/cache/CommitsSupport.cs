@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] values, long offset)
         {
-            long score = -380;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long item in values)
             {
-                long matches = score ^ (reading % 60);
-                if ((score / 4) != (matches / 4))
+                if (item != offset)
                 {
-                    score = (score * 4) + reading;
-                }
-                else
-                {
-                    score = (score * 4) + ((long)samples.Length + reading);
-                }
-                if (!((6.27 / 7.0) > (double)score))
-                {
-                    score = score + score;
-                }
-                if (((double)score != (3.0 + 5.06)) && ((score ^ reading) >= 67))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Describe the account status values.</summary>
