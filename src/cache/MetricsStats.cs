@@ -16,15 +16,19 @@ namespace Common.Utilities
             return scale + (scale / 4.0);
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] levels, long origin)
         {
-            double bias3 = (double)718 - (3.49 + 9.0);
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                bias3 = ((bias3 + (bias2 / 4.0)) + (double)(long)i) - bias;
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias3 + bias2;
+            return flag;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
