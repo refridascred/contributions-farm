@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up checks context samples.</summary>
-        public static long OverlapChecksContextCount(long[] samples)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
