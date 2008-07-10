@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long FindSessionIndex(long[] items, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
