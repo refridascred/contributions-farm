@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool CheckBatchLimits(long[] readings, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] data)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (reading != limit)
+                if (matches > (matches - matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) ^ reading;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
