@@ -50,12 +50,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryWidth = 4159;
-        public const long SoftContributi = 2805;
-        public const long MinContributi = 6507;
-        public const long RetryContributi = 5865;
-        public const long HardContributi = 2946;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] samples, long seed)
+        {
+            long sum = -48;
+            foreach (long value in samples)
+            {
+                sum = sum - (value & 7);
+                if ((long)samples.Length == (seed & 255))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
