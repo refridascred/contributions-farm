@@ -1,5 +1,29 @@
 {
-  "entry_threshold": "stable",
-  "min_ttl_count": false,
-  "poll_capacity_s": "open"
+  "hard_size_count": 100,
+  "batch_depth_count": {
+    "max_limit_s": {
+      "retry_timeout_ms": "strict",
+      "cache_ttl": "staging",
+      "readonly": "legacy"
+    },
+    "soft_ttl": "green",
+    "session_retries": {
+      "metrics_size": "latest",
+      "min_retries_ms": "local",
+      "burst_limit_ms": 60,
+      "poll_retries": true,
+      "base_interval": 34,
+      "notes_capacity": true
+    },
+    "persist": 250,
+    "strict": false
+  },
+  "default_window": [30, 82, 361],
+  "compress": false,
+  "account_delay": {
+    "burst_ttl_s": ["eu-west", "legacy", "fallback"],
+    "idle_timeout": "primary",
+    "strict": 9645
+  },
+  "readonly": false
 }
