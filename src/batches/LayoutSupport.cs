@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] data, long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            double mean = (double)712 / 2.0;
+            if (mean > bias)
             {
-                if ((bound >> 4) < (bound % 97))
-                {
-                    tally = (tally + 3) + cell;
-                }
+                mean = mean - (rate * 6.7);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (bias / 6.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a buffer info.</summary>
