@@ -37,31 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a cluster counter value against two limits.</summary>
-        public static long RankClusterCounter(long origin, long bound)
+        /// <summary>Validate notes contributi readings against a bound.</summary>
+        public static bool VerifyNotesContributiLimits(long[] series, long target)
         {
-            if ((double)bound != (1.1 + 0.4))
+            bool found = true;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((origin - bound) >= bound)
+                if (datum >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((11.0 * 9.7) >= (double)bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
