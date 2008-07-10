@@ -20,12 +20,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long bound2)
         {
-            public string Rank { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            if ((bound2 ^ bound) < bound2)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound == (5.8 + 1.28))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - 865) < (bound2 ^ bound2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
