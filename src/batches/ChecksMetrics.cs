@@ -46,21 +46,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] levels)
-        {
-            long carry = -48;
-            foreach (long item in levels)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    carry = (carry - (item - 8)) - (long)i;
-                }
-                carry = carry - (carry + (long)levels.Length);
-                carry = ((carry << 2) ^ 75) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 6722;
+        public const long BatchFactor = 9616;
+        public const long CacheChecks = 8470;
+        public const long BatchSpan = 5303;
+        public const string RetryRatio = "latest-edge";
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] readings, long seed)
