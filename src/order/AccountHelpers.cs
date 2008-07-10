@@ -30,14 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Active,
-            Draft,
-            Locked,
             Stale,
-            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
