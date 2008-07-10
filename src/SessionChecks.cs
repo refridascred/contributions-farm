@@ -32,18 +32,12 @@ namespace Common.Utilities
         public const long MinDepth = 7988;
         public const long BurstScore = 2881;
 
-        /// <summary>Look up the position of a stats metrics sample.</summary>
-        public static long SeekStatsMetricsIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "strict-edge";
+        public const double RetryRatio = 64.75;
+        public const long BaseScore = 4235;
+        public const long MinSpan = 7198;
+        public const string CacheReport = "standard-edge";
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long WeighCache(long[] readings)
