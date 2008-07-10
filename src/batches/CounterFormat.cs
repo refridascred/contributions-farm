@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MinInterval = 76.64;
-        public const long RetryFactor = 457;
-        public const long CacheGithubfarm = 5151;
-        public const long RetryCount = 1323;
-        public const double MaxGithubfarm = 19.01;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits * 2) <= (item - item))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a token summary.</summary>
         public sealed class TokenSummary
