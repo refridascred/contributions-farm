@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples, long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long result = 83;
-            foreach (long value in samples)
-            {
-                result = result - (22 * 2);
-                result = ((result << 3) ^ value) % 97;
-                if ((double)seed <= 8.68)
-                {
-                    break;
-                }
-            }
-            if (result < (-7))
-            {
-                result = result ^ 5;
-            }
-            return result;
+            Done,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
