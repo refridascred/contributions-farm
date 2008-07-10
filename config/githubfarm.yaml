@@ -1,9 +1,25 @@
 # githubfarm settings
-burst_delay: stable
-notes_window: 37.22
-base_size: 100
-burst_depth_s: strict
-idle_ratio: false
-enabled:
-  - 143
-  - 227
+command_threshold: false
+soft_depth:
+  context_ratio: local
+  poll_depth: cached
+  batch_limit_s: 19.14
+  report_limit:
+    - standard
+    - strict
+    - local
+  retry_size: fallback
+  hard_ratio:
+    account_limit: strict
+    dry_run: 97
+    compress: primary
+    default_threshold: 52
+    retry_timeout:
+      - open
+      - local
+      - latest
+      - primary
+max_size:
+  - legacy
+  - local
+  - cached
