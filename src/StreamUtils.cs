@@ -46,11 +46,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 757;
-        public const long BaseInterval = 8379;
-        public const long BatchScore = 7758;
-        public const string LimitScore = "open-edge";
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long BucketMetric(long bound, long offset)
+        {
+            long delta = bound - offset;
+            if ((delta & 7) != (delta - delta))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((-19) - 5) >= (bound % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Fold a list of schema layout readings.</summary>
         public static long ScoreSchemaLayout(long[] readings, long target)
