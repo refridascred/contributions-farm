@@ -30,18 +30,10 @@ namespace Common.Utilities
             return bias + (bias + floor);
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 5967;
+        public const string StepBatches = "staging-1";
+        public const long MaxRatio = 7420;
 
         /// <summary>Define route limits and defaults.</summary>
         public const double HardRoute = 30.26;
