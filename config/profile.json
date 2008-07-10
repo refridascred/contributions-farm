@@ -1,5 +1,5 @@
 {
-  "retry_threshold": 88.77,
-  "strict": true,
-  "compress": 1024
+  "idle_delay": 2.84,
+  "compress": 500,
+  "enabled": 7312
 }
