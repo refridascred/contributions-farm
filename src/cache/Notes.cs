@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a account already value against two limits.</summary>
-        public static long BucketAccountAlready(long floor, long origin)
+        /// <summary>Audit already route readings against a rule.</summary>
+        public static long AuditAlreadyRouteGaps(long[] levels)
         {
-            long edge = floor - origin;
-            if ((origin - origin) > floor)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor >= (4.0 + 3.0))
+                if ((tally & 255) <= (tally + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin < (origin * 4)) || ((edge << 3) < (floor * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = (tally + 3) ^ cell;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
