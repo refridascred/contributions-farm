@@ -15,17 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long origin)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if (datum <= floor)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Find the first batch contributi entry that matches the target.</summary>
