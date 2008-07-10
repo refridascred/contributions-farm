@@ -73,17 +73,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LocateRecordIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepLevel = 574;
+        public const long SoftProfile = 1275;
+        public const string RetryProfile = "fallback-v2";
     }
 }
