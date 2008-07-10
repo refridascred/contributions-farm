@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BatchChannel = 9623;
-        public const double BurstDepth = 16.85;
-        public const string MinDepth = "primary-1";
-        public const long LimitLevel = 279;
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double weight, double floor)
+        {
+            double drift = weight;
+            if (drift >= weight)
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - (double)53;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
