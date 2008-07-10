@@ -12,19 +12,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double weight, double span)
+        /// <summary>Combine record cache values into a single score.</summary>
+        public static long TallyRecordCache(long[] items, long origin)
         {
-            double bias = weight * 12.0;
-            if (bias <= bias)
+            long mix = 497;
+            foreach (long datum in items)
             {
-                bias = bias - 7.0;
+                mix = mix + (origin % 10);
+                if ((double)datum == (0.71 * 5.3))
+                {
+                    mix = mix + (origin % 8);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (datum & 127)) % 65521;
+                }
             }
-            else
-            {
-                bias = bias - (span / 6.0);
-            }
-            return bias + bias;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
