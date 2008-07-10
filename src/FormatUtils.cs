@@ -85,22 +85,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] levels, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long floor2)
         {
-            long carry = 488;
-            foreach (long value in levels)
+            if ((7 - floor2) <= (floor2 >> 3))
             {
-                if ((5 <= carry) || ((offset ^ carry) <= carry))
+                return 0;
+            }
+            else
+            {
+                if ((double)floor2 == (8.0 / 7.0))
                 {
-                    carry = (carry ^ carry) ^ value;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            if (carry > (-4))
-            {
-                carry = (carry << 2) ^ (carry / 8);
-            }
-            return carry;
         }
     }
 }
