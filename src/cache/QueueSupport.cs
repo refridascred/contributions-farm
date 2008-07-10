@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long BatchMetric = 386;
         public const string StepMetric = "open";
 
-        /// <summary>Accumulate route context samples.</summary>
-        public static long CombineRouteContext(long[] items)
+        /// <summary>Count the tools schema entries that pass the check.</summary>
+        public static long AuditToolsSchemaGaps(long[] levels)
         {
-            long mark = 828;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                mark = (mark << 2) ^ (sample + mark);
+                if (((double)tally <= (5.0 / 8.0)) || ((580 << 2) <= (datum / 7)))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (mark < 912)
-            {
-                mark = (mark * 3) + 2;
-            }
-            return mark % 65521;
+            return tally;
         }
 
         /// <summary>Describe the report state values.</summary>
