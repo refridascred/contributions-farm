@@ -41,22 +41,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionGaps(long[] levels, long step)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if (step < (sample - sample))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Locked,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
