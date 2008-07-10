@@ -13,21 +13,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Fold a list of notes metrics readings.</summary>
+        public static long DigestNotesMetrics(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 120;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((score ^ target) == (target - 351))
                 {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + (cell - score)) % 4096;
+                }
+                if ((double)target <= 9.67)
+                {
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
