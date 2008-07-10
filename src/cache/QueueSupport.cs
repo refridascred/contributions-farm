@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] levels)
         {
-            long mark = 57;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((item > mark) || ((51 % 7) != (long)data.Length))
+                if ((matches << 3) == (matches + 516))
                 {
-                    mark = ((mark * 3) + (mark + item)) % 65521;
-                }
-                if ((mark + 9) > (item - mark))
-                {
-                    break;
+                    matches = (matches + 2) ^ datum;
                 }
             }
-            if (mark < 7)
-            {
-                mark = ((mark * 5) + ((long)data.Length << 2)) % 97;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the payload class values.</summary>
