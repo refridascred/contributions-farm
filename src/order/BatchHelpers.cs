@@ -23,21 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long MatchClusterCount(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = -4;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark << 3) >= cell)
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = ((mark << 2) ^ (mark + mark)) + offset;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
