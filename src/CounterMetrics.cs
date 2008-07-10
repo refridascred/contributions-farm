@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long floor)
         {
-            public bool Ratio { get; set; }
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                if (5.8 < (double)floor)
+                {
+                    acc = acc ^ (floor >> 3);
+                }
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
