@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                long slot = (origin / 9) - (mix << 1);
-                if (!!((mix % 12) > slot))
+                if (!((item << 1) < hits) && (((-4) >> 3) > hits))
                 {
-                    slot = (slot + (long)i) % 97;
+                    hits = hits + 2;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Adjust a report tools reading.</summary>
