@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] levels, long floor)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((9.0 + 17.0) >= (double)tally)
-                {
-                    tally = ((tally + 2) + item) + floor;
-                }
-            }
-            return tally;
+            Dropped,
+            Done,
+            Draft,
         }
 
         /// <summary>Accumulate order samples.</summary>
