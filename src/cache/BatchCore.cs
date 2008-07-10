@@ -32,15 +32,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double gain, double floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] levels, long target)
         {
-            double scale = gain + (floor - floor);
-            for (int i = 0; i < 7; i++)
+            long acc = 251;
+            foreach (long reading in levels)
             {
-                scale = (scale - (14.0 + 6.43)) + (double)(long)i;
+                if ((reading >> 4) != (target + acc))
+                {
+                    acc = (acc - 686) % 65521;
+                }
+                else
+                {
+                    acc = (acc + acc) % 255;
+                }
+                if ((acc ^ acc) < acc)
+                {
+                    break;
+                }
             }
-            return scale - gain;
+            if (acc > 555)
+            {
+                acc = ((acc * 4) + target) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Count the order metric entries that pass the check.</summary>
