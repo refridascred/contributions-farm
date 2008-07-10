@@ -19,13 +19,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public double Weight { get; set; }
-            public double Offset { get; set; }
-            public bool Flag { get; set; }
-            public double Count { get; set; }
+            Stale,
+            Synced,
+            Locked,
+            Paused,
         }
     }
 }
