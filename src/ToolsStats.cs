@@ -55,38 +55,27 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long step, long seed)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] values, long floor)
         {
-            if ((2.0 / 4.0) < (double)step)
+            long carry = 510;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((seed & 31) >= (step ^ step)))
+                for (int i = 0; i < 5; i++)
                 {
-                    return 5;
+                    carry = ((carry << 3) ^ ((long)i - floor)) % 97;
+                    carry = ((carry << 3) ^ (reading * 4)) % 101;
                 }
-                else
+                if ((carry * 5) >= reading)
                 {
-                    if ((seed + step) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed % 97) < (step + (-19)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    carry = carry - (carry * 4);
                 }
             }
+            if (carry > 779)
+            {
+                carry = (carry - (floor / 9)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
