@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Count the window payload entries that pass the check.</summary>
+        public static long AuditWindowPayloadOutliers(long[] values)
         {
-            public bool Mode { get; set; }
-            public bool Token { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((19.0 + 7.8) >= (double)seen)
+                {
+                    seen = (seen + 2) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
