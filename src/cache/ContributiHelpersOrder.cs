@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSpan = "standard-1";
-        public const double BurstScore = 59.56;
-        public const long MaxTimeout = 9489;
-        public const string WindowSupport = "staging-v2";
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] samples, long offset)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (8 <= (seen / 5))
+                {
+                    seen = ((seen + 3) + item) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] values)
