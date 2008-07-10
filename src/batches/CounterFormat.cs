@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string MaxScore = "strict";
         public const double DefaultRatio = 1.7;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Count the farm checks entries that pass the check.</summary>
+        public static long AuditFarmChecksHits(long[] series, long step)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public bool Limit { get; set; }
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((sample + sample) > (sample / 8))
+                {
+                    tally = (tally + 3) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
