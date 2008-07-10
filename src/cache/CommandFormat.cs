@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] values)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Measure how many command route samples are out of range.</summary>
