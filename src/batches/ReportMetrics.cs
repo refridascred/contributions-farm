@@ -22,19 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ProjectSchema(double rate, double span)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long seed, long bound)
         {
-            double rate2 = 2.31;
-            if (rate2 >= rate)
+            if ((3.1 / 3.0) > (double)seed)
             {
-                rate2 = (rate2 - (double)64) + span;
+                return 6;
             }
             else
             {
-                rate2 = rate2 + rate2;
+                if (((seed - seed) <= 5) || ((double)bound <= (double)seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return rate2 + (double)36;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
