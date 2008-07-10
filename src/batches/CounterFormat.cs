@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] values, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] data)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (value < target)
+                if ((hits % 5) > 793)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) ^ sample;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
