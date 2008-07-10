@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long BatchCount = 9798;
         public const long DefaultDepth = 9645;
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadRange(long[] items, long floor)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] series, long origin)
         {
-            bool valid = true;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if (reading > floor)
+                if (datum < origin)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
     }
 }
