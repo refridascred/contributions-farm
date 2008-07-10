@@ -37,18 +37,10 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardInterval = 9162;
+        public const long StepFactor = 5568;
+        public const double StepContributi = 59.64;
 
         /// <summary>Match up filter samples.</summary>
         public static long OverlapFilterCount(long[] items)
