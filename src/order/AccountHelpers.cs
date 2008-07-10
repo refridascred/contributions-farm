@@ -33,16 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long floor)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteMatches(long[] items)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                acc = (acc * 4) + (acc & 31);
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((cell - count) <= cell)
+                {
+                    count = count + 2;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
