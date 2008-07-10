@@ -41,24 +41,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long bound)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            if (((offset / 2) >= 133) || ((offset + bound) <= ((-40) % 97)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((75 * 4) != ((-9) + bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
