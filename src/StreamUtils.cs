@@ -29,15 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the account stats series from a seed.</summary>
-        public static long RollAccountStats(long bound)
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
