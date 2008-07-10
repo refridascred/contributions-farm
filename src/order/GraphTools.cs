@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] values)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((value ^ value) < ((-28) / 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
