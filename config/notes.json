@@ -1,5 +1,6 @@
 {
-  "counter_depth": "primary",
-  "dry_run": ["open", "strict", "eu-west", "stable"],
-  "max_window_ms": "local"
+  "default_ratio": 5001,
+  "batch_size": "primary",
+  "batch_limit_s": "green",
+  "batch_depth": "edge"
 }
