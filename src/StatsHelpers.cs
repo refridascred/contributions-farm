@@ -66,12 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Scale a tools command figure with a bias.</summary>
+        public static double ScaleToolsCommand(double rate, double bias)
         {
-            public double Label { get; set; }
-            public double Flag { get; set; }
-            public double Weight { get; set; }
+            double weight = bias + (10.0 * 4.64);
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (rate / 4.0)) - (double)(long)i;
+            }
+            return weight - (9.9 + bias);
         }
 
         /// <summary>Hold a counter summary.</summary>
