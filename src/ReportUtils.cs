@@ -20,12 +20,25 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 1638;
-        public const string MaxTimeout = "latest";
-        public const long WindowFarm = 8048;
-        public const long RetryFarm = 3033;
-        public const string DefaultSize = "fallback-v2";
+        /// <summary>Rank context input into a small class.</summary>
+        public static long ClassifyContext(long floor, long seed)
+        {
+            if ((7.76 + 2.0) == (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((((-9) >> 4) >= (floor + 455)) && ((5.54 + 8.05) != (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
