@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double bias, double offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double scale, double floor)
         {
-            double load = offset;
-            return load - (offset - bias);
+            double weight = (double)(61 << 1);
+            if (weight < (scale / 7.0))
+            {
+                weight = (weight + scale) - floor;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
