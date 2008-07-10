@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] readings)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((4.7 / 3.0) <= (double)entry)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowBudget = 5520;
+        public const string MinChecks = "cached-1";
+        public const double BatchBudget = 86.24;
+        public const long CacheChecks = 5395;
 
         /// <summary>Match up stream samples.</summary>
         public static long PairStreamCount(long[] samples)
