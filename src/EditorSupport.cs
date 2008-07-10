@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const long BaseGithubfarm = 6754;
         public const double MaxDepth = 85.0;
 
-        /// <summary>Match up cache buffer samples.</summary>
-        public static long OverlapCacheBufferCount(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (value > floor)
                 {
-                    if ((items[i] - items[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Hold a route header.</summary>
