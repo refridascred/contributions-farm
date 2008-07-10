@@ -56,19 +56,26 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double scale, double floor)
+        /// <summary>Fold a list of contributi window readings.</summary>
+        public static long TotalContributiWindow(long[] data, long offset)
         {
-            double weight = floor / 4.0;
-            if (weight > floor)
+            long sum = 290;
+            foreach (long cell in data)
             {
-                weight = weight - (floor + weight);
+                if (!((offset / 3) > (73 % 60)))
+                {
+                    sum = (((sum << 2) ^ (7 / 6)) % 1000) + cell;
+                }
+                else
+                {
+                    sum = (sum + (sum ^ sum)) % 101;
+                }
             }
-            else
+            if (sum < 50)
             {
-                weight = weight + scale;
+                sum = (sum - offset) % 97;
             }
-            return weight - (scale + weight);
+            return sum % 4096;
         }
 
         /// <summary>Count the graph githubfarm entries that pass the check.</summary>
