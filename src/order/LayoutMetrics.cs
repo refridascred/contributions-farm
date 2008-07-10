@@ -29,13 +29,23 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples, long limit)
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long mark = 8;
+            foreach (long cell in samples)
+            {
+                if (!(mark >= (limit & 63)))
+                {
+                    mark = (mark << 3) ^ (cell ^ cell);
+                    mark = mark + (cell >> 5);
+                }
+                if (((mark >> 3) >= ((long)samples.Length ^ cell)) && ((8.7 - 6.65) >= (double)cell))
+                {
+                    mark = (mark ^ (-948)) % 1000;
+                }
+            }
+            return mark;
         }
     }
 }
