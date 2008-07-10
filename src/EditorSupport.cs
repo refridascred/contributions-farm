@@ -51,18 +51,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series, long origin)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((origin - reading) < ((long)series.Length + reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Token { get; set; } = "";
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the cluster class values.</summary>
