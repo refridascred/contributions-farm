@@ -46,39 +46,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long limit, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long limit)
         {
-            long edge = limit + target;
-            if (!((9 + 136) == (edge << 2)))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge * 4) != (edge + edge))
+                if (item <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target - limit) <= (target & 15)) || (70 <= (limit + edge)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((double)target > (3.0 + 5.0)) && ((double)target <= (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
