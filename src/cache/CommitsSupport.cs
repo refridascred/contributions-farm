@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every queue command entry stays within the limit.</summary>
-        public static bool VerifyQueueCommandLimits(long[] data, long floor)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool found = true;
-            foreach (long value in data)
-            {
-                if (value <= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Queued,
+            Ready,
         }
 
         /// <summary>Match up schema samples.</summary>
