@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
-        {
-            public double Mode { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleInterval = 7647;
+        public const long BatchWidth = 6159;
+        public const string CacheBatch = "latest-edge";
+        public const long LimitBatch = 879;
+        public const string HardBatch = "primary-v2";
     }
 }
