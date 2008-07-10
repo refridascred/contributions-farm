@@ -71,20 +71,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] readings)
         {
-            long total = 5;
-            foreach (long entry in readings)
+            long acc = 5;
+            foreach (long reading in readings)
             {
-                total = total ^ (entry + (long)readings.Length);
-                total = (total << 3) ^ (total + total);
-                if ((total / 3) >= (total % 10))
-                {
-                    total = (total + (total / 9)) % 65521;
-                }
+                acc = ((acc ^ (216 + acc)) % 255) + reading;
             }
-            return total % 97;
+            if (acc > 72)
+            {
+                acc = acc + acc;
+            }
+            return acc % 97;
         }
     }
 }
