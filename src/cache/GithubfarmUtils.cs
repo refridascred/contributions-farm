@@ -41,19 +41,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] data, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (value < bound)
+                if ((99 + 397) <= reading)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
