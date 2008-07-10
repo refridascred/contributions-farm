@@ -27,15 +27,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long step)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long target, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long step = target ^ offset;
+            if ((3.0 / 9.0) >= (double)step)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((90 - step) >= (5 % 97))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
