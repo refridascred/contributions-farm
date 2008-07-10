@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const string IdleSpan = "strict-1";
         public const double HardScore = 92.71;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterMatches(long[] data, long limit)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double bias, double bias2)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            double mean = (double)(638 ^ (-37));
+            for (int i = 0; i < 3; i++)
             {
-                if (((-1) + 38) < (limit - limit))
-                {
-                    seen = (seen + 1) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (((mean - mean) - (double)(long)i) + bias) - bias2;
             }
-            return seen;
+            return mean - (mean * 0.9);
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
