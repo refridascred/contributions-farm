@@ -1,23 +1,6 @@
 {
-  "min_timeout_pct": 34,
-  "cache_delay": {
-    "default_threshold": "eu-west",
-    "farm_ttl": 4520,
-    "enabled": {
-      "dry_run": 3,
-      "command_delay": 49,
-      "metrics_threshold": "strict",
-      "audit": 0.51,
-      "batch_capacity_ms": 21.2,
-      "persist": false
-    },
-    "default_limit": "staging",
-    "soft_capacity_pct": "stable",
-    "burst_interval": {
-      "enabled": "edge",
-      "stream_ratio": 7942,
-      "flush_timeout_s": 500
-    }
-  },
-  "burst_window_pct": 32.83
+  "account_capacity": "blue",
+  "retry_depth": [472, 207],
+  "base_capacity_pct": false,
+  "dry_run": 100
 }
