@@ -31,40 +31,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long floor, long offset)
-        {
-            long diff = floor - offset;
-            if ((double)offset <= (0.8 + 1.6))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor % 10) != (diff + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((diff * 2) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)diff >= (5.79 + 1.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultCount = "local-edge";
+        public const long WindowDepth = 2792;
+        public const long CacheCount = 9029;
+        public const long CacheBatch = 7902;
+        public const long StepLevel = 6333;
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long BucketChannel(long floor, long bound)
