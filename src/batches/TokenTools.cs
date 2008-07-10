@@ -27,15 +27,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double scale, double floor)
+        /// <summary>Find the first batch contributi entry that matches the target.</summary>
+        public static long LocateBatchContributiIndex(long[] data, long offset)
         {
-            double bias = (double)756 * 6.41;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = (((bias - (bias / 7.0)) - (double)(long)i) - scale) + floor;
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
     }
 }
