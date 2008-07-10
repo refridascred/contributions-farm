@@ -1,6 +1,7 @@
 {
-  "dry_run": 40,
-  "hard_ratio_s": ["open", "cached"],
-  "hard_timeout_pct": 8380,
-  "audit": "local"
+  "verbose": 90,
+  "batch_capacity_count": 83.04,
+  "default_threshold_ms": true,
+  "audit": 1,
+  "warm_timeout": 100
 }
