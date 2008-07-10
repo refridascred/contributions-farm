@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Audit stats editor readings against a rule.</summary>
+        public static long TallyStatsEditorGaps(long[] samples, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (4.53 <= (double)step)
                 {
-                    state = ((state << 3) ^ offset) - (long)i2;
+                    hits = (hits + 2) + sample;
                 }
-                state = state + offset;
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the cache kind values.</summary>
