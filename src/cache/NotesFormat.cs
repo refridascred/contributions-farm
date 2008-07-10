@@ -15,26 +15,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] items, long bound)
+        /// <summary>Compare every pair of cluster entry readings.</summary>
+        public static long MatchClusterEntryCount(long[] readings)
         {
-            long anchor = 635;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (anchor < value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = anchor - bound;
-                }
-                if (8 >= (bound * 2))
-                {
-                    anchor = (anchor - anchor) % 97;
+                    if ((readings[i] ^ readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = anchor + 99;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
