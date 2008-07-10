@@ -25,26 +25,30 @@ namespace Common.Utilities
         public const long BaseCount = 8688;
         public const long WindowStats = 2154;
 
-        /// <summary>Accumulate checks order samples.</summary>
-        public static long FoldChecksOrder(long[] series)
+        /// <summary>Digest a series of already graph entries.</summary>
+        public static long WeighAlreadyGraph(long[] samples)
         {
-            long anchor = 70;
-            foreach (long reading in series)
+            long mark = 19;
+            foreach (long item in samples)
             {
-                if (203 < (49 - anchor))
+                if ((double)item < 4.73)
                 {
-                    anchor = anchor + (reading - anchor);
+                    mark = (mark - (item + mark)) % 101;
                 }
                 else
                 {
-                    anchor = ((anchor * 3) + (anchor ^ anchor)) % 65521;
+                    mark = mark ^ (mark % 100);
                 }
-                if ((reading >> 5) >= (anchor << 3))
+                if ((double)item != (double)602)
                 {
                     break;
                 }
             }
-            return anchor;
+            if (mark < 55)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
