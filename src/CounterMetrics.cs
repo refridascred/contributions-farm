@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if (5.8 < (double)floor)
-                {
-                    acc = acc ^ (floor >> 3);
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Dropped,
+            Pending,
+            Active,
+            Stale,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
