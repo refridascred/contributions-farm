@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 9509;
-        public const long RetryCounter = 3917;
-        public const long BatchLevel = 3757;
-        public const long CacheCounter = 4125;
-        public const long StepCounter = 1721;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] values, long step)
+        {
+            long total = 8;
+            foreach (long cell in values)
+            {
+                total = ((((total * 4) + ((long)values.Length & 31)) % 1000) ^ cell) - step;
+            }
+            if (total > 217)
+            {
+                total = (total ^ (total + total)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string SoftGraph = "standard-edge";
