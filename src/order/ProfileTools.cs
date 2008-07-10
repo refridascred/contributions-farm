@@ -41,10 +41,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstLevel = 4013;
-        public const double SoftSize = 90.46;
-        public const long BaseBudget = 8987;
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
+        {
+            public double Mode { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long TallyNotesMatches(long[] data)
