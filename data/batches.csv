@@ -1,10 +1,7 @@
-id,label,count,region,level
-1,staging,951,3.12,59
-2,311,48.94,505,113
-3,fallback,green,546,328
-4,28.66,343,primary,edge
-5,396,822,680,blue
-6,stable,blue,11.16,670
-7,81.97,854,local,601
-8,strict,10.21,latest,eu-west
-9,strict,20.95,944,47.58
+id,active,count,weight
+1,579,9.22,707
+2,69.7,local,37
+3,166,87.29,42.9
+4,stable,74,132
+5,624,243,659
+6,eu-west,56.96,standard
