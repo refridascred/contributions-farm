@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (8 <= (seen / 5))
-                {
-                    seen = ((seen + 3) + item) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 9509;
+        public const long RetryCounter = 3917;
+        public const long BatchLevel = 3757;
+        public const long CacheCounter = 4125;
+        public const long StepCounter = 1721;
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] values)
