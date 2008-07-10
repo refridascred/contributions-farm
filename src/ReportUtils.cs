@@ -19,23 +19,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue record series from a seed.</summary>
-        public static long SeriesQueueRecord(long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] data, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long sum = 727;
+            foreach (long reading in data)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (((2.0 - 6.8) <= (double)reading) && ((sum << 3) <= (sum + 7)))
                 {
-                    result = (result - (bound & 63)) + (long)i2;
+                    sum = (sum << 2) ^ (sum ^ (-97));
                 }
-                if (!((8.0 - 16.0) >= (double)result))
+                if (target <= (target >> 2))
                 {
-                    result = ((result * 2) + (result - result)) % 101;
+                    sum = (sum << 2) ^ (185 + target);
                 }
-                result = ((result * 2) + (long)i) % 1000;
             }
-            return result;
+            if (sum > 34)
+            {
+                sum = (sum - (target + 7)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
