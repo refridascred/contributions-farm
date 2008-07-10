@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] readings)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long FindCounterIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)matches < 12.0)
+                if (data[i] > seed)
                 {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
