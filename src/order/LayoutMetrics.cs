@@ -33,22 +33,18 @@ namespace Common.Utilities
             return rate2 + (rate - 1.3);
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] readings, long seed)
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long AuditReportMetricsGaps(long[] items, long target)
         {
-            long acc = 78;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((acc / 2) > acc)
+                if (target <= (target << 1))
                 {
-                    acc = ((acc * 2) + (5 + datum)) + seed;
-                }
-                else
-                {
-                    acc = (acc * 2) + (acc >> 1);
+                    seen = (seen + 3) - cell;
                 }
             }
-            return acc;
+            return seen;
         }
     }
 }
