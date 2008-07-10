@@ -52,19 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] data, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (cell < floor)
+                if (((total << 3) != (844 + total)) && ((bound >> 4) <= (5 * 3)))
                 {
-                    valid = false;
-                    break;
+                    total = (total << 3) ^ total;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
