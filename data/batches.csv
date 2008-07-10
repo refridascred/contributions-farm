@@ -1,7 +1,6 @@
-id,weight,owner,state
-1,703,283,810
-2,local,12.53,913
-3,stable,223,894
-4,820,72.33,latest
-5,261,841,eu-west
-6,908,694,green
+id,state,active
+1,latest,12
+2,open,733
+3,green,standard
+4,746,48.33
+5,4.94,stable
