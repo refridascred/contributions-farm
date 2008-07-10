@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinInterval = 75.98;
+        public const long IdleDepth = 4083;
+        public const string StepContributi = "local-1";
+        public const long LimitContributi = 9370;
 
         /// <summary>Combine record cache values into a single score.</summary>
         public static long TallyRecordCache(long[] items, long origin)
