@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a notes account reading by value.</summary>
-        public static long LocateNotesAccountIndex(long[] items, long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] values, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == target) && ((items[i] % 2) != 0))
+                if (values[i] >= target)
                 {
                     return (long)i;
                 }
