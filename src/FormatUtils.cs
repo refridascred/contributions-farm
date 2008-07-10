@@ -18,10 +18,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchRatio = 3921;
-        public const long LimitProfile = 2615;
-        public const long WindowLevel = 9423;
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
+        {
+            Active,
+            Synced,
+            Pending,
+        }
 
         /// <summary>Describe the format state values.</summary>
         public enum FormatState
