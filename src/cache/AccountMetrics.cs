@@ -54,15 +54,18 @@ namespace Common.Utilities
         public const long MaxScore = 487;
         public const double WindowRoute = 38.12;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double bias, double bias2)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] values)
         {
-            double scale = bias;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                scale = (scale + bias2) + (double)(long)i;
+                if ((tally + item) < (11 ^ tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return scale - 12.0;
+            return tally;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
