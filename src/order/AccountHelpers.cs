@@ -49,18 +49,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 2) + (total - (long)i)) % 101;
-                total = ((total << 2) ^ (total + bound)) % 4096;
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftFactor = 57.86;
+        public const double StepRatio = 17.69;
+        public const long MinBudget = 6917;
+        public const long LimitBudget = 6988;
+        public const string BurstPayload = "primary-1";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool CheckPayloadRange(long[] levels, long limit)
