@@ -29,13 +29,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] samples, long limit)
         {
-            Idle,
-            Failed,
-            Locked,
-            Paused,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
