@@ -45,11 +45,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            long result = 693;
+            foreach (long value in levels)
+            {
+                result = (result + (4 + (-860))) % 97;
+                result = (result + (785 * 5)) % 101;
+                result = ((result * 2) + (result + 1)) % 97;
+                if ((double)value >= (0.6 / 9.0))
+                {
+                    break;
+                }
+            }
+            if (result < 64)
+            {
+                result = result + (-7);
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the editor record series from a seed.</summary>
