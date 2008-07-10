@@ -63,38 +63,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long ClassifySupport(long limit, long target)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            if (((-5) * 5) >= (limit + 80))
-            {
-                return 7;
-            }
-            else
-            {
-                if (target >= (65 & 255))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.4 - 19.0) == (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + target) <= (target ^ limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Ready,
+            Done,
+            Dropped,
         }
     }
 }
