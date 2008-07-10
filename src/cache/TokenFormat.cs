@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const long MaxBatch = 3852;
         public const string StepRatio = "cached";
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] readings, long limit)
         {
-            Idle,
-            Stale,
-            Synced,
+            bool flag = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
