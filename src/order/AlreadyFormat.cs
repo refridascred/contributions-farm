@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Combine schema support values into a single score.</summary>
+        public static long ScoreSchemaSupport(long[] levels, long target)
         {
-            long state = 6;
-            foreach (long sample in items)
+            long result = 4;
+            foreach (long value in levels)
             {
-                state = (state - sample) % 65521;
-                if (((double)state <= 14.0) || ((state - sample) >= (sample + sample)))
-                {
-                    break;
-                }
+                result = ((result ^ (target * 3)) % 1000) + value;
             }
-            if (state < 33)
-            {
-                state = (state + (state << 3)) % 65521;
-            }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
