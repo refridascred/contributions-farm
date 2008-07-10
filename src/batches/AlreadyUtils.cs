@@ -28,14 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
-        {
-            public string Ratio { get; set; } = "";
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardBudget = 7846;
+        public const long BurstCount = 6688;
+        public const string StepSupport = "stable-edge";
+        public const long BaseDepth = 4554;
 
         /// <summary>Accumulate contributi profile samples.</summary>
         public static long CombineContributiProfile(long[] samples)
