@@ -1,8 +1,9 @@
-id,active,owner,weight
-1,97.13,54.93,cached
-2,local,561,798
-3,851,legacy,9.96
-4,532,857,cached
-5,green,stable,882
-6,959,966,677
-7,staging,strict,986
+id,token,score,level
+1,509,13.66,72.74
+2,41.19,72.85,green
+3,0.25,680,strict
+4,staging,672,eu-west
+5,771,latest,71.16
+6,91.04,standard,143
+7,736,42,24.06
+8,652,staging,28.55
