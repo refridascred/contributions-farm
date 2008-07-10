@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] items, long step)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (((long)items.Length * 4) >= (matches * 4))
-                {
-                    matches = ((matches + 1) + reading) + step;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
