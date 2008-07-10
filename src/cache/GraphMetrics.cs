@@ -49,32 +49,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long floor, long offset)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] readings, long seed)
         {
-            long span = floor + offset;
-            if ((span + floor) == (span ^ offset))
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (offset < floor)
+                if (!((entry - seed) > (6 + 4)) || ((entry >> 5) != (seed << 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor < (offset ^ offset)) && ((span * 3) > 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
