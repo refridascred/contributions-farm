@@ -53,19 +53,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderRange(long[] samples, long seed)
+        /// <summary>Audit notes support readings against a rule.</summary>
+        public static long AuditNotesSupportGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (item <= seed)
+                if ((5 - count) < (value & 15))
                 {
-                    ok = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Classify a commits tools pair into a bucket.</summary>
