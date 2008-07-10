@@ -1,5 +1,26 @@
 # support settings
-idle_capacity_pct: 49
-commits_interval: 1024
-soft_capacity: local
-max_window: 30
+base_timeout_s:
+  soft_depth:
+    - 262
+    - 428
+    - 32
+  verbose:
+    compress: 100
+    audit: false
+    hard_capacity_count: false
+    poll_depth: 60.93
+    session_ttl: 8054
+    session_ratio: staging
+  flush_window_pct: true
+  strict:
+    - 54
+    - 298
+    - 495
+default_size_s: 28.29
+cluster_size:
+  - standard
+  - open
+  - eu-west
+  - stable
+dry_run: local
+enabled: true
