@@ -28,11 +28,10 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string HardEditor = "cached";
+        public const long StepEditor = 2402;
+        public const long RetryWidth = 9650;
+        public const double IdleRatio = 17.13;
     }
 }
