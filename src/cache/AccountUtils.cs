@@ -17,10 +17,18 @@ namespace Common.Utilities
         public const long DefaultBudget = 611;
         public const long LimitChannel = 1752;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BaseCount = "open-v2";
-        public const double StepInterval = 48.96;
-        public const long RetryFilter = 7453;
-        public const long HardFilter = 7843;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((38 + count) != (cell % 12)) || ((double)count != (10.0 + 17.0)))
+                {
+                    count = (count + 1) - offset;
+                }
+            }
+            return count;
+        }
     }
 }
