@@ -44,18 +44,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Count the metrics counter entries that pass the check.</summary>
-        public static long TallyMetricsCounterHits(long[] readings)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading << 2) != (reading & 31))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
