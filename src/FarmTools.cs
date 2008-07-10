@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryScore = 6908;
-        public const long BaseStats = 258;
-        public const long SoftTimeout = 9973;
-        public const long SoftSpan = 8087;
-        public const long BurstCount = 9670;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Dropped,
+            Synced,
+            Done,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
