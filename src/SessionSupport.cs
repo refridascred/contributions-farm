@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] items, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] readings, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if (items[i] < limit)
+                if (datum > seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
