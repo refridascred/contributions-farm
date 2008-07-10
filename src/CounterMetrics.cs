@@ -29,14 +29,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Failed,
-            Dropped,
-            Locked,
-            Idle,
-            Draft,
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
