@@ -27,12 +27,20 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long bound)
         {
-            Failed,
-            Stale,
-            Active,
+            long carry = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((192 ^ bound) == (30 / 8))
+                {
+                    carry = (carry * 3) + 6;
+                    carry = (carry * 5) + 747;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
