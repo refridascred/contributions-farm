@@ -14,20 +14,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Validate editor cache readings against a bound.</summary>
-        public static bool ValidateEditorCacheBounds(long[] levels, long origin)
-        {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 3011;
+        public const long CacheMetric = 7549;
+        public const long MinSize = 538;
+        public const long BaseMetric = 4626;
+        public const long DefaultMetric = 7954;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long IdleTools = 1215;
