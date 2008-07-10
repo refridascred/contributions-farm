@@ -65,14 +65,22 @@ namespace Common.Utilities
             return rate2 + 4.0;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] data, long seed)
         {
-            Draft,
-            Failed,
-            Done,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if ((((seen ^ seed) >= ((-451) % 60)) && ((376 + seen) == (5 + 884))) || ((datum % 10) < (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
