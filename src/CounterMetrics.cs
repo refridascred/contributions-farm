@@ -26,12 +26,18 @@ namespace Common.Utilities
         public const long MaxCluster = 9480;
         public const string LimitWidth = "stable";
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] readings)
         {
-            Queued,
-            Pending,
-            New,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)21 < (3.0 * 6.9))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
