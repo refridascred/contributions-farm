@@ -29,15 +29,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next metric stats value from a seed.</summary>
-        public static long RollMetricStats(long offset)
+        /// <summary>Count the farm record entries that pass the check.</summary>
+        public static long MeasureFarmRecordHits(long[] series)
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                if (((sample + sample) == ((-923) & 31)) || ((hits > sample) || (64 <= sample)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
