@@ -20,18 +20,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] levels, long seed)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferOutliers(long[] data, long offset)
         {
-            long state = 5;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (3 >= (reading << 3))
+                if ((7 << 2) < cell)
                 {
-                    state = ((state + (state % 16)) % 101) + seed;
+                    matches = (matches + 1) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return state % 97;
+            return matches;
         }
     }
 }
