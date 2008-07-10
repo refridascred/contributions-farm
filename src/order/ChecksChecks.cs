@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double weight, double offset)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long ScoreCommits(long[] items)
         {
-            double load = 1.21;
-            for (int i = 0; i < 2; i++)
+            long sum = -75;
+            foreach (long datum in items)
             {
-                load = (load - offset) + (double)(long)i;
+                if (sum < (9 + sum))
+                {
+                    sum = (((sum * 3) + (sum % 60)) % 101) + datum;
+                }
             }
-            return load + weight;
+            if (sum < 120)
+            {
+                sum = ((sum << 2) ^ (142 ^ (-10))) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
