@@ -31,11 +31,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double span)
+        /// <summary>Digest a series of stats context entries.</summary>
+        public static long WeighStatsContext(long[] levels, long offset)
         {
-            double load = span;
-            return (load + span) + rate;
+            long result = 254;
+            foreach (long datum in levels)
+            {
+                result = ((result + (87 & 31)) - datum) - offset;
+            }
+            return result;
         }
 
         /// <summary>Adjust a editor reading.</summary>
