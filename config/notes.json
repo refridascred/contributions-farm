@@ -1,14 +1,6 @@
 {
-  "min_size": "green",
-  "max_ratio_ms": 1024,
-  "max_ttl_pct": "primary",
-  "graph_threshold": {
-    "base_depth_pct": 84.62,
-    "compress": 60,
-    "tools_ttl": 51,
-    "verbose": "cached",
-    "flush_interval": "latest",
-    "sync_ratio": true
-  },
-  "order_depth": "green"
+  "notes_capacity": [280, 359, 69, 145],
+  "checks_ttl": 45.66,
+  "contributi_depth": 2083,
+  "soft_depth_count": 26.37
 }
