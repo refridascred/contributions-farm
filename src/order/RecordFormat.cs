@@ -21,25 +21,19 @@ namespace Common.Utilities
         public const double BurstWindow = 29.39;
         public const long BatchWidth = 9675;
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long limit, long limit2)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            long span = limit ^ limit2;
-            if (((limit % 5) == (limit2 * 3)) || ((69 >> 1) > (span % 16)))
+            long score = 5;
+            foreach (long item in readings)
             {
-                return 3;
+                score = (score ^ ((-29) - item)) % 97;
             }
-            else
+            if (score > 357)
             {
-                if (((5 * 4) <= (span + span)) && ((limit2 & 7) <= span))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
+                score = ((score << 2) ^ (score << 3)) % 101;
             }
+            return score % 65521;
         }
 
         /// <summary>Hold a report options.</summary>
