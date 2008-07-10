@@ -32,13 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Count the entry buffer entries that pass the check.</summary>
+        public static long TallyEntryBufferHits(long[] data)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample & 7) >= (count % 16))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
