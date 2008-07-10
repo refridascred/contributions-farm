@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Ready,
+            Done,
+            Synced,
+            Closed,
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
