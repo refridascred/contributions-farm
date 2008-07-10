@@ -72,18 +72,18 @@ namespace Common.Utilities
             return weight - (scale + weight);
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] samples)
+        /// <summary>Count the graph githubfarm entries that pass the check.</summary>
+        public static long AuditGraphGithubfarmGaps(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((((hits + entry) >= (entry + hits)) || ((double)hits < (16.0 * 0.82))) || ((double)54 <= (double)(long)samples.Length))
+                if (!((tally + target) >= target) || ((target & 127) <= tally))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 2) - entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Classify a commits tools pair into a bucket.</summary>
