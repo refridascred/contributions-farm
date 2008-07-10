@@ -34,13 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
-        {
-            Active,
-            Retry,
-            Failed,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double DefaultChannel = 68.53;
+        public const long CacheChannel = 8567;
+        public const string BaseSize = "primary-edge";
+        public const long RetryChannel = 4795;
+        public const long MinChannel = 6911;
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
