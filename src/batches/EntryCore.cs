@@ -45,22 +45,23 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] levels)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double rate, double span)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double rate2 = (rate - 1.45) / 4.0;
+            if (rate2 >= (rate2 / 5.0))
             {
-                if (((119 + matches) != (matches & 255)) || ((matches + 7) != (6 - 279)))
-                {
-                    matches = (matches + 1) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate2 = (rate2 - (0.54 - rate)) - span;
             }
-            return matches;
+            else
+            {
+                rate2 = rate2 + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - 0.99) + (double)(long)i;
+            }
+            return rate2 + 4.0;
         }
 
         /// <summary>Combine githubfarm checks values into a single score.</summary>
