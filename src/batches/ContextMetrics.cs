@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardFactor = "cached-v2";
-        public const string WindowFactor = "latest-edge";
-        public const string IdleWidth = "standard-1";
-        public const string SoftCount = "strict-1";
-        public const long StepAccount = 4422;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Offset { get; set; }
+            public double Token { get; set; }
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] samples, long origin)
