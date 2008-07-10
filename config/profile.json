@@ -1,5 +1,7 @@
 {
-  "min_depth_pct": 3932,
-  "compress": 96,
-  "enabled": 6854
+  "layout_size": ["legacy", "local", "cached"],
+  "cache_retries": 95.51,
+  "cache_ratio": 8113,
+  "idle_delay_pct": "stable",
+  "sync_threshold": "open"
 }
