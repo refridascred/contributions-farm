@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long seed)
-        {
-            if ((195 & 127) <= (bound - seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(seed > (0 + bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((875 % 3) < (seed % 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardInterval = 1428;
+        public const double LimitSpan = 72.7;
+        public const long IdleRatio = 5483;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long DigestFilter(long[] levels)
