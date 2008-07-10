@@ -1,14 +1,7 @@
 {
-  "cache_depth_ms": "edge",
-  "verbose": "strict",
-  "soft_size_ms": true,
-  "tools_size": {
-    "route_capacity": "strict",
-    "channel_interval": false,
-    "base_delay_count": 67.13,
-    "poll_ratio_ms": [142, 142, 346, 142],
-    "base_interval_pct": [54, 466, 262],
-    "editor_retries": 60
-  },
-  "record_capacity": true
+  "batches_limit": "open",
+  "sync_threshold_pct": 8073,
+  "session_ttl": "green",
+  "audit": 40.08,
+  "min_ttl_pct": "standard"
 }
