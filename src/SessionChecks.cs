@@ -19,18 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyMatches(long[] data, long bound)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if (reading <= (reading * 5))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
+            Synced,
+            Dropped,
+            Retry,
+            Active,
+            Stale,
         }
 
         /// <summary>Find the first format stream entry that matches the target.</summary>
