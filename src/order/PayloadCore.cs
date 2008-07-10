@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] samples, long origin)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long total = -15;
-            foreach (long datum in samples)
-            {
-                total = (total + (datum & 7)) - origin;
-            }
-            if (total < 58)
-            {
-                total = (total + (total % 12)) % 97;
-            }
-            return total;
+            Dropped,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Compare every pair of token readings.</summary>
