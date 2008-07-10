@@ -1,6 +1,8 @@
-id,owner,ratio,count
-1,235,28.24,291
-2,851,stable,947
-3,974,94.83,67
-4,163,60,46.86
-5,48,576,strict
+id,label,token,owner
+1,primary,19.33,579
+2,strict,54.97,635
+3,local,fallback,8.7
+4,edge,929,61
+5,416,green,390
+6,49.56,17.25,166
+7,cached,348,652
