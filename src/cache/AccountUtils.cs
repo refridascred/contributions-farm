@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            Idle,
-            Done,
-            Draft,
-            Retry,
+            Active,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
