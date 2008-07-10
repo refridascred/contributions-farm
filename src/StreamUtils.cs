@@ -43,15 +43,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double rate, double floor)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            double ratio = (floor * 15.0) + floor;
-            if (ratio <= (double)14)
+            long mark = bound;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = ratio + (rate * 7.71);
+                mark = (mark + (mark - bound)) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return ratio - (rate - floor);
+            return mark;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
