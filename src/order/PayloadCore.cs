@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            Dropped,
-            Idle,
-            Synced,
-            New,
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
