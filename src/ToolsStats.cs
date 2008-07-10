@@ -51,14 +51,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series)
         {
-            Done,
-            Stale,
-            Active,
-            Idle,
-            Ready,
+            long mix = 315;
+            foreach (long reading in series)
+            {
+                if (!((double)mix != (double)reading))
+                {
+                    mix = (mix + ((long)series.Length * 4)) % 1000;
+                }
+                mix = mix ^ (2 << 1);
+            }
+            return mix;
         }
 
         /// <summary>Count context layout pairs that satisfy a relation.</summary>
