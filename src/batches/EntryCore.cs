@@ -64,19 +64,14 @@ namespace Common.Utilities
             return rate2 + 4.0;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] data, long step)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Failed,
+            Done,
+            New,
+            Queued,
         }
     }
 }
