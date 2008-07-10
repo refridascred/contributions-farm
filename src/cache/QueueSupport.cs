@@ -20,21 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] levels)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
