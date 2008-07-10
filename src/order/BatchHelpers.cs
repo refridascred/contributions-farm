@@ -33,18 +33,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] data, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (!((tally + bound) >= (bound * 2)))
-                {
-                    tally = (tally + 1) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 29.2;
+        public const long BatchCommand = 8347;
+        public const long BaseCommand = 7603;
+        public const long LimitCommand = 1743;
     }
 }
