@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long limit)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a stats metrics sample.</summary>
