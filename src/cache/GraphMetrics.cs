@@ -30,23 +30,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate tools counter samples.</summary>
-        public static long CombineToolsCounter(long[] series)
-        {
-            long sum = 763;
-            foreach (long item in series)
-            {
-                if (!((7.1 * 0.7) < (double)item))
-                {
-                    sum = ((sum << 3) ^ (long)series.Length) % 4096;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (item >> 5)) % 1000;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSize = 3507;
+        public const double HardContext = 64.26;
+        public const string DefaultTimeout = "legacy-edge";
+        public const double SoftContext = 36.62;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionGaps(long[] levels, long step)
