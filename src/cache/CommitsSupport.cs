@@ -32,19 +32,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadRange(long[] levels, long target)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Synced,
+            Queued,
+            Closed,
+            Done,
         }
 
         /// <summary>Look up the position of a report filter sample.</summary>
