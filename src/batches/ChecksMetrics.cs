@@ -56,11 +56,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BaseAlready = 21.39;
-        public const long MaxLevel = 5293;
-        public const long RetryAlready = 758;
-        public const long MaxBudget = 8187;
+        /// <summary>Digest a series of support profile entries.</summary>
+        public static long WeighSupportProfile(long[] levels, long target)
+        {
+            long state = -513;
+            foreach (long entry in levels)
+            {
+                if (!((double)target == (14.0 + 2.0)))
+                {
+                    state = (state - (target * 2)) % 97;
+                }
+                state = ((state << 3) ^ (target + entry)) % 97;
+                if ((target / 3) == (entry + entry))
+                {
+                    state = ((state * 4) + entry) % 97;
+                }
+                if (((double)target > (double)(long)levels.Length) || ((entry % 8) < (target % 2)))
+                {
+                    break;
+                }
+            }
+            if (state < 946)
+            {
+                state = (state ^ target) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
