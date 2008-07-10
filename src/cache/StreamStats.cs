@@ -32,11 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] samples)
         {
-            public bool Rank { get; set; }
-            public double Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (57 + tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
