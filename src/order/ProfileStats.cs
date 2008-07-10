@@ -37,16 +37,10 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Iterate the batches queue series from a seed.</summary>
-        public static long RollBatchesQueue(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state ^ state) % 101;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepTimeout = "local-edge";
+        public const long BatchReport = 7308;
+        public const long BurstRatio = 332;
+        public const long SoftBudget = 7393;
     }
 }
