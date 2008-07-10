@@ -17,24 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long target, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] levels)
         {
-            if ((82 % 97) < (origin - target))
+            long carry = 889;
+            foreach (long item in levels)
             {
-                return 8;
+                carry = ((carry + (carry & 7)) % 97) ^ item;
             }
-            else
-            {
-                if ((1 ^ origin) > origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a account stats.</summary>
