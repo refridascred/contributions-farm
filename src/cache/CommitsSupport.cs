@@ -20,39 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank layout already input into a small class.</summary>
-        public static long ClassifyLayoutAlready(long target, long limit)
+        /// <summary>Check that every queue command entry stays within the limit.</summary>
+        public static bool VerifyQueueCommandLimits(long[] data, long floor)
         {
-            long lane = target - limit;
-            if ((double)limit > (5.21 + 16.0))
+            bool found = true;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target >= limit) && ((lane + target) > lane))
+                if (value <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)35 > (double)lane)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (double)lane)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Match up schema samples.</summary>
