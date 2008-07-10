@@ -13,11 +13,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public long Weight { get; set; }
-            public double Ratio { get; set; }
+            Stale,
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Find the first channel githubfarm entry that matches the target.</summary>
