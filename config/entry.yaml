@@ -1,4 +1,9 @@
 # entry settings
-dry_run: 49.01
-sync_retries_count: green
-burst_ttl_count: latest
+context_capacity:
+  - local
+  - eu-west
+  - primary
+  - green
+burst_limit: eu-west
+layout_window: latest
+batch_interval_pct: strict
