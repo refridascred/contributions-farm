@@ -44,38 +44,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long origin, long target)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            if (((origin + origin) < origin) || ((727 - target) <= (origin + 2)))
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
             {
-                return 8;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((target & 127) < (target - origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target < (origin % 24)) && (origin < (target >> 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target >= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
