@@ -27,18 +27,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (!((double)matches <= (2.5 - 4.0)))
-                {
-                    matches = ((matches + 2) ^ value) - offset;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Scale a tools command figure with a bias.</summary>
