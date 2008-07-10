@@ -23,26 +23,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of profile githubfarm readings.</summary>
-        public static long ScoreProfileGithubfarm(long[] readings, long origin)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long sum = 474;
-            foreach (long reading in readings)
-            {
-                if (!((double)origin > 7.4))
-                {
-                    sum = sum - (sum - (long)readings.Length);
-                }
-                if ((reading >> 3) == (origin ^ 6))
-                {
-                    break;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = (sum << 3) ^ (859 + sum);
-            }
-            return sum;
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
