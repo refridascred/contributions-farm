@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine queue record values into a single score.</summary>
-        public static long WeighQueueRecord(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] series)
         {
-            long anchor = 3;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                anchor = ((anchor * 5) + (cell / 9)) % 255;
+                if ((923 * 5) > (seen << 2))
+                {
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
