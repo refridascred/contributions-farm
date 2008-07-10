@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every window channel entry stays within the limit.</summary>
-        public static bool CheckWindowChannelBounds(long[] values, long seed)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long seed, long target)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long gap = seed - target;
+            if ((double)target <= (1.99 * 6.0))
             {
-                if (sample <= seed)
+                return 0;
+            }
+            else
+            {
+                if ((gap + gap) < (405 ^ 275))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (gap >= (gap + gap))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Accumulate route context samples.</summary>
