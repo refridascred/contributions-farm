@@ -22,18 +22,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] levels)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item - (-7)) != (773 << 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public double Count { get; set; }
         }
     }
 }
