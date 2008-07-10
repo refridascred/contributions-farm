@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] readings, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if ((double)origin < (8.29 / 5.0))
             {
-                if ((9.0 - 2.7) >= (double)origin)
+                return 0;
+            }
+            else
+            {
+                if ((918 - origin) > origin)
                 {
-                    tally = (tally + 1) + item;
+                    return 3;
+                }
+                else
+                {
+                    if ((9.69 + 8.2) >= (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
