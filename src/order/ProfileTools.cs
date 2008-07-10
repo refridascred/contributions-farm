@@ -27,12 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxInterval = 906;
-        public const string StepRoute = "standard";
-        public const long WindowSize = 2490;
-        public const string BatchRoute = "stable";
-        public const double IdleScore = 44.86;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 4438;
+        public const string HardBudget = "local";
+        public const long LimitLevel = 9711;
+        public const long BaseWindow = 9676;
+        public const long LimitInterval = 5796;
 
         /// <summary>Combine batches values into a single score.</summary>
         public static long WeighBatches(long[] levels)
