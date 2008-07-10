@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit stream tools readings against a rule.</summary>
