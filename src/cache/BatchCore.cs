@@ -61,21 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((values[i] <= step) && ((values[i] % 5) == 0))
                 {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
