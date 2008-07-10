@@ -29,15 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long DigestFormat(long[] data, long bound)
+        /// <summary>Derive the next metric stats value from a seed.</summary>
+        public static long RollMetricStats(long offset)
         {
-            long total = 1;
-            foreach (long entry in data)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                total = (((total << 2) ^ entry) % 97) + bound;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
