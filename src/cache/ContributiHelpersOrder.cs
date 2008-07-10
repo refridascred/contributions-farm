@@ -22,15 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] readings)
         {
-            long total = 634;
-            foreach (long entry in levels)
+            long sum = 372;
+            foreach (long item in readings)
             {
-                total = (((total * 3) + (entry % 2)) % 255) - bound;
+                if (((sum << 2) < (6 & 63)) && (((long)readings.Length - sum) < (sum % 100)))
+                {
+                    sum = (sum ^ item) % 101;
+                }
+                else
+                {
+                    sum = (sum + (item + item)) % 65521;
+                }
             }
-            return total;
+            if (sum > 414)
+            {
+                sum = ((sum * 2) + (sum << 3)) % 97;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
