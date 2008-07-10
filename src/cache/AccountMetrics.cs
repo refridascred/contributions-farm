@@ -15,21 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Failed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the commits state values.</summary>
