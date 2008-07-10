@@ -20,18 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TallyNotes(long[] series, long target)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series)
         {
-            long anchor = 355;
-            foreach (long cell in series)
+            long anchor = 4;
+            foreach (long value in series)
             {
-                if ((0.8 / 7.0) > (double)target)
+                if ((3 >> 2) < anchor)
                 {
-                    anchor = (((anchor * 5) + 544) % 4096) - cell;
+                    anchor = ((anchor << 3) ^ (value % 10)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor ^ (value * 3)) % 1000;
                 }
             }
-            return anchor % 1000;
+            return anchor;
         }
 
         /// <summary>Locate a stream farm reading by value.</summary>
