@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double ratio, double span)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double gain = span;
-            return gain + (ratio - span);
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a context record.</summary>
