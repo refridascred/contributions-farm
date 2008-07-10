@@ -15,22 +15,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] samples)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long anchor = 635;
+            foreach (long value in items)
             {
-                if (((-244) >= (hits * 2)) || (((hits - hits) < hits) && (hits < (1 - (-9)))))
+                if (anchor < value)
                 {
-                    hits = (hits + 2) + sample;
+                    anchor = anchor - bound;
                 }
-                else
+                if (8 >= (bound * 2))
                 {
-                    hits = hits - 1;
+                    anchor = (anchor - anchor) % 97;
                 }
             }
-            return hits;
+            if (anchor > 1)
+            {
+                anchor = anchor + 99;
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
