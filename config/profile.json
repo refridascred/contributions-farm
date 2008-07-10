@@ -1,8 +1,14 @@
 {
-  "payload_capacity": 16,
-  "report_ratio": 1024,
-  "retry_ttl": 60,
-  "filter_threshold": [171, 295, 108, 405],
-  "stats_timeout": false,
-  "sync_size_ms": true
+  "profile_interval": ["cached", "green", "edge", "latest"],
+  "soft_interval_pct": 67.7,
+  "flush_depth": false,
+  "farm_size": [4, 70],
+  "contributi_interval": 13,
+  "metric_window": {
+    "hard_limit": "latest",
+    "audit": [371, 427, 249],
+    "sync_interval_s": 4139,
+    "profile_delay": 22.47,
+    "poll_size_pct": 82.56
+  }
 }
