@@ -36,13 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchWidth = 8368;
+        public const double LimitFormat = 95.02;
+        public const string BatchCount = "primary-1";
+        public const long HardFormat = 6750;
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool VerifyWindowLimits(long[] readings, long limit)
