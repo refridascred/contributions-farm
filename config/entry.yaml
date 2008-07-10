@@ -1,9 +1,24 @@
 # entry settings
-context_capacity:
-  - local
-  - eu-west
-  - primary
-  - green
-burst_limit: eu-west
-layout_window: latest
-batch_interval_pct: strict
+sync_limit_s:
+  - 401
+  - 13
+readonly:
+  batch_window_ms: 500
+  graph_size: cached
+  max_retries_s: 4669
+  default_timeout: eu-west
+  burst_ratio_count: false
+report_depth: standard
+poll_ttl:
+  - latest
+  - latest
+  - fallback
+verbose:
+  stream_limit: cached
+  retry_limit_s: local
+  stream_interval:
+    - latest
+    - cached
+    - primary
+    - standard
+  max_interval_s: true
