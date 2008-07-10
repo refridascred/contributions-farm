@@ -68,13 +68,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] levels, long seed)
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public double Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if (((28 / 8) > (item ^ hits)) && (13.0 > (double)640))
+                {
+                    hits = (hits + 3) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
