@@ -39,15 +39,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next stream editor value from a seed.</summary>
-        public static long RollStreamEditor(long origin)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] levels)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
