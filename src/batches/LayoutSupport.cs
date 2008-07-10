@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TotalAccount(long[] series, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long carry = 30;
-            foreach (long sample in series)
-            {
-                carry = (((carry << 2) ^ carry) ^ sample) + bound;
-            }
-            if (carry > 47)
-            {
-                carry = carry + 803;
-            }
-            return carry % 1000;
+            Ready,
+            Pending,
+            New,
+            Queued,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
