@@ -24,13 +24,27 @@ namespace Common.Utilities
         public const string CacheWidth = "staging-v2";
         public const string MaxChecks = "local-v2";
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            public long Size { get; set; }
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public long Label { get; set; }
+            long result = target;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((result % 2) != (result * 2)) && (((-147) * 5) <= (result + target)))
+                {
+                    result = result - (result & 3);
+                }
+                else
+                {
+                    result = ((result * 3) + (target % 7)) % 97;
+                }
+                if ((long)i > (result - result))
+                {
+                    result = (result * 2) + result;
+                }
+                result = ((result * 2) + (long)i) % 1000;
+            }
+            return result;
         }
     }
 }
