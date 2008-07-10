@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] readings)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long floor, long step)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long diff = floor ^ step;
+            if ((floor - step) <= (floor & 63))
             {
-                if (!((cell >> 2) < hits))
+                return 1;
+            }
+            else
+            {
+                if (((44 / 6) < (step + 6)) || (step > (diff - step)))
                 {
-                    hits = hits + 2;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a entry summary.</summary>
