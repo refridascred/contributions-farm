@@ -1,5 +1,12 @@
 {
-  "flush_limit_ms": 100,
-  "dry_run": 44.9,
-  "default_capacity_s": 80
+  "idle_ratio_count": "strict",
+  "session_timeout": 95,
+  "audit": 7845,
+  "soft_size": 82.86,
+  "hard_size": {
+    "audit": 13.74,
+    "readonly": "stable",
+    "cache_threshold_ms": 60,
+    "batch_threshold_ms": "staging"
+  }
 }
