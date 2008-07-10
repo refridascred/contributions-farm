@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] readings)
+        /// <summary>Rank payload support input into a small class.</summary>
+        public static long GradePayloadSupport(long step, long origin)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((590 ^ step) > (step >> 3))
             {
-                if (!((item << 1) < hits) && (((-4) >> 3) > hits))
+                return 2;
+            }
+            else
+            {
+                if (((double)origin <= (0.63 / 4.0)) || (0.6 < (double)step))
                 {
-                    hits = hits + 2;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin != (9.0 + 13.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a report tools reading.</summary>
