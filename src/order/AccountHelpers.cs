@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order schema entry stays within the limit.</summary>
-        public static bool ValidateOrderSchemaRange(long[] readings, long step)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
