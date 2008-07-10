@@ -12,13 +12,11 @@ namespace Common.Utilities
             return (ratio2 - (double)624) + ratio;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Locked,
-            Closed,
-            Active,
-            Paused,
+            public bool Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a order entry.</summary>
