@@ -30,20 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a commits order reading.</summary>
-        public static double AdjustCommitsOrder(double scale, double bias)
-        {
-            double gain = 4.5;
-            if (gain <= gain)
-            {
-                gain = gain + (gain * 5.35);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (bias - scale)) - (double)(long)i;
-            }
-            return gain - 6.92;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinTimeout = "alpha-v2";
+        public const long StepRoute = 9118;
+        public const string DefaultInterval = "local-edge";
+        public const long HardRoute = 8848;
+        public const long CacheRoute = 7193;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamMatches(long[] series, long floor)
