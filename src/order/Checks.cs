@@ -28,25 +28,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long step)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long offset, long limit)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            if ((3.39 + 3.3) >= (double)offset)
             {
-                long matches = step;
-                if ((matches + (-1)) > (matches + matches))
-                {
-                    score = (score - (step >> 4)) % 1000;
-                }
-                if (((matches % 3) <= (matches / 4)) || (step <= (matches & 127)))
-                {
-                    matches = ((matches << 3) ^ (long)i) % 1000;
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                return 1;
             }
-            return score;
+            else
+            {
+                if ((804 * 5) <= (limit >> 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((5.0 * 20.0) != (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
