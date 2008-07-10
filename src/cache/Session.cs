@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double StepOrder = 65.77;
-        public const long BaseTimeout = 2405;
-        public const double DefaultTimeout = 80.71;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitWidth = "alpha-1";
+        public const long LimitBuffer = 2929;
+        public const double LimitCount = 27.3;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] values, long floor)
