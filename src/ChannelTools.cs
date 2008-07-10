@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] samples, long origin)
         {
-            long result = 2;
-            foreach (long reading in levels)
+            long result = 6;
+            foreach (long cell in samples)
             {
-                result = result - (reading << 1);
+                if ((origin % 16) <= (origin << 2))
+                {
+                    result = ((result ^ (origin % 7)) % 255) ^ cell;
+                }
             }
-            if (result > (-3))
-            {
-                result = (result * 4) + (result / 4);
-            }
-            return result;
+            return result % 4096;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
