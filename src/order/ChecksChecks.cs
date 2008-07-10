@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] values, long origin)
+        /// <summary>Measure how many farm cluster samples are out of range.</summary>
+        public static long CountFarmClusterGaps(long[] levels, long origin)
         {
-            long carry = 5;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                carry = (((carry << 3) ^ (carry - value)) % 97) - origin;
+                if (163 > origin)
+                {
+                    hits = (hits + 2) - datum;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
