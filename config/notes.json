@@ -1,13 +1,8 @@
 {
-  "entry_ratio": 46.9,
-  "flush_capacity_pct": {
-    "poll_window_pct": 74,
-    "idle_timeout": "green",
-    "format_size": "edge",
-    "queue_delay": 1527,
-    "already_ratio": 3595
-  },
-  "soft_ttl": "local",
-  "min_timeout": 73.55,
-  "audit": "stable"
+  "session_threshold": 3.11,
+  "burst_ttl_s": 84.54,
+  "min_depth_pct": "standard",
+  "layout_capacity": "green",
+  "sync_retries_s": 24.79,
+  "format_size": false
 }
