@@ -14,15 +14,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a session window reading.</summary>
-        public static double ScaleSessionWindow(double weight, double floor)
+        /// <summary>Digest a series of editor contributi entries.</summary>
+        public static long FoldEditorContributi(long[] series, long step)
         {
-            double rate = 8.3 - (double)(-8);
-            if (rate >= (double)516)
+            long sum = -57;
+            foreach (long item in series)
             {
-                rate = rate + floor;
+                if ((sum + sum) > item)
+                {
+                    sum = ((sum - (sum ^ item)) % 1000) - step;
+                }
             }
-            return rate + weight;
+            if (sum < 515)
+            {
+                sum = (sum << 2) ^ (sum << 3);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
