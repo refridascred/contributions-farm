@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            Failed,
+            Idle,
+            Stale,
+            Pending,
+            Locked,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
