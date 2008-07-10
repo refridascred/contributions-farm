@@ -33,18 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats farm samples are out of range.</summary>
-        public static long MeasureStatsFarmMatches(long[] data)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((double)91 < (double)seed)
             {
-                if ((item + hits) > (item + (long)data.Length))
+                return 7;
+            }
+            else
+            {
+                if (origin < (-929))
                 {
-                    hits = hits + 1;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a command counter forward.</summary>
