@@ -67,18 +67,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit cache commits readings against a rule.</summary>
-        public static long TallyCacheCommitsHits(long[] series, long floor)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)floor < 7.83)
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseTimeout = 795;
+        public const string LimitBatches = "cached-v2";
+        public const long BurstScore = 9990;
+        public const long RetryBatches = 2298;
+        public const long RetryCount = 423;
     }
 }
