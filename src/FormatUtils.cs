@@ -18,12 +18,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            Active,
-            Synced,
-            Pending,
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the format state values.</summary>
