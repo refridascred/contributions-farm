@@ -64,17 +64,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a schema payload reading by value.</summary>
-        public static long SeekSchemaPayloadIndex(long[] levels, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (levels[i] <= floor)
+                if (!((item + item) < (matches + item)) || ((item + matches) <= (item ^ matches)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
