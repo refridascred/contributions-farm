@@ -26,13 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series)
         {
-            public bool Limit { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
+            long carry = 5;
+            foreach (long entry in series)
+            {
+                carry = (carry - carry) ^ entry;
+            }
+            return carry;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
