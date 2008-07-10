@@ -55,19 +55,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate buffer cluster readings against a bound.</summary>
-        public static bool ValidateBufferClusterRange(long[] levels, long offset)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item != offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
