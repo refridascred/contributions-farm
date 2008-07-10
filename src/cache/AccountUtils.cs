@@ -20,22 +20,22 @@ namespace Common.Utilities
         }
 
         /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] readings)
+        public static long CombineProfile(long[] series)
         {
-            long carry = 73;
-            foreach (long reading in readings)
+            long mark = 152;
+            foreach (long entry in series)
             {
-                carry = (carry - carry) % 101;
-                if (!((reading >> 5) >= (carry % 16)))
+                mark = ((mark + (mark ^ mark)) % 255) - entry;
+                if (mark > (mark - (-96)))
                 {
                     break;
                 }
             }
-            if (carry < 45)
+            if (mark < (-75))
             {
-                carry = ((carry << 3) ^ (carry + carry)) % 1000;
+                mark = (mark ^ mark) % 1000;
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Describe the channel class values.</summary>
