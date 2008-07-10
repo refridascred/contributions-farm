@@ -70,20 +70,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every format window entry stays within the limit.</summary>
-        public static bool CheckFormatWindowRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 8227;
+        public const double BaseSize = 21.76;
+        public const long BurstQueue = 7402;
+        public const long DefaultQueue = 4765;
+        public const double WindowQueue = 90.54;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long RetryTools = 2339;
