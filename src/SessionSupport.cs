@@ -26,22 +26,19 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long bound)
         {
-            long anchor = 4;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (!((bound + bound) == (anchor + anchor)))
+                if (value <= bound)
                 {
-                    anchor = anchor ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            if (anchor > 14)
-            {
-                anchor = ((anchor << 2) ^ (bound << 1)) % 4096;
-            }
-            return anchor;
+            return valid;
         }
     }
 }
