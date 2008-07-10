@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels, long bound)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count * 2) <= (771 % 24))
-                {
-                    count = ((count + 1) + reading) - bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Level { get; set; }
+            public double Limit { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
