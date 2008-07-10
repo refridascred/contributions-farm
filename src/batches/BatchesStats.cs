@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterGaps(long[] samples, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (((0.99 / 8.0) < (double)entry) || (entry < (seed - 4)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Stale,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
