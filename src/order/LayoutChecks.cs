@@ -72,9 +72,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseScore = 272;
-        public const long RetryAlready = 4230;
-        public const long BaseSpan = 2188;
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
+        {
+            Synced,
+            Closed,
+            Stale,
+            Dropped,
+            Paused,
+        }
     }
 }
