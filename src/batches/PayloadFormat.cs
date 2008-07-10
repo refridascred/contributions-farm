@@ -61,15 +61,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long carry = -550;
-            foreach (long datum in levels)
-            {
-                carry = ((carry << 3) ^ (datum >> 4)) % 1000;
-            }
-            return carry % 97;
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
