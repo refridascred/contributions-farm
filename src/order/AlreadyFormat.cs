@@ -20,11 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 8299;
-        public const long WindowPayload = 7927;
-        public const string BurstPayload = "local-1";
-        public const double BaseCount = 31.33;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if (!(((entry + entry) >= (39 >> 3)) && (hits < (entry & 7))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long LocateGraphIndex(long[] items, long floor)
