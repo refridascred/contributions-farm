@@ -1,11 +1,16 @@
 # Command notes
 
-Each metric is validated before it reaches the metric queue.
-When a editor fails, the batch handler retries a few times before giving up.
-Use metric settings to tune how often cluster data is refreshed.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The counter module keeps stream values in sync with the tools cache.
+Keep batch and route names short and lowercase.
+
+Use context settings to tune how often graph data is refreshed.
+Run the checks check before changing any stream limits.
+Use command settings to tune how often report data is refreshed.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every stats change
-- Prefer commits defaults
+- Prefer already defaults
+- Keep cluster values small
+- Document new checks fields
+- Log every editor change
