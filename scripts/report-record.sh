@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached fallback staging local; do
-    log "checking ${item}"
-done
-
-mode="${1:-strict}"
+mode="${1:-edge}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 5))
+for item in standard latest legacy; do
+    log "checking ${item}"
 done
-log "total ${total}"
+
+RECORD_LIMIT=112
+log "limit is ${RECORD_LIMIT}"
