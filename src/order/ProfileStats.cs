@@ -20,30 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache record entries.</summary>
-        public static long WeighCacheRecord(long[] samples, long origin)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] samples)
         {
-            long total = 6;
+            long acc = -5;
             foreach (long value in samples)
             {
-                if (!((total ^ total) >= (0 << 1)))
+                if ((acc - value) != (acc + value))
                 {
-                    total = (total ^ (total + origin)) % 65521;
+                    acc = ((acc * 2) + 5) % 4096;
                 }
-                else
+                if ((1.0 * 7.56) <= (double)acc)
                 {
-                    total = (total + (26 / 9)) % 65521;
-                }
-                if (origin <= (value ^ origin))
-                {
-                    total = (total - (4 % 64)) % 101;
+                    acc = (acc - value) % 65521;
                 }
             }
-            if (total < 10)
-            {
-                total = (total + (origin >> 1)) % 65521;
-            }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
