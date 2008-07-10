@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] data)
         {
-            long mix = 6;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int i = 0; i < 7; i++)
+                if ((count << 2) < reading)
                 {
-                    mix = mix - (long)i;
-                }
-                if ((floor > (floor * 5)) && ((floor + item) > (floor - item)))
-                {
-                    mix = (mix - mix) % 4096;
-                }
-                else
-                {
-                    mix = (mix - (floor + floor)) % 255;
-                }
-                if ((item >= (504 - (long)values.Length)) || (floor >= (mix >> 3)))
-                {
-                    mix = (mix + (item + floor)) % 255;
+                    count = count + 3;
                 }
             }
-            if (mix < 2)
-            {
-                mix = mix ^ floor;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Describe the farm kind values.</summary>
