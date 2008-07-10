@@ -45,12 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Synced,
-            Retry,
+            Draft,
+            Stale,
             Closed,
+            Retry,
         }
     }
 }
