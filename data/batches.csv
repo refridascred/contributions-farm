@@ -1,6 +1,7 @@
-id,ratio,region
-1,staging,88.18
-2,74,564
-3,59,90.7
-4,3.06,0.42
-5,901,93.23
+id,ratio,level
+1,local,731
+2,green,430
+3,18.22,667
+4,693,52
+5,primary,77
+6,local,cached
