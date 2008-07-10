@@ -37,13 +37,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] readings, long target)
         {
-            Ready,
-            Pending,
-            Locked,
-            Closed,
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading > target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
