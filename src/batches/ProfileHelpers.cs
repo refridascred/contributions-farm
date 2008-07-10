@@ -47,38 +47,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long floor, long target)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] samples, long limit)
         {
-            if ((target << 1) != (69 + floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target & 255) >= (0 << 3)) || (floor <= (target - 989)))
+                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor > (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((target ^ floor) < (floor % 60)) && (floor >= (target / 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
