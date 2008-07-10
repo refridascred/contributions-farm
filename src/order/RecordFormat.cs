@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Iterate the editor farm series from a seed.</summary>
+        public static long RollEditorFarm(long origin)
         {
-            New,
-            Failed,
-            Locked,
-            Done,
-            Idle,
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (((total * 5) + ((long)i - total)) % 4096) - (long)i2;
+                }
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Hold a report stats.</summary>
