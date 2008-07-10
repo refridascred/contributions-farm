@@ -34,12 +34,20 @@ namespace Common.Utilities
             return rate + (scale - offset);
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "latest-edge";
-        public const long IdleBatches = 3477;
-        public const long MaxBatches = 538;
-        public const long CacheBatches = 134;
-        public const double LimitDepth = 2.61;
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double ratio, double offset)
+        {
+            double scale = (double)(0 - 6);
+            if (scale >= offset)
+            {
+                scale = (scale + offset) + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + 7.6) + (double)(long)i;
+            }
+            return scale + (double)805;
+        }
 
         /// <summary>Roll a entry counter forward.</summary>
         public static long RollEntry(long offset)
