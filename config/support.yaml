@@ -1,13 +1,12 @@
 # support settings
-layout_delay:
-  - open
-  - open
-channel_threshold: 52.44
-hard_ttl: open
-filter_retries:
-  - 270
-  - 476
-  - 8
-  - 408
-max_window: standard
-flush_interval: true
+sync_limit_pct:
+  poll_interval: 59
+  max_interval_ms: 16.49
+  default_interval_pct: standard
+  batch_depth: 10.41
+  poll_delay_s: standard
+  warm_capacity: 30
+base_depth:
+  - strict
+  - standard
+persist: standard
