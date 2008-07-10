@@ -16,22 +16,25 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Count the githubfarm payload entries that pass the check.</summary>
-        public static long TallyGithubfarmPayloadGaps(long[] values)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long target, long step)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long offset = target + step;
+            if (!((offset + target) >= (target << 2)))
             {
-                if ((1 + 508) <= (73 ^ count))
+                return 6;
+            }
+            else
+            {
+                if (!((double)target != (5.9 * 9.8)))
                 {
-                    count = (count + 1) - datum;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
