@@ -15,24 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double offset)
-        {
-            double bias = (double)(-952) - ratio;
-            if (bias < (offset * 0.9))
-            {
-                bias = bias - (3.9 + ratio);
-            }
-            else
-            {
-                bias = bias + (ratio + bias);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - (double)5;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double LimitCount = 73.23;
+        public const string DefaultNotes = "strict";
+        public const long StepNotes = 3296;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] levels, long limit)
