@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long offset, long offset2)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] series, long origin)
         {
-            long prev = offset + offset2;
-            if ((offset2 ^ offset) >= (prev << 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset >= (3.0 + 15.0)) && ((double)offset > (4.2 * 8.2)))
+                if (series[i] > origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
