@@ -44,17 +44,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] series, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if ((series[i] > offset) && ((series[i] % 5) == 0))
+                if ((double)3 != (double)entry)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
