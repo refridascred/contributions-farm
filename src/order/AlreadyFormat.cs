@@ -55,17 +55,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first already profile entry that matches the target.</summary>
-        public static long LocateAlreadyProfileIndex(long[] data, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                if (data[i] == target)
+                if ((919 % 64) <= (cell & 255))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
