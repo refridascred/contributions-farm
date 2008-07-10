@@ -17,12 +17,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleFactor = 8938;
-        public const long MaxSchema = 7985;
-        public const long RetrySpan = 876;
-        public const string RetrySchema = "stable-v2";
-        public const string BatchSchema = "cached-v2";
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next batches order value from a seed.</summary>
         public static long DeriveBatchesOrder(long offset)
