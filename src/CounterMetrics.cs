@@ -14,19 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if (sum > ((long)i & 255))
-                {
-                    sum = (sum - (target + 919)) % 65521;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a filter options.</summary>
