@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LocateTokenIndex(long[] items, long target)
+        /// <summary>Look up the position of a channel order sample.</summary>
+        public static long SeekChannelOrderIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > target)
+                if (samples[i] >= origin)
                 {
                     return (long)i;
                 }
