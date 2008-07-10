@@ -29,13 +29,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine format values into a single score.</summary>
+        public static long DigestFormat(long[] data, long bound)
         {
-            Paused,
-            Retry,
-            Active,
-            Dropped,
+            long total = 1;
+            foreach (long entry in data)
+            {
+                total = (((total << 2) ^ entry) % 97) + bound;
+            }
+            return total;
         }
 
         /// <summary>Define route limits and defaults.</summary>
