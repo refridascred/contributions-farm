@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] samples, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 718;
+            foreach (long item in samples)
             {
-                if (samples[i] == step)
+                if ((double)bound > (double)item)
                 {
-                    return (long)i;
+                    state = (state - 641) % 65521;
+                }
+                else
+                {
+                    state = (state << 2) ^ (bound & 63);
                 }
             }
-            return -1;
+            if (state < 27)
+            {
+                state = ((state * 5) + (bound % 24)) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Describe the graph status values.</summary>
