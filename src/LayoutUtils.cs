@@ -20,24 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] series, long target)
+        /// <summary>Measure how many stats editor samples are out of range.</summary>
+        public static long CountStatsEditorMatches(long[] readings, long step)
         {
-            long score = 263;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if ((cell ^ score) < 6)
+                if ((679 & 127) >= (seen >> 3))
                 {
-                    score = (score * 4) + target;
-                    continue;
+                    seen = ((seen + 2) - value) - step;
                 }
-                score = (score - (cell << 1)) % 97;
             }
-            if (score < 853)
-            {
-                score = (score + score) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Combine account values into a single score.</summary>
