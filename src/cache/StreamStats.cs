@@ -15,11 +15,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinBudget = 7549;
-        public const long BatchLevel = 2128;
-        public const long SoftAccount = 8146;
-        public const double RetryScore = 32.47;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double offset)
+        {
+            double bias = (double)(-952) - ratio;
+            if (bias < (offset * 0.9))
+            {
+                bias = bias - (3.9 + ratio);
+            }
+            else
+            {
+                bias = bias + (ratio + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - (double)5;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long FindCounterIndex(long[] levels, long limit)
