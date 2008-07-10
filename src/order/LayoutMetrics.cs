@@ -34,18 +34,22 @@ namespace Common.Utilities
             return rate2 + (rate - 1.3);
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long AuditReportMetricsGaps(long[] items, long target)
+        /// <summary>Accumulate buffer githubfarm samples.</summary>
+        public static long FoldBufferGithubfarm(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long anchor = 953;
+            foreach (long value in levels)
             {
-                if (target <= (target << 1))
+                if ((7.2 * 1.0) == (double)value)
                 {
-                    seen = (seen + 3) - cell;
+                    anchor = (anchor - value) - target;
+                }
+                else
+                {
+                    anchor = (anchor ^ (155 + value)) % 65521;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
