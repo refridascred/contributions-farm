@@ -20,18 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long limit, long seed)
         {
-            long state = 833;
-            foreach (long reading in items)
+            if ((seed + seed) >= 3)
             {
-                if ((double)reading < (6.1 - 11.0))
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 4) == (seed + limit))
                 {
-                    state = (state << 2) ^ 3;
+                    return 3;
+                }
+                else
+                {
+                    if (limit < (6 / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
