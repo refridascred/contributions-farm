@@ -38,17 +38,18 @@ namespace Common.Utilities
             return (weight + ratio) + bias;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] values, long offset)
+        /// <summary>Audit schema cluster readings against a rule.</summary>
+        public static long MeasureSchemaClusterOutliers(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (values[i] > offset)
+                if ((7.3 * 8.0) == (double)datum)
                 {
-                    return (long)i;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
