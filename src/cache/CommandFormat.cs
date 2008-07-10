@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long StepWindow = 1225;
         public const long CacheWindow = 5265;
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepSize = 884;
+        public const double LimitMetric = 17.84;
+        public const double BaseInterval = 3.89;
+        public const long HardMetric = 2695;
+        public const long RetryMetric = 8822;
 
         /// <summary>Hold a cache record.</summary>
         public sealed class CacheRecord
