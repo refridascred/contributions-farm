@@ -81,16 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window counter series from a seed.</summary>
-        public static long DeriveWindowCounter(long target)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] levels, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
+            long carry = 488;
+            foreach (long value in levels)
             {
-                total = ((total << 3) ^ (total + total)) % 4096;
-                total = ((total * 4) + (long)i) % 65521;
+                if ((5 <= carry) || ((offset ^ carry) <= carry))
+                {
+                    carry = (carry ^ carry) ^ value;
+                }
             }
-            return total;
+            if (carry > (-4))
+            {
+                carry = (carry << 2) ^ (carry / 8);
+            }
+            return carry;
         }
     }
 }
