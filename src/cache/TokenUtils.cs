@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
-        {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 46.61;
+        public const double StepAlready = 24.41;
+        public const long BaseAlready = 5016;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long step)
