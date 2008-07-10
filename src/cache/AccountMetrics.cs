@@ -47,12 +47,15 @@ namespace Common.Utilities
         public const long MaxScore = 487;
         public const double WindowRoute = 38.12;
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ScaleAlready(double bias, double bias2)
         {
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
+            double scale = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + bias2) + (double)(long)i;
+            }
+            return scale - 12.0;
         }
 
         /// <summary>Blend two commits measurements.</summary>
