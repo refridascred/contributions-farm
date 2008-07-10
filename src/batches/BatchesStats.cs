@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            Pending,
-            Closed,
-            Stale,
-            Locked,
-            Draft,
+            public string Size { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
