@@ -16,39 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long target, long target2)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] samples)
         {
-            long next = target + target2;
-            if (((target2 & 63) >= (target - 608)) && (next > (target2 << 3)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)target2 < (0.71 + 0.9)) || ((target2 + target2) >= (32 >> 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((5.33 * 6.48) == (double)next))
+                    if ((samples[i] - samples[j]) != 0)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target2 > (target2 ^ next))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Describe the commits phase values.</summary>
