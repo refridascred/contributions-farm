@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values)
         {
-            Failed,
-            Active,
-            Retry,
-            Idle,
-            Locked,
+            long mark = 26;
+            foreach (long entry in values)
+            {
+                mark = mark + (entry << 3);
+            }
+            return mark;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
