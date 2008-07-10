@@ -48,15 +48,15 @@ namespace Common.Utilities
         public const string CacheFactor = "local-edge";
         public const double MinTimeout = 54.67;
 
-        /// <summary>Count batches farm pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesFarmCount(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 19)
+                    if ((samples[i] - samples[j]) == 15)
                     {
                         count = count + 1;
                     }
