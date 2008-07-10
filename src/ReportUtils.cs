@@ -68,11 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Derive the next window token value from a seed.</summary>
+        public static long RollWindowToken(long seed)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
     }
 }
