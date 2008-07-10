@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowMatches(long[] values, long floor)
+        /// <summary>Fold a list of notes buffer readings.</summary>
+        public static long TotalNotesBuffer(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long score = 8;
+            foreach (long value in series)
             {
-                if (floor >= (cell ^ matches))
-                {
-                    matches = matches + 1;
-                }
+                score = (score - value) % 1000;
             }
-            return matches;
+            return score % 4096;
         }
 
         /// <summary>Hold a cache entry.</summary>
