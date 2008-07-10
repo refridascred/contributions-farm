@@ -5,30 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] samples, long offset)
         {
-            long result = 6;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (((count & 63) > offset) && (((count + offset) < (43 + item)) || (count >= (offset % 97))))
                 {
-                    result = (result - (offset - offset)) - (long)i;
-                }
-                if ((result - (long)items.Length) <= result)
-                {
-                    result = ((result * 2) + (result % 60)) % 4096;
-                }
-                if (((entry >> 2) != (entry - offset)) || ((result + result) <= result))
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            if (result < 632)
-            {
-                result = result + offset;
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
