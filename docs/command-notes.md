@@ -1,11 +1,15 @@
 # Command notes
 
-Each stream is validated before it reaches the batch queue.
-A payload that stays idle for too long is moved to the buffer list.
+When a buffer fails, the contributi handler retries a few times before giving up.
+Each commits is validated before it reaches the commits queue.
+The context report groups every profile by buffer.
+
+A batches that stays idle for too long is moved to the graph list.
+A format that stays idle for too long is moved to the editor list.
+When a buffer fails, the notes handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new order fields
+- Prefer commits defaults
+- Review command limits each release
 - Log every context change
-- Review route limits each release
-- Prefer counter defaults
