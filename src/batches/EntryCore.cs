@@ -40,17 +40,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] items, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] levels)
         {
-            long state = 31;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                state = ((state << 3) ^ (sample - state)) - offset;
-                state = (state - (sample - state)) % 65521;
-                state = ((state << 2) ^ state) % 65521;
+                if (((119 + matches) != (matches & 255)) || ((matches + 7) != (6 - 279)))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state % 97;
+            return matches;
         }
 
         /// <summary>Combine githubfarm checks values into a single score.</summary>
