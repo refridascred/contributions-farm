@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long CacheBatch = 8948;
         public const long IdleBudget = 7163;
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit graph batch readings against a rule.</summary>
+        public static long AuditGraphBatchOutliers(long[] readings)
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((((seen + seen) >= (309 / 7)) && ((reading ^ seen) < reading)) || ((reading + reading) < (987 - (long)readings.Length)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
