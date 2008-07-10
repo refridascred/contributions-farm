@@ -93,18 +93,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsMatches(long[] data, long limit)
         {
             long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((387 % 5) < datum) || ((double)datum <= (8.5 + 16.0))))
                 {
-                    if ((items[i] ^ items[j]) == 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) + limit;
                 }
             }
             return matches;
