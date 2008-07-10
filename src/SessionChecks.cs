@@ -20,10 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "standard-1";
-        public const double HardSize = 29.65;
-        public const string DefaultBatches = "fallback";
+        /// <summary>Define order limits and defaults.</summary>
+        public const double RetryInterval = 16.77;
+        public const long MinRatio = 285;
+        public const long MinDepth = 7988;
+        public const long BurstScore = 2881;
 
         /// <summary>Look up the position of a stats metrics sample.</summary>
         public static long SeekStatsMetricsIndex(long[] data, long target)
