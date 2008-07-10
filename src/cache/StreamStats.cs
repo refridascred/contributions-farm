@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Synced,
-            Retry,
-            Stale,
-            Pending,
             Closed,
+            Synced,
+            Ready,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
