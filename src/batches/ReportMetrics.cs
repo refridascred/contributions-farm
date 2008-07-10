@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BurstWidth = 1890;
-        public const long DefaultChannel = 6375;
-        public const long DefaultFactor = 4146;
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double HardOrder = 27.3;
