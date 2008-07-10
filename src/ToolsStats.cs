@@ -41,20 +41,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double offset)
-        {
-            double mean = offset;
-            if (mean <= (double)8)
-            {
-                mean = mean - (mean * 13.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (4.6 + gain)) + (double)(long)i;
-            }
-            return mean - gain;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitSpan = "latest-edge";
+        public const long IdleWidth = 1759;
+        public const long IdleReport = 5186;
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
