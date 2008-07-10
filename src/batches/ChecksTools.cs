@@ -35,26 +35,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] readings)
         {
-            long score = 14;
-            foreach (long cell in values)
+            long result = -240;
+            foreach (long reading in readings)
             {
-                if (score <= (score + score))
+                if (((double)result <= 2.4) && ((7.65 - 7.0) >= (double)reading))
                 {
-                    score = (score * 2) + ((-449) ^ cell);
+                    result = (result ^ (result + (long)readings.Length)) % 255;
                 }
-                if ((cell - cell) >= 520)
+                else
                 {
-                    score = ((score * 4) + (cell + cell)) % 97;
+                    result = ((result * 4) + (long)readings.Length) % 65521;
                 }
             }
-            if (score < 575)
-            {
-                score = (score ^ (score - 93)) % 1000;
-            }
-            return score % 4096;
+            return result % 4096;
         }
 
         /// <summary>Find the first route report entry that matches the target.</summary>
