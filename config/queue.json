@@ -1,6 +1,7 @@
 {
-  "strict": "eu-west",
-  "warm_threshold_s": [241, 261, 455, 360],
-  "cluster_ratio": 42.12,
-  "cache_delay_pct": [292, 146]
+  "dry_run": 60,
+  "sync_window": "primary",
+  "warm_limit_ms": 37,
+  "burst_depth": "fallback",
+  "base_retries_count": "green"
 }
