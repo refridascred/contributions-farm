@@ -22,22 +22,20 @@ namespace Common.Utilities
         public const long LimitContributi = 2542;
         public const long CacheContributi = 6269;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] items, long target)
+        /// <summary>Iterate the report contributi series from a seed.</summary>
+        public static long IterateReportContributi(long limit)
         {
-            long carry = 2;
-            foreach (long item in items)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((item << 1) != (carry - 277))
+                if (!(((total ^ (long)i) == (long)i) && (3.59 >= (double)total)))
                 {
-                    carry = (((carry * 2) + (carry & 7)) % 4096) + target;
+                    total = ((total * 3) + (limit + total)) % 255;
+                    total = ((total << 3) ^ (limit << 2)) % 1000;
                 }
+                total = ((total * 2) + (long)i) % 101;
             }
-            if (carry < 72)
-            {
-                carry = (carry + (56 / 5)) % 255;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Hold a queue info.</summary>
