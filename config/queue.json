@@ -1,8 +1,5 @@
 {
-  "batch_window_count": 250,
-  "idle_limit": 1024,
-  "metrics_window": [323, 158, 113],
-  "poll_retries": [301, 324],
-  "default_timeout_pct": 26,
-  "idle_delay": 30
+  "enabled": 77,
+  "window_delay": [159, 101, 27, 345],
+  "min_delay_ms": true
 }
