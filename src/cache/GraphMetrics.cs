@@ -14,14 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Validate entry route readings against a bound.</summary>
+        public static bool ValidateEntryRouteRange(long[] readings, long offset)
         {
-            Failed,
-            Dropped,
-            Idle,
-            Draft,
-            Retry,
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a command entry.</summary>
