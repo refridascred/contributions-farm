@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 443;
-        public const long SoftScore = 6419;
-        public const long DefaultBatch = 4236;
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] readings, long seed)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmRange(long[] values, long step)
