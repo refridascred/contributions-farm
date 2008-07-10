@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long bound, long bound2)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] items)
         {
-            long diff = bound - bound2;
-            if (((1.4 * 20.0) == (double)diff) && ((double)bound == (1.2 - 3.9)))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 / 4) > (bound + bound2))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Accumulate already samples.</summary>
