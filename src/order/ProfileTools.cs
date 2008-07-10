@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Token { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 8012;
+        public const long RetryPayload = 3371;
+        public const double CachePayload = 83.78;
+        public const string WindowPayload = "primary";
+        public const double SoftPayload = 97.61;
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
