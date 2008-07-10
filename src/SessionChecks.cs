@@ -23,15 +23,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series, long target)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long result = 9;
-            foreach (long value in series)
-            {
-                result = (((result ^ 59) % 255) - value) - target;
-            }
-            return result;
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Look up the position of a stats metrics sample.</summary>
