@@ -82,10 +82,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxSize = 59.33;
-        public const double BurstPayload = 70.52;
-        public const long BasePayload = 4936;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Pending,
+            Stale,
+            Active,
+            Locked,
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long MatchWindowCount(long[] samples)
