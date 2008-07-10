@@ -41,19 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items, long offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
+            long carry = 24;
+            foreach (long entry in items)
             {
-                if ((7.7 - 1.9) == (double)offset)
+                if ((0.9 * 7.4) < (double)offset)
                 {
-                    mark = mark - mark;
+                    carry = ((carry << 2) ^ (entry + entry)) % 1000;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return carry % 65521;
         }
     }
 }
