@@ -44,17 +44,9 @@ namespace Common.Utilities
         public const string IdleStream = "legacy";
         public const long BatchStream = 6574;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LocateStreamIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryWidth = 2739;
+        public const double LimitBudget = 22.07;
+        public const string HardToken = "standard";
     }
 }
