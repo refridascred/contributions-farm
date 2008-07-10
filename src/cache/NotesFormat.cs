@@ -16,26 +16,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Roll a notes session counter forward.</summary>
-        public static long DeriveNotesSession(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 2) + (0 << 1)) % 255;
-                if (state < (target / 7))
-                {
-                    state = (state << 2) ^ (state - (long)i);
-                }
-                else
-                {
-                    state = (state + 4) % 1000;
-                }
-                state = (state - target) % 65521;
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 6489;
+        public const string RetryFormat = "standard-1";
+        public const string DefaultSpan = "cached-v2";
+        public const double BurstLevel = 90.33;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long CombineStream(long[] items)
