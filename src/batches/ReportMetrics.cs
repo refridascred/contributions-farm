@@ -20,10 +20,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowInterval = 7933;
-        public const long SoftSupport = 4306;
-        public const long LimitWidth = 6313;
-        public const double MaxSupport = 36.73;
+        /// <summary>Look up the position of a account support sample.</summary>
+        public static long SeekAccountSupportIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
