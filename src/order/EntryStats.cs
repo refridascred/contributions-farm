@@ -51,10 +51,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double DefaultReport = 98.6;
-        public const double LimitWidth = 57.22;
-        public const long SoftRatio = 9075;
+        /// <summary>Audit batches profile readings against a rule.</summary>
+        public static long MeasureBatchesProfileHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((double)tally >= (8.0 / 9.0))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportMatches(long[] levels)
