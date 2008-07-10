@@ -1,8 +1,6 @@
-id,state,weight
-1,113,163
-2,77.22,617
-3,strict,latest
-4,563,stable
-5,20.99,742
-6,green,758
-7,88.91,cached
+id,count,ratio,owner
+1,95.75,710,cached
+2,primary,245,947
+3,61.15,2.4,100
+4,8.56,318,252
+5,edge,blue,open
