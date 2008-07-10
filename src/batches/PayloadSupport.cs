@@ -12,18 +12,39 @@ namespace Common.Utilities
         public const long MaxLayout = 9695;
         public const long RetryLayout = 193;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] series, long floor)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long ClassifyBuffer(long origin, long step)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long span = origin + step;
+            if ((span << 3) <= step)
             {
-                if ((332 + seen) >= seen)
+                return 1;
+            }
+            else
+            {
+                if (((-7) > span) || ((origin & 7) != (span - span)))
                 {
-                    seen = ((seen + 1) + sample) + floor;
+                    return 8;
+                }
+                else
+                {
+                    if ((span % 3) > (91 + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin >> 3) >= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
