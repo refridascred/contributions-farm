@@ -86,18 +86,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] samples)
+        /// <summary>Iterate the window counter series from a seed.</summary>
+        public static long DeriveWindowCounter(long target)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell >= (49 ^ cell))
-                {
-                    hits = hits + 3;
-                }
+                total = ((total << 3) ^ (total + total)) % 4096;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return hits;
+            return total;
         }
     }
 }
