@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MinStats = "staging";
-        public const string LimitWidth = "primary-v2";
-        public const long WindowRatio = 2952;
-        public const double BatchInterval = 84.82;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 443;
+        public const long SoftScore = 6419;
+        public const long DefaultBatch = 4236;
 
         /// <summary>Accumulate layout record samples.</summary>
         public static long TotalLayoutRecord(long[] series, long step)
