@@ -95,14 +95,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long limit)
         {
-            Stale,
-            Dropped,
-            Locked,
-            Pending,
-            Synced,
+            long score = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
