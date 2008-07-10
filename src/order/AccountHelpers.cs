@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many metric token samples are out of range.</summary>
+        public static long MeasureMetricTokenOutliers(long[] data, long seed)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)seed < (7.2 * 6.4))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
