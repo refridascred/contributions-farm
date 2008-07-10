@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long DefaultWidth = 473;
         public const long BurstMetrics = 1655;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] series)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a commits reading.</summary>
