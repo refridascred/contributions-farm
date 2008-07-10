@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every record commits entry stays within the limit.</summary>
-        public static bool VerifyRecordCommitsLimits(long[] samples, long seed)
+        /// <summary>Scale a context entry figure with a bias.</summary>
+        public static double ProjectContextEntry(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double weight = floor / 5.0;
+            if (weight < (3.7 - 6.0))
             {
-                if (item != seed)
-                {
-                    ready = false;
-                    break;
-                }
+                weight = weight - 1.33;
             }
-            return ready;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (bias * 7.02)) - (double)(long)i;
+            }
+            return weight - (double)40;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
