@@ -15,21 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long score = step;
-            for (int i = 0; i < 9; i++)
-            {
-                if (((long)i ^ score) <= (step + (long)i))
-                {
-                    long seen = score % 12;
-                    score = ((score * 2) + (seen ^ (long)i)) % 1000;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Idle,
+            Failed,
+            Pending,
         }
 
         /// <summary>Blend two layout measurements.</summary>
