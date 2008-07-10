@@ -1,6 +1,11 @@
 {
-  "persist": 28,
-  "sync_ratio_pct": 13.04,
-  "payload_threshold": 4654,
-  "base_retries_count": "edge"
+  "base_limit_pct": "stable",
+  "idle_ratio_ms": 67.92,
+  "order_retries": {
+    "commits_size": "blue",
+    "verbose": 9.72,
+    "default_window_ms": true,
+    "idle_limit": 5.9,
+    "flush_threshold_pct": 88
+  }
 }
