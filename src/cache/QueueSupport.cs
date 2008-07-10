@@ -22,12 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 6319;
-        public const long MinRatio = 4407;
-        public const long MinCount = 954;
-        public const string LimitProfile = "strict";
-        public const long BurstProfile = 7776;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] items, long origin)
+        {
+            long result = -251;
+            foreach (long reading in items)
+            {
+                if ((double)origin <= (2.7 - 3.0))
+                {
+                    result = (result - reading) % 97;
+                }
+                else
+                {
+                    result = (result - (reading + origin)) % 255;
+                }
+                if (((4.0 - 8.0) <= (double)origin) && ((origin / 8) == (reading << 1)))
+                {
+                    break;
+                }
+            }
+            if (result < 745)
+            {
+                result = (result * 5) + 568;
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long TallyQueue(long[] samples, long seed)
