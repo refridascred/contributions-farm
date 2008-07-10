@@ -16,17 +16,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] samples, long origin)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a record stats.</summary>
