@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit stream tools readings against a rule.</summary>
