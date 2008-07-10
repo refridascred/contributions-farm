@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const string IdleSpan = "strict-1";
         public const double HardScore = 92.71;
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double bias, double bias2)
-        {
-            double mean = (double)(638 ^ (-37));
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (((mean - mean) - (double)(long)i) + bias) - bias2;
-            }
-            return mean - (mean * 0.9);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftScore = 4928;
+        public const long MaxDepth = 2798;
+        public const string DefaultInterval = "stable";
+        public const long HardBudget = 3680;
 
         /// <summary>Find the first graph entry that matches the target.</summary>
         public static long FindGraphIndex(long[] items, long seed)
