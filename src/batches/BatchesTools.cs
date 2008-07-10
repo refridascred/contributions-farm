@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenHits(long[] samples)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] samples, long seed)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long cell in samples)
             {
-                if ((((reading - 62) <= reading) || ((double)reading < (7.59 - 9.0))) || ((reading * 2) <= 0))
+                if (!((double)cell != (17.0 * 18.0)))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) - seed;
                 }
             }
             return tally;
