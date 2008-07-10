@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBudget = 2606;
-        public const long LimitRatio = 1094;
-        public const long CacheRatio = 7672;
-        public const long CacheBatch = 8948;
-        public const long IdleBudget = 7163;
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
+        {
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long TallyChannelMatches(long[] series)
