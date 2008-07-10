@@ -1,9 +1,6 @@
-id,state,rank,count
-1,51.9,19,984
-2,stable,39.09,163
-3,751,84.34,489
-4,staging,89.79,blue
-5,634,legacy,4.69
-6,eu-west,785,312
-7,cached,410,eu-west
-8,96,593,edge
+id,region,ratio,rank
+1,green,961,open
+2,248,5.36,986
+3,97.06,eu-west,green
+4,52.43,62.64,435
+5,563,local,63.78
