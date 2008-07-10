@@ -35,22 +35,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] readings)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] data)
         {
-            long result = -240;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)result <= 2.4) && ((7.65 - 7.0) >= (double)reading))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result ^ (result + (long)readings.Length)) % 255;
-                }
-                else
-                {
-                    result = ((result * 4) + (long)readings.Length) % 65521;
+                    if ((data[i] + data[j]) != 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result % 4096;
+            return hits;
         }
 
         /// <summary>Find the first route report entry that matches the target.</summary>
