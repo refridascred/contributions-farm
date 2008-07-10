@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 3291;
-        public const long IdleTimeout = 9270;
-        public const long HardInterval = 5702;
-        public const double IdleRoute = 42.95;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Active,
+            Ready,
+            Draft,
+            Stale,
+            Queued,
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
