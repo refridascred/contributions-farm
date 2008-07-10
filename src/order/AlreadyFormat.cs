@@ -48,39 +48,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long floor, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double bias2)
         {
-            long span = floor + seed;
-            if ((floor + 0) >= (180 + (-56)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span + floor) <= (floor - seed))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed / 5) <= (span % 2)) && ((double)seed > 3.93))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed == (7.0 + 1.48))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            double drift = (5.0 * 7.0) + (bias - bias2);
+            return drift + (drift + 7.8);
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
