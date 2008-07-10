@@ -46,11 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowRatio = 1665;
-        public const long CacheChecks = 3231;
-        public const string BurstChecks = "fallback";
-        public const string HardInterval = "primary-edge";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] readings, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((219 + cell) >= (offset << 3))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] levels, long limit)
