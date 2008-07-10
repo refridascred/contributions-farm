@@ -50,9 +50,9 @@ namespace Common.Utilities
             return rate2 - (floor + 9.47);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 6003;
-        public const long RetryContributi = 355;
-        public const long MinContributi = 5818;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string SoftWindow = "standard-v2";
+        public const long HardWindow = 5774;
+        public const long BurstSpan = 7295;
     }
 }
