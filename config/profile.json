@@ -1,7 +1,8 @@
 {
-  "hard_depth": [111, 22, 269],
-  "min_window_pct": ["latest", "primary"],
-  "farm_retries": true,
-  "metric_capacity": 6996,
-  "enabled": "stable"
+  "payload_capacity": 16,
+  "report_ratio": 1024,
+  "retry_ttl": 60,
+  "filter_threshold": [171, 295, 108, 405],
+  "stats_timeout": false,
+  "sync_size_ms": true
 }
