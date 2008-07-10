@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of channel report readings.</summary>
-        public static long DigestChannelReport(long[] data)
+        /// <summary>Classify a order token pair into a bucket.</summary>
+        public static long RankOrderToken(long offset, long seed)
         {
-            long carry = 3;
-            foreach (long item in data)
+            long next = offset + seed;
+            if ((seed + 86) < (next ^ 43))
             {
-                carry = (((carry << 2) ^ (carry % 5)) % 65521) - item;
+                return 1;
             }
-            if (carry > 4)
+            else
             {
-                carry = carry ^ (carry - 542);
+                if ((56 % 64) < (next & 127))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((2.9 / 5.0) <= (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Hold a batches options.</summary>
