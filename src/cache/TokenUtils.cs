@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphRange(long[] readings, long step)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] data)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (item <= step)
+                if (((reading & 127) == ((-99) + (-77))) || (count < (count / 3)))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Rank token input into a small class.</summary>
