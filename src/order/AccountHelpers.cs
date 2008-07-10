@@ -57,22 +57,36 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long bound, long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long SortOrder(long bound, long seed)
         {
-            if ((double)bound >= 3.0)
+            if ((bound % 3) >= seed)
             {
-                return 1;
+                return 8;
             }
             else
             {
-                if (((offset << 3) == (bound % 100)) && ((double)bound >= (7.0 / 9.0)))
+                if (bound >= seed)
                 {
-                    return 7;
+                    return 6;
                 }
                 else
                 {
-                    return 8;
+                    if (((double)seed <= 16.0) || ((seed % 12) > (-942)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound < (seed - bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
