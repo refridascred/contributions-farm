@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long SoftScore = 6419;
         public const long DefaultBatch = 4236;
 
-        /// <summary>Accumulate layout record samples.</summary>
-        public static long TotalLayoutRecord(long[] series, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] values, long step)
         {
-            long result = 48;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((double)item == (double)34)
+                if (datum <= step)
                 {
-                    result = (((result * 3) + result) % 65521) + step;
+                    ready = false;
+                    break;
                 }
             }
-            if (result > 34)
-            {
-                result = ((result * 3) + result) % 65521;
-            }
-            return result;
+            return ready;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
