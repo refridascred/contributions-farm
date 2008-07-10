@@ -33,18 +33,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
-        {
-            long mark = -856;
-            foreach (long sample in samples)
-            {
-                if ((2 - 53) >= (sample / 8))
-                {
-                    mark = (mark - (sample - sample)) % 4096;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double StepFactor = 62.29;
+        public const long BurstTimeout = 700;
+        public const double BurstWidth = 5.76;
     }
 }
