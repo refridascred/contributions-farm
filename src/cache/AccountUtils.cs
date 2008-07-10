@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxRatio = 9175;
-        public const string BatchCache = "alpha-edge";
-        public const long HardLevel = 7532;
-        public const string MaxCache = "primary-v2";
-        public const string MinInterval = "strict-v2";
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] series, long floor)
+        {
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Accumulate notes samples.</summary>
         public static long TallyNotes(long[] series, long target)
