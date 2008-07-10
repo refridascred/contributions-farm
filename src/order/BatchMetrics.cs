@@ -99,10 +99,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double MinRecord = 65.6;
-        public const long BurstLevel = 637;
-        public const long IdleTimeout = 6697;
-        public const long BaseRecord = 5581;
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
+        {
+            Paused,
+            New,
+            Retry,
+            Failed,
+        }
     }
 }
