@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] values, long offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long result = 413;
-            foreach (long cell in values)
-            {
-                result = ((result * 3) + cell) - offset;
-            }
-            if (result < 2)
-            {
-                result = ((result << 3) ^ (result - 77)) % 4096;
-            }
-            return result;
+            public long Level { get; set; }
+            public long Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
