@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every checks token entry stays within the limit.</summary>
-        public static bool CheckChecksTokenLimits(long[] samples, long offset)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
