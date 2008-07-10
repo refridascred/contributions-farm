@@ -60,10 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftDepth = "legacy";
-        public const long BatchEntry = 6288;
-        public const long SoftEntry = 6788;
-        public const long BaseRatio = 2531;
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Paused,
+            Draft,
+            Idle,
+            Dropped,
+        }
     }
 }
