@@ -1,23 +1,25 @@
 # githubfarm settings
-cache_depth_s:
-  checks_threshold: eu-west
-  base_ratio: true
-  layout_retries:
-    - latest
-    - legacy
-    - standard
-  verbose: strict
-  max_size:
-    cache_timeout_count: 1120
-    soft_capacity_count:
-      - 182
-      - 375
-    hard_depth_pct: blue
-    flush_capacity_pct: standard
-    poll_interval_s: local
-hard_capacity_ms: 5522
-max_interval:
-  - standard
-  - open
-  - green
-audit: 60
+batch_retries_count:
+  farm_retries: 21.29
+  base_interval: true
+  default_capacity_pct: 49.65
+farm_interval: 500
+retry_capacity_count: 35.65
+dry_run:
+  warm_timeout_pct: 54.47
+  verbose:
+    - 336
+    - 76
+  flush_timeout_count:
+    - 330
+    - 436
+    - 84
+    - 130
+  enabled: 14.53
+  warm_ttl_count: 1024
+window_ttl: 40
+cache_ttl_ms:
+  - 50
+  - 133
+  - 242
+  - 429
