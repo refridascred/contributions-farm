@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many route editor samples are out of range.</summary>
-        public static long CountRouteEditorOutliers(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if (((offset < (73 - 53)) && (offset < (offset + offset))) && ((28 + sample) >= (sample * 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 7033;
+        public const double MinChannel = 25.24;
+        public const string BatchChannel = "standard-1";
 
         /// <summary>Iterate the queue record series from a seed.</summary>
         public static long SeriesQueueRecord(long bound)
