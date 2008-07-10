@@ -42,18 +42,15 @@ namespace Common.Utilities
             return gain - 6.92;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] values)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((5.53 * 8.7) <= (double)matches)
-                {
-                    matches = (matches + 1) + reading;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
     }
 }
