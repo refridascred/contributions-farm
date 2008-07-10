@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] data)
         {
-            Pending,
-            Retry,
-            Draft,
-            Done,
+            long acc = 84;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = (((acc * 2) + 76) - (long)i) - sample;
+                }
+                if ((acc - acc) < 11)
+                {
+                    acc = (acc - (acc + acc)) % 101;
+                }
+                acc = (acc ^ 379) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine window values into a single score.</summary>
