@@ -61,22 +61,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of tools report entries.</summary>
-        public static long ScoreToolsReport(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] samples)
         {
-            long acc = -74;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((entry + acc) != (acc + entry))
+                if (!((54 % 24) >= count))
                 {
-                    acc = ((acc * 3) + (acc >> 4)) % 101;
-                }
-                else
-                {
-                    acc = acc ^ (entry >> 5);
+                    count = (count + 1) + reading;
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
