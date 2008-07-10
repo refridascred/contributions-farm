@@ -1,7 +1,23 @@
 # githubfarm settings
-verbose: cached
-soft_timeout_count: 31.72
-schema_limit: 2794
-sync_depth: eu-west
-min_size: 25
-soft_capacity_s: 63.03
+cache_depth_s:
+  checks_threshold: eu-west
+  base_ratio: true
+  layout_retries:
+    - latest
+    - legacy
+    - standard
+  verbose: strict
+  max_size:
+    cache_timeout_count: 1120
+    soft_capacity_count:
+      - 182
+      - 375
+    hard_depth_pct: blue
+    flush_capacity_pct: standard
+    poll_interval_s: local
+hard_capacity_ms: 5522
+max_interval:
+  - standard
+  - open
+  - green
+audit: 60
