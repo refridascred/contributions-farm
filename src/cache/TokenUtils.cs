@@ -27,17 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a command context reading by value.</summary>
-        public static long SeekCommandContextIndex(long[] readings, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = offset;
+            return (ratio + (double)5) + scale;
         }
     }
 }
