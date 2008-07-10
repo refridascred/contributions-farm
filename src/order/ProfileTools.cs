@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 8012;
-        public const long RetryPayload = 3371;
-        public const double CachePayload = 83.78;
-        public const string WindowPayload = "primary";
-        public const double SoftPayload = 97.61;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long target)
+        {
+            long bound = seed ^ target;
+            if (((double)bound <= 7.0) && ((target - bound) <= (389 + 49)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound ^ seed) <= (seed - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound <= (target + bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a record record.</summary>
         public sealed class RecordRecord
