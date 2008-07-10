@@ -31,23 +31,25 @@ namespace Common.Utilities
         public const string MaxRatio = "fallback";
         public const long MaxCount = 9520;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long step)
         {
-            long result = 5;
-            foreach (long cell in items)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                result = (result ^ (cell + result)) % 4096;
-                if (((result + cell) < (cell ^ cell)) || (result <= cell))
+                long matches = step;
+                if ((matches + (-1)) > (matches + matches))
                 {
-                    break;
+                    score = (score - (step >> 4)) % 1000;
                 }
+                if (((matches % 3) <= (matches / 4)) || (step <= (matches & 127)))
+                {
+                    matches = ((matches << 3) ^ (long)i) % 1000;
+                    continue;
+                }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            if (result > 506)
-            {
-                result = (result * 4) + (result - (long)items.Length);
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Measure how many batches cluster samples are out of range.</summary>
