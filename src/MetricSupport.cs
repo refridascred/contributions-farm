@@ -31,13 +31,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] samples, long offset)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
