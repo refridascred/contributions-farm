@@ -1,6 +1,8 @@
 {
-  "cache_delay_pct": false,
-  "batch_timeout_ms": 250,
-  "default_delay_count": "stable",
-  "max_timeout_s": 18.1
+  "idle_delay": true,
+  "route_window": 25.54,
+  "max_limit_pct": false,
+  "soft_depth_ms": "open",
+  "sync_timeout_ms": 39,
+  "base_ttl": false
 }
