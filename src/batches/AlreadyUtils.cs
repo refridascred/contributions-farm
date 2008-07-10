@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of filter already readings.</summary>
-        public static long CombineFilterAlready(long[] levels, long target)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long result = 500;
-            foreach (long sample in levels)
-            {
-                if (((double)result < (9.0 + 7.27)) || (179 > (result - result)))
-                {
-                    result = (((result - (835 - result)) % 1000) - sample) + target;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (46 + result)) % 1000;
-                }
-            }
-            if (result > 992)
-            {
-                result = (result << 3) ^ (result >> 2);
-            }
-            return result % 65521;
+            Idle,
+            Stale,
+            New,
+            Paused,
+            Retry,
         }
 
         /// <summary>Locate a checks route reading by value.</summary>
