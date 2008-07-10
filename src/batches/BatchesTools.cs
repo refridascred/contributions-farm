@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (series[i] == bound)
                 {
-                    if ((values[i] - values[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
