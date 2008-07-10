@@ -38,19 +38,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the report filter entries that pass the check.</summary>
-        public static long AuditReportFilterHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (seen >= (seen & 31))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string BatchGraph = "open-1";
+        public const long SoftSpan = 5308;
+        public const long LimitTimeout = 6716;
+        public const string MinBudget = "cached-1";
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ProjectContributi(double ratio, double span)
