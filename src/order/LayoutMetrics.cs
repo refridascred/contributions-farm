@@ -42,14 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Derive the next account notes value from a seed.</summary>
+        public static long RollAccountNotes(long floor)
         {
-            Retry,
-            Active,
-            Draft,
-            Pending,
-            Failed,
+            long state = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    state = (state + ((long)i % 24)) + (long)i2;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
     }
 }
