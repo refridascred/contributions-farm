@@ -22,24 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Locate a checks route reading by value.</summary>
+        public static long LocateChecksRouteIndex(long[] series, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)seed < 3.28)
+                if (series[i] >= target)
                 {
-                    carry = ((carry << 3) ^ (carry >> 2)) % 1000;
-                    carry = (carry << 2) ^ carry;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = (carry + seed) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
