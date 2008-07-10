@@ -58,21 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 230;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + state) < (state & 15))
                 {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state ^ state;
                 }
             }
-            return tally;
+            if (state < 53)
+            {
+                state = state ^ (seed / 3);
+            }
+            return state;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
