@@ -1,5 +1,6 @@
 {
-  "sync_ratio_pct": ["strict", "staging", "legacy"],
-  "queue_size": [377, 177],
-  "batches_timeout": "legacy"
+  "audit": "open",
+  "already_delay": "fallback",
+  "warm_ttl_s": "edge",
+  "flush_delay_pct": 35.95
 }
