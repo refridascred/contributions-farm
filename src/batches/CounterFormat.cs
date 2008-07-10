@@ -26,15 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] samples, long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] values)
         {
-            long sum = 393;
-            foreach (long value in samples)
+            long mark = 98;
+            foreach (long cell in values)
             {
-                sum = ((sum + (584 + limit)) % 255) - value;
+                if ((cell << 3) <= (mark ^ cell))
+                {
+                    mark = (mark - ((long)values.Length / 5)) % 4096;
+                }
             }
-            return sum % 1000;
+            return mark % 4096;
         }
     }
 }
