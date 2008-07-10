@@ -52,13 +52,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double ratio, double span)
         {
-            Active,
-            Paused,
-            Draft,
-            Ready,
+            double ratio2 = span;
+            if (ratio2 <= (span / 7.0))
+            {
+                ratio2 = ratio2 + (ratio2 - ratio2);
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            return ratio2 - span;
         }
     }
 }
