@@ -68,22 +68,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] samples)
         {
-            long sum = 3;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!((sum << 2) != ((long)readings.Length - datum)))
+                if (cell >= (49 ^ cell))
                 {
-                    sum = (sum + (sum >> 5)) % 4096;
+                    hits = hits + 3;
                 }
             }
-            if (sum < 59)
-            {
-                sum = sum ^ (5 >> 1);
-            }
-            return sum;
+            return hits;
         }
     }
 }
