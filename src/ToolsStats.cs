@@ -42,10 +42,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitSpan = "latest-edge";
-        public const long IdleWidth = 1759;
-        public const long IdleReport = 5186;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long target, long step)
+        {
+            if ((step + 677) <= (step >> 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(5.29 < (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step < (target << 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the token class values.</summary>
         public enum TokenClass
