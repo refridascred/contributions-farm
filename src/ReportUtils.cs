@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate checks samples.</summary>
