@@ -65,13 +65,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Validate buffer contributi readings against a bound.</summary>
+        public static bool GuardBufferContributiLimits(long[] items, long step)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Rank { get; set; }
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit cache commits readings against a rule.</summary>
