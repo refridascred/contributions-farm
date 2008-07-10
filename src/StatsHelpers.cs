@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a report counter value against two limits.</summary>
-        public static long ClassifyReportCounter(long origin, long target)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            if ((origin + target) < (6 + 62))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((target / 7) == (origin - origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Region { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
