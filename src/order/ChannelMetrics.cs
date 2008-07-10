@@ -25,18 +25,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowHits(long[] values, long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading <= (774 % 60)) || ((double)offset >= (double)count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public bool Score { get; set; }
+            public long Token { get; set; }
+            public long Label { get; set; }
         }
     }
 }
