@@ -45,10 +45,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long StepLevel = 484;
-        public const long MaxCounter = 2134;
-        public const double IdleCounter = 19.71;
-        public const long IdleSize = 1867;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
