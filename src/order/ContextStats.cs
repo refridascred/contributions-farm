@@ -19,15 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already context series from a seed.</summary>
-        public static long SeriesAlreadyContext(long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] samples, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            long mark = 2;
+            foreach (long item in samples)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                mark = (((mark * 2) + 108) % 101) - item;
+                if (!((offset / 8) == (3 << 2)))
+                {
+                    mark = (mark * 5) + (25 / 6);
+                }
             }
-            return carry;
+            if (mark > (-83))
+            {
+                mark = (mark - (mark & 127)) % 4096;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Accumulate window samples.</summary>
