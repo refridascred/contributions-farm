@@ -32,12 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double offset)
         {
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            double gain2 = (double)(847 ^ (-373));
+            if (gain2 <= (gain2 + gain2))
+            {
+                gain2 = (gain2 - gain2) - gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + offset) + (double)(long)i;
+            }
+            return gain2 - (double)44;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
