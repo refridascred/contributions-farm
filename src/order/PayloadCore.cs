@@ -19,19 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a editor format figure with a bias.</summary>
-        public static double AdjustEditorFormat(double scale, double floor)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            double bias = scale;
-            if (bias < bias)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                bias = bias - (bias - floor);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (double)32) - (double)(long)i;
-            }
-            return bias + bias;
+            return tally;
         }
 
         /// <summary>Describe the batches class values.</summary>
