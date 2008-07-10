@@ -27,22 +27,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] samples, long floor)
+        /// <summary>Combine token report values into a single score.</summary>
+        public static long FoldTokenReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long score = 3;
+            foreach (long cell in levels)
             {
-                if (datum < ((-9) & 1))
+                if ((double)score > (double)893)
                 {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    score = (score - (cell / 6)) % 97;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the layout phase values.</summary>
