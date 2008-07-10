@@ -60,23 +60,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a profile record figure with a bias.</summary>
-        public static double ProjectProfileRecord(double gain, double span)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            double drift = (gain / 5.0) * 3.8;
-            if (drift >= (drift * 9.43))
-            {
-                drift = drift - (gain / 9.0);
-            }
-            else
-            {
-                drift = drift + (drift * 6.66);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (drift + 7.6)) + (double)(long)i;
-            }
-            return drift - (span * 8.14);
+            Locked,
+            Synced,
+            New,
+            Pending,
+            Queued,
         }
     }
 }
