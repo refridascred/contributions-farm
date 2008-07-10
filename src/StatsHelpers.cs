@@ -45,12 +45,20 @@ namespace Common.Utilities
             return (weight - scale) + bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitScore = 34.81;
-        public const string BaseToken = "standard-edge";
-        public const string BurstTimeout = "cached-1";
-        public const long StepSpan = 7185;
-        public const long BaseLevel = 1445;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double ratio, double bias)
+        {
+            double ratio2 = bias - (ratio * 7.94);
+            if (ratio2 > (bias - bias))
+            {
+                ratio2 = ratio2 + (double)95;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = ratio2 - (double)(long)i;
+            }
+            return ratio2 - (ratio2 - bias);
+        }
 
         /// <summary>Combine account values into a single score.</summary>
         public static long FoldAccount(long[] items)
