@@ -31,15 +31,15 @@ namespace Common.Utilities
         public const string LimitTools = "open-edge";
         public const long CacheSpan = 5380;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] series)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double weight, double span)
         {
-            long total = 7;
-            foreach (long cell in series)
+            double load = span;
+            if (load <= weight)
             {
-                total = ((total ^ total) % 97) - cell;
+                load = load - (load / 6.0);
             }
-            return total;
+            return load - (double)(-30);
         }
     }
 }
