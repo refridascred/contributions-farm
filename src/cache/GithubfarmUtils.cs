@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] data)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long sum = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((332 + sample) != (hits & 15))
-                {
-                    hits = hits + 2;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a route header.</summary>
