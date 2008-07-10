@@ -1,12 +1,5 @@
 {
-  "base_delay_pct": "standard",
-  "readonly": {
-    "retry_capacity": false,
-    "persist": 250,
-    "default_limit": false,
-    "enabled": 250
-  },
-  "poll_ttl": 62,
-  "default_capacity_pct": [320, 182, 277],
-  "cache_threshold": "legacy"
+  "entry_threshold": "stable",
+  "min_ttl_count": false,
+  "poll_capacity_s": "open"
 }
