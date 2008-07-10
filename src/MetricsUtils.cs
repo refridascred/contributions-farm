@@ -26,13 +26,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] values, long limit)
         {
-            Idle,
-            Done,
-            Ready,
-            Synced,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of route readings.</summary>
