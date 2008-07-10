@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] data, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (value >= origin)
+                if ((value + value) < (hits + 3))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
