@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every tools counter entry stays within the limit.</summary>
-        public static bool ValidateToolsCounterRange(long[] samples, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadOutliers(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum <= step)
+                if ((9.0 + 17.0) >= (double)tally)
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 2) + item) + floor;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the session level values.</summary>
