@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 2405;
         public const double DefaultTimeout = 80.71;
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double bias, double bias2)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] values, long floor)
         {
-            double load = (double)(56 * 5);
-            for (int i = 0; i < 8; i++)
+            long score = 792;
+            foreach (long reading in values)
             {
-                load = ((load + load) + (double)(long)i) - bias2;
+                score = (((score ^ score) % 255) + reading) + floor;
             }
-            return load - bias;
+            return score % 4096;
         }
 
         /// <summary>Describe the filter level values.</summary>
