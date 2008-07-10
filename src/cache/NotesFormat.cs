@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of session graph entries.</summary>
-        public static long TallySessionGraph(long[] readings)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long anchor = 4;
-            foreach (long reading in readings)
-            {
-                if ((reading % 64) >= (7 + reading))
-                {
-                    anchor = ((anchor << 3) ^ (reading + 46)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor + anchor)) % 97;
-                }
-            }
-            return anchor;
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
