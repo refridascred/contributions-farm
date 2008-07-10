@@ -1,4 +1,7 @@
 # githubfarm settings
-min_ratio: false
-cluster_size: stable
-already_depth: blue
+verbose: cached
+soft_timeout_count: 31.72
+schema_limit: 2794
+sync_depth: eu-west
+min_size: 25
+soft_capacity_s: 63.03
