@@ -1,19 +1,35 @@
 # entry settings
-poll_limit_count: latest
-metrics_ratio:
-  record_ttl:
-    - 213
-    - 387
-  enabled: primary
-  warm_delay_s: false
-  persist:
-    readonly: true
-    buffer_retries:
-      - 288
-      - 399
-      - 66
-      - 135
-    schema_window: 44
-    editor_delay: primary
-    record_retries: true
-warm_ttl: 100
+min_ratio_pct: 20
+persist: 53.55
+base_depth: staging
+audit:
+  sync_window:
+    - eu-west
+    - eu-west
+    - open
+    - latest
+  verbose: 14.68
+  base_timeout_pct:
+    record_delay: edge
+    batches_ratio: true
+    hard_ratio_pct: 250
+    idle_size_count: 1024
+    dry_run: 30
+  audit:
+    dry_run:
+      - 421
+      - 293
+      - 73
+    retry_ttl:
+      - green
+      - stable
+      - fallback
+    strict: eu-west
+verbose:
+  sync_window_s:
+    soft_retries: 60.99
+    report_capacity: 1024
+    hard_ratio_count: true
+  batch_window_s: true
+  commits_size: local
+cache_depth_pct: 43.39
