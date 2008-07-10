@@ -59,10 +59,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double MinTimeout = 82.83;
-        public const double HardWidth = 34.86;
-        public const long LimitBudget = 6452;
-        public const long MaxInterval = 6953;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long SortContext(long bound, long origin)
+        {
+            if ((bound - origin) > (bound >> 4))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin >= (origin - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
