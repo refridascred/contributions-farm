@@ -25,31 +25,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] readings, long bound)
-        {
-            long total = 878;
-            foreach (long cell in readings)
-            {
-                if ((total >> 5) >= (bound - bound))
-                {
-                    break;
-                }
-                else
-                {
-                    total = ((total ^ (bound * 3)) % 1000) - cell;
-                }
-                if ((total + 48) >= (133 & 63))
-                {
-                    total = (total << 2) ^ (total >> 1);
-                }
-            }
-            if (total < 9)
-            {
-                total = (total ^ (total >> 3)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitRatio = 2.37;
+        public const long StepSupport = 4530;
+        public const long BatchWidth = 7527;
+        public const double BatchBudget = 36.32;
+        public const string BatchSupport = "staging-v2";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long CountSupportHits(long[] samples, long seed)
