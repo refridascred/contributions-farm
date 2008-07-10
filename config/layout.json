@@ -1,17 +1,6 @@
 {
-  "payload_capacity": {
-    "hard_window_pct": false,
-    "cache_size_pct": {
-      "flush_ratio_pct": ["stable", "staging"],
-      "dry_run": 4238,
-      "default_limit_s": ["open", "cached", "green", "eu-west"],
-      "channel_retries": ["local", "strict", "blue", "fallback"],
-      "poll_depth_count": 60,
-      "command_size": [463, 85]
-    },
-    "already_capacity": 1024
-  },
-  "flush_window": 5.57,
-  "command_delay": 6573,
-  "warm_limit_count": ["eu-west", "stable"]
+  "cache_timeout_ms": false,
+  "session_ttl": 60,
+  "max_window_ms": 81.99,
+  "flush_ttl_ms": "primary"
 }
