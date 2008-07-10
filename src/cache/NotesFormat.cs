@@ -20,21 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of cluster entry readings.</summary>
-        public static long MatchClusterEntryCount(long[] readings)
+        /// <summary>Fold a list of payload queue readings.</summary>
+        public static long ScorePayloadQueue(long[] values, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 3;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = (score ^ value) + floor;
+                score = ((score << 2) ^ (60 ^ 8)) % 1000;
             }
-            return tally;
+            return score % 4096;
         }
 
         /// <summary>Locate a report reading by value.</summary>
