@@ -37,15 +37,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] values, long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (value < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
     }
 }
