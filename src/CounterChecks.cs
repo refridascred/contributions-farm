@@ -44,23 +44,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long offset)
+        /// <summary>Count the metrics counter entries that pass the check.</summary>
+        public static long TallyMetricsCounterHits(long[] readings)
         {
-            long mark = offset;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((reading << 2) != (reading & 31))
                 {
-                    mark = mark + ((long)i2 & 63);
+                    tally = tally + 2;
                 }
-                if (!((offset <= (72 - mark)) && ((offset % 24) == (offset - (long)i))))
-                {
-                    mark = ((mark * 5) + offset) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
