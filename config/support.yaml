@@ -1,4 +1,24 @@
 # support settings
-max_ratio: false
-channel_timeout: 56.44
-soft_ttl: 66.44
+format_timeout:
+  base_timeout_ms: 8565
+  contributi_ratio: standard
+  batch_ttl_count: 8207
+  layout_window:
+    enabled: 64
+    compress:
+      - blue
+      - green
+      - local
+    verbose: 94.4
+    profile_limit: fallback
+    poll_window_count: stable
+    min_ttl_ms: staging
+  verbose: 66.25
+  default_size_s: green
+poll_threshold_s: 45.59
+checks_retries: edge
+base_limit: blue
+graph_limit:
+  - 20
+  - 419
+max_interval_s: legacy
