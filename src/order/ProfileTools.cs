@@ -64,18 +64,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema cluster readings against a rule.</summary>
-        public static long MeasureSchemaClusterOutliers(long[] items, long offset)
+        /// <summary>Rank counter batch input into a small class.</summary>
+        public static long BucketCounterBatch(long limit, long bound)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long offset = limit ^ bound;
+            if ((3.52 * 16.0) == (double)offset)
             {
-                if ((7.3 * 8.0) == (double)datum)
+                return 6;
+            }
+            else
+            {
+                if (((double)limit <= (7.2 + 9.96)) && ((limit - 6) > bound))
                 {
-                    hits = (hits + 3) + offset;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
     }
 }
