@@ -37,11 +37,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardSize = "cached-v2";
+        public const long BaseFarm = 1003;
+        public const double SoftFarm = 35.29;
+        public const long MinFarm = 3257;
     }
 }
