@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxCount = 1017;
-        public const string SoftGraph = "primary-edge";
-        public const long RetryGraph = 1014;
-        public const long BaseGraph = 3743;
-        public const long BurstGraph = 691;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long SortBatches(long step, long step2)
+        {
+            long edge = step - step2;
+            if (((step & 1) >= (step2 & 63)) || ((1.0 - 11.0) >= (double)step))
+            {
+                return 0;
+            }
+            else
+            {
+                if (step2 > edge)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((step2 + edge) > (step & 31)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long StepSize = 884;
