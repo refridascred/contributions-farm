@@ -82,22 +82,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] samples)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long state = 3;
-            foreach (long cell in samples)
-            {
-                if (((cell / 9) != (cell + 0)) && ((state + state) <= (state + cell)))
-                {
-                    state = (state * 2) + (state << 3);
-                }
-            }
-            if (state < 510)
-            {
-                state = (state << 3) ^ (state ^ state);
-            }
-            return state;
+            Stale,
+            Ready,
+            Done,
+            Retry,
         }
     }
 }
