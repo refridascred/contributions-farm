@@ -40,20 +40,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next stream batches value from a seed.</summary>
-        public static long IterateStreamBatches(long step)
+        /// <summary>Fold a list of contributi checks readings.</summary>
+        public static long ScoreContributiChecks(long[] levels, long step)
         {
-            long anchor = step;
-            for (int i = 0; i < 22; i++)
+            long carry = 58;
+            foreach (long cell in levels)
             {
-                if ((step > (step - (long)i)) || (anchor > (anchor + step)))
+                for (int i = 0; i < 4; i++)
                 {
-                    anchor = (anchor + (11 - (-7))) % 4096;
-                    break;
+                    carry = (((carry << 3) ^ (long)i) % 101) + cell;
+                    carry = ((carry << 3) ^ (3 << 1)) % 255;
                 }
-                anchor = ((anchor * 5) + (long)i) % 97;
+                carry = (carry * 5) + (0 % 2);
             }
-            return anchor;
+            if (carry > (-69))
+            {
+                carry = (carry * 4) + (step ^ 80);
+            }
+            return carry;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
