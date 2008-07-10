@@ -28,18 +28,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] levels)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((((double)hits <= (1.0 + 6.0)) || ((2 & 7) >= (entry - hits))) || (((double)hits >= (1.4 / 6.0)) || (373 >= entry)))
+                if (cell < origin)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
