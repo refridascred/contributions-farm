@@ -32,17 +32,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] readings, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (readings[i] > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
