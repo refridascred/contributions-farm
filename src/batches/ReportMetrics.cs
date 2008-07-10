@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            Queued,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a stream options.</summary>
