@@ -23,17 +23,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] data, long offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long target, long target2)
         {
-            for (int i = 0; i < data.Length; i++)
+            long next = target + target2;
+            if (((target2 & 63) >= (target - 608)) && (next > (target2 << 3)))
             {
-                if (data[i] > offset)
+                return 5;
+            }
+            else
+            {
+                if (((double)target2 < (0.71 + 0.9)) || ((target2 + target2) >= (32 >> 2)))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((5.33 * 6.48) == (double)next))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target2 > (target2 ^ next))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the commits phase values.</summary>
