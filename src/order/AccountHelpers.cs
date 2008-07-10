@@ -16,12 +16,18 @@ namespace Common.Utilities
             return ratio + (span * 0.36);
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            public double Offset { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((item % 12) < 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the buffer state values.</summary>
