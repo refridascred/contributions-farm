@@ -27,12 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public double Ratio { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 1215;
+        public const long HardTools = 7147;
+        public const string LimitTools = "open-edge";
+        public const long CacheSpan = 5380;
 
         /// <summary>Grade a metrics tools value against two limits.</summary>
         public static long GradeMetricsTools(long floor, long bound)
