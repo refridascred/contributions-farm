@@ -32,23 +32,19 @@ namespace Common.Utilities
             return weight + (double)46;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long DigestMetric(long[] series, long bound)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long mark = 709;
-            foreach (long sample in series)
+            long total = floor;
+            for (int i = 0; i < 13; i++)
             {
-                mark = (mark - (mark ^ mark)) % 65521;
-                if ((mark < bound) && (((-644) / 3) > (sample - mark)))
+                if (((long)i + (long)i) > (floor + 125))
                 {
-                    mark = ((mark << 2) ^ ((-8) + mark)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    mark = mark + bound;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
     }
 }
