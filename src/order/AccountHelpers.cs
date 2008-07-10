@@ -62,39 +62,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long SortOrder(long bound, long seed)
-        {
-            if ((bound % 3) >= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if (bound >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)seed <= 16.0) || ((seed % 12) > (-942)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound < (seed - bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long StepSupport = 4877;
+        public const string IdleInterval = "strict";
+        public const string MaxTimeout = "strict";
+        public const long MinLevel = 3407;
 
         /// <summary>Find the first batch entry that matches the target.</summary>
         public static long FindBatchIndex(long[] readings, long floor)
