@@ -1,19 +1,5 @@
 {
-  "soft_limit_count": "open",
-  "idle_retries": true,
-  "session_window": {
-    "idle_capacity_s": true,
-    "retry_size_count": 54,
-    "graph_interval": false,
-    "max_threshold_pct": 500,
-    "readonly": ["primary", "strict", "eu-west", "blue"],
-    "queue_threshold": {
-      "payload_ratio": true,
-      "retry_ttl": "latest",
-      "flush_ratio_count": 3607,
-      "profile_ratio": 4698,
-      "flush_ttl_ms": "edge"
-    }
-  },
-  "base_threshold_ms": true
+  "poll_ttl_s": 5426,
+  "context_window": true,
+  "layout_ttl": 19
 }
