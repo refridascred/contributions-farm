@@ -23,39 +23,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long target, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long WeighChannel(long[] items)
         {
-            long next = target ^ origin;
-            if ((((-35) << 3) < (origin % 8)) && ((origin % 3) < origin))
+            long mix = 87;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)next > (double)target))
+                if (!(2.0 <= (double)mix))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((13.0 / 9.0) < (double)next))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((8.0 * 9.3) == (double)next) || ((target + 502) > (818 + target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix * 4) + (mix ^ item);
                 }
             }
+            return mix;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
