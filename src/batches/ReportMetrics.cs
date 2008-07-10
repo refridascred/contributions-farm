@@ -13,12 +13,16 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double HardOrder = 27.3;
-        public const double BaseLevel = 63.93;
-        public const long CacheOrder = 4050;
-        public const string WindowBudget = "stable-1";
-        public const long WindowSize = 9832;
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] values)
+        {
+            long sum = 463;
+            foreach (long item in values)
+            {
+                sum = sum ^ (item * 4);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long WindowInterval = 7933;
