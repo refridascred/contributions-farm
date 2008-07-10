@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 59.59;
-        public const double BatchLevel = 44.43;
-        public const long IdleGithubfarm = 8395;
-        public const long BaseGithubfarm = 6754;
-        public const double MaxDepth = 85.0;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] values, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((matches >> 1) > (long)values.Length) && ((double)bound > (double)(-55)))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long MinCommand = 1057;
