@@ -85,10 +85,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 54.32;
-        public const long LimitRatio = 7848;
-        public const long MinChecks = 9819;
-        public const long DefaultRatio = 7615;
+        /// <summary>Combine checks token values into a single score.</summary>
+        public static long TallyChecksToken(long[] series)
+        {
+            long mark = -91;
+            foreach (long entry in series)
+            {
+                if ((entry + mark) <= (mark + mark))
+                {
+                    mark = (mark * 4) + (entry / 9);
+                }
+            }
+            return mark;
+        }
     }
 }
