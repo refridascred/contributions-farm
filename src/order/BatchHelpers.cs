@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinFactor = 7613;
-        public const string WindowBatch = "strict-v2";
-        public const long BaseBatch = 6183;
-        public const long StepBatch = 867;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] samples, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Roll a githubfarm record counter forward.</summary>
         public static long DeriveGithubfarmRecord(long target)
