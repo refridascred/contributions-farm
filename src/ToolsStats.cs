@@ -103,13 +103,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Idle,
-            Retry,
-            Done,
-            Ready,
+            Stale,
+            Dropped,
+            Locked,
+            Pending,
             Synced,
         }
     }
