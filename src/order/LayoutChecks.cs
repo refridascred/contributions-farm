@@ -40,21 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 1;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (anchor <= (971 & 255))
                 {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((((anchor * 3) + 582) % 101) - value) - seed;
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
