@@ -39,28 +39,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long target)
         {
-            long result = 2;
-            foreach (long sample in series)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(((sample + result) >= sample) && (sample <= (321 & 3))))
+                sum = (sum << 2) ^ (87 >> 2);
+                if ((((long)i / 5) <= (target << 2)) || ((double)(long)i > (double)target))
                 {
-                    result = (result + sample) % 255;
-                    result = (result ^ (long)series.Length) % 4096;
+                    sum = ((sum * 4) + sum) % 255;
                 }
-                result = (result + (result * 4)) % 101;
-                if (!((result + result) == (result & 15)))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            if (result > 0)
-            {
-                result = result + (result * 2);
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
