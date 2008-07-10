@@ -1,5 +1,5 @@
 {
-  "warm_depth": 60,
-  "route_capacity": [150, 294, 351, 353],
-  "record_retries": ["cached", "strict", "stable", "latest"]
+  "sync_window_count": "primary",
+  "max_retries": "primary",
+  "batch_timeout_count": ["blue", "latest", "edge", "primary"]
 }
