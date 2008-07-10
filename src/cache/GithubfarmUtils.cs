@@ -42,26 +42,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long target)
         {
-            long score = 5;
-            foreach (long datum in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((score + score) >= (datum + datum))
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
                 {
-                    score = ((score * 4) + (datum + datum)) % 1000;
-                }
-                else
-                {
-                    score = score ^ (48 + score);
+                    return (long)i;
                 }
             }
-            if (score < 9)
-            {
-                score = ((score << 3) ^ (score + score)) % 101;
-            }
-            return score % 65521;
+            return -1;
         }
     }
 }
