@@ -13,14 +13,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double rate, double bias)
         {
-            Paused,
-            Locked,
-            Synced,
-            Dropped,
-            Ready,
+            double rate2 = 4.5 - bias;
+            if (rate2 < rate)
+            {
+                rate2 = rate2 - bias;
+            }
+            return rate2 + (rate2 - rate2);
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
