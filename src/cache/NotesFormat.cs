@@ -19,13 +19,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] levels)
         {
-            Stale,
-            Synced,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample & 255) == (tally * 5))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
