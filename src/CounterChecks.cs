@@ -54,13 +54,12 @@ namespace Common.Utilities
             return rate + (double)7;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Closed,
-            Failed,
-            Idle,
             Synced,
+            Closed,
+            Retry,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
