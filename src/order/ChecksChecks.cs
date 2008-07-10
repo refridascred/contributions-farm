@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = -799;
-            foreach (long value in series)
-            {
-                carry = carry - (3 - value);
-            }
-            return carry % 1000;
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Rank stats input into a small class.</summary>
