@@ -39,17 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] levels, long seed)
+        /// <summary>Blend two graph profile measurements.</summary>
+        public static double SmoothGraphProfile(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = offset;
+            if (scale > 10.0)
             {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + ratio;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (5.3 * 5.2)) - (double)(long)i;
+            }
+            return scale - (5.48 * 4.7);
         }
 
         /// <summary>Count batches farm pairs that satisfy a relation.</summary>
