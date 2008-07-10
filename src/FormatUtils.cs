@@ -50,11 +50,12 @@ namespace Common.Utilities
         public const long LimitOrder = 6710;
         public const double BaseSize = 39.78;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "staging";
-        public const long CacheBudget = 7917;
-        public const string WindowBatch = "staging";
-        public const double MaxBatch = 41.58;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseBudget = 9902;
+        public const double WindowCounter = 29.97;
+        public const long CacheLevel = 7688;
+        public const double MinCount = 78.45;
+        public const long BaseDepth = 9865;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long floor, long floor2)
