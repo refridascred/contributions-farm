@@ -46,11 +46,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            public double Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
