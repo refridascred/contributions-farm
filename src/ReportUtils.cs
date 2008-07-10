@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueGaps(long[] levels, long seed)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum - datum) > matches) && ((double)datum >= (6.85 * 6.5)))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
