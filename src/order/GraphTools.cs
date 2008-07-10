@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of counter metric readings.</summary>
-        public static long WeighCounterMetric(long[] samples)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LocateTokenIndex(long[] items, long target)
         {
-            long result = -168;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((result / 4) <= (reading >> 4)))
+                if (items[i] > target)
                 {
-                    result = (result ^ reading) % 101;
-                }
-                if (8 < result)
-                {
-                    result = ((result << 3) ^ (result % 12)) % 97;
+                    return (long)i;
                 }
             }
-            if (result > 86)
-            {
-                result = (result + (result >> 2)) % 1000;
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the token level values.</summary>
