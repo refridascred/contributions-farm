@@ -12,26 +12,13 @@ namespace Common.Utilities
             return load - (offset - bias);
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] data, long target)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long sum = 727;
-            foreach (long reading in data)
-            {
-                if (((2.0 - 6.8) <= (double)reading) && ((sum << 3) <= (sum + 7)))
-                {
-                    sum = (sum << 2) ^ (sum ^ (-97));
-                }
-                if (target <= (target >> 2))
-                {
-                    sum = (sum << 2) ^ (185 + target);
-                }
-            }
-            if (sum > 34)
-            {
-                sum = (sum - (target + 7)) % 65521;
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
