@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] series, long floor)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public double Token { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Accumulate stats samples.</summary>
