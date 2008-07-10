@@ -28,13 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowInterval = 424;
+        public const long StepFactor = 596;
+        public const long StepWidth = 8806;
+        public const long BaseCount = 4400;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long FindBufferIndex(long[] values, long target)
