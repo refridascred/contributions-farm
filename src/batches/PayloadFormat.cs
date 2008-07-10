@@ -61,26 +61,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batches commits entries.</summary>
-        public static long TotalBatchesCommits(long[] series, long target)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels)
         {
-            long acc = 284;
-            foreach (long entry in series)
+            long carry = -550;
+            foreach (long datum in levels)
             {
-                if ((acc / 2) == (282 - acc))
-                {
-                    acc = ((acc * 4) + (acc << 3)) % 97;
-                }
-                if (((entry ^ target) <= 2) || ((target & 7) <= target))
-                {
-                    break;
-                }
+                carry = ((carry << 3) ^ (datum >> 4)) % 1000;
             }
-            if (acc < 934)
-            {
-                acc = ((acc * 2) + (acc - 44)) % 97;
-            }
-            return acc;
+            return carry % 97;
         }
     }
 }
