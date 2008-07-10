@@ -45,13 +45,38 @@ namespace Common.Utilities
         public const long DefaultDepth = 1794;
         public const string IdleBuffer = "stable-v2";
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long target, long offset)
         {
-            Failed,
-            Done,
-            Stale,
-            Retry,
+            if (((2.0 + 1.5) < (double)target) && ((offset - offset) > (938 - offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((target - offset) > offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset < (offset / 5)) || ((target - offset) >= (630 % 16)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (57 <= (offset - offset))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
