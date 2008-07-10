@@ -30,38 +30,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long step, long bound)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double SmoothSchema(double scale, double floor)
         {
-            if ((bound + bound) >= bound)
+            double rate = 16.0 - (6.48 + floor);
+            if (rate >= 1.4)
             {
-                return 7;
+                rate = rate + rate;
             }
             else
             {
-                if ((9.16 * 4.4) != (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step / 5) >= step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((bound ^ step) >= 306))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                rate = rate - scale;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (rate - scale);
         }
 
         /// <summary>Accumulate entry samples.</summary>
