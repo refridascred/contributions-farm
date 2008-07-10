@@ -41,14 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            Queued,
-            Active,
-            Dropped,
-            Failed,
-            Paused,
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
