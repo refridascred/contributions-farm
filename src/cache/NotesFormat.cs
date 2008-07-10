@@ -16,13 +16,17 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long offset)
         {
-            Ready,
-            Retry,
-            Dropped,
-            Pending,
+            long mark = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                mark = ((mark * 2) + (mark + mark)) % 255;
+                mark = ((mark * 5) + offset) % 101;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
