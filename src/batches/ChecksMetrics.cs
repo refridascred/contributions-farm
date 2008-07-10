@@ -65,21 +65,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] values)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long SortOrder(long target, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target ^ floor) > (floor - target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (((74 * 4) < (floor << 3)) || ((target >> 3) < (target >> 4)))
                 {
-                    if ((values[i] - values[j]) < 14)
+                    return 6;
+                }
+                else
+                {
+                    if (!((floor & 7) < (floor ^ target)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((92 - target) <= (2 + target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
