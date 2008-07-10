@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] values)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry & 1) == (entry * 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((data[i] + data[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Classify a farm pair into a bucket.</summary>
