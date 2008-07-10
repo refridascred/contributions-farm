@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long bound, long seed)
+        /// <summary>Fold a list of counter metric readings.</summary>
+        public static long WeighCounterMetric(long[] samples)
         {
-            if ((seed + bound) >= (seed - bound))
+            long result = -168;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (1.5 + 9.6))
+                if (!((result / 4) <= (reading >> 4)))
                 {
-                    return 6;
+                    result = (result ^ reading) % 101;
                 }
-                else
+                if (8 < result)
                 {
-                    if (((bound + seed) < (bound + 997)) && (8.1 < (double)seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((seed + bound) > seed) && ((seed >> 1) < (seed * 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    result = ((result << 3) ^ (result % 12)) % 97;
                 }
             }
+            if (result > 86)
+            {
+                result = (result + (result >> 2)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the token level values.</summary>
