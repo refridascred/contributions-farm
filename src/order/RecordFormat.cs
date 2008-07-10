@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the editor farm series from a seed.</summary>
-        public static long RollEditorFarm(long origin)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    total = (((total * 5) + ((long)i - total)) % 4096) - (long)i2;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            Pending,
+            Dropped,
+            Failed,
+            New,
         }
 
         /// <summary>Hold a report stats.</summary>
