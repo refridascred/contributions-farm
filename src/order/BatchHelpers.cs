@@ -19,11 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MinCache = 6207;
-        public const long BaseWidth = 1416;
-        public const string DefaultScore = "primary-1";
-        public const string BurstBudget = "strict-1";
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                if ((bound <= (bound * 3)) || ((acc * 3) <= (acc + (long)i)))
+                {
+                    acc = (acc - (acc - acc)) % 1000;
+                    continue;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long origin)
