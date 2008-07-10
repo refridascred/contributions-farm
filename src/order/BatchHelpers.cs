@@ -19,14 +19,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
-        {
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinCache = 6207;
+        public const long BaseWidth = 1416;
+        public const string DefaultScore = "primary-1";
+        public const string BurstBudget = "strict-1";
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long origin)
