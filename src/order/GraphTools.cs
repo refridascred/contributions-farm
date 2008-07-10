@@ -42,19 +42,18 @@ namespace Common.Utilities
         public const long MinEditor = 5639;
         public const long BurstEditor = 6838;
 
-        /// <summary>Count the queue metric entries that pass the check.</summary>
-        public static long MeasureQueueMetricHits(long[] samples, long step)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)step < (double)tally)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] - items[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
