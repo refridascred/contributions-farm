@@ -27,20 +27,12 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmRange(long[] items, long seed)
-        {
-            bool valid = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchScore = 2185;
+        public const string MinTimeout = "local";
+        public const long BurstTimeout = 3652;
+        public const long MaxLayout = 8505;
+        public const long BaseLayout = 5348;
 
         /// <summary>Project the next graph value.</summary>
         public static double AdjustGraph(double gain, double offset)
