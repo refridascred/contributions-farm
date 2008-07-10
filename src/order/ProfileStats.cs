@@ -49,10 +49,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepTimeout = "local-edge";
-        public const long BatchReport = 7308;
-        public const long BurstRatio = 332;
-        public const long SoftBudget = 7393;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
