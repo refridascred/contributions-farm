@@ -70,15 +70,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double gain, double floor)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            double scale = floor;
-            if (scale <= (floor - floor))
-            {
-                scale = (scale + (double)901) + gain;
-            }
-            return scale - scale;
+            Closed,
+            Failed,
+            Idle,
+            Synced,
         }
 
         /// <summary>Check that every format window entry stays within the limit.</summary>
