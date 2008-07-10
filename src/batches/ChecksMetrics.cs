@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long MaxInterval = 3118;
         public const long MinBudget = 47;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] levels, long limit)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long carry = 9;
-            foreach (long item in levels)
-            {
-                if (carry <= (item - limit))
-                {
-                    carry = carry ^ carry;
-                }
-                else
-                {
-                    carry = (carry * 2) + limit;
-                }
-            }
-            return carry % 4096;
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define window limits and defaults.</summary>
