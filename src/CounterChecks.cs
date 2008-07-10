@@ -48,17 +48,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] values, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long bound, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (!(bound >= (bound * 3)))
             {
-                if (values[i] > floor)
+                return 1;
+            }
+            else
+            {
+                if ((0.5 * 7.0) == (double)bound)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (!((530 << 3) == (bound / 9)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
