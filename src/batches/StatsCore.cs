@@ -15,17 +15,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] readings, long bound)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
+                if (125 < (seed % 64))
                 {
-                    return (long)i;
+                    result = (result + ((long)i % 16)) % 255;
+                    break;
                 }
+                result = ((result << 3) ^ (seed * 2)) % 255;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Project the next entry value.</summary>
