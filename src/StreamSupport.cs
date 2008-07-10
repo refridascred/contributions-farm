@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Compare every pair of batches layout readings.</summary>
-        public static long OverlapBatchesLayoutCount(long[] items)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = floor;
+            if (gain < (gain + 9.3))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain + floor;
             }
-            return seen;
+            else
+            {
+                gain = gain - (scale / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (scale * 8.29)) + (double)(long)i;
+            }
+            return gain + (gain / 2.0);
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
