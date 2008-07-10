@@ -1,7 +1,11 @@
 {
-  "record_size": ["green", "staging", "blue"],
-  "base_delay_pct": 50.11,
-  "max_ttl_ms": "strict",
-  "cache_limit_count": 93,
-  "cluster_timeout": "staging"
+  "idle_ratio": 28.95,
+  "cache_interval_ms": {
+    "strict": 91.99,
+    "max_retries_s": true,
+    "idle_threshold_s": "local",
+    "contributi_limit": 60
+  },
+  "idle_timeout": "standard",
+  "base_threshold_s": 30
 }
