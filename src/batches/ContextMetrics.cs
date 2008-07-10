@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] series, long seed)
         {
-            public double Mode { get; set; }
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
