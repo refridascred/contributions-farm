@@ -33,21 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support format samples.</summary>
-        public static long OverlapSupportFormatCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftEditor = "standard-1";
+        public const long MinEditor = 5734;
+        public const double HardScore = 8.16;
+        public const long StepEditor = 2799;
     }
 }
