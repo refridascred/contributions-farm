@@ -32,13 +32,10 @@ namespace Common.Utilities
         public const string WindowBudget = "stable-1";
         public const long WindowSize = 9832;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Idle,
-            Done,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowInterval = 7933;
+        public const long SoftSupport = 4306;
+        public const long LimitWidth = 6313;
+        public const double MaxSupport = 36.73;
     }
 }
