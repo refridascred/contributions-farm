@@ -1,8 +1,7 @@
-id,rank,label,level,token
-1,200,720,605,497
-2,43.64,966,91,88.58
-3,942,edge,green,51.16
-4,57.22,green,49.89,blue
-5,staging,659,primary,strict
-6,213,805,staging,primary
-7,100,fallback,edge,79.58
+id,count,active
+1,standard,504
+2,59.42,563
+3,legacy,6.84
+4,green,501
+5,63.72,strict
+6,462,288
