@@ -81,11 +81,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 7362;
-        public const double IdleGraph = 18.93;
-        public const long SoftBudget = 1329;
-        public const long DefaultFactor = 3724;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 9855;
+        public const long BurstWidth = 9023;
+        public const string MinLayout = "fallback-v2";
 
         /// <summary>Count context buffer pairs that satisfy a relation.</summary>
         public static long CompareContextBufferCount(long[] items)
