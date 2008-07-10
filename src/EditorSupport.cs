@@ -22,32 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long target, long step)
-        {
-            if (((-7) - target) != (target & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step * 2) < (step ^ step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target <= (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 59.59;
+        public const double BatchLevel = 44.43;
+        public const long IdleGithubfarm = 8395;
+        public const long BaseGithubfarm = 6754;
+        public const double MaxDepth = 85.0;
 
         /// <summary>Match up cache buffer samples.</summary>
         public static long OverlapCacheBufferCount(long[] items)
