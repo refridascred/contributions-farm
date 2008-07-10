@@ -42,15 +42,15 @@ namespace Common.Utilities
             return gain - 6.92;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Scale a order command figure with a bias.</summary>
+        public static double BlendOrderCommand(double rate, double span)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            double load = (3.32 * 5.83) + (double)67;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                load = ((load - span) - (double)(long)i) - rate;
             }
-            return mix;
+            return load - span;
         }
     }
 }
