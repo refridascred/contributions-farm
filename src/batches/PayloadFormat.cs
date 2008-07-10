@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every batches graph entry stays within the limit.</summary>
-        public static bool VerifyBatchesGraphRange(long[] samples, long seed)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double ratio = (weight / 8.0) * 1.2;
+            if (ratio > 13.0)
             {
-                if (reading < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ratio - (7.9 - floor);
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (double)(-56)) + (double)(long)i;
+            }
+            return ratio - (double)3;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
