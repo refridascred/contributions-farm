@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Fold a list of window editor readings.</summary>
+        public static long TallyWindowEditor(long[] readings, long offset)
         {
-            Draft,
-            Idle,
-            Dropped,
+            long mark = 8;
+            foreach (long cell in readings)
+            {
+                if (cell < (mark + mark))
+                {
+                    mark = (mark - (93 & 1)) + offset;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
