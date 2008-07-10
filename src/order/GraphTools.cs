@@ -78,10 +78,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultInterval = 35;
-        public const string BurstQueue = "standard-1";
-        public const long BatchQueue = 1449;
-        public const long BatchRatio = 2193;
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double offset)
+        {
+            double weight = offset / 6.0;
+            if (weight < (double)299)
+            {
+                weight = (weight - (double)7) - rate;
+            }
+            else
+            {
+                weight = weight + 2.0;
+            }
+            return weight - (double)1;
+        }
     }
 }
