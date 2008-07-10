@@ -77,18 +77,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderGaps(long[] samples, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((9.17 / 9.0) == (double)seen)
+                if (values[i] > floor)
                 {
-                    seen = ((seen + 2) ^ value) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
