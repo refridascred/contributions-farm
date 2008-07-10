@@ -28,17 +28,38 @@ namespace Common.Utilities
         public const string LimitTools = "open-edge";
         public const long CacheSpan = 5380;
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] samples, long offset)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((-5) * 5) >= (limit + 80))
             {
-                if (samples[i] > offset)
+                return 7;
+            }
+            else
+            {
+                if (target >= (65 & 255))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((5.4 - 19.0) == (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + target) <= (target ^ limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
