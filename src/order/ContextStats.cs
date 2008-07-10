@@ -14,17 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long bound)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Mode { get; set; }
+            public string Label { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a commits order reading.</summary>
