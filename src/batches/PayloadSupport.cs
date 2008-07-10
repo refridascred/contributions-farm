@@ -21,18 +21,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((count - count) < (item ^ item))
+                if (!(hits >= (hits >> 1)))
                 {
-                    count = count + 3;
+                    hits = ((hits + 2) + sample) + limit;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
