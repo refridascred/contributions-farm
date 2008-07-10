@@ -22,11 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSpan = 2557;
-        public const double RetrySupport = 98.9;
-        public const double MaxSupport = 29.25;
-        public const long DefaultBudget = 8152;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxCount = 6647;
+        public const double BatchSpan = 85.38;
+        public const string BurstRecord = "local";
+        public const long CacheFactor = 6576;
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
