@@ -19,13 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long offset, long origin)
         {
-            New,
-            Paused,
-            Done,
-            Locked,
+            if ((origin <= (origin * 2)) || ((origin / 4) <= origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.5 + 9.3) < (9.37 + 1.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (9 + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
