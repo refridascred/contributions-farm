@@ -33,19 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] items, long offset)
+        /// <summary>Match up support format samples.</summary>
+        public static long OverlapSupportFormatCount(long[] items)
         {
-            long mark = 400;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (((mark ^ (346 % 97)) % 255) - datum) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 247)
-            {
-                mark = ((mark << 2) ^ 235) % 101;
-            }
-            return mark;
+            return tally;
         }
     }
 }
