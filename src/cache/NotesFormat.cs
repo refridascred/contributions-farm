@@ -20,22 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the batches checks entries that pass the check.</summary>
-        public static long MeasureBatchesChecksGaps(long[] series)
+        /// <summary>Digest a series of session graph entries.</summary>
+        public static long TallySessionGraph(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long anchor = 4;
+            foreach (long reading in readings)
             {
-                if (658 >= (datum - 2))
+                if ((reading % 64) >= (7 + reading))
                 {
-                    seen = seen + 3;
+                    anchor = ((anchor << 3) ^ (reading + 46)) % 101;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    anchor = (anchor ^ (anchor + anchor)) % 97;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the window status values.</summary>
