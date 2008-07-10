@@ -16,22 +16,12 @@ namespace Common.Utilities
             return ratio + (span * 0.36);
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueMatches(long[] levels, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((((step << 1) >= tally) || (reading >= tally)) || ((step % 16) <= reading))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Scale a context entry figure with a bias.</summary>
