@@ -1,7 +1,23 @@
 {
-  "retry_ratio_count": 11.66,
-  "notes_size": 82.47,
-  "min_capacity": 6419,
-  "burst_interval_ms": 500,
-  "filter_interval": "open"
+  "cache_timeout_ms": [351, 133],
+  "stats_interval": {
+    "cluster_threshold": "fallback",
+    "default_depth_s": {
+      "warm_window": ["fallback", "blue"],
+      "base_window_ms": true,
+      "enabled": false,
+      "warm_size_ms": "stable"
+    },
+    "idle_ratio": {
+      "enabled": 1689,
+      "hard_limit": [83, 45],
+      "base_threshold": [160, 134, 290],
+      "batch_ttl": "legacy",
+      "schema_retries": [198, 273],
+      "min_timeout_ms": [361, 44]
+    },
+    "retry_timeout_s": "edge",
+    "hard_delay": "green"
+  },
+  "poll_interval_ms": [498, 388, 365]
 }
