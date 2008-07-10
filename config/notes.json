@@ -1,5 +1,6 @@
 {
-  "verbose": "standard",
-  "persist": "eu-west",
-  "warm_timeout": 100
+  "persist": 28,
+  "sync_ratio_pct": 13.04,
+  "payload_threshold": 4654,
+  "base_retries_count": "edge"
 }
