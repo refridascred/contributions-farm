@@ -37,18 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatMatches(long[] samples)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((299 + matches) > (reading + matches)) || ((33 - matches) > (matches << 3)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
