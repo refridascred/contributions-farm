@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (((double)tally != (15.0 + 13.0)) || ((tally + tally) != (85 - tally)))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftLevel = 2855;
+        public const long BurstLevel = 7015;
+        public const long StepLevel = 9956;
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long MatchTokenCount(long[] items)
