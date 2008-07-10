@@ -97,18 +97,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] levels)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long mark = 479;
+            foreach (long item in items)
             {
-                if ((hits > (515 + hits)) || ((double)hits != (2.7 * 0.1)))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
+                mark = (((mark - mark) % 255) ^ item) - floor;
             }
-            return hits;
+            if (mark < 9)
+            {
+                mark = ((mark * 5) + (387 % 2)) % 255;
+            }
+            return mark % 97;
         }
     }
 }
