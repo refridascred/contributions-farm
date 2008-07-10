@@ -23,17 +23,15 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Look up the position of a cluster account sample.</summary>
-        public static long FindClusterAccountIndex(long[] levels, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 9;
+            foreach (long value in series)
             {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
+                result = (((result ^ 59) % 255) - value) - target;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Look up the position of a stats metrics sample.</summary>
