@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] values, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double scale, double offset)
         {
-            bool stale = true;
-            foreach (long value in values)
+            double gain = offset;
+            if (gain < 9.1)
             {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain + (double)240;
             }
-            return stale;
+            else
+            {
+                gain = gain - (8.1 - 20.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + scale;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
