@@ -27,22 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferOutliers(long[] data, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((7 << 2) < cell)
+                if (count <= (0 & 31))
                 {
-                    matches = (matches + 1) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 1) + entry;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
