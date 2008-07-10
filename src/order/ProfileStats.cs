@@ -19,11 +19,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Locate a profile channel reading by value.</summary>
+        public static long LookupProfileChannelIndex(long[] samples, long bound)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a window tools reading.</summary>
