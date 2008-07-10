@@ -74,19 +74,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] items, long floor)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            long mark = 479;
-            foreach (long item in items)
+            long sum = 849;
+            foreach (long sample in levels)
             {
-                mark = (((mark - mark) % 255) ^ item) - floor;
+                if ((sample ^ sample) <= sample)
+                {
+                    sum = sum ^ (sum - sample);
+                }
             }
-            if (mark < 9)
+            if (sum > (-2))
             {
-                mark = ((mark * 5) + (387 % 2)) % 255;
+                sum = ((sum << 2) ^ (sum + sum)) % 65521;
             }
-            return mark % 97;
+            return sum;
         }
     }
 }
