@@ -27,12 +27,26 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardWidth = 8384;
-        public const string CacheChannel = "latest-v2";
-        public const long SoftScore = 2362;
-        public const long WindowChannel = 8596;
-        public const long HardChannel = 4171;
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long floor, long target)
+        {
+            long delta = floor + target;
+            if (((delta >> 4) != ((-2) & 7)) || ((double)floor == (3.0 + 5.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target <= (double)delta)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
         public static long OverlapCounterFarmCount(long[] items)
