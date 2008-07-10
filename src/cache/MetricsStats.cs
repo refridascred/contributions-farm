@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Adjust a graph already reading.</summary>
+        public static double ProjectGraphAlready(double scale, double span)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            double gain = span;
+            for (int i = 0; i < 2; i++)
+            {
+                gain = ((gain + (5.0 / 8.0)) - (double)(long)i) - scale;
+            }
+            return gain - span;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
