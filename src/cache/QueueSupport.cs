@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const long BatchMetric = 386;
         public const string StepMetric = "open";
 
-        /// <summary>Count the tools schema entries that pass the check.</summary>
-        public static long AuditToolsSchemaGaps(long[] levels)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((double)tally <= (5.0 / 8.0)) || ((580 << 2) <= (datum / 7)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Idle,
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
