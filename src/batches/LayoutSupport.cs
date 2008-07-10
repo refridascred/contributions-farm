@@ -31,11 +31,10 @@ namespace Common.Utilities
         public const string MaxAlready = "standard";
         public const long BatchAlready = 4642;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 4031;
-        public const long StepCluster = 2915;
-        public const double CacheBudget = 23.91;
-        public const string RetryBudget = "cached-edge";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftWidth = 3896;
+        public const double BatchCount = 93.56;
+        public const string StepQueue = "standard-v2";
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long bound, long step)
