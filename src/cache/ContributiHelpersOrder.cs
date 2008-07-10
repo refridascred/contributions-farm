@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long CacheCounter = 4125;
         public const long StepCounter = 1721;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "standard-edge";
+        public const long MaxGraph = 7658;
+        public const long LimitGraph = 4803;
+        public const long HardScore = 8660;
+        public const string BurstTimeout = "staging-1";
 
         /// <summary>Roll a checks stats counter forward.</summary>
         public static long RollChecksStats(long seed)
