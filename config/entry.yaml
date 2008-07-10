@@ -1,14 +1,13 @@
 # entry settings
-enabled: 43
-hard_ratio_count: 37
-cache_delay_s:
-  - 97
-  - 93
-  - 162
-retry_retries_ms: true
-strict:
-  poll_interval_ms: 94.08
-  warm_interval_pct: fallback
-  farm_depth: 31
-  flush_ttl_ms: local
-metric_size: 500
+compress: open
+readonly: true
+batch_depth_count: 8742
+max_depth:
+  strict: 22.65
+  audit:
+    - 177
+    - 432
+  retry_delay: 1903
+  warm_delay_count: 500
+  burst_retries_pct: staging
+  window_limit: 21
