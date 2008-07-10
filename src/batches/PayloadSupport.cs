@@ -55,12 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Idle,
+            Done,
+            Draft,
+            Stale,
         }
     }
 }
