@@ -29,19 +29,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] levels, long bound)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphMatches(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (cell != bound)
+                if ((4.43 + 8.7) < (double)cell)
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - limit;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
