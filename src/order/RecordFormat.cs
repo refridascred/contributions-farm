@@ -21,15 +21,25 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double SmoothPayload(double gain, double span)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long limit, long limit2)
         {
-            double scale = gain;
-            if (scale > (scale + gain))
+            long span = limit ^ limit2;
+            if (((limit % 5) == (limit2 * 3)) || ((69 >> 1) > (span % 16)))
             {
-                scale = scale - (span - 8.5);
+                return 3;
             }
-            return scale + (double)713;
+            else
+            {
+                if (((5 * 4) <= (span + span)) && ((limit2 & 7) <= span))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a report options.</summary>
