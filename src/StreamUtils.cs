@@ -29,19 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream cluster entry stays within the limit.</summary>
-        public static bool GuardStreamClusterBounds(long[] levels, long origin)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
