@@ -41,12 +41,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxChecks = 8427;
+        public const string BaseChecks = "strict-edge";
+        public const long BurstChecks = 5554;
     }
 }
