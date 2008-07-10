@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Paused,
-            Retry,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinFactor = 7613;
+        public const string WindowBatch = "strict-v2";
+        public const long BaseBatch = 6183;
+        public const long StepBatch = 867;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long AuditReportGaps(long[] samples, long step)
