@@ -49,12 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long origin)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] series, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] >= origin)
+                if ((series[i] > bound) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
