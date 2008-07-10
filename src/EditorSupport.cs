@@ -54,31 +54,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a commits tools pair into a bucket.</summary>
-        public static long ClassifyCommitsTools(long offset, long step)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TotalAccount(long[] readings)
         {
-            if ((double)step < (4.8 / 6.0))
+            long mix = -499;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset * 2) < (offset / 3))
+                if ((6.6 - 0.2) != (double)mix)
                 {
-                    return 5;
+                    mix = ((mix << 2) ^ (value + 29)) % 101;
                 }
                 else
                 {
-                    if ((step >= (step / 6)) && (offset < (offset / 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix << 3) ^ value;
                 }
             }
+            if (mix > 804)
+            {
+                mix = ((mix << 2) ^ (mix - mix)) % 65521;
+            }
+            return mix;
         }
     }
 }
