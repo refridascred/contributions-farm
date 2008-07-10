@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double LimitCount = 27.4;
-        public const long MaxFilter = 5476;
-        public const long CacheFilter = 8326;
-        public const long BaseTimeout = 5637;
-        public const string IdleWidth = "legacy";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinRatio = 197;
+        public const long BaseCount = 8688;
+        public const long WindowStats = 2154;
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long SeekTokenIndex(long[] levels, long origin)
