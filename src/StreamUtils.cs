@@ -37,11 +37,13 @@ namespace Common.Utilities
         public const string BurstChecks = "fallback";
         public const string HardInterval = "primary-edge";
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
+            Failed,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
