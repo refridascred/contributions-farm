@@ -35,13 +35,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamBounds(long[] items, long floor)
         {
-            Synced,
-            Pending,
-            Failed,
-            New,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the channel state values.</summary>
