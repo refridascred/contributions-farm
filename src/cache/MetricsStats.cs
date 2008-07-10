@@ -66,22 +66,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long BucketSupport(long seed, long origin)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if (seed < 0)
             {
-                if (matches >= (matches + 36))
+                return 0;
+            }
+            else
+            {
+                if (seed < (origin + origin))
                 {
-                    matches = (matches + 1) ^ value;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((27 + origin) != (origin + 842))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((0 ^ origin) < (origin + seed)) && ((origin >> 5) != (seed >> 4)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
