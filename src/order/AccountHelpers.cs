@@ -34,12 +34,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((seen ^ 54) != (seen + 6))
+                {
+                    seen = (seen + 1) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a already queue sample.</summary>
