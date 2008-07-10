@@ -13,17 +13,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a tools order counter forward.</summary>
-        public static long DeriveToolsOrder(long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long result = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result ^ 7) % 97;
-                result = result ^ ((long)i ^ 958);
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Paused,
+            Locked,
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
