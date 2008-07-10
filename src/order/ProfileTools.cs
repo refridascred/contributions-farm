@@ -32,12 +32,11 @@ namespace Common.Utilities
         public const double SoftSize = 90.46;
         public const long BaseBudget = 8987;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Closed,
-            New,
-            Pending,
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a stats info.</summary>
