@@ -26,15 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] levels, long step)
         {
-            long carry = 5;
-            foreach (long entry in series)
+            long score = -9;
+            foreach (long cell in levels)
             {
-                carry = (carry - carry) ^ entry;
+                score = ((((score * 2) + score) % 4096) + cell) + step;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
