@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
-        {
-            Failed,
-            Locked,
-            Paused,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxTimeout = 9459;
+        public const long CacheEntry = 6683;
+        public const long CacheDepth = 2039;
+        public const long IdleEntry = 5991;
+        public const string StepBudget = "stable";
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
