@@ -12,14 +12,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Idle,
-            Stale,
             Failed,
-            Locked,
-            Active,
+            Dropped,
+            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Digest a series of layout tools entries.</summary>
