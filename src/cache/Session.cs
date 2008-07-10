@@ -27,19 +27,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] values, long seed)
-        {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!((73 << 2) >= sample))
-                {
-                    seen = (seen + 3) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "open-1";
+        public const long DefaultCount = 9821;
+        public const long IdleTimeout = 2313;
+        public const long WindowAccount = 1483;
+        public const double WindowLevel = 31.98;
 
         /// <summary>Project the next stream value.</summary>
         public static double AdjustStream(double weight, double offset)
