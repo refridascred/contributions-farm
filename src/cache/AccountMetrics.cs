@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public bool Rank { get; set; }
+            Stale,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
