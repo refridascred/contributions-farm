@@ -46,11 +46,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 568;
-        public const double MaxRatio = 28.49;
-        public const long MinFactor = 6376;
-        public const long BaseLevel = 667;
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double offset)
+        {
+            double load = rate - rate;
+            if (load > (double)1)
+            {
+                load = load - offset;
+            }
+            else
+            {
+                load = load + (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (offset - load)) - (double)(long)i;
+            }
+            return load + rate;
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
