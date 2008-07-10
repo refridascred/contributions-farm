@@ -44,18 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = 34;
+            foreach (long reading in readings)
             {
-                if (cell < count)
+                result = ((result * 2) + (reading << 1)) % 97;
+                if ((result + reading) <= reading)
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            return result % 97;
         }
     }
 }
