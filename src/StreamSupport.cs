@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] readings, long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long state = 82;
-            foreach (long datum in readings)
-            {
-                if ((91 >> 4) < state)
-                {
-                    state = ((state << 2) ^ (5 + floor)) % 97;
-                }
-                if (!((state ^ floor) >= 9))
-                {
-                    state = ((state * 3) + (datum >> 2)) % 255;
-                }
-            }
-            if (state > 5)
-            {
-                state = (state + (9 % 10)) % 101;
-            }
-            return state % 1000;
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
