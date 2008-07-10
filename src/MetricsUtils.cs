@@ -25,17 +25,15 @@ namespace Common.Utilities
         public const long BaseCount = 8688;
         public const long WindowStats = 2154;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] levels, long origin)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
