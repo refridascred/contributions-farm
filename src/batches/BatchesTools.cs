@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (85 <= (datum + count))
+                if ((entry + entry) < (319 ^ seen))
                 {
-                    count = (count + 2) + offset;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the farm level values.</summary>
