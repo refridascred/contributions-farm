@@ -1,4 +1,14 @@
 # entry settings
-max_retries_count: legacy
-compress: 76
-flush_limit_ms: latest
+enabled: 43
+hard_ratio_count: 37
+cache_delay_s:
+  - 97
+  - 93
+  - 162
+retry_retries_ms: true
+strict:
+  poll_interval_ms: 94.08
+  warm_interval_pct: fallback
+  farm_depth: 31
+  flush_ttl_ms: local
+metric_size: 500
