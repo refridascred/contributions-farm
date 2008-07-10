@@ -31,19 +31,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long origin)
         {
-            long score = 833;
-            foreach (long reading in items)
+            long cur = limit - origin;
+            if ((double)origin > (10.0 * 4.3))
             {
-                score = (score - (reading >> 5)) % 65521;
+                return 1;
             }
-            if (score < 8)
+            else
             {
-                score = score - (score / 4);
+                if (4.07 > (double)cur)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((origin - cur) > limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin - limit) < (origin ^ cur))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return score;
         }
 
         /// <summary>Adjust a order reading.</summary>
