@@ -31,26 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] values)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items)
         {
-            long anchor = 4;
-            foreach (long datum in values)
+            long score = 833;
+            foreach (long reading in items)
             {
-                if ((double)datum < (2.8 + 7.63))
-                {
-                    break;
-                }
-                if (!((datum - 106) != (datum & 31)))
-                {
-                    anchor = (anchor ^ datum) % 97;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (anchor ^ anchor);
-                }
+                score = (score - (reading >> 5)) % 65521;
             }
-            return anchor % 1000;
+            if (score < 8)
+            {
+                score = score - (score / 4);
+            }
+            return score;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
