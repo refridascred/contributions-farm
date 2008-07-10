@@ -1,5 +1,5 @@
 {
-  "readonly": "fallback",
-  "max_retries_s": 73.82,
-  "soft_size": "local"
+  "retry_threshold": 88.77,
+  "strict": true,
+  "compress": 1024
 }
