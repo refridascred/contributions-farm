@@ -35,21 +35,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] data)
+        /// <summary>Count the batch entry entries that pass the check.</summary>
+        public static long MeasureBatchEntryOutliers(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((427 & 63) < count)
                 {
-                    if ((data[i] + data[j]) != 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) ^ datum;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Find the first route report entry that matches the target.</summary>
