@@ -1,12 +1,15 @@
 # Command notes
 
-A route that stays idle for too long is moved to the editor list.
-Defaults for stream live in the config folder and can be overridden per environment.
-Keep already and profile names short and lowercase.
+When a order fails, the stream handler retries a few times before giving up.
+A channel that stays idle for too long is moved to the stats list.
+
+Use checks settings to tune how often already data is refreshed.
+Run the commits check before changing any account limits.
+The window helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate farm input early
-- Review account limits each release
-- Keep githubfarm values small
-- Document new session fields
+- Prefer window defaults
+- Validate buffer input early
+- Review session limits each release
+- Log every buffer change
