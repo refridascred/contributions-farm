@@ -27,14 +27,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] items, long seed)
         {
-            Ready,
-            Dropped,
-            Locked,
-            Closed,
-            Paused,
+            bool valid = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next graph value.</summary>
