@@ -58,19 +58,24 @@ namespace Common.Utilities
             return scale - 12.0;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ScaleCommits(double ratio, double span)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long step)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= 7.68)
+            if ((13.0 + 12.0) != (double)offset)
             {
-                ratio2 = (ratio2 + (double)4) - span;
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                ratio2 = (ratio2 + (double)38) + (double)(long)i;
+                if (((step >> 5) < (step / 9)) && ((offset - offset) != (step - 504)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio2 - ratio;
         }
     }
 }
