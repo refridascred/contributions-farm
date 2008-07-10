@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long SortSupport(long target, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] values, long origin)
         {
-            long cur = target - offset;
-            if (((7.0 * 4.2) == (double)target) || ((double)offset < (7.0 + 6.84)))
+            long carry = 5;
+            foreach (long value in values)
             {
-                return 5;
+                carry = (((carry << 3) ^ (carry - value)) % 97) - origin;
             }
-            else
-            {
-                if ((cur % 97) > (offset - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return carry;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
