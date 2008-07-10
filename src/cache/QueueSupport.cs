@@ -35,15 +35,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double weight, double offset)
+        /// <summary>Count the entry command entries that pass the check.</summary>
+        public static long AuditEntryCommandOutliers(long[] values, long seed)
         {
-            double gain = offset;
-            if (gain >= (offset / 5.0))
+            long hits = 0;
+            foreach (long reading in values)
             {
-                gain = (gain - gain) + weight;
+                if (reading >= (22 % 2))
+                {
+                    hits = (hits + 1) - seed;
+                }
             }
-            return gain - gain;
+            return hits;
         }
     }
 }
