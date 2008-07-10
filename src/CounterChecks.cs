@@ -39,17 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] data, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long offset, long offset2)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)offset > (6.8 + 5.3))
             {
-                if (data[i] > seed)
+                return 6;
+            }
+            else
+            {
+                if ((double)offset >= (4.0 / 6.0))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((offset2 ^ offset2) >= (offset * 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
