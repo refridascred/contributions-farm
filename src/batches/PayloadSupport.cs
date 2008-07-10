@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long MaxLayout = 9695;
         public const long RetryLayout = 193;
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] series, long floor)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((332 + seen) >= seen)
+                {
+                    seen = ((seen + 1) + sample) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
