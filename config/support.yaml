@@ -1,16 +1,6 @@
 # support settings
-idle_threshold_s: 1024
-sync_delay: staging
-payload_ttl: green
-batches_depth:
-  dry_run: 66
-  session_depth: false
-  hard_limit_pct: true
-  entry_ratio: 1127
-  verbose:
-    account_ttl: 100
-    base_capacity: eu-west
-    default_timeout_ms: local
-    batch_ratio_pct: 30
-base_delay_ms: blue
-min_interval: blue
+cache_retries_s: open
+warm_threshold: 7987
+default_ttl: true
+burst_ratio_s: false
+retry_threshold_count: 4094
