@@ -48,21 +48,16 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] levels)
+        /// <summary>Iterate the batches queue series from a seed.</summary>
+        public static long RollBatchesQueue(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state ^ state) % 101;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
     }
 }
