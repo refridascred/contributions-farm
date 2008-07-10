@@ -67,11 +67,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double weight, double span)
         {
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            double bias = (double)(834 + 18);
+            return (bias - weight) + span;
         }
 
         /// <summary>Describe the context state values.</summary>
