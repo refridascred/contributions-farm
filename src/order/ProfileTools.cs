@@ -27,12 +27,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 4438;
-        public const string HardBudget = "local";
-        public const long LimitLevel = 9711;
-        public const long BaseWindow = 9676;
-        public const long LimitInterval = 5796;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstLevel = 4013;
+        public const double SoftSize = 90.46;
+        public const long BaseBudget = 8987;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
