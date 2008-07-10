@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long score = -11;
-            foreach (long sample in levels)
+            long mix = -41;
+            foreach (long item in samples)
             {
-                score = score ^ (sample - sample);
+                if ((mix & 255) < mix)
+                {
+                    mix = mix ^ (item & 3);
+                }
             }
-            return score % 97;
+            if (mix > 8)
+            {
+                mix = ((mix * 4) + mix) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the channel mode values.</summary>
