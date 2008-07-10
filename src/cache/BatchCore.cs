@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stats metric entries that pass the check.</summary>
-        public static long CountStatsMetricGaps(long[] levels, long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 679;
+            foreach (long sample in samples)
             {
-                if (!(reading < (reading + origin)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                acc = ((acc * 4) + (63 & 255)) ^ sample;
             }
-            return matches;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a report tools reading.</summary>
