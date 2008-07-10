@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank command entry input into a small class.</summary>
-        public static long SortCommandEntry(long seed, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            if ((bound & 1) != (seed & 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if (seed > (seed & 31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound * 5) >= (2 / 8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.72 + 9.13) > (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Scale a farm stats figure with a bias.</summary>
