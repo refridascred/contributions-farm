@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long score = 2;
+            foreach (long reading in samples)
             {
-                if (((85 + value) < ((long)levels.Length - seen)) || (((seen << 3) >= (seen - 49)) && ((value & 63) < (value - seen))))
+                if (((reading + score) != (reading + 5)) || ((double)reading >= (6.2 - 8.5)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    score = score ^ (score ^ reading);
                 }
             }
-            return seen;
+            if (score > 242)
+            {
+                score = score - (score + score);
+            }
+            return score % 97;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
