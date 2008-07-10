@@ -48,11 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public double Weight { get; set; }
-            public double Ratio { get; set; }
+            Paused,
+            Stale,
+            Done,
+            Queued,
         }
     }
 }
