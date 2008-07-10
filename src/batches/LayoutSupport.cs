@@ -46,26 +46,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long bound, long step)
-        {
-            long next = bound ^ step;
-            if (((double)bound == (double)next) && (next >= step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((step % 12) == (153 + next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 7362;
+        public const double IdleGraph = 18.93;
+        public const long SoftBudget = 1329;
+        public const long DefaultFactor = 3724;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
