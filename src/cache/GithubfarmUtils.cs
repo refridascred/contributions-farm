@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
