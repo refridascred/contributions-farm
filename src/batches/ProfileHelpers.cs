@@ -47,17 +47,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] samples, long limit)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = step - floor;
+            if (!((step + floor) > (floor + floor)))
             {
-                if ((samples[i] <= limit) && ((samples[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((step - floor) <= (floor ^ step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((step ^ step) < (floor + step)) && ((offset % 3) == (911 / 8)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((2.8 / 2.0) < (double)offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
