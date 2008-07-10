@@ -14,20 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] levels, long bound)
-        {
-            bool stale = true;
-            foreach (long entry in levels)
-            {
-                if (entry > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3914;
+        public const string BurstStats = "fallback";
+        public const string MinStats = "staging-1";
+        public const string RetryWidth = "stable-v2";
+        public const long CacheDepth = 5608;
 
         /// <summary>Count the farm record entries that pass the check.</summary>
         public static long MeasureFarmRecordHits(long[] series)
