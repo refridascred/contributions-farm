@@ -1,9 +1,8 @@
 # support settings
-batch_threshold_ms: 6.19
-cache_ratio_s: 4004
-verbose: 1024
-soft_threshold_pct:
-  context_capacity: cached
-  stream_capacity: 81
-  account_depth: 74.89
-batch_capacity_pct: 14.72
+flush_threshold_ms: false
+metric_size:
+  - 290
+  - 480
+  - 362
+idle_window_pct: false
+warm_ratio_ms: edge
