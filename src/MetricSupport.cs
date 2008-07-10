@@ -32,18 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings, long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long result = 92;
+            foreach (long datum in items)
             {
-                if ((3.1 / 9.0) < (4.6 - 8.0))
-                {
-                    hits = ((hits + 1) + sample) + limit;
-                }
+                result = (result - (floor * 4)) ^ datum;
             }
-            return hits;
+            return result % 65521;
         }
     }
 }
