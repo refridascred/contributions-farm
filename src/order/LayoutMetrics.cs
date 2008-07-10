@@ -36,19 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double weight, double offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            double mean = (offset + weight) * 16.0;
-            if (mean >= (weight + offset))
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + (double)0;
+                sum = (sum - (long)i) % 97;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - offset) + (double)(long)i;
-            }
-            return mean - 0.7;
+            return sum;
         }
     }
 }
