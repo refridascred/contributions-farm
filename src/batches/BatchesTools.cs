@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheOutliers(long[] items, long floor)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((reading - (long)items.Length) == (floor + tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Closed,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
