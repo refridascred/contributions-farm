@@ -1,5 +1,5 @@
 {
-  "retry_size_count": true,
-  "readonly": 68,
-  "filter_limit": 67.52
+  "flush_depth": 2976,
+  "min_timeout_count": 68.84,
+  "max_limit": false
 }
