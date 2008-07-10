@@ -5,27 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine layout farm values into a single score.</summary>
-        public static long TotalLayoutFarm(long[] readings)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long state = 779;
-            foreach (long cell in readings)
+            long result = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    state = ((state - (674 + (long)i)) % 4096) ^ cell;
+                    result = ((result + result) % 101) + (long)i2;
                 }
-                state = ((state << 2) ^ ((-69) - state)) % 1000;
-                if ((state >> 4) >= (state << 2))
+                if ((4.7 * 6.05) > (3.8 * 2.9))
                 {
                     break;
                 }
+                else
+                {
+                    result = (result - bound) % 4096;
+                    result = (result - (973 + bound)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (state > 39)
-            {
-                state = (state + (state * 2)) % 4096;
-            }
-            return state;
+            return result;
         }
 
         /// <summary>Describe the route status values.</summary>
