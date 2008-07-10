@@ -41,12 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            public long Level { get; set; }
-            public long Score { get; set; }
-            public string Mode { get; set; } = "";
+            Stale,
+            Ready,
+            Failed,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
