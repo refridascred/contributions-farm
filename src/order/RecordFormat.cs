@@ -50,18 +50,9 @@ namespace Common.Utilities
             return weight - 1.1;
         }
 
-        /// <summary>Measure how many token commits samples are out of range.</summary>
-        public static long AuditTokenCommitsHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((68 * 3) < datum)
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 6003;
+        public const long RetryContributi = 355;
+        public const long MinContributi = 5818;
     }
 }
