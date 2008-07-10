@@ -42,21 +42,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up buffer command samples.</summary>
-        public static long PairBufferCommandCount(long[] series)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] + series[j]) > 13)
+                    if ((levels[i] + levels[j]) < 8)
                     {
-                        matches = matches + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
