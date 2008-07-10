@@ -26,27 +26,19 @@ namespace Common.Utilities
         public const string CacheWidth = "staging-v2";
         public const string MaxChecks = "local-v2";
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long bound)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long mix = 7;
+            foreach (long entry in data)
             {
-                if (((result % 2) != (result * 2)) && (((-147) * 5) <= (result + target)))
-                {
-                    result = result - (result & 3);
-                }
-                else
-                {
-                    result = ((result * 3) + (target % 7)) % 97;
-                }
-                if ((long)i > (result - result))
-                {
-                    result = (result * 2) + result;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                mix = ((mix ^ (entry * 4)) % 255) - bound;
             }
-            return result;
+            if (mix > 4)
+            {
+                mix = (mix * 4) + 994;
+            }
+            return mix;
         }
     }
 }
