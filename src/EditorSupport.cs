@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Match up layout record samples.</summary>
-        public static long OverlapLayoutRecordCount(long[] items)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long floor, long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (target < (target + target))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((8.0 * 20.0) >= (double)floor)
                 {
-                    if ((items[i] ^ items[j]) < 1)
+                    return 7;
+                }
+                else
+                {
+                    if (target >= (1 * 4))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
