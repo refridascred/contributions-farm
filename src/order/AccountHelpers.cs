@@ -26,17 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a queue buffer reading by value.</summary>
-        public static long FindQueueBufferIndex(long[] values, long target)
+        /// <summary>Check that every order schema entry stays within the limit.</summary>
+        public static bool ValidateOrderSchemaRange(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if ((values[i] >= target) && ((values[i] % 2) == 0))
+                if (item != step)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
