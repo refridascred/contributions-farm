@@ -45,18 +45,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long FindLayoutIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinRatio = 5445;
+        public const long LimitOrder = 6710;
+        public const double BaseSize = 39.78;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string BaseBatch = "staging";
