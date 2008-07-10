@@ -66,22 +66,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the editor record series from a seed.</summary>
-        public static long RollEditorRecord(long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((acc - acc) > 4))
-                {
-                    acc = ((acc << 2) ^ acc) % 97;
-                    acc = (acc + (2 & 63)) % 101;
-                    continue;
-                }
-                acc = (acc - 4) % 255;
-                acc = ((acc * 3) + (long)i) % 4093;
-            }
-            return acc;
+            Ready,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
