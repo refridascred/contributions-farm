@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen ^ seen) >= 1)
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) + entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a cache record.</summary>
