@@ -19,12 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public double Score { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
