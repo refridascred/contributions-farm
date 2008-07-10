@@ -28,11 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "strict";
-        public const double DefaultSpan = 54.53;
-        public const long BatchBudget = 4976;
-        public const double RetryTimeout = 23.65;
+        /// <summary>Count filter buffer pairs that satisfy a relation.</summary>
+        public static long CompareFilterBufferCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long TotalToken(long[] samples, long offset)
