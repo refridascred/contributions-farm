@@ -40,15 +40,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the profile support series from a seed.</summary>
-        public static long RollProfileSupport(long limit)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
