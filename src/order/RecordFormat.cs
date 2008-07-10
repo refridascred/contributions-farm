@@ -28,18 +28,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] readings)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double SmoothPayload(double gain, double span)
         {
-            long acc = 392;
-            foreach (long sample in readings)
+            double scale = gain;
+            if (scale > (scale + gain))
             {
-                if (8 > acc)
-                {
-                    acc = ((acc << 2) ^ 45) ^ sample;
-                }
+                scale = scale - (span - 8.5);
             }
-            return acc;
+            return scale + (double)713;
         }
 
         /// <summary>Adjust a graph reading.</summary>
