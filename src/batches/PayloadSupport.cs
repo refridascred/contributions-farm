@@ -26,17 +26,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a route session sample.</summary>
-        public static long SeekRouteSessionIndex(long[] series, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Active,
         }
     }
 }
