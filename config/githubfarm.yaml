@@ -1,13 +1,4 @@
 # githubfarm settings
-idle_threshold_count:
-  burst_window: 16
-  soft_limit_count: open
-  readonly: 59
-  checks_timeout:
-    - stable
-    - standard
-    - eu-west
-    - stable
-flush_depth_count: stable
-order_depth: 100
-audit: legacy
+poll_retries: staging
+verbose: true
+persist: 738
