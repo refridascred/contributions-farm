@@ -52,14 +52,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long floor, long bound)
         {
-            Queued,
-            Dropped,
-            Active,
-            Done,
-            New,
+            if (((773 << 2) >= (floor * 5)) || ((double)bound <= (3.25 + 1.4)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)floor < (9.8 * 8.23)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
