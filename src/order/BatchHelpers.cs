@@ -23,19 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] samples, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Paused,
+            Ready,
+            Locked,
+            Pending,
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
