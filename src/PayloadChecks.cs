@@ -29,35 +29,15 @@ namespace Common.Utilities
         public const string BatchCount = "legacy-v2";
         public const long BatchDepth = 5638;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] series)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            long mark = 9;
-            foreach (long value in series)
+            long carry = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((378 - (long)series.Length) < (27 << 2))
-                {
-                    mark = ((mark * 5) + (mark + value)) % 65521;
-                    mark = mark ^ (value * 2);
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (830 >> 5);
-                }
-                if (!((0.44 * 9.38) > (double)value))
-                {
-                    mark = ((mark * 3) + mark) % 97;
-                }
-                if ((5.0 / 6.0) < (double)value)
-                {
-                    mark = (mark + (value ^ 440)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (mark - value)) % 255;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return mark % 1000;
+            return carry;
         }
 
         /// <summary>Derive the next stream batches value from a seed.</summary>
