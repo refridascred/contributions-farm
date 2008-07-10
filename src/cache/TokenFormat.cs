@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long limit)
         {
-            Queued,
-            Synced,
-            Draft,
+            long total = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                total = (total * 4) + (total & 1);
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
