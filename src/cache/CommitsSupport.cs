@@ -97,18 +97,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (sample >= (sample / 4))
+                if ((hits > (515 + hits)) || ((double)hits != (2.7 * 0.1)))
                 {
-                    count = count + 3;
+                    hits = (hits + 1) ^ sample;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
