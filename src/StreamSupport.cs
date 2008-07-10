@@ -45,18 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry buffer entries that pass the check.</summary>
-        public static long TallyEntryBufferHits(long[] data)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((sample & 7) >= (count % 16))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public double Count { get; set; }
         }
     }
 }
