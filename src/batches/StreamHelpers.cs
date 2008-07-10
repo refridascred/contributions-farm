@@ -67,18 +67,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] levels)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long SeekCommandIndex(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally % 97) > (sample + tally))
+                if ((series[i] > floor) && ((series[i] % 2) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
