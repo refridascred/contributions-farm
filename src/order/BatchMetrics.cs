@@ -25,19 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double scale, double floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            double ratio = scale + (double)2;
-            if (ratio <= 5.2)
-            {
-                ratio = (ratio - (scale - scale)) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (3.5 * 5.7)) - (double)(long)i;
-            }
-            return ratio + scale;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Fold a list of payload session readings.</summary>
