@@ -14,21 +14,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Level { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
