@@ -41,12 +41,22 @@ namespace Common.Utilities
             return gain + (double)22;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorOutliers(long[] samples)
         {
-            public bool Flag { get; set; }
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if (matches <= (matches - matches))
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a report info.</summary>
