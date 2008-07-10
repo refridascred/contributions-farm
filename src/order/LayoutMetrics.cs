@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxCount = 6647;
-        public const double BatchSpan = 85.38;
-        public const string BurstRecord = "local";
-        public const long CacheFactor = 6576;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Flag { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Hold a metric options.</summary>
         public sealed class MetricOptions
