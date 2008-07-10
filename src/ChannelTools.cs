@@ -45,17 +45,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] series, long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long seed, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!(seed > ((-75) % 10)))
             {
-                if ((series[i] > bound) && ((series[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (target < seed)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (target >= 856)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - target) < (seed - seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
