@@ -1,5 +1,7 @@
 {
-  "compress": "strict",
-  "poll_retries_count": 68,
-  "poll_threshold": 60
+  "profile_delay": 1338,
+  "notes_delay": "fallback",
+  "default_timeout": 16.25,
+  "metrics_retries": false,
+  "metric_size": true
 }
