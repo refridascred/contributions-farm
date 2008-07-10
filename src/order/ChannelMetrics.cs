@@ -24,17 +24,18 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] readings, long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmHits(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) == 0))
+                if ((4.97 >= (double)seen) || ((double)seen <= (double)1))
                 {
-                    return (long)i;
+                    seen = ((seen + 2) ^ sample) + floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
