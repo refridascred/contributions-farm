@@ -32,13 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 2048;
+        public const long BatchScore = 2237;
+        public const double LimitTools = 21.78;
+        public const double BurstTools = 47.54;
+        public const string WindowTools = "open-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const double HardContributi = 49.49;
