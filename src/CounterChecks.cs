@@ -70,12 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double gain, double floor)
         {
-            public bool Owner { get; set; }
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
+            double scale = floor;
+            if (scale <= (floor - floor))
+            {
+                scale = (scale + (double)901) + gain;
+            }
+            return scale - scale;
         }
 
         /// <summary>Check that every format window entry stays within the limit.</summary>
