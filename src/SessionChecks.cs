@@ -16,31 +16,18 @@ namespace Common.Utilities
             return weight - (double)299;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long offset, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyMatches(long[] data, long bound)
         {
-            if ((origin <= (origin * 2)) || ((origin / 4) <= origin))
+            long count = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((5.5 + 9.3) < (9.37 + 1.0))
+                if (reading <= (reading * 5))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < (9 + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = (count + 3) + bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
