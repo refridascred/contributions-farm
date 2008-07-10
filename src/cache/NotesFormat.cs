@@ -23,11 +23,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxAccount = 71.45;
-        public const double RetryAccount = 36.32;
-        public const string MaxBudget = "open-edge";
-        public const long MaxSpan = 3881;
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterBounds(long[] values, long target)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a order entry.</summary>
         public sealed class OrderEntry
