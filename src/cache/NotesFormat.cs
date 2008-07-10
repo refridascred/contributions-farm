@@ -20,11 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            long carry = 9;
+            foreach (long reading in data)
+            {
+                carry = ((carry + (carry + 45)) % 1000) + reading;
+            }
+            return carry;
         }
 
         /// <summary>Describe the window status values.</summary>
