@@ -39,31 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long seed, long floor)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            if (!((double)seed > (6.2 - 20.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > 10.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)floor == (2.6 + 19.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Scale a tools command figure with a bias.</summary>
