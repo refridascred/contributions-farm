@@ -25,24 +25,10 @@ namespace Common.Utilities
         public const long HardScore = 8660;
         public const string BurstTimeout = "staging-1";
 
-        /// <summary>Roll a checks stats counter forward.</summary>
-        public static long RollChecksStats(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = ((acc << 2) ^ (acc ^ acc)) ^ (long)i2;
-                    acc = (acc + acc) % 101;
-                }
-                if (seed >= (long)i)
-                {
-                    acc = ((acc * 3) + (seed * 4)) % 1000;
-                }
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardCount = 94.5;
+        public const double BatchWidth = 93.76;
+        public const long CacheSchema = 6801;
+        public const long RetryInterval = 5781;
     }
 }
