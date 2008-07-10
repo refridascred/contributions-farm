@@ -17,12 +17,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Retry,
-            Queued,
+            Draft,
+            Failed,
             Ready,
+            Active,
         }
 
         /// <summary>Match up schema samples.</summary>
