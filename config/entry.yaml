@@ -1,4 +1,4 @@
 # entry settings
-burst_ttl_pct: 60
-flush_depth_pct: 23.43
-retry_timeout_count: 88.01
+default_timeout_s: 4848
+contributi_interval: 4.02
+batch_depth: 55.29
