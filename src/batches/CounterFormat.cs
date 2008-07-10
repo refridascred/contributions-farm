@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
-        {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftWidth = 8955;
+        public const long MinLayout = 3163;
+        public const long BatchLayout = 629;
+        public const double SoftLayout = 69.51;
+        public const long BatchInterval = 9764;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long SeekPayloadIndex(long[] values, long limit)
