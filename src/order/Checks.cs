@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a order token pair into a bucket.</summary>
-        public static long RankOrderToken(long offset, long seed)
-        {
-            long next = offset + seed;
-            if ((seed + 86) < (next ^ 43))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((56 % 64) < (next & 127))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.9 / 5.0) <= (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 91.55;
+        public const long WindowPayload = 6353;
+        public const long BasePayload = 3309;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
