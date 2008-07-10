@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many metric token samples are out of range.</summary>
-        public static long MeasureMetricTokenOutliers(long[] data, long seed)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)seed < (7.2 * 6.4))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
+            New,
+            Queued,
+            Pending,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
