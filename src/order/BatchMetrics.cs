@@ -34,39 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long step)
-        {
-            if (((step + step) > (step << 2)) || ((9.2 - 18.0) > (double)step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (5 >= (target >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 3) != (target / 9))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target >> 3) >= target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string LimitStats = "strict";
+        public const double DefaultSpan = 54.53;
+        public const long BatchBudget = 4976;
+        public const double RetryTimeout = 23.65;
 
         /// <summary>Describe the stats class values.</summary>
         public enum StatsClass
