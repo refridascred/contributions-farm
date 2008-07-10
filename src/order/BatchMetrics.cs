@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long target, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchBounds(long[] values, long origin)
         {
-            if ((step < (target + step)) && ((double)target != (double)step))
+            bool ready = true;
+            foreach (long value in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((step * 5) < step) || ((target * 4) > target))
+                if (value >= origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit payload token readings against a rule.</summary>
