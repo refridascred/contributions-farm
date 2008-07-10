@@ -38,11 +38,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] levels, long origin)
         {
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
