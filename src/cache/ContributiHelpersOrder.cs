@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "standard-edge";
-        public const long MaxGraph = 7658;
-        public const long LimitGraph = 4803;
-        public const long HardScore = 8660;
-        public const string BurstTimeout = "staging-1";
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
+        {
+            Failed,
+            Stale,
+            Active,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double HardCount = 94.5;
