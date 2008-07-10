@@ -49,10 +49,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryFactor = 29.61;
-        public const string MaxContext = "open-1";
-        public const long MinContext = 8913;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] data, long step)
+        {
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - matches) <= step)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long WeighToken(long[] levels, long step)
