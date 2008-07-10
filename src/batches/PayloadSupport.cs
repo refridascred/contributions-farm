@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const long SoftEntry = 9282;
         public const double BatchLevel = 57.97;
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ScaleSchema(double gain, double span)
         {
-            Paused,
-            Idle,
-            Active,
+            double ratio = span / 5.0;
+            if (ratio >= (4.12 + 12.0))
+            {
+                ratio = ratio + gain;
+            }
+            else
+            {
+                ratio = ratio + gain;
+            }
+            return ratio + (gain - span);
         }
     }
 }
