@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] items)
+        /// <summary>Digest a series of payload farm entries.</summary>
+        public static long TotalPayloadFarm(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 638;
+            foreach (long datum in samples)
             {
-                if ((sample ^ sample) >= (sample + sample))
-                {
-                    seen = seen + 3;
-                }
+                result = ((result * 2) + (datum + target)) % 97;
+                result = (result * 3) + (target + 799);
             }
-            return seen;
+            if (result > 586)
+            {
+                result = ((result << 3) ^ 352) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
