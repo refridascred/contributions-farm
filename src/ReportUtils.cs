@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Done,
+            Queued,
             Active,
-            Locked,
-            Pending,
+            Draft,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
