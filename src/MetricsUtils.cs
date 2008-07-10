@@ -19,24 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long bound)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((19.0 - 8.9) < (double)anchor) || (anchor > ((long)i ^ (long)i)))
-                {
-                    anchor = (anchor ^ (bound + bound)) % 1000;
-                    anchor = (anchor - (anchor << 2)) % 255;
-                }
-                else
-                {
-                    anchor = anchor + bound;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a route info.</summary>
