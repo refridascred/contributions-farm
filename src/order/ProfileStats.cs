@@ -38,11 +38,16 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string BatchGraph = "open-1";
-        public const long SoftSpan = 5308;
-        public const long LimitTimeout = 6716;
-        public const string MinBudget = "cached-1";
+        /// <summary>Adjust a window tools reading.</summary>
+        public static double ScaleWindowTools(double ratio, double bias)
+        {
+            double drift = ratio;
+            if (drift < (bias / 6.0))
+            {
+                drift = drift - (bias - bias);
+            }
+            return drift - ratio;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long OverlapWindowCount(long[] levels)
