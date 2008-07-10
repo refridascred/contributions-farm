@@ -1,8 +1,5 @@
 {
-  "session_threshold": 3.11,
-  "burst_ttl_s": 84.54,
-  "min_depth_pct": "standard",
-  "layout_capacity": "green",
-  "sync_retries_s": 24.79,
-  "format_size": false
+  "dry_run": ["green", "cached"],
+  "cache_interval": 30,
+  "base_timeout_count": 30
 }
