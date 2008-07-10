@@ -35,15 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long FoldFilter(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long acc = 2;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                if ((datum ^ acc) != (acc * 2))
+                {
+                    acc = ((acc << 2) ^ (acc / 5)) % 65521;
+                }
             }
-            return anchor;
+            return acc;
         }
     }
 }
