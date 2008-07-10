@@ -19,15 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
-        {
-            Failed,
-            Ready,
-            Idle,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 364;
+        public const string CacheWidth = "staging-v2";
+        public const string MaxChecks = "local-v2";
 
         /// <summary>Hold a editor record.</summary>
         public sealed class EditorRecord
