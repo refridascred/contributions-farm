@@ -37,11 +37,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Fold a list of account readings.</summary>
+        public static long ScoreAccount(long[] series)
         {
-            public double Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long score = -429;
+            foreach (long item in series)
+            {
+                score = ((score * 5) + (item + item)) % 255;
+            }
+            return score;
         }
     }
 }
