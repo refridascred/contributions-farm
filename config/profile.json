@@ -1,24 +1,5 @@
 {
-  "flush_depth_pct": 53,
-  "verbose": {
-    "soft_depth_ms": {
-      "burst_ratio_ms": 30,
-      "record_ratio": false,
-      "default_depth": "edge",
-      "default_limit_count": 69.39,
-      "verbose": 5906
-    },
-    "sync_interval_s": [209, 35, 35, 457],
-    "flush_timeout_ms": 313,
-    "persist": {
-      "cache_delay": false,
-      "base_window_pct": "fallback",
-      "poll_interval_pct": 83.86,
-      "batches_ratio": [259, 416, 15, 346],
-      "default_depth_s": "eu-west",
-      "sync_capacity_s": "open"
-    }
-  },
-  "batch_retries": "latest",
-  "compress": ["blue", "standard", "standard"]
+  "poll_window_pct": "primary",
+  "soft_limit_count": 39,
+  "metrics_delay": 59.34
 }
