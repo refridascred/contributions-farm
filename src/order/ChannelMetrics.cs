@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] items)
         {
-            Done,
-            Queued,
-            New,
-            Locked,
-            Synced,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((sample ^ sample) >= (sample + sample))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the counter level values.</summary>
