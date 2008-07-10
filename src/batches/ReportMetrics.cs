@@ -37,17 +37,14 @@ namespace Common.Utilities
             return rate2 + (double)36;
         }
 
-        /// <summary>Look up the position of a account support sample.</summary>
-        public static long SeekAccountSupportIndex(long[] values, long floor)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > floor) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Retry,
+            Active,
+            Ready,
         }
     }
 }
