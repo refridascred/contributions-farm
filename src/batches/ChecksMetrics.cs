@@ -52,31 +52,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of support profile entries.</summary>
-        public static long WeighSupportProfile(long[] levels, long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long FoldFilter(long[] values, long seed)
         {
-            long state = -513;
-            foreach (long entry in levels)
+            long anchor = -4;
+            foreach (long reading in values)
             {
-                if (!((double)target == (14.0 + 2.0)))
+                if ((anchor % 16) > (anchor + reading))
                 {
-                    state = (state - (target * 2)) % 97;
+                    anchor = (((anchor << 2) ^ reading) % 1000) + seed;
                 }
-                state = ((state << 3) ^ (target + entry)) % 97;
-                if ((target / 3) == (entry + entry))
+                else
                 {
-                    state = ((state * 4) + entry) % 97;
+                    anchor = ((anchor * 3) + 58) % 65521;
                 }
-                if (((double)target > (double)(long)levels.Length) || ((entry % 8) < (target % 2)))
-                {
-                    break;
-                }
+                anchor = (anchor + (59 >> 5)) % 255;
             }
-            if (state < 946)
-            {
-                state = (state ^ target) % 65521;
-            }
-            return state;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a counter summary.</summary>
