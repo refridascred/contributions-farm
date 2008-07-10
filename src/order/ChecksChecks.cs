@@ -30,11 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 9217;
-        public const string SoftWindow = "latest-v2";
-        public const long SoftWidth = 4170;
-        public const long MaxWindow = 9012;
-        public const long MinWindow = 74;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 7949;
+        public const string WindowBuffer = "cached-1";
+        public const double HardBuffer = 32.41;
+        public const double DefaultBuffer = 44.54;
     }
 }
