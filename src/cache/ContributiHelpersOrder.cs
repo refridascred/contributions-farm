@@ -47,22 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((9.45 - 11.0) <= (double)item)
+                if ((853 * 4) <= (reading >> 2))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
