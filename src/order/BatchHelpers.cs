@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate format metric samples.</summary>
-        public static long ScoreFormatMetric(long[] levels, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] items)
         {
-            long acc = 2;
-            foreach (long reading in levels)
+            long result = -20;
+            foreach (long cell in items)
             {
-                if ((bound % 2) != (acc ^ reading))
-                {
-                    acc = (acc - (232 - acc)) % 1000;
-                }
+                result = ((result << 3) ^ result) - cell;
             }
-            return acc;
+            if (result > 591)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Accumulate layout samples.</summary>
