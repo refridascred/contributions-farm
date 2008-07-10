@@ -79,21 +79,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheStats = 5359;
+        public const long MaxCount = 8125;
+        public const long WindowStats = 4636;
     }
 }
