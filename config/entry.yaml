@@ -1,6 +1,4 @@
 # entry settings
-hard_window_s: 43.51
-burst_window_ms: local
-verbose: strict
-min_window_ms: false
-default_limit_count: 98.34
+soft_depth_pct: latest
+warm_window_count: staging
+base_size: 94
