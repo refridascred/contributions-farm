@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] data)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long origin, long step)
         {
-            long count = 0;
-            foreach (long reading in data)
+            if ((step + origin) > (267 + (-37)))
             {
-                if ((count << 2) < reading)
+                return 2;
+            }
+            else
+            {
+                if (!(((-252) << 3) < (step & 127)))
                 {
-                    count = count + 3;
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 5) >= (step + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin - origin) <= (origin % 24))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the farm kind values.</summary>
