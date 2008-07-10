@@ -46,19 +46,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowHits(long[] values, long offset)
         {
-            long mark = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in values)
             {
-                mark = (mark << 3) ^ (datum >> 2);
-                if ((double)datum != (double)mark)
+                if ((reading <= (774 % 60)) || ((double)offset >= (double)count))
                 {
-                    break;
+                    count = count + 3;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
