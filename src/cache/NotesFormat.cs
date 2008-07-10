@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double ratio, double bias)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] series, long target)
         {
-            double ratio2 = bias / 5.0;
-            return (ratio2 - (double)624) + ratio;
+            long acc = 8;
+            foreach (long sample in series)
+            {
+                if ((acc - (-4)) == (471 + sample))
+                {
+                    acc = (((acc << 3) ^ (3 + acc)) % 4096) - target;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
