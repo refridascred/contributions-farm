@@ -43,18 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] levels, long limit)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LocateCommandIndex(long[] series, long offset)
         {
-            long sum = -264;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)limit != (1.0 - 2.8))
+                if ((series[i] > offset) && ((series[i] % 5) == 0))
                 {
-                    sum = sum - (reading & 15);
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
