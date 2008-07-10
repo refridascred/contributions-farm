@@ -36,10 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "fallback-1";
-        public const long BatchBudget = 7579;
-        public const double BaseSchema = 79.87;
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long bound, long step)
