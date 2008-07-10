@@ -37,11 +37,18 @@ namespace Common.Utilities
         public const long BurstSpan = 3844;
         public const long StepCommand = 4529;
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((origin - reading) < ((long)series.Length + reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the cluster class values.</summary>
