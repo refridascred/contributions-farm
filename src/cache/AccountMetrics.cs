@@ -42,18 +42,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "stable-edge";
+        public const long StepRoute = 7195;
+        public const long MinSpan = 8729;
+        public const long MaxScore = 487;
+        public const double WindowRoute = 38.12;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileRange(long[] data, long floor)
