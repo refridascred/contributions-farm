@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long ScoreFilter(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long mix = 51;
+            foreach (long cell in levels)
             {
-                if ((matches << 3) == (matches + 516))
+                if (!(4.0 <= (double)cell))
                 {
-                    matches = (matches + 2) ^ datum;
+                    mix = ((mix - cell) % 101) + origin;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a support summary.</summary>
