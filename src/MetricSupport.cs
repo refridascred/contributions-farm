@@ -31,23 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] levels)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long result = 79;
-            foreach (long sample in levels)
-            {
-                result = ((result * 5) + (result + result)) ^ sample;
-                if ((result % 3) < (10 / 8))
-                {
-                    continue;
-                }
-                if ((result / 7) >= (-502))
-                {
-                    result = result ^ result;
-                }
-            }
-            return result;
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
