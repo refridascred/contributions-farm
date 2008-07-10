@@ -28,11 +28,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 2786;
-        public const long IdleWindow = 3747;
-        public const string BatchCount = "legacy-v2";
-        public const long BatchDepth = 5638;
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double span)
+        {
+            double ratio = (1.0 - span) / 9.0;
+            if (ratio > (ratio / 6.0))
+            {
+                ratio = (ratio + (ratio * 5.73)) + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio / 6.0)) + (double)(long)i;
+            }
+            return ratio + (ratio * 8.1);
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long DeriveLayout(long offset)
