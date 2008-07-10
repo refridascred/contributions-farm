@@ -46,18 +46,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] readings, long seed)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            double bias = floor * 4.58;
+            if (bias < (double)76)
             {
-                if (!((entry - seed) > (6 + 4)) || ((entry >> 5) != (seed << 2)))
-                {
-                    seen = seen + 2;
-                }
+                bias = (bias - floor) - gain;
             }
-            return seen;
+            return bias + (double)40;
         }
     }
 }
