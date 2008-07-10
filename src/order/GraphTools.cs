@@ -34,11 +34,23 @@ namespace Common.Utilities
         public const double BurstTools = 47.54;
         public const string WindowTools = "open-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double HardContributi = 49.49;
-        public const long BurstDepth = 3735;
-        public const string WindowContributi = "fallback";
-        public const long SoftContributi = 254;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!(((double)cell <= (4.0 + 9.0)) && (cell > (57 + cell))))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
