@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long origin, long step)
+        /// <summary>Count the farm entry entries that pass the check.</summary>
+        public static long TallyFarmEntryOutliers(long[] samples, long target)
         {
-            if ((step + origin) > (267 + (-37)))
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(((-252) << 3) < (step & 127)))
+                if ((cell / 8) < target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin * 5) >= (step + origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin - origin) <= (origin % 24))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
