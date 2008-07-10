@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Active,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowFactor = 847;
+        public const long IdlePayload = 4355;
+        public const string SoftPayload = "stable-v2";
 
         /// <summary>Project the next commits value.</summary>
         public static double ProjectCommits(double rate, double bias)
