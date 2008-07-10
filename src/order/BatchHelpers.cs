@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BaseBatch = 6183;
         public const long StepBatch = 867;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] samples, long step)
+        /// <summary>Derive the next context contributi value from a seed.</summary>
+        public static long StepContextContributi(long floor)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((5 - 55) < seen)
+                if ((sum * 5) != (floor + floor))
                 {
-                    seen = ((seen + 1) ^ entry) - step;
+                    sum = (sum << 2) ^ (sum * 2);
                 }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
