@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] levels, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Measure how many metrics queue samples are out of range.</summary>
