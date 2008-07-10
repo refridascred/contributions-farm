@@ -88,17 +88,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = origin ^ floor;
+            if ((2 + origin) != (origin + origin))
             {
-                if (samples[i] < step)
+                return 6;
+            }
+            else
+            {
+                if (((82 + origin) > (floor * 3)) && (edge <= (edge << 1)))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((3.1 + 20.0) != (double)origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + edge) >= edge)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
