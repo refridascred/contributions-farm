@@ -42,11 +42,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] levels)
         {
-            public double Mode { get; set; }
-            public long Owner { get; set; }
+            long mix = -274;
+            foreach (long sample in levels)
+            {
+                if ((double)mix == (8.0 + 3.4))
+                {
+                    mix = (((mix << 3) ^ (mix + (long)levels.Length)) % 65521) - sample;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+            }
+            return mix % 4096;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
