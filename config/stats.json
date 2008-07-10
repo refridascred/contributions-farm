@@ -1,12 +1,5 @@
 {
-  "base_limit": {
-    "layout_limit": 75.83,
-    "githubfarm_ratio": "stable",
-    "idle_timeout_ms": "cached",
-    "burst_ratio": "green",
-    "contributi_delay": "green",
-    "poll_delay": 8.51
-  },
-  "strict": 5684,
-  "persist": 48.04
+  "compress": "strict",
+  "poll_retries_count": 68,
+  "poll_threshold": 60
 }
