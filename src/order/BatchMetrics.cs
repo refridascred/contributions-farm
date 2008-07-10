@@ -25,10 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowTimeout = 7318;
-        public const long MinSize = 2974;
-        public const long RetryCache = 8470;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double scale, double floor)
+        {
+            double ratio = scale + (double)2;
+            if (ratio <= 5.2)
+            {
+                ratio = (ratio - (scale - scale)) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (3.5 * 5.7)) - (double)(long)i;
+            }
+            return ratio + scale;
+        }
 
         /// <summary>Fold a list of payload session readings.</summary>
         public static long CombinePayloadSession(long[] data)
