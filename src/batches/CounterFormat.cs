@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const double SoftLayout = 69.51;
         public const long BatchInterval = 9764;
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] values, long limit)
+        /// <summary>Measure how many metric record samples are out of range.</summary>
+        public static long CountMetricRecordMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (values[i] < limit)
+                if ((matches ^ 22) <= (842 - 932))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit command account readings against a rule.</summary>
