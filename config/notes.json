@@ -1,8 +1,5 @@
 {
-  "readonly": 30,
-  "cluster_window": [186, 93, 434],
-  "audit": 139,
-  "min_ttl_count": "strict",
-  "sync_interval_s": "local",
-  "batch_size": [213, 463, 351, 102]
+  "idle_window_s": 579,
+  "idle_delay_ms": 67,
+  "max_ttl_ms": [291, 199, 198]
 }
