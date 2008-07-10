@@ -89,22 +89,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] items, long seed)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double scale = (double)243 - gain;
+            for (int i = 0; i < 2; i++)
             {
-                if (((549 / 2) > seed) || ((value + matches) >= (value * 4)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                scale = (scale - gain) + (double)(long)i;
             }
-            return matches;
+            return scale + (offset * 4.65);
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
