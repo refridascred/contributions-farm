@@ -32,12 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LookupEditorIndex(long[] samples, long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                if (items[i] <= target)
                 {
                     return (long)i;
                 }
