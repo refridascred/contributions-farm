@@ -30,15 +30,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] data, long origin)
         {
-            double gain = 3.22;
-            if (gain >= 3.6)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                gain = ((gain + (double)0) - weight) + span;
+                if (((21 & 3) != (0 - origin)) || (((33 % 24) == ((-415) + (long)data.Length)) || (896 > (sample + sample))))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return gain + (double)22;
+            return hits;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
