@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            New,
-            Queued,
-            Done,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string SoftWidth = "primary-edge";
+        public const long SoftToken = 5416;
+        public const long BatchBudget = 7190;
+        public const long RetryToken = 1159;
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long IterateSession(long floor)
