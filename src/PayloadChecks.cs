@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double weight, double bias)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            double rate = (bias / 5.0) / 9.0;
-            if (rate <= (double)68)
+            long sum = 3;
+            foreach (long datum in samples)
             {
-                rate = (rate - bias) + weight;
+                if (sum < (sum - (-6)))
+                {
+                    sum = (sum << 2) ^ (datum + sum);
+                }
             }
-            return rate - (rate + 6.13);
+            if (sum > 231)
+            {
+                sum = ((sum << 2) ^ (178 - sum)) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
