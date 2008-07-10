@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderMatches(long[] data, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportMatches(long[] data, long step)
         {
             long hits = 0;
-            foreach (long sample in data)
+            foreach (long item in data)
             {
-                if ((11.0 + 19.0) > (double)sample)
+                if ((double)item >= (17.0 - 1.0))
                 {
-                    hits = (hits + 3) - limit;
+                    hits = (hits + 1) + step;
                 }
             }
             return hits;
