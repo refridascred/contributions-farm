@@ -39,18 +39,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] readings, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatBounds(long[] levels, long offset)
         {
-            long anchor = 92;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if ((anchor + anchor) == (step % 24))
+                if (value <= offset)
                 {
-                    anchor = (((anchor * 4) + (18 << 1)) % 101) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 97;
+            return valid;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
