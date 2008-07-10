@@ -46,10 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepSession = 62.86;
-        public const long WindowBudget = 6412;
-        public const long HardSession = 5201;
-        public const long IdleInterval = 4479;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((bound - 215) >= (entry + 253))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
