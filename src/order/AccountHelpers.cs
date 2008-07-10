@@ -58,17 +58,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a already queue sample.</summary>
-        public static long FindAlreadyQueueIndex(long[] data, long target)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long bound, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)bound >= 3.0)
             {
-                if ((data[i] > target) && ((data[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (((offset << 3) == (bound % 100)) && ((double)bound >= (7.0 / 9.0)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
