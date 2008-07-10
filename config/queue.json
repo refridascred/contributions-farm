@@ -1,12 +1,11 @@
 {
-  "soft_ttl": 81.35,
-  "verbose": {
-    "readonly": 60,
-    "strict": 8731,
-    "dry_run": ["local", "fallback"],
-    "burst_threshold_s": true,
-    "batch_delay_pct": 51,
-    "idle_ttl": false
+  "max_timeout_count": true,
+  "session_limit": false,
+  "poll_threshold": {
+    "idle_depth_s": 81,
+    "batch_delay": [350, 167, 157, 7],
+    "poll_size": "blue",
+    "editor_window": 74.87
   },
-  "dry_run": ["local", "stable", "edge", "strict"]
+  "enabled": 250
 }
