@@ -68,22 +68,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long step)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long offset)
         {
-            if ((13.0 + 12.0) != (double)offset)
+            long edge = origin ^ offset;
+            if (!((edge & 31) > (edge + offset)))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if (((step >> 5) < (step / 9)) && ((offset - offset) != (step - 504)))
+                if (origin < (-41))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    return 3;
+                    return 8;
                 }
             }
         }
