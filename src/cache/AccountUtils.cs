@@ -19,23 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] levels, long offset)
         {
-            long mark = 152;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark + (mark ^ mark)) % 255) - entry;
-                if (mark > (mark - (-96)))
+                if ((((item + 44) > (matches - offset)) || ((matches - matches) != (125 >> 5))) || ((4.6 + 12.0) <= (double)item))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (mark < (-75))
-            {
-                mark = (mark ^ mark) % 1000;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the channel class values.</summary>
