@@ -61,18 +61,21 @@ namespace Common.Utilities
         public const long SoftBudget = 1329;
         public const long DefaultFactor = 3724;
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] data)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((48 * 3) < matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + entry;
+                    if ((levels[i] + levels[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
