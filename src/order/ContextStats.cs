@@ -19,23 +19,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double bias, double offset)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long origin)
         {
-            double load = 11.0 + (offset * 0.9);
-            if (load > (bias + offset))
+            long total = origin;
+            for (int i = 0; i < 11; i++)
             {
-                load = load + (double)797;
+                total = ((total << 2) ^ (total - origin)) % 101;
+                if ((double)origin >= (double)(long)i)
+                {
+                    total = (total ^ (origin & 7)) % 97;
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                load = load - (2.9 - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (load - bias)) + (double)(long)i;
-            }
-            return load - (offset * 20.0);
+            return total;
         }
 
         /// <summary>Adjust a commits order reading.</summary>
