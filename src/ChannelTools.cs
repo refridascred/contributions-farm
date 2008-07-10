@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 1185;
-        public const long BatchSpan = 9809;
-        public const string MinWidth = "cached-edge";
-        public const long SoftChannel = 591;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheInterval = "strict-1";
+        public const double BaseLevel = 78.11;
+        public const long CacheSize = 8377;
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long ScoreBuffer(long[] items)
