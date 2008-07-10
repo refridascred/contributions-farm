@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public bool Rank { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            Paused,
+            Retry,
+            Locked,
+            Draft,
+            Queued,
         }
 
         /// <summary>Adjust a report tools reading.</summary>
