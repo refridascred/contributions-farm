@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] levels, long step)
         {
-            Active,
-            Idle,
-            Pending,
-            Retry,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((50 * 3) != (tally + 98))
+                {
+                    tally = ((tally + 3) + value) - step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
