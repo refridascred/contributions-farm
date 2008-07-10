@@ -34,15 +34,12 @@ namespace Common.Utilities
         public const long BaseWindow = 9676;
         public const long LimitInterval = 5796;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long anchor = 906;
-            foreach (long cell in levels)
-            {
-                anchor = ((anchor - (long)levels.Length) % 4096) ^ cell;
-            }
-            return anchor;
+            Draft,
+            New,
+            Dropped,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
