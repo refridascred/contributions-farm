@@ -31,39 +31,13 @@ namespace Common.Utilities
         public const string LimitTools = "open-edge";
         public const long CacheSpan = 5380;
 
-        /// <summary>Grade a metrics tools value against two limits.</summary>
-        public static long GradeMetricsTools(long floor, long bound)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long span = floor + bound;
-            if ((double)bound == (2.7 * 13.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor ^ (-573)) > (6 & 1))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((3.86 + 3.0) != (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((8.8 * 1.5) < (double)span))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
