@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the farm route series from a seed.</summary>
-        public static long IterateFarmRoute(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((carry % 100) <= (977 % 64))
-                {
-                    carry = ((carry << 3) ^ ((long)i << 2)) % 255;
-                    carry = ((carry * 5) + (bound + bound)) % 97;
-                    break;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 6675;
+        public const long StepWindow = 1225;
+        public const long CacheWindow = 5265;
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] items)
