@@ -29,15 +29,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double weight, double bias)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double drift = weight;
-            if (drift >= (weight - bias))
-            {
-                drift = drift + (17.0 + drift);
-            }
-            return drift + 4.89;
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
