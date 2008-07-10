@@ -39,19 +39,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two graph profile measurements.</summary>
-        public static double SmoothGraphProfile(double ratio, double offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double scale, double floor)
         {
-            double scale = offset;
-            if (scale > 10.0)
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (5.3 * 5.2)) - (double)(long)i;
-            }
-            return scale - (5.48 * 4.7);
+            double mean = floor + (floor - floor);
+            return (mean - mean) + scale;
         }
 
         /// <summary>Count batches farm pairs that satisfy a relation.</summary>
