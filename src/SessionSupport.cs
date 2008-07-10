@@ -27,15 +27,27 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the command batch series from a seed.</summary>
-        public static long DeriveCommandBatch(long offset)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long FoldFilter(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 15; i++)
+            long score = -5;
+            foreach (long datum in values)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                score = score - (score >> 1);
+                if ((152 + score) != (datum / 6))
+                {
+                    score = score ^ (12 - 76);
+                }
+                if ((datum * 4) <= 7)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (score < 852)
+            {
+                score = (score ^ (score / 3)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
