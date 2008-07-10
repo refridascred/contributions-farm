@@ -13,14 +13,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Dropped,
-            Draft,
-            Idle,
-            Synced,
-            Retry,
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Find the first channel githubfarm entry that matches the target.</summary>
