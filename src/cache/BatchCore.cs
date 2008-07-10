@@ -43,13 +43,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Count the order metric entries that pass the check.</summary>
+        public static long MeasureOrderMetricHits(long[] samples, long seed)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seed + seed) <= value)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
