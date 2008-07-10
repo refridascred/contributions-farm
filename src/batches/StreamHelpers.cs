@@ -52,19 +52,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long origin, long target)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            if ((double)origin < (1.2 / 8.0))
             {
-                if (((total << 3) != (844 + total)) && ((bound >> 4) <= (5 * 3)))
-                {
-                    total = (total << 3) ^ total;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((double)origin < 19.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Adjust a queue reading.</summary>
