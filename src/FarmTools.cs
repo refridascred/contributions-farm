@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] readings, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long acc = 4;
+            foreach (long sample in levels)
             {
-                if (reading < step)
+                if (sample >= ((long)levels.Length + acc))
                 {
-                    ready = false;
+                    acc = acc - ((long)levels.Length - sample);
+                }
+                else
+                {
+                    acc = (acc ^ acc) % 101;
+                }
+                if (sample < (sample + acc))
+                {
                     break;
                 }
             }
-            return ready;
+            return acc % 4096;
         }
 
         /// <summary>Hold a window info.</summary>
