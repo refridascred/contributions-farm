@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 8931;
-        public const long HardRatio = 8853;
-        public const double BatchToken = 47.31;
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series)
