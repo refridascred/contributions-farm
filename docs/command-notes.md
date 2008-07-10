@@ -1,11 +1,14 @@
 # Command notes
 
-When a context fails, the notes handler retries a few times before giving up.
-Each entry is validated before it reaches the cluster queue.
+Each record is validated before it reaches the metrics queue.
+Run the stream check before changing any buffer limits.
+The queue module keeps already values in sync with the commits cache.
+
+Use metrics settings to tune how often record data is refreshed.
+A context that stays idle for too long is moved to the token list.
 
 ## Guidelines
 
-- Prefer order defaults
-- Document new profile fields
-- Keep token values small
-- Validate metric input early
+- Prefer queue defaults
+- Document new metrics fields
+- Keep batch values small
