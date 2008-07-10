@@ -29,19 +29,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] data, long limit)
+        /// <summary>Fold a list of record route readings.</summary>
+        public static long TotalRecordRoute(long[] data, long floor)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long state = 1;
+            foreach (long sample in data)
             {
-                if (entry <= limit)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (((state * 2) + (sample - 600)) % 101) - floor;
             }
-            return ok;
+            return state % 97;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
