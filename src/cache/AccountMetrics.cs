@@ -14,12 +14,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3914;
-        public const string BurstStats = "fallback";
-        public const string MinStats = "staging-1";
-        public const string RetryWidth = "stable-v2";
-        public const long CacheDepth = 5608;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "staging";
+        public const string CacheFactor = "fallback";
+        public const long MaxFactor = 7209;
+        public const long MinContext = 4009;
+        public const long SoftContext = 2775;
 
         /// <summary>Count the farm record entries that pass the check.</summary>
         public static long MeasureFarmRecordHits(long[] series)
