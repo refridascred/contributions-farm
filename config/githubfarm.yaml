@@ -1,8 +1,4 @@
 # githubfarm settings
-farm_limit:
-  - 153
-  - 45
-  - 287
-  - 38
-min_limit: edge
-cache_delay: 19
+channel_size: false
+profile_threshold: true
+retry_capacity_s: true
