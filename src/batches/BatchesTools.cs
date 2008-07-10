@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "local-edge";
-        public const double CacheGraph = 92.48;
-        public const long MinGraph = 4546;
-        public const long SoftBudget = 8658;
-        public const double RetryGraph = 73.54;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultRatio = "stable-edge";
+        public const string IdleSpan = "strict-1";
+        public const double HardScore = 92.71;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricMatches(long[] data)
