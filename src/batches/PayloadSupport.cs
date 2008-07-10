@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Compare every pair of support entry readings.</summary>
-        public static long MatchSupportEntryCount(long[] readings)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((double)value <= (2.8 / 5.0)) && (((14.0 * 0.26) < (double)count) || ((count % 7) <= (value % 7))))
                 {
-                    if ((readings[i] ^ readings[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
