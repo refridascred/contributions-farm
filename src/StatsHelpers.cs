@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every record notes entry stays within the limit.</summary>
-        public static bool GuardRecordNotesRange(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 8931;
+        public const long HardRatio = 8853;
+        public const double BatchToken = 47.31;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long CountRecordMatches(long[] series)
