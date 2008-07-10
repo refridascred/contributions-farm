@@ -63,22 +63,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] samples)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 6;
+            foreach (long item in levels)
             {
-                if ((544 ^ count) >= (152 + value))
+                if (((477 + step) < (item % 60)) || ((4 + item) > step))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = result - (item % 2);
                 }
             }
-            return count;
+            return result;
         }
     }
 }
