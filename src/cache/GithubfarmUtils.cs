@@ -29,13 +29,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitInterval = 6331;
+        public const string HardLevel = "cached";
+        public const string BatchRatio = "staging";
+        public const long MaxCounter = 6297;
+        public const long BatchTimeout = 9684;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterOutliers(long[] readings, long seed)
