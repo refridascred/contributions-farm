@@ -25,19 +25,10 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long target)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MinScore = 16.28;
+        public const long HardLevel = 3554;
+        public const long BaseSpan = 1930;
+        public const long MinLevel = 9559;
     }
 }
