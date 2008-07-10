@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] values, long offset)
+        /// <summary>Measure how many stats context samples are out of range.</summary>
+        public static long CountStatsContextOutliers(long[] readings, long offset)
         {
-            long mark = 702;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mark = (mark * 5) + cell;
+                if ((cell ^ cell) <= (cell << 3))
+                {
+                    matches = (matches + 2) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark < 124)
-            {
-                mark = ((mark << 3) ^ offset) % 101;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
