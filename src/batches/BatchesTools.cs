@@ -33,32 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long limit2)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long prev = limit - limit2;
-            if ((limit / 8) > prev)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit2) <= limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((prev % 60) > (limit2 / 6)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Ready,
+            Dropped,
         }
     }
 }
