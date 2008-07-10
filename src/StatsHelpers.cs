@@ -36,15 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings, long offset)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long result = 2;
-            foreach (long cell in readings)
-            {
-                result = (((result ^ (result * 3)) % 255) - cell) - offset;
-            }
-            return result;
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Locate a editor order reading by value.</summary>
