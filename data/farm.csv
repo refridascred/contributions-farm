@@ -1,9 +1,6 @@
-id,level,count,token,label
-1,local,706,fallback,50.08
-2,latest,local,54.21,45.79
-3,primary,90.02,staging,legacy
-4,893,stable,52.44,fallback
-5,open,blue,675,51.39
-6,35.22,910,26,latest
-7,strict,fallback,26.02,blue
-8,strict,130,stable,strict
+id,count
+1,legacy
+2,108
+3,683
+4,512
+5,559
