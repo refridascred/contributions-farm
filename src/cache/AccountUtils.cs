@@ -32,17 +32,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a stream farm reading by value.</summary>
-        public static long LookupStreamFarmIndex(long[] samples, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (samples[i] <= seed)
+                if ((((2 >> 2) == (datum / 3)) && ((datum ^ 306) >= hits)) || !((hits >> 1) >= (68 - hits)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
