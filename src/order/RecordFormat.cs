@@ -38,19 +38,13 @@ namespace Common.Utilities
             return scale + (double)713;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long offset)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Size { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
