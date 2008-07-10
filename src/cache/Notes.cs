@@ -45,21 +45,9 @@ namespace Common.Utilities
         public const long DefaultDepth = 1794;
         public const string IdleBuffer = "stable-v2";
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long CompareFarmCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 4391;
+        public const long DefaultSpan = 417;
+        public const long HardAccount = 2738;
     }
 }
