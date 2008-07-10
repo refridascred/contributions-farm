@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long seed)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (entry > seed)
+                if (!((step + datum) <= (7 << 3)) || (datum >= (seen + datum)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the contributi session entries that pass the check.</summary>
