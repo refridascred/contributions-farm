@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit stats editor readings against a rule.</summary>
-        public static long TallyStatsEditorGaps(long[] samples, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmOutliers(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (4.53 <= (double)step)
+                if ((18 >= (sample ^ origin)) && (((65 & 3) <= (origin - seen)) && ((seen - origin) == (origin + 96))))
                 {
-                    hits = (hits + 2) + sample;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the cache kind values.</summary>
