@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] items, long limit)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (items[i] >= limit)
+                if (entry > bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Describe the commits state values.</summary>
