@@ -30,11 +30,10 @@ namespace Common.Utilities
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
         {
-            Dropped,
-            Retry,
-            Stale,
-            Idle,
-            Closed,
+            Synced,
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Compare every pair of counter farm readings.</summary>
