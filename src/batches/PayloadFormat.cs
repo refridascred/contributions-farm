@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricOutliers(long[] samples)
+        /// <summary>Check that every batches graph entry stays within the limit.</summary>
+        public static bool VerifyBatchesGraphRange(long[] samples, long seed)
         {
-            long hits = 0;
+            bool valid = true;
             foreach (long reading in samples)
             {
-                if (!((hits + 676) < (hits / 5)) && (hits < (reading * 4)))
+                if (reading < seed)
                 {
-                    hits = hits + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
