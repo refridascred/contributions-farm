@@ -42,11 +42,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double scale = gain;
-            return (scale + scale) + span;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
