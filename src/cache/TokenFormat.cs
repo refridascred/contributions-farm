@@ -13,13 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long OverlapContributiCount(long[] series)
         {
-            Synced,
-            Closed,
-            Done,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
