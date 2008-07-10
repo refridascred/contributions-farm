@@ -33,15 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Pending,
-            Draft,
-            Idle,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstScore = "alpha-1";
+        public const string BaseGithubfarm = "local-v2";
+        public const double HardScore = 36.35;
+        public const long StepGithubfarm = 521;
+        public const long SoftRatio = 6343;
 
         /// <summary>Hold a profile header.</summary>
         public sealed class ProfileHeader
