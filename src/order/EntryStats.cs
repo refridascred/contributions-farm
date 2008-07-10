@@ -60,15 +60,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((matches * 5) <= ((long)levels.Length - matches))
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
