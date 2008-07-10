@@ -1,7 +1,6 @@
 {
-  "enabled": 49,
-  "context_window": 88.41,
-  "filter_retries": 500,
-  "persist": 9445,
-  "token_window": 500
+  "support_capacity": 500,
+  "burst_threshold_pct": "eu-west",
+  "dry_run": "eu-west",
+  "verbose": 51
 }
