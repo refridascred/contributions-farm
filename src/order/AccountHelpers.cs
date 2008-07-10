@@ -35,21 +35,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor tools pairs that satisfy a relation.</summary>
-        public static long CompareEditorToolsCount(long[] readings)
+        /// <summary>Locate a queue buffer reading by value.</summary>
+        public static long FindQueueBufferIndex(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((values[i] >= target) && ((values[i] % 2) == 0))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
