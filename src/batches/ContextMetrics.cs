@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long result = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                long slot = (seed + result) >> 4;
-                if (!((6.6 + 5.9) != (double)result))
-                {
-                    result = (result * 4) + (slot >> 3);
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many farm stats samples are out of range.</summary>
