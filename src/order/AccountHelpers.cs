@@ -32,17 +32,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] items, long target)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (items[i] <= target)
-                {
-                    return (long)i;
-                }
+                acc = (acc * 4) + (acc & 31);
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
