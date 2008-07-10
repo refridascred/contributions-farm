@@ -20,12 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardRecord = 64.07;
-        public const long CacheWidth = 9162;
-        public const long SoftRecord = 7449;
-        public const long DefaultInterval = 2704;
-        public const long DefaultRecord = 5731;
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
