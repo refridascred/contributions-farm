@@ -19,18 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a tools entry sample.</summary>
-        public static long FindToolsEntryIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 8758;
+        public const long HardLevel = 2058;
+        public const string BaseBudget = "primary-1";
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long IterateRoute(long floor)
