@@ -1,4 +1,12 @@
 # entry settings
-flush_window_pct: true
-batch_capacity_pct: 8961
-schema_retries: 60
+poll_capacity_ms: true
+warm_ttl:
+  - edge
+  - cached
+poll_depth_s: 60
+soft_ratio: 1024
+sync_limit:
+  - edge
+  - fallback
+  - eu-west
+compress: true
