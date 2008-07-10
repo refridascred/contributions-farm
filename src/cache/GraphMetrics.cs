@@ -48,15 +48,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats context entries.</summary>
-        public static long WeighStatsContext(long[] levels, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionGaps(long[] levels, long step)
         {
-            long result = 254;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                result = ((result + (87 & 31)) - datum) - offset;
+                if (step < (sample - sample))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Accumulate channel cluster samples.</summary>
