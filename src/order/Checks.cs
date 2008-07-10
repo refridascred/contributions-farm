@@ -51,13 +51,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long seed)
         {
-            Failed,
-            Draft,
-            Done,
-            Retry,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a queue entry.</summary>
