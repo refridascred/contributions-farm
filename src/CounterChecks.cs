@@ -17,12 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] readings)
         {
-            New,
-            Ready,
-            Active,
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((double)matches < 12.0)
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next batches order value from a seed.</summary>
