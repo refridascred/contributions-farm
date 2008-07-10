@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long BaseTimeout = 2405;
         public const double DefaultTimeout = 80.71;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] data)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long item in data)
+            double load = (double)(56 * 5);
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits + 76) >= hits)
-                {
-                    hits = (hits + 3) ^ item;
-                }
+                load = ((load + load) + (double)(long)i) - bias2;
             }
-            return hits;
+            return load - bias;
         }
 
         /// <summary>Describe the filter level values.</summary>
