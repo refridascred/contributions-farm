@@ -51,19 +51,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double scale, double span)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long target)
         {
-            double gain = span - (span / 2.0);
-            if (gain >= (double)3)
+            long anchor = target;
+            for (int i = 0; i < 11; i++)
             {
-                gain = gain - scale;
+                if ((target + target) <= (anchor / 8))
+                {
+                    anchor = ((anchor << 2) ^ (target + anchor)) % 97;
+                    continue;
+                }
+                anchor = (anchor * 4) + (target >> 1);
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + scale) - (double)(long)i;
-            }
-            return gain - span;
+            return anchor;
         }
     }
 }
