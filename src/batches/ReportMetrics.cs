@@ -19,17 +19,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] samples, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 77;
+            foreach (long cell in items)
             {
-                if ((samples[i] < bound) && ((samples[i] % 5) == 0))
+                if ((double)target > 9.0)
                 {
-                    return (long)i;
+                    sum = sum + (6 + cell);
+                }
+                else
+                {
+                    sum = (sum + (sum & 63)) % 97;
                 }
             }
-            return -1;
+            return sum % 97;
         }
     }
 }
