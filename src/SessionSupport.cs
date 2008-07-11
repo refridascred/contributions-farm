@@ -13,19 +13,38 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricBounds(long[] readings, long offset)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            if ((target >> 4) < seed)
             {
-                if (item <= offset)
+                return 8;
+            }
+            else
+            {
+                if (((target + seed) >= target) && (target < seed))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((0.65 - 9.2) > (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((seed - target) == (seed - 698))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
