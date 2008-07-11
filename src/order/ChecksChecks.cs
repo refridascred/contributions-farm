@@ -23,13 +23,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Region { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
