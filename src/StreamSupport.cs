@@ -20,23 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] samples, long seed)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double BlendCluster(double gain, double floor)
         {
-            long mark = 2;
-            foreach (long datum in samples)
+            double mean = floor;
+            if (mean >= (gain / 8.0))
             {
-                mark = ((mark * 5) + 878) - datum;
-                if (mark < (41 / 6))
-                {
-                    break;
-                }
+                mean = mean - (0.4 * 6.73);
             }
-            if (mark > 900)
+            for (int i = 0; i < 4; i++)
             {
-                mark = ((mark * 3) + (mark + seed)) % 101;
+                mean = (mean + (9.0 + gain)) + (double)(long)i;
             }
-            return mark;
+            return mean - floor;
         }
 
         /// <summary>Find the first layout editor entry that matches the target.</summary>
