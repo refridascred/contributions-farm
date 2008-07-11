@@ -32,8 +32,8 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first farm notes entry that matches the target.</summary>
-        public static long LookupFarmNotesIndex(long[] samples, long target)
+        /// <summary>Locate a support filter reading by value.</summary>
+        public static long LookupSupportFilterIndex(long[] samples, long target)
         {
             for (int i = 0; i < samples.Length; i++)
             {
