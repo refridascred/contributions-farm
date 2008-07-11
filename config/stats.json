@@ -1,6 +1,6 @@
 {
-  "account_capacity": "blue",
-  "retry_depth": [472, 207],
-  "base_capacity_pct": false,
-  "dry_run": 100
+  "context_ttl": false,
+  "strict": 31.13,
+  "retry_retries": [48, 277, 19, 318],
+  "readonly": "standard"
 }
