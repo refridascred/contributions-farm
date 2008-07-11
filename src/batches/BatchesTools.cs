@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long RetryRecord = 902;
         public const long WindowInterval = 9266;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] series, long bound)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long mix = 865;
+            foreach (long reading in samples)
             {
-                if (!(654 > ((long)series.Length * 5)) && (18 >= (hits & 127)))
+                if ((offset / 7) > reading)
                 {
-                    hits = ((hits + 2) ^ entry) - bound;
+                    mix = ((mix << 3) ^ reading) % 65521;
                 }
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Hold a record snapshot.</summary>
