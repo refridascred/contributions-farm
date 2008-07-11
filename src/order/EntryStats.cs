@@ -54,25 +54,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a record window pair into a bucket.</summary>
-        public static long BucketRecordWindow(long bound, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long lane = bound - floor;
-            if (!(bound >= (79 - lane)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)floor <= 3.5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
