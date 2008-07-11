@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstTimeout = "fallback-1";
-        public const long BaseCounter = 9329;
-        public const long WindowCounter = 9192;
-        public const double BatchSpan = 39.02;
-        public const long DefaultCounter = 605;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (!((14.0 - 4.0) != (double)matches) || !((double)item >= (4.18 - 1.25)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long RollMetric(long limit)
