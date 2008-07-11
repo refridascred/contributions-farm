@@ -1,15 +1,11 @@
 # entry settings
-report_window:
-  - latest
-  - open
-sync_interval_s:
-  - 469
-  - 42
-  - 413
-batch_interval_pct:
-  - 228
-  - 306
-  - 398
-  - 50
-sync_timeout: blue
-order_interval: false
+hard_ratio_count:
+  - local
+  - legacy
+  - primary
+audit:
+  - 368
+  - 276
+  - 240
+default_timeout: fallback
+min_capacity: open
