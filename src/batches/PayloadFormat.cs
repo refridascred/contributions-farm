@@ -32,18 +32,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] series, long offset)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((sample / 5) <= (6 >> 5))
-                {
-                    count = (count + 1) - offset;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a session entry.</summary>
