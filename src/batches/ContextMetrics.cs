@@ -29,18 +29,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] items)
+        /// <summary>Project the next context cache value.</summary>
+        public static double ProjectContextCache(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double mean = (offset + gain) + offset;
+            if (mean >= (gain - offset))
             {
-                if (((hits - item) >= 5) && ((1.0 / 5.0) <= (double)hits))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean + gain;
             }
-            return hits;
+            return mean + (mean + gain);
         }
 
         /// <summary>Accumulate order metric samples.</summary>
