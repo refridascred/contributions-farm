@@ -1,17 +1,6 @@
 {
-  "hard_threshold_ms": 8478,
-  "burst_size_pct": 996,
-  "soft_depth": {
-    "min_depth_ms": "primary",
-    "audit": 24.29,
-    "default_depth": {
-      "warm_ratio_s": false,
-      "base_limit": "primary",
-      "burst_capacity": 18,
-      "default_retries_count": 1756,
-      "checks_timeout": "strict"
-    }
-  },
-  "min_ratio": false,
-  "hard_interval_s": [209, 353, 270]
+  "burst_delay_pct": "blue",
+  "queue_retries": "standard",
+  "strict": 6780,
+  "order_retries": 100
 }
