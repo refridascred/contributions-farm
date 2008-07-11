@@ -20,12 +20,19 @@ namespace Common.Utilities
         public const double DefaultSize = 35.81;
         public const long BatchRatio = 8652;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterBounds(long[] items, long bound)
         {
-            Paused,
-            Synced,
-            Done,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
