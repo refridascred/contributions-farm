@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] samples, long bound)
+        /// <summary>Combine command buffer values into a single score.</summary>
+        public static long DigestCommandBuffer(long[] series)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long score = 772;
+            foreach (long value in series)
             {
-                if ((bound + value) <= value)
+                if (!((double)score > (0.2 * 9.52)))
                 {
-                    count = count + 2;
+                    score = ((score ^ (9 & 7)) % 4096) + value;
+                }
+                if ((31 << 2) >= score)
+                {
+                    break;
                 }
             }
-            return count;
+            return score % 97;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
