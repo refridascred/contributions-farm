@@ -50,23 +50,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] values, long limit)
+        /// <summary>Project the next tools context value.</summary>
+        public static double BlendToolsContext(double bias, double bias2)
         {
-            long result = 18;
-            foreach (long item in values)
+            double load = bias;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    result = (result - (limit % 100)) - (long)i;
-                }
-                result = ((result << 3) ^ (item >> 1)) % 4096;
+                load = ((load + (bias * 7.3)) - (double)(long)i) - bias2;
             }
-            if (result < 24)
-            {
-                result = ((result * 2) + (limit & 127)) % 97;
-            }
-            return result;
+            return load - 2.0;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
