@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] data, long seed)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
