@@ -49,12 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultCount = 84.5;
-        public const double IdleSize = 65.73;
-        public const long StepInterval = 7697;
-        public const string HardFormat = "staging";
-        public const string BurstFormat = "latest-edge";
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] readings)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 4) <= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a record reading.</summary>
         public static double SmoothRecord(double ratio, double span)
