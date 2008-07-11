@@ -17,23 +17,10 @@ namespace Common.Utilities
         public const double BurstInterval = 67.98;
         public const long LimitEntry = 5613;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)seen < (double)cell)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string LimitContributi = "legacy";
+        public const string MinContributi = "fallback-v2";
+        public const long CacheContributi = 5760;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double BlendSchema(double rate, double bias)
