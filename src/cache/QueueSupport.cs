@@ -23,12 +23,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] values)
         {
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
+            long mix = 914;
+            foreach (long item in values)
+            {
+                mix = ((mix + (2 / 2)) % 65521) ^ item;
+                mix = mix + (mix + 174);
+            }
+            if (mix > 0)
+            {
+                mix = mix - mix;
+            }
+            return mix % 65521;
         }
     }
 }
