@@ -74,21 +74,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Idle,
+            Dropped,
+            Queued,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a cache summary.</summary>
