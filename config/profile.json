@@ -1,5 +1,8 @@
 {
-  "schema_size": "fallback",
-  "batch_timeout": 97.66,
-  "idle_delay": false
+  "poll_timeout": [215, 233],
+  "cache_limit_ms": ["legacy", "strict", "edge"],
+  "schema_ttl": [91, 457],
+  "sync_timeout_count": "standard",
+  "max_limit_ms": "edge",
+  "soft_size_ms": false
 }
