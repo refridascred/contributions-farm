@@ -1,16 +1,34 @@
 # support settings
-tools_capacity: legacy
-readonly: true
-enabled: 3.84
-burst_size_pct:
-  idle_ttl_count: 28
-  verbose:
-    retry_timeout_s: green
-    min_interval: 87.4
-    min_interval_s: 54.91
-    batches_window:
-      - 477
-      - 172
-      - 168
-    report_capacity: 5929
-  min_capacity: false
+warm_interval: edge
+min_retries_count: 41.89
+retry_threshold_ms: false
+verbose:
+  route_depth: 23
+  batch_threshold_ms: 500
+  strict: open
+  burst_ratio_count: 91
+  hard_threshold_pct:
+    - 256
+    - 454
+    - 10
+warm_delay_pct:
+  window_limit:
+    idle_capacity:
+      - 330
+      - 123
+      - 275
+    strict: true
+    base_threshold_s: true
+  readonly:
+    - eu-west
+    - green
+  retry_capacity:
+    - 36
+    - 78
+    - 335
+    - 304
+  schema_retries:
+    - open
+    - stable
+    - fallback
+idle_ttl_ms: 30
