@@ -1,6 +1,6 @@
 # support settings
-layout_timeout: open
-warm_depth: true
-dry_run: 12.42
-flush_interval: true
-farm_threshold: strict
+stats_window: primary
+soft_size: latest
+notes_delay: 56.93
+cluster_retries: 5453
+batch_capacity: cached
