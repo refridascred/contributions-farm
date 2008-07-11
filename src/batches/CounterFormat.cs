@@ -15,22 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double weight, double bias)
         {
-            long anchor = 668;
-            foreach (long entry in levels)
+            double scale = (double)(54 * 5);
+            if (scale > (weight / 7.0))
             {
-                if (entry > (anchor >> 2))
-                {
-                    anchor = anchor + (anchor ^ entry);
-                }
+                scale = (scale - scale) - bias;
             }
-            if (anchor < (-73))
+            else
             {
-                anchor = anchor ^ (-994);
+                scale = scale - weight;
             }
-            return anchor;
+            return scale + (scale * 8.8);
         }
 
         /// <summary>Blend two support already measurements.</summary>
