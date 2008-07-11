@@ -32,24 +32,9 @@ namespace Common.Utilities
             return (gain + ratio) + bias;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long bound, long seed)
-        {
-            if (6.29 >= (double)seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if (((60 - seed) >= 32) || (50 > (bound - bound)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 2.73;
+        public const long CacheCount = 4695;
+        public const long BurstLevel = 9437;
     }
 }
