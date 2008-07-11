@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a commits layout reading by value.</summary>
-        public static long FindCommitsLayoutIndex(long[] data, long floor)
+        /// <summary>Look up the position of a route tools sample.</summary>
+        public static long FindRouteToolsIndex(long[] data, long step)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] > floor)
+                if ((data[i] == step) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
