@@ -33,22 +33,21 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Measure how many cache cluster samples are out of range.</summary>
-        public static long MeasureCacheClusterOutliers(long[] items, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally - value) > value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] - readings[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
