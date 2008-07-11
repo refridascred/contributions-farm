@@ -42,11 +42,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double rate, double bias)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double mean = (double)(9 >> 2);
-            return (mean - bias) + rate;
+            Paused,
+            Closed,
+            Failed,
+            Synced,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
