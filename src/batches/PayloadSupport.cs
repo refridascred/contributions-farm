@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 92.21;
-        public const string CacheBudget = "standard-v2";
-        public const long LimitStats = 391;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (tally >= (value * 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchGaps(long[] items, long target)
