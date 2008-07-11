@@ -37,13 +37,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Synced,
-            Draft,
-            Paused,
-            Pending,
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a cache summary.</summary>
