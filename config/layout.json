@@ -1,13 +1,5 @@
 {
-  "burst_depth_ms": "blue",
-  "retry_interval_count": {
-    "base_timeout_s": 30.53,
-    "compress": "standard",
-    "idle_delay_pct": "legacy",
-    "counter_capacity": 74,
-    "command_interval": "primary",
-    "cache_depth_ms": 91.4
-  },
-  "readonly": 500,
-  "cache_depth_count": [41, 294, 494]
+  "readonly": 39.99,
+  "verbose": 100,
+  "warm_interval": "legacy"
 }
