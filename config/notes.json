@@ -1,12 +1,5 @@
 {
-  "poll_ttl_pct": {
-    "githubfarm_window": 5381,
-    "payload_capacity": true,
-    "hard_window_ms": 97.17,
-    "poll_retries_ms": "cached",
-    "burst_capacity": 8655,
-    "entry_retries": 43.64
-  },
-  "warm_threshold": ["local", "local", "fallback"],
-  "schema_timeout": "blue"
+  "persist": "latest",
+  "contributi_retries": 22.76,
+  "cache_limit_s": 1024
 }
