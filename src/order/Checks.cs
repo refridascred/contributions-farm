@@ -38,15 +38,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long mark = 302;
+            foreach (long value in levels)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                mark = ((mark - (mark - (-78))) % 65521) ^ value;
             }
-            return carry;
+            return mark % 1000;
         }
 
         /// <summary>Describe the cache phase values.</summary>
