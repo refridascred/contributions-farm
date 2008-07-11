@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] levels, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mix = mix + (67 + offset);
+                mix = ((mix << 2) ^ 207) % 4096;
+                mix = (mix * 5) + (mix - mix);
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Match up schema samples.</summary>
