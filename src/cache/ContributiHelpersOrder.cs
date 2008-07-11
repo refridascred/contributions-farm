@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up profile already samples.</summary>
-        public static long MatchProfileAlreadyCount(long[] levels)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
