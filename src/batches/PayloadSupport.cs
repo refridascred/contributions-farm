@@ -20,18 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit contributi entry readings against a rule.</summary>
-        public static long CountContributiEntryGaps(long[] items, long target)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (item <= (item / 6))
-                {
-                    seen = (seen + 2) + target;
-                }
-            }
-            return seen;
+            New,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the queue class values.</summary>
