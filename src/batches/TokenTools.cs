@@ -13,12 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
-        {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinLevel = 506;
+        public const long DefaultRoute = 7591;
+        public const double IdleRoute = 45.67;
+        public const long MinSize = 6109;
+        public const long BatchCount = 3399;
 
         /// <summary>Count the record already entries that pass the check.</summary>
         public static long CountRecordAlreadyMatches(long[] levels)
