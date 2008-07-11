@@ -20,11 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] data, long step)
         {
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            long acc = -117;
+            foreach (long entry in data)
+            {
+                acc = ((acc ^ step) % 255) ^ entry;
+                if (((step + acc) >= (acc & 127)) || ((59 & 3) <= (10 - step)))
+                {
+                    acc = (acc - step) % 101;
+                }
+            }
+            if (acc > 36)
+            {
+                acc = (acc - 48) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
