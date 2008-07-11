@@ -1,18 +1,13 @@
 # support settings
-idle_timeout_pct:
-  - 335
-  - 368
-  - 69
-graph_threshold: cached
-poll_threshold_s: standard
-persist:
-  - local
-  - eu-west
-  - green
-  - eu-west
-idle_capacity_s: primary
-burst_limit_s:
-  - legacy
-  - fallback
-  - blue
+retry_retries_pct: legacy
+soft_interval_count:
+  - edge
   - primary
+  - open
+  - standard
+strict: 100
+warm_window_count: blue
+channel_limit:
+  - local
+  - green
+  - green
