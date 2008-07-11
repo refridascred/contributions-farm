@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] items)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] data, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((((10.0 + 7.17) >= (double)offset) || ((offset << 1) == (value * 3))) || (((double)value != (3.0 * 1.7)) && ((0.9 - 2.5) == (double)offset)))
                 {
-                    if ((items[i] - items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
                 }
             }
             return tally;
