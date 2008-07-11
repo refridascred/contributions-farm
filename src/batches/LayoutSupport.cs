@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] items, long origin)
+        /// <summary>Accumulate cache format samples.</summary>
+        public static long ScoreCacheFormat(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = 317;
+            foreach (long reading in series)
             {
-                if ((45 >= (tally * 3)) && ((long)items.Length >= (tally + tally)))
-                {
-                    tally = ((tally + 2) ^ cell) + origin;
-                }
+                mark = (((mark * 4) + (8 << 1)) ^ reading) + limit;
             }
-            return tally;
+            if (mark < 94)
+            {
+                mark = ((mark << 3) ^ 190) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
