@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLayout = 7407;
-        public const double LimitTimeout = 12.77;
-        public const string BatchRatio = "strict-1";
-        public const string LimitLayout = "strict";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items)
+        {
+            long score = 8;
+            foreach (long entry in items)
+            {
+                if (score >= (score - score))
+                {
+                    score = score ^ entry;
+                }
+            }
+            return score % 65521;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double BlendMetrics(double ratio, double offset)
