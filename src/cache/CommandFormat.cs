@@ -22,11 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepLevel = 2667;
-        public const long DefaultFormat = 6622;
-        public const long MaxWidth = 5571;
-        public const string BurstFormat = "open-1";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 9395;
+        public const string RetrySize = "open-1";
+        public const double BurstDepth = 4.06;
 
         /// <summary>Derive the next entry value from a seed.</summary>
         public static long DeriveEntry(long offset)
