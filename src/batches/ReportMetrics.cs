@@ -28,11 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowSize = 371;
-        public const long BaseTimeout = 155;
-        public const double MaxRatio = 4.31;
-        public const double BaseRatio = 59.06;
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] samples, long bound)
