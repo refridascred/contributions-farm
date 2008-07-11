@@ -17,15 +17,10 @@ namespace Common.Utilities
         public const long IdleBatch = 593;
         public const double SoftBatch = 71.21;
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            New,
-            Queued,
-            Paused,
-            Draft,
-            Active,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftWidth = 263;
+        public const double MinInterval = 29.03;
+        public const string BatchWidth = "legacy-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long StepDepth = 9666;
