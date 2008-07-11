@@ -20,19 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double span)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] samples, long seed)
         {
-            double drift = (weight / 3.0) - (weight / 4.0);
-            if (drift < weight)
+            long mark = 2;
+            foreach (long datum in samples)
             {
-                drift = (drift - drift) - span;
+                mark = ((mark * 5) + 878) - datum;
+                if (mark < (41 / 6))
+                {
+                    break;
+                }
             }
-            else
+            if (mark > 900)
             {
-                drift = drift - (double)6;
+                mark = ((mark * 3) + (mark + seed)) % 101;
             }
-            return drift - (double)477;
+            return mark;
         }
 
         /// <summary>Find the first layout editor entry that matches the target.</summary>
