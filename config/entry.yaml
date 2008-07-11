@@ -1,18 +1,28 @@
 # entry settings
-flush_depth_s:
-  audit: true
-  channel_retries: primary
-  batch_delay:
-    - blue
-    - fallback
-  warm_timeout_s: 250
-  readonly: 100
-context_delay: 3585
-support_size:
-  githubfarm_depth: eu-west
-  retry_size: eu-west
-  poll_ratio_count:
-    - 226
-    - 399
-  counter_size: true
-min_depth: true
+poll_threshold_count: true
+hard_delay_s: legacy
+metrics_ttl: false
+base_timeout_pct:
+  hard_capacity_s:
+    persist:
+      - cached
+      - staging
+      - strict
+      - local
+    dry_run: false
+    commits_timeout: 500
+    compress:
+      - 296
+      - 415
+  sync_depth: staging
+  cache_retries_pct: local
+  cluster_interval:
+    default_threshold_s: 5
+    sync_delay: eu-west
+    hard_size: 518
+    min_size_count: blue
+    batch_capacity: 6339
+    session_retries: 15
+  order_capacity: strict
+  burst_limit: 65
+flush_capacity_count: true
