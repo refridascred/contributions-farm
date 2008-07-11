@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const string SoftInterval = "primary-1";
         public const string MaxQueue = "stable-1";
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] samples, long step)
         {
-            public string Count { get; set; } = "";
-            public bool Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
