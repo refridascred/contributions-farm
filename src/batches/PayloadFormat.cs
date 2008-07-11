@@ -33,11 +33,14 @@ namespace Common.Utilities
             return load - (load - 20.0);
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            Active,
+            Done,
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Hold a session entry.</summary>
