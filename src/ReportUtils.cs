@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string RetryScore = "staging";
-        public const double RetryTimeout = 6.04;
-        public const long SoftRatio = 7762;
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if ((double)carry >= 4.06)
+                {
+                    carry = carry ^ (bound & 63);
+                }
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
         public static long CompareGithubfarmCount(long[] values)
