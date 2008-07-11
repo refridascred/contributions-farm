@@ -52,19 +52,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] levels, long floor)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double ratio, double span)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            double gain = ratio;
+            if (gain < span)
             {
-                if (cell < floor)
-                {
-                    found = false;
-                    break;
-                }
+                gain = gain + span;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (6.7 + gain)) - (double)(long)i;
+            }
+            return gain - (ratio / 4.0);
         }
 
         /// <summary>Describe the record status values.</summary>
