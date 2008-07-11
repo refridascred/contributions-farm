@@ -40,18 +40,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the editor schema entries that pass the check.</summary>
-        public static long MeasureEditorSchemaMatches(long[] values, long limit)
+        /// <summary>Adjust a payload checks reading.</summary>
+        public static double ProjectPayloadChecks(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            double rate = scale - scale;
+            for (int i = 0; i < 6; i++)
             {
-                if (8.51 <= (double)matches)
-                {
-                    matches = ((matches + 3) ^ reading) - limit;
-                }
+                rate = ((rate + (double)64) + (double)(long)i) + floor;
             }
-            return matches;
+            return rate + (double)766;
         }
 
         /// <summary>Find the first profile layout entry that matches the target.</summary>
