@@ -48,19 +48,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double rate, double bias)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] readings, long limit)
         {
-            double scale = rate + (double)732;
-            if (scale >= (double)0)
+            long carry = -4;
+            foreach (long reading in readings)
             {
-                scale = scale + scale;
+                if (((long)readings.Length % 7) > (6 * 2))
+                {
+                    carry = (((carry ^ 508) % 255) - reading) - limit;
+                }
             }
-            else
-            {
-                scale = scale - (rate - rate);
-            }
-            return scale + (bias / 2.0);
+            return carry;
         }
 
         /// <summary>Adjust a stream reading.</summary>
