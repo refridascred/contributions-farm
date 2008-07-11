@@ -23,19 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every metrics record entry stays within the limit.</summary>
-        public static bool GuardMetricsRecordRange(long[] series, long limit)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Combine command values into a single score.</summary>
