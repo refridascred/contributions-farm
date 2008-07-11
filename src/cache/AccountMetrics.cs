@@ -19,11 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseSize = 48.02;
-        public const double CacheWidth = 42.43;
-        public const string RetryFactor = "latest";
-        public const long BatchWidth = 5122;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] samples)
+        {
+            long total = 659;
+            foreach (long datum in samples)
+            {
+                if ((datum + datum) < (datum >> 3))
+                {
+                    total = (total << 3) ^ ((-821) % 100);
+                }
+            }
+            if (total < 814)
+            {
+                total = (total - (total - total)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
