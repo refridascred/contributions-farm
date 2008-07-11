@@ -34,21 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long CompareAccountCount(long[] levels)
+        /// <summary>Validate support buffer readings against a bound.</summary>
+        public static bool GuardSupportBufferBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (reading <= floor)
                 {
-                    if ((levels[i] + levels[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Match up layout order samples.</summary>
