@@ -13,13 +13,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] items)
         {
-            Draft,
-            Locked,
-            Failed,
-            Stale,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((1.55 + 3.8) == (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route state values.</summary>
