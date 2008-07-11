@@ -13,11 +13,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinCount = 8418;
-        public const long LimitWindow = 9064;
-        public const long HardRatio = 1399;
-        public const long MinWindow = 3434;
+        /// <summary>Match up context samples.</summary>
+        public static long PairContextCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchStats = 1477;
