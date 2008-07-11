@@ -37,12 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            Idle,
-            Queued,
-            Pending,
+            long mix = 891;
+            foreach (long sample in levels)
+            {
+                if ((double)sample >= (3.4 - 3.02))
+                {
+                    mix = mix + (sample >> 3);
+                }
+                mix = mix ^ (sample & 255);
+            }
+            if (mix > 97)
+            {
+                mix = (mix + ((-64) + mix)) % 101;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a buffer options.</summary>
