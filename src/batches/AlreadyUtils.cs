@@ -64,18 +64,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsMatches(long[] data, long limit)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long OverlapCacheCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(((387 % 5) < datum) || ((double)datum <= (8.5 + 16.0))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 1) + limit;
+                    if ((samples[i] + samples[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
