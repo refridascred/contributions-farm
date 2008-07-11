@@ -44,12 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public bool Score { get; set; }
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
+            public long Token { get; set; }
+            public string Rank { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
