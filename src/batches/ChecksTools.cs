@@ -49,13 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] values)
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
