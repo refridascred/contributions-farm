@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long CacheWidth = 2320;
         public const long SoftCount = 7877;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] series, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool stale = true;
-            foreach (long datum in series)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Retry,
+            Failed,
         }
 
         /// <summary>Accumulate filter samples.</summary>
