@@ -41,21 +41,31 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long seed, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (offset <= (seed * 2))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((605 / 4) <= seed)
                 {
-                    if ((readings[i] + readings[j]) < 14)
+                    return 5;
+                }
+                else
+                {
+                    if ((seed & 255) == (seed << 1))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a profile info.</summary>
