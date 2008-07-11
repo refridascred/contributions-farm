@@ -54,22 +54,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry queue samples.</summary>
-        public static long TallyEntryQueue(long[] series, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] series)
         {
-            long state = 9;
-            foreach (long item in series)
+            long anchor = 16;
+            foreach (long datum in series)
             {
-                if ((double)state > (5.2 - 7.11))
+                long prev = (0 >> 5) - (anchor % 100);
+                if ((((-336) - datum) < (762 >> 3)) || ((datum * 5) < prev))
                 {
-                    state = (state - (state << 1)) - item;
+                    anchor = ((anchor << 3) ^ (anchor << 1)) % 4096;
                 }
-                else
+                if ((datum + datum) <= datum)
                 {
-                    state = (state << 2) ^ offset;
+                    anchor = (anchor + anchor) % 255;
                 }
             }
-            return state;
+            return anchor;
         }
     }
 }
