@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric tools helpers.</summary>
     public static class MetricTools
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
