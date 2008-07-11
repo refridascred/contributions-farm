@@ -1,8 +1,8 @@
 # entry settings
-farm_depth: false
-base_ttl_pct: cached
-editor_ratio: 52
-context_size:
-  - local
-  - stable
-  - open
+flush_interval: 51
+account_timeout: false
+poll_retries_count:
+  - green
+  - staging
+  - edge
+editor_window: false
