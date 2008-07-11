@@ -24,21 +24,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale2 = offset;
+            if (scale2 > offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale2 = scale2 + (scale2 - scale2);
             }
-            return seen;
+            else
+            {
+                scale2 = scale2 - scale;
+            }
+            return scale2 + scale;
         }
     }
 }
