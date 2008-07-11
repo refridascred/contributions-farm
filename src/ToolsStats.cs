@@ -60,10 +60,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultCommand = 7350;
-        public const long MaxCommand = 9827;
-        public const long WindowSpan = 2697;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "stable-edge";
+        public const long BatchLevel = 2414;
+        public const string CacheOrder = "local-1";
+        public const long SoftDepth = 192;
+        public const string StepOrder = "primary-v2";
 
         /// <summary>Project the next schema value.</summary>
         public static double ScaleSchema(double bias, double span)
