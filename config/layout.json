@@ -1,16 +1,6 @@
 {
-  "queue_delay": 19.43,
-  "filter_threshold": 94.92,
-  "idle_ratio_count": true,
-  "max_limit": {
-    "idle_ttl_s": "legacy",
-    "payload_interval": {
-      "max_threshold_count": 72.55,
-      "flush_timeout": 14.8,
-      "githubfarm_window": "blue"
-    },
-    "batch_ratio": false,
-    "batch_ratio_s": 11.71,
-    "verbose": "legacy"
-  }
+  "poll_window_ms": "open",
+  "enabled": "standard",
+  "support_threshold": 2.06,
+  "burst_ratio": [245, 203, 161]
 }
