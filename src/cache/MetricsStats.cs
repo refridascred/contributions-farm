@@ -17,12 +17,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 305;
-        public const double MinRatio = 27.24;
-        public const long BatchLevel = 1518;
-        public const long HardToken = 9984;
-        public const double DefaultFactor = 56.57;
+        /// <summary>Count order counter pairs that satisfy a relation.</summary>
+        public static long PairOrderCounterCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long FindContributiIndex(long[] items, long origin)
