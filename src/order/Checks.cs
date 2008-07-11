@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 6968;
-        public const double WindowTimeout = 73.8;
-        public const string StepBudget = "stable-1";
-        public const string MinContributi = "staging";
-        public const long DefaultSpan = 7982;
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((bound + value) <= value)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteGaps(long[] items, long bound)
