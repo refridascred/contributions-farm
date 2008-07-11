@@ -19,17 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout session entry that matches the target.</summary>
-        public static long SeekLayoutSessionIndex(long[] levels, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 79;
+            foreach (long entry in data)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) != 0))
+                if ((carry & 31) == (359 & 255))
                 {
-                    return (long)i;
+                    carry = ((carry + (carry + carry)) % 101) + entry;
+                }
+                else
+                {
+                    carry = (carry - carry) % 65521;
                 }
             }
-            return -1;
+            if (carry < (-92))
+            {
+                carry = carry + (carry + 45);
+            }
+            return carry;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
