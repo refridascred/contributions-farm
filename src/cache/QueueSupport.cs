@@ -24,21 +24,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count format support pairs that satisfy a relation.</summary>
-        public static long PairFormatSupportCount(long[] data)
+        /// <summary>Combine already metrics values into a single score.</summary>
+        public static long FoldAlreadyMetrics(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 2;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = (mix + cell) % 255;
             }
-            return tally;
+            return mix % 1000;
         }
     }
 }
