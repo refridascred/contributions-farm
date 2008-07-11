@@ -48,9 +48,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleCount = 7710;
-        public const double RetryScore = 43.76;
-        public const string MinContext = "alpha-1";
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BaseSpan = 2.58;
+        public const long RetryQueue = 6333;
+        public const long LimitSize = 8347;
+        public const double BatchInterval = 64.86;
     }
 }
