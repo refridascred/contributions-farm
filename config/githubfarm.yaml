@@ -1,5 +1,23 @@
 # githubfarm settings
-sync_depth_pct: 21
-record_capacity: stable
-stats_threshold: 32.18
-persist: false
+flush_timeout_s:
+  cache_capacity_pct:
+    batch_ratio: staging
+    flush_threshold_s: local
+    default_ratio_count: true
+    idle_ratio_s: 30
+    burst_ratio_pct: open
+  flush_ttl_s:
+    - 48
+    - 52
+    - 362
+    - 177
+  base_depth_ms: cached
+  min_delay_pct: false
+  min_ratio_s: open
+  githubfarm_retries: green
+soft_ttl_s:
+  - cached
+  - staging
+  - stable
+  - local
+burst_depth_s: standard
