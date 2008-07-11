@@ -30,23 +30,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] samples, long floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricOutliers(long[] samples, long floor)
         {
-            long mix = 396;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                mix = (mix - (mix & 15)) - floor;
-                if (mix > 919)
+                if (!(((8.1 + 7.8) >= (double)value) || ((floor ^ floor) <= value)))
                 {
-                    mix = (mix - 9) % 4096;
-                }
-                if ((item * 2) == (85 & 7))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
