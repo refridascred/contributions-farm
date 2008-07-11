@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] items, long target)
         {
-            public double Token { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((double)reading <= (7.0 - 0.26))
+                {
+                    count = (count + 1) + target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a queue summary.</summary>
