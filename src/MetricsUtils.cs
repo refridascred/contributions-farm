@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public double Stamp { get; set; }
-            public long Level { get; set; }
+            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Define already limits and defaults.</summary>
