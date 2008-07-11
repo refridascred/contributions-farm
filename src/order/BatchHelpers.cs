@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] samples, long origin)
+        /// <summary>Compare every pair of account graph readings.</summary>
+        public static long OverlapAccountGraphCount(long[] series)
         {
             long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.62 - 6.62) < (double)reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - origin;
+                    if ((series[i] ^ series[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
