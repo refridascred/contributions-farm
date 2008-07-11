@@ -115,24 +115,18 @@ namespace Common.Utilities
             return weight + (floor + weight);
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] values)
         {
-            long acc = 76;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((double)datum >= (9.37 - 5.03))
+                if ((sample >> 1) != (matches - sample))
                 {
-                    acc = ((acc * 3) + (datum - acc)) % 255;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    acc = (acc - ((long)readings.Length >> 5)) % 1000;
-                    acc = acc - (acc >> 2);
-                }
-                acc = (acc * 4) + acc;
             }
-            return acc;
+            return matches;
         }
     }
 }
