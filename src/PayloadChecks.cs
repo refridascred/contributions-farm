@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] samples, long origin)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits + 68) >= (hits % 3))
-                {
-                    hits = ((hits + 1) + reading) - origin;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
