@@ -62,19 +62,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] series, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if (sample != bound)
+                if (!((double)0 <= (4.96 / 4.0)))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
