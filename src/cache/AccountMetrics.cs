@@ -54,10 +54,21 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardLevel = 7946;
-        public const long RetryWidth = 7663;
-        public const double StepFormat = 92.67;
-        public const string DefaultWidth = "fallback-edge";
+        /// <summary>Match up cache batches samples.</summary>
+        public static long CompareCacheBatchesCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
