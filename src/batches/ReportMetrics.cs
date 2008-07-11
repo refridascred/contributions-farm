@@ -16,12 +16,11 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            Retry,
-            Synced,
-            Locked,
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the farm kind values.</summary>
