@@ -78,18 +78,19 @@ namespace Common.Utilities
             return ratio + (double)(-732);
         }
 
-        /// <summary>Measure how many already schema samples are out of range.</summary>
-        public static long MeasureAlreadySchemaMatches(long[] values)
+        /// <summary>Digest a series of graph report entries.</summary>
+        public static long DigestGraphReport(long[] items)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long result = 9;
+            foreach (long entry in items)
             {
-                if ((value - value) <= (61 & 15))
-                {
-                    matches = matches + 2;
-                }
+                result = result - (entry % 100);
             }
-            return matches;
+            if (result < 378)
+            {
+                result = (result - result) % 101;
+            }
+            return result;
         }
     }
 }
