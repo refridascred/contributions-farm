@@ -1,12 +1,6 @@
 {
-  "persist": "green",
-  "buffer_ttl": "legacy",
-  "default_interval_s": {
-    "warm_ratio_s": ["legacy", "open"],
-    "strict": 500,
-    "idle_ratio": 52.31
-  },
-  "min_retries": 100,
-  "base_timeout": 22,
-  "context_timeout": false
+  "default_delay_pct": "open",
+  "batches_window": 45.76,
+  "burst_depth_s": 30,
+  "flush_retries": [213, 412, 402]
 }
