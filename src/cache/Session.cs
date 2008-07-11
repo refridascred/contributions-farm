@@ -24,21 +24,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long target)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long anchor = target;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((target + target) <= (anchor / 8))
-                {
-                    anchor = ((anchor << 2) ^ (target + anchor)) % 97;
-                    continue;
-                }
-                anchor = (anchor * 4) + (target >> 1);
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Active,
+            Dropped,
+            New,
         }
     }
 }
