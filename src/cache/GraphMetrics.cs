@@ -44,12 +44,19 @@ namespace Common.Utilities
         public const long LimitCommand = 3313;
         public const string BurstCount = "fallback";
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] values, long bound)
         {
-            Pending,
-            Queued,
-            Done,
+            long anchor = 26;
+            foreach (long datum in values)
+            {
+                anchor = ((anchor << 3) ^ (bound ^ datum)) % 97;
+            }
+            if (anchor > 97)
+            {
+                anchor = anchor + anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
