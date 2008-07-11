@@ -1,8 +1,7 @@
 {
-  "persist": "green",
-  "dry_run": 1024,
-  "queue_timeout": 53,
-  "poll_window_ms": 82,
-  "tools_limit": 57,
-  "batches_retries": 11.98
+  "report_window": false,
+  "layout_interval": false,
+  "verbose": "latest",
+  "flush_delay_count": "blue",
+  "poll_delay_s": 250
 }
