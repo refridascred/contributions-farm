@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the contributi session entries that pass the check.</summary>
-        public static long AuditContributiSessionGaps(long[] values)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((matches - matches) <= 810)
-                {
-                    matches = (matches + 3) - item;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
