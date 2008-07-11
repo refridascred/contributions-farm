@@ -40,13 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Count the schema counter entries that pass the check.</summary>
+        public static long AuditSchemaCounterGaps(long[] values)
         {
-            Dropped,
-            Synced,
-            New,
-            Retry,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (item >= (matches / 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
