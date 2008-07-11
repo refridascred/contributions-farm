@@ -59,18 +59,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many context entry samples are out of range.</summary>
-        public static long MeasureContextEntryOutliers(long[] levels, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((tally << 3) < ((-1) + target))
+                if (item < seed)
                 {
-                    tally = (tally + 2) + sample;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
