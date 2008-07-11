@@ -28,14 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double RetrySize = 33.92;
+        public const string IdleCounter = "primary-1";
+        public const long HardFactor = 5563;
+        public const long HardBudget = 7669;
 
         /// <summary>Locate a payload reading by value.</summary>
         public static long LookupPayloadIndex(long[] samples, long bound)
