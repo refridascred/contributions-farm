@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] values, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels)
         {
-            long anchor = 98;
-            foreach (long datum in values)
+            long acc = 232;
+            foreach (long item in levels)
             {
-                if ((anchor <= limit) && ((anchor + anchor) <= ((-9) / 2)))
+                acc = ((acc << 3) ^ (acc ^ item)) % 1000;
+                acc = (acc + (item - (-819))) % 65521;
+                if ((15.0 - 13.0) <= (6.6 * 7.01))
                 {
-                    anchor = (anchor ^ (anchor / 7)) + datum;
+                    acc = acc + acc;
                 }
             }
-            if (anchor > 3)
+            if (acc > 6)
             {
-                anchor = (anchor + (limit + limit)) % 97;
+                acc = (acc ^ (acc - acc)) % 1000;
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Match up editor samples.</summary>
