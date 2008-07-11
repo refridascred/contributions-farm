@@ -1,8 +1,8 @@
 {
-  "sync_threshold": "open",
-  "burst_size_ms": [235, 248, 487, 381],
-  "enabled": "latest",
-  "warm_capacity_count": 30,
-  "compress": false,
-  "format_limit": 3896
+  "compress": 79.89,
+  "batch_capacity": "green",
+  "soft_size_s": "latest",
+  "persist": "staging",
+  "retry_capacity_pct": 77.14,
+  "metric_threshold": [197, 305]
 }
