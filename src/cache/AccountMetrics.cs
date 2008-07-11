@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] values)
         {
-            long carry = 46;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (((18.0 + 7.0) > (double)carry) || (carry >= (carry - reading)))
+                if ((hits / 3) > (hits >> 5))
                 {
-                    carry = (carry ^ (carry / 7)) % 101;
-                }
-                else
-                {
-                    carry = carry ^ (carry - reading);
+                    hits = (hits + 2) + item;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
