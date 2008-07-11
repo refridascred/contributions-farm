@@ -1,5 +1,8 @@
 {
-  "burst_limit_s": 100,
-  "poll_depth": 45.74,
-  "base_depth_pct": 47.69
+  "stream_ratio": 72.29,
+  "session_timeout": 59,
+  "enabled": "eu-west",
+  "cache_depth": false,
+  "cluster_capacity": [342, 294, 440],
+  "payload_ratio": 33.81
 }
