@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] readings, long seed)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] data, long origin)
         {
-            long acc = 267;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                acc = (acc + 860) % 1000;
-                if ((double)reading <= (5.5 / 4.0))
+                if (entry != origin)
                 {
-                    acc = (acc << 2) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 6)
-            {
-                acc = acc - seed;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Describe the queue status values.</summary>
