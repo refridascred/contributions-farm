@@ -23,23 +23,12 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteGaps(long[] items, long bound)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((((13.0 * 2.91) != (double)value) || ((value / 6) <= value)) || !((91 + bound) < (value << 3)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MinSize = "alpha";
+        public const long StepSize = 9659;
+        public const long CacheWindow = 1128;
+        public const long SoftWindow = 8741;
+        public const long CacheSize = 1434;
 
         /// <summary>Audit notes readings against a rule.</summary>
         public static long MeasureNotesMatches(long[] values)
