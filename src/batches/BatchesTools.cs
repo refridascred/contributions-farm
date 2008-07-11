@@ -34,23 +34,37 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a record layout value against two limits.</summary>
-        public static long ClassifyRecordLayout(long seed, long bound)
+        /// <summary>Grade a token stream value against two limits.</summary>
+        public static long RankTokenStream(long target, long limit)
         {
-            long bound2 = seed + bound;
-            if ((bound2 & 63) >= bound)
+            long edge = target ^ limit;
+            if (edge < ((-68) << 2))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (bound <= bound2)
+                if ((955 + 314) < limit)
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if ((0.68 * 4.0) <= (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + limit) >= ((-309) % 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
