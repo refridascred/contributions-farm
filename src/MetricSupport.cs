@@ -20,13 +20,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelGaps(long[] series)
         {
-            New,
-            Failed,
-            Closed,
-            Synced,
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((46 > datum) && (count <= (datum << 3)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
