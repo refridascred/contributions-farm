@@ -1,9 +1,22 @@
 # githubfarm settings
-flush_depth_count:
-  - staging
-  - cached
-  - edge
-  - blue
-schema_threshold: strict
-farm_ttl: staging
-idle_window_count: 59
+idle_threshold_pct: true
+hard_retries_pct:
+  retry_size_s:
+    - 421
+    - 176
+    - 287
+  queue_ratio:
+    entry_size: 2.4
+    already_interval: 2894
+    graph_size: staging
+    flush_threshold: 62.14
+  queue_capacity: green
+  graph_depth:
+    verbose: 90
+    warm_window_count:
+      - 266
+      - 78
+    channel_threshold: 8309
+  sync_timeout_ms: open
+  idle_retries_pct: stable
+verbose: 57.76
