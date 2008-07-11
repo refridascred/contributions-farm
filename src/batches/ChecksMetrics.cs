@@ -58,14 +58,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long target)
         {
-            Stale,
-            Closed,
-            Done,
-            Dropped,
-            Retry,
+            if ((934 + seed) >= seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target >> 2) < (seed * 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Rank stream payload input into a small class.</summary>
