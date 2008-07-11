@@ -40,20 +40,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long target)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 368;
+        public const long MinFactor = 294;
+        public const long DefaultWidth = 6340;
+        public const long DefaultFarm = 7314;
 
         /// <summary>Digest a series of queue tools entries.</summary>
         public static long WeighQueueTools(long[] samples)
