@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long RankSupport(long target, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long offset2 = target ^ offset;
-            if ((double)target == (4.0 + 9.51))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset & 127) > 21)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + offset2) > offset2) || ((3 ^ 9) >= (offset2 - target)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((target + target) < (offset / 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a metrics entry.</summary>
