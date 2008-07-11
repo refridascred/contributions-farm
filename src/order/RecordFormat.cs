@@ -22,12 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long limit, long origin)
         {
-            Stale,
-            Paused,
-            Ready,
+            if (!((686 ^ origin) >= (origin / 6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit * 2) >= (limit & 7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((limit * 4) >= (origin / 2)) || ((limit - 8) == (limit << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((origin + limit) < (23 + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the profile status values.</summary>
