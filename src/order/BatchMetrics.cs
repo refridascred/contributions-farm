@@ -64,32 +64,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank farm notes input into a small class.</summary>
-        public static long ClassifyFarmNotes(long origin, long limit)
-        {
-            long edge = origin + limit;
-            if ((631 << 1) >= (limit % 8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((edge % 3) != (edge / 9))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((13.0 <= (double)origin) && ((origin & 1) > (edge * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double SoftAlready = 82.47;
+        public const long BaseAlready = 2165;
+        public const long MinAlready = 1283;
+        public const double IdleInterval = 6.38;
     }
 }
