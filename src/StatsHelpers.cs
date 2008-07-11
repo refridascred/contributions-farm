@@ -69,32 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long step)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] values)
         {
-            long slot = floor ^ step;
-            if ((11.0 / 5.0) == (double)step)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + slot) < ((-3) / 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)slot < (double)step)
+                    if ((values[i] ^ values[j]) == 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
