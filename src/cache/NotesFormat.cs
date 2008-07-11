@@ -31,13 +31,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Draft,
-            Stale,
-            Closed,
-            Retry,
+            public double Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
