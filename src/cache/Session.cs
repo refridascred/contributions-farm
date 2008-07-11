@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels)
-        {
-            long acc = 232;
-            foreach (long item in levels)
-            {
-                acc = ((acc << 3) ^ (acc ^ item)) % 1000;
-                acc = (acc + (item - (-819))) % 65521;
-                if ((15.0 - 13.0) <= (6.6 * 7.01))
-                {
-                    acc = acc + acc;
-                }
-            }
-            if (acc > 6)
-            {
-                acc = (acc ^ (acc - acc)) % 1000;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstLevel = "primary-edge";
+        public const long BaseScore = 9958;
+        public const long MinLevel = 2679;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string BatchTimeout = "fallback";
