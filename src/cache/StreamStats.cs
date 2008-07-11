@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of session batch readings.</summary>
-        public static long FoldSessionBatch(long[] items)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long floor, long seed)
         {
-            long score = 7;
-            foreach (long cell in items)
+            long slot = floor ^ seed;
+            if ((slot ^ 4) <= (slot << 3))
             {
-                if ((score + score) > 5)
+                return 7;
+            }
+            else
+            {
+                if (floor < 8)
                 {
-                    score = (score ^ (cell % 12)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return score;
         }
 
         /// <summary>Rank notes input into a small class.</summary>
