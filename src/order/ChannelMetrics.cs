@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long target, long target2)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long step = target - target2;
-            if (step <= 6)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((3.99 + 7.0) == (double)step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (target2 <= (97 ^ target))
+                    if ((levels[i] ^ levels[j]) == 18)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
