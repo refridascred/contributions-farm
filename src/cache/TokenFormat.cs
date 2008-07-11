@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Idle,
-            Active,
-            Queued,
-            Draft,
+            Synced,
+            Retry,
+            Closed,
             New,
         }
 
